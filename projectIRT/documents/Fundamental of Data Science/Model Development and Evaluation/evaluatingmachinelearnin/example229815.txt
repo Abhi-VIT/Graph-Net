@@ -1,0 +1,93 @@
+Evaluating Machine Learning Models Biology Subscribe Sign Share post Decoding Biology Evan Peikon Evaluating Machine Learning Models Biology Copy link Facebook Email Notes Evaluating Machine Learning Models Biology biotechnologist guide evaluating machine learning algorithms , practical Python examples Evan Peikon Feb 18 , 2025 11 Share post Decoding Biology Evan Peikon Evaluating Machine Learning Models Biology Copy link Facebook Email Notes 3 Share Liked piece ? support tapping “ heart ” ❤ ️ header . small gesture goes long way helping understand value growing newsletter . Thanks ! 🧬 Evaluating Machine Learning Models Biology previous article titled Read , Write , Edit , Accelerate , discussed convergence biology machine learning driving new future - shaping breakthroughs technologies unprecedented rate . machine learning increasingly transforms biotechnology research development , understanding properly evaluate ML models crucial . developing models predict protein structures , analyze gene expression data , identify potential drug candidates , success project hinges ability assess model performance accurately . Note : read article GitHub . 🧬 Challenge Model Evaluation Imagine developing machine learning model predict newly designed protein sequence fold stable structure . train model database known protein sequences stability measurements . model performs beautifully training data , correctly predicting stability 99 % time . Success , right ? necessarily . scenario illustrates fundamental challenges machine learning : overfitting . biology student memorize specific exam questions understanding underlying concepts , machine learning model specialized handling training data failing generalize new , unseen cases . particularly problematic biotechnology , models need predictions novel compounds , sequences , cellular behaviors . ensure ML models perform new , unseen data , evaluate models deployment , accomplished different ways : train model dataset , model predictions second , previously unseen , dataset know answers determine model making accurate predictions ; use resampling techniques given dataset , allows estimate algorithm perform new data . methods evaluating models estimate algorithm perform new unseen data , guaranteed . Additionally , evaluating model , want - train perform round evaluations deployment ensure optimal performance . tutorial , cover following methods evaluating machine learning models : Train - test split simple evaluation method splits dataset parts , including training set ( train model ) testing set ( evaluate model ) . k - fold cross - validation evaluation technique splits dataset k - parts estimate performance machine learning model greater reliability single train - test split ; Leave cross - validation form k - fold cross - validation , taken extreme k equal number samples dataset . 🧬 Train - Test Split : Basic Foundation train - test split simplest evaluation method , conceptually similar validate experimental protocols lab . validate new assay protocol small set known samples applying research samples , split data parts : training set ( typically 65 - 75 % data ) teach model testing set ( 25 - 35 % ) reserved evaluation Fig 1 : dataset separated features ( inputs ) targets ( outputs ) . train - test split performed , resulting training inputs ( x_train ) outputs ( y_train ) testing inputs ( x_test ) outputs ( y_test ) . main benefit train - test split fast easy use . , effective , need large dataset . Additionally , dataset needs relatively homogenous splits dataset representative sample . , lets look practical example gene expression data . code creates synthetic dataset 1000 patients 50 genes , expression values log2 scale ranging 0 15 . creates simple   disease classification rule : sum expression values gene_0 gene_1 greater 20 , patient classified diseased . synthetic data , trains Random Forest classifier 70 % data reserving 30 % testing . stratification splitting ensures proportion healthy diseased samples remains consistent training test sets . mimics real - world scenario use gene expression signatures develop diagnostic test , actual biological relationships far complex . # Import libraries 
+ import numpy np 
+ import pandas pd 
+ sklearn.model_selection import train_test_split 
+ sklearn.ensemble import RandomForestClassifier 
+
+ # Generate synthetic gene expression data 
+ np.random.seed(42 ) 
+ n_samples , n_genes = 1000 , 50 
+
+ # Simulate expression levels 0 15 ( log2 scale common RNA - seq ) 
+ gene_exp_data = pd . DataFrame(np.random.uniform(0 , 15 , size=(n_samples , n_genes)),columns=[f'gene_{i } ' range(n_genes ) ] ) 
+
+ # Generate synthetic disease status ( 0 : healthy , 1 : diseased ) 
+ # dependent gene expression patterns realism 
+ disease_status = ( gene_exp_data['gene_0 ' ] + gene_exp_data['gene_1 ' ] > 20).astype(int ) 
+ gene_exp_data['disease_status ' ] = disease_status 
+
+ # Separate features ( gene expression levels ) target ( disease status ) 
+ x , y = gene_exp_data.drop('disease_status ' , axis=1 ) , gene_exp_data['disease_status ' ] 
+
+ # Create train - test split 
+ X_train , X_test , y_train , y_test = train_test_split(x , y , test_size=0.3,random_state=42,stratify = y ) 
+
+ # Train model 
+ model = RandomForestClassifier ( ) 
+ model.fit(X_train , y_train ) 
+
+ # Evaluate 
+ accuracy = model.score(X_test , y_test ) 
+ print(f'Model accuracy : { accuracy:.2f } ' ) , code model accuracy 0.91 , 91 % . , play code bit change model size notice relationship test size model performance , illustrating fundamental trade - machine learning . Specifically , test size increases , performance worsens . set high test size ( e.g. , 0.7 0.8 ) , leaving fewer samples training , means model data learn builds robust understanding underlying patterns . Conversely , set low test size ( e.g. , 0.1 0.2 ) , model training data learn , typically resulting better performance – comes catch : performance estimate reliable testing fewer samples . result , recommend sticking classic 70/30 train - test split , good reason deviate . 🧬 K - Fold Cross - Validation : Robust Performance Estimation train - test split useful , sensitive divide data . biotech industry , data collection expensive time - consuming , making limited data crucial . K - fold cross - validation offers robust solution . Think k - fold cross - validation like running multiple experimental replicates . Instead single train - test split , divide data k parts perform k different evaluations , time different portion test set . , example , k=4 , evaluate model times , time different fold testing train model , demonstrated image . results performance scores , averaged determine model performs . Fig . 2 - figure depicts k - fold cross validation works , k=4 example . Note fold k-1 training training splits 1 testing split . K - fold cross - validation particularly valuable working heterogeneous biological data , single split representative . performing k - fold cross - validation , critical decision large k ( i.e. , splits folds create ) . moderate - sized datasets ( thousands tens thousands rows ) , k -values 5 - 10 common , k - values 3 - 5 appropriate smaller datasets . example protein binding affinity data : # Import libraries 
+ sklearn.svm import SVR 
+ import numpy np 
+ import matplotlib.pyplot plt 
+ sklearn.model_selection import KFold , cross_val_score 
+
+ # Generate synthetic protein - ligand binding data 
+ np.random.seed(42 ) 
+ n_samples , n_features = 500 , 10 
+
+ # Create synthetic molecular descriptors ( features ) 
+ X_synthetic = pd . DataFrame(np.random.normal(0 , 1 , size=(n_samples , n_features)),columns=[f'descriptor_{i } ' range(n_features ) ] ) 
+
+ # Generate synthetic binding affinities 
+ # Simulate -log(Kd ) values typically ranging 2 12 
+ y_synthetic = 7 + 2 * X_synthetic['descriptor_0 ' ] + \ 
+               np.random.normal(0 , 0.5 , n_samples ) 
+ binding_data = X_synthetic.copy ( ) 
+ binding_data['binding_affinity ' ] = y_synthetic 
+ X , y = binding_data.drop('binding_affinity ' , axis=1 ) , binding_data['binding_affinity ' ] 
+
+ # Setup k - fold cross - validation 
+ kfold = KFold(n_splits=5 , shuffle = True , random_state=42 ) 
+
+ # Create evaluate model 
+ model = SVR(kernel='rbf ' ) 
+ scores = cross_val_score(model , X , y , cv = kfold , scoring='r2 ' ) 
+ print(f'Mean R² score : { scores.mean():.2f } ( ±{scores.std():.2f } ) ' ) 
+
+ # Visualize score distribution 
+ plt.figure(figsize=(8 , 4 ) ) 
+ plt.boxplot(scores ) 
+ plt.title('Distribution R² Scores Folds ' ) 
+ plt.ylabel('R² Score ' ) 
+ plt.show ( ) produces following result : code demonstrates k - fold cross - validation realistic protein - ligand binding scenario , aim predict binding affinities molecular properties . , begin creating synthetic data mimics typical drug discovery dataset , including 500 computes characterized 10 molecular descriptors corresponding binding   affinities ( -log(Kd ) values ) target protein . binding affinity primarily determined molecular descriptor added noise , simulating certain molecular features dominate binding behavior . use Support Vector Regression model predict binding affinities , evaluating performance 5 - fold cross - validation visualizing R² scores folds boxplot . 🧬 Leave - - Cross - Validation : Maximum Data Utilization biotechnology applications , rare disease diagnosis expensive assays , limited data . Leave - - cross - validation ( LOOCV ) particularly valuable cases , makes efficient use small datasets . LOOCV takes k - fold cross - validation extreme , setting k equal number samples . computationally intensive , approach worth cost biotech applications data collection primary bottleneck . find code demonstrating LOOCV synthetic cell viability assay , simulate testing 5 different compounds 200 experiments . # import libraries 
+ sklearn.model_selection import LeaveOneOut 
+ sklearn.neighbors import KNeighborsRegressor 
+ import numpy np 
+ import pandas pd 
+ sklearn.model_selection import cross_val_score 
+
+ # Generate synthetic cell viability data 
+ np.random.seed(42 ) 
+ n_samples , n_compounds = 200 , 5 
+
+ # Create synthetic compound properties 
+ X_synthetic = pd . DataFrame(np.random.uniform(0 , 1 , size=(n_samples , n_compounds)),columns=[f'compound_{i}_concentration ' range(n_compounds ) ] ) 
+
+ # Generate synthetic viability scores ( 0 - 100 % ) 
+ # Create non - linear relationship compound concentrations 
+ y_synthetic = 100 * np.exp(-2 * X_synthetic.mean(axis=1 ) ) + \ 
+               np.random.normal(0 , 5 , n_samples ) 
+ y_synthetic = np.clip(y_synthetic , 0 , 100 )   # Clip valid range 
+ viability_data = X_synthetic.copy ( ) 
+ viability_data['viability_score ' ] = y_synthetic 
+ x , y = viability_data.drop('viability_score ' , axis=1 ) , viability_data['viability_score ' ] 
+
+ # Setup perform LOOCV 
+ loocv = LeaveOneOut ( ) 
+ model = KNeighborsRegressor(n_neighbors=3 ) 
+ scores = cross_val_score(model , X , y , cv = loocv , scoring='neg_mean_squared_error ' ) 
+ rmse_scores = np.sqrt(-scores )   # Convert MSE RMSE 
+ print(f'Mean RMSE : { rmse_scores.mean():.2f } ( ±{rmse_scores.std():.2f } ) ' ) produces following output : Mean RMSE : 5.18 ( ±4.30 ) synthetic data example mimics typical dose - response relationship : cell viability decreases exponentially average compound concentration increases , random experimental noise added ( note- ensure viability stays 0 - 100 % ) . code uses k -nearest neighbors regression model predict cell viability compound concentrations , evaluating performance LOOCV – meaning trains 199 experiments tests remaining , repeating process 200 times . performance measured RMSE ( Root Mean Square Error ) , tells typical prediction error percentage points viability . 🧬 Choosing Right Evaluation Method Selecting appropriate evaluation method needs requires careful consideration interrelated factors . size dataset serves primary guiding factor . working large datasets containing 10,000 samples , high - throughput screening results genomic data , train - test splits k - fold cross - validation provide reliable results . medium - sized datasets typical protein structure studies metabolomics , k - fold cross - validation tends offer best balance computational efficiency reliable performance estimation . cases data particularly scarce , rare disease studies expensive clinical trials fewer 1,000 samples , leave - - cross - validation method choice despite computational intensity . cost effort data collection influence decision . instance , working clinical trial data patient - derived samples datapoint represents significant investment ethical considerations , want extract maximum value LOOCV k - fold CV . Cell culture experiments standard assays , requiring significant effort , allow moderate approaches like k - fold CV . computational predictions silico experiments data generation relatively inexpensive , simple train - test split suffice . Available computational resources refine choice . resource - constrained environments working complex models hours train , train - test split offers practical advantages . access moderate computing power , k - fold CV provides sweet spot computational cost evaluation reliability . abundant computational resources available dataset size permits , LOOCV provide thorough evaluation . 🧬 Best Practices Biotechnology Applications unique characteristics biological data demand careful attention evaluation practices . cornerstone principle use truly independent test sets final validation . means setting aside portion data remains completely untouched model development process , including hyperparameter tuning cross - validation . practice particularly crucial biotechnology , models need generalize entirely new biological contexts . Biological data rarely comes simple , independent format . working related protein sequences , time - series gene expression data , patient samples different populations , inherent structure data inform evaluation strategy . instance , working protein families , ensure related sequences span training validation sets . time - series data , consider time - based splits random sampling maintain temporal relationships . inherent variability biological systems makes uncertainty quantification essential . reporting single performance numbers , include measures variation results . mean reporting standard deviations cross - validation folds confidence intervals performance metrics . practice helps researchers gauge reliability robustness models context biological variation . choice evaluation metrics align closely biological questions addressing . Consider drug discovery project : overall accuracy matters , cost missing potential drug candidate ( false negative ) far outweigh cost investigating false positive . cases , metrics like sensitivity recall relevant pure accuracy . Similarly , diagnostic applications , balance sensitivity specificity reflect real - world implications false positives versus false negatives specific medical context . 🧬 Conclusion Proper model evaluation crucial biotechnology applications , decisions based machine learning models significant implications research directions potential therapeutic developments . understanding appropriately applying evaluation techniques , develop reliable robust models biological applications . Remember evaluation method perfect , best approach combines multiple methods gain comprehensive understanding model performance . consider specific requirements constraints biotechnology application choosing evaluation strategies . Decoding Biology Evan Peikon reader - supported publication . receive new posts support work , consider free paid subscriber . Subscribe 11 Share post Decoding Biology Evan Peikon Evaluating Machine Learning Models Biology Copy link Facebook Email Notes 3 Share Previous Discussion post Comments Restacks Latest Discussions posts Ready ? Subscribe © 2025 Evan Peikon Privacy ∙ Terms ∙ Collection notice Start writing app Substack home great culture Share Copy link Facebook Email Notes site requires JavaScript run correctly . turn JavaScript unblock scripts

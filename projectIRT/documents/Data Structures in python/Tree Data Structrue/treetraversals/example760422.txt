@@ -1,0 +1,53 @@
+Tree Traversals Tree Traversals examined basic functionality tree data 
+ structure , time look additional usage patterns 
+ trees . usage patterns divided ways 
+ access nodes tree . commonly patterns 
+ visit nodes tree . difference patterns 
+ order node visited . visitation 
+ nodes âtraversal.â traversals look called preorder , inorder , postorder . Letâs start 
+ defining traversals carefully , look 
+ examples patterns useful . preorder : preorder traversal , visit root node , 
+ recursively preorder traversal left subtree , followed 
+ recursive preorder traversal right subtree . inorder : inorder traversal , recursively inorder traversal 
+ left subtree , visit root node , finally recursive 
+ inorder traversal right subtree . postorder : postorder traversal , recursively postorder traversal 
+ left subtree right subtree followed visit 
+ root node . Letâs look examples illustrate kinds 
+ traversals . letâs look preorder traversal . example 
+ tree traverse , represent book tree . book 
+ root tree , chapter child root . 
+ section chapter child chapter , subsection 
+ child section , . diagram 
+ shows limited version book chapters . Note 
+ traversal algorithm works trees number children , 
+ stick binary trees . Representing book tree Suppose wanted read book . 
+ preorder traversal gives exactly ordering . Starting root 
+ tree ( Book node ) follow preorder traversal 
+ instructions . recursively preorder left child , 
+ case Chapter1 . recursively preorder left child 
+ Section 1.1 . Section 1.1 children , 
+ additional recursive calls . finished Section 1.1 , 
+ tree Chapter 1 . point need visit 
+ right subtree Chapter 1 , Section 1.2 . visit 
+ left subtree , brings Section 1.2.1 , visit 
+ node Section 1.2.2 . Section 1.2 finished , return Chapter 1 . 
+ return Book node follow procedure Chapter 2 . code writing tree traversals surprisingly elegant , largely 
+ traversals written recursively . 
+ code simple Python implementation preorder 
+ traversal binary tree . approach particularly elegant 
+ base case simply check tree exists . tree parameter 
+ , function returns taking action . def preorder ( node ) : node : print ( node [ ' val ' ] ) preorder ( node . ( ' left ' ) ) preorder ( node . ( ' right ' ) ) algorithm postorder traversal , shown , nearly identical preorder print end function . def postorder ( node ) : node : postorder ( node . ( ' left ' ) ) postorder ( node . ( ' right ' ) ) print ( node [ ' val ' ] ) seen common use postorder traversal , 
+ evaluating parse tree . previous chapter evaluate 
+ parse tree evaluate left subtree , evaluate right subtree , 
+ combine root function operator . final traversal look section inorder 
+ traversal . inorder traversal visit left subtree , followed 
+ root , finally right subtree . 
+ Notice traversal functions 
+ simply changing position print statement respect 
+ recursive function calls . def inorder ( node ) : node : inorder ( node . ( ' left ' ) ) print ( node [ ' val ' ] ) inorder ( node . ( ' right ' ) ) perform simple inorder traversal parse tree 
+ original expression , parentheses . Letâs modify 
+ basic inorder algorithm allow recover fully parenthesized 
+ version expression . modifications 
+ basic template follows : print left parenthesis 
+ recursive left subtree , print right parenthesis recursive right subtree . modified code 
+ shown . def construct_expression ( parse_tree ) : parse_tree : return '' left = construct_expression ( parse_tree . ( ' left ' ) ) right = construct_expression ( parse_tree . ( ' right ' ) ) val = parse_tree [ ' val ' ] left right : return ' ( { } { } { } ) ' . format ( left , val , right ) return val : Priority Queues Binary Heaps Practical Algorithms   Data   Structures Introduction Analysis Big Picture Big O Notation Anagram Detection Example Performance Python Types Stacks Introduction Stacks Stack Implementation Balanced Parentheses Converting Number Bases Infix , Prefix Postfix Expressions Queues Introduction Queues Queue Implementation Simulating Hot Potato Deques Introduction Deques Deque Implementation Palindrome Checker Lists Introduction Lists Implementing Unordered List Implementing Ordered List Recursion Introduction Recursion Calculating Sum List Numbers Laws Recursion Converting Integer Base Tower Hanoi Dynamic Programming Searching Searching Sequential Search Binary Search Hashing Trees Introduction Trees Representing Tree Parse Trees Tree Traversals Priority Queues Binary Heaps Binary Search Trees AVL Trees Graphs Introduction Graphs Representing Graph Word Ladders Knightâs Tour General Depth Search Topological Sorting Shortest Path Dijkstraâs Algorithm Strongly Connected Components Primâs Spanning Tree Algorithm

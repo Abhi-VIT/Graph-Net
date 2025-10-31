@@ -1,0 +1,135 @@
+5 . Data Structures — Python 3.13.3 documentation Theme Auto Light Dark Table Contents 5 . Data Structures 5.1 . Lists 5.1.1 . Lists Stacks 5.1.2 . Lists Queues 5.1.3 . List Comprehensions 5.1.4 . Nested List Comprehensions 5.2 . del statement 5.3 . Tuples Sequences 5.4 . Sets 5.5 . Dictionaries 5.6 . Looping Techniques 5.7 . Conditions 5.8 . Comparing Sequences Types Previous topic 4 . Control Flow Tools topic 6 . Modules Page Report Bug Source Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Tutorial » 5 . Data Structures | Theme Auto Light Dark | 5 . Data Structures Â¶ chapter describes things youâve learned detail , 
+ adds new things . 5.1 . Lists Â¶ list data type methods .   methods list 
+ objects : list . append ( x ) Add item end list .   Similar a[len(a ): ] = [ x ] . list . extend ( iterable ) Extend list appending items iterable .   Similar a[len(a ): ] = iterable . list . insert ( , x ) Insert item given position .   argument index 
+ element insert , a.insert(0 , x ) inserts 
+ list , a.insert(len(a ) , x ) equivalent a.append(x ) . list . remove ( x ) Remove item list value equal x .   raises ValueError item . list . pop ( [ ] ) Remove item given position list , return .   index 
+ specified , a.pop ( ) removes returns item list . 
+ raises IndexError list index 
+ outside list range . list . clear ( ) Remove items list .   Similar del [: ] . list . index ( x [ , start [ , end ] ] ) Return zero - based index list item value equal x . 
+ Raises ValueError item . optional arguments start end interpreted slice 
+ notation limit search particular subsequence 
+ list .   returned index computed relative beginning 
+ sequence start argument . list . count ( x ) Return number times x appears list . list . sort ( * , key = , reverse = False ) Sort items list place ( arguments sort 
+ customization , sorted ( ) explanation ) . list . reverse ( ) Reverse elements list place . list . copy ( ) Return shallow copy list .   Similar [: ] . example uses list methods : > > > fruits = [ ' orange ' , ' apple ' , ' pear ' , ' banana ' , ' kiwi ' , ' apple ' , ' banana ' ] > > > fruits . count ( ' apple ' ) 2 > > > fruits . count ( ' tangerine ' ) 0 > > > fruits . index ( ' banana ' ) 3 > > > fruits . index ( ' banana ' , 4 ) # Find banana starting position 4 6 > > > fruits . reverse ( ) > > > fruits [ ' banana ' , ' apple ' , ' kiwi ' , ' banana ' , ' pear ' , ' apple ' , ' orange ' ] > > > fruits . append ( ' grape ' ) > > > fruits [ ' banana ' , ' apple ' , ' kiwi ' , ' banana ' , ' pear ' , ' apple ' , ' orange ' , ' grape ' ] > > > fruits . sort ( ) > > > fruits [ ' apple ' , ' apple ' , ' banana ' , ' banana ' , ' grape ' , ' kiwi ' , ' orange ' , ' pear ' ] > > > fruits . pop ( ) ' pear ' noticed methods like insert , remove sort 
+ modify list return value printed â return default . [ 1 ] design principle mutable data structures 
+ Python . thing notice data sorted 
+ compared .   instance , [ , ' hello ' , 10 ] doesnât sort 
+ integers canât compared strings canât compared 
+ types .   , types donât defined 
+ ordering relation .   example , 3 + 4j < 5 + 7j isnât valid 
+ comparison . 5.1.1 . Lists Stacks Â¶ list methods easy use list stack , 
+ element added element retrieved ( âlast - , - outâ ) .   add 
+ item stack , use append ( ) .   retrieve item 
+ stack , use pop ( ) explicit index .   example : > > > stack = [ 3 , 4 , 5 ] > > > stack . append ( 6 ) > > > stack . append ( 7 ) > > > stack [ 3 , 4 , 5 , 6 , 7 ] > > > stack . pop ( ) 7 > > > stack [ 3 , 4 , 5 , 6 ] > > > stack . pop ( ) 6 > > > stack . pop ( ) 5 > > > stack [ 3 , 4 ] 5.1.2 . Lists Queues Â¶ possible use list queue , element added 
+ element retrieved ( âfirst - , - outâ ) ; , lists 
+ efficient purpose .   appends pops end list 
+ fast , inserts pops beginning list slow ( 
+ elements shifted ) . implement queue , use collections.deque designed 
+ fast appends pops ends .   example : > > > collections import deque > > > queue = deque ( [ " Eric " , " John " , " Michael " ] ) > > > queue . append ( " Terry " ) # Terry arrives > > > queue . append ( " Graham " ) # Graham arrives > > > queue . popleft ( ) # arrive leaves ' Eric ' > > > queue . popleft ( ) # second arrive leaves ' John ' > > > queue # Remaining queue order arrival deque(['Michael ' , ' Terry ' , ' Graham ' ] ) 5.1.3 . List Comprehensions Â¶ List comprehensions provide concise way create lists . 
+ Common applications new lists element result 
+ operations applied member sequence iterable , 
+ create subsequence elements satisfy certain condition . example , assume want create list squares , like : > > > squares = [ ] > > > x range ( 10 ): ... squares . append ( x * * 2 ) ... > > > squares [ 0 , 1 , 4 , 9 , 16 , 25 , 36 , 49 , 64 , 81 ] Note creates ( overwrites ) variable named x exists 
+ loop completes .   calculate list squares 
+ effects : squares = list ( map ( lambda x : x * * 2 , range ( 10 ) ) ) , equivalently : squares = [ x * * 2 x range ( 10 ) ] concise readable . list comprehension consists brackets containing expression followed 
+ clause , zero clauses .   result new list resulting evaluating expression 
+ context clauses follow . 
+ example , listcomp combines elements lists 
+ equal : > > > [ ( x , y ) x [ 1 , 2 , 3 ] y [ 3 , 1 , 4 ] x ! = y ] [ ( 1 , 3 ) , ( 1 , 4 ) , ( 2 , 3 ) , ( 2 , 1 ) , ( 2 , 4 ) , ( 3 , 1 ) , ( 3 , 4 ) ] itâs equivalent : > > > combs = [ ] > > > x [ 1 , 2 , 3 ] : ... y [ 3 , 1 , 4 ] : ... x ! = y : ... combs . append ( ( x , y ) ) ... > > > combs [ ( 1 , 3 ) , ( 1 , 4 ) , ( 2 , 3 ) , ( 2 , 1 ) , ( 2 , 4 ) , ( 3 , 1 ) , ( 3 , 4 ) ] Note order statements 
+ snippets . expression tuple ( e.g. ( x , y ) previous example ) , 
+ parenthesized . > > > vec = [ - 4 , - 2 , 0 , 2 , 4 ] > > > # create new list values doubled > > > [ x * 2 x vec ] [ -8 , -4 , 0 , 4 , 8 ] > > > # filter list exclude negative numbers > > > [ x x vec x > = 0 ] [ 0 , 2 , 4 ] > > > # apply function elements > > > [ abs ( x ) x vec ] [ 4 , 2 , 0 , 2 , 4 ] > > > # method element > > > freshfruit = [ '   banana ' , '   loganberry ' , ' passion fruit   ' ] > > > [ weapon . strip ( ) weapon freshfruit ] [ ' banana ' , ' loganberry ' , ' passion fruit ' ] > > > # create list 2 - tuples like ( number , square ) > > > [ ( x , x * * 2 ) x range ( 6 ) ] [ ( 0 , 0 ) , ( 1 , 1 ) , ( 2 , 4 ) , ( 3 , 9 ) , ( 4 , 16 ) , ( 5 , 25 ) ] > > > # tuple parenthesized , error raised > > > [ x , x * * 2 x range ( 6 ) ] File " < stdin > " , line 1 [ x , x * * 2 x range ( 6 ) ] ^^^^^^^ SyntaxError : forget parentheses comprehension target ? > > > # flatten list listcomp ' ' > > > vec = [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] , [ 7 , 8 , 9 ] ] > > > [ num elem vec num elem ] [ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 ] List comprehensions contain complex expressions nested functions : > > > math import pi > > > [ str ( round ( pi , ) ) range ( 1 , 6 ) ] [ ' 3.1 ' , ' 3.14 ' , ' 3.142 ' , ' 3.1416 ' , ' 3.14159 ' ] 5.1.4 . Nested List Comprehensions Â¶ initial expression list comprehension arbitrary expression , 
+ including list comprehension . Consider following example 3x4 matrix implemented list 
+ 3 lists length 4 : > > > matrix = [ ... [ 1 , 2 , 3 , 4 ] , ... [ 5 , 6 , 7 , 8 ] , ... [ 9 , 10 , 11 , 12 ] , ... ] following list comprehension transpose rows columns : > > > [ [ row [ ] row matrix ] range ( 4 ) ] [ [ 1 , 5 , 9 ] , [ 2 , 6 , 10 ] , [ 3 , 7 , 11 ] , [ 4 , 8 , 12 ] ] saw previous section , inner list comprehension evaluated 
+ context follows , example 
+ equivalent : > > > transposed = [ ] > > > range ( 4 ): ... transposed . append ( [ row [ ] row matrix ] ) ... > > > transposed [ [ 1 , 5 , 9 ] , [ 2 , 6 , 10 ] , [ 3 , 7 , 11 ] , [ 4 , 8 , 12 ] ] , turn , : > > > transposed = [ ] > > > range ( 4 ): ... # following 3 lines implement nested listcomp ... transposed_row = [ ] ... row matrix : ... transposed_row . append ( row [ ] ) ... transposed . append ( transposed_row ) ... > > > transposed [ [ 1 , 5 , 9 ] , [ 2 , 6 , 10 ] , [ 3 , 7 , 11 ] , [ 4 , 8 , 12 ] ] real world , prefer built - functions complex flow statements . 
+ zip ( ) function great job use case : > > > list ( zip ( * matrix ) ) [ ( 1 , 5 , 9 ) , ( 2 , 6 , 10 ) , ( 3 , 7 , 11 ) , ( 4 , 8 , 12 ) ] Unpacking Argument Lists details asterisk line . 5.2 . del statement Â¶ way remove item list given index instead 
+ value : del statement .   differs pop ( ) method 
+ returns value .   del statement remove 
+ slices list clear entire list ( earlier assignment 
+ list slice ) .   example : > > > = [ - 1 , 1 , 66.25 , 333 , 333 , 1234.5 ] > > > del [ 0 ] > > > [ 1 , 66.25 , 333 , 333 , 1234.5 ] > > > del [ 2 : 4 ] > > > [ 1 , 66.25 , 1234.5 ] > > > del [ :] > > > [ ] del delete entire variables : > > > del Referencing error ( value 
+ assigned ) .   Weâll find uses del later . 5.3 . Tuples Sequences Â¶ saw lists strings common properties , indexing 
+ slicing operations .   examples sequence data types ( Sequence Types â list , tuple , range ) .   Python evolving language , sequence data 
+ types added .   standard sequence data type : tuple . tuple consists number values separated commas , instance : > > > t = 12345 , 54321 , ' hello ! ' > > > t [ 0 ] 12345 > > > t ( 12345 , 54321 , ' hello ! ' ) > > > # Tuples nested : > > > u = t , ( 1 , 2 , 3 , 4 , 5 ) > > > u ( ( 12345 , 54321 , ' hello ! ' ) , ( 1 , 2 , 3 , 4 , 5 ) ) > > > # Tuples immutable : > > > t [ 0 ] = 88888 Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : ' tuple ' object support item assignment > > > # contain mutable objects : > > > v = ( [ 1 , 2 , 3 ] , [ 3 , 2 , 1 ] ) > > > v ( [ 1 , 2 , 3 ] , [ 3 , 2 , 1 ] ) , output tuples enclosed parentheses , nested 
+ tuples interpreted correctly ; input surrounding 
+ parentheses , parentheses necessary ( tuple 
+ larger expression ) .   possible assign individual 
+ items tuple , possible create tuples contain mutable 
+ objects , lists . tuples similar lists , different 
+ situations different purposes . 
+ Tuples immutable , usually contain heterogeneous sequence 
+ elements accessed unpacking ( later section ) indexing 
+ ( attribute case namedtuples ) . 
+ Lists mutable , elements usually homogeneous 
+ accessed iterating list . special problem construction tuples containing 0 1 items : 
+ syntax extra quirks accommodate .   tuples constructed 
+ pair parentheses ; tuple item constructed 
+ following value comma ( sufficient enclose single value 
+ parentheses ) . Ugly , effective .   example : > > > = ( ) > > > singleton = ' hello ' , # < -- note trailing comma > > > len ( ) 0 > > > len ( singleton ) 1 > > > singleton ( ' hello ' , ) statement t = 12345 , 54321 , ' hello ! ' example tuple packing : 
+ values 12345 , 54321 ' hello ! ' packed tuple . 
+ reverse operation possible : > > > x , y , z = t called , appropriately , sequence unpacking works 
+ sequence right - hand .   Sequence unpacking requires 
+ variables left equals sign elements 
+ sequence .   Note multiple assignment combination tuple 
+ packing sequence unpacking . 5.4 . Sets Â¶ Python includes data type sets .   set unordered collection 
+ duplicate elements .   Basic uses include membership testing 
+ eliminating duplicate entries .   Set objects support mathematical operations 
+ like union , intersection , difference , symmetric difference . Curly braces set ( ) function create sets .   Note : 
+ create set use set ( ) , { } ; creates 
+ dictionary , data structure discuss section . brief demonstration : > > > basket = { ' apple ' , ' orange ' , ' apple ' , ' pear ' , ' orange ' , ' banana ' } > > > print ( basket ) # duplicates removed { ' orange ' , ' banana ' , ' pear ' , ' apple ' } > > > ' orange ' basket # fast membership testing True > > > ' crabgrass ' basket False > > > # Demonstrate set operations unique letters words > > > > > > = set ( ' abracadabra ' ) > > > b = set ( ' alacazam ' ) > > > # unique letters { ' ' , ' r ' , ' b ' , ' c ' , ' } > > > - b # letters b { ' r ' , ' , ' b ' } > > > | b # letters b { ' ' , ' c ' , ' r ' , ' , ' b ' , ' m ' , ' z ' , ' l ' } > > > & b # letters b { ' ' , ' c ' } > > > ^ b # letters b { ' r ' , ' , ' b ' , ' m ' , ' z ' , ' l ' } Similarly list comprehensions , set comprehensions 
+ supported : > > > = { x x ' abracadabra ' x ' abc ' } > > > { ' r ' , ' } 5.5 . Dictionaries Â¶ useful data type built Python dictionary ( Mapping Types â dict ) . Dictionaries found languages 
+ âassociative memoriesâ âassociative arraysâ.   Unlike sequences , 
+ indexed range numbers , dictionaries indexed keys , 
+ immutable type ; strings numbers keys .   Tuples 
+ keys contain strings , numbers , tuples ; tuple contains 
+ mutable object directly indirectly , key . 
+ canât use lists keys , lists modified place index 
+ assignments , slice assignments , methods like append ( ) extend ( ) . best think dictionary set key : value pairs , 
+ requirement keys unique ( dictionary ) . pair 
+ braces creates dictionary : { } . Placing comma - separated list 
+ key : value pairs braces adds initial key : value pairs 
+ dictionary ; way dictionaries written output . main operations dictionary storing value key 
+ extracting value given key .   possible delete key : value 
+ pair del . store key use , old 
+ value associated key forgotten .   error extract value 
+ non - existent key . Performing list(d ) dictionary returns list keys 
+ dictionary , insertion order ( want sorted , use sorted(d ) instead ) . check single key 
+ dictionary , use keyword . small example dictionary : > > > tel = { ' jack ' : 4098 , ' sape ' : 4139 } > > > tel [ ' guido ' ] = 4127 > > > tel { ' jack ' : 4098 , ' sape ' : 4139 , ' guido ' : 4127 } > > > tel [ ' jack ' ] 4098 > > > del tel [ ' sape ' ] > > > tel [ ' irv ' ] = 4127 > > > tel { ' jack ' : 4098 , ' guido ' : 4127 , ' irv ' : 4127 } > > > list ( tel ) [ ' jack ' , ' guido ' , ' irv ' ] > > > sorted ( tel ) [ ' guido ' , ' irv ' , ' jack ' ] > > > ' guido ' tel True > > > ' jack ' tel False dict ( ) constructor builds dictionaries directly sequences 
+ key - value pairs : > > > dict ( [ ( ' sape ' , 4139 ) , ( ' guido ' , 4127 ) , ( ' jack ' , 4098 ) ] ) { ' sape ' : 4139 , ' guido ' : 4127 , ' jack ' : 4098 } addition , dict comprehensions create dictionaries 
+ arbitrary key value expressions : > > > { x : x * * 2 x ( 2 , 4 , 6 ) } { 2 : 4 , 4 : 16 , 6 : 36 } keys simple strings , easier specify pairs 
+ keyword arguments : > > > dict ( sape = 4139 , guido = 4127 , jack = 4098 ) { ' sape ' : 4139 , ' guido ' : 4127 , ' jack ' : 4098 } 5.6 . Looping Techniques Â¶ looping dictionaries , key corresponding value 
+ retrieved time items ( ) method . > > > knights = { ' gallahad ' : ' pure ' , ' robin ' : ' brave ' } > > > k , v knights . items ( ): ... print ( k , v ) ... gallahad pure robin brave looping sequence , position index corresponding value 
+ retrieved time enumerate ( ) function . > > > , v enumerate ( [ ' tic ' , ' tac ' , ' toe ' ] ): ... print ( , v ) ... 0 tic 1 tac 2 toe loop sequences time , entries paired 
+ zip ( ) function . > > > questions = [ ' ' , ' quest ' , ' favorite color ' ] > > > answers = [ ' lancelot ' , ' holy grail ' , ' blue ' ] > > > q , zip ( questions , answers ): ... print ( ' { 0 } ?   { 1 } . ' . format ( q , ) ) ... ?   lancelot . quest ?   holy grail . favorite color ?   blue . loop sequence reverse , specify sequence forward 
+ direction reversed ( ) function . > > > reversed ( range ( 1 , 10 , 2 ) ): ... print ( ) ... 9 7 5 3 1 loop sequence sorted order , use sorted ( ) function 
+ returns new sorted list leaving source unaltered . > > > basket = [ ' apple ' , ' orange ' , ' apple ' , ' pear ' , ' orange ' , ' banana ' ] > > > sorted ( basket ): ... print ( ) ... apple apple banana orange orange pear set ( ) sequence eliminates duplicate elements . use sorted ( ) combination set ( ) sequence idiomatic 
+ way loop unique elements sequence sorted order . > > > basket = [ ' apple ' , ' orange ' , ' apple ' , ' pear ' , ' orange ' , ' banana ' ] > > > f sorted ( set ( basket ) ): ... print ( f ) ... apple banana orange pear tempting change list looping ; 
+ , simpler safer create new list instead . > > > import math > > > raw_data = [ 56.2 , float ( ' NaN ' ) , 51.7 , 55.3 , 52.5 , float ( ' NaN ' ) , 47.8 ] > > > filtered_data = [ ] > > > value raw_data : ... math . isnan ( value ): ... filtered_data . append ( value ) ... > > > filtered_data [ 56.2 , 51.7 , 55.3 , 52.5 , 47.8 ] 5.7 . Conditions Â¶ conditions statements contain 
+ operators , comparisons . comparison operators membership tests 
+ determine value ( ) container .   operators compare objects object .   
+ comparison operators priority , lower 
+ numerical operators . Comparisons chained .   example , < b = = c tests 
+ b b equals c . Comparisons combined Boolean operators , 
+ outcome comparison ( Boolean expression ) negated 
+ .   lower priorities comparison operators ; 
+ , highest priority lowest , B C equivalent ( ( B ) ) C . , parentheses 
+ express desired composition . Boolean operators - called short - circuit operators : arguments evaluated left right , evaluation 
+ stops soon outcome determined .   example , C 
+ true B false , B C evaluate expression C .   general value Boolean , return value 
+ short - circuit operator evaluated argument . possible assign result comparison Boolean expression 
+ variable .   example , > > > string1 , string2 , string3 = '' , ' Trondheim ' , ' Hammer Dance ' > > > non_null = string1 string2 string3 > > > non_null ' Trondheim ' Note Python , unlike C , assignment inside expressions 
+ explicitly walrus operator : = . 
+ avoids common class problems encountered C programs : typing = expression = = intended . 5.8 . Comparing Sequences Types Â¶ Sequence objects typically compared objects sequence 
+ type . comparison uses lexicographical ordering : 
+ items compared , differ determines outcome 
+ comparison ; equal , items compared , , 
+ sequence exhausted . items compared 
+ sequences type , lexicographical comparison carried 
+ recursively .   items sequences compare equal , sequences 
+ considered equal . sequence initial sub - sequence , 
+ shorter sequence smaller ( lesser ) .   Lexicographical ordering 
+ strings uses Unicode code point number order individual characters . 
+ examples comparisons sequences type : ( 1 , 2 , 3 ) < ( 1 , 2 , 4 ) [ 1 , 2 , 3 ] < [ 1 , 2 , 4 ] ' ABC ' < ' C ' < ' Pascal ' < ' Python ' ( 1 , 2 , 3 , 4 ) < ( 1 , 2 , 4 ) ( 1 , 2 ) < ( 1 , 2 , - 1 ) ( 1 , 2 , 3 ) = = ( 1.0 , 2.0 , 3.0 ) ( 1 , 2 , ( ' aa ' , ' ab ' ) ) < ( 1 , 2 , ( ' abc ' , ' ' ) , 4 ) Note comparing objects different types < > legal 
+ provided objects appropriate comparison methods .   example , 
+ mixed numeric types compared according numeric value , 0 equals 
+ 0.0 , etc .   , providing arbitrary ordering , 
+ interpreter raise TypeError exception . Footnotes [ 1 ] languages return mutated object , allows method 
+ chaining , d->insert("a")->remove("b")->sort ( ) ; . Table Contents 5 . Data Structures 5.1 . Lists 5.1.1 . Lists Stacks 5.1.2 . Lists Queues 5.1.3 . List Comprehensions 5.1.4 . Nested List Comprehensions 5.2 . del statement 5.3 . Tuples Sequences 5.4 . Sets 5.5 . Dictionaries 5.6 . Looping Techniques 5.7 . Conditions 5.8 . Comparing Sequences Types Previous topic 4 . Control Flow Tools topic 6 . Modules Page Report Bug Source Â « Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Tutorial » 5 . Data Structures | Theme Auto Light Dark | © Copyright 2001 - 2025 , Python Software Foundation . page licensed Python Software Foundation License Version 2 . Examples , recipes , code documentation additionally licensed Zero Clause BSD License . History License information . Python Software Foundation non - profit corporation . donate . updated Apr 28 , 2025 ( 17:16 UTC ) . Found bug ? Created Sphinx 8.2.3 .

@@ -1,0 +1,88 @@
+Python Pandas Visualization Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python Pandas - Home Python Pandas - Introduction Python Pandas - Environment Setup Python Pandas - Basics Python Pandas - Introduction Data Structures Python Pandas - Index Objects Python Pandas - Panel Python Pandas - Basic Functionality Python Pandas - Indexing & Selecting Data Python Pandas - Series Python Pandas - Series Python Pandas - Slicing Series Object Python Pandas - Attributes Series Object Python Pandas - Arithmetic Operations Series Object Python Pandas - Converting Series Objects Python Pandas - DataFrame Python Pandas - DataFrame Python Pandas - Accessing DataFrame Python Pandas - Slicing DataFrame Object Python Pandas - Modifying DataFrame Python Pandas - Removing Rows DataFrame Python Pandas - Arithmetic Operations DataFrame Python Pandas - IO Tools Python Pandas - IO Tools Python Pandas - Working CSV Format Python Pandas - Reading & Writing JSON Files Python Pandas - Reading Data Excel File Python Pandas - Writing Data Excel Files Python Pandas - Working HTML Data Python Pandas - Clipboard Python Pandas - Working HDF5 Format Python Pandas - Comparison SQL Python Pandas - Data Handling Python Pandas - Sorting Python Pandas - Reindexing Python Pandas - Iteration Python Pandas - Concatenation Python Pandas - Statistical Functions Python Pandas - Descriptive Statistics Python Pandas - Working Text Data Python Pandas - Function Application Python Pandas - Options & Customization Python Pandas - Window Functions Python Pandas - Aggregations Python Pandas - Merging / Joining Python Pandas - MultiIndex Python Pandas - Basics MultiIndex Python Pandas - Indexing MultiIndex Python Pandas - Advanced Reindexing MultiIndex Python Pandas - Renaming MultiIndex Labels Python Pandas - Sorting MultiIndex Python Pandas - Binary Operations Python Pandas - Binary Comparison Operations Python Pandas - Boolean Indexing Python Pandas - Boolean Masking Python Pandas - Data Reshaping & Pivoting Python Pandas - Pivoting Python Pandas - Stacking & Unstacking Python Pandas - Melting Python Pandas - Computing Dummy Variables Python Pandas - Categorical Data Python Pandas - Categorical Data Python Pandas - Ordering & Sorting Categorical Data Python Pandas - Comparing Categorical Data Python Pandas - Handling Missing Data Python Pandas - Missing Data Python Pandas - Filling Missing Data Python Pandas - Interpolation Missing Values Python Pandas - Dropping Missing Data Python Pandas - Calculations Missing Data Python Pandas - Handling Duplicates Python Pandas - Duplicated Data Python Pandas - Counting & Retrieving Unique Elements Python Pandas - Duplicated Labels Python Pandas - Grouping & Aggregation Python Pandas - GroupBy Python Pandas - Time - series Data Python Pandas - Date Functionality Python Pandas - Timedelta Python Pandas - Sparse Data Structures Python Pandas - Sparse Data Python Pandas - Visualization Python Pandas - Visualization Python Pandas - Additional Concepts Python Pandas - Caveats & Gotchas Python Pandas - Quick Guide Python Pandas - Cheatsheet Python Pandas - Useful Resources Python Pandas - Discussion Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python Pandas - Visualization Previous Quiz Visualization data plays important role data analysis , helps represent data graphically better understanding , identifying patterns . , Pandas library primarily data manipulation analysis provides data visualization capabilities Python Matplotlib library support . Python , Pandas library provides basic method called .plot ( ) generating wide variety visualizations different specialized plotting methods . visualizations tools built Python Matplotlib library , offering flexibility customization options . scenes , plot generated Pandas actually Matplotlib object . integration allows users leverage Matplotlib extensive customization options fine - tuning Pandas - generated plots . tutorial , learn basics visualizing data Pandas data structures . Setting Environment Visualization learning Pandas data Visualization , ensure Matplotlib library installed . Following command installing Matplotlib library − pip install pandas matplotlib Importing Libraries import pandas pd need import Matplotlib functional interface displaying , customizing , saving plots following command − import matplotlib.pyplot plt Displaying plots environments like Jupyter Notebook IPython shell , plots displayed automatically generated . , standard Python script shell , happen automatically . explicitly display plot environments , need following command − plt.show ( ) command renders Matplotlib figure object GUI window . Pandas Basic Plotting Method Pandas library provides basic plotting method called plot ( ) Series DataFrame objects plotting different kind plots . method simple wrapper matplotlib plt.plot ( ) method . Syntax Following syntax Pandas .plot ( ) method − DataFrame.plot(*args , * * kwargs ) , kind : Specifies type plot ( default : ' line ' ) . * args : * * kwargs : Example following example plotting random DataFrame data Pandas plot ( ) method . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.randn(10,4),index = pd.date_range('1/1/2000 ' , 
+    periods=10 ) , columns = list('ABCD ' ) ) 
+
+ # Plotting DataFrame 
+ df.plot ( ) 
+ plt.show ( ) output follows − index consists dates , pandas .plot ( ) method calls Matplotlib gct().autofmt_xdate ( ) format x - axis labels . plot column versus x y keywords . Types Plots Available Pandas Pandas supports plot types kind parameter specialized plotting methods . Following overview different plotting methods − Plot Type kind Value Specialized Method Use Case Line ' line ' .line ( ) Visualizing trends time sequence . Bar ' bar ' .bar ( ) Comparing quantities categories . Horizontal Bar ' barh ' .barh ( ) bar charts , horizontal . Histogram ' hist ' .hist ( ) Visualizing Distribution numeric data . Box Plot ' box ' .box ( ) Summarizing data distribution outliers . Area ' area ' .area ( ) Highlighting trends cumulative data . Scatter ' scatter ' .scatter ( ) Relationship variables , DataFrame . Hexbin ' hexbin ' .hexbin ( ) Visualizing data density dimensions , DataFrame . Density ' kde ' ' density ' .kde ( ) .density ( ) Smoothing data distributions ( Kernel Density Estimation ) . Pie ' pie ' .pie ( ) Proportional data circular graph . Example : Plotting Bar Plot plot ( ) method Let Bar Plot creating . bar plot created following way − import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(10,4 ) , columns=['a','b','c','d ' ] ) 
+
+ # Plotting bar plot 
+ df.plot(kind='bar ' ) 
+ plt.show ( ) output follows − produce stacked bar plot , pass stacked = True − import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(10,4 ) , columns=['a','b','c','d ' ] ) 
+
+ # Plotting stacked Bar plot 
+ df.plot(kind='bar ' , stacked = True ) 
+ plt.show ( ) output follows − horizontal bar plots , use barh option − import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(10,4 ) , columns=['a','b','c','d ' ] ) 
+
+ # Plotting horizontal bar plot 
+ df.plot(kind='barh ' , stacked = True ) 
+ plt.show ( ) output follows − Histograms Histograms plotted hist option plot ( ) method kind argument . specify number bins . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame({'a':np.random.randn(1000)+1,'b':np.random.randn(1000 ) , 
+ ' c':np.random.randn(1000 ) - 1 } , columns=['a ' , ' b ' , ' c ' ] ) 
+
+ df.plot(kind='hist ' , bins=20 ) 
+ plt.show ( ) output follows − Box Plots Box plot drawn calling ' box ' option Series DataFrame objects visualize distribution values column . instance , boxplot representing trials 10 observations uniform random variable [ 0,1 ) . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(10 , 5 ) , columns=['A ' , ' B ' , ' C ' , ' D ' , ' E ' ] ) 
+
+ df.plot(kind='box ' ) 
+ plt.show ( ) output follows − Area Plot Area plot created plot(kind='area ' ) option . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(10 , 4 ) , columns=['a ' , ' b ' , ' c ' , ' ] ) 
+ df.plot(kind='area ' ) 
+
+ plt.show ( ) output follows − Scatter Plot Scatter plot created plot(kind='scatter ' ) option . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(np.random.rand(50 , 4 ) , columns=['a ' , ' b ' , ' c ' , ' ] ) 
+ df.plot(kind='scatter ' , x='a ' , y='b ' ) 
+
+ plt.show ( ) output follows − Pie Chart Pie chart created plot(kind='pie ' ) option . import pandas pd 
+ import numpy np 
+ import matplotlib.pyplot plt 
+
+ # Creating random DataFrame 
+ df = pd . DataFrame(3 * np.random.rand(4 ) , index=['a ' , ' b ' , ' c ' , ' ] , columns=['x ' ] ) 
+ df.plot(kind='pie ' , subplots = True ) 
+
+ plt.show ( ) output follows − Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

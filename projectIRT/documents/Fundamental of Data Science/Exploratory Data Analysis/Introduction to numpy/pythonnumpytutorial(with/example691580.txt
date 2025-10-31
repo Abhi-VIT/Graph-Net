@@ -1,0 +1,183 @@
+Python Numpy Tutorial ( Jupyter Colab ) CS231n Deep Learning Computer Vision Course Website Python Numpy Tutorial ( Jupyter Colab ) tutorial originally contributed Justin Johnson . use Python programming language assignments course . 
+ Python great general - purpose programming language , 
+ help popular libraries ( numpy , scipy , matplotlib ) powerful 
+ environment scientific computing . expect experience Python numpy ; 
+ rest , section serve quick crash course 
+ Python programming language use scientific 
+ computing . introduce notebooks , convenient way 
+ tinkering Python code . previous knowledge 
+ different language , case recommend referencing : NumPy Matlab users , Python R users , and/or Python SAS users . Table Contents Jupyter Colab Notebooks Python Python versions Basic data types Containers Lists Dictionaries Sets Tuples Functions Classes Numpy Arrays Array indexing Datatypes Array math Broadcasting Numpy Documentation SciPy Image operations MATLAB files Distance points Matplotlib Plotting Subplots Images Jupyter Colab Notebooks dive Python , like briefly talk notebooks . 
+ Jupyter notebook lets write execute 
+ Python code locally web browser . Jupyter notebooks 
+ easy tinker code execute bits 
+ pieces ; reason widely scientific 
+ computing . 
+ Colab hand Google flavor 
+ Jupyter notebooks particularly suited machine 
+ learning data analysis runs entirely cloud . 
+ Colab basically Jupyter notebook steroids : free , requires setup , 
+ comes preinstalled packages , easy share world , 
+ benefits free access hardware accelerators like GPUs TPUs ( caveats ) . Run Tutorial Colab ( recommended ) . wish run tutorial entirely Colab , click Open Colab badge page . Run Tutorial Jupyter Notebook . wish run notebook locally Jupyter , sure virtual environment installed correctly ( setup instructions ) , activate , run pip install notebook install Jupyter notebook . , open notebook download directory choice right - clicking page selecting Save Page . cd directory run jupyter notebook . automatically launch notebook server http://localhost:8888 . 
+ worked correctly , screen like , showing 
+ available notebooks current directory . Click jupyter-notebook-tutorial.ipynb follow instructions notebook . , continue reading 
+ tutorial code snippets . Python Python high - level , dynamically typed multiparadigm programming language . 
+ Python code said like pseudocode , allows 
+ express powerful ideas lines code 
+ readable . example , implementation classic quicksort 
+ algorithm Python : def quicksort ( arr ): len ( arr ) < = 1 : return arr pivot = arr [ len ( arr ) // 2 ] left = [ x x arr x < pivot ] middle = [ x x arr x = = pivot ] right = [ x x arr x > pivot ] return quicksort ( left ) + middle + quicksort ( right ) print ( quicksort ( [ 3 , 6 , 8 , 10 , 1 , 2 , 1 ] ) ) # Prints " [ 1 , 1 , 2 , 3 , 6 , 8 , 10 ] " Python versions Janurary 1 , 2020 , Python officially dropped support python2 . class code use Python 3.7 . Ensure gone setup instructions correctly installed python3 virtual environment proceeding tutorial . 
+ double - check Python version command line activating environment 
+ running python --version . Basic data types Like languages , Python number basic types including integers , 
+ floats , booleans , strings . data types behave ways 
+ familiar programming languages . Numbers : Integers floats work expect languages : x = 3 print ( type ( x ) ) # Prints " < class ' int ' > " print ( x ) # Prints " 3 " print ( x + 1 ) # Addition ; prints " 4 " print ( x - 1 ) # Subtraction ; prints " 2 " print ( x * 2 ) # Multiplication ; prints " 6 " print ( x * * 2 ) # Exponentiation ; prints " 9 " x + = 1 print ( x ) # Prints " 4 " x * = 2 print ( x ) # Prints " 8 " y = 2.5 print ( type ( y ) ) # Prints " < class ' float ' > " print ( y , y + 1 , y * 2 , y * * 2 ) # Prints " 2.5 3.5 5.0 6.25 " Note unlike languages , Python unary increment ( x++ ) 
+ decrement ( x-- ) operators . Python built - types complex numbers ; 
+ find details documentation . Booleans : Python implements usual operators Boolean logic , 
+ uses English words symbols ( & & , || , etc . ): t = True f = False print ( type ( t ) ) # Prints " < class ' bool ' > " print ( t f ) # Logical ; prints " False " print ( t f ) # Logical ; prints " True " print ( t ) # Logical ; prints " False " print ( t ! = f ) # Logical XOR ; prints " True " Strings : Python great support strings : hello = ' hello ' # String literals use single quotes world = " world " # double quotes ; matter . print ( hello ) # Prints " hello " print ( len ( hello ) ) # String length ; prints " 5 " hw = hello + ' ' + world # String concatenation print ( hw ) # prints " hello world " hw12 = ' % s % s % d ' % ( hello , world , 12 ) # sprintf style string formatting print ( hw12 ) # prints " hello world 12 " String objects bunch useful methods ; example : s = " hello " print ( s . capitalize ( ) ) # Capitalize string ; prints " Hello " print ( s . upper ( ) ) # Convert string uppercase ; prints " HELLO " print ( s . rjust ( 7 ) ) # Right - justify string , padding spaces ; prints "   hello " print ( s . center ( 7 ) ) # Center string , padding spaces ; prints " hello " print ( s . replace ( ' l ' , ' ( ell ) ' ) ) # Replace instances substring ; # prints " he(ell)(ell)o " print ( '   world ' . strip ( ) ) # Strip leading trailing whitespace ; prints " world " find list string methods documentation . Containers Python includes built - container types : lists , dictionaries , sets , tuples . Lists list Python equivalent array , resizeable 
+ contain elements different types : xs = [ 3 , 1 , 2 ] # Create list print ( xs , xs [ 2 ] ) # Prints " [ 3 , 1 , 2 ] 2 " print ( xs [ - 1 ] ) # Negative indices count end list ; prints " 2 " xs [ 2 ] = ' foo ' # Lists contain elements different types print ( xs ) # Prints " [ 3 , 1 , ' foo ' ] " xs . append ( ' bar ' ) # Add new element end list print ( xs ) # Prints " [ 3 , 1 , ' foo ' , ' bar ' ] " x = xs . pop ( ) # Remove return element list print ( x , xs ) # Prints " bar [ 3 , 1 , ' foo ' ] " usual , find gory details lists documentation . Slicing : addition accessing list elements time , Python provides 
+ concise syntax access sublists ; known slicing : nums = list ( range ( 5 ) ) # range built - function creates list integers print ( nums ) # Prints " [ 0 , 1 , 2 , 3 , 4 ] " print ( nums [ 2 : 4 ] ) # slice index 2 4 ( exclusive ) ; prints " [ 2 , 3 ] " print ( nums [ 2 :] ) # slice index 2 end ; prints " [ 2 , 3 , 4 ] " print ( nums [: 2 ] ) # slice start index 2 ( exclusive ) ; prints " [ 0 , 1 ] " print ( nums [ :] ) # slice list ; prints " [ 0 , 1 , 2 , 3 , 4 ] " print ( nums [: - 1 ] ) # Slice indices negative ; prints " [ 0 , 1 , 2 , 3 ] " nums [ 2 : 4 ] = [ 8 , 9 ] # Assign new sublist slice print ( nums ) # Prints " [ 0 , 1 , 8 , 9 , 4 ] " slicing context numpy arrays . Loops : loop elements list like : animals = [ ' cat ' , ' dog ' , ' monkey ' ] animal animals : print ( animal ) # Prints " cat " , " dog " , " monkey " , line . want access index element body loop , 
+ use built - enumerate function : animals = [ ' cat ' , ' dog ' , ' monkey ' ] idx , animal enumerate ( animals ): print ( ' # % d : % s ' % ( idx + 1 , animal ) ) # Prints " # 1 : cat " , " # 2 : dog " , " # 3 : monkey " , line List comprehensions : programming , frequently want transform type data . 
+ simple example , consider following code computes square numbers : nums = [ 0 , 1 , 2 , 3 , 4 ] squares = [ ] x nums : squares . append ( x * * 2 ) print ( squares ) # Prints [ 0 , 1 , 4 , 9 , 16 ] code simpler list comprehension : nums = [ 0 , 1 , 2 , 3 , 4 ] squares = [ x * * 2 x nums ] print ( squares ) # Prints [ 0 , 1 , 4 , 9 , 16 ] List comprehensions contain conditions : nums = [ 0 , 1 , 2 , 3 , 4 ] even_squares = [ x * * 2 x nums x % 2 = = 0 ] print ( even_squares ) # Prints " [ 0 , 4 , 16 ] " Dictionaries dictionary stores ( key , value ) pairs , similar Map Java 
+ object Javascript . use like : d = { ' cat ' : ' cute ' , ' dog ' : ' furry ' } # Create new dictionary data print ( d [ ' cat ' ] ) # entry dictionary ; prints " cute " print ( ' cat ' d ) # Check dictionary given key ; prints " True " d [ ' fish ' ] = ' wet ' # Set entry dictionary print ( d [ ' fish ' ] ) # Prints " wet " 
+ # print(d['monkey ' ] )   # KeyError : ' monkey ' key d print ( d . ( ' monkey ' , ' N / ' ) ) # element default ; prints " N / " print ( d . ( ' fish ' , ' N / ' ) ) # element default ; prints " wet " del d [ ' fish ' ] # Remove element dictionary print ( d . ( ' fish ' , ' N / ' ) ) # " fish " longer key ; prints " N / " find need know dictionaries documentation . Loops : easy iterate keys dictionary : d = { ' person ' : 2 , ' cat ' : 4 , ' spider ' : 8 } animal d : legs = d [ animal ] print ( ' % s % d legs ' % ( animal , legs ) ) # Prints " person 2 legs " , " cat 4 legs " , " spider 8 legs " want access keys corresponding values , use items method : d = { ' person ' : 2 , ' cat ' : 4 , ' spider ' : 8 } animal , legs d . items ( ): print ( ' % s % d legs ' % ( animal , legs ) ) # Prints " person 2 legs " , " cat 4 legs " , " spider 8 legs " Dictionary comprehensions : similar list comprehensions , allow easily construct 
+ dictionaries . example : nums = [ 0 , 1 , 2 , 3 , 4 ] even_num_to_square = { x : x * * 2 x nums x % 2 = = 0 } print ( even_num_to_square ) # Prints " { 0 : 0 , 2 : 4 , 4 : 16 } " Sets set unordered collection distinct elements . simple example , consider 
+ following : animals = { ' cat ' , ' dog ' } print ( ' cat ' animals ) # Check element set ; prints " True " print ( ' fish ' animals ) # prints " False " animals . add ( ' fish ' ) # Add element set print ( ' fish ' animals ) # Prints " True " print ( len ( animals ) ) # Number elements set ; prints " 3 " animals . add ( ' cat ' ) # Adding element set print ( len ( animals ) ) # Prints " 3 " animals . remove ( ' cat ' ) # Remove element set print ( len ( animals ) ) # Prints " 2 " usual , want know sets found documentation . Loops : Iterating set syntax iterating list ; 
+ sets unordered , assumptions order 
+ visit elements set : animals = { ' cat ' , ' dog ' , ' fish ' } idx , animal enumerate ( animals ): print ( ' # % d : % s ' % ( idx + 1 , animal ) ) # Prints " # 1 : fish " , " # 2 : dog " , " # 3 : cat " Set comprehensions : Like lists dictionaries , easily construct sets set comprehensions : math import sqrt nums = { int ( sqrt ( x ) ) x range ( 30 ) } print ( nums ) # Prints " { 0 , 1 , 2 , 3 , 4 , 5 } " Tuples tuple ( immutable ) ordered list values . 
+ tuple ways similar list ; important differences 
+ tuples keys dictionaries elements sets , lists . 
+ trivial example : d = { ( x , x + 1 ): x x range ( 10 ) } # Create dictionary tuple keys t = ( 5 , 6 ) # Create tuple print ( type ( t ) ) # Prints " < class ' tuple ' > " print ( d [ t ] ) # Prints " 5 " print ( d [ ( 1 , 2 ) ] ) # Prints " 1 " documentation information tuples . Functions Python functions defined def keyword . example : def sign ( x ): x > 0 : return ' positive ' elif x < 0 : return ' negative ' : return ' zero ' x [ - 1 , 0 , 1 ] : print ( sign ( x ) ) # Prints " negative " , " zero " , " positive " define functions optional keyword arguments , like : def hello ( , loud = False ): loud : print ( ' HELLO , % s ! ' % . upper ( ) ) : print ( ' Hello , % s ' % ) hello ( ' Bob ' ) # Prints " Hello , Bob " hello ( ' Fred ' , loud = True ) # Prints " HELLO , FRED ! " lot information Python functions documentation . Classes syntax defining classes Python straightforward : class Greeter ( object ): # Constructor def _ _ init _ _ ( self , ): self . = # Create instance variable # Instance method def greet ( self , loud = False ): loud : print ( ' HELLO , % s ! ' % self . . upper ( ) ) : print ( ' Hello , % s ' % self . ) g = Greeter ( ' Fred ' ) # Construct instance Greeter class g . greet ( ) # instance method ; prints " Hello , Fred " g . greet ( loud = True ) # instance method ; prints " HELLO , FRED ! " read lot Python classes documentation . Numpy Numpy core library scientific computing Python . 
+ provides high - performance multidimensional array object , tools working 
+ arrays . familiar MATLAB , find tutorial useful started Numpy . Arrays numpy array grid values , type , indexed tuple 
+ nonnegative integers . number dimensions rank array ; shape array tuple integers giving size array dimension . initialize numpy arrays nested Python lists , 
+ access elements square brackets : import numpy np = np . array ( [ 1 , 2 , 3 ] ) # Create rank 1 array print ( type ( ) ) # Prints " < class ' numpy.ndarray ' > " print ( . shape ) # Prints " ( 3 , ) " print ( [ 0 ] , [ 1 ] , [ 2 ] ) # Prints " 1 2 3 " [ 0 ] = 5 # Change element array print ( ) # Prints " [ 5 , 2 , 3 ] " b = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] ] ) # Create rank 2 array print ( b . shape ) # Prints " ( 2 , 3 ) " print ( b [ 0 , 0 ] , b [ 0 , 1 ] , b [ 1 , 0 ] ) # Prints " 1 2 4 " Numpy provides functions create arrays : import numpy np = np . zeros ( ( 2 , 2 ) ) # Create array zeros print ( ) # Prints " [ [ 0 .   0 . ] #           [ 0 .   0 . ] ] " b = np . ones ( ( 1 , 2 ) ) # Create array ones print ( b ) # Prints " [ [ 1 .   1 . ] ] " c = np . ( ( 2 , 2 ) , 7 ) # Create constant array print ( c ) # Prints " [ [ 7 .   7 . ] #           [ 7 .   7 . ] ] " d = np . eye ( 2 ) # Create 2x2 identity matrix print ( d ) # Prints " [ [ 1 .   0 . ] #           [ 0 .   1 . ] ] " e = np . random . random ( ( 2 , 2 ) ) # Create array filled random values print ( e ) # print " [ [ 0.91940167   0.08143941 ] #                [ 0.68744134   0.87236687 ] ] " read methods array creation documentation . Array indexing Numpy offers ways index arrays . Slicing : Similar Python lists , numpy arrays sliced . 
+ arrays multidimensional , specify slice dimension 
+ array : import numpy np # Create following rank 2 array shape ( 3 , 4 ) 
+ # [ [ 1   2   3   4 ] 
+ #   [ 5   6   7   8 ] 
+ #   [ 9 10 11 12 ] ] = np . array ( [ [ 1 , 2 , 3 , 4 ] , [ 5 , 6 , 7 , 8 ] , [ 9 , 10 , 11 , 12 ] ] ) # Use slicing pull subarray consisting 2 rows 
+ # columns 1 2 ; b following array shape ( 2 , 2 ): 
+ # [ [ 2 3 ] 
+ #   [ 6 7 ] ] b = [: 2 , 1 : 3 ] # slice array view data , modifying 
+ # modify original array . print ( [ 0 , 1 ] ) # Prints " 2 " b [ 0 , 0 ] = 77 # b[0 , 0 ] piece data a[0 , 1 ] print ( [ 0 , 1 ] ) # Prints " 77 " mix integer indexing slice indexing . 
+ , yield array lower rank original array . 
+ Note different way MATLAB handles array 
+ slicing : import numpy np # Create following rank 2 array shape ( 3 , 4 ) 
+ # [ [ 1   2   3   4 ] 
+ #   [ 5   6   7   8 ] 
+ #   [ 9 10 11 12 ] ] = np . array ( [ [ 1 , 2 , 3 , 4 ] , [ 5 , 6 , 7 , 8 ] , [ 9 , 10 , 11 , 12 ] ] ) # ways accessing data middle row array . 
+ # Mixing integer indexing slices yields array lower rank , 
+ # slices yields array rank 
+ # original array : row_r1 = [ 1 , :] # Rank 1 view second row row_r2 = [ 1 : 2 , :] # Rank 2 view second row print ( row_r1 , row_r1 . shape ) # Prints " [ 5 6 7 8 ] ( 4 , ) " print ( row_r2 , row_r2 . shape ) # Prints " [ [ 5 6 7 8 ] ] ( 1 , 4 ) " # distinction accessing columns array : col_r1 = [: , 1 ] col_r2 = [: , 1 : 2 ] print ( col_r1 , col_r1 . shape ) # Prints " [ 2   6 10 ] ( 3 , ) " print ( col_r2 , col_r2 . shape ) # Prints " [ [ 2 ] #           [ 6 ] #           [ 10 ] ] ( 3 , 1 ) " Integer array indexing : index numpy arrays slicing , resulting array view 
+ subarray original array . contrast , integer array 
+ indexing allows construct arbitrary arrays data 
+ array . example : import numpy np = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] , [ 5 , 6 ] ] ) # example integer array indexing . 
+ # returned array shape ( 3 , ) print ( [ [ 0 , 1 , 2 ] , [ 0 , 1 , 0 ] ] ) # Prints " [ 1 4 5 ] " # example integer array indexing equivalent : print ( np . array ( [ [ 0 , 0 ] , [ 1 , 1 ] , [ 2 , 0 ] ] ) ) # Prints " [ 1 4 5 ] " # integer array indexing , reuse 
+ # element source array : print ( [ [ 0 , 0 ] , [ 1 , 1 ] ] ) # Prints " [ 2 2 ] " # Equivalent previous integer array indexing example print ( np . array ( [ [ 0 , 1 ] , [ 0 , 1 ] ] ) ) # Prints " [ 2 2 ] " useful trick integer array indexing selecting mutating 
+ element row matrix : import numpy np # Create new array select elements = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] , [ 7 , 8 , 9 ] , [ 10 , 11 , 12 ] ] ) print ( ) # prints " array ( [ [ 1 ,   2 ,   3 ] , #                 [ 4 ,   5 ,   6 ] , #                 [ 7 ,   8 ,   9 ] , #                 [ 10 , 11 , 12 ] ] ) " # Create array indices b = np . array ( [ 0 , 2 , 0 , 1 ] ) # Select element row indices b print ( [ np . arange ( 4 ) , b ] ) # Prints " [ 1   6   7 11 ] " # Mutate element row indices b [ np . arange ( 4 ) , b ] + = 10 print ( ) # prints " array([[11 ,   2 ,   3 ] , #                 [ 4 ,   5 , 16 ] , #                 [ 17 ,   8 ,   9 ] , #                 [ 10 , 21 , 12 ] ] ) Boolean array indexing : Boolean array indexing lets pick arbitrary elements array . 
+ Frequently type indexing select elements array 
+ satisfy condition . example : import numpy np = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] , [ 5 , 6 ] ] ) bool_idx = ( > 2 ) # Find elements bigger 2 ; # returns numpy array Booleans # shape , slot bool_idx tells # element > 2 . print ( bool_idx ) # Prints " [ [ False False ] #           [ True   True ] #           [ True   True ] ] " # use boolean array indexing construct rank 1 array 
+ # consisting elements corresponding True values 
+ # bool_idx print ( [ bool_idx ] ) # Prints " [ 3 4 5 6 ] " # single concise statement : print ( [ > 2 ] ) # Prints " [ 3 4 5 6 ] " brevity left lot details numpy array indexing ; 
+ want know read documentation . Datatypes numpy array grid elements type . 
+ Numpy provides large set numeric datatypes use construct arrays . 
+ Numpy tries guess datatype create array , functions construct 
+ arrays usually include optional argument explicitly specify datatype . 
+ example : import numpy np x = np . array ( [ 1 , 2 ] ) # Let numpy choose datatype print ( x . dtype ) # Prints " int64 " x = np . array ( [ 1.0 , 2.0 ] ) # Let numpy choose datatype print ( x . dtype ) # Prints " float64 " x = np . array ( [ 1 , 2 ] , dtype = np . int64 ) # Force particular datatype print ( x . dtype ) # Prints " int64 " read numpy datatypes documentation . Array math Basic mathematical functions operate elementwise arrays , available 
+ operator overloads functions numpy module : import numpy np x = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] ] , dtype = np . float64 ) y = np . array ( [ [ 5 , 6 ] , [ 7 , 8 ] ] , dtype = np . float64 ) # Elementwise sum ; produce array 
+ # [ [ 6.0   8.0 ] 
+ #   [ 10.0 12.0 ] ] print ( x + y ) print ( np . add ( x , y ) ) # Elementwise difference ; produce array 
+ # [ [ -4.0 -4.0 ] 
+ #   [ -4.0 -4.0 ] ] print ( x - y ) print ( np . subtract ( x , y ) ) # Elementwise product ; produce array 
+ # [ [ 5.0 12.0 ] 
+ #   [ 21.0 32.0 ] ] print ( x * y ) print ( np . multiply ( x , y ) ) # Elementwise division ; produce array 
+ # [ [ 0.2          0.33333333 ] 
+ #   [ 0.42857143   0.5        ] ] print ( x / y ) print ( np . divide ( x , y ) ) # Elementwise square root ; produces array 
+ # [ [ 1 .           1.41421356 ] 
+ #   [ 1.73205081   2 .         ] ] print ( np . sqrt ( x ) ) Note unlike MATLAB , * elementwise multiplication , matrix 
+ multiplication . instead use dot function compute inner 
+ products vectors , multiply vector matrix , 
+ multiply matrices . dot available function numpy 
+ module instance method array objects : import numpy np x = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] ] ) y = np . array ( [ [ 5 , 6 ] , [ 7 , 8 ] ] ) v = np . array ( [ 9 , 10 ] ) w = np . array ( [ 11 , 12 ] ) # Inner product vectors ; produce 219 print ( v . dot ( w ) ) print ( np . dot ( v , w ) ) # Matrix / vector product ; produce rank 1 array [ 29 67 ] print ( x . dot ( v ) ) print ( np . dot ( x , v ) ) # Matrix / matrix product ; produce rank 2 array 
+ # [ [ 19 22 ] 
+ #   [ 43 50 ] ] print ( x . dot ( y ) ) print ( np . dot ( x , y ) ) Numpy provides useful functions performing computations 
+ arrays ; useful sum : import numpy np x = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] ] ) print ( np . sum ( x ) ) # Compute sum elements ; prints " 10 " print ( np . sum ( x , axis = 0 ) ) # Compute sum column ; prints " [ 4 6 ] " print ( np . sum ( x , axis = 1 ) ) # Compute sum row ; prints " [ 3 7 ] " find list mathematical functions provided numpy documentation . Apart computing mathematical functions arrays , frequently 
+ need reshape manipulate data arrays . simplest example 
+ type operation transposing matrix ; transpose matrix , 
+ simply use T attribute array object : import numpy np x = np . array ( [ [ 1 , 2 ] , [ 3 , 4 ] ] ) print ( x ) # Prints " [ [ 1 2 ] #           [ 3 4 ] ] " print ( x . T ) # Prints " [ [ 1 3 ] #           [ 2 4 ] ] " # Note taking transpose rank 1 array : v = np . array ( [ 1 , 2 , 3 ] ) print ( v ) # Prints " [ 1 2 3 ] " print ( v . T ) # Prints " [ 1 2 3 ] " Numpy provides functions manipulating arrays ; list documentation . Broadcasting Broadcasting powerful mechanism allows numpy work arrays different 
+ shapes performing arithmetic operations . Frequently smaller array 
+ larger array , want use smaller array multiple times perform operation 
+ larger array . example , suppose want add constant vector 
+ row matrix . like : import numpy np # add vector v row matrix x , 
+ # storing result matrix y x = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] , [ 7 , 8 , 9 ] , [ 10 , 11 , 12 ] ] ) v = np . array ( [ 1 , 0 , 1 ] ) y = np . empty_like ( x ) # Create matrix shape x # Add vector v row matrix x explicit loop range ( 4 ): y [ , :] = x [ , :] + v # y following 
+ # [ [ 2   2   4 ] 
+ #   [ 5   5   7 ] 
+ #   [ 8   8 10 ] 
+ #   [ 11 11 13 ] ] print ( y ) works ; matrix x large , computing explicit loop 
+ Python slow . Note adding vector v row matrix x equivalent forming matrix vv stacking multiple copies v vertically , 
+ performing elementwise summation x vv . implement 
+ approach like : import numpy np # add vector v row matrix x , 
+ # storing result matrix y x = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] , [ 7 , 8 , 9 ] , [ 10 , 11 , 12 ] ] ) v = np . array ( [ 1 , 0 , 1 ] ) vv = np . tile ( v , ( 4 , 1 ) ) # Stack 4 copies v print ( vv ) # Prints " [ [ 1 0 1 ] #           [ 1 0 1 ] #           [ 1 0 1 ] #           [ 1 0 1 ] ] " y = x + vv # Add x vv elementwise print ( y ) # Prints " [ [ 2   2   4 #           [ 5   5   7 ] #           [ 8   8 10 ] #           [ 11 11 13 ] ] " Numpy broadcasting allows perform computation actually 
+ creating multiple copies v . Consider version , broadcasting : import numpy np # add vector v row matrix x , 
+ # storing result matrix y x = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] , [ 7 , 8 , 9 ] , [ 10 , 11 , 12 ] ] ) v = np . array ( [ 1 , 0 , 1 ] ) y = x + v # Add v row x broadcasting print ( y ) # Prints " [ [ 2   2   4 ] #           [ 5   5   7 ] #           [ 8   8 10 ] #           [ 11 11 13 ] ] " line y = x + v works x shape ( 4 , 3 ) v shape ( 3 , ) broadcasting ; line works v actually shape ( 4 , 3 ) , 
+ row copy v , sum performed elementwise . Broadcasting arrays follows rules : arrays rank , prepend shape lower rank array 
+ 1s shapes length . arrays said compatible dimension 
+ size dimension , arrays size 1 dimension . arrays broadcast compatible dimensions . broadcasting , array behaves shape equal elementwise 
+ maximum shapes input arrays . dimension array size 1 array size greater 1 , 
+ array behaves copied dimension explanation sense , try reading explanation documentation explanation . Functions support broadcasting known universal functions . find 
+ list universal functions documentation . applications broadcasting : import numpy np # Compute outer product vectors v = np . array ( [ 1 , 2 , 3 ] ) # v shape ( 3 , ) w = np . array ( [ 4 , 5 ] ) # w shape ( 2 , ) 
+ # compute outer product , reshape v column 
+ # vector shape ( 3 , 1 ) ; broadcast w yield 
+ # output shape ( 3 , 2 ) , outer product v w : 
+ # [ [ 4   5 ] 
+ #   [ 8 10 ] 
+ #   [ 12 15 ] ] print ( np . reshape ( v , ( 3 , 1 ) ) * w ) # Add vector row matrix x = np . array ( [ [ 1 , 2 , 3 ] , [ 4 , 5 , 6 ] ] ) # x shape ( 2 , 3 ) v shape ( 3 , ) broadcast ( 2 , 3 ) , 
+ # giving following matrix : 
+ # [ [ 2 4 6 ] 
+ #   [ 5 7 9 ] ] print ( x + v ) # Add vector column matrix 
+ # x shape ( 2 , 3 ) w shape ( 2 , ) . 
+ # transpose x shape ( 3 , 2 ) broadcast 
+ # w yield result shape ( 3 , 2 ) ; transposing result 
+ # yields final result shape ( 2 , 3 ) matrix x 
+ # vector w added column . Gives following matrix : 
+ # [ [ 5   6   7 ] 
+ #   [ 9 10 11 ] ] print ( ( x . T + w ) . T ) # solution reshape w column vector shape ( 2 , 1 ) ; 
+ # broadcast directly x produce 
+ # output . print ( x + np . reshape ( w , ( 2 , 1 ) ) ) # Multiply matrix constant : 
+ # x shape ( 2 , 3 ) . Numpy treats scalars arrays shape ( ) ; 
+ # broadcast shape ( 2 , 3 ) , producing 
+ # following array : 
+ # [ [ 2   4   6 ] 
+ #   [ 8 10 12 ] ] print ( x * 2 ) Broadcasting typically makes code concise faster , 
+ strive use possible . Numpy Documentation brief overview touched important things need 
+ know numpy , far complete . Check numpy reference find numpy . SciPy Numpy provides high - performance multidimensional array basic tools 
+ compute manipulate arrays . SciPy builds , provides 
+ large number functions operate numpy arrays useful 
+ different types scientific engineering applications . best way familiar SciPy browse documentation . 
+ highlight parts SciPy find useful class . Image operations SciPy provides basic functions work images . 
+ example , functions read images disk numpy arrays , 
+ write numpy arrays disk images , resize images . 
+ simple example showcases functions : scipy.misc import imread , imsave , imresize # Read JPEG image numpy array img = imread ( ' assets / cat.jpg ' ) print ( img . dtype , img . shape ) # Prints " uint8 ( 400 , 248 , 3 ) " # tint image scaling color channels 
+ # different scalar constant . image shape ( 400 , 248 , 3 ) ; 
+ # multiply array [ 1 , 0.95 , 0.9 ] shape ( 3 , ) ; 
+ # numpy broadcasting means leaves red channel unchanged , 
+ # multiplies green blue channels 0.95 0.9 
+ # respectively . img_tinted = img * [ 1 , 0.95 , 0.9 ] # Resize tinted image 300 300 pixels . img_tinted = imresize ( img_tinted , ( 300 , 300 ) ) # Write tinted image disk imsave ( ' assets / cat_tinted.jpg ' , img_tinted ) Left : original image . 
+     Right : tinted resized image . MATLAB files functions scipy.io.loadmat scipy.io.savemat allow read 
+ write MATLAB files . read documentation . Distance points SciPy defines useful functions computing distances sets points . function scipy.spatial.distance.pdist computes distance pairs 
+ points given set : import numpy np scipy.spatial.distance import pdist , squareform # Create following array row point 2D space : 
+ # [ [ 0 1 ] 
+ #   [ 1 0 ] 
+ #   [ 2 0 ] ] x = np . array ( [ [ 0 , 1 ] , [ 1 , 0 ] , [ 2 , 0 ] ] ) print ( x ) # Compute Euclidean distance rows x. 
+ # d[i , j ] Euclidean distance x[i , :] x[j , :] , 
+ # d following array : 
+ # [ [ 0 .           1.41421356   2.23606798 ] 
+ #   [ 1.41421356   0 .           1 .         ] 
+ #   [ 2.23606798   1 .           0 .         ] ] d = squareform ( pdist ( x , ' euclidean ' ) ) print ( d ) read details function documentation . similar function ( scipy.spatial.distance.cdist ) computes distance pairs 
+ sets points ; read documentation . Matplotlib Matplotlib plotting library . 
+ section brief introduction matplotlib.pyplot module , 
+ provides plotting system similar MATLAB . Plotting important function matplotlib plot , 
+ allows plot 2D data . simple example : import numpy np import matplotlib.pyplot plt # Compute x y coordinates points sine curve x = np . arange ( 0 , 3 * np . pi , 0.1 ) y = np . sin ( x ) # Plot points matplotlib plt . plot ( x , y ) plt . ( ) # plt.show ( ) graphics appear . Running code produces following plot : little bit extra work easily plot multiple lines 
+ , add title , legend , axis labels : import numpy np import matplotlib.pyplot plt # Compute x y coordinates points sine cosine curves x = np . arange ( 0 , 3 * np . pi , 0.1 ) y_sin = np . sin ( x ) y_cos = np . cos ( x ) # Plot points matplotlib plt . plot ( x , y_sin ) plt . plot ( x , y_cos ) plt . xlabel ( ' x axis label ' ) plt . ylabel ( ' y axis label ' ) plt . title ( ' Sine Cosine ' ) plt . legend ( [ ' Sine ' , ' Cosine ' ] ) plt . ( ) read plot function documentation . Subplots plot different things figure subplot function . 
+ example : import numpy np import matplotlib.pyplot plt # Compute x y coordinates points sine cosine curves x = np . arange ( 0 , 3 * np . pi , 0.1 ) y_sin = np . sin ( x ) y_cos = np . cos ( x ) # Set subplot grid height 2 width 1 , 
+ # set subplot active . plt . subplot ( 2 , 1 , 1 ) # plot plt . plot ( x , y_sin ) plt . title ( ' Sine ' ) # Set second subplot active , second plot . plt . subplot ( 2 , 1 , 2 ) plt . plot ( x , y_cos ) plt . title ( ' Cosine ' ) # figure . plt . ( ) read subplot function documentation . Images use imshow function images . example : import numpy np scipy.misc import imread , imresize import matplotlib.pyplot plt img = imread ( ' assets / cat.jpg ' ) img_tinted = img * [ 1 , 0.95 , 0.9 ] # original image plt . subplot ( 1 , 2 , 1 ) plt . imshow ( img ) # tinted image plt . subplot ( 1 , 2 , 2 ) # slight gotcha imshow strange results 
+ # presented data uint8 . work , 
+ # explicitly cast image uint8 displaying . plt . imshow ( np . uint8 ( img_tinted ) ) plt . ( ) cs231n cs231n

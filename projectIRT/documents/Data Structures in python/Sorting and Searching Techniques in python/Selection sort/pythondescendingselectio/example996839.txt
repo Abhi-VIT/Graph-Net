@@ -1,0 +1,34 @@
+Python descending selection sort - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams Python descending selection sort Ask Question Asked 4 years ago Modified 4 years ago Viewed 3k times -2 trying submit assignment school . irritating website accepts program output specific format . selection sort descending order , want step sorting printing . algorithm works , taking lot steps sort . sure change efficient , placed print statements . help appreciated . array = [ 20,10,30,40 ] 
+    
+     range(len(array ) ): 
+    
+         max_index = 
+    
+         j range(i+1 , len(array ) ): 
+    
+             array[j ] > array[max_index ] : 
+                 max_index = j 
+                 print(array ) 
+             array[i],array[max_index ] = array[max_index],array[i ] 
+    
+     print(array ) 
+
+ Output : 
+
+ [ 20 , 10 , 30 , 40 ] 
+ [ 30 , 10 , 20 , 40 ] 
+ [ 40 , 10 , 20 , 30 ] 
+ [ 40 , 20 , 10 , 30 ] 
+ [ 40 , 30 , 10 , 20 ] 
+ [ 40 , 30 , 20 , 10 ] 
+
+ Expected output : 
+ 40 10 30 20 
+ 40 30 10 20 
+ 40 30 20 10 python Share Improve question Follow asked Apr 14 , 2021 23:20 user13936956 user13936956 1 swap inside inner loop . need let inner loop finish find correct value max_index . – khelwood Commented Apr 14 , 2021 23:23 Add comment | 1 Answer 1 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 1 swap inside inner loop . need let inner loop finish find correct value max_index . range(len(array ) ): 
+     max_index = 
+     j range(i+1 , len(array ) ): 
+         array[j ] > array[max_index ] : 
+             max_index = j 
+     print(array ) 
+     array[i],array[max_index ] = array[max_index],array[i ] Share Improve answer Follow answered Apr 14 , 2021 23:26 khelwood khelwood 59.4k 14 14 gold badges 89 89 silver badges 115 115 bronze badges Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Related 0 Recursive Selection Sort python 0 selection sort python 7 Selection Sort Python 0 Selection Sort ( low high ) python 0 Selection sort program python 0 Sorting descending order 1 implement Selection Sort list ? 0 Selection Sort Algorithm Python 0 Proper Python SelectionSort 0 Selection Sort Python working place Hot Network Questions chainrings cassette cooked ? 3 year old road bike Hide equations document , including ` align ` , ` subequations ` Revising manuscript covered referee report curly braces process colon - separated variables Difference ∃x(Sx & Px ) vs. ∃x(Sx → Px ) tunneling ? mean carry service normally provided network ? \clist_map_inline : Nn return ? convincingly erase population memory ? " Presenting " versus " bearing " U.S.A. passport entering Canada U.S.A Questions Jean - Rayleigh derivation Ultraviolet Catastrophe intelligence non intelligence , consciousness non consciousness ? ( In)significance spaces parsing Fortran IV - wave bridge circuit connect ground Estimating topological errors CCZ factory Result opposite direction hypothesis - - tailed p - value ? Whois Query .app TLD gives " getaddrinfo(whois.nic.app ): service known " irrationals partitioned dense , disjoint subsets ? refer proprietors small businesses ( especially restaurants ) ? Updating preprint medRxiv link published paper Rules written , Orcs Drow functionally ? model dodecahedron Rubick cube ? SQL Server maintain rowcount metadata ? Selecting single role Postgresql user Fill space arcs hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

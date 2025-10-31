@@ -1,0 +1,582 @@
+Data Analysis Python - Ben Blog Skip links Skip primary navigation Skip content Skip footer Ben Blog Posts Categories Tags Collections Toggle search Toggle menu Data Analysis Python Framework data analysis form IBM certificate corse . 22 minute read Home / Ibm_certificate / Data Analysis Python page Importing Datasets Python Packages Data Science Importing Exporting Data Python Getting Started Analyzing Data Python Accessing Databases Python Data Pre - processing Dealing missing values Python Data Formatting Python Data Normalization Python Bnning Python Turning categorical variables quantitative variables Python Exploratory Data Analysis ( EDA ) Descriptive Statistics describe value_counts Box Plots Scatter Plot GroupBy Python Groupby ( ) Pivot ( ) Correlation regressin plot Pearson Correlation Analysis Variance ( ANOVA ) stats.f_oneway Get_group F - test Common examples - way Analysis Model Development Linear Regression Multiple Linear Regression Model Evaluation Visualization Polinomial Regression Pipelines Single independent variable Multiple dimensional independent variables Pre - processing Pipelines Measure - sample Evaluation Prediction Decision Making LAB - example Linear regression multiple Linear regression Model Evaluation Visualization Model Evaluation Refinement Cross Validation Overfitting Underfitting Ridge Regression Grid Search Final Assignment series Data Science posts notes IBM Data Science Professional Certificate . Importing Datasets Python Packages Data Science divided Python data analysis libraries groups . Scientific Computing Libraries Pandas offers data structure tools effective data manipulation analysis . designed provided easy indexing functionality . NumPy library uses arrays inputs outputs . extended objects matrices minor coding changes , developers perform fast array processing . SciPy includes functions advanced math problems listed slide , data visualization . Visualization Libraries Matplotlib package known library data visualization . great making graphs plots . graphs highly customizable . Seaborn . based Matplotlib . easy generate plots heat maps , time series violin plots . Algorithmic Libraries Scikit - learn library contains tools statistical modeling , including regression , classification , clustering , . library built NumPy , SciPy Matplotib . Statsmodels Python module allows users explore data , estimate statistical models , perform statistical tests . Importing Exporting Data Python important properties : Format : csv , json , xlsx … File Path Dataset : Computer : /User / Desktop / my.csv Internet : https://google.com/my.csv 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 import pandas pd # read online file URL provided , assign variable " df " path = " https://archive.ics.uci.edu/ml/machine-learning-database/autos/imports-85.data " # default , pd.read_csv assumes header line . header , claim . df = pd . read_csv ( path , header = ) df . head ( n ) df . tail ( n ) # Replace default header : headers = [ ' c1 ' , ' c2 ' , ' c3 ' , .... , ' c10 ' ] df . columns = headers # Exporting pandas dataframe csv path = ' c:\windows\ ... \my.csv ' df . to_csv ( path ) \[\begin{array}{|l|l|l|}\hline \text { Data Format } & \text { Read } & \text { Save } \\ \hline \text { csv } & \text { pd.read_csv ( ) } & \text { df.to } _ { - } \text { csv } ( ) \\ \hline \text { json } & \text { pd.read } \text { json } ( ) & \text { df.to } _ { \text { json } ( ) } \\ \hline \text { Excel } & \text { pd.read_excel } ( ) & \text { df.to } _ { \text { - excel } ( ) } \\ \hline \text { sq } 1 & \text { pd.read_sql ( ) } & \text { df.to_sql ( ) } \\ \hline\end{array}\ ] Getting Started Analyzing Data Python Data Formate Read Save csv pd.read_csv ( ) df.to_csv ( ) json pd.read_json ( ) df.to_json ( ) excel pd.read_excel ( ) df.to_excel ( ) hdf pd.read_hdf ( ) df.to_hdf ( ) sql pd.read_sql ( ) df.to_sql ( ) … … … Check Data Types main reasons : Potential info type mismatch Cimpatibility python methods pandas , use dataframe.dtypes check data types 1 
+ 2 
+ 3 
+ 4 
+ 5 df . dtypes df . describe ( ) # summary statistics df . describe ( include = ' ' ) 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 df . info ( ) ------ < class ' pandas . core . frame . DataFrame ' > 
+ RangeIndex : 4 entries , 0 3 
+ Data columns ( total 2 columns ): 
+  #    Column    Non - Null Count   Dtype 
+ ---   ------    --------------   ----- 
+  0    Student   4 non - null       object 
+  1    Grade     4 non - null       int64 
+ dtypes : int64(1 ) , object(1 ) 
+ memory usage : 192.0 + bytes 
+
+ # 30 rows 30 rows : 
+ df.info Accessing Databases Python check SQL category . Data Pre - processing known data cleaning , data wrangling . Data preprocessing necessary step data analysis . process converting mapping data raw form format ready analysis . Main learning objectives : Identify handle missing values Data Formatting Data Normalization ( centering / scaling ) Data Binning Turning categorical values numerical variables statistical model easier . Dealing missing values Python Check data collection source Drop missing values Drop variable Drop data entry Replacing missing values Replace average similar points Replace frequency Replace based conditional expectations Leave missing data drop missing values Python ? 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 # Check nulls missing_data = df . isnull ( ) missing_data . head ( 5 ) # Count missing values column column missing_data . columns . values . tolist ( ): print ( column ) print ( missing_datadata [ column ] . value_counts ( ) ) print ( " " ) # Use dataframes.dropna ( ) 
+ # Set axis=0 drop rows , axis=1 drop columns df = df . dropna ( subset = [ ' Price ' ] , axis = 0 ) # Set inplace = True allow operation work dataframe directly . df . dropna ( subset = [ ' Price ' ] , axis = 0 , inplace = True ) # codes equivalent . # Drop rows contain missing value df . dropna ( axis = 0 ) # reset index , droped rows ! ! df . rest_index ( drop = True , inplace = True ) replace missing values Python ? 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 # Use dataframe.replace(missing_value , new_value ) mean = df [ ' col1 ' ] . mean ( ) # Incase data type correct mean = df [ ' col1 ' ] . astype ( ' float ' ) . mean ( axis = 0 ) df [ ' col1 ' ] = df [ ' col1 ' ] . replace ( np . nan , mean ) # Alternatively , use inplce = Ture df [ ' col1 ' ] . replace ( np . nan , mean , inplce = True ) # counts unique values column df [ ' col1 ' ] . value_counts ( ) # use " .idxmax ( ) " method calculate common type automatically : df [ ' col1 ' ] . value_counts ( ) . idxmax ( ) # drop values , rant reset index df . reset_index ( ) # convert value_counts result dataframe drive_wheels_counts = df [ ' drive - wheels ' ] . value_counts ( ) . to_frame ( ) drive_wheels_counts . rename ( columns = { ' drive - wheels ' : ' value_counts ' } , inplace = True ) drive_wheels_counts . index . = ' drive - wheels ' drive_wheels_counts Data Formatting Python Data usually collected different places different people stored different formats .   Data formatting means bringing data common standard expression allows users meaningful comparisons . dataset cleaning , data formatting ensures data consistent easily understandable . City City NY New York N.Y New York NYC New York New York New York task , use dataframe.replace(old_value , new_value ) Applying calculation entire column : 1 
+ 2 df [ ' col1 ' ] = 100 / df [ ' col1 ' ] df . rename ( columns = { ' col1 ' : ' 100_over_col_divided ' } , inplace = True ) Incorrect Data Types identify data types : dataframe.dtypes convert data types : dataframe.astype ( ) 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 # Example : convert data type integer df [ ' price ' ] = df [ ' price ' ] . astype ( " int64 " ) df [ [ " bore " , " stroke " ] ] = df [ [ " bore " , " stroke " ] ] . astype ( " float " ) df [ [ " normalized - losses " ] ] = df [ [ " normalized - losses " ] ] . astype ( " int " ) df [ [ " price " ] ] = df [ [ " price " ] ] . astype ( " float " ) df [ [ " peak - rpm " ] ] = df [ [ " peak - rpm " ] ] . astype ( " float " ) Data Normalization Python approaches normalization : Min - Max : $ \frac{X - mean(X)}{X_{max}-X_{min}}$ Z - score : $ \frac{X - mean(X)}{Std(X)}$ 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 # Min - Max : df [ ' col ' ] = ( df [ ' col ' ] - df [ ' col ' ] . min ( ) ) / ( df [ ' col ' ] . max ( ) - df [ ' col ' ] . min ( ) ) # Z - score df [ ' col ' ] = ( df [ ' col ' ] - df [ ' col ' ] . mean ( ) ) / df [ ' col ' ] . std ( ) # Alternatively , use import numpy np df [ ' Grade ' ] = ( df [ ' Grade ' ] - np . mean ( df [ ' Grade ' ] ) ) / np . std ( df [ ' Grade ' ] ) Bnning Python 1 pandas . cut ( df [ ' col ' ] , bins , group_names , include_lowest = True ) Binning process grouping values bins . Converts numeric categorical variables . example , price feature range 0 1000000 . convert price “ low price ” , “ Mid Price ” “ High Price ” . 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 % matplotlib inline import matplotlib plt matplotlib import pyplot plt . pyplot . hist ( df [ " Price " ] ) # set x / y labels plot title plt . pyplot . xlabel ( " horsepower " ) plt . pyplot . ylabel ( " count " ) plt . pyplot . title ( " horsepower bins " ) # want divide data n subsets bins = np . linspace ( min ( df [ " price " ] ) , max ( df [ ' price ' ] ) , n + 1 ) goup_names = [ 1 , 2 , 3 , 4 , .... , n ] df [ " price - binned " ] = pd . cut ( df [ ' price ' ] , bins , labels = group_names , include_lowest = True ) df [ " price - binned " ] . value_counts ( ) # Visualization % matplotlib inline import matplotlib plt matplotlib import pyplot pyplot . bar ( group_names , df [ " horsepower - binned " ] . value_counts ( ) ) # set x / y labels plot title plt . pyplot . xlabel ( " horsepower " ) plt . pyplot . ylabel ( " count " ) plt . pyplot . title ( " horsepower bins " ) Turning categorical variables quantitative variables Python Approach 1 : use dummy variables . encode values adding new features corresponding unique element original feature like encode . 1 
+ 2 # use pandas.get_dummies ( ) method pd . get_dummies ( df [ ' fuel ' ] ) Student Grade 0 John Smith 80 1 Jane Smith 75 2 John Doe 65 3 Jane Doe 90 1 dm = pandas . get_dummies ( df . Student ) Jane Doe Jane Smith John Doe John Smith 0 0 0 0 1 1 0 1 0 0 2 0 0 1 0 3 1 0 0 0 Exploratory Data Analysis ( EDA ) module , learn : Descriptive Statistics Groupby ANOVA Correlation Correlation - Statistics Descriptive Statistics describe value_counts Descriptive statistical analysis helps describe basic features dataset obtains short summary sample measures data . 1 
+ 2 df . describe ( include = ' ' ) df [ ' column_name ' ] . value_counts ( ) Box Plots Box plots great way visualize numeric data , visualize distributions data . 1 
+ 2 import seaborn sns sns . boxplot ( x = ' Drive - wheels ' , y = ' price ' , data = df ) Scatter Plot Scatter plot relationship variables Predictor / independent variables x - axis Target / dependent variables y - axis 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 import matplotlib.pyplot plt plt . scatter ( df [ ' size_of_house ' ] , df [ ' price ' ] ) plt . title ( " scatter house size Vs price " ) plt . xlabel ( ' size house ' ) plt . ylabel ( ' price ' ) GroupBy Python Groupby ( ) 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 df [ ' Student ' ] . unique ( ) # groupby single property gg = df . groupby ( [ " Student " , as_index = True ) . mean ( ) # Groupby Multiple Properties gg = df . groupby ( [ " Student " , " Grade " ] , as_index = True ) . mean ( ) gg . index # set as_index = False gg2 = df . groupby ( [ " Student " , " Grade " ] , as_index = False ) . mean ( ) # work columns care slicing df [ [ ' price ' , ' body - style ' ] ] . groupby ( [ ' body - style ' ] ) . mean ( ) Pivot ( ) variable columns variable rows , rest values displayed - dimensional panel . 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 df_pivot = df . pivot ( index = ' Student ' , columns = " NewCol " ) # Use heatmap plot import matplotlib.pyplot plt plt . pcolor ( df_pivot , cmap = " RdBu " ) plt . colorbar ( ) plt . ( ) heatmap plots target variable ( price ) proportional colour respect variables ‘ drive - wheel ’ ‘ body - style ’ vertical horizontal axis respectively . allows visualize price related ‘ drive - wheel ’ ‘ body - style ’ . default labels convey useful information . Let change : 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 fig , ax = plt . subplots ( ) m = ax . pcolor ( grouped_pivot , cmap = ' RdBu ' ) # label names row_labels = grouped_pivot . columns . levels [ 1 ] col_labels = grouped_pivot . index # ticks labels center ax . set_xticks ( np . arange ( grouped_pivot . shape [ 1 ] ) + 0.5 , minor = False ) ax . set_yticks ( np . arange ( grouped_pivot . shape [ 0 ] ) + 0.5 , minor = False ) # insert labels ax . set_xticklabels ( row_labels , minor = False ) ax . set_yticklabels ( col_labels , minor = False ) # rotate label long plt . xticks ( rotation = 90 ) fig . colorbar ( m ) plt . ( ) 1 
+ 2 
+ 3 
+ 4 # , wo data pivot cells . fill missing cells value 0 , value potentially . mentioned missing data complex subject entire course . grouped_pivot = grouped_pivot . fillna ( 0 ) # fill missing values 0 grouped_pivot Correlation regressin plot 1 
+ 2 
+ 3 
+ 4 import seaborn sns import matplotlib.pyplot plt sns . regplot ( x = ' engine - size ' , y = ' Price ' , data = df ) plt . ylim ( 0 , ) Pearson Correlation P - value : p - value<0.001 , Strong certainty result p - value<0.05 , Moderate certainty result p - value<0.1 , Weak certainty result p - value>0.1 , certainty result 1 pearson_coef , p_value = stats . pearson ( df [ ' horsepower ' ] , df [ ' price ' ] ) Correlation Heatmap : 
+ shows correlation different pair columns . 1 
+ 2 
+ 3 
+ 4 df . corr ( ) # want know correlations bwtween certain columns df [ [ " stroke " , " price " ] ] . corr ( ) Analysis Variance ( ANOVA ) stats.f_oneway 1 
+ 2 
+ 3 
+ 4 
+ 5 # Anova " honda " " subaru " df_anova = df [ [ ' ' , ' price ' ] ] grouped_anova = df_anova . groupby ( [ ' ' ] ) anova_results_1 = stats . f_oneway ( grouped_anova . get_group ( ' honda ' ) [ ' Price ' ] , grouped_anova . get_group ( ' subaru ' ) [ ' price ' ] ) 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 grouped_test2 = df_gptest [ [ ' drive - wheels ' , ' price ' ] ] . groupby ( [ ' drive - wheels ' ] ) grouped_test2 . head ( 2 ) # obtain values method group method " get_group " . grouped_test2 . get_group ( ' 4wd ' ) [ ' price ' ] # ANOVA : use function ' f_oneway ' module ' stats ' obtain F - test score P - value . f_val , p_val = stats . f_oneway ( grouped_test2 . get_group ( ' fwd ' ) [ ' price ' ] , grouped_test2 . get_group ( ' rwd ' ) [ ' price ' ] , grouped_test2 . get_group ( ' 4wd ' ) [ ' price ' ] ) print ( " ANOVA results : F= " , f_val , " , P = " , p_val ) # great result , large F test score showing strong correlation P value 0 implying certain statistical significance . mean tested groups highly correlated ? 
+ # Separately : fwd rwd f_val , p_val = stats . f_oneway ( grouped_test2 . get_group ( ' fwd ' ) [ ' price ' ] , grouped_test2 . get_group ( ' rwd ' ) [ ' price ' ] ) print ( " ANOVA results : F= " , f_val , " , P = " , p_val ) # 4wd rwd f_val , p_val = stats . f_oneway ( grouped_test2 . get_group ( ' 4wd ' ) [ ' price ' ] , grouped_test2 . get_group ( ' rwd ' ) [ ' price ' ] ) print ( " ANOVA results : F= " , f_val , " , P = " , p_val ) Get_group 通过对DataFrame对象调用groupby()函数返回的结果是一个DataFrameGroupBy对象，而不是一个DataFrame或者Series对象，所以，它们中的一些方法或者函数是无法直接调用的，需要按照GroupBy对象中具有的函数和方法进行调用 。 1 
+ 2 
+ 3 
+ 4 grouped = df . groupby ( ' Gender ' ) print ( type ( grouped ) ) print ( grouped ) < class ' pandas . core . groupby . groupby . DataFrameGroupBy ' > 通过调用get_group()函数可以返回一个按照分组得到的DataFrame对象，所以接下来的使用就可以按照·DataFrame·对象来使用。如果想让这个DataFrame对象的索引重新定义可以通过 ： 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 df = grouped . get_group ( ' Female ' ) . reset_index ( ) print ( df ) index Gender Age Score 0 2 Cidy Female 18 93 1 4 Ellen Female 17 96 2 7 Hebe Female 22 98 — — — — — — — — — — — — — — — — 这里可以总结一下，由于通过groupby()函数分组得到的是一个DataFrameGroupBy对象，而通过对这个对象调用get_group()，返回的则是一个·DataFrame·对象，所以可以将DataFrameGroupBy对象理解为是多个DataFrame组成的 。 
+ 而没有调用get_group()函数之前，此时的数据结构任然是DataFrameGroupBy，此时进行对DataFrameGroupBy按照列名进行索引，同理就可以得到SeriesGroupBy对象，取多个列名，则得到的任然是DataFrameGroupBy对象，这里可以类比DataFrame和Series的关系 。 F - test F - test statistical test test statistic F - distribution null hypothesis . comparing statistical models fitted data set , order identify model best fits population data sampled . Common examples hypothesis means given set normally distributed populations , having standard deviation , equal . best - known F - test , plays important role analysis variance ( ANOVA ) . hypothesis proposed regression model fits data . Lack - - fit sum squares . hypothesis data set regression analysis follows simpler proposed linear models nested . - way Analysis F - test - way analysis variance assess expected values quantitative variable pre - defined groups differ . formula - way ANOVA F - test statistic \[{\displaystyle F={\frac { \text{explained variance}}{\text{unexplained variance}}},}\ ] \[{\displaystyle F={\frac { \text{between - group variability}}{\text{within - group variability}}}.}\ ] “ explained variance ” , “ - group variability ” \[{\displaystyle \sum _ { i=1}^{K}n_{i}({\bar { Y}}_{i\cdot } -{\bar { Y}})^{2}/(K-1)}\ ] \({\displaystyle { \bar { Y}}_{i \cdot } } \ ) denotes sample mean - th group , $ { n_{i}}$ number observations - th group,$ { { \bar { Y}}}$ denotes overall mean data , $ { K}$ denotes number groups . 
+ “ unexplained variance ” , “ - group variability ” \[{\displaystyle \sum _ { i=1}^{K}\sum _ { j=1}^{n_{i}}\left(Y_{ij}-{\bar { Y}}_{i\cdot } \right)^{2}/(N - K),}\ ] $ Y_{ij}$   j - th observation - th K groups N overall sample size . F - statistic follows F - distribution degrees freedom $ { d_{1}=K-1}$ $ { d_{2}=N - K}$ null hypothesis . statistic large - group variability large relative - group variability , unlikely happen population means groups value . Note groups - way ANOVA F - test , $ { F = t^{2}}$ t Student t statistic . Model Development Linear Regression Multiple Linear Regression 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 sklearn.linear_model import LinearRegression lm = LinearRegression ( ) lm . fit ( X , Y ) Yhat = lm . predict ( X ) # check parameters lm . intercept _ lm . coef _ Model Evaluation Visualization Regression Plot 1 
+ 2 
+ 3 import seaborn sns sns . regplot ( x = ' highway - mpg ' , y = ' price ' , data = df ) plt . ylim ( 0 , ) Residual Plot 1 
+ 2 import seaborn sns sns . residplot ( df [ ' highway - mpg ' ] , df [ ' price ' ] ) Distribution Plot Density function target value predicted value . 1 
+ 2 ax1 = sns . distplot ( df [ ' price ' ] , hist = False , color = ' r ' , label = ' Actual Value ' ) sns . distplot ( Yhat , hist = False , color = ' b ' , label = ' Fitted Values ' , ax = ax1 ) Polinomial Regression Pipelines Single independent variable 1 
+ 2 
+ 3 
+ 4 
+ 5 # calculate polynomial 3rd order f = np . polyfit ( x , y , 3 ) p = np . poly1d ( f ) # print method print ( p ) Multiple dimensional independent variables 1 
+ 2 
+ 3 
+ 4 sklearn.preprocessing import PolynomialFeatures pr = PolynomialFeatures ( degree = 2 , include_bias = False ) result_features = pr . fit_transform ( X , include_bias = False ) Pre - processing Normalize features : 1 
+ 2 
+ 3 
+ 4 sklearn.preprocessing import StandardScaler SCALE = StandardScaler ( ) SCALE . fit ( x_data [ [ ' horsepower ' , ' highway - mpg ' ] ] ) x_scale = SCALE . transform ( x_data [ [ ' horsepower ' , ' highway - mpg ' ] ] ) Pipelines steps getting predction : 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 sklearn.preprocessing import PolynomialFeatures sklearn.pipeline import Pipeline sklearn.preprocessing import StandardScaler Input = [ ( ' scale ' , StandardScaler ( ) ) , ( ' polynomial ' , PolynomialFeatures ( include_bias = False ) ) , ( ' model ' , LinearRegression ( ) ) ] pipe = Pipeline ( Input ) pipe pipe . fit ( Z , y ) ypipe = pipe . predict ( Z ) ypipe [ 0 : 4 ] Measure - sample Evaluation important measures : Mean Square Error ( MSE ) \ [ { \operatorname { MSE } = { \frac { 1}{n}}\sum _ { i=1}^{n}(Y_{i}-{\hat { Y_{i}}})^{2}}\ ] R - squared total sum squares ( proportional variance data ): \[SS_{\text{tot}}=\sum _ { i}(y_{i}-{\bar { y}})^{2}\ ] regression sum squares , called explained sum squares : \[SS_{\text{reg}}=\sum _ { i}(f_{i}-{\bar { y}})^{2}\ ] sum squares residuals , called residual sum squares \[{\displaystyle SS_{\text{res}}=\sum _ { i}(y_{i}-f_{i})^{2}=\sum _ { i}e_{i}^{2}\,}\ ] general definition coefficient determination \[{\displaystyle R^{2}\equiv 1-{SS_{\rm { res } } \over SS_{\rm { tot}}}\,}\ ] 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 sklearn.metrics import mean_squared_error mean_squared_error ( df [ ' price ' ] , Y_hat ) # calculate R^2 follows lm . fit ( X , Y ) lm . score ( X , y ) Prediction Decision Making 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 # train model lm . fit ( df [ ' highway - mpg ' ] , df [ ' prices ' ] ) # Predict price 30 highway - mgp lm . predict ( np . array ( 30.0 ) . reshape ( - 1 , 1 ) ) # check coef intercetp lm . coef _ lm . intercept _ # Check wether prediction sense import numpy np new_input = np . arange ( 1 , 101 , 1 ) . reshape ( - 1 , 1 ) yhat = lm . predcit ( new_input ) # use visualization 
+ # Regression Plot 
+ # Residual Plot 
+ # Distribution Plot 
+ # Mean squared error LAB - example Linear regression multiple Linear regression 1 . Linear Regression : 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 # Setup import pandas pd import numpy np import matplotlib.pyplot plt path = ' https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DA0101EN/automobileEDA.csv ' df = pd . read_csv ( path ) df . head ( ) # Load modules linear regression sklearn.linear_model import LinearRegression lm = LinearRegression ( ) X = df [ [ ' highway - mpg ' ] ] # Note ! ! : X matrix , dafaframe form df[['col_name ' ] ] Y = df [ ' price ' ] # Train model lm . fit ( X , Y ) # Predict output Yhat = lm . predict ( X ) Yhat [ 0 : 5 ] # check coefs lm . intercept _ lm . coefs _ 2 . Multiple Linear Regression 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 Z = df [ [ ' horsepower ' , ' curb - weight ' , ' engine - size ' , ' highway - mpg ' ] ] # , dataframe ( matrix ) , series . lm . fit ( Z , df [ ' price ' ] ) print ( lm . coef _ ) Model Evaluation Visualization # 1 . Regression Plot 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 # import visualization package : seaborn import seaborn sns % matplotlib inline width = 12 height = 10 plt . figure ( figsize = ( width , height ) ) sns . regplot ( x = " highway - mpg " , y = " price " , data = df ) plt . ylim ( 0 , ) #   Use method " .corr ( ) " verify result conclude regression plot : df [ [ ' peak - rpm ' , ' highway - mpg ' , ' price ' ] ] . corr ( ) 2 . Residual Plot : sns.residplot residual VS x plot 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 width = 12 height = 10 plt . figure ( figsize = ( width , height ) ) sns . residplot ( df [ ' highway - mpg ' ] , df [ ' price ' ] ) plt . ( ) # look spread residuals : points residual plot randomly spread x - axis , linear model appropriate data . # multiple linear regression , use residual plot regression plot . Alternatively , check distribution plot 3 . Distribution Plot : sns.distplot ( ) 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 Z = df [ [ ' horsepower ' , ' curb - weight ' , ' engine - size ' , ' highway - mpg ' ] ] lm = LinearRegression ( ) lm . fit ( Z , df [ ' price ' ] ) Y_hat = lm . predict ( Z ) plt . figure ( figsize = ( width , height ) ) ax1 = sns . distplot ( df [ ' price ' ] , hist = False , color = " r " , label = " Actual Value " ) sns . distplot ( Yhat , hist = False , color = " b " , label = " Fitted Values " , ax = ax1 ) plt . title ( ' Actual vs Fitted Values Price ' ) plt . xlabel ( ' Price ( dollars ) ' ) plt . ylabel ( ' Proportion Cars ' ) plt . ( ) plt . close ( ) 4 . Polinomial Regression Pipelines : polyfit , poly1d 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 # Def function draw shape model real data points ( X , Y ) def PlotPolly ( model , independent_variable , dependent_variabble , ): x_new = np . linspace ( 15 , 55 , 100 ) y_new = model ( x_new ) plt . plot ( independent_variable , dependent_variabble , ' . ' , x_new , y_new , ' - ' ) plt . title ( ' Polynomial Fit Matplotlib Price ~ Length ' ) ax = plt . gca ( ) # current AXE ( subplot ) ax . set_facecolor ( ( 0.898 , 0.898 , 0.898 ) ) # set facecolor grey fig = plt . gcf ( ) plt . xlabel ( ) plt . ylabel ( ' Price Cars ' ) plt . ( ) plt . close ( ) # value x = df [ ' highway - mpg ' ] y = df [ ' price ' ] # use polynomial 3rd order ( cubic ) f = np . polyfit ( x , y , 3 ) p = np . poly1d ( f ) print ( p ) PlotPolly ( p , x , y , ' highway - mpg ' ) 5 . Multivariate Polynomial regression 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 sklearn.preprocessing import PolynomialFeatures pr = PolynomialFeatures ( degree = 2 ) Z_pr = pr . fit_transform ( Z ) # default , include bias # use pipeline sklearn.pipeline import Pipeline sklearn.preprocessing import StandardScaler # set include_biase = False , LinearRegression Model automatically add intercept ! Input = [ ( ' scale ' , StandardScaler ( ) ) , ( ' polynomial ' , PolynomialFeatures ( include_bias = False ) ) , ( ' model ' , LinearRegression ( ) ) ] # Train pipeline pipe = Pipeline ( Input ) pipe . fit ( Z , y ) # Use pipeline model predict ypipe = pipe . predict ( Z ) ypipe [ 0 : 4 ] 6 . Measures - Sample Evaluation 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 # Model 1 : Simple Linear Regression 
+ # highway_mpg_fit lm . fit ( X , Y ) # Find R^2 print ( ' R - square : ' , lm . score ( X , Y ) ) # Find MSE Yhat = lm . predict ( X ) sklearn.metrics import mean_squared_error mse = mean_squared_error ( df [ ' price ' ] , Yhat ) print ( ' mean square error price predicted value : ' , mse ) mse = mean_squared_error ( df [ ' price ' ] , Yhat ) print ( ' mean square error price predicted value : ' , mse ) # Model 2 : Multiple Linear Regression 
+ # fit model lm . fit ( Z , df [ ' price ' ] ) # Find R^2 print ( ' R - square : ' , lm . score ( Z , df [ ' price ' ] ) ) Y_predict_multifit = lm . predict ( Z ) mse = mean_squared_error ( df [ ' price ' ] , Y_predict_multifit ) # Model 3 : Polynomial Fit sklearn.metrics import r2_score # Notice p(x ) transformed X r_squared = r2_score ( y , p ( x ) ) print ( ' R - square value : ' , r_squared ) mse = mean_squared_error ( df [ ' price ' ] , p ( x ) ) 7 . Prediction Decision Making 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 import matplotlib.pyplot plt import numpy np % matplotlib inline new_input = np . arange ( 1 , 100 , 1 ) . reshape ( - 1 , 1 ) # fit model lm . fit ( X , Y ) lm # Produce prediction yhat = lm . predict ( new_input ) yhat [ 0 : 5 ] plt . plot ( new_input , yhat ) plt . ( ) Model Evaluation Refinement - sample evaluation tells model fit data train . Use - - sample evaluations test sets evaluate refine model . Function : ` train_test_split ( ) split data random train test subsets . 1 
+ 2 
+ 3 
+ 4 sklearn.model_selection import train_test_split x_train , x_test , y_train , y_test = train_test_split ( x_data , y_data , test_size = 0.3 , random_state = 0 ) # random_state : number generator random sampling Cross Validation method , dataset split K equal groups . group referred fold . folds training set use train model remaining parts test set , use test model . repeated partition training testing . end , use average results estimate - - sample error . 1 
+ 2 
+ 3 
+ 4 sklearn.model_selection import cross_val_score scores = cross_val_score ( lr , x_data , y_data , cv = 3 ) np . mean ( scores ) # scores test sets ! lr : type model cv : number equal partitions / folds 1 
+ 2 
+ 3 
+ 4 # return predictions cross validation sklearn.model_selection import cross_val_predict yhat = cross_val_predict ( lr2e , x_data , y_data , cv = 3 ) # y_hat test set Overfitting Underfitting Check cross - validation score test sets . Use test sets Ridge Regression 1 
+ 2 
+ 3 
+ 4 sklearn.linear_model import Ridge RR = Ridge ( alpha = 0.1 ) RR . fit ( x_train , y_train ) RR . score ( x_test , y_test ) Add   penalty function reduce overfitting problem . order preference particular solution desirable properties , regularization term included minimization : \ [ { \| \mathbf { x } -\mathbf { b } \|_{2}^{2}+\|\Gamma \mathbf { x } \|_{2}^{2}}\ ] suitably chosen Tikhonov matrix $ { \Gamma } $ . cases , matrix chosen multiple identity matrix ( $ { \Gamma = \alpha I}$ ) , giving preference solutions smaller norms ; known L2 regularization . cases , high - pass operators ( e.g. , difference operator weighted Fourier operator ) enforce smoothness underlying vector believed continuous . regularization improves conditioning problem , enabling direct numerical solution . explicit solution , denoted $ { { \hat { x}}}$ , given 
+ $ { { \hat { x}}=(A^{\top } A+\Gamma ^{\top } \Gamma ) ^{-1}A^{\top } \mathbf { b } .}$ effect regularization varied scale matrix $ { \Gamma } $ . $ { \Gamma = 0}$ reduces unregularized - squares solution , provided ( ATA)−1 exists . L2 regularization contexts aside linear regression , classification logistic regression support vector machines,[14 ] matrix factorization . 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 
+ 28 
+ 29 
+ 30 
+ 31 
+ 32 
+ 33 
+ 34 
+ 35 
+ 36 
+ 37 
+ 38 
+ 39 
+ 40 
+ 41 
+ 42 
+ 43 
+ 44 
+ 45 
+ 46 
+ 47 print ( _ _ doc _ _ ) sklearn.model_selection import train_test_split import matplotlib.pyplot plt import numpy np sklearn.linear_model import Ridge , RidgeCV import matplotlib.font_manager fm myfont = fm . FontProperties ( fname = ' C:\Windows\Fonts\simsun.ttc ' ) data = [ [ 0.607492 , 3.965162 ] , [ 0.358622 , 3.514900 ] , [ 0.147846 , 3.125947 ] , [ 0.637820 , 4.094115 ] , [ 0.230372 , 3.476039 ] , [ 0.070237 , 3.210610 ] , [ 0.067154 , 3.190612 ] , [ 0.925577 , 4.631504 ] , [ 0.717733 , 4.295890 ] , [ 0.015371 , 3.085028 ] , [ 0.067732 , 3.176513 ] , [ 0.427810 , 3.816464 ] , [ 0.995731 , 4.550095 ] , [ 0.738336 , 4.256571 ] , [ 0.981083 , 4.560815 ] , [ 0.247809 , 3.476346 ] , [ 0.648270 , 4.119688 ] , [ 0.731209 , 4.282233 ] , [ 0.236833 , 3.486582 ] , [ 0.969788 , 4.655492 ] , [ 0.335070 , 3.448080 ] , [ 0.040486 , 3.167440 ] , [ 0.212575 , 3.364266 ] , [ 0.617218 , 3.993482 ] , [ 0.541196 , 3.891471 ] , [ 0.526171 , 3.929515 ] , [ 0.378887 , 3.526170 ] , [ 0.033859 , 3.156393 ] , [ 0.132791 , 3.110301 ] , [ 0.138306 , 3.149813 ] ] # 生成X和y矩阵 dataMat = np . array ( data ) # X = dataMat[:,0:1 ]    # 变量x X = dataMat [: , 0 : 1 ] # 变量x y = dataMat [: , 1 ] # 变量y X_train , X_test , y_train , y_test = train_test_split ( X , y , train_size = 0.8 ) # model = Ridge(alpha=0.5 ) model = RidgeCV ( alphas = [ 0.1 , 1.0 , 10.0 ] ) # 通过RidgeCV可以设置多个参数值，算法使用交叉验证获取最佳参数值 model . fit ( X_train , y_train ) # 线性回归建模 
+ # print('系数矩阵:\n',model.coef _ ) 
+ # print('线性回归模型:\n',model ) 
+ # print('交叉验证最佳alpha值',model.alpha _ )   # 只有在使用RidgeCV算法时才有效 
+ # 使用模型预测 y_predicted = model . predict ( X_test ) plt . scatter ( X_train , y_train , marker = ' o ' , color = ' green ' , label = ' 训练数据 ' ) # 绘制散点图 参数：x横轴 y纵轴 plt . scatter ( X_test , y_predicted , marker = ' * ' , color = ' blue ' , label = ' 测试数据 ' ) plt . legend ( loc = 2 , prop = myfont ) plt . plot ( X_test , y_predicted , c = ' r ' ) # 绘制x轴和y轴坐标 plt . xlabel ( " x " ) plt . ylabel ( " y " ) # 显示图形 plt . ( ) Grid Search Search grid hyperparameters . split data 3 sets . use validation set find optimal heperparameter . 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 sklearn.linear_model import Ridge sklearn.model_selection import GridSearchCV parameters1 = [ { ' alpha ' : [ 0.1 , 1 , 10 , 100 , 1000 ] , ' normalize ' : [ True , False ] } ] RR = Ridge ( ) # model object Grid1 = GridSearchCV ( RR , parameters1 , cv = 4 ) # hyperparameters Grid1 . fit ( x_data , y_data ) Grid1 . best_estimator _ # check cross_validation results scores = Grid1 . cv_results _ # print scores different parameters param , mean_test , mean_train zip ( scores [ ' params ' ] , scores [ ' mean_test_score ' ] , scores [ ' mean_train_score ' ] ] : print ( param , " R^2 test data : " , mean_test , " R^2 train data : " , mean_train ) Result : Final Assignment House Sales King County , USA dataset contains house sale prices King County , includes Seattle . includes homes sold 2014 2015 . d : notation house date : Date house sold price : Price prediction target bedrooms : Number Bedrooms / House bathrooms : Number bathrooms / bedrooms sqft_living : square footage home sqft_lot : square footage lot floors : Total floors ( levels ) house waterfront : House view waterfront view : viewed condition : good condition   Overall grade : overall grade given housing unit , based King County grading system sqft_above : square footage house apart basement sqft_basement : square footage basement yr_built : Built Year yr_renovated : Year house renovated zipcode : zip code lat : Latitude coordinate long : Longitude coordinate sqft_living15 : Living room area 2015(implies – renovations ) affected lotsize area sqft_lot15 : lotSize area 2015(implies – renovations ) require following libraries 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 import pandas pd import matplotlib.pyplot plt import numpy np import seaborn sns sklearn.pipeline import Pipeline sklearn.preprocessing import StandardScaler , PolynomialFeatures % matplotlib inline Import Data 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 file_name = ' https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DA0101EN/coursera/project/kc_house_data_NaN.csv ' df = pd . read_csv ( file_name ) df . head ( ) df . dtypes df . describe ( ) Data Cleaning 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 df . drop ( [ ' d ' , ' Unnamed : 0 ' ] , axis = 1 , inplace = True ) df . describe ( ) print ( " number NaN values column bedrooms : " , df [ ' bedrooms ' ] . isnull ( ) . sum ( ) ) print ( " number NaN values column bathrooms : " , df [ ' bathrooms ' ] . isnull ( ) . sum ( ) ) mean = df [ ' bedrooms ' ] . mean ( ) df [ ' bedrooms ' ] . replace ( np . nan , mean , inplace = True ) mean = df [ ' bathrooms ' ] . mean ( ) df [ ' bathrooms ' ] . replace ( np . nan , mean , inplace = True ) print ( " number NaN values column bedrooms : " , df [ ' bedrooms ' ] . isnull ( ) . sum ( ) ) print ( " number NaN values column bathrooms : " , df [ ' bathrooms ' ] . isnull ( ) . sum ( ) ) Exploratory Data Analysis 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 df [ ' floors ' ] . value_counts ( ) . to_frame ( ) mydf = df [ [ ' waterfront ' , ' price ' ] ] sns . boxplot ( x = ' waterfront ' , y = ' price ' , data = mydf ) sns . regplot ( x = ' sqft_above ' , y = ' price ' , data = df [ [ ' sqft_above ' , ' price ' ] ] ) df . corr ( ) [ ' price ' ] . sort_values ( ) Model Development 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 import matplotlib.pyplot plt sklearn.linear_model import LinearRegression #   Fit linear regression model X = df [ [ ' long ' ] ] Y = df [ ' price ' ] lm = LinearRegression ( ) lm lm . fit ( X , Y ) lm . score ( X , Y ) # Fit MLR features = [ " floors " , " waterfront " , " lat " , " bedrooms " , " sqft_basement " , " view " , " bathrooms " , " sqft_living15 " , " sqft_above " , " grade " , " sqft_living " ] Z = df [ features ] lm . fit ( Z , Y ) lm . score ( Z , Y ) # Pipeline Input = [ ( ' scale ' , StandardScaler ( ) ) , ( ' polynomial ' , PolynomialFeatures ( include_bias = False ) ) , ( ' model ' , LinearRegression ( ) ) ] pipe = Pipeline ( Input ) pipe . fit ( X , Y ) pipe . score ( X , Y ) Model Evaluation refinement 1 
+ 2 
+ 3 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 
+ 28 
+ 29 
+ 30 
+ 31 
+ 32 sklearn.model_selection import cross_val_score sklearn.model_selection import train_test_split print ( " " ) # train_test_split features = [ " floors " , " waterfront " , " lat " , " bedrooms " , " sqft_basement " , " view " , " bathrooms " , " sqft_living15 " , " sqft_above " , " grade " , " sqft_living " ] X = df [ features ] Y = df [ ' price ' ] x_train , x_test , y_train , y_test = train_test_split ( X , Y , test_size = 0.15 , random_state = 1 ) print ( " number test samples : " , x_test . shape [ 0 ] ) print ( " number training samples : " , x_train . shape [ 0 ] ) # Ridge regression sklearn.linear_model import Ridge RR = Ridge ( alpha = 0.1 ) RR . fit ( x_train , y_train ) RR . score ( x_test , y_test ) # Use polynomial transform sklearn.preprocessing import PolynomialFeatures pr = PolynomialFeatures ( degree = 2 ) x_train_pr = pr . fit_transform ( x_train ) # default , include bias x_test_pr = pr . fit_transform ( x_test ) RR2 = Ridge ( alpha = 0.1 ) RR2 . fit ( x_train_pr , y_train ) RR2 . score ( x_test_pr , y_test ) Tags : data_science , python Categories : IBM_certificate Updated : March 3 , 2020 Twitter Facebook LinkedIn Previous Comments Enjoy Time - varing models estimating Value - - Risk(vars ) 13 minute read Modeling volatility crucial asset pricing . Empirical evidence indicates volatility time - varying . , exhibits time - dependence vol ... Quantitative Trading - 1 . Introduction 13 minute read Based notes MFIN 7037 Quantitative Trading HKU . Macroeconomics , Economic Principles Real World - 2 11 minute read Notes Power Macroeconomics : Economic Principles Real World coursera . Macroeconomics , Economic Principles Real World - 1 9 minute read Notes Power Macroeconomics : Economic Principles Real World coursera . Enter search term ... Feed © 2025 Ben Y. Chen . Powered Jekyll .

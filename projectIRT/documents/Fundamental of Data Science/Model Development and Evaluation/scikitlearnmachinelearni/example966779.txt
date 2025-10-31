@@ -1,0 +1,402 @@
+3.6 . scikit - learn : machine learning Python — Scipy lecture notes Navigation previous | Scipy lecture notes » 3 . Packages applications » Collapse document compact view Edit Improve page : Edit Github . 3.6 . scikit - learn : machine learning Python ¶ Authors : Gael Varoquaux Prerequisites numpy scipy matplotlib ( optional ) ipython ( enhancements come handy ) Acknowledgements chapter adapted tutorial given Gaël 
+ Varoquaux , Jake Vanderplas , Olivier Grisel . Data science Python Statistics Python chapter interest 
+ readers looking machine learning . documentation scikit - learn 
+ complete didactic . Chapters contents Introduction : problem settings Basic principles machine learning scikit - learn Supervised Learning : Classification Handwritten Digits Supervised Learning : Regression Housing Data Measuring prediction performance Unsupervised Learning : Dimensionality Reduction Visualization eigenfaces example : chaining PCA SVMs eigenfaces example : chaining PCA SVMs Parameter selection , Validation , Testing Examples scikit - learn chapter 3.6.1 . Introduction : problem settings ¶ 3.6.1.1 . machine learning ? ¶ Tip Machine Learning building programs tunable 
+ parameters adjusted automatically improve 
+ behavior adapting previously seen data . Machine Learning considered subfield Artificial 
+ Intelligence algorithms seen building blocks 
+ computers learn behave intelligently generalizing storing retrieving data items 
+ like database system . classification problem look simple machine learning tasks . 
+ classification task : figure shows collection 
+ - dimensional data , colored according different class labels . 
+ classification algorithm draw dividing boundary 
+ clusters points : drawing separating line , learned model generalize new data : drop point 
+ plane unlabeled , algorithm predict 
+ blue red point . regression problem simple task look regression task : simple 
+ best - fit line set data . , example fitting model data , focus 
+ model generalizations new data . model 
+ learned training data , predict 
+ result test data : , given x - value , model 
+ allow predict y value . 3.6.1.2 . Data scikit - learn ¶ data matrix ¶ Machine learning algorithms implemented scikit - learn expect data 
+ stored - dimensional array matrix . arrays 
+ numpy arrays , cases scipy.sparse matrices . 
+ size array expected [ n_samples , n_features ] n_samples : number samples : sample item 
+ process ( e.g. classify ) . sample document , picture , 
+ sound , video , astronomical object , row database CSV 
+ file , describe fixed set quantitative 
+ traits . n_features : number features distinct traits 
+ describe item quantitative manner . Features 
+ generally real - valued , boolean discrete - valued 
+ cases . Tip number features fixed advance . 
+ high dimensional ( e.g. millions features ) 
+ zeros given sample . case scipy.sparse matrices useful , memory - efficient 
+ numpy arrays . Simple Example : Iris Dataset ¶ application problem ¶ example simple dataset , let look 
+ iris data stored scikit - learn . Suppose want recognize species 
+ irises . data consists measurements 
+ different species irises : Setosa Iris Versicolor Iris Virginica Iris Quick Question : want design algorithm recognize iris species , 
+ data ? Remember : need 2D array size [ n_samples x n_features ] . n_samples refer ? n_features refer ? Remember fixed number features 
+ sample , feature number similar kind quantity 
+ sample . Loading Iris Data Scikit - learn ¶ Scikit - learn straightforward set data iris 
+ species . data consist following : Features Iris dataset : sepal length ( cm ) sepal width ( cm ) petal length ( cm ) petal width ( cm ) Target classes predict : Setosa Versicolour Virginica scikit - learn embeds copy iris CSV file 
+ function load numpy arrays : > > > sklearn.datasets import load_iris > > > iris = load_iris ( ) Note Import sklearn Note scikit - learn imported sklearn features sample flower stored data attribute 
+ dataset : > > > print ( iris . data . shape ) ( 150 , 4 ) > > > n_samples , n_features = iris . data . shape > > > print ( n_samples ) 150 > > > print ( n_features ) 4 > > > print ( iris . data [ 0 ] ) [ 5.1   3.5   1.4   0.2 ] information class sample stored target attribute dataset : > > > print ( iris . target . shape ) ( 150 , ) > > > print ( iris . target ) [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 ] names classes stored attribute , target_names : > > > print ( iris . target_names ) [ ' setosa ' ' versicolor ' ' virginica ' ] data - dimensional , visualize 
+ dimensions time scatter plot : Exercise : choose 2 features find plot easier 
+ seperate different classes irises ? Hint : click figure code generates , 
+ modify code . 3.6.2 . Basic principles machine learning scikit - learn ¶ 3.6.2.1 . Introducing scikit - learn estimator object ¶ algorithm exposed scikit - learn ‘ ’ Estimator ’’ object . 
+ instance linear regression : sklearn.linear_model . LinearRegression > > > sklearn.linear_model import LinearRegression Estimator parameters : parameters estimator set 
+ instantiated : > > > model = LinearRegression ( n_jobs = 1 , normalize = True ) > > > print ( model . normalize ) True > > > print ( model ) LinearRegression(n_jobs=1 , normalize = True ) Fitting data ¶ Let create simple data numpy : > > > import numpy np > > > x = np . array ( [ 0 , 1 , 2 ] ) > > > y = np . array ( [ 0 , 1 , 2 ] ) > > > X = x [: , np . newaxis ] # input data sklearn 2D : ( samples = = 3 x features = = 1 ) > > > X array([[0 ] , [ 1 ] , [ 2 ] ] ) > > > model . fit ( X , y ) LinearRegression(n_jobs=1 , normalize = True ) Estimated parameters : data fitted estimator , 
+ parameters estimated data hand . estimated 
+ parameters attributes estimator object ending 
+ underscore : > > > model . coef _ array([1 . ] ) 3.6.2.2 . Supervised Learning : Classification regression ¶ Supervised Learning , dataset consisting 
+ features labels . task construct estimator able 
+ predict label object given set features . 
+ relatively simple example predicting species iris given set 
+ measurements flower . relatively simple task . 
+ complicated examples : given multicolor image object telescope , determine 
+ object star , quasar , galaxy . given photograph person , identify person photo . given list movies person watched personal rating 
+ movie , recommend list movies like ( - called recommender systems : famous example Netflix 
+ Prize ) . Tip tasks common unknown 
+ quantities associated object needs determined 
+ observed quantities . Supervised learning broken categories , classification regression . classification , label 
+ discrete , regression , label continuous . example , 
+ astronomy , task determining object star , 
+ galaxy , quasar classification problem : label 
+ distinct categories . hand , wish estimate 
+ age object based observations : regression 
+ problem , label ( age ) continuous quantity . Classification : K nearest neighbors ( kNN ) simplest 
+ learning strategies : given new , unknown observation , look 
+ reference database ones closest features assign 
+ predominant class . Let try iris classification problem : sklearn import neighbors , datasets iris = datasets . load_iris ( ) X , y = iris . data , iris . target knn = neighbors . KNeighborsClassifier ( n_neighbors = 1 ) knn . fit ( X , y ) # kind iris 3 cm x 5 cm sepal 4 cm x 2 cm petal ? print ( iris . target_names [ knn . predict ( [ [ 3 , 5 , 4 , 2 ] ] ) ] ) plot sepal space prediction KNN Regression : simplest possible regression setting linear 
+ regression : sklearn.linear_model import LinearRegression # x 0 30 x = 30 * np . random . random ( ( 20 , 1 ) ) # y = a*x + b noise y = 0.5 * x + 1.0 + np . random . normal ( size = x . shape ) # create linear regression model model = LinearRegression ( ) model . fit ( x , y ) # predict y data x_new = np . linspace ( 0 , 30 , 100 ) y_new = model . predict ( x_new [: , np . newaxis ] ) plot simple linear regression . 3.6.2.3 . recap Scikit - learn estimator interface ¶ Scikit - learn strives uniform interface methods , 
+ examples . Given scikit - learn estimator object named model , following methods available : Estimators : model.fit ( ) : fit training data . supervised learning 
+ applications , accepts arguments : data X 
+ labels y ( e.g. model.fit(X , y ) ) . unsupervised learning 
+ applications , accepts single argument , data X ( e.g. model.fit(X ) ) . supervised estimators : model.predict ( ) : given trained model , predict label 
+ new set data . method accepts argument , new data X_new ( e.g. model.predict(X_new ) ) , returns learned 
+ label object array . model.predict_proba ( ) : classification problems , 
+ estimators provide method , returns probability 
+ new observation categorical label . case , 
+ label highest probability returned model.predict ( ) . model.score ( ) : classification regression problems , 
+ ( ? ) estimators implement score method . Scores 0 
+ 1 , larger score indicating better fit . unsupervised estimators : model.transform ( ) : given unsupervised model , transform new 
+ data new basis . accepts argument X_new , 
+ returns new representation data based 
+ unsupervised model . model.fit_transform ( ) : estimators implement method , 
+ efficiently performs fit transform 
+ input data . 3.6.2.4 . Regularization : necessary ¶ Prefering simpler models ¶ Train errors Suppose 1 - nearest neighbor estimator . 
+ errors expect train set ? Train set error good measurement prediction performance . 
+ need leave test set . general , accept errors train set . example regularization core idea regularization 
+ going prefer models simpler , certain 
+ definition ‘ ’ simpler ’’ , lead errors train 
+ set . example , let generate 9th order polynomial , noise : , let fit 4th order 9th order polynomial data . naked eyes , model prefer , 4th order , 
+ 9th order ? Let look ground truth : Tip Regularization ubiquitous machine learning . scikit - learn 
+ estimators parameter tune regularization . 
+ instance , k - NN , ‘ k ’ , number nearest neighbors 
+ decision . k=1 amounts regularization : 0 error 
+ training set , large k push smoother decision 
+ boundaries feature space . Simple versus complex models classification ¶ linear separation non - linear separation Tip classification models , decision boundary , separates 
+ class expresses complexity model . instance , linear 
+ model , makes decision based linear combination 
+ features , complex non - linear . 3.6.3 . Supervised Learning : Classification Handwritten Digits ¶ 3.6.3.1 . nature data ¶ Code notebook Python code Jupyter notebook section found section apply scikit - learn classification 
+ handwritten digits . bit iris classification 
+ saw : discuss metrics 
+ evaluating effectiveness classification model . > > > sklearn.datasets import load_digits > > > digits = load_digits ( ) Let visualize data remind looking ( click 
+ figure code ): # plot digits : image 8x8 pixels range ( 64 ): ax = fig . add_subplot ( 8 , 8 , + 1 , xticks = [ ] , yticks = [ ] ) ax . imshow ( digits . images [ ] , cmap = plt . cm . binary , interpolation = ' nearest ' ) 3.6.3.2 . Visualizing Data principal components ¶ good - step problems visualize data Dimensionality Reduction technique . start 
+ straightforward , Principal Component Analysis ( PCA ) . PCA seeks orthogonal linear combinations features 
+ greatest variance , , help good idea 
+ structure data set . > > > sklearn.decomposition import PCA > > > pca = PCA ( n_components = 2 ) > > > proj = pca . fit_transform ( digits . data ) > > > plt . scatter ( proj [: , 0 ] , proj [: , 1 ] , c = digits . target ) < matplotlib.collections . PathCollection object ... > > > > plt . colorbar ( ) < matplotlib.colorbar . Colorbar object ... > Question Given projections data , numbers think 
+ classifier trouble distinguishing ? 3.6.3.3 . Gaussian Naive Bayes Classification ¶ classification problems , nice simple , fast 
+ method provide quick baseline classification . simple 
+ fast method sufficient , waste CPU cycles 
+ complex models . , use results simple method 
+ clues data . good method mind Gaussian Naive Bayes 
+ ( sklearn.naive_bayes . GaussianNB ) . Old scikit - learn versions train_test_split ( ) imported sklearn.cross_validation Tip Gaussian Naive Bayes fits Gaussian distribution training label 
+ independantly feature , uses quickly rough 
+ classification . generally sufficiently accurate real - world 
+ data , perform surprisingly , instance text data . > > > sklearn.naive_bayes import GaussianNB > > > sklearn.model_selection import train_test_split > > > # split data training validation sets > > > X_train , X_test , y_train , y_test = train_test_split ( digits . data , digits . target ) > > > # train model > > > clf = GaussianNB ( ) > > > clf . fit ( X_train , y_train ) GaussianNB ( ) > > > # use model predict labels test data > > > predicted = clf . predict ( X_test ) > > > expected = y_test > > > print ( predicted ) [ 1 7 7 7 8 2 8 0 4 8 7 7 0 8 2 3 5 8 5 3 7 9 6 2 8 2 2 7 3 5 ... ] > > > print ( expected ) [ 1 0 4 7 8 2 2 0 4 3 7 7 0 8 2 3 4 8 5 3 7 9 6 3 8 2 2 9 3 5 ... ] , plot digits predicted labels idea 
+ classification working . Question split data training validation sets ? 3.6.3.4 . Quantitative Measurement Performance ¶ like measure performance estimator having 
+ resort plotting examples . simple method simply compare 
+ number matches : > > > matches = ( predicted = = expected ) > > > print ( matches . sum ( ) ) 367 > > > print ( len ( matches ) ) 450 > > > matches . sum ( ) / float ( len ( matches ) ) 0.81555555555555559 80 % 450 predictions match input . 
+ sophisticated metrics judge 
+ performance classifier : available sklearn.metrics submodule . useful metrics classification_report , 
+ combines measures prints table results : > > > sklearn import metrics > > > print ( metrics . classification_report ( expected , predicted ) ) precision     recall   f1 - score    support 0        1.00       0.91       0.95         46 1        0.76       0.64       0.69         44 2        0.85       0.62       0.72         47 3        0.98       0.82       0.89         49 4        0.89       0.86       0.88         37 5        0.97       0.93       0.95         41 6        1.00       0.98       0.99         44 7        0.73       1.00       0.84         45 8        0.50       0.90       0.64         49 9        0.93       0.54       0.68         48 accuracy                            0.82        450 macro avg        0.86       0.82       0.82        450 weighted avg        0.86       0.82       0.82        450 enlightening metric sort multi - label classification 
+ confusion matrix : helps visualize labels 
+ interchanged classification errors : > > > print ( metrics . confusion_matrix ( expected , predicted ) ) [ [ 42   0   0   0   3   0   0   1   0   0 ] [ 0 28   0   0   0   0   0   1 13   2 ] [ 0   3 29   0   0   0   0   0 15   0 ] [ 0   0   2 40   0   0   0   2   5   0 ] [ 0   0   1   0 32   1   0   3   0   0 ] [ 0   0   0   0   0 38   0   2   1   0 ] [ 0   0   1   0   0   0 43   0   0   0 ] [ 0   0   0   0   0   0   0 45   0   0 ] [ 0   3   1   0   0   0   0   1 44   0 ] [ 0   3   0   1   1   0   0   7 10 26 ] ] particular , numbers 1 , 2 , 3 , 9 
+ labeled 8 . 3.6.4 . Supervised Learning : Regression Housing Data ¶ short example regression problem : learning 
+ continuous value set features . 3.6.4.1 . quick look data ¶ Code notebook Python code Jupyter notebook section found use California house prices set , available scikit - learn . 
+ records measurements 8 attributes housing markets 
+ California , median price . question : predict 
+ price new market given attributes ? : > > > sklearn.datasets import fetch_california_housing > > > data = fetch_california_housing ( as_frame = True ) > > > print ( data . data . shape ) ( 20640 , 8) > > > print ( data . target . shape ) ( 20640 , ) 20000 data points . DESCR variable long description dataset : > > > print ( data . DESCR ) .. _ california_housing_dataset : California Housing dataset -------------------------- * * Data Set Characteristics :* * : Number Instances : 20640 : Number Attributes : 8 numeric , predictive attributes target : Attribute Information : - MedInc         median income block - HouseAge       median house age block - AveRooms       average number rooms - AveBedrms      average number bedrooms - Population     block population - AveOccup       average house occupancy - Latitude       house block latitude - Longitude      house block longitude : Missing Attribute Values : dataset obtained StatLib repository . http://lib.stat.cmu.edu/datasets/ target variable median house value California districts . dataset derived 1990 U.S. census , row census block group . block group smallest geographical unit U.S. Census Bureau publishes sample data ( block group typically population 600 3,000 people ) . downloaded / loaded : func:`sklearn.datasets.fetch_california_housing ` function . .. topic : : References - Pace , R. Kelley Ronald Barry , Sparse Spatial Autoregressions , Statistics Probability Letters , 33 ( 1997 ) 291 - 297 helps quickly visualize pieces data histograms , 
+ scatter plots , plot types . matplotlib , let 
+ histogram target values : median price neighborhood : > > > plt . hist ( data . target ) ( array ( [ ... Let quick look features relevant 
+ problem : > > > index , feature_name enumerate ( data . feature_names ): ... plt . figure ( ) ... plt . scatter ( data . data [ feature_name ] , data . target ) < Figure size ... manual version technique called feature selection . Tip , Machine Learning useful use feature selection 
+ decide features useful particular problem . 
+ Automated methods exist quantify sort exercise choosing 
+ informative features . 3.6.4.2 . Predicting Home Prices : Simple Linear Regression ¶ use scikit - learn perform simple linear regression 
+ housing data . possibilities regressors use . 
+ particularly simple LinearRegression : basically 
+ wrapper ordinary squares calculation . > > > sklearn.model_selection import train_test_split > > > X_train , X_test , y_train , y_test = train_test_split ( data . data , data . target ) > > > sklearn.linear_model import LinearRegression > > > clf = LinearRegression ( ) > > > clf . fit ( X_train , y_train ) LinearRegression ( ) > > > predicted = clf . predict ( X_test ) > > > expected = y_test > > > print ( " RMS : % s " % np . sqrt ( np . mean ( ( predicted - expected ) * * 2 ) ) ) RMS : 0.7 ... plot error : expected function predicted : > > > plt . scatter ( expected , predicted ) < matplotlib.collections . PathCollection object ... > Tip prediction correlates true price , 
+ clearly biases . imagine evaluating performance 
+ regressor , , computing RMS residuals true 
+ predicted price . subtleties , , 
+ cover later section . Exercise : Gradient Boosting Tree Regression types regressors available scikit - learn : 
+ try powerful . Use GradientBoostingRegressor class fit housing data . hint copy paste code , replacing LinearRegression GradientBoostingRegressor : sklearn.ensemble import GradientBoostingRegressor # Instantiate model , fit results , scatter vs. Solution solution found code chapter 3.6.5 . Measuring prediction performance ¶ 3.6.5.1 . quick test K - neighbors classifier ¶ continue look digits data , switch 
+ K - Neighbors classifier .   K - neighbors classifier instance - based 
+ classifier .   K - neighbors classifier predicts label 
+ unknown point based labels K nearest points 
+ parameter space . > > > # data > > > sklearn.datasets import load_digits > > > digits = load_digits ( ) > > > X = digits . data > > > y = digits . target > > > # Instantiate train classifier > > > sklearn.neighbors import KNeighborsClassifier > > > clf = KNeighborsClassifier ( n_neighbors = 1 ) > > > clf . fit ( X , y ) KNeighborsClassifier ( ... ) > > > # Check results metrics > > > sklearn import metrics > > > y_pred = clf . predict ( X ) > > > print ( metrics . confusion_matrix ( y_pred , y ) ) [ [ 178    0    0    0    0    0    0    0    0    0 ] [   0 182    0    0    0    0    0    0    0    0 ] [   0    0 177    0    0    0    0    0    0    0 ] [   0    0    0 183    0    0    0    0    0    0 ] [   0    0    0    0 181    0    0    0    0    0 ] [   0    0    0    0    0 182    0    0    0    0 ] [   0    0    0    0    0    0 181    0    0    0 ] [   0    0    0    0    0    0    0 179    0    0 ] [   0    0    0    0    0    0    0    0 174    0 ] [   0    0    0    0    0    0    0    0    0 180 ] ] Apparently , found perfect classifier !   misleading 
+ reasons saw : classifier essentially “ memorizes ” 
+ samples seen .   test algorithm 
+ , need try samples seen . problem occurs regression models . following 
+ fit instance - based model named “ decision tree ” California 
+ Housing price dataset introduced previously : > > > sklearn.datasets import fetch_california_housing > > > sklearn.tree import DecisionTreeRegressor > > > data = fetch_california_housing ( as_frame = True ) > > > clf = DecisionTreeRegressor ( ) . fit ( data . data , data . target ) > > > predicted = clf . predict ( data . data ) > > > expected = data . target > > > plt . scatter ( expected , predicted ) < matplotlib.collections . PathCollection object ... > > > > plt . plot ( [ 0 , 50 ] , [ 0 , 50 ] , ' --k ' ) [ < matplotlib.lines . Line2D object ... ] predictions seemingly perfect model able 
+ perfectly memorize training set . Warning Performance test set Performance test set measure overfit ( described ) 3.6.5.2 . correct approach : validation set ¶ Learning parameters prediction function testing 
+ data methodological mistake : model repeat 
+ labels samples seen perfect score 
+ fail predict useful - unseen data . avoid - fitting , define different sets : training set X_train , y_train learning 
+ parameters predictive model testing set X_test , y_test evaluating fitted 
+ predictive model scikit - learn random split quickly computed train_test_split ( ) function : > > > sklearn import model_selection > > > X = digits . data > > > y = digits . target > > > X_train , X_test , y_train , y_test = model_selection . train_test_split ( X , y , ... test_size = 0.25 , random_state = 0 ) > > > print ( " % r , % r , % r " % ( X . shape , X_train . shape , X_test . shape ) ) ( 1797 , 64 ) , ( 1347 , 64 ) , ( 450 , 64 ) train training data , test testing data : > > > clf = KNeighborsClassifier ( n_neighbors = 1 ) . fit ( X_train , y_train ) > > > y_pred = clf . predict ( X_test ) > > > print ( metrics . confusion_matrix ( y_test , y_pred ) ) [ [ 37   0   0   0   0   0   0   0   0   0 ] [ 0 43   0   0   0   0   0   0   0   0 ] [ 0   0 43   1   0   0   0   0   0   0 ] [ 0   0   0 45   0   0   0   0   0   0 ] [ 0   0   0   0 38   0   0   0   0   0 ] [ 0   0   0   0   0 47   0   0   0   1 ] [ 0   0   0   0   0   0 52   0   0   0 ] [ 0   0   0   0   0   0   0 48   0   0 ] [ 0   0   0   0   0   0   0   0 48   0 ] [ 0   0   0   1   0   1   0   0   0 45 ] ] > > > print ( metrics . classification_report ( y_test , y_pred ) ) precision     recall   f1 - score    support 0        1.00       1.00       1.00         37 1        1.00       1.00       1.00         43 2        1.00       0.98       0.99         44 3        0.96       1.00       0.98         45 4        1.00       1.00       1.00         38 5        0.98       0.98       0.98         48 6        1.00       1.00       1.00         52 7        1.00       1.00       1.00         48 8        1.00       1.00       1.00         48 9        0.98       0.96       0.97         47 accuracy                            0.99        450 macro avg        0.99       0.99       0.99        450 weighted avg        0.99       0.99       0.99        450 averaged f1 - score convenient measure 
+ overall performance algorithm .   appears row 
+ classification report ; accessed directly : > > > metrics . f1_score ( y_test , y_pred , average = " macro " ) 0.991367 ... - fitting saw previously quantified computing 
+ f1 - score training data : > > > metrics . f1_score ( y_train , clf . predict ( X_train ) , average = " macro " ) 1.0 Note Regression metrics case regression models , 
+ need use different metrics , explained variance . 3.6.5.3 . Model Selection Validation ¶ Tip applied Gaussian Naives , support vectors machines , 
+ K - nearest neighbors classifiers digits dataset . 
+ validation tools place , ask quantitatively 
+ estimators works best dataset . default hyper - parameters estimator , gives 
+ best f1 score validation set ?   Recall hyperparameters 
+ parameters set instantiate classifier : 
+ example , n_neighbors clf = KNeighborsClassifier(n_neighbors=1 ) > > > sklearn.naive_bayes import GaussianNB > > > sklearn.neighbors import KNeighborsClassifier > > > sklearn.svm import LinearSVC > > > X = digits . data > > > y = digits . target > > > X_train , X_test , y_train , y_test = model_selection . train_test_split ( X , y , ... test_size = 0.25 , random_state = 0 ) > > > Model [ GaussianNB , KNeighborsClassifier , LinearSVC ] : ... clf = Model ( ) . fit ( X_train , y_train ) ... y_pred = clf . predict ( X_test ) ... print ( ' % s : % s ' % ... ( Model . _ _ _ _ , metrics . f1_score ( y_test , y_pred , average = " macro " ) ) ) GaussianNB : 0.8 ... KNeighborsClassifier : 0.9 ... LinearSVC : 0.9 ... classifier , value hyperparameters gives best 
+ results digits data ?   LinearSVC , use loss='l2 ' loss='l1 ' .   KNeighborsClassifier use n_neighbors 1 10 . Note GaussianNB adjustable 
+ hyperparameters . LinearSVC ( loss = ' l1 ' ): 0.930570687535 LinearSVC ( loss = ' l2 ' ): 0.933068826918 ------------------- KNeighbors ( n_neighbors = 1 ): 0.991367521884 KNeighbors ( n_neighbors = 2 ): 0.984844206884 KNeighbors ( n_neighbors = 3 ): 0.986775344954 KNeighbors ( n_neighbors = 4 ): 0.980371905382 KNeighbors ( n_neighbors = 5 ): 0.980456280495 KNeighbors ( n_neighbors = 6 ): 0.975792419414 KNeighbors ( n_neighbors = 7 ): 0.978064579214 KNeighbors ( n_neighbors = 8 ): 0.978064579214 KNeighbors ( n_neighbors = 9 ): 0.978064579214 KNeighbors ( n_neighbors = 10 ): 0.975555089773 Solution : code source 3.6.5.4 . Cross - validation ¶ Cross - validation consists repetively splitting data pairs 
+ train test sets , called ‘ folds ’ . Scikit - learn comes function 
+ automatically compute score folds . KFold k=5 . > > > clf = KNeighborsClassifier ( ) > > > sklearn.model_selection import cross_val_score > > > cross_val_score ( clf , X , y , cv = 5 ) array([0.947 ... ,   0.955 ... ,   0.966 ... ,   0.980 ... ,   0.963 ... ] ) use different splitting strategies , random splitting : > > > sklearn.model_selection import ShuffleSplit > > > cv = ShuffleSplit ( n_splits = 5 ) > > > cross_val_score ( clf , X , y , cv = cv ) array ( [ ... ] ) Tip exists different cross - validation strategies scikit - learn . useful account non iid 
+ datasets . 3.6.5.5 . Hyperparameter optimization cross - validation ¶ Consider regularized linear models , Ridge Regression , 
+ uses l2 regularlization , Lasso Regression , uses l1 
+ regularization . Choosing regularization parameter important . Let set parameters Diabetes dataset , simple regression 
+ problem . diabetes data consists 10 physiological variables ( age , 
+ sex , weight , blood pressure ) measure 442 patients , indication 
+ disease progression year : > > > sklearn.datasets import load_diabetes > > > data = load_diabetes ( ) > > > X , y = data . data , data . target > > > print ( X . shape ) ( 442 , 10 ) default hyper - parameters : compute cross - validation score : > > > sklearn.linear_model import Ridge , Lasso > > > Model [ Ridge , Lasso ] : ... model = Model ( ) ... print ( ' % s : % s ' % ( Model . _ _ _ _ , cross_val_score ( model , X , y ) . mean ( ) ) ) Ridge : 0.4 ... Lasso : 0.3 ... Basic Hyperparameter Optimization ¶ compute cross - validation score function alpha , 
+ strength regularization Lasso Ridge . choose 20 values alpha 
+ 0.0001 1 : > > > alphas = np . logspace ( - 3 , - 1 , 30 ) > > > Model [ Lasso , Ridge ] : ... scores = [ cross_val_score ( Model ( alpha ) , X , y , cv = 3 ) . mean ( ) ... alpha alphas ] ... plt . plot ( alphas , scores , label = Model . _ _ _ _ ) [ < matplotlib.lines . Line2D object ... Question trust results actually useful ? Automatically Performing Grid Search ¶ sklearn.grid_search . GridSearchCV constructed 
+ estimator , dictionary parameter values searched . 
+ find optimal parameters way : > > > sklearn.model_selection import GridSearchCV > > > Model [ Ridge , Lasso ] : ... gscv = GridSearchCV ( Model ( ) , dict ( alpha = alphas ) , cv = 3 ) . fit ( X , y ) ... print ( ' % s : % s ' % ( Model . _ _ _ _ , gscv . best_params _ ) ) Ridge : { ' alpha ' : 0.062101694189156162 } Lasso : { ' alpha ' : 0.01268961003167922 } Built - Hyperparameter Search ¶ models scikit - learn , cross - validation performed 
+ efficiently large datasets .   case , cross - validated 
+ version particular model included .   cross - validated 
+ versions Ridge Lasso RidgeCV LassoCV , respectively .   Parameter search 
+ estimators performed follows : > > > sklearn.linear_model import RidgeCV , LassoCV > > > Model [ RidgeCV , LassoCV ] : ... model = Model ( alphas = alphas , cv = 3 ) . fit ( X , y ) ... print ( ' % s : % s ' % ( Model . _ _ _ _ , model . alpha _ ) ) RidgeCV : 0.0621016941892 LassoCV : 0.0126896100317 results match returned GridSearchCV Nested cross - validation ¶ measure performance estimators ? data 
+ set hyperparameters , need test actually new data . 
+ running cross_val_score ( ) CV objects . 2 cross - validation loops going , 
+ called ‘ nested cross validation ’ : Model [ RidgeCV , LassoCV ] : scores = cross_val_score ( Model ( alphas = alphas , cv = 3 ) , X , y , cv = 3 ) print ( Model . _ _ _ _ , np . mean ( scores ) ) Note Note results match best results curves 
+ , LassoCV 
+ - perform RidgeCV . reason 
+ setting hyper - parameter harder Lasso , 
+ estimation error hyper - parameter larger . 3.6.6 . Unsupervised Learning : Dimensionality Reduction Visualization ¶ Unsupervised learning applied X y : data labels . 
+ typical use case find hidden structure data . 3.6.6.1 . Dimensionality Reduction : PCA ¶ Dimensionality reduction derives set new artificial features smaller 
+ original feature set . use Principal Component 
+ Analysis ( PCA ) , 
+ dimensionality reduction strives retain variance 
+ original data . use sklearn.decomposition . PCA 
+ iris dataset : > > > X = iris . data > > > y = iris . target Tip PCA computes linear combinations 
+ original features truncated Singular Value Decomposition 
+ matrix X , project data base singular 
+ vectors . > > > sklearn.decomposition import PCA > > > pca = PCA ( n_components = 2 , whiten = True ) > > > pca . fit ( X ) PCA(n_components=2 , ... ) fitted , PCA exposes singular 
+ vectors components _ attribute : > > > pca . components _ array ( [ [ 0.3 ... , -0.08 ... ,   0.85 ... ,   0.3 ... ] , [ 0.6 ... ,   0.7 ... , -0.1 ... , -0.07 ... ] ] ) attributes available : > > > pca . explained_variance_ratio _ array([0.92 ... ,   0.053 ... ] ) Let project iris dataset dimensions : : > > > X_pca = pca . transform ( X ) > > > X_pca . shape ( 150 , 2 ) PCA normalizes whitens data , means data 
+ centered components unit variance : > > > X_pca . mean ( axis = 0 ) array([ ... e-15 ,   ... e-15 ] ) > > > X_pca . std ( axis = 0 , ddof = 1 ) array([1 . ,   1 . ] ) Furthermore , samples components longer carry linear 
+ correlation : > > > np . corrcoef ( X_pca . T ) array([[1.00000000e+00 ,    0.0 ] , [ 0.0 ,    1.00000000e+00 ] ] ) number retained components 2 3 , PCA useful visualize 
+ dataset : > > > target_ids = range ( len ( iris . target_names ) ) > > > , c , label zip ( target_ids , ' rgbcmykw ' , iris . target_names ): ... plt . scatter ( X_pca [ y = = , 0 ] , X_pca [ y = = , 1 ] , ... c = c , label = label ) < matplotlib.collections . PathCollection ... Tip Note projection determined information 
+ labels ( represented colors ): sense 
+ learning unsupervised . , 
+ projection gives insight distribution different 
+ flowers parameter space : notably , iris setosa 
+ distinct species . 3.6.6.2 . Visualization non - linear embedding : tSNE ¶ visualization , complex embeddings useful ( statistical 
+ analysis , harder control ) . sklearn.manifold . TSNE 
+ powerful manifold learning method . apply digits dataset , digits vectors dimension 8 * 8 = 64 . Embedding 
+ 2D enables visualization : > > > # 500 data points : hard 1500 points > > > X = digits . data [: 500 ] > > > y = digits . target [: 500 ] > > > # Fit transform TSNE > > > sklearn.manifold import TSNE > > > tsne = TSNE ( n_components = 2 , random_state = 0 ) > > > X_2d = tsne . fit_transform ( X ) > > > # Visualize data > > > plt . scatter ( X_2d [: , 0 ] , X_2d [: , 1 ] , c = y ) < matplotlib.collections . PathCollection object ... > fit_transform TSNE applied new data , 
+ need use fit_transform method . sklearn.manifold . TSNE separates different classes 
+ digits eventhough access class information . Exercise : dimension reduction digits sklearn.manifold non - linear embeddings . Try 
+ digits dataset . judge quality 
+ knowing labels y ? > > > sklearn.datasets import load_digits > > > digits = load_digits ( ) > > > # ... 3.6.7 . eigenfaces example : chaining PCA SVMs ¶ Code notebook Python code Jupyter notebook section found 3.6.8 . eigenfaces example : chaining PCA SVMs ¶ goal example unsupervised method 
+ supervised chained better prediction . starts 
+ didactic lengthy way things , finishes 
+ idiomatic approach pipelining scikit - learn . look simple facial recognition example . Ideally , 
+ use dataset consisting subset Labeled Faces 
+ Wild data available 
+ sklearn.datasets.fetch_lfw_people ( ) . , 
+ relatively large download ( ~200 MB ) tutorial 
+ simpler , rich dataset . Feel free explore LFW dataset . sklearn import datasets faces = datasets . fetch_olivetti_faces ( ) faces . data . shape Let visualize faces working matplotlib import pyplot plt fig = plt . figure ( figsize = ( 8 , 6 ) ) # plot images range ( 15 ): ax = fig . add_subplot ( 3 , 5 , + 1 , xticks = [ ] , yticks = [ ] ) ax . imshow ( faces . images [ ] , cmap = plt . cm . bone ) Tip Note faces localized scaled 
+ common size . important preprocessing piece facial 
+ recognition , process require large collection 
+ training data . scikit - learn , challenge 
+ gathering sufficient training data algorithm work . 
+ Fortunately , piece common . good 
+ resource OpenCV , 
+ Open Computer Vision Library . perform Support Vector classification images . 
+ typical train - test split images : sklearn.model_selection import train_test_split X_train , X_test , y_train , y_test = train_test_split ( faces . data , faces . target , random_state = 0 ) print ( X_train . shape , X_test . shape ) : ( 300 , 4096 ) ( 100 , 4096 ) 3.6.8.1 . Preprocessing : Principal Component Analysis ¶ 1850 dimensions lot SVM . use PCA reduce 1850 
+ features manageable size , maintaining information 
+ dataset . sklearn import decomposition pca = decomposition . PCA ( n_components = 150 , whiten = True ) pca . fit ( X_train ) interesting PCA computes “ mean ” face , 
+ interesting examine : plt . imshow ( pca . mean _ . reshape ( faces . images [ 0 ] . shape ) , cmap = plt . cm . bone ) principal components measure deviations mean 
+ orthogonal axes . print ( pca . components _ . shape ) : ( 150 , 4096 ) interesting visualize principal components : fig = plt . figure ( figsize = ( 16 , 6 ) ) range ( 30 ): ax = fig . add_subplot ( 3 , 10 , + 1 , xticks = [ ] , yticks = [ ] ) ax . imshow ( pca . components _ [ ] . reshape ( faces . images [ 0 ] . shape ) , cmap = plt . cm . bone ) components ( “ eigenfaces ” ) ordered importance 
+ - left - right . components 
+ primarily care lighting conditions ; remaining components 
+ pull certain identifying features : nose , eyes , eyebrows , etc . projection computed , project original training 
+ test data PCA basis : X_train_pca = pca . transform ( X_train ) X_test_pca = pca . transform ( X_test ) print ( X_train_pca . shape ) : ( 300 , 150 ) print ( X_test_pca . shape ) : ( 100 , 150 ) projected components correspond factors linear combination 
+ component images combination approaches original 
+ face . 3.6.8.2 . Learning : Support Vector Machines ¶ perform support - vector - machine classification reduced 
+ dataset : sklearn import svm clf = svm . SVC ( C = 5 . , gamma = 0.001 ) clf . fit ( X_train_pca , y_train ) Finally , evaluate classification . , 
+ plot test - cases labels learned 
+ training set : import numpy np fig = plt . figure ( figsize = ( 8 , 6 ) ) range ( 15 ): ax = fig . add_subplot ( 3 , 5 , + 1 , xticks = [ ] , yticks = [ ] ) ax . imshow ( X_test [ ] . reshape ( faces . images [ 0 ] . shape ) , cmap = plt . cm . bone ) y_pred = clf . predict ( X_test_pca [ , np . newaxis ] ) [ 0 ] color = ( ' black ' y_pred = = y_test [ ] ' red ' ) ax . set_title ( y_pred , fontsize = ' small ' , color = color ) classifier correct impressive number images given 
+ simplicity learning model ! linear classifier 150 
+ features derived pixel - level data , algorithm correctly 
+ identifies large number people images . , quantify effectiveness measures 
+ sklearn.metrics . classification 
+ report , shows precision , recall measures 
+ “ goodness ” classification : sklearn import metrics y_pred = clf . predict ( X_test_pca ) print ( metrics . classification_report ( y_test , y_pred ) ) : precision     recall   f1 - score    support 0        1.00       0.50       0.67          6 1        1.00       1.00       1.00          4 2        0.50       1.00       0.67          2 3        1.00       1.00       1.00          1 4        0.33       1.00       0.50          1 5        1.00       1.00       1.00          5 6        1.00       1.00       1.00          4 7        1.00       0.67       0.80          3 9        1.00       1.00       1.00          1 10        1.00       1.00       1.00          4 11        1.00       1.00       1.00          1 12        0.67       1.00       0.80          2 13        1.00       1.00       1.00          3 14        1.00       1.00       1.00          5 15        1.00       1.00       1.00          3 17        1.00       1.00       1.00          6 19        1.00       1.00       1.00          4 20        1.00       1.00       1.00          1 21        1.00       1.00       1.00          1 22        1.00       1.00       1.00          2 23        1.00       1.00       1.00          1 24        1.00       1.00       1.00          2 25        1.00       0.50       0.67          2 26        1.00       0.75       0.86          4 27        1.00       1.00       1.00          1 28        0.67       1.00       0.80          2 29        1.00       1.00       1.00          3 30        1.00       1.00       1.00          4 31        1.00       1.00       1.00          3 32        1.00       1.00       1.00          3 33        1.00       1.00       1.00          2 34        1.00       1.00       1.00          3 35        1.00       1.00       1.00          1 36        1.00       1.00       1.00          3 37        1.00       1.00       1.00          3 38        1.00       1.00       1.00          1 39        1.00       1.00       1.00          3 accuracy                            0.94        100 macro avg        0.95       0.96       0.94        100 weighted avg        0.97       0.94       0.94        100 interesting metric confusion matrix , indicates 
+ items mixed - . confusion matrix perfect 
+ classifier nonzero entries diagonal , zeros 
+ - diagonal : print ( metrics . confusion_matrix ( y_test , y_pred ) ) : [ [ 3 0 0 ... 0 0 0 ] [ 0 4 0 ... 0 0 0 ] [ 0 0 2 ... 0 0 0 ] ... [ 0 0 0 ... 3 0 0 ] [ 0 0 0 ... 0 1 0 ] [ 0 0 0 ... 0 0 3 ] ] 3.6.8.3 . Pipelining ¶ PCA pre - processing step applying support 
+ vector machine classifier . Plugging output estimator directly 
+ input second estimator commonly pattern ; 
+ reason scikit - learn provides Pipeline object automates 
+ process . problem - expressed pipeline 
+ follows : sklearn.pipeline import Pipeline clf = Pipeline ( [ ( ' pca ' , decomposition . PCA ( n_components = 150 , whiten = True ) ) , ( ' svm ' , svm . LinearSVC ( C = 1.0 ) ) ] ) clf . fit ( X_train , y_train ) y_pred = clf . predict ( X_test ) print ( metrics . confusion_matrix ( y_pred , y_test ) ) 3.6.9 . Parameter selection , Validation , Testing ¶ 3.6.9.1 . Hyperparameters , - fitting , - fitting ¶ section adapted Andrew Ng excellent 
+ Coursera course issues associated validation cross - validation 
+ important aspects practice machine learning . 
+ Selecting optimal model data vital , piece 
+ problem appreciated machine learning 
+ practitioners . central question : estimator underperforming , 
+ forward ? Use simpler complicated model ? Add features observed data point ? Add training samples ? answer counter - intuitive . particular , 
+ complicated model worse results . , 
+ adding training data improve results . ability 
+ determine steps improve model separates 
+ successful machine learning practitioners unsuccessful . Bias - variance trade - : illustration simple regression problem ¶ Code notebook Python code Jupyter notebook section found Let start simple 1D regression problem . 
+ help easily visualize data model , results 
+ generalize easily higher - dimensional datasets . explore simple linear regression problem , sklearn.linear_model . X = np . c _ [ .5 , 1 ] . T y = [ .5 , 1 ] X_test = np . c _ [ 0 , 2 ] . T noise , linear regression fits data perfectly sklearn import linear_model regr = linear_model . LinearRegression ( ) regr . fit ( X , y ) plt . plot ( X , y , ' o ' ) plt . plot ( X_test , regr . predict ( X_test ) ) real life situation , noise ( e.g. measurement noise ) data : np . random . seed ( 0 ) _ range ( 6 ): noisy_X = X + np . random . normal ( loc = 0 , scale = .1 , size = X . shape ) plt . plot ( noisy_X , y , ' o ' ) regr . fit ( noisy_X , y ) plt . plot ( X_test , regr . predict ( X_test ) ) , linear model captures amplifies noise 
+ data . displays lot variance . use linear estimator uses regularization , Ridge estimator . estimator 
+ regularizes coefficients shrinking zero , 
+ assumption high correlations spurious . alpha 
+ parameter controls shrinkage . regr = linear_model . Ridge ( alpha = .1 ) np . random . seed ( 0 ) _ range ( 6 ): noisy_X = X + np . random . normal ( loc = 0 , scale = .1 , size = X . shape ) plt . plot ( noisy_X , y , ' o ' ) regr . fit ( noisy_X , y ) plt . plot ( X_test , regr . predict ( X_test ) ) plt . ( ) , estimator displays variance . 
+ systematically - estimates coefficient . displays biased 
+ behavior . typical example bias / variance tradeof : non - regularized 
+ estimator biased , display lot variance . 
+ Highly - regularized models little variance , high bias . bias 
+ necessarily bad thing : matters choosing 
+ tradeoff bias variance leads best prediction 
+ performance . specific dataset sweet spot corresponding 
+ highest complexity data support , depending 
+ noise observations available . 3.6.9.2 . Visualizing Bias / Variance Tradeoff ¶ Tip Given particular dataset model ( e.g. polynomial ) , like 
+ understand bias ( underfit ) variance limits prediction , 
+ tune hyperparameter ( d , degree polynomial ) 
+ best fit . given data , let fit simple polynomial regression model 
+ varying degrees : Tip figure , fits different values d . 
+ d = 1 , data - fit . means model 
+ simplistic : straight line good fit data . 
+ case , model suffers high bias . model 
+ biased , reflected fact data 
+ poorly fit . extreme , d = 6 data - fit . 
+ means model free parameters ( 6 case ) 
+ adjusted perfectly fit training data . add 
+ new point plot , , chances far 
+ curve representing degree-6 fit . case , model 
+ suffers high variance . reason term “ high variance ” 
+ input points varied slightly , result 
+ different model . middle , d = 2 , found good mid - point . fits 
+ data fairly , suffer bias variance 
+ problems seen figures . like way 
+ quantitatively identify bias variance , optimize 
+ metaparameters ( case , polynomial degree d ) order 
+ determine best algorithm . Polynomial regression scikit - learn polynomial regression built pipelining PolynomialFeatures LinearRegression : > > > sklearn.pipeline import make_pipeline > > > sklearn.preprocessing import PolynomialFeatures > > > sklearn.linear_model import LinearRegression > > > model = make_pipeline ( PolynomialFeatures ( degree = 2 ) , LinearRegression ( ) ) Validation Curves ¶ Let create dataset like example : > > > def generating_func ( x , err = 0.5 ): ... return np . random . normal ( 10 - 1 . / ( x + 0.1 ) , err ) > > > # randomly sample data > > > np . random . seed ( 1 ) > > > x = np . random . random ( size = 200 ) > > > y = generating_func ( x , err = 1 . ) Central quantify bias variance model apply test 
+ data , sampled distribution train , 
+ capture independent noise : > > > xtrain , xtest , ytrain , ytest = train_test_split ( x , y , test_size = 0.4 ) Validation curve validation curve consists varying model parameter 
+ controls complexity ( degree 
+ polynomial ) measures error model training data , 
+ test data ( eg cross - validation ) . model parameter 
+ adjusted test error minimized : use sklearn.model_selection.validation_curve ( ) compute train 
+ test error , plot : > > > sklearn.model_selection import validation_curve > > > degrees = np . arange ( 1 , 21 ) > > > model = make_pipeline ( PolynomialFeatures ( ) , LinearRegression ( ) ) > > > # Vary " degrees " pipeline step " polynomialfeatures " > > > train_scores , validation_scores = validation_curve ( ... model , x [: , np . newaxis ] , y , ... param_name = ' polynomialfeatures__degree ' , ... param_range = degrees ) > > > # Plot mean train score validation score folds > > > plt . plot ( degrees , validation_scores . mean ( axis = 1 ) , label = ' cross - validation ' ) [ < matplotlib.lines . Line2D object ... > ] > > > plt . plot ( degrees , train_scores . mean ( axis = 1 ) , label = ' training ' ) [ < matplotlib.lines . Line2D object ... > ] > > > plt . legend ( loc = ' best ' ) < matplotlib.legend . Legend object ... > figure shows validation important . left 
+ plot , low - degree polynomial , - fit data . 
+ leads low explained variance training set 
+ validation set . far right plot , high 
+ degree polynomial , - fits data . seen fact 
+ training explained variance high , 
+ validation set , low . Choosing d 4 5 gets best 
+ tradeoff . Tip astute reader realize amiss : 
+ plot , d = 4 gives best results . previous plot , 
+ found d = 6 vastly - fits data . going ? 
+ difference number training points . 
+ previous example , training points . 
+ example , 100 . general rule thumb , training 
+ points , complicated model . 
+ determine given model training points 
+ helpful ? useful diagnostic learning curves . Learning Curves ¶ learning curve shows training validation score 
+ function number training points . Note train 
+ subset training data , training score computed 
+ subset , training set . curve gives 
+ quantitative view beneficial add training 
+ samples . Questions : number training samples increased , expect 
+ training score ? validation score ? expect training score higher lower 
+ validation score ? expect change ? scikit - learn provides sklearn.model_selection.learning_curve ( ) : > > > sklearn.model_selection import learning_curve > > > train_sizes , train_scores , validation_scores = learning_curve ( ... model , x [: , np . newaxis ] , y , train_sizes = np . logspace ( - 1 , 0 , 20 ) ) > > > # Plot mean train score validation score folds > > > plt . plot ( train_sizes , validation_scores . mean ( axis = 1 ) , label = ' cross - validation ' ) [ < matplotlib.lines . Line2D object ... > ] > > > plt . plot ( train_sizes , train_scores . mean ( axis = 1 ) , label = ' training ' ) [ < matplotlib.lines . Line2D object ... > ] degree=1 model Note validation score generally increases growing 
+ training set , training score generally decreases 
+ growing training set . training size 
+ increases , converge single value . discussion , know d = 1 high - bias 
+ estimator - fits data . indicated fact 
+ training validation scores low . confronted 
+ type learning curve , expect adding 
+ training data help : lines converge 
+ relatively low score . learning curves converged low score , 
+ high bias model . high - bias model improved : sophisticated model ( i.e. case , increase d ) Gather features sample . Decrease regularization regularized model . Increasing number samples , , improve high - bias 
+ model . let look high - variance ( i.e. - fit ) model : degree=15 model learning curve d = 15 . 
+ discussion , know d = 15 high - variance estimator 
+ - fits data . indicated fact 
+ training score higher validation score . add 
+ samples training set , training score continue 
+ decrease , cross - validation error continue increase , 
+ meet middle . Learning curves converged training 
+ set indicate high - variance , - fit model . high - variance model improved : Gathering training samples . - sophisticated model ( i.e. case , d smaller ) Increasing regularization . particular , gathering features sample help 
+ results . 3.6.9.3 . Summary model selection ¶ seen - performing algorithm 
+ possible situations : high bias ( - fitting ) high variance 
+ ( - fitting ) . order evaluate algorithm , set aside 
+ portion training data cross - validation . technique 
+ learning curves , train progressively larger subsets 
+ data , evaluating training error cross - validation error 
+ determine algorithm high variance high bias . 
+ information ? High Bias ¶ model shows high bias , following actions help : Add features . example predicting home prices , 
+ helpful use information neighborhood 
+ house , year house built , size lot , 
+ etc . Adding features training test sets improve 
+ high - bias estimator Use sophisticated model . Adding complexity model 
+ help improve bias . polynomial fit , 
+ accomplished increasing degree d. learning technique 
+ methods adding complexity . Use fewer samples . improve 
+ classification , high - bias algorithm attain nearly 
+ error smaller training sample . algorithms 
+ computationally expensive , reducing training sample size lead 
+ large improvements speed . Decrease regularization . Regularization technique 
+ impose simplicity machine learning models , adding 
+ penalty term depends characteristics parameters . 
+ model high bias , decreasing effect regularization 
+ lead better results . High Variance ¶ model shows high variance , following actions 
+ help : Use fewer features . feature selection technique 
+ useful , decrease - fitting estimator . Use simpler model . Model complexity - fitting 
+ hand - - hand . Use training samples . Adding training samples reduce 
+ effect - fitting , lead improvements high variance 
+ estimator . Increase Regularization . Regularization designed prevent 
+ - fitting . high - variance model , increasing regularization 
+ lead better results . choices important real - world situations . 
+ example , limited telescope time , astronomers seek balance 
+ observing large number objects , observing large 
+ number features object . Determining important 
+ particular learning task inform observing strategy 
+ astronomer employs . 3.6.9.4 . word caution : separate validation test set ¶ validation schemes determine hyper - parameters means 
+ fitting hyper - parameters particular validation set . 
+ way parameters - fit training set , 
+ hyperparameters - fit validation set . , 
+ validation error tends - predict classification error 
+ new data . reason , recommended split data sets : training set , train model ( usually ~60 % 
+ data ) validation set , validate model ( usually ~20 % 
+ data ) test set , evaluate expected error 
+ validated model ( usually ~20 % data ) machine learning practitioners separate test set 
+ validation set . goal gauge error model 
+ unknown data , independent test set vital . 3.6.10 . Examples scikit - learn chapter ¶ Measuring Decision Tree performance Demo PCA 2D simple linear regression Plot 2D views iris dataset tSNE visualize digits Use RidgeCV LassoCV set regularization parameter Plot variance regularization linear models Simple picture formal problem machine learning Compare classifiers digits data Plot fitting 9th order polynomial simple regression analysis California housing data Nearest - neighbor prediction iris Simple visualization classification digits dataset eigenfaces example : chaining PCA SVMs Example linear non - linear models Bias variance polynomial fit Tutorial Diagrams Download examples Python source code : auto_examples_python.zip Download examples Jupyter notebooks : auto_examples_jupyter.zip Gallery generated Sphinx - Gallery Going documentation scikit - learn 
+ complete didactic . Introduction Machine Learning Python , 
+ Sarah Guido , Andreas Müller 
+ ( notebooks available ) . Table Contents 3.6 . scikit - learn : machine learning Python 3.6.1 . Introduction : problem settings 3.6.1.1 . machine learning ? 3.6.1.2 . Data scikit - learn data matrix Simple Example : Iris Dataset application problem Loading Iris Data Scikit - learn 3.6.2 . Basic principles machine learning scikit - learn 3.6.2.1 . Introducing scikit - learn estimator object Fitting data 3.6.2.2 . Supervised Learning : Classification regression 3.6.2.3 . recap Scikit - learn estimator interface 3.6.2.4 . Regularization : necessary Prefering simpler models Simple versus complex models classification 3.6.3 . Supervised Learning : Classification Handwritten Digits 3.6.3.1 . nature data 3.6.3.2 . Visualizing Data principal components 3.6.3.3 . Gaussian Naive Bayes Classification 3.6.3.4 . Quantitative Measurement Performance 3.6.4 . Supervised Learning : Regression Housing Data 3.6.4.1 . quick look data 3.6.4.2 . Predicting Home Prices : Simple Linear Regression 3.6.5 . Measuring prediction performance 3.6.5.1 . quick test K - neighbors classifier 3.6.5.2 . correct approach : validation set 3.6.5.3 . Model Selection Validation 3.6.5.4 . Cross - validation 3.6.5.5 . Hyperparameter optimization cross - validation Basic Hyperparameter Optimization Automatically Performing Grid Search Built - Hyperparameter Search Nested cross - validation 3.6.6 . Unsupervised Learning : Dimensionality Reduction Visualization 3.6.6.1 . Dimensionality Reduction : PCA 3.6.6.2 . Visualization non - linear embedding : tSNE 3.6.7 . eigenfaces example : chaining PCA SVMs 3.6.8 . eigenfaces example : chaining PCA SVMs 3.6.8.1 . Preprocessing : Principal Component Analysis 3.6.8.2 . Learning : Support Vector Machines 3.6.8.3 . Pipelining 3.6.9 . Parameter selection , Validation , Testing 3.6.9.1 . Hyperparameters , - fitting , - fitting Bias - variance trade - : illustration simple regression problem 3.6.9.2 . Visualizing Bias / Variance Tradeoff Validation Curves Learning Curves 3.6.9.3 . Summary model selection High Bias High Variance 3.6.9.4 . word caution : separate validation test set 3.6.10 . Examples scikit - learn chapter Previous topic 3.5 . 3D plotting Mayavi topic 3.6.10.1 . Measuring Decision Tree performance Page Source Quick search Navigation previous | Scipy lecture notes » 3 . Packages applications » Collapse document compact view Edit Improve page : Edit Github . © Copyright 2012,2013,2015,2016,2017,2018,2019,2020,2021,2022 . 
+       Created Sphinx 1.7.9 .

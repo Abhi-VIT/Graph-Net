@@ -1,0 +1,44 @@
+python combine ' loop ' ' loop ' iterate data - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams python combine ' loop ' ' loop ' iterate data Ask Question Asked 10 years , 9 months ago Modified 3 years , 7 months ago Viewed 31k times 4 trying combine loop loop iterate list getting infinite loops . code : l=[0,2,3,4 ] 
+ lo=0 
+ range(len(l ) ): 
+      ( True ): 
+           lo+=1 
+      lo+l[i]>40 : 
+          break 
+      print(lo ) code results endless loop . want output condition lo+ l[i ] greater 40 ; stop looping print final lo output result . tried method indentation print line , wanted . Thanks advance . python python-3.x - loop - loop Share Improve question Follow edited Sep 14 , 2021 14:57 Duda 3,746 5 5 gold badges 19 19 silver badges 37 37 bronze badges asked Jul 25 , 2014 12:29 jack jack 69 1 1 gold badge 1 1 silver badge 7 7 bronze badges 4 Try trough paper , step step happens , add logs / prints happens step . – Chris Commented Jul 25 , 2014 12:33 1 clear trying achieve .   output want ? – Jamie Cockburn Commented Jul 25 , 2014 12:33 try avoid breaks , code generally harder understand . – Mike Vella Commented Jul 25 , 2014 12:36 trying lo output l[i]>3 condition met . – jack Commented Jul 25 , 2014 12:36 Add comment | 4 Answers 4 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 5 infinite loop wrote infinite loop . probably thought break statement " magically " know want end loop , loop . break break loop - innermost . means code actually : ( True ):                # < - infinite loop 
+     lo + = 1 
+     range(len(l ) ): # < - loop 
+         l[i ] < 3 : 
+             break            # < - break loop 
+         print(lo ) 
+     # loop continues want end loops , explicitly - example , 
+ use boolean variable : keep_running = True 
+ ( keep_running ): 
+     lo + = 1 
+     range(len(l ) ): 
+         l[i ] < 3 : 
+             # effectively 
+             # stop loop : 
+             keep_running = False 
+             break 
+         print(lo ) Share Improve answer Follow answered Jul 25 , 2014 12:41 Jan Spurny Jan Spurny 5,547 1 1 gold badge 35 35 silver badges 50 50 bronze badges 0 Add comment | 2 need external infinite loop manage index ( enumerate documentation ) . l = [ 0,1,2,3,4 ] 
+ index , value enumerate(l ): 
+     value > = 3 : 
+          break 
+     print(index ) changed condition value < 3 : value > = 3 : improved readability . Share Improve answer Follow answered Jul 25 , 2014 12:52 Matthias Matthias 13.2k 6 6 gold badges 45 45 silver badges 50 50 bronze badges Add comment | 0 break cancels inner loop work : l=[0,1,2,3,4 ] 
+ stop = False 
+ lo=0 
+ ( stop ): 
+     lo+=1 
+     range(len(l ) ): 
+         l[i]<3 : 
+            stop = True 
+            break 
+         print(lo ) Share Improve answer Follow answered Jul 25 , 2014 12:35 gaw gaw 1,960 2 2 gold badges 15 15 silver badges 18 18 bronze badges 0 Add comment | 0 Try : l=[0,1,2,3,4 ] 
+ lo=0 
+
+ l : 
+     lo+=1 
+     l[i]<3 : 
+         break 
+     print(lo ) Share Improve answer Follow answered Jul 25 , 2014 12:36 Fox_01 Fox_01 97 1 1 silver badge 11 11 bronze badges 0 Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python python-3.x - loop - loop similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Linked -1 best way print total days month Python Related 1 - loop python - loop 1 loop inside loop 0 loops loops 0 Python - Multiple loops loop ? 0 Combine loop Python 0 run loop inside loop 0 loop combined 0 Making loop loop 0 Python : combine loop loop ? 0 python statement loop Hot Network Questions Double underline single label bird ecology ( BTO ) notation QGIS Boids Simon Woods : - invent efficient flocking models forge complexity simple rules ? orange button antique Black & Decker drill ? Revising manuscript covered referee report use quick delayed fuses panel ? humid flamethrowers start experiencing problems ? \clist_map_inline : Nn return ? enable atomic pasting VIM , entire paste operation completes single action interruption ? CMOS inverter output zero plural " " Jesus referring ? curly braces process colon - separated variables infected attack ? Finding probability random variable minimum random variable maximum n i.i.d . random variables Riddle Cheshire Crossing comic Inductive kickback requires capacitor " kick " ? Idiomatic way generating unique filename ? Meaning " chinny chin chin " given context tunneling ? mean carry service normally provided network ? employees store . ? rules ancient rabbis named ? single word dishonestly underselling importance / credentials ? BRUH achievement Streetoir ? Dodecahedron tracing Accepting Postdoc TT Position hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

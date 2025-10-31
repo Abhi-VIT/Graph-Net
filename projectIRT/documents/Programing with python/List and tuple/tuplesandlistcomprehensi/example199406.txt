@@ -1,0 +1,35 @@
+Tuples List comprehensions Tuples Python tuple alternative list structure . example shows construct tuple . contact = ( ' Joe Gregg','832 - 6736 ' ) Unlike lists , items appended removed use list methods , tuple immutable structure . tuple example items : size fixed changed . access elements tuple index notation use list . phone = contact[1 ] update entries tuple assigning new values . contact[1 ] = ' 555 - 1212 ' example Tuples especially useful situations data items belong sense . example . list shows currency codes number currencies exchange rate dollars currency . numbers case units currency dollar buy . exchange = [ ( ' EUR ' , 0.869335 ) , ( ' JPY ' , 113.0005 ) , \ 
+ ( ' GBP ' , 0.760425 ) , ( ' AUD ' , 1.40553 ) , ( ' CAD ' , 1.29406 ) , \ 
+ ( ' CHF ' , 0.99148 ) , ( ' CNY ' , 6.9228 ) , ( ' SEK ' , 9.09429 ) , \ 
+ ( ' NZD ' , 1.54148 ) , ( ' MXN ' , 18.99626 ) , ( ' SGD ' , 1.3809 ) ] list spans multiple lines , Python continuation character , \ , end line . Suppose wanted write program prompts user enter code foreign currency currency user wants purchase . program compute print dollars purchase units currency . code . exchange = [ ( ' EUR ' , 0.869335 ) , ( ' JPY ' , 113.0005 ) , \ 
+ ( ' GBP ' , 0.760425 ) , ( ' AUD ' , 1.40553 ) , ( ' CAD ' , 1.29406 ) , \ 
+ ( ' CHF ' , 0.99148 ) , ( ' CNY ' , 6.9228 ) , ( ' SEK ' , 9.09429 ) , \ 
+ ( ' NZD ' , 1.54148 ) , ( ' MXN ' , 18.99626 ) , ( ' SGD ' , 1.3809 ) ] 
+ code = input('Enter currency code : ' ) 
+ = float(input('How units want buy ? ' ) 
+
+ cost = 0 
+ pair exchange : 
+   pair[0 ] = = code : 
+     cost = / pair[1 ] 
+
+ cost ! = 0 : 
+   print('Your cost $ ' + str(cost ) ) 
+ : 
+   print('You enter valid code . ' ) alternative index notation tuples loop use form loop assigns member tuple different loop variable : c , r exchange : 
+   c = = code : 
+     cost = / r Zip lists want combine data separate lists single list . common situation want printing table . earlier lecture showed code print list data points table . original code . x = [ 1935,1940,1945,1950,1955,1960,1965,1970,1975,1980 ] 
+ y = [ 32.1,30.5,24.4,23,19.1,15.6,12.4,9.7,8.9,7.2 ] 
+ print ( ' Year Population ' ) 
+ range(0,len(x ) ): 
+   print('{:5d }     { :> 4.1f}'.format(x[i],y[i ] ) ) code iterates list index values uses index values access elements lists . alternative approach construct zip list original pair lists iterate . zip list formed pair lists single lists tuples , pair data items original lists tuple zip list . table printing example rewritten use zip list : x = [ 1935,1940,1945,1950,1955,1960,1965,1970,1975,1980 ] 
+ y = [ 32.1,30.5,24.4,23,19.1,15.6,12.4,9.7,8.9,7.2 ] 
+ data = list(zip(x , y ) ) 
+ print ( ' Year Population ' ) 
+ year , pop data : 
+   print('{:5d }     { :> 4.1f}'.format(year , pop ) ) List comprehensions Python list comprehension method constructing list list , range , iterable structure . List comprehensions frequently extract data lists generate new data existing data list . example . Suppose wanted list currency codes example . combination loop list append ( ) method . allCodes = [ ] 
+ c , r exchange : 
+   allCodes.append(c ) list comprehension provides compact way accomplish thing . allCodes = [ c r , c exchange ] common application list comprehensions making lists ranges . example , wanted list powers 2 use following code : powers = [ 2**n n range(0,10 ) ] sophisticated example . currency cross rate exchange rate currency , origin currency destination currency . use list dollar exchange rates cross rates pair currencies exchange list . example , wanted set exchange GBP CNY , convert 1 GBP 1/0.760425 dollars . convert 1/0.760425 dollars ( 1/0.760425)*6.9228 CNY . list comprehension makes table possible cross rates . nested set list comprehensions , outer comprehension uses inner comprehension lists cross rates , producing list lists final result . crosses =[ [ ( o , d , r2 / r1 ) d , r2 exchange ] o , r1 exchange ] final thing resulting table . diagonal entries represent exchanges origin currency destination currency . set cross rates exactly 1 . loop . range(0,len(crosses ) ): 
+   crosses[i][i][2 ] = 1 Programming assignment Redo assignment tuples . Start program statements x = [ 1935,1940,1945,1950,1955,1960,1965,1970,1975,1980 ] 
+ y = [ 32.1,30.5,24.4,23,19.1,15.6,12.4,9.7,8.9,7.2 ] 
+ data = list(zip(x , y ) ) rest program data list . Try use x list y list following code : data list . , include list comprehesion program . list residuals good candidate : try building list list comprehension instead loop .

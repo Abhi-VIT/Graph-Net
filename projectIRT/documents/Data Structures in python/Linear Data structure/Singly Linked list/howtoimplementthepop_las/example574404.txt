@@ -1,0 +1,147 @@
+implement pop_last function Singly Linked List ? - Python Help - Discussions Python.org Discussions Python.org implement pop_last function Singly Linked List ? Python Help help , typing hungpham3112 ( Hungpham3112 ) September 12 , 2022 , 10:12am 1 learning Singly Linked List university struggling data structure . implementation : typing import Optional 
+
+
+ class Node : 
+     def _ _ init__(self , data ): 
+         self.data = data 
+         self.next : Optional[Node ] = 
+
+     def _ _ getitem__(self ): 
+         return self.data 
+
+     def set_current(self , new_data ): 
+         self.data = new_data 
+
+     def get_next(self ): 
+         return self.next 
+
+     def set_next(self , next_data ): 
+         self.next = next_data 
+
+
+ class SinglyLinkedList : 
+     # Function initialize head 
+     def _ _ init__(self ): 
+         self.head : Optional[Node ] = 
+
+     def _ _ len__(self ): 
+         head = self.head 
+         count = 0 
+         head : 
+             count + = 1 
+             head = head.next 
+         return count 
+
+     def _ _ repr__(self ): 
+         head = self.head 
+         node = [ ] 
+         head : 
+             node.append(head.data ) 
+             head = head.next 
+         node.append("None " ) 
+         return " - > " .join(map(str , node ) ) 
+
+     def _ _ iter__(self ): 
+         node = self.head 
+         node : 
+             yield node 
+             node = node.next 
+
+     def isempty(self ): 
+         return self.head = = 
+
+     #   def append(self , node : Optional[Node ] ): 
+     def prepend(self , node : Node ): 
+         node.next = self.head 
+         self.head = node 
+
+     def append(self , node : Node ): 
+         " " " 
+         append function add new node tail linked list 
+         Time complexity : O(n ) 
+         Space complexity : O(1 ) 
+         " " " 
+         head = self.head 
+         head : 
+             head = node 
+             self.head = head 
+         : 
+             current_node self : 
+                 head = current_node 
+             head.next = node 
+
+     def pop_first(self ): 
+         self.head : 
+             print("The list blank " ) 
+         : 
+             self.head = self.head.next 
+
+     def pop_last(self ): 
+         self.head = = : 
+             print("The list " ) 
+         : 
+             self.head.next = = : 
+                 self.head = 
+             : 
+                 head = self.head 
+                 head.next.next : 
+                     head = head.next 
+                 head.next = 
+
+ _ _ _ _ = = " _ _ main _ _ " : 
+     sllist = SinglyLinkedList ( ) 
+     sllist.prepend(Node(3 ) ) 
+     sllist.append(Node(2 ) ) 
+     sllist.append(Node(20 ) ) 
+     sllist.append(Node(18 ) ) 
+     print(f"Original list : { sllist } " ) 
+     sllist.pop_last ( ) 
+     print(f"After pop_last : { sllist } " ) function pop_last works fine linter angry image 1366×375 19.7 KB , found function clean good think . change pop_last better ? Thanks help . vbrozik ( Václav Brožík ) September 12 , 2022 ,   9:13pm 2 missing : head attribute SinglyLinkedList object type Node Similarly attribute Node object type Node correctly type - annotated way : Optional[Node ] Static type checkers like mypy pyright able recognize conditions narrowing possible type expression . case eliminate possibility head.next . try following : Fix test : self.head.next = = : → self.head.next : help , assert type problematic statement : assert head.next notes : type annotation normally type - annotate attributes right class body like : class Node : 
+     data : 
+     : Optional[Node ] case refer class . care problem activating postponed evaluation annotations ( active future versions ) adding beginning file : _ _ future _ _ import annotations additional advantage able use newer typing features older supported Python versions ( Python 3.7 + ) like Node | instead Optional[Node ] . Instead printing messages exceptional situations methods probably raise exception return special value . pop _ * functions return popped value ? hungpham3112 ( Hungpham3112 ) September 13 , 2022 ,   2:11am 3 Thanks quick detail reply . , considered add return value pop _ * function . Second , prefer Optional[Node ] annotation Node | easier remember like Option type Haskell Rust . try change thought adapt new annotation . added assert head.next works 1 error . Screenshot ( 12 ) 1920×1080 130 KB vbrozik ( Václav Brožík ) September 13 , 2022 ,   7:58am 4 = = instead . step possible fixing problem . Maybe fix type narrowing working . details example : https://docs.quantifiedcode.com/python-anti-patterns/readability/comparison_to_none.html wrote need type narrowing assert problematic statement . type narrowing : https://mypy.readthedocs.io/en/stable/type_narrowing.html stackoverflow.com Pylance ignore possibility ? python , visual - studio - code , type - hinting , python - typing asked George 08:27PM - 19 Jul 21 UTC Hungpham3112 : prefer Optional[Node ] annotation Node | Optional shorthand special case Union . Optional[Node ] equivalent Union[Node , ] equivalent new syntax Node | . AFAIK Union Optional ( ) planned deprecated . use feel comfortable . 1 Like hungpham3112 ( Hungpham3112 ) September 20 , 2022 , 12:09am 5 type narrowing assert problematic statement , error message . image 1058×557 29.1 KB vbrozik ( Václav Brožík ) September 20 , 2022 , 12:06pm 6 Normally type | asserting value sufficient . case loop . values se loop inside loop . assertions needed places . Instead showing screenshots code text , run type checker text output . hungpham3112 ( Hungpham3112 ) September 21 , 2022 ,   3:30pm 7 Sorry , mistake : code def pop_last(self ): 
+         self.head : 
+             return 
+         : 
+             self.head.next : 
+                 self.head = 
+             : 
+                 head = self.head 
+                 assert isinstance(head , Node ) 
+                 assert isinstance(head.next , Node ) 
+                 head.next.next : 
+                     assert isinstance(head , Node ) 
+                     head = head.next 
+                 assert isinstance(head , Node ) 
+                 term = head.next 
+                 head.next = 
+                 self.size -= 1 
+                 return term vbrozik ( Václav Brožík ) September 21 , 2022 ,   8:50pm 8 wrote need narrow type problematic places simplistic type checker complains . loops means loop inside loop ( course loops ) . Demonstration code similar logic loop : def counter_operation(counter : int | ) - > int | : 
+     " " " Provide meaningless operation help demonstration . " " " 
+     counter : 
+         return 0 
+     counter > 10 : 
+         return 
+     return counter + 1 counter : int | = 
+ counter = counter_operation(counter ) 
+ counter < 5 : 
+     counter = counter_operation(counter ) type narrowing ( know asserts True ): counter : int | = 
+ counter = counter_operation(counter ) 
+ assert counter 
+ counter < 5 : 
+     counter = counter_operation(counter ) 
+     assert counter hungpham3112 ( Hungpham3112 ) September 22 , 2022 ,   2:14am 9 Thank helpful advice . changing : def pop_last(self ): 
+         self.head : 
+             return 
+         : 
+             self.head.next : 
+                 self.head = 
+             : 
+                 head = self.head 
+                 assert isinstance(head.next , Node ) 
+                 head.next.next : 
+                     head = head.next 
+                     assert isinstance(head.next , Node ) 
+                 term = head.next 
+                 head.next = 
+                 self.size -= 1 
+                 return term image 808×468 20.7 KB longer error . trick handy hard master learning . dstromberg ( Daniel R Stromberg ) September 22 , 2022 ,   3:04am 10 homework , probably better python builtin list type collections.deque . wrote singly linked list type pure Python , found slower uses builtin list type . want try singly linked list performs particular application , Pypi : Search results · PyPI Home Categories Guidelines Terms Service Privacy Policy Powered Discourse , best viewed JavaScript enabled

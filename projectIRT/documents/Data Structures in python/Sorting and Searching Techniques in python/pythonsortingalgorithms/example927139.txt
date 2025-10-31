@@ -1,0 +1,85 @@
+Python Sorting Algorithms Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - DS Home Python - DS Introduction Python - DS Environment Python - Arrays Python - Lists Python - Tuples Python - Dictionary Python - 2 - D Array Python - Matrix Python - Sets Python - Maps Python - Linked Lists Python - Stack Python - Queue Python - Dequeue Python - Advanced Linked list Python - Hash Table Python - Binary Tree Python - Search Tree Python - Heaps Python - Graphs Python - Algorithm Design Python - Divide Conquer Python - Recursion Python - Backtracking Python - Sorting Algorithms Python - Searching Algorithms Python - Graph Algorithms Python - Algorithm Analysis Python - Big - O Notation Python - Algorithm Classes Python - Amortized Analysis Python - Algorithm Justifications Python - Quick Guide Python - Useful Resources Python - Discussion Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Sorting Algorithms Previous Quiz Sorting refers arranging data particular format . Sorting algorithm specifies way arrange data particular order . common orders numerical lexicographical order . importance sorting lies fact data searching optimized high level , data stored sorted manner . Sorting represent data readable formats . implementations sorting python . Bubble Sort Merge Sort Insertion Sort Shell Sort Selection Sort Bubble Sort comparison - based algorithm pair adjacent elements compared elements swapped order . Example def bubblesort(list ): 
+
+ # Swap elements arrange order 
+    iter_num range(len(list)-1,0,-1 ): 
+       idx range(iter_num ): 
+          list[idx]>list[idx+1 ] : 
+             temp = list[idx ] 
+             list[idx ] = list[idx+1 ] 
+             list[idx+1 ] = temp 
+ list = [ 19,2,31,45,6,11,121,27 ] 
+ bubblesort(list ) 
+ print(list ) Output code executed , produces following result − [ 2 , 6 , 11 , 19 , 27 , 31 , 45 , 121 ] Merge Sort Merge sort divides array equal halves combines sorted manner . Example def merge_sort(unsorted_list ): 
+    len(unsorted_list ) < = 1 : 
+       return unsorted_list 
+ # Find middle point devide 
+    middle = len(unsorted_list ) // 2 
+    left_list = unsorted_list[:middle ] 
+    right_list = unsorted_list[middle :] 
+
+    left_list = merge_sort(left_list ) 
+    right_list = merge_sort(right_list ) 
+    return list(merge(left_list , right_list ) ) 
+
+ # Merge sorted halves 
+ def merge(left_half , right_half ): 
+    res = [ ] 
+    len(left_half ) ! = 0 len(right_half ) ! = 0 : 
+       left_half[0 ] < right_half[0 ] : 
+          res.append(left_half[0 ] ) 
+          left_half.remove(left_half[0 ] ) 
+       : 
+          res.append(right_half[0 ] ) 
+          right_half.remove(right_half[0 ] ) 
+    len(left_half ) = = 0 : 
+       res = res + right_half 
+    : 
+       res = res + left_half 
+    return res 
+ unsorted_list = [ 64 , 34 , 25 , 12 , 22 , 11 , 90 ] 
+ print(merge_sort(unsorted_list ) ) Output code executed , produces following result − [ 11 , 12 , 22 , 25 , 34 , 64 , 90 ] Insertion Sort Insertion sort involves finding right place given element sorted list . beginning compare elements sort comparing . pick element find proper position previous sorted elements . way gradually adding elements sorted list putting proper position . Example def insertion_sort(InputList ): 
+    range(1 , len(InputList ) ): 
+       j = i-1 
+       nxt_element = InputList[i ] 
+ # Compare current element 
+    ( InputList[j ] > nxt_element ) ( j > = 0 ): 
+       InputList[j+1 ] = InputList[j ] 
+       j = j-1 
+    InputList[j+1 ] = nxt_element 
+ list = [ 19,2,31,45,30,11,121,27 ] 
+ insertion_sort(list ) 
+ print(list ) Output code executed , produces following result − [ 19 , 2 , 31 , 45 , 30 , 11 , 27 , 121 ] Shell Sort Shell Sort involves sorting elements away . sort large sublist given list reducing size list elements sorted . program finds gap equating half length list size starts sorting elements . resetting gap entire list sorted . Example def shellSort(input_list ): 
+    gap = len(input_list ) // 2 
+    gap > 0 : 
+       range(gap , len(input_list ) ): 
+          temp = input_list[i ] 
+          j = 
+ # Sort sub list gap 
+    j > = gap input_list[j - gap ] > temp : 
+       input_list[j ] = input_list[j - gap ] 
+       j = j - gap 
+       input_list[j ] = temp 
+ # Reduce gap element 
+    gap = gap//2 
+ list = [ 19,2,31,45,30,11,121,27 ] 
+ shellSort(list ) 
+ print(list ) Output code executed , produces following result − [ 2 , 11 , 19 , 27 , 30 , 31 , 45 , 121 ] Selection Sort selection sort start finding minimum value given list sorted list . repeat process remaining elements unsorted list . element entering sorted list compared existing elements placed correct position . , end elements unsorted list sorted . Example def selection_sort(input_list ): 
+    idx range(len(input_list ) ): 
+       min_idx = idx 
+       j range ( idx +1 , len(input_list ) ): 
+          input_list[min_idx ] > input_list[j ] : 
+             min_idx = j 
+       # Swap minimum value compared value 
+       input_list[idx ] , input_list[min_idx ] = input_list[min_idx ] , input_list[idx ] 
+ l = [ 19,2,31,45,30,11,121,27 ] 
+ selection_sort(l ) 
+ print(l ) Output code executed , produces following result − [ 2 , 11 , 19 , 27 , 30 , 31 , 45 , 121 ] Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

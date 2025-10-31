@@ -1,0 +1,90 @@
+Learn Tree Traversal Building Binary Search Tree - Step 60 - Python - freeCodeCamp Forum freeCodeCamp Forum Learn Tree Traversal Building Binary Search Tree - Step 60 Python zack3 January 24 , 2024 ,   2:18pm 1   . instructions ask print ( ) passing string Inorder traversal deleting 40 : argument inorder_traversal ( ) second argument . think . obviously code pass . help class TreeNode : 
+     def _ _ init__(self , key ): 
+         self.key = key 
+         self.left = 
+         self.right = 
+
+     def _ _ str__(self ): 
+         return str(self.key ) 
+
+
+ class BinarySearchTree : 
+     def _ _ init__(self ): 
+         self.root = 
+
+     def insert(self , key ): 
+         self.root = self._insert(self.root , key ) 
+
+     def _ insert(self , node , key ): 
+         node : 
+             return TreeNode(key ) 
+         key < node.key : 
+             node.left = self._insert(node.left , key ) 
+         elif key > node.key : 
+             node.right = self._insert(node.right , key ) 
+         return node 
+
+     def search(self , key ): 
+         return self._search(self.root , key ) 
+
+     def _ search(self , node , key ): 
+         node node.key = = key : 
+             return node 
+         key < node.key : 
+             return self._search(node.left , key ) 
+         return self._search(node.right , key ) 
+
+     def delete(self , key ): 
+         self.root = self._delete(self.root , key ) 
+
+     def _ delete(self , node , key ): 
+         node : 
+             return node 
+         key < node.key : 
+             node.left = self._delete(node.left , key ) 
+         elif key > node.key : 
+             node.right = self._delete(node.right , key ) 
+         : 
+             node.left : 
+                 return node.right 
+
+             elif node.right : 
+                 return node.left 
+
+             node.key = self._min_value(node.right ) 
+             node.right = self._delete(node.right , node.key ) 
+         return node 
+
+     def _ min_value(self , node ): 
+         node.left : 
+             node = node.left 
+         return node.key 
+
+     def inorder_traversal(self ): 
+         result = [ ] 
+         self._inorder_traversal(self.root , result ) 
+         return result 
+
+     def _ inorder_traversal(self , node , result ): 
+         node : 
+             self._inorder_traversal(node.left , result ) 
+             result.append(node.key ) 
+             self._inorder_traversal(node.right , result ) 
+
+
+ # User Editable Region 
+
+ bst = BinarySearchTree ( ) 
+ nodes = [ 50 , 30 , 20 , 40 , 70 , 60 , 80 ] 
+
+ node nodes : 
+     bst.insert(node ) 
+
+ print("Inorder traversal : " , bst.inorder_traversal ( ) ) 
+ print("Search 40 : " , bst.search(40 ) ) 
+ bst.delete(40 ) 
+
+ print("Inorder traversal deleting 40 : " , inorder_traversal ( ) ) 
+
+
+ # User Editable Region browser information : User Agent : Mozilla/5.0 ( Windows NT 10.0 ; Win64 ; x64 ) AppleWebKit/537.36 ( KHTML , like Gecko ) Chrome/120.0.0.0 Safari/537.36 Challenge Information : Learn Tree Traversal Building Binary Search Tree - Step 60 freecodecamp.org freeCodeCamp.org Learn Code — Free zack3 January 24 , 2024 ,   2:23pm 2 found mistake . Thanks 2 Likes system Closed July 25 , 2024 ,   2:23am 3 topic automatically closed 182 days reply . New replies longer allowed . Related topics Topic Replies Views Activity Learn Tree Traversal Building Binary Search Tree - Step 55 Python 3 522 July 25 , 2024 Learn Tree Traversal Building Binary Search Tree - Step 60 Python 3 474 August 13 , 2024 Learn Tree Traversal Building Binary Search Tree - Step 62 Python 3 295 November 11 , 2024 Learn Tree Traversal Building Binary Search Tree - Step 59 Python 3 343 September 10 , 2024 Learn Tree Traversal Building Binary Search Tree - Step 62 Python 4 204 January 8 , 2025 Home Subforums Guidelines Terms Service Privacy Policy Powered Discourse , best viewed JavaScript enabled

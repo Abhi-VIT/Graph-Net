@@ -1,0 +1,57 @@
+Measuring similarity dissimilarity indices observation reference row - 
+		
+		 Statalist Login Register Log Forums FAQ Search titles Search General Advanced Search Search Home Forums Forums Discussing Stata General logged .   browse post .   Login Register clicking ' Login Register ' - right page .   information Statalist , FAQ . Announcement Collapse announcement . X Collapse Posts Latest Activity Search Page 1 Filter Time Time Today Week Month Discussions Photos Videos Links Polls Filtered : Clear new posts Monica Muller Join Date : Jul 2014 Posts : 226 # 1 Measuring similarity dissimilarity indices observation reference row 10 Apr 2017 , 17:38 Hi , dataset 16000 observations 68 variables . want measure similarity ( correlation ) dissimilarity ( L2squared distance ) row data compared row ( userid=98 ) reference row . goal new variables , ( similarity dissimilarity ) similarity dissimilarity user profile compared reference row . found link , worked Matrices Stata know approach problem . appreciate help . sample data : Code : * Example generated -dataex- . install : ssc install dataex 
+ clear 
+ input long userid float(v1 v2 v3 v4 ) 
+ 24       3.12        2.5       2.88       3.12 
+ 40 3.4424145 2.8373425   3.281276   3.370227 
+ 51       4.12       3.12       3.88          4 
+ 67       4.12       3.12       4.88       3.88 
+ 76   3.685956   3.127154   3.620283   3.439283 
+ 84   3.352679 3.2907455 3.2907455 3.2711875 
+ 95 3.7548585   3.990283   3.757191   3.615336 
+ 97       2.88       2.88          3       3.12 
+ 98   3.235533   2.831092 3.1384676 2.9281576 
+ end Tags : Monica Muller Join Date : Jul 2014 Posts : 226 # 2 10 Apr 2017 , 21:39 figured issue . data big version Stata allows Matrix dimension 800 . know split dataset 20 datasets ? way think keeping 800 observations , save part1 , open main data , merge part1 , drop _ merge==3 , 800 observations , .... repeat process 20 times . faster way split data set ? Thanks Comment Post Cancel Joseph Coveney Join Date : Apr 2014 Posts : 4374 # 3 10 Apr 2017 , 23:08 like following ? Code : quietly generate double L2squared = . 
+ quietly generate double corr = . 
+
+ tempname M 
+ forvalues row = 1/`=_N-1 ' { 
+
+      matrix dissimilarity ` M ' = v1 - v4 inlist(_n , ` row ' , ` = _ N ' ) , observation L2squared 
+      quietly replace L2squared = ` M'[2 , 1 ] ` row ' 
+
+      matrix dissimilarity ` M ' = v1 - v4 inlist(_n , ` row ' , ` = _ N ' ) , observation correlation 
+      quietly replace corr = ` M'[2 , 1 ] ` row ' 
+ } 1 like Comment Post Cancel Monica Muller Join Date : Jul 2014 Posts : 226 # 4 11 Apr 2017 , 00:19 Thank Joseph , understand code , data result result code . mistake ? replaced userid reference row -1 , goes row . Code : set matsize 800 
+ foreach numlist 1/4 { 
+ use profile`i ' , replace 
+ drop int * val * sty * 
+ sort userid 
+ matrix dissimilarity Dis = v1 v2 v3 v4 
+ svmat Dis 
+ matrix dissimilarity Corr1 = v1 v2 v3 v4 , corr 
+ svmat Corr1 Comment Post Cancel Nick Cox Join Date : Mar 2014 Posts : 35446 # 5 11 Apr 2017 , 01:08 Joseph ( neatly nicely ) code loops row , comparing rows row , reference row . inlist ( ) , compare different examples run . Code : . sysuse auto , clear 
+ ( 1978 Automobile Data ) 
+
+ . list mpg weight inlist(_n , 1 , _ N ) 
+
+      + --------------+ 
+      | mpg    weight | 
+      |--------------| 
+   1 . |   22     2,930 | 
+  74 . |   17     3,170 | 
+      + --------------+ 
+
+ . list mpg weight inlist(_n , 2 , _ N ) 
+
+      + --------------+ 
+      | mpg    weight | 
+      |--------------| 
+   2 . |   17     3,350 | 
+  74 . |   17     3,170 | 
+      + --------------+ 
+
+ . di _ N 
+ 74 write Code : ... _ n = = ` row ' | _ n = = _ N effect . Comment Post Cancel Monica Muller Join Date : Jul 2014 Posts : 226 # 6 11 Apr 2017 , 09:44 Thanks Nick . got inlist . completely understand Code : tempname M     
+  quietly replace corr = ` M'[2 , 1 ] ` row ' reason result code compared Joseph code calculated L2 L2squared . changed L2 got exact numbers . Thanks help . appreciate . Comment Post Cancel Previous © Copyright 2025 StataCorp LLC Terms use Privacy Help Contact Working ... Yes OK OK Cancel X

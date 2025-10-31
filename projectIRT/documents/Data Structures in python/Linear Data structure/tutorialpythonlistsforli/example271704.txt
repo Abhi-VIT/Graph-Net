@@ -1,0 +1,93 @@
+Tutorial : Python Lists Linear Data Structures - DEV Community Skip content Navigation menu Search Powered Search Algolia Log Create account DEV Community Close Add reaction Like Unicorn Exploding Head Raised Hands Fire Jump Comments Save Boost ... Moderate Copy link Copy link Copied Clipboard Share X Share LinkedIn Share Facebook Share Mastodon Report Abuse Saumitra Jagdale Posted Oct 28 , 2020 • Edited Dec 30 , 2020 Tutorial : Python Lists Linear Data Structures # python Introduction Python lists dynamic data structures ways programming application - based project . use lists makes code conceptually easy understand readability code increases significantly . Python lists easily typecasted data structures according requirements , conversion possible line code . tutorial focuses implementing linear data structures Python Lists . Linear Data Structures Arrays Array data structure consisting collection elements , identified array index key . Implementation Python lists : Define size array N Create list N elements element zero access element list index ranging [ 0 , N-1 ] N=5 
+ arr = [ 0]*N 
+ print(arr ) 
+ > > [ 0 , 0 , 0 , 0 , 0 ] 
+
+ arr[0 ] = 1 
+ arr[1 ] = 2 
+ print(arr ) 
+ > > [ 1 , 2 , 0 , 0 , 0 ] Enter fullscreen mode Exit fullscreen mode Matrices Matrices data structures m horizontal rows n vertical columns . element matrix denoted variable subscripts . example , a21 represents element second row column matrix . Implementation Python Lists : Define number columns matrix M. Define number rows matrix N. Create list named ' cols ' M elements element zero Create nested list N elements list ' cols ' ' mat ' access element matrix accessing elements nested list format mat[1][0 ] M=3 
+ N=2 
+ cols = [ 0]*M 
+ mat = [ cols]*N 
+ print(mat ) 
+ > > [ [ 0 , 0 , 0 ] , [ 0 , 0 , 0 ] ] 
+ mat[0][1 ] = 24 
+ mat[1][2 ] = 15 
+ print(mat ) 
+ > > [ [ 0 , 24 , 0 ] , [ 0 , 0 , 15 ] ] 
+ print(mat[1][2 ] ) 
+ > > 15 
+
+ M=4 
+ N=4 
+ cols = [ 0]*M 
+ mat = [ cols]*N 
+ print(mat ) 
+ > > [ [ 0 , 0 , 0 , 0 ] , [ 0 , 0 , 0 , 0 ] , [ 0 , 0 , 0 , 0 ] , [ 0 , 0 , 0 , 0 ] ] Enter fullscreen mode Exit fullscreen mode Strings String sequence characters , literal constant kind variable . Implementation Python lists : Define string inverted commas . Store string value variable , let S. object string created typecast list , store character separate element list string form sentence , .split ( ) method store word separate element list . S = " Saumitra " 
+ lst = list(S ) 
+ print(lst ) 
+ > > [ ' , ' ' , ' u ' , ' m ' , ' ' , ' t ' , ' r ' , ' ' ] 
+
+ S= " Saumitra Jagdale knows python language " 
+ lst = S.split ( ) 
+ print(lst ) 
+ > > [ ' Saumitra ' , ' Jagdale ' , ' knows ' , ' python ' , ' language ' ] Enter fullscreen mode Exit fullscreen mode Dictionaries Dictionaries data structures generally known associative array . dictionary consists collection key - value pairs . key - value pair maps key associated value . Implementation Python Lists : Define nested list form matrix order N x 2 N number key - value pairs require dictionary . Let variable ' ' represents number row matrix , 0 < = < N. Create variable ' ' nested list , define a[i][0 ] key a[i][1 ] value elements matrix . typecast nest list ' ' dictionary dict ( ) function . = [ [ ' Tendulkar ' , 10 ] , [ ' Kohli ' , 18 ] , [ ' Dhoni ' , 7 ] ] 
+ d = dict(a ) 
+ print(d ) 
+ > > { ' Tendulkar ' : 10 , ' Kohli ' : 18 , ' Dhoni ' : 7 } 
+
+ a=[[1 , 1 ] , [ 2 , 4 ] , [ 3 , 9 ] , [ 4 , 16 ] , [ 5 , 25 ] , [ 6 , 36 ] , [ 7 , 49 ] ] 
+ d = dict(a ) 
+ print(d ) 
+ > > { 1 : 1 , 2 : 4 , 3 : 9 , 4 : 16 , 5 : 25 , 6 : 36 , 7 : 49 } Enter fullscreen mode Exit fullscreen mode typecasting dictionary list , ' key ' elements dictionary converted list , ' value ' elements dictionary lost typecasting process . d = { 1 : 1 , 2 : 4 , 3 : 9 , 4 : 16 , 5 : 25 , 6 : 36 , 7 : 49 } 
+ = list(d ) 
+ print(a ) 
+ > > [ 1 , 2 , 3 , 4 , 5 , 6 , 7 ] 
+
+ d = { ' Tendulkar ' : 10 , ' Kohli ' : 18 , ' Dhoni ' : 7 } 
+ = list(d ) 
+ print(a ) 
+ > > [ ' Tendulkar ' , ' Kohli ' , ' Dhoni ' ] Enter fullscreen mode Exit fullscreen mode Queues Queue collection entities kept sequence modified addition elements end sequence removal elements end sequence . Implementation Python lists : Define sequence elements queue . Create list object variable Q append elements sequence Q.append(val ) method , operation called enqueuing . removing elements use Q.pop(0 ) method created object list remove element zeroth index , operation called dequeuing . # Lets sequence : 1 4 9 16  
+
+ # Enqueuing 
+ Q = [ ] 
+ Q.append(1 ) 
+ Q.append(4 ) 
+ Q.append(9 ) 
+ print(Q ) 
+ > > [ 1 , 4 , 9 ] 
+
+ Q.append(16 ) 
+ print(Q ) 
+ > > [ 1 , 4 , 9 , 16 ] 
+
+ # Dequeuing 
+ Q.pop(0 ) 
+ print(Q ) 
+ > > [ 4 , 9 , 16 ] 
+
+ Q.pop(0 ) 
+ Q.pop(0 ) 
+ > > [ 16 ] Enter fullscreen mode Exit fullscreen mode Stacks Stack data structure serves collection elements , main features : push , adds element collection , pops , removes recently added element removed Implementation Python lists : Define sequence elements stack . Create list object variable S append elements sequence S.append(val ) method , operation called pushing . poping elements use S.pop ( ) method created object list remove element index . # Lets sequence : 1 4 9 16  
+
+ # Pushing 
+ S = [ ] 
+ S.append(1 ) 
+ S.append(4 ) 
+ S.append(9 ) 
+ print(S ) 
+ > > [ 1 , 4 , 9 ] 
+
+ S.append(16 ) 
+ print(Q ) 
+ > > [ 1 , 4 , 9 , 16 ] 
+
+ # Poping 
+ S.pop ( ) 
+ print(S ) 
+ > > [ 1 , 4 , 9 ] 
+
+ S.pop ( ) 
+ S.pop ( ) 
+ > > [ 1 ] Enter fullscreen mode Exit fullscreen mode NOTE method implemented optimized way implement data structures respect time space complexity . Linked List ( Singly , Doubly Circular ) needs address allocation possible lists , proper structure class methods needed designed . comments ( 0 ) Subscribe Personal Trusted User Create template Templates let quickly answer FAQs store snippets - use . Submit Preview Dismiss Code Conduct • Report abuse sure want hide comment ? hidden post , visible comment permalink . Hide child comments Confirm actions , consider blocking person and/or reporting abuse Saumitra Jagdale Follow | Global AI Ambassador | Technical Author | Python Developer | Leader TensorFlow Community India | Location Mumbai Work Trainee Backend Developer Botonomics Automations LLP Joined Oct 17 , 2020 Saumitra Jagdale Bipolar Sigmoid vs Tanh Activation Functions # machinelearning # python # datascience # deeplearning Universities Dataset # datascience # python # database # bs4 Thank Diamond Sponsor Neon supporting community . DEV Community — constructive inclusive social network software developers . step journey . Home DEV++ Podcasts Videos Tags DEV Help Forem Shop Advertise DEV DEV Challenges DEV Showcase Contact Free Postgres Database Software comparisons Code Conduct Privacy Policy Terms use Built Forem — open source software powers DEV inclusive communities . love Ruby Rails . DEV Community © 2016 - 2025 . place coders share , stay - - date grow careers . Log Create account

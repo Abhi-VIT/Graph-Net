@@ -1,0 +1,291 @@
+6.3 . Preprocessing data — scikit - learn 1.6.1 documentation Skip main content Ctrl + K Install User Guide API Examples Community Getting Started Release History Glossary Development FAQ Support Related Projects Roadmap Governance GitHub Choose version Install User Guide API Examples Community Getting Started Release History Glossary Development FAQ Support Related Projects Roadmap Governance GitHub Choose version Section Navigation 1 . Supervised learning 1.1 . Linear Models 1.2 . Linear Quadratic Discriminant Analysis 1.3 . Kernel ridge regression 1.4 . Support Vector Machines 1.5 . Stochastic Gradient Descent 1.6 . Nearest Neighbors 1.7 . Gaussian Processes 1.8 . Cross decomposition 1.9 . Naive Bayes 1.10 . Decision Trees 1.11 . Ensembles : Gradient boosting , random forests , bagging , voting , stacking 1.12 . Multiclass multioutput algorithms 1.13 . Feature selection 1.14 . Semi - supervised learning 1.15 . Isotonic regression 1.16 . Probability calibration 1.17 . Neural network models ( supervised ) 2 . Unsupervised learning 2.1 . Gaussian mixture models 2.2 . Manifold learning 2.3 . Clustering 2.4 . Biclustering 2.5 . Decomposing signals components ( matrix factorization problems ) 2.6 . Covariance estimation 2.7 . Novelty Outlier Detection 2.8 . Density Estimation 2.9 . Neural network models ( unsupervised ) 3 . Model selection evaluation 3.1 . Cross - validation : evaluating estimator performance 3.2 . Tuning hyper - parameters estimator 3.3 . Tuning decision threshold class prediction 3.4 . Metrics scoring : quantifying quality predictions 3.5 . Validation curves : plotting scores evaluate models 4 . Inspection 4.1 . Partial Dependence Individual Conditional Expectation plots 4.2 . Permutation feature importance 5 . Visualizations 6 . Dataset transformations 6.1 . Pipelines composite estimators 6.2 . Feature extraction 6.3 . Preprocessing data 6.4 . Imputation missing values 6.5 . Unsupervised dimensionality reduction 6.6 . Random Projection 6.7 . Kernel Approximation 6.8 . Pairwise metrics , Affinities Kernels 6.9 . Transforming prediction target ( y ) 7 . Dataset loading utilities 7.1 . Toy datasets 7.2 . Real world datasets 7.3 . Generated datasets 7.4 . Loading datasets 8 . Computing scikit - learn 8.1 . Strategies scale computationally : bigger data 8.2 . Computational Performance 8.3 . Parallelism , resource management , configuration 9 . Model persistence 10 . Common pitfalls recommended practices 11 . Dispatching 11.1 . Array API support ( experimental ) 12 . Choosing right estimator 13 . External Resources , Videos Talks User Guide 6 . Dataset transformations 6.3 . Preprocessing data 6.3 . Preprocessing data # sklearn.preprocessing package provides common 
+ utility functions transformer classes change raw feature vectors 
+ representation suitable downstream estimators . general , learning algorithms linear models benefit standardization data set 
+ ( Importance Feature Scaling ) . 
+ outliers present set , robust scalers transformers 
+ appropriate . behaviors different scalers , transformers , 
+ normalizers dataset containing marginal outliers highlighted Compare effect different scalers data outliers . 6.3.1 . Standardization , mean removal variance scaling # Standardization datasets common requirement 
+ machine learning estimators implemented scikit - learn ; behave 
+ badly individual features look like standard 
+ normally distributed data : Gaussian zero mean unit variance . practice ignore shape distribution 
+ transform data center removing mean value 
+ feature , scale dividing non - constant features 
+ standard deviation . instance , elements objective function 
+ learning algorithm ( RBF kernel Support Vector 
+ Machines l1 l2 regularizers linear models ) assume 
+ features centered zero variance 
+ order . feature variance orders magnitude larger 
+ , dominate objective function 
+ estimator unable learn features correctly expected . preprocessing module provides StandardScaler utility class , quick 
+ easy way perform following operation array - like 
+ dataset : > > > sklearn import preprocessing > > > import numpy np > > > X_train = np . array ( [ [ 1 . , - 1 . , 2 . ] , ... [ 2 . , 0 . , 0 . ] , ... [ 0 . , 1 . , - 1 . ] ] ) > > > scaler = preprocessing . StandardScaler ( ) . fit ( X_train ) > > > scaler StandardScaler ( ) > > > scaler . mean _ array([1 . ... , 0 . ... , 0.33 ... ] ) > > > scaler . scale _ array([0.81 ... , 0.81 ... , 1.24 ... ] ) > > > X_scaled = scaler . transform ( X_train ) > > > X_scaled array ( [ [ 0 .   ... , -1.22 ... ,   1.33 ... ] , [ 1.22 ... ,   0 .   ... , -0.26 ... ] , [ -1.22 ... ,   1.22 ... , -1.06 ... ] ] ) Scaled data zero mean unit variance : > > > X_scaled . mean ( axis = 0 ) array([0 . , 0 . , 0 . ] ) > > > X_scaled . std ( axis = 0 ) array([1 . , 1 . , 1 . ] ) class implements Transformer API compute mean 
+ standard deviation training set able later - apply 
+ transformation testing set . class suitable 
+ use early steps Pipeline : > > > sklearn.datasets import make_classification > > > sklearn.linear_model import LogisticRegression > > > sklearn.model_selection import train_test_split > > > sklearn.pipeline import make_pipeline > > > sklearn.preprocessing import StandardScaler > > > X , y = make_classification ( random_state = 42 ) > > > X_train , X_test , y_train , y_test = train_test_split ( X , y , random_state = 42 ) > > > pipe = make_pipeline ( StandardScaler ( ) , LogisticRegression ( ) ) > > > pipe . fit ( X_train , y_train ) # apply scaling training data Pipeline(steps=[('standardscaler ' , StandardScaler ( ) ) , ( ' logisticregression ' , LogisticRegression ( ) ) ] ) > > > pipe . score ( X_test , y_test ) # apply scaling testing data , leaking training data . 0.96 possible disable centering scaling 
+ passing with_mean = False with_std = False constructor 
+ StandardScaler . 6.3.1.1 . Scaling features range # alternative standardization scaling features 
+ lie given minimum maximum value , zero , 
+ maximum absolute value feature scaled unit size . 
+ achieved MinMaxScaler MaxAbsScaler , 
+ respectively . motivation use scaling include robustness small 
+ standard deviations features preserving zero entries sparse data . example scale toy data matrix [ 0 , 1 ] range : > > > X_train = np . array ( [ [ 1 . , - 1 . , 2 . ] , ... [ 2 . , 0 . , 0 . ] , ... [ 0 . , 1 . , - 1 . ] ] ) ... > > > min_max_scaler = preprocessing . MinMaxScaler ( ) > > > X_train_minmax = min_max_scaler . fit_transform ( X_train ) > > > X_train_minmax array([[0.5        , 0 .         , 1 .         ] , [ 1 .         , 0.5        , 0.33333333 ] , [ 0 .         , 1 .         , 0 .         ] ] ) instance transformer applied new test data 
+ unseen fit : scaling shifting operations 
+ applied consistent transformation performed train data : > > > X_test = np . array ( [ [ - 3 . , - 1 . , 4 . ] ] ) > > > X_test_minmax = min_max_scaler . transform ( X_test ) > > > X_test_minmax array([[-1.5        ,   0 .         ,   1.66666667 ] ] ) possible introspect scaler attributes find exact 
+ nature transformation learned training data : > > > min_max_scaler . scale _ array([0.5        , 0.5        , 0.33 ... ] ) > > > min_max_scaler . min _ array([0 .         , 0.5        , 0.33 ... ] ) MinMaxScaler given explicit feature_range=(min , max ) 
+ formula : X_std = ( X - X . min ( axis = 0 ) ) / ( X . max ( axis = 0 ) - X . min ( axis = 0 ) ) X_scaled = X_std * ( max - min ) + min MaxAbsScaler works similar fashion , scales way 
+ training data lies range [ -1 , 1 ] dividing 
+ largest maximum value feature . meant data 
+ centered zero sparse data . use toy data previous example scaler : > > > X_train = np . array ( [ [ 1 . , - 1 . , 2 . ] , ... [ 2 . , 0 . , 0 . ] , ... [ 0 . , 1 . , - 1 . ] ] ) ... > > > max_abs_scaler = preprocessing . MaxAbsScaler ( ) > > > X_train_maxabs = max_abs_scaler . fit_transform ( X_train ) > > > X_train_maxabs array ( [ [ 0.5 , -1 . ,   1 . ] , [ 1 . ,   0 . ,   0 . ] , [ 0 . ,   1 . , -0.5 ] ] ) > > > X_test = np . array ( [ [ - 3 . , - 1 . , 4 . ] ] ) > > > X_test_maxabs = max_abs_scaler . transform ( X_test ) > > > X_test_maxabs array([[-1.5 , -1 . ,   2 . ] ] ) > > > max_abs_scaler . scale _ array([2 . ,   1 . ,   2 . ] ) 6.3.1.2 . Scaling sparse data # Centering sparse data destroy sparseness structure data , 
+ rarely sensible thing . , sense scale 
+ sparse inputs , especially features different scales . MaxAbsScaler specifically designed scaling 
+ sparse data , recommended way . 
+ , StandardScaler accept scipy.sparse matrices   input , long with_mean = False explicitly passed 
+ constructor . ValueError raised 
+ silently centering break sparsity crash 
+ execution allocating excessive amounts memory unintentionally . RobustScaler fitted sparse inputs , use 
+ transform method sparse inputs . Note scalers accept Compressed Sparse Rows Compressed 
+ Sparse Columns format ( scipy.sparse.csr_matrix scipy.sparse.csc_matrix ) . sparse input converted 
+ Compressed Sparse Rows representation .   avoid unnecessary memory 
+ copies , recommended choose CSR CSC representation upstream . Finally , centered data expected small , explicitly 
+ converting input array toarray method sparse matrices 
+ option . 6.3.1.3 . Scaling data outliers # data contains outliers , scaling mean variance 
+ data likely work . cases , use RobustScaler drop - replacement instead . uses 
+ robust estimates center range data . References # discussion importance centering scaling data 
+ available FAQ : normalize / standardize / rescale data ? Scaling vs Whitening # center scale features 
+ independently , downstream model assumption 
+ linear independence features . address issue use PCA whiten = True remove linear correlation features . 6.3.1.4 . Centering kernel matrices # kernel matrix kernel \(K\ ) computes dot product 
+ feature space ( possibly implicitly ) defined function \(\phi(\cdot)\ ) , KernelCenterer transform kernel matrix 
+ contains inner products feature space defined \(\phi\ ) followed removal mean space . words , KernelCenterer computes centered Gram matrix associated 
+ positive semidefinite kernel \(K\ ) . Mathematical formulation # look mathematical formulation 
+ intuition . Let \(K\ ) kernel matrix shape ( n_samples , n_samples ) computed \(X\ ) , data matrix shape ( n_samples , n_features ) , 
+ fit step . \(K\ ) defined \[K(X , X ) = \phi(X ) . \phi(X)^{T}\ ] \(\phi(X)\ ) function mapping \(X\ ) Hilbert space . 
+ centered kernel \(\tilde{K}\ ) defined : \[\tilde{K}(X , X ) = \tilde{\phi}(X ) . \tilde{\phi}(X)^{T}\ ] \(\tilde{\phi}(X)\ ) results centering \(\phi(X)\ ) 
+ Hilbert space . , compute \(\tilde{K}\ ) mapping \(X\ ) 
+ function \(\phi(\cdot)\ ) center data new space . , 
+ kernels allows algebra calculations 
+ avoid computing explicitly mapping \(\phi(\cdot)\ ) . , 
+ implicitly center shown Appendix B [ Scholkopf1998 ] : \[\tilde{K } = K - 1_{\text{n}_{samples } } K - K 1_{\text{n}_{samples } } + 1_{\text{n}_{samples } } K 1_{\text{n}_{samples}}\ ] \(1_{\text{n}_{samples}}\ ) matrix ( n_samples , n_samples ) 
+ entries equal \(\frac{1}{\text{n}_{samples}}\ ) . transform step , kernel \(K_{test}(X , Y)\ ) defined : \[K_{test}(X , Y ) = \phi(Y ) . \phi(X)^{T}\ ] \(Y\ ) test dataset shape ( n_samples_test , n_features ) \(K_{test}\ ) shape ( n_samples_test , n_samples ) . case , 
+ centering \(K_{test}\ ) : \[\tilde{K}_{test}(X , Y ) = K_{test } - 1'_{\text{n}_{samples } } K - K_{test } 1_{\text{n}_{samples } } + 1'_{\text{n}_{samples } } K 1_{\text{n}_{samples}}\ ] \(1'_{\text{n}_{samples}}\ ) matrix shape ( n_samples_test , n_samples ) entries equal \(\frac{1}{\text{n}_{samples}}\ ) . References [ Scholkopf1998 ] B. Schölkopf , A. Smola , K.R. Müller , “ Nonlinear component analysis kernel eigenvalue problem . ” Neural computation 10.5 ( 1998 ): 1299 - 1319 . 6.3.2 . Non - linear transformation # types transformations available : quantile transforms power 
+ transforms . quantile power transforms based monotonic 
+ transformations features preserve rank values 
+ feature . Quantile transforms features desired distribution based 
+ formula \(G^{-1}(F(X))\ ) \(F\ ) cumulative 
+ distribution function feature \(G^{-1}\ ) quantile function 
+ desired output distribution \(G\ ) . formula following 
+ facts : ( ) \(X\ ) random variable continuous cumulative 
+ distribution function \(F\ ) \(F(X)\ ) uniformly distributed \([0,1]\ ) ; ( ii ) \(U\ ) random variable uniform distribution 
+ \([0,1]\ ) \(G^{-1}(U)\ ) distribution \(G\ ) . performing 
+ rank transformation , quantile transform smooths unusual distributions 
+ influenced outliers scaling methods . , , 
+ distort correlations distances features . Power transforms family parametric transformations aim map 
+ data distribution close Gaussian distribution . 6.3.2.1 . Mapping Uniform distribution # QuantileTransformer provides non - parametric 
+ transformation map data uniform distribution 
+ values 0 1 : > > > sklearn.datasets import load_iris > > > sklearn.model_selection import train_test_split > > > X , y = load_iris ( return_X_y = True ) > > > X_train , X_test , y_train , y_test = train_test_split ( X , y , random_state = 0 ) > > > quantile_transformer = preprocessing . QuantileTransformer ( random_state = 0 ) > > > X_train_trans = quantile_transformer . fit_transform ( X_train ) > > > X_test_trans = quantile_transformer . transform ( X_test ) > > > np . percentile ( X_train [: , 0 ] , [ 0 , 25 , 50 , 75 , 100 ] ) array ( [ 4.3 ,   5.1 ,   5.8 ,   6.5 ,   7.9 ] ) feature corresponds sepal length cm . quantile 
+ transformation applied , landmarks approach closely percentiles 
+ previously defined : > > > np . percentile ( X_train_trans [: , 0 ] , [ 0 , 25 , 50 , 75 , 100 ] ) ... array ( [ 0.00 ... ,   0.24 ... ,   0.49 ... ,   0.73 ... ,   0.99 ... ] ) confirmed independent testing set similar remarks : > > > np . percentile ( X_test [: , 0 ] , [ 0 , 25 , 50 , 75 , 100 ] ) ... array ( [ 4.4   ,   5.125 ,   5.75 ,   6.175 ,   7.3   ] ) > > > np . percentile ( X_test_trans [: , 0 ] , [ 0 , 25 , 50 , 75 , 100 ] ) ... array ( [ 0.01 ... ,   0.25 ... ,   0.46 ... ,   0.60 ... ,   0.94 ... ] ) 6.3.2.2 . Mapping Gaussian distribution # modeling scenarios , normality features dataset desirable . 
+ Power transforms family parametric , monotonic transformations aim 
+ map data distribution close Gaussian distribution 
+ possible order stabilize variance minimize skewness . PowerTransformer currently provides power transformations , 
+ Yeo - Johnson transform Box - Cox transform . Yeo - Johnson transform # \[\begin{split}x_i^{(\lambda ) } = 
+ \begin{cases } 
+ [ ( x_i + 1)^\lambda - 1 ] / \lambda & \text{if } \lambda \neq 0 , x_i \geq 0 , \\[8pt ] 
+ \ln{(x_i + 1 ) } & \text{if } \lambda = 0 , x_i \geq 0 \\[8pt ] 
+ -[(-x_i + 1)^{2 - \lambda } - 1 ] / ( 2 - \lambda ) & \text{if } \lambda \neq 2 , x_i < 0 , \\[8pt ] 
+ - \ln ( - x_i + 1 ) & \text{if } \lambda = 2 , x_i < 0 
+ \end{cases}\end{split}\ ] Box - Cox transform # \[\begin{split}x_i^{(\lambda ) } = 
+ \begin{cases } 
+ \dfrac{x_i^\lambda - 1}{\lambda } & \text{if } \lambda \neq 0 , \\[8pt ] 
+ \ln{(x_i ) } & \text{if } \lambda = 0 , 
+ \end{cases}\end{split}\ ] Box - Cox applied strictly positive data . methods , 
+ transformation parameterized \(\lambda\ ) , determined 
+ maximum likelihood estimation . example Box - Cox map 
+ samples drawn lognormal distribution normal distribution : > > > pt = preprocessing . PowerTransformer ( method = ' box - cox ' , standardize = False ) > > > X_lognormal = np . random . RandomState ( 616 ) . lognormal ( size = ( 3 , 3 ) ) > > > X_lognormal array([[1.28 ... , 1.18 ... , 0.84 ... ] , [ 0.94 ... , 1.60 ... , 0.38 ... ] , [ 1.35 ... , 0.21 ... , 1.09 ... ] ] ) > > > pt . fit_transform ( X_lognormal ) array ( [ [ 0.49 ... ,   0.17 ... , -0.15 ... ] , [ -0.05 ... ,   0.58 ... , -0.57 ... ] , [ 0.69 ... , -0.84 ... ,   0.10 ... ] ] ) example sets standardize option False , PowerTransformer apply zero - mean , unit - variance normalization 
+ transformed output default . examples Box - Cox Yeo - Johnson applied probability 
+ distributions .   Note applied certain distributions , power 
+ transforms achieve Gaussian - like results , , 
+ ineffective . highlights importance visualizing data 
+ transformation . possible map data normal distribution QuantileTransformer setting output_distribution='normal ' . 
+ earlier example iris dataset : > > > quantile_transformer = preprocessing . QuantileTransformer ( ... output_distribution = ' normal ' , random_state = 0 ) > > > X_trans = quantile_transformer . fit_transform ( X ) > > > quantile_transformer . quantiles _ array([[4.3 , 2 . , 1 . , 0.1 ] , [ 4.4 , 2.2 , 1.1 , 0.1 ] , [ 4.4 , 2.2 , 1.2 , 0.1 ] , ... , [ 7.7 , 4.1 , 6.7 , 2.5 ] , [ 7.7 , 4.2 , 6.7 , 2.5 ] , [ 7.9 , 4.4 , 6.9 , 2.5 ] ] ) median input mean output , centered 0 . 
+ normal output clipped input minimum maximum — 
+ corresponding 1e-7 1 - 1e-7 quantiles respectively — 
+ infinite transformation . 6.3.3 . Normalization # Normalization process scaling individual samples 
+ unit norm . process useful plan use quadratic form 
+ dot - product kernel quantify similarity 
+ pair samples . assumption base Vector Space Model text 
+ classification clustering contexts . function normalize provides quick easy way perform 
+ operation single array - like dataset , l1 , l2 , max norms : > > > X = [ [ 1 . , - 1 . , 2 . ] , ... [ 2 . , 0 . , 0 . ] , ... [ 0 . , 1 . , - 1 . ] ] > > > X_normalized = preprocessing . normalize ( X , norm = ' l2 ' ) > > > X_normalized array ( [ [ 0.40 ... , -0.40 ... ,   0.81 ... ] , [ 1 .   ... ,   0 .   ... ,   0 .   ... ] , [ 0 .   ... ,   0.70 ... , -0.70 ... ] ] ) preprocessing module provides utility class Normalizer implements operation Transformer API ( fit method useless case : 
+ class stateless operation treats samples independently ) . class suitable use early steps Pipeline : > > > normalizer = preprocessing . Normalizer ( ) . fit ( X ) # fit > > > normalizer Normalizer ( ) normalizer instance sample vectors transformer : > > > normalizer . transform ( X ) array ( [ [ 0.40 ... , -0.40 ... ,   0.81 ... ] , [ 1 .   ... ,   0 .   ... ,   0 .   ... ] , [ 0 .   ... ,   0.70 ... , -0.70 ... ] ] ) > > > normalizer . transform ( [ [ - 1 . , 1 . , 0 . ] ] ) array([[-0.70 ... ,   0.70 ... ,   0 .   ... ] ] ) Note : L2 normalization known spatial sign preprocessing . Sparse input # normalize Normalizer accept dense array - like 
+ sparse matrices scipy.sparse input . sparse input data converted Compressed Sparse Rows 
+ representation ( scipy.sparse.csr_matrix ) fed 
+ efficient Cython routines . avoid unnecessary memory copies , 
+ recommended choose CSR representation upstream . 6.3.4 . Encoding categorical features # features given continuous values categorical . 
+ example person features [ " male " , " female " ] , [ " Europe " , " " , " Asia " ] , [ " uses Firefox " , " uses Chrome " , " uses Safari " , " uses Internet Explorer " ] . 
+ features efficiently coded integers , instance [ " male " , " " , " uses Internet Explorer " ] expressed [ 0 , 1 , 3 ] [ " female " , " Asia " , " uses Chrome " ] [ 1 , 2 , 1 ] . convert categorical features integer codes , use OrdinalEncoder . estimator transforms categorical feature 
+ new feature integers ( 0 n_categories - 1 ): > > > enc = preprocessing . OrdinalEncoder ( ) > > > X = [ [ ' male ' , ' ' , ' uses Safari ' ] , [ ' female ' , ' Europe ' , ' uses Firefox ' ] ] > > > enc . fit ( X ) OrdinalEncoder ( ) > > > enc . transform ( [ [ ' female ' , ' ' , ' uses Safari ' ] ] ) array([[0 . , 1 . , 1 . ] ] ) integer representation , , directly 
+ scikit - learn estimators , expect continuous input , interpret 
+ categories ordered , desired ( i.e. set 
+ browsers ordered arbitrarily ) . default , OrdinalEncoder passthrough missing values 
+ indicated np.nan . > > > enc = preprocessing . OrdinalEncoder ( ) > > > X = [ [ ' male ' ] , [ ' female ' ] , [ np . nan ] , [ ' female ' ] ] > > > enc . fit_transform ( X ) array ( [ [ 1 . ] , [ 0 . ] , [ nan ] , [ 0 . ] ] ) OrdinalEncoder provides parameter encoded_missing_value encode 
+ missing values need create pipeline SimpleImputer . > > > enc = preprocessing . OrdinalEncoder ( encoded_missing_value = - 1 ) > > > X = [ [ ' male ' ] , [ ' female ' ] , [ np . nan ] , [ ' female ' ] ] > > > enc . fit_transform ( X ) array ( [ [ 1 . ] , [ 0 . ] , [ -1 . ] , [ 0 . ] ] ) processing equivalent following pipeline : > > > sklearn.pipeline import Pipeline > > > sklearn.impute import SimpleImputer > > > enc = Pipeline ( steps = [ ... ( " encoder " , preprocessing . OrdinalEncoder ( ) ) , ... ( " imputer " , SimpleImputer ( strategy = " constant " , fill_value = - 1 ) ) , ... ] ) > > > enc . fit_transform ( X ) array ( [ [ 1 . ] , [ 0 . ] , [ -1 . ] , [ 0 . ] ] ) possibility convert categorical features features 
+ scikit - learn estimators use - - K , known - hot 
+ dummy encoding . 
+ type encoding obtained OneHotEncoder , 
+ transforms categorical feature n_categories possible values n_categories binary features , 
+ 1 , 0 . Continuing example : > > > enc = preprocessing . OneHotEncoder ( ) > > > X = [ [ ' male ' , ' ' , ' uses Safari ' ] , [ ' female ' , ' Europe ' , ' uses Firefox ' ] ] > > > enc . fit ( X ) OneHotEncoder ( ) > > > enc . transform ( [ [ ' female ' , ' ' , ' uses Safari ' ] , ... [ ' male ' , ' Europe ' , ' uses Safari ' ] ] ) . toarray ( ) array([[1 . , 0 . , 0 . , 1 . , 0 . , 1 . ] , [ 0 . , 1 . , 1 . , 0 . , 0 . , 1 . ] ] ) default , values feature inferred automatically 
+ dataset found categories _ attribute : > > > enc . categories _ [ array(['female ' , ' male ' ] , dtype = object ) , array(['from Europe ' , ' ' ] , dtype = object ) , array(['uses Firefox ' , ' uses Safari ' ] , dtype = object ) ] possible specify explicitly parameter categories . 
+ genders , possible continents web browsers 
+ dataset : > > > genders = [ ' female ' , ' male ' ] > > > locations = [ ' Africa ' , ' Asia ' , ' Europe ' , ' ' ] > > > browsers = [ ' uses Chrome ' , ' uses Firefox ' , ' uses IE ' , ' uses Safari ' ] > > > enc = preprocessing . OneHotEncoder ( categories = [ genders , locations , browsers ] ) > > > # Note missing categorical values 2nd 3rd > > > # feature > > > X = [ [ ' male ' , ' ' , ' uses Safari ' ] , [ ' female ' , ' Europe ' , ' uses Firefox ' ] ] > > > enc . fit ( X ) OneHotEncoder(categories=[['female ' , ' male ' ] , [ ' Africa ' , ' Asia ' , ' Europe ' , ' ' ] , [ ' uses Chrome ' , ' uses Firefox ' , ' uses IE ' , ' uses Safari ' ] ] ) > > > enc . transform ( [ [ ' female ' , ' Asia ' , ' uses Chrome ' ] ] ) . toarray ( ) array([[1 . , 0 . , 0 . , 1 . , 0 . , 0 . , 1 . , 0 . , 0 . , 0 . ] ] ) possibility training data missing categorical 
+ features , better specify handle_unknown='infrequent_if_exist ' instead setting categories manually . handle_unknown='infrequent_if_exist ' specified 
+ unknown categories encountered transform , error 
+ raised resulting - hot encoded columns feature 
+ zeros considered infrequent category enabled . 
+ ( handle_unknown='infrequent_if_exist ' supported - hot 
+ encoding ): > > > enc = preprocessing . OneHotEncoder ( handle_unknown = ' infrequent_if_exist ' ) > > > X = [ [ ' male ' , ' ' , ' uses Safari ' ] , [ ' female ' , ' Europe ' , ' uses Firefox ' ] ] > > > enc . fit ( X ) OneHotEncoder(handle_unknown='infrequent_if_exist ' ) > > > enc . transform ( [ [ ' female ' , ' Asia ' , ' uses Chrome ' ] ] ) . toarray ( ) array([[1 . , 0 . , 0 . , 0 . , 0 . , 0 . ] ] ) possible encode column n_categories - 1 columns 
+ instead n_categories columns drop parameter . 
+ parameter allows user specify category feature dropped . 
+ useful avoid co - linearity input matrix classifiers . 
+ functionality useful , example , non - regularized 
+ regression ( LinearRegression ) , 
+ co - linearity cause covariance matrix non - invertible : > > > X = [ [ ' male ' , ' ' , ' uses Safari ' ] , ... [ ' female ' , ' Europe ' , ' uses Firefox ' ] ] > > > drop_enc = preprocessing . OneHotEncoder ( drop = ' ' ) . fit ( X ) > > > drop_enc . categories _ [ array(['female ' , ' male ' ] , dtype = object ) , array(['from Europe ' , ' ' ] , dtype = object ) , array(['uses Firefox ' , ' uses Safari ' ] , dtype = object ) ] > > > drop_enc . transform ( X ) . toarray ( ) array([[1 . , 1 . , 1 . ] , [ 0 . , 0 . , 0 . ] ] ) want drop columns features 2 
+ categories . case , set parameter drop='if_binary ' . > > > X = [ [ ' male ' , ' ' , ' Safari ' ] , ... [ ' female ' , ' Europe ' , ' Firefox ' ] , ... [ ' female ' , ' Asia ' , ' Chrome ' ] ] > > > drop_enc = preprocessing . OneHotEncoder ( drop = ' if_binary ' ) . fit ( X ) > > > drop_enc . categories _ [ array(['female ' , ' male ' ] , dtype = object ) , array(['Asia ' , ' Europe ' , ' ' ] , dtype = object ) , array(['Chrome ' , ' Firefox ' , ' Safari ' ] , dtype = object ) ] > > > drop_enc . transform ( X ) . toarray ( ) array([[1 . , 0 . , 0 . , 1 . , 0 . , 0 . , 1 . ] , [ 0 . , 0 . , 1 . , 0 . , 0 . , 1 . , 0 . ] , [ 0 . , 1 . , 0 . , 0 . , 1 . , 0 . , 0 . ] ] ) transformed X , column encoding feature 
+ categories “ male”/”female ” , remaining 6 columns encoding 
+ 2 features respectively 3 categories . handle_unknown='ignore ' drop , unknown categories 
+ encoded zeros : > > > drop_enc = preprocessing . OneHotEncoder ( drop = ' ' , ... handle_unknown = ' ignore ' ) . fit ( X ) > > > X_test = [ [ ' unknown ' , ' America ' , ' IE ' ] ] > > > drop_enc . transform ( X_test ) . toarray ( ) array([[0 . , 0 . , 0 . , 0 . , 0 . ] ] ) categories X_test unknown transform mapped 
+ zeros . means unknown categories mapping 
+ dropped category . OneHotEncoder.inverse_transform map zeros 
+ dropped category category dropped category 
+ dropped : > > > drop_enc = preprocessing . OneHotEncoder ( drop = ' if_binary ' , sparse_output = False , ... handle_unknown = ' ignore ' ) . fit ( X ) > > > X_test = [ [ ' unknown ' , ' America ' , ' IE ' ] ] > > > X_trans = drop_enc . transform ( X_test ) > > > X_trans array([[0 . , 0 . , 0 . , 0 . , 0 . , 0 . , 0 . ] ] ) > > > drop_enc . inverse_transform ( X_trans ) array([['female ' , , ] ] , dtype = object ) Support categorical features missing values # OneHotEncoder supports categorical features missing values 
+ considering missing values additional category : > > > X = [ [ ' male ' , ' Safari ' ] , ... [ ' female ' , ] , ... [ np . nan , ' Firefox ' ] ] > > > enc = preprocessing . OneHotEncoder ( handle_unknown = ' error ' ) . fit ( X ) > > > enc . categories _ [ array(['female ' , ' male ' , nan ] , dtype = object ) , array(['Firefox ' , ' Safari ' , ] , dtype = object ) ] > > > enc . transform ( X ) . toarray ( ) array([[0 . , 1 . , 0 . , 0 . , 1 . , 0 . ] , [ 1 . , 0 . , 0 . , 0 . , 0 . , 1 . ] , [ 0 . , 0 . , 1 . , 1 . , 0 . , 0 . ] ] ) feature contains np.nan , considered 
+ separate categories : > > > X = [ [ ' Safari ' ] , [ ] , [ np . nan ] , [ ' Firefox ' ] ] > > > enc = preprocessing . OneHotEncoder ( handle_unknown = ' error ' ) . fit ( X ) > > > enc . categories _ [ array(['Firefox ' , ' Safari ' , , nan ] , dtype = object ) ] > > > enc . transform ( X ) . toarray ( ) array([[0 . , 1 . , 0 . , 0 . ] , [ 0 . , 0 . , 1 . , 0 . ] , [ 0 . , 0 . , 0 . , 1 . ] , [ 1 . , 0 . , 0 . , 0 . ] ] ) Loading features dicts categorical features 
+ represented dict , scalars . 6.3.4.1 . Infrequent categories # OneHotEncoder OrdinalEncoder support aggregating 
+ infrequent categories single output feature . parameters 
+ enable gathering infrequent categories min_frequency max_categories . min_frequency   integer greater equal 1 , float 
+ interval ( 0.0 , 1.0 ) . min_frequency integer , categories 
+ cardinality smaller min_frequency considered infrequent . 
+ min_frequency float , categories cardinality smaller 
+ fraction total number samples considered infrequent . 
+ default value 1 , means category encoded separately . max_categories integer greater 1 . 
+ parameter sets upper limit number output features 
+ input feature . max_categories includes feature combines 
+ infrequent categories . following example OrdinalEncoder , categories ' dog ' ' snake ' considered infrequent : > > > X = np . array ( [ [ ' dog ' ] * 5 + [ ' cat ' ] * 20 + [ ' rabbit ' ] * 10 + ... [ ' snake ' ] * 3 ] , dtype = object ) . T > > > enc = preprocessing . OrdinalEncoder ( min_frequency = 6 ) . fit ( X ) > > > enc . infrequent_categories _ [ array(['dog ' , ' snake ' ] , dtype = object ) ] > > > enc . transform ( np . array ( [ [ ' dog ' ] , [ ' cat ' ] , [ ' rabbit ' ] , [ ' snake ' ] ] ) ) array([[2 . ] , [ 0 . ] , [ 1 . ] , [ 2 . ] ] ) OrdinalEncoder max_categories account missing 
+ unknown categories . Setting unknown_value encoded_missing_value 
+ integer increase number unique integer codes . 
+ result max_categories + 2 integer codes . following example , 
+ “ ” “ d ” considered infrequent grouped single 
+ category , “ b ” “ c ” categories , unknown values encoded 3 
+ missing values encoded 4 . > > > X_train = np . array ( ... [ [ " " ] * 5 + [ " b " ] * 20 + [ " c " ] * 10 + [ " d " ] * 3 + [ np . nan ] ] , ... dtype = object ) . T > > > enc = preprocessing . OrdinalEncoder ( ... handle_unknown = " use_encoded_value " , unknown_value = 3 , ... max_categories = 3 , encoded_missing_value = 4 ) > > > _ = enc . fit ( X_train ) > > > X_test = np . array ( [ [ " " ] , [ " b " ] , [ " c " ] , [ " d " ] , [ " e " ] , [ np . nan ] ] , dtype = object ) > > > enc . transform ( X_test ) array([[2 . ] , [ 0 . ] , [ 1 . ] , [ 2 . ] , [ 3 . ] , [ 4 . ] ] ) Similarity , OneHotEncoder configured group infrequent 
+ categories : > > > enc = preprocessing . OneHotEncoder ( min_frequency = 6 , sparse_output = False ) . fit ( X ) > > > enc . infrequent_categories _ [ array(['dog ' , ' snake ' ] , dtype = object ) ] > > > enc . transform ( np . array ( [ [ ' dog ' ] , [ ' cat ' ] , [ ' rabbit ' ] , [ ' snake ' ] ] ) ) array([[0 . , 0 . , 1 . ] , [ 1 . , 0 . , 0 . ] , [ 0 . , 1 . , 0 . ] , [ 0 . , 0 . , 1 . ] ] ) setting handle_unknown ' infrequent_if_exist ' , unknown categories 
+ considered infrequent : > > > enc = preprocessing . OneHotEncoder ( ... handle_unknown = ' infrequent_if_exist ' , sparse_output = False , min_frequency = 6 ) > > > enc = enc . fit ( X ) > > > enc . transform ( np . array ( [ [ ' dragon ' ] ] ) ) array([[0 . , 0 . , 1 . ] ] ) OneHotEncoder.get_feature_names_out uses ‘ infrequent ’ infrequent 
+ feature : > > > enc . get_feature_names_out ( ) array(['x0_cat ' , ' x0_rabbit ' , ' x0_infrequent_sklearn ' ] , dtype = object ) ' handle_unknown ' set ' infrequent_if_exist ' unknown 
+ category encountered transform : infrequent category support configured 
+ infrequent category training , resulting - hot encoded columns 
+ feature zeros . inverse transform , unknown 
+ category denoted . infrequent category training , unknown category 
+ considered infrequent . inverse transform , ‘ infrequent_sklearn ’ 
+ represent infrequent category . Infrequent categories configured max_categories . 
+ following example , set max_categories=2 limit number features 
+ output . result ' cat ' category considered 
+ infrequent , leading features , ' cat ' infrequent 
+ categories - : > > > enc = preprocessing . OneHotEncoder ( max_categories = 2 , sparse_output = False ) > > > enc = enc . fit ( X ) > > > enc . transform ( [ [ ' dog ' ] , [ ' cat ' ] , [ ' rabbit ' ] , [ ' snake ' ] ] ) array([[0 . , 1 . ] , [ 1 . , 0 . ] , [ 0 . , 1 . ] , [ 0 . , 1 . ] ] ) max_categories min_frequency non - default values , 
+ categories selected based min_frequency max_categories categories kept . following example , min_frequency=4 considers 
+ snake infrequent , max_categories=3 , forces dog 
+ infrequent : > > > enc = preprocessing . OneHotEncoder ( min_frequency = 4 , max_categories = 3 , sparse_output = False ) > > > enc = enc . fit ( X ) > > > enc . transform ( [ [ ' dog ' ] , [ ' cat ' ] , [ ' rabbit ' ] , [ ' snake ' ] ] ) array([[0 . , 0 . , 1 . ] , [ 1 . , 0 . , 0 . ] , [ 0 . , 1 . , 0 . ] , [ 0 . , 0 . , 1 . ] ] ) infrequent categories cardinality cutoff max_categories , max_categories taken based lexicon 
+ ordering . following example , “ b ” , “ c ” , “ d ” , cardinality 
+ max_categories=2 , “ b ” “ c ” infrequent higher 
+ lexicon order . > > > X = np . asarray ( [ [ " " ] * 20 + [ " b " ] * 10 + [ " c " ] * 10 + [ " d " ] * 10 ] , dtype = object ) . T > > > enc = preprocessing . OneHotEncoder ( max_categories = 3 ) . fit ( X ) > > > enc . infrequent_categories _ [ array(['b ' , ' c ' ] , dtype = object ) ] 6.3.4.2 . Target Encoder # TargetEncoder uses target mean conditioned categorical 
+ feature encoding unordered categories , i.e. nominal categories [ PAR ] [ MIC ] . encoding scheme useful categorical features high 
+ cardinality , - hot encoding inflate feature space making 
+ expensive downstream model process . classical example high 
+ cardinality categories location based zip code region . Binary classification targets # binary classification target , target encoding given : \[S_i = \lambda_i\frac{n_{iY}}{n_i } + ( 1 - \lambda_i)\frac{n_Y}{n}\ ] \(S_i\ ) encoding category \(i\ ) , \(n_{iY}\ ) 
+ number observations \(Y=1\ ) category \(i\ ) , \(n_i\ ) 
+ number observations category \(i\ ) , \(n_Y\ ) number 
+ observations \(Y=1\ ) , \(n\ ) number observations , \(\lambda_i\ ) shrinkage factor category \(i\ ) . shrinkage 
+ factor given : \[\lambda_i = \frac{n_i}{m + n_i}\ ] \(m\ ) smoothing factor , controlled smooth parameter TargetEncoder . Large smoothing factors 
+ weight global mean . smooth="auto " , smoothing factor 
+ computed empirical Bayes estimate : \(m=\sigma_i^2/\tau^2\ ) , \(\sigma_i^2\ ) variance y category \(i\ ) \(\tau^2\ ) global variance y . Multiclass classification targets # multiclass classification targets , formulation similar binary 
+ classification : \[S_{ij } = \lambda_i\frac{n_{iY_j}}{n_i } + ( 1 - \lambda_i)\frac{n_{Y_j}}{n}\ ] \(S_{ij}\ ) encoding category \(i\ ) class \(j\ ) , \(n_{iY_j}\ ) number observations \(Y = j\ ) category \(i\ ) , \(n_i\ ) number observations category \(i\ ) , \(n_{Y_j}\ ) number observations \(Y = j\ ) , \(n\ ) 
+ number observations , \(\lambda_i\ ) shrinkage factor category \(i\ ) . Continuous targets # continuous targets , formulation similar binary classification : \[S_i = \lambda_i\frac{\sum_{k\in L_i}Y_k}{n_i } + ( 1 - \lambda_i)\frac{\sum_{k=1}^{n}Y_k}{n}\ ] \(L_i\ ) set observations category \(i\ ) \(n_i\ ) number observations category \(i\ ) . fit_transform internally relies cross fitting scheme prevent target information leaking train - time 
+ representation , especially non - informative high - cardinality categorical 
+ variables , help prevent downstream model overfitting spurious 
+ correlations . Note result , fit(X , y).transform(X ) equal fit_transform(X , y ) . fit_transform , training 
+ data split k folds ( determined cv parameter ) fold 
+ encoded encodings learnt k-1 folds . following 
+ diagram shows cross fitting scheme fit_transform default cv=5 : fit_transform learns ‘ data ’ encoding 
+ training set . fit_transform saved attribute encodings _ , 
+ use transform called . Note encodings 
+ learned fold cross fitting scheme saved 
+ attribute . fit method use cross fitting schemes learns encoding entire training set , 
+ encode categories transform . 
+ encoding ‘ data ’ 
+ encoding learned fit_transform . Note TargetEncoder considers missing values , np.nan , 
+ category encodes like category . Categories 
+ seen fit encoded target mean , i.e. target_mean _ . Examples Comparing Target Encoder Encoders Target Encoder Internal Cross fitting References [ MIC ] Micci - Barreca , Daniele . “ preprocessing scheme high - cardinality 
+ categorical attributes classification prediction problems ” 
+ SIGKDD Explor . Newsl . 3 , 1 ( July 2001 ) , 27 - 32 . [ PAR ] Pargent , F. , Pfisterer , F. , Thomas , J. et al . “ Regularized target 
+ encoding outperforms traditional methods supervised machine learning 
+ high cardinality features ” Comput Stat 37 , 2671 - 2692 ( 2022 ) 6.3.5 . Discretization # Discretization ( known quantization binning ) provides way partition continuous 
+ features discrete values . Certain datasets continuous features 
+ benefit discretization , discretization transform dataset 
+ continuous attributes nominal attributes . - hot encoded discretized features model expressive , 
+ maintaining interpretability . instance , pre - processing discretizer 
+ introduce nonlinearity linear models . advanced possibilities , 
+ particular smooth ones , Generating polynomial features 
+ . 6.3.5.1 . K - bins discretization # KBinsDiscretizer discretizes features k bins : > > > X = np . array ( [ [ - 3 . , 5 . , 15 ] , ... [ 0 . , 6 . , 14 ] , ... [ 6 . , 3 . , 11 ] ] ) > > > est = preprocessing . KBinsDiscretizer ( n_bins = [ 3 , 2 , 2 ] , encode = ' ordinal ' ) . fit ( X ) default output - hot encoded sparse matrix 
+ ( Encoding categorical features ) 
+ configured encode parameter . 
+ feature , bin edges computed fit 
+ number bins , define intervals . , current 
+ example , intervals defined : feature 1 : \({[-\infty , -1 ) , [ -1 , 2 ) , [ 2 , \infty)}\ ) feature 2 : \({[-\infty , 5 ) , [ 5 , \infty)}\ ) feature 3 : \({[-\infty , 14 ) , [ 14 , \infty)}\ ) Based bin intervals , X transformed follows : > > > est . transform ( X ) array ( [ [ 0 . , 1 . , 1 . ] , [ 1 . , 1 . , 1 . ] , [ 2 . , 0 . , 0 . ] ] ) resulting dataset contains ordinal attributes 
+ Pipeline . Discretization similar constructing histograms continuous data . 
+ , histograms focus counting features fall particular 
+ bins , discretization focuses assigning feature values bins . KBinsDiscretizer implements different binning strategies , 
+ selected strategy parameter . ‘ uniform ’ strategy uses 
+ constant - width bins . ‘ quantile ’ strategy uses quantiles values 
+ equally populated bins feature . ‘ kmeans ’ strategy defines bins based 
+ k - means clustering procedure performed feature independently . aware specify custom bins passing callable defining 
+ discretization strategy FunctionTransformer . 
+ instance , use Pandas function pandas.cut : > > > import pandas pd > > > import numpy np > > > sklearn import preprocessing > > > > > > bins = [ 0 , 1 , 13 , 20 , 60 , np . inf ] > > > labels = [ ' infant ' , ' kid ' , ' teen ' , ' adult ' , ' senior citizen ' ] > > > transformer = preprocessing . FunctionTransformer ( ... pd . cut , kw_args = { ' bins ' : bins , ' labels ' : labels , ' retbins ' : False } ... ) > > > X = np . array ( [ 0.2 , 2 , 15 , 25 , 97 ] ) > > > transformer . fit_transform ( X ) [ ' infant ' , ' kid ' , ' teen ' , ' adult ' , ' senior citizen ' ] Categories ( 5 , object ): [ ' infant ' < ' kid ' < ' teen ' < ' adult ' < ' senior citizen ' ] Examples KBinsDiscretizer discretize continuous features Feature discretization Demonstrating different strategies KBinsDiscretizer 6.3.5.2 . Feature binarization # Feature binarization process thresholding numerical 
+ features boolean values . useful downstream 
+ probabilistic estimators assumption input data 
+ distributed according multi - variate Bernoulli distribution . instance , 
+ case BernoulliRBM . common text processing community use binary 
+ feature values ( probably simplify probabilistic reasoning ) 
+ normalized counts ( a.k.a . term frequencies ) TF - IDF valued features 
+ perform slightly better practice . Normalizer , utility class Binarizer meant early stages Pipeline . fit method 
+ sample treated independently : > > > X = [ [ 1 . , - 1 . , 2 . ] , ... [ 2 . , 0 . , 0 . ] , ... [ 0 . , 1 . , - 1 . ] ] > > > binarizer = preprocessing . Binarizer ( ) . fit ( X ) # fit > > > binarizer Binarizer ( ) > > > binarizer . transform ( X ) array([[1 . , 0 . , 1 . ] , [ 1 . , 0 . , 0 . ] , [ 0 . , 1 . , 0 . ] ] ) possible adjust threshold binarizer : > > > binarizer = preprocessing . Binarizer ( threshold = 1.1 ) > > > binarizer . transform ( X ) array([[0 . , 0 . , 1 . ] , [ 1 . , 0 . , 0 . ] , [ 0 . , 0 . , 0 . ] ] ) Normalizer class , preprocessing module 
+ provides companion function binarize transformer API necessary . Note Binarizer similar KBinsDiscretizer k = 2 , bin edge value threshold . Sparse input binarize Binarizer accept dense array - like 
+ sparse matrices scipy.sparse input . sparse input data converted Compressed Sparse Rows 
+ representation ( scipy.sparse.csr_matrix ) . 
+ avoid unnecessary memory copies , recommended choose CSR 
+ representation upstream . 6.3.6 . Imputation missing values # Tools imputing missing values discussed Imputation missing values . 6.3.7 . Generating polynomial features # useful add complexity model considering nonlinear 
+ features input data . possibilities based 
+ polynomials : uses pure polynomials , second uses splines , 
+ i.e. piecewise polynomials . 6.3.7.1 . Polynomial features # simple common method use polynomial features , 
+ features ’ high - order interaction terms . implemented PolynomialFeatures : > > > import numpy np > > > sklearn.preprocessing import PolynomialFeatures > > > X = np . arange ( 6 ) . reshape ( 3 , 2 ) > > > X array([[0 , 1 ] , [ 2 , 3 ] , [ 4 , 5 ] ] ) > > > poly = PolynomialFeatures ( 2 ) > > > poly . fit_transform ( X ) array ( [ [ 1 . ,   0 . ,   1 . ,   0 . ,   0 . ,   1 . ] , [ 1 . ,   2 . ,   3 . ,   4 . ,   6 . ,   9 . ] , [ 1 . ,   4 . ,   5 . , 16 . , 20 . , 25 . ] ] ) features X transformed \((X_1 , X_2)\ ) \((1 , X_1 , X_2 , X_1 ^ 2 , X_1X_2 , X_2 ^ 2)\ ) . cases , interaction terms features required , 
+ gotten setting interaction_only = True : > > > X = np . arange ( 9 ) . reshape ( 3 , 3 ) > > > X array([[0 , 1 , 2 ] , [ 3 , 4 , 5 ] , [ 6 , 7 , 8 ] ] ) > > > poly = PolynomialFeatures ( degree = 3 , interaction_only = True ) > > > poly . fit_transform ( X ) array ( [ [   1 . ,    0 . ,    1 . ,    2 . ,    0 . ,    0 . ,    2 . ,    0 . ] , [   1 . ,    3 . ,    4 . ,    5 . ,   12 . ,   15 . ,   20 . ,   60 . ] , [   1 . ,    6 . ,    7 . ,    8 . ,   42 . ,   48 . ,   56 . , 336 . ] ] ) features X transformed \((X_1 , X_2 , X_3)\ ) \((1 , X_1 , X_2 , X_3 , X_1X_2 , X_1X_3 , X_2X_3 , X_1X_2X_3)\ ) . Note polynomial features implicitly kernel methods ( e.g. , SVC , KernelPCA ) polynomial Kernel functions . Polynomial Spline interpolation Ridge regression created polynomial features . 6.3.7.2 . Spline transformer # way add nonlinear terms instead pure polynomials features 
+ generate spline basis functions feature SplineTransformer . Splines piecewise polynomials , parametrized 
+ polynomial degree positions knots . SplineTransformer implements B - spline basis , cf . references 
+ . Note SplineTransformer treats feature separately , i.e. 
+ wo interaction terms . advantages splines polynomials : B - splines flexible robust fixed low degree , 
+ usually 3 , parsimoniously adapt number knots . Polynomials 
+ need higher degree , leads point . B - splines oscillatory behaviour boundaries 
+ polynomials ( higher degree , worse ) . known Runge 
+ phenomenon . B - splines provide good options extrapolation boundaries , 
+ i.e. range fitted values . look option extrapolation . B - splines generate feature matrix banded structure . single 
+ feature , row contains degree + 1 non - zero elements , 
+ occur consecutively positive . results matrix 
+ good numerical properties , e.g. low condition number , sharp contrast 
+ matrix polynomials , goes Vandermonde matrix . 
+ low condition number important stable algorithms linear 
+ models . following code snippet shows splines action : > > > import numpy np > > > sklearn.preprocessing import SplineTransformer > > > X = np . arange ( 5 ) . reshape ( 5 , 1 ) > > > X array([[0 ] , [ 1 ] , [ 2 ] , [ 3 ] , [ 4 ] ] ) > > > spline = SplineTransformer ( degree = 2 , n_knots = 3 ) > > > spline . fit_transform ( X ) array([[0.5   , 0.5   , 0 .    , 0 .    ] , [ 0.125 , 0.75 , 0.125 , 0 .    ] , [ 0 .    , 0.5   , 0.5   , 0 .    ] , [ 0 .    , 0.125 , 0.75 , 0.125 ] , [ 0 .    , 0 .    , 0.5   , 0.5   ] ] ) X sorted , easily banded matrix output . 
+ middle diagonals non - zero degree=2 . higher degree , 
+ overlapping splines . Interestingly , SplineTransformer degree=0 KBinsDiscretizer encode='onehot - dense ' n_bins = n_knots - 1 knots = strategy . Examples Polynomial Spline interpolation Time - related feature engineering References # Eilers , P. , & Marx , B. ( 1996 ) . Flexible Smoothing B - splines 
+ Penalties . Statist . Sci . 11 ( 1996 ) , . 2 , 89–121 . Perperoglou , A. , Sauerbrei , W. , Abrahamowicz , M. et al . review 
+ spline function procedures R . 
+ BMC Med Res Methodol 19 , 46 ( 2019 ) . 6.3.8 . Custom transformers # , want convert existing Python function transformer 
+ assist data cleaning processing . implement transformer 
+ arbitrary function FunctionTransformer . example , build 
+ transformer applies log transformation pipeline , : > > > import numpy np > > > sklearn.preprocessing import FunctionTransformer > > > transformer = FunctionTransformer ( np . log1p , validate = True ) > > > X = np . array ( [ [ 0 , 1 ] , [ 2 , 3 ] ] ) > > > # FunctionTransformer - op fit , transform directly > > > transformer . transform ( X ) array([[0 .         , 0.69314718 ] , [ 1.09861229 , 1.38629436 ] ] ) ensure func inverse_func inverse 
+ setting check_inverse = True calling fit transform . note warning raised turned 
+ error filterwarnings : > > > import warnings > > > warnings . filterwarnings ( " error " , message = " .*check_inverse * . " , ... category = UserWarning , append = False ) code example demonstrates FunctionTransformer extract features text data Column Transformer Heterogeneous Data Sources Time - related feature engineering . previous 6.2 . Feature extraction 6.4 . Imputation missing values page 6.3.1 . Standardization , mean removal variance scaling 6.3.1.1 . Scaling features range 6.3.1.2 . Scaling sparse data 6.3.1.3 . Scaling data outliers 6.3.1.4 . Centering kernel matrices 6.3.2 . Non - linear transformation 6.3.2.1 . Mapping Uniform distribution 6.3.2.2 . Mapping Gaussian distribution 6.3.3 . Normalization 6.3.4 . Encoding categorical features 6.3.4.1 . Infrequent categories 6.3.4.2 . Target Encoder 6.3.5 . Discretization 6.3.5.1 . K - bins discretization 6.3.5.2 . Feature binarization 6.3.6 . Imputation missing values 6.3.7 . Generating polynomial features 6.3.7.1 . Polynomial features 6.3.7.2 . Spline transformer 6.3.8 . Custom transformers Page Source © Copyright 2007 - 2025 , scikit - learn developers ( BSD License ) .

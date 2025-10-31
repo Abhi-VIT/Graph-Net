@@ -1,0 +1,354 @@
+Optimization ( scipy.optimize ) — SciPy v1.15.2 Manual Skip main content Ctrl + K SciPy Installing User Guide API reference Building source Development Release notes GitHub Twitter Installing User Guide API reference Building source Development Release notes GitHub Twitter Section Navigation User guide Fourier Transforms ( scipy.fft ) Integration ( scipy.integrate ) Interpolation ( scipy.interpolate ) File IO ( scipy.io ) Linear Algebra ( scipy.linalg ) Multidimensional Image Processing ( scipy.ndimage ) Optimization ( scipy.optimize ) Signal Processing ( scipy.signal ) Sparse Arrays ( scipy.sparse ) Spatial Data Structures Algorithms ( scipy.spatial ) Special Functions ( scipy.special ) Statistics ( scipy.stats ) Sparse eigenvalue problems ARPACK Compressed Sparse Graph Routines ( scipy.sparse.csgraph ) Parallel execution support SciPy Thread Safety SciPy SciPy User Guide Optimization ... Optimization ( scipy.optimize ) # Contents Optimization ( scipy.optimize ) Local minimization multivariate scalar functions ( minimize ) Unconstrained minimization Nelder - Mead Simplex algorithm ( method='Nelder - Mead ' ) Broyden - Fletcher - Goldfarb - Shanno algorithm ( method='BFGS ' ) Newton - Conjugate - Gradient algorithm ( method='Newton - CG ' ) Trust - Region Newton - Conjugate - Gradient Algorithm ( method='trust - ncg ' ) Trust - Region Truncated Generalized Lanczos / Conjugate Gradient Algorithm ( method='trust - krylov ' ) Trust - Region Nearly Exact Algorithm ( method='trust - exact ' ) Constrained minimization Trust - Region Constrained Algorithm ( method='trust - constr ' ) Sequential SQuares Programming ( SLSQP ) Algorithm ( method='SLSQP ' ) Local minimization solver comparison Global optimization Comparison Global Optimizers - squares minimization ( least_squares ) Example solving fitting problem examples Univariate function minimizers ( minimize_scalar ) Unconstrained minimization ( method='brent ' ) Bounded minimization ( method='bounded ' ) Custom minimizers Root finding Scalar functions Fixed - point solving Sets equations Root finding large problems slow ? Preconditioning . Linear programming ( linprog ) Linear programming example Assignment problems Linear sum assignment problem example Mixed integer linear programming Knapsack problem example scipy.optimize package provides commonly 
+ optimization algorithms . detailed listing available : scipy.optimize ( found help(scipy.optimize ) ) . Local minimization multivariate scalar functions ( minimize ) # minimize function provides common interface unconstrained 
+ constrained minimization algorithms multivariate scalar functions 
+ scipy.optimize . demonstrate minimization function , consider 
+ problem minimizing Rosenbrock function \(N\ ) variables : \[f\left(\mathbf{x}\right)=\sum_{i=1}^{N-1}100\left(x_{i+1}-x_{i}^{2}\right)^{2}+\left(1 - x_{i}\right)^{2}.\ ] minimum value function 0 achieved \(x_{i}=1.\ ) Note Rosenbrock function derivatives included scipy.optimize . implementations shown following sections 
+ provide examples define objective function 
+ jacobian hessian functions . Objective functions scipy.optimize expect numpy array parameter optimized 
+ return float value . exact calling signature f(x , * args ) x represents numpy array args tuple additional arguments supplied objective function . Unconstrained minimization # Nelder - Mead Simplex algorithm ( method='Nelder - Mead ' ) # example , minimize routine 
+ Nelder - Mead simplex algorithm ( selected method parameter ): > > > import numpy np > > > scipy.optimize import minimize > > > def rosen ( x ): ... " " " Rosenbrock function " " " ... return sum ( 100.0 * ( x [ 1 :] - x [: - 1 ] * * 2.0 ) * * 2.0 + ( 1 - x [: - 1 ] ) * * 2.0 ) > > > x0 = np . array ( [ 1.3 , 0.7 , 0.8 , 1.9 , 1.2 ] ) > > > res = minimize ( rosen , x0 , method = ' nelder - mead ' , ... options = { ' xatol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 339 Function evaluations : 571 > > > print ( res . x ) [ 1 . 1 . 1 . 1 . 1 . ] simplex algorithm probably simplest way minimize fairly 
+ - behaved function . requires function evaluations good 
+ choice simple minimization problems . , use 
+ gradient evaluations , longer find minimum . optimization algorithm needs function calls find 
+ minimum Powell âs method available setting method='powell ' minimize . demonstrate supply additional arguments objective function , 
+ let minimize Rosenbrock function additional scaling factor offset b : \[f\left(\mathbf{x } , , b\right)=\sum_{i=1}^{N-1}a\left(x_{i+1}-x_{i}^{2}\right)^{2}+\left(1 - x_{i}\right)^{2 } + b.\ ] minimize routine solved following 
+ code block example parameters a=0.5 b=1 . > > > def rosen_with_args ( x , , b ): ... " " " Rosenbrock function additional arguments " " " ... return sum ( * ( x [ 1 :] - x [: - 1 ] * * 2.0 ) * * 2.0 + ( 1 - x [: - 1 ] ) * * 2.0 ) + b > > > x0 = np . array ( [ 1.3 , 0.7 , 0.8 , 1.9 , 1.2 ] ) > > > res = minimize ( rosen_with_args , x0 , method = ' nelder - mead ' , ... args = ( 0.5 , 1 . ) , options = { ' xatol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 1.000000 Iterations : 319 # vary Function evaluations : 525 # vary > > > print ( res . x ) [ 1 .          1 .          1 .          1 .          0.99999999 ] alternative args parameter minimize , simply 
+ wrap objective function new function accepts x . 
+ approach useful necessary pass additional parameters 
+ objective function keyword arguments . > > > def rosen_with_args ( x , , * , b ): # b keyword - argument ... return sum ( * ( x [ 1 :] - x [: - 1 ] * * 2.0 ) * * 2.0 + ( 1 - x [: - 1 ] ) * * 2.0 ) + b > > > def wrapped_rosen_without_args ( x ): ... return rosen_with_args ( x , 0.5 , b = 1 . ) # pass ` ` ` b ` > > > x0 = np . array ( [ 1.3 , 0.7 , 0.8 , 1.9 , 1.2 ] ) > > > res = minimize ( wrapped_rosen_without_args , x0 , method = ' nelder - mead ' , ... options = { ' xatol ' : 1e-8 , } ) > > > print ( res . x ) [ 1 .          1 .          1 .          1 .          0.99999999 ] alternative use functools.partial . > > > functools import partial > > > partial_rosen = partial ( rosen_with_args , = 0.5 , b = 1 . ) > > > res = minimize ( partial_rosen , x0 , method = ' nelder - mead ' , ... options = { ' xatol ' : 1e-8 , } ) > > > print ( res . x ) [ 1 .          1 .          1 .          1 .          0.99999999 ] Broyden - Fletcher - Goldfarb - Shanno algorithm ( method='BFGS ' ) # order converge quickly solution , routine uses 
+ gradient objective function . gradient given 
+ user , estimated - differences . 
+ Broyden - Fletcher - Goldfarb - Shanno ( BFGS ) method typically requires 
+ fewer function calls simplex algorithm gradient 
+ estimated . demonstrate algorithm , Rosenbrock function . 
+ gradient Rosenbrock function vector : \begin{eqnarray * } \frac{\partial f}{\partial x_{j } } & = & \sum_{i=1}^{N}200\left(x_{i}-x_{i-1}^{2}\right)\left(\delta_{i , j}-2x_{i-1}\delta_{i-1,j}\right)-2\left(1 - x_{i-1}\right)\delta_{i-1,j}.\\   & = & 200\left(x_{j}-x_{j-1}^{2}\right)-400x_{j}\left(x_{j+1}-x_{j}^{2}\right)-2\left(1 - x_{j}\right).\end{eqnarray * } expression valid interior derivatives . Special cases 
+ \begin{eqnarray * } \frac{\partial f}{\partial x_{0 } } & = & -400x_{0}\left(x_{1}-x_{0}^{2}\right)-2\left(1 - x_{0}\right),\\ \frac{\partial f}{\partial x_{N-1 } } & = & 200\left(x_{N-1}-x_{N-2}^{2}\right).\end{eqnarray * } Python function computes gradient constructed 
+ code - segment : > > > def rosen_der ( x ): ... xm = x [ 1 : - 1 ] ... xm_m1 = x [: - 2 ] ... xm_p1 = x [ 2 :] ... der = np . zeros_like ( x ) ... der [ 1 : - 1 ] = 200 * ( xm - xm_m1 * * 2 ) - 400 * ( xm_p1 - xm * * 2 ) * xm - 2 * ( 1 - xm ) ... der [ 0 ] = - 400 * x [ 0 ] * ( x [ 1 ] - x [ 0 ] * * 2 ) - 2 * ( 1 - x [ 0 ] ) ... der [ - 1 ] = 200 * ( x [ - 1 ] - x [ - 2 ] * * 2 ) ... return der gradient information specified minimize function 
+ jac parameter illustrated . > > > res = minimize ( rosen , x0 , method = ' BFGS ' , jac = rosen_der , ... options = { ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 25                      # vary Function evaluations : 30 Gradient evaluations : 30 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) Avoiding Redundant Calculation common objective function gradient share parts 
+ calculation . instance , consider following problem . > > > def f ( x ): ... return - expensive ( x [ 0 ] ) * * 2 > > > > > > def df ( x ): ... return - 2 * expensive ( x [ 0 ] ) * dexpensive ( x [ 0 ] ) > > > > > > def expensive ( x ): ... # function computationally expensive ! ... expensive . count + = 1 # let track times runs ... return np . sin ( x ) > > > expensive . count = 0 > > > > > > def dexpensive ( x ): ... return np . cos ( x ) > > > > > > res = minimize ( f , 0.5 , jac = df ) > > > res . fun -0.9999999999999174 > > > res . nfev , res . njev 6 , 6 > > > expensive . count 12 , expensive called 12 times : times objective function 
+ times gradient . way reducing redundant calculations 
+ create single function returns objective function 
+ gradient . > > > def f_and_df ( x ): ... expensive_value = expensive ( x [ 0 ] ) ... return ( - expensive_value * * 2 , # objective function ... - 2 * expensive_value * dexpensive ( x [ 0 ] ) ) # gradient > > > > > > expensive . count = 0 # reset counter > > > res = minimize ( f_and_df , 0.5 , jac = True ) > > > res . fun -0.9999999999999174 > > > expensive . count 6 minimize , specify jac==True indicate provided 
+ function returns objective function gradient . 
+ convenient , scipy.optimize functions support feature , 
+ , sharing calculations function 
+ gradient , problems want share calculations 
+ Hessian ( second derivative objective function ) constraints . 
+ general approach memoize expensive parts calculation . 
+ simple situations , accomplished functools.lru_cache wrapper . > > > functools import lru_cache > > > expensive . count = 0 # reset counter > > > expensive = lru_cache ( expensive ) > > > res = minimize ( f , 0.5 , jac = df ) > > > res . fun -0.9999999999999174 > > > expensive . count 6 Newton - Conjugate - Gradient algorithm ( method='Newton - CG ' ) # Newton - Conjugate Gradient algorithm modified Newtonâs 
+ method uses conjugate gradient algorithm ( approximately ) invert 
+ local Hessian [ NW ] .   Newtonâs method based fitting function 
+ locally quadratic form : \[f\left(\mathbf{x}\right)\approx f\left(\mathbf{x}_{0}\right)+\nabla f\left(\mathbf{x}_{0}\right)\cdot\left(\mathbf{x}-\mathbf{x}_{0}\right)+\frac{1}{2}\left(\mathbf{x}-\mathbf{x}_{0}\right)^{T}\mathbf{H}\left(\mathbf{x}_{0}\right)\left(\mathbf{x}-\mathbf{x}_{0}\right).\ ] \(\mathbf{H}\left(\mathbf{x}_{0}\right)\ ) matrix second - derivatives ( Hessian ) . Hessian 
+ positive definite local minimum function found 
+ setting gradient quadratic form zero , resulting \[\mathbf{x}_{\textrm{opt}}=\mathbf{x}_{0}-\mathbf{H}^{-1}\nabla f.\ ] inverse Hessian evaluated conjugate - gradient 
+ method . example employing method minimizing 
+ Rosenbrock function given . advantage 
+ Newton - CG method , function computes Hessian 
+ provided . Hessian matrix need constructed , 
+ vector product Hessian arbitrary 
+ vector needs available minimization routine . result , 
+ user provide function compute Hessian matrix , 
+ function compute product Hessian arbitrary 
+ vector . Hessian example Hessian Rosenbrock function \begin{eqnarray * } H_{ij}=\frac{\partial^{2}f}{\partial x_{i}\partial x_{j } } & = & 200\left(\delta_{i , j}-2x_{i-1}\delta_{i-1,j}\right)-400x_{i}\left(\delta_{i+1,j}-2x_{i}\delta_{i , j}\right)-400\delta_{i , j}\left(x_{i+1}-x_{i}^{2}\right)+2\delta_{i , j},\\   & = & \left(202 + 1200x_{i}^{2}-400x_{i+1}\right)\delta_{i , j}-400x_{i}\delta_{i+1,j}-400x_{i-1}\delta_{i-1,j},\end{eqnarray * } \(i , j\in\left[1,N-2\right]\ ) \(i , j\in\left[0,N-1\right]\ ) defining \(N\times N\ ) matrix . non - zero entries matrix \begin{eqnarray * } \frac{\partial^{2}f}{\partial x_{0}^{2 } } & = & 1200x_{0}^{2}-400x_{1}+2,\\ \frac{\partial^{2}f}{\partial x_{0}\partial x_{1}}=\frac{\partial^{2}f}{\partial x_{1}\partial x_{0 } } & = & -400x_{0},\\ \frac{\partial^{2}f}{\partial x_{N-1}\partial x_{N-2}}=\frac{\partial^{2}f}{\partial x_{N-2}\partial x_{N-1 } } & = & -400x_{N-2},\\ \frac{\partial^{2}f}{\partial x_{N-1}^{2 } } & = & 200.\end{eqnarray * } example , Hessian \(N=5\ ) \[\begin{split}\mathbf{H}=\begin{bmatrix } 1200x_{0}^{2}+2\mkern-2em\\&1200x_{1}^{2}+202\mkern-2em\\&&1200x_{1}^{2}+202\mkern-2em\\&&&1200x_{3}^{2}+202\mkern-1em\\&&&&200\end{bmatrix}-400\begin{bmatrix } x_1 & x_0 \\ x_0 & x_2 & x_1 \\ & x_1 & x_3 & x_2\\ & & x_2 & x_4 & x_3 \\ & & & x_3 & 0\end{bmatrix}.\end{split}\ ] code computes Hessian code minimize 
+ function Newton - CG method shown following example : > > > def rosen_hess ( x ): ... x = np . asarray ( x ) ... H = np . diag ( - 400 * x [: - 1 ] , 1 ) - np . diag ( 400 * x [: - 1 ] , - 1 ) ... diagonal = np . zeros_like ( x ) ... diagonal [ 0 ] = 1200 * x [ 0 ] * * 2 - 400 * x [ 1 ] + 2 ... diagonal [ - 1 ] = 200 ... diagonal [ 1 : - 1 ] = 202 + 1200 * x [ 1 : - 1 ] * * 2 - 400 * x [ 2 :] ... H = H + np . diag ( diagonal ) ... return H > > > res = minimize ( rosen , x0 , method = ' Newton - CG ' , ... jac = rosen_der , hess = rosen_hess , ... options = { ' xtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 19                        # vary Function evaluations : 22 Gradient evaluations : 19 Hessian evaluations : 19 > > > res . x array([1 . ,   1 . ,   1 . ,   1 . ,   1 . ] ) Hessian product example larger minimization problems , storing entire Hessian matrix 
+ consume considerable time memory . Newton - CG algorithm needs 
+ product Hessian times arbitrary vector . result , user 
+ supply code compute product Hessian 
+ giving hess function minimization vector 
+ argument arbitrary vector second argument ( extra 
+ arguments passed function minimized ) . possible , 
+ Newton - CG Hessian product option probably fastest way 
+ minimize function . case , product Rosenbrock Hessian arbitrary 
+ vector difficult compute . \(\mathbf{p}\ ) arbitrary 
+ vector , \(\mathbf{H}\left(\mathbf{x}\right)\mathbf{p}\ ) 
+ elements : \[\begin{split}\mathbf{H}\left(\mathbf{x}\right)\mathbf{p}=\begin{bmatrix } \left(1200x_{0}^{2}-400x_{1}+2\right)p_{0}-400x_{0}p_{1}\\ \vdots\\ -400x_{i-1}p_{i-1}+\left(202 + 1200x_{i}^{2}-400x_{i+1}\right)p_{i}-400x_{i}p_{i+1}\\ \vdots\\ -400x_{N-2}p_{N-2}+200p_{N-1}\end{bmatrix}.\end{split}\ ] Code makes use Hessian product minimize 
+ Rosenbrock function minimize follows : > > > def rosen_hess_p ( x , p ): ... x = np . asarray ( x ) ... Hp = np . zeros_like ( x ) ... Hp [ 0 ] = ( 1200 * x [ 0 ] * * 2 - 400 * x [ 1 ] + 2 ) * p [ 0 ] - 400 * x [ 0 ] * p [ 1 ] ... Hp [ 1 : - 1 ] = - 400 * x [: - 2 ] * p [: - 2 ] + ( 202 + 1200 * x [ 1 : - 1 ] * * 2 - 400 * x [ 2 :] ) * p [ 1 : - 1 ] \ ... - 400 * x [ 1 : - 1 ] * p [ 2 :] ... Hp [ - 1 ] = - 400 * x [ - 2 ] * p [ - 2 ] + 200 * p [ - 1 ] ... return Hp > > > res = minimize ( rosen , x0 , method = ' Newton - CG ' , ... jac = rosen_der , hessp = rosen_hess_p , ... options = { ' xtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 20                     # vary Function evaluations : 23 Gradient evaluations : 20 Hessian evaluations : 44 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) According [ NW ] p. 170 Newton - CG algorithm inefficient 
+ Hessian ill - conditioned poor quality search directions 
+ provided method situations . method trust - ncg , 
+ according authors , deals effectively problematic situation 
+ described . Trust - Region Newton - Conjugate - Gradient Algorithm ( method='trust - ncg ' ) # Newton - CG method line search method : finds direction 
+ search minimizing quadratic approximation function uses 
+ line search algorithm find ( nearly ) optimal step size direction . 
+ alternative approach , , fix step size limit \(\Delta\ ) find 
+ optimal step \(\mathbf{p}\ ) inside given trust - radius solving 
+ following quadratic subproblem : \begin{eqnarray * } 
+    \min_{\mathbf{p } } f\left(\mathbf{x}_{k}\right)+\nabla f\left(\mathbf{x}_{k}\right)\cdot\mathbf{p}+\frac{1}{2}\mathbf{p}^{T}\mathbf{H}\left(\mathbf{x}_{k}\right)\mathbf{p};&\\ 
+    \text{subject : } \|\mathbf{p}\|\le \Delta . & 
+  \end{eqnarray * } solution updated \(\mathbf{x}_{k+1 } = \mathbf{x}_{k } + \mathbf{p}\ ) 
+ trust - radius \(\Delta\ ) adjusted according degree agreement quadratic 
+ model real function . family methods known trust - region methods . 
+ trust - ncg algorithm trust - region method uses conjugate gradient algorithm 
+ solve trust - region subproblem [ NW ] . Hessian example > > > res = minimize ( rosen , x0 , method = ' trust - ncg ' , ... jac = rosen_der , hess = rosen_hess , ... options = { ' gtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 20                     # vary Function evaluations : 21 Gradient evaluations : 20 Hessian evaluations : 19 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) Hessian product example > > > res = minimize ( rosen , x0 , method = ' trust - ncg ' , ... jac = rosen_der , hessp = rosen_hess_p , ... options = { ' gtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 20                     # vary Function evaluations : 21 Gradient evaluations : 20 Hessian evaluations : 0 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) Trust - Region Truncated Generalized Lanczos / Conjugate Gradient Algorithm ( method='trust - krylov ' ) # Similar trust - ncg method , trust - krylov method method 
+ suitable large - scale problems uses hessian linear 
+ operator means matrix - vector products . 
+ solves quadratic subproblem accurately trust - ncg method . \begin{eqnarray * } 
+    \min_{\mathbf{p } } f\left(\mathbf{x}_{k}\right)+\nabla f\left(\mathbf{x}_{k}\right)\cdot\mathbf{p}+\frac{1}{2}\mathbf{p}^{T}\mathbf{H}\left(\mathbf{x}_{k}\right)\mathbf{p};&\\ 
+    \text{subject : } \|\mathbf{p}\|\le \Delta . & 
+  \end{eqnarray * } method wraps [ TRLIB ] implementation [ GLTR ] method solving 
+ exactly trust - region subproblem restricted truncated Krylov subspace . 
+ indefinite problems usually better use method reduces 
+ number nonlinear iterations expense matrix - vector 
+ products subproblem solve comparison trust - ncg method . Hessian example > > > res = minimize ( rosen , x0 , method = ' trust - krylov ' , ... jac = rosen_der , hess = rosen_hess , ... options = { ' gtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 19                     # vary Function evaluations : 20 Gradient evaluations : 20 Hessian evaluations : 18 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) Hessian product example > > > res = minimize ( rosen , x0 , method = ' trust - krylov ' , ... jac = rosen_der , hessp = rosen_hess_p , ... options = { ' gtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 19                     # vary Function evaluations : 20 Gradient evaluations : 20 Hessian evaluations : 0 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) [ TRLIB ] F. Lenders , C. Kirches , A. Potschka : âtrlib : vector - free 
+ implementation GLTR method iterative solution 
+ trust region problemâ , arXiv:1611.04718 [ GLTR ] N. Gould , S. Lucidi , M. Roma , P. Toint : âSolving 
+ Trust - Region Subproblem Lanczos Methodâ , 
+ SIAM J. Optim . , 9(2 ) , 504â525 , ( 1999 ) . DOI:10.1137 / S1052623497322735 Trust - Region Nearly Exact Algorithm ( method='trust - exact ' ) # methods Newton - CG , trust - ncg trust - krylov suitable dealing 
+ large - scale problems ( problems thousands variables ) . conjugate 
+ gradient algorithm approximately solve trust - region subproblem ( invert Hessian ) 
+ iterations explicit Hessian factorization . product Hessian 
+ arbitrary vector needed , algorithm specially suited dealing 
+ sparse Hessians , allowing low storage requirements significant time savings 
+ sparse problems . medium - size problems , storage factorization cost Hessian critical , 
+ possible obtain solution fewer iteration solving trust - region subproblems 
+ exactly . achieve , certain nonlinear equations solved iteratively quadratic 
+ subproblem [ CGT ] . solution requires usually 3 4 Cholesky factorizations 
+ Hessian matrix . result , method converges fewer number iterations 
+ takes fewer evaluations objective function implemented 
+ trust - region methods . Hessian product option supported algorithm . 
+ example Rosenbrock function follows : > > > res = minimize ( rosen , x0 , method = ' trust - exact ' , ... jac = rosen_der , hess = rosen_hess , ... options = { ' gtol ' : 1e-8 , ' disp ' : True } ) Optimization terminated successfully . Current function value : 0.000000 Iterations : 13                     # vary Function evaluations : 14 Gradient evaluations : 13 Hessian evaluations : 14 > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) [ NW ] ( 1 , 2 , 3 ) J. Nocedal , S.J. Wright âNumerical optimization.â 
+ 2nd edition . Springer Science ( 2006 ) . [ CGT ] Conn , A. R. , Gould , N. I. , & Toint , P. L. 
+ âTrust region methodsâ. Siam . ( 2000 ) . pp . 169 - 200 . Constrained minimization # minimize function provides algorithms constrained minimization , 
+ ' trust - constr ' , ' SLSQP ' , ' COBYLA ' , ' COBYQA ' . require constraints 
+ defined slightly different structures . methods ' trust - constr ' ' COBYQA ' require 
+   constraints defined sequence objects LinearConstraint NonlinearConstraint . Methods ' SLSQP ' ' COBYLA ' , hand , 
+ require constraints defined sequence dictionaries , keys type , fun jac . example let consider constrained minimization Rosenbrock function : \begin{eqnarray * } \min_{x_0 , x_1 } & ~~100\left(x_{1}-x_{0}^{2}\right)^{2}+\left(1 - x_{0}\right)^{2 } & \\ 
+                   \text{subject : } & x_0 + 2 x_1 \leq 1 & \\ 
+                                       & x_0 ^ 2 + x_1 \leq 1   & \\ 
+                                       & x_0 ^ 2 - x_1 \leq 1   & \\ 
+                                       & 2 x_0 + x_1 = 1 & \\ 
+                                       & 0 \leq   x_0   \leq 1 & \\ 
+                                       & -0.5 \leq   x_1   \leq 2.0 . & \end{eqnarray * } optimization problem unique solution \([x_0 , x_1 ] = [ 0.4149,~ 0.1701]\ ) , 
+ fourth constraints active . Trust - Region Constrained Algorithm ( method='trust - constr ' ) # trust - region constrained method deals constrained minimization problems form : \begin{eqnarray * } \min_x & f(x ) & \\ 
+        \text{subject : } & ~~~ c^l   \leq c(x ) \leq c^u , & \\ 
+         &   x^l   \leq x \leq x^u . & \end{eqnarray * } \(c^l_j = c^u_j\ ) method reads \(j\ ) -th constraint 
+ equality constraint deals accordingly . , - sided constraint 
+ specified setting upper lower bound np.inf appropriate sign . implementation based [ EQSQP ] equality - constraint problems [ TRIP ] problems inequality constraints . trust - region type algorithms suitable 
+ large - scale problems . Defining Bounds Constraints bound constraints \(0 \leq   x_0   \leq 1\ ) \(-0.5 \leq   x_1   \leq 2.0\ ) defined Bounds object . > > > scipy.optimize import Bounds > > > bounds = Bounds ( [ 0 , - 0.5 ] , [ 1.0 , 2.0 ] ) Defining Linear Constraints constraints \(x_0 + 2 x_1 \leq 1\ ) \(2 x_0 + x_1 = 1\ ) written linear constraint standard format : \begin{equation * } \begin{bmatrix}-\infty \\1\end{bmatrix } \leq 
+    \begin{bmatrix } 1 & 2 \\ 2 & 1\end{bmatrix } 
+     \begin{bmatrix } x_0 \\x_1\end{bmatrix } \leq 
+      \begin{bmatrix } 1 \\ 1\end{bmatrix},\end{equation * } defined LinearConstraint object . > > > scipy.optimize import LinearConstraint > > > linear_constraint = LinearConstraint ( [ [ 1 , 2 ] , [ 2 , 1 ] ] , [ - np . inf , 1 ] , [ 1 , 1 ] ) Defining Nonlinear Constraints nonlinear constraint : \begin{equation * } c(x ) = 
+   \begin{bmatrix } x_0 ^ 2 + x_1 \\ x_0 ^ 2 - x_1\end{bmatrix } 
+    \leq 
+    \begin{bmatrix } 1 \\ 1\end{bmatrix } , \end{equation * } Jacobian matrix : \begin{equation * } J(x ) = 
+   \begin{bmatrix } 2x_0 & 1 \\ 2x_0 & -1\end{bmatrix},\end{equation * } linear combination Hessians : \begin{equation * } H(x , v ) = \sum_{i=0}^1 v_i \nabla^2 c_i(x ) = 
+   v_0\begin{bmatrix } 2 & 0 \\ 0 & 0\end{bmatrix } + 
+   v_1\begin{bmatrix } 2 & 0 \\ 0 & 0\end{bmatrix } , 
+   \end{equation * } defined NonlinearConstraint object . > > > def cons_f ( x ): ... return [ x [ 0 ] * * 2 + x [ 1 ] , x [ 0 ] * * 2 - x [ 1 ] ] > > > def cons_J ( x ): ... return [ [ 2 * x [ 0 ] , 1 ] , [ 2 * x [ 0 ] , - 1 ] ] > > > def cons_H ( x , v ): ... return v [ 0 ] * np . array ( [ [ 2 , 0 ] , [ 0 , 0 ] ] ) + v [ 1 ] * np . array ( [ [ 2 , 0 ] , [ 0 , 0 ] ] ) > > > scipy.optimize import NonlinearConstraint > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , jac = cons_J , hess = cons_H ) Alternatively , possible define Hessian \(H(x , v)\ ) sparse matrix , > > > scipy.sparse import csc_matrix > > > def cons_H_sparse ( x , v ): ... return v [ 0 ] * csc_matrix ( [ [ 2 , 0 ] , [ 0 , 0 ] ] ) + v [ 1 ] * csc_matrix ( [ [ 2 , 0 ] , [ 0 , 0 ] ] ) > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , ... jac = cons_J , hess = cons_H_sparse ) LinearOperator object . > > > scipy.sparse.linalg import LinearOperator > > > def cons_H_linear_operator ( x , v ): ... def matvec ( p ): ... return np . array ( [ p [ 0 ] * 2 * ( v [ 0 ] + v [ 1 ] ) , 0 ] ) ... return LinearOperator ( ( 2 , 2 ) , matvec = matvec ) > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , ... jac = cons_J , hess = cons_H_linear_operator ) evaluation Hessian \(H(x , v)\ ) difficult implement computationally infeasible , use HessianUpdateStrategy . 
+ Currently available strategies BFGS SR1 . > > > scipy.optimize import BFGS > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , jac = cons_J , hess = BFGS ( ) ) Alternatively , Hessian approximated finite differences . > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , jac = cons_J , hess = ' 2 - point ' ) Jacobian constraints approximated finite differences . case , 
+ , Hessian computed finite differences needs 
+ provided user defined HessianUpdateStrategy . > > > nonlinear_constraint = NonlinearConstraint ( cons_f , - np . inf , 1 , jac = ' 2 - point ' , hess = BFGS ( ) ) Solving Optimization Problem optimization problem solved : > > > x0 = np . array ( [ 0.5 , 0 ] ) > > > res = minimize ( rosen , x0 , method = ' trust - constr ' , jac = rosen_der , hess = rosen_hess , ... constraints = [ linear_constraint , nonlinear_constraint ] , ... options = { ' verbose ' : 1 } , bounds = bounds ) # vary ` gtol ` termination condition satisfied . Number iterations : 12 , function evaluations : 8 , CG iterations : 7 , optimality : 2.99e-09 , constraint violation : 1.11e-16 , execution time : 0.016 s. > > > print ( res . x ) [ 0.41494531 0.17010937 ] needed , objective function Hessian defined LinearOperator object , > > > def rosen_hess_linop ( x ): ... def matvec ( p ): ... return rosen_hess_p ( x , p ) ... return LinearOperator ( ( 2 , 2 ) , matvec = matvec ) > > > res = minimize ( rosen , x0 , method = ' trust - constr ' , jac = rosen_der , hess = rosen_hess_linop , ... constraints = [ linear_constraint , nonlinear_constraint ] , ... options = { ' verbose ' : 1 } , bounds = bounds ) # vary ` gtol ` termination condition satisfied . Number iterations : 12 , function evaluations : 8 , CG iterations : 7 , optimality : 2.99e-09 , constraint violation : 1.11e-16 , execution time : 0.018 s. > > > print ( res . x ) [ 0.41494531 0.17010937 ] Hessian - vector product parameter hessp . > > > res = minimize ( rosen , x0 , method = ' trust - constr ' , jac = rosen_der , hessp = rosen_hess_p , ... constraints = [ linear_constraint , nonlinear_constraint ] , ... options = { ' verbose ' : 1 } , bounds = bounds ) # vary ` gtol ` termination condition satisfied . Number iterations : 12 , function evaluations : 8 , CG iterations : 7 , optimality : 2.99e-09 , constraint violation : 1.11e-16 , execution time : 0.018 s. > > > print ( res . x ) [ 0.41494531 0.17010937 ] Alternatively , second derivatives objective function approximated . 
+ instance ,   Hessian approximated SR1 quasi - Newton approximation 
+ gradient finite differences . > > > scipy.optimize import SR1 > > > res = minimize ( rosen , x0 , method = ' trust - constr ' , jac = " 2 - point " , hess = SR1 ( ) , ... constraints = [ linear_constraint , nonlinear_constraint ] , ... options = { ' verbose ' : 1 } , bounds = bounds ) # vary ` gtol ` termination condition satisfied . Number iterations : 12 , function evaluations : 24 , CG iterations : 7 , optimality : 4.48e-09 , constraint violation : 0.00e+00 , execution time : 0.016 s. > > > print ( res . x ) [ 0.41494531 0.17010937 ] [ TRIP ] Byrd , Richard H. , Mary E. Hribar , Jorge Nocedal . 1999 . 
+ interior point algorithm large - scale nonlinear   programming . 
+ SIAM Journal Optimization 9.4 : 877 - 900 . [ EQSQP ] Lalee , Marucha , Jorge Nocedal , Todd Plantega . 1998 . 
+ implementation algorithm large - scale equality constrained 
+ optimization . SIAM Journal Optimization 8.3 : 682 - 706 . Sequential SQuares Programming ( SLSQP ) Algorithm ( method='SLSQP ' ) # SLSQP method deals constrained minimization problems form : \begin{eqnarray * } \min_x & f(x ) \\ 
+        \text{subject : } & c_j(x ) =   0   ,   & j \in \mathcal{E}\\ 
+          & c_j(x ) \geq 0   ,   & j \in \mathcal{I}\\ 
+         &   \text{lb}_i   \leq x_i \leq \text{ub}_i , & = 1, ... ,N. \end{eqnarray * } \(\mathcal{E}\ ) \(\mathcal{I}\ ) sets indices 
+ containing equality inequality constraints . linear nonlinear constraints defined dictionaries keys type , fun jac . > > > ineq_cons = { ' type ' : ' ineq ' , ... ' fun ' : lambda x : np . array ( [ 1 - x [ 0 ] - 2 * x [ 1 ] , ... 1 - x [ 0 ] * * 2 - x [ 1 ] , ... 1 - x [ 0 ] * * 2 + x [ 1 ] ] ) , ... ' jac ' : lambda x : np . array ( [ [ - 1.0 , - 2.0 ] , ... [ - 2 * x [ 0 ] , - 1.0 ] , ... [ - 2 * x [ 0 ] , 1.0 ] ] ) } > > > eq_cons = { ' type ' : ' eq ' , ... ' fun ' : lambda x : np . array ( [ 2 * x [ 0 ] + x [ 1 ] - 1 ] ) , ... ' jac ' : lambda x : np . array ( [ 2.0 , 1.0 ] ) } optimization problem solved : > > > x0 = np . array ( [ 0.5 , 0 ] ) > > > res = minimize ( rosen , x0 , method = ' SLSQP ' , jac = rosen_der , ... constraints = [ eq_cons , ineq_cons ] , options = { ' ftol ' : 1e-9 , ' disp ' : True } , ... bounds = bounds ) # vary Optimization terminated successfully .     ( Exit mode 0 ) Current function value : 0.342717574857755 Iterations : 5 Function evaluations : 6 Gradient evaluations : 5 > > > print ( res . x ) [ 0.41494475 0.1701105 ] options available method ' trust - constr ' available 
+ ' SLSQP ' . Local minimization solver comparison # Find solver meets requirements table . 
+ multiple candidates , try ones best 
+ meet needs ( e.g. execution time , objective function value ) . Solver Bounds Constraints Nonlinear Constraints Uses Gradient Uses Hessian Utilizes Sparsity CG â BFGS â dogleg â â trust - ncg â â trust - krylov â â trust - exact â â Newton - CG â â â Nelder - Mead â Powell â L - BFGS - B â â TNC â â COBYLA â â SLSQP â â â trust - constr â â â â â Global optimization # Global optimization aims find global minimum function given 
+ bounds , presence potentially local minima . Typically , global 
+ minimizers efficiently search parameter space , local 
+ minimizer ( e.g. , minimize ) hood .   SciPy contains 
+ number good global optimizers .   , weâll use objective 
+ function , ( aptly named ) eggholder function : > > > def eggholder ( x ): ... return ( - ( x [ 1 ] + 47 ) * np . sin ( np . sqrt ( abs ( x [ 0 ] / 2 + ( x [ 1 ] + 47 ) ) ) ) ... - x [ 0 ] * np . sin ( np . sqrt ( abs ( x [ 0 ] - ( x [ 1 ] + 47 ) ) ) ) ) > > > bounds = [ ( - 512 , 512 ) , ( - 512 , 512 ) ] function looks like egg carton : > > > import matplotlib.pyplot plt > > > mpl_toolkits.mplot3d import Axes3D > > > x = np . arange ( - 512 , 513 ) > > > y = np . arange ( - 512 , 513 ) > > > xgrid , ygrid = np . meshgrid ( x , y ) > > > xy = np . stack ( [ xgrid , ygrid ] ) > > > fig = plt . figure ( ) > > > ax = fig . add_subplot ( 111 , projection = ' 3d ' ) > > > ax . view_init ( 45 , - 45 ) > > > ax . plot_surface ( xgrid , ygrid , eggholder ( xy ) , cmap = ' terrain ' ) > > > ax . set_xlabel ( ' x ' ) > > > ax . set_ylabel ( ' y ' ) > > > ax . set_zlabel ( ' eggholder(x , y ) ' ) > > > plt . ( ) use global optimizers obtain minimum function value 
+ minimum . Weâll store results dictionary compare 
+ different optimization results later . > > > scipy import optimize > > > results = dict ( ) > > > results [ ' shgo ' ] = optimize . shgo ( eggholder , bounds ) > > > results [ ' shgo ' ] fun : -935.3379515604197   # vary funl : array([-935.33795156 ] ) message : ' Optimization terminated successfully . ' nfev : 42 nit : 2 nlfev : 37 nlhev : 0 nljev : 9 success : True x : array([439.48096952 , 453.97740589 ] ) xl : array([[439.48096952 , 453.97740589 ] ] ) > > > results [ ' DA ' ] = optimize . dual_annealing ( eggholder , bounds ) > > > results [ ' DA ' ] fun : -956.9182316237413   # vary message : [ ' Maximum number iteration reached ' ] nfev : 4091 nhev : 0 nit : 1000 njev : 0 x : array([482.35324114 , 432.87892901 ] ) optimizers return OptimizeResult , addition solution 
+ contains information number function evaluations , 
+ optimization successful , .   brevity , wonât 
+ output optimizers : > > > results [ ' DE ' ] = optimize . differential_evolution ( eggholder , bounds ) shgo second method , returns local minima 
+ thinks global minimum : > > > results [ ' shgo_sobol ' ] = optimize . shgo ( eggholder , bounds , n = 200 , iters = 5 , ... sampling_method = ' sobol ' ) Weâll plot found minima heatmap function : > > > fig = plt . figure ( ) > > > ax = fig . add_subplot ( 111 ) > > > m = ax . imshow ( eggholder ( xy ) , interpolation = ' bilinear ' , origin = ' lower ' , ... cmap = ' gray ' ) > > > ax . set_xlabel ( ' x ' ) > > > ax . set_ylabel ( ' y ' ) > > > > > > def plot_point ( res , marker = ' o ' , color = ): ... ax . plot ( 512 + res . x [ 0 ] , 512 + res . x [ 1 ] , marker = marker , color = color , ms = 10 ) > > > plot_point ( results [ ' DE ' ] , color = ' c ' ) # differential_evolution - cyan > > > plot_point ( results [ ' DA ' ] , color = ' w ' ) # dual_annealing .         - white > > > # SHGO produces multiple minima , plot ( smaller marker size ) > > > plot_point ( results [ ' shgo ' ] , color = ' r ' , marker = ' + ' ) > > > plot_point ( results [ ' shgo_sobol ' ] , color = ' r ' , marker = ' x ' ) > > > range ( results [ ' shgo_sobol ' ] . xl . shape [ 0 ] ): ... ax . plot ( 512 + results [ ' shgo_sobol ' ] . xl [ , 0 ] , ... 512 + results [ ' shgo_sobol ' ] . xl [ , 1 ] , ... ' ro ' , ms = 2 ) > > > ax . set_xlim ( [ - 4 , 514 * 2 ] ) > > > ax . set_ylim ( [ - 4 , 514 * 2 ] ) > > > plt . ( ) Comparison Global Optimizers # Find solver meets requirements table . 
+ multiple candidates , try ones best 
+ meet needs ( e.g. execution time , objective function value ) . Solver Bounds Constraints Nonlinear Constraints Uses Gradient Uses Hessian basinhopping ( â ) ( â ) direct â dual_annealing â ( â ) ( â ) differential_evolution â â shgo â â ( â ) ( â ) ( â ) = Depending chosen local minimizer - squares minimization ( least_squares ) # SciPy capable solving robustified bound - constrained nonlinear 
+ - squares problems : \begin{align } 
+ & \min_\mathbf{x } \frac{1}{2 } \sum_{i = 1}^m \rho\left(f_i(\mathbf{x})^2\right ) \\ 
+ & \text{subject } \mathbf{lb } \leq \mathbf{x } \leq \mathbf{ub } 
+ \end{align } \(f_i(\mathbf{x})\ ) smooth functions \(\mathbb{R}^n\ ) \(\mathbb{R}\ ) , refer residuals . 
+ purpose scalar - valued function \(\rho(\cdot)\ ) reduce 
+ influence outlier residuals contribute robustness solution , 
+ refer loss function . linear loss function gives standard 
+ - squares problem . Additionally , constraints form lower upper 
+ bounds \(x_j\ ) allowed . methods specific - squares minimization utilize \(m \times n\ ) matrix partial derivatives called Jacobian defined \(J_{ij } = \partial f_i / \partial x_j\ ) . highly recommended 
+ compute matrix analytically pass least_squares , 
+ , estimated finite differences , takes lot 
+ additional time inaccurate hard cases . Function least_squares fitting function \(\varphi(t ; \mathbf{x})\ ) empirical data \(\{(t_i , y_i ) , = 0 , \ldots , m-1\}\ ) . 
+ , simply precompute residuals \(f_i(\mathbf{x } ) = w_i ( \varphi(t_i ; \mathbf{x } ) - y_i)\ ) , \(w_i\ ) weights assigned observation . Example solving fitting problem # consider enzymatic reaction [ 1 ] . 11 residuals defined \[f_i(x ) = \frac{x_0 ( u_i^2 + u_i x_1)}{u_i^2 + u_i x_2 + x_3 } - y_i , \quad = 0 , \ldots , 10,\ ] \(y_i\ ) measurement values \(u_i\ ) values 
+ independent variable . unknown vector parameters \(\mathbf{x } = ( x_0 , x_1 , x_2 , x_3)^T\ ) . said previously , 
+ recommended compute Jacobian matrix closed form : \begin{align } 
+  & J_{i0 } = \frac{\partial f_i}{\partial x_0 } = \frac{u_i^2 + u_i x_1}{u_i^2 + u_i x_2 + x_3 } \\ 
+  & J_{i1 } = \frac{\partial f_i}{\partial x_1 } = \frac{u_i x_0}{u_i^2 + u_i x_2 + x_3 } \\ 
+  & J_{i2 } = \frac{\partial f_i}{\partial x_2 } = -\frac{x_0 ( u_i^2 + u_i x_1 ) u_i}{(u_i^2 + u_i x_2 + x_3)^2 } \\ 
+  & J_{i3 } = \frac{\partial f_i}{\partial x_3 } = -\frac{x_0 ( u_i^2 + u_i x_1)}{(u_i^2 + u_i x_2 + x_3)^2 } 
+  \end{align } going use âhardâ starting point defined [ 2 ] . find 
+ physically meaningful solution , avoid potential division zero assure 
+ convergence global minimum impose constraints \(0 \leq x_j \leq 100 , j = 0 , 1 , 2 , 3\ ) . code implements - squares estimation \(\mathbf{x}\ ) 
+ finally plots original data fitted model function : > > > scipy.optimize import least_squares > > > def model ( x , u ): ... return x [ 0 ] * ( u * * 2 + x [ 1 ] * u ) / ( u * * 2 + x [ 2 ] * u + x [ 3 ] ) > > > def fun ( x , u , y ): ... return model ( x , u ) - y > > > def jac ( x , u , y ): ... J = np . ( ( u . size , x . size ) ) ... den = u * * 2 + x [ 2 ] * u + x [ 3 ] ... num = u * * 2 + x [ 1 ] * u ... J [: , 0 ] = num / den ... J [: , 1 ] = x [ 0 ] * u / den ... J [: , 2 ] = - x [ 0 ] * num * u / den * * 2 ... J [: , 3 ] = - x [ 0 ] * num / den * * 2 ... return J > > > u = np . array ( [ 4.0 , 2.0 , 1.0 , 5.0e-1 , 2.5e-1 , 1.67e-1 , 1.25e-1 , 1.0e-1 , ... 8.33e-2 , 7.14e-2 , 6.25e-2 ] ) > > > y = np . array ( [ 1.957e-1 , 1.947e-1 , 1.735e-1 , 1.6e-1 , 8.44e-2 , 6.27e-2 , ... 4.56e-2 , 3.42e-2 , 3.23e-2 , 2.35e-2 , 2.46e-2 ] ) > > > x0 = np . array ( [ 2.5 , 3.9 , 4.15 , 3.9 ] ) > > > res = least_squares ( fun , x0 , jac = jac , bounds = ( 0 , 100 ) , args = ( u , y ) , verbose = 1 ) # vary ` ftol ` termination condition satisfied . Function evaluations 130 , initial cost 4.4383e+00 , final cost 1.5375e-04 , - order optimality 4.92e-08 . > > > res . x array ( [ 0.19280596 ,   0.19130423 ,   0.12306063 ,   0.13607247 ] ) > > > import matplotlib.pyplot plt > > > u_test = np . linspace ( 0 , 5 ) > > > y_test = model ( res . x , u_test ) > > > plt . plot ( u , y , ' o ' , markersize = 4 , label = ' data ' ) > > > plt . plot ( u_test , y_test , label = ' fitted model ' ) > > > plt . xlabel ( " u " ) > > > plt . ylabel ( " y " ) > > > plt . legend ( loc = ' lower right ' ) > > > plt . ( ) [ 1 ] J. Kowalik J. F. Morrison , âAnalysis kinetic data allosteric enzyme reactions 
+ nonlinear regression problemâ , Math . Biosci . , vol . 2 , pp . 57 - 66 , 1968 . [ 2 ] Averick et al . , âThe MINPACK-2 Test Problem Collectionâ. examples # interactive examples illustrate usage least_squares 
+ greater detail . Large - scale bundle adjustment scipy demonstrates large - scale capabilities least_squares 
+ efficiently compute finite difference approximation sparse Jacobian . Robust nonlinear regression scipy shows handle outliers robust loss function nonlinear 
+ regression . Solving discrete boundary - value problem scipy examines solve large system equations use bounds achieve 
+ desired properties solution . details mathematical algorithms implementation refer 
+ documentation least_squares . Univariate function minimizers ( minimize_scalar ) # minimum univariate function ( i.e. , function 
+ takes scalar input ) needed . circumstances , 
+ optimization techniques developed work faster . 
+ accessible minimize_scalar function , proposes 
+ algorithms . Unconstrained minimization ( method='brent ' ) # , actually , methods minimize univariate 
+ function : brent golden , golden included academic 
+ purposes rarely . respectively selected 
+ method parameter minimize_scalar . brent method uses Brentâs algorithm locating minimum . Optimally , bracket 
+ ( bracket parameter ) given contains minimum desired . 
+ bracket triple \(\left ( , b , c \right)\ ) \(f 
+ \left ( \right ) > f \left ( b \right ) < f \left ( c \right)\ ) \(a < 
+ b < c\ ) . given , alternatively starting points 
+ chosen bracket found points simple 
+ marching algorithm . starting points provided , 0 1 ( right choice function 
+ result unexpected minimum returned ) . example : > > > scipy.optimize import minimize_scalar > > > f = lambda x : ( x - 2 ) * ( x + 1 ) * * 2 > > > res = minimize_scalar ( f , method = ' brent ' ) > > > print ( res . x ) 1.0 Bounded minimization ( method='bounded ' ) # , constraints placed solution space 
+ minimization occurs . bounded method minimize_scalar example constrained minimization procedure provides 
+ rudimentary interval constraint scalar functions . interval 
+ constraint allows minimization occur fixed 
+ endpoints , specified mandatory bounds parameter . example , find minimum \(J_{1}\left ( x \right)\ ) near \(x=5\ ) , minimize_scalar called interval \(\left [ 4 , 7 \right]\ ) constraint . result \(x_{\textrm{min}}=5.3314\ ) : > > > scipy.special import j1 > > > res = minimize_scalar ( j1 , bounds = ( 4 , 7 ) , method = ' bounded ' ) > > > res . x 5.33144184241 Custom minimizers # , useful use custom method ( multivariate 
+ univariate ) minimizer , example , library wrappers 
+ minimize ( e.g. , basinhopping ) . achieve , instead passing method , passing 
+ callable ( function object implementing _ _ _ _ method ) method parameter . Let consider ( admittedly virtual ) need use trivial 
+ custom multivariate minimization method search 
+ neighborhood dimension independently fixed step size : > > > scipy.optimize import OptimizeResult > > > def custmin ( fun , x0 , args = ( ) , maxfev = , stepsize = 0.1 , ... maxiter = 100 , callback = , * * options ): ... bestx = x0 ... besty = fun ( x0 ) ... funcalls = 1 ... niter = 0 ... improved = True ... stop = False ... ... improved stop niter < maxiter : ... improved = False ... niter + = 1 ... dim range ( np . size ( x0 ) ): ... s [ bestx [ dim ] - stepsize , bestx [ dim ] + stepsize ] : ... testx = np . copy ( bestx ) ... testx [ dim ] = s ... testy = fun ( testx , * args ) ... funcalls + = 1 ... testy < besty : ... besty = testy ... bestx = testx ... improved = True ... callback : ... callback ( bestx ) ... maxfev funcalls > = maxfev : ... stop = True ... break ... ... return OptimizeResult ( fun = besty , x = bestx , nit = niter , ... nfev = funcalls , success = ( niter > 1 ) ) > > > x0 = [ 1.35 , 0.9 , 0.8 , 1.1 , 1.2 ] > > > res = minimize ( rosen , x0 , method = custmin , options = dict ( stepsize = 0.05 ) ) > > > res . x array([1 . , 1 . , 1 . , 1 . , 1 . ] ) work case univariate optimization : > > > def custmin ( fun , bracket , args = ( ) , maxfev = , stepsize = 0.1 , ... maxiter = 100 , callback = , * * options ): ... bestx = ( bracket [ 1 ] + bracket [ 0 ] ) / 2.0 ... besty = fun ( bestx ) ... funcalls = 1 ... niter = 0 ... improved = True ... stop = False ... ... improved stop niter < maxiter : ... improved = False ... niter + = 1 ... testx [ bestx - stepsize , bestx + stepsize ] : ... testy = fun ( testx , * args ) ... funcalls + = 1 ... testy < besty : ... besty = testy ... bestx = testx ... improved = True ... callback : ... callback ( bestx ) ... maxfev funcalls > = maxfev : ... stop = True ... break ... ... return OptimizeResult ( fun = besty , x = bestx , nit = niter , ... nfev = funcalls , success = ( niter > 1 ) ) > > > def f ( x ): ... return ( x - 2 ) * * 2 * ( x + 2 ) * * 2 > > > res = minimize_scalar ( f , bracket = ( - 3.5 , 0 ) , method = custmin , ... options = dict ( stepsize = 0.05 ) ) > > > res . x -2.0 Root finding # Scalar functions # single - variable equation , multiple different root 
+ finding algorithms tried . algorithms require 
+ endpoints interval root expected ( function 
+ changes signs ) . general , brentq best choice , 
+ methods useful certain circumstances academic purposes . 
+ bracket available , derivatives available , 
+ newton ( halley , secant ) applicable . 
+ especially case function defined subset 
+ complex plane , bracketing methods . Fixed - point solving # problem closely related finding zeros function 
+ problem finding fixed point function . fixed point 
+ function point evaluation function returns 
+ point : \(g\left(x\right)=x.\ ) Clearly , fixed point \(g\ ) root \(f\left(x\right)=g\left(x\right)-x.\ ) Equivalently , root \(f\ ) fixed point \(g\left(x\right)=f\left(x\right)+x.\ ) routine fixed_point provides simple iterative method Aitkens 
+ sequence acceleration estimate fixed point \(g\ ) given 
+ starting point . Sets equations # Finding root set non - linear equations achieved root function . methods available , hybr ( default ) lm , , respectively , use hybrid method Powell 
+ Levenberg - Marquardt method MINPACK . following example considers single - variable transcendental 
+ equation \[x+2\cos\left(x\right)=0,\ ] root found follows : > > > import numpy np > > > scipy.optimize import root > > > def func ( x ): ... return x + 2 * np . cos ( x ) > > > sol = root ( func , 0.3 ) > > > sol . x array([-1.02986653 ] ) > > > sol . fun array ( [ -6.66133815e-16 ] ) Consider set non - linear equations \begin{eqnarray * } 
+  x_{0}\cos\left(x_{1}\right ) & = & 4,\\ 
+  x_{0}x_{1}-x_{1 } & = & 5 . 
+  \end{eqnarray * } define objective function returns Jacobian 
+ indicate setting jac parameter True . , 
+ Levenberg - Marquardt solver . > > > def func2 ( x ): ... f = [ x [ 0 ] * np . cos ( x [ 1 ] ) - 4 , ... x [ 1 ] * x [ 0 ] - x [ 1 ] - 5 ] ... df = np . array ( [ [ np . cos ( x [ 1 ] ) , - x [ 0 ] * np . sin ( x [ 1 ] ) ] , ... [ x [ 1 ] , x [ 0 ] - 1 ] ] ) ... return f , df > > > sol = root ( func2 , [ 1 , 1 ] , jac = True , method = ' lm ' ) > > > sol . x array ( [ 6.50409711 ,   0.90841421 ] ) Root finding large problems # Methods hybr lm root deal large 
+ number variables ( N ) , need calculate invert dense N 
+ x N Jacobian matrix Newton step . inefficient 
+ N grows . Consider , instance , following problem : need solve 
+ following integrodifferential equation square \([0,1]\times[0,1]\ ) : \[(\partial_x^2 + \partial_y^2 ) P + 5 \left(\int_0 ^ 1\int_0 ^ 1\cosh(P)\,dx\,dy\right)^2 = 0\ ] boundary condition \(P(x,1 ) = 1\ ) upper edge \(P=0\ ) boundary square . 
+ approximating continuous function P values grid , \(P_{n , m}\approx{}P(n h , m h)\ ) , small grid spacing h . derivatives integrals approximated ; 
+ instance \(\partial_x^2 P(x , y)\approx{}(P(x+h , y ) - 2 P(x , y ) + 
+ P(x - h , y))/h^2\ ) . problem equivalent finding root 
+ function residual(P ) , P vector length \(N_x N_y\ ) . , \(N_x N_y\ ) large , methods hybr lm root long time solve problem . solution , 
+ , found large - scale solvers , example krylov , broyden2 , anderson . use known 
+ inexact Newton method , instead computing Jacobian matrix 
+ exactly , forms approximation . problem solved follows : import numpy np scipy.optimize import root numpy import cosh , zeros_like , mgrid , zeros # parameters nx , ny = 75 , 75 hx , hy = 1 . / ( nx - 1 ) , 1 . / ( ny - 1 ) P_left , P_right = 0 , 0 P_top , P_bottom = 1 , 0 def residual ( P ): d2x = zeros_like ( P ) d2y = zeros_like ( P ) d2x [ 1 : - 1 ] = ( P [ 2 :] - 2 * P [ 1 : - 1 ] + P [: - 2 ] ) / hx / hx d2x [ 0 ] = ( P [ 1 ] - 2 * P [ 0 ] + P_left ) / hx / hx d2x [ - 1 ] = ( P_right - 2 * P [ - 1 ] + P [ - 2 ] ) / hx / hx d2y [: , 1 : - 1 ] = ( P [: , 2 :] - 2 * P [: , 1 : - 1 ] + P [: , : - 2 ] ) / hy / hy d2y [: , 0 ] = ( P [: , 1 ] - 2 * P [: , 0 ] + P_bottom ) / hy / hy d2y [: , - 1 ] = ( P_top - 2 * P [: , - 1 ] + P [: , - 2 ] ) / hy / hy return d2x + d2y + 5 * cosh ( P ) . mean ( ) * * 2 # solve guess = zeros ( ( nx , ny ) , float ) sol = root ( residual , guess , method = ' krylov ' , options = { ' disp ' : True } ) # sol = root(residual , guess , method='broyden2 ' , options={'disp ' : True , ' max_rank ' : 50 } ) # sol = root(residual , guess , method='anderson ' , options={'disp ' : True , ' M ' : 10 } ) print ( ' Residual : % g ' % abs ( residual ( sol . x ) ) . max ( ) ) # visualize import matplotlib.pyplot plt x , y = mgrid [ 0 : 1 :( nx * 1 j ) , 0 : 1 :( ny * 1 j ) ] plt . pcolormesh ( x , y , sol . x , shading = ' gouraud ' ) plt . colorbar ( ) plt . ( ) slow ? Preconditioning . # looking zero functions \(f_i({\bf x } ) = 0\ ) , = 1 , 2 , â ¦ , N , krylov solver spends 
+ time inverting Jacobian matrix , \[J_{ij } = \frac{\partial f_i}{\partial x_j } .\ ] approximation inverse matrix \(M\approx{}J^{-1}\ ) , use preconditioning 
+ linear - inversion problem . idea instead solving \(J{\bf s}={\bf y}\ ) solves \(MJ{\bf s}=M{\bf y}\ ) : 
+ matrix \(MJ\ ) âcloserâ identity matrix \(J\ ) , equation easier Krylov method deal . matrix M passed root method krylov 
+ option options['jac_options']['inner_M ' ] . ( sparse ) matrix 
+ scipy.sparse.linalg . LinearOperator instance . problem previous section , note function 
+ solve consists parts : application 
+ Laplace operator , \([\partial_x^2 + \partial_y^2 ] P\ ) , second 
+ integral . actually easily compute Jacobian corresponding 
+ Laplace operator : know 1 - D \[\begin{split}\partial_x^2 \approx \frac{1}{h_x^2 } \begin{pmatrix } 
+ -2 & 1 & 0 & 0 \cdots \\ 
+ 1 & -2 & 1 & 0 \cdots \\ 
+ 0 & 1 & -2 & 1 \cdots \\ 
+ \ldots 
+ \end{pmatrix } 
+ = h_x^{-2 } L\end{split}\ ] 2 - D operator represented \[J_1 = \partial_x^2 + \partial_y^2 
+ \simeq 
+ h_x^{-2 } L \otimes + h_y^{-2 } \otimes L\ ] matrix \(J_2\ ) Jacobian corresponding integral 
+ difficult calculate , entries 
+ nonzero , difficult invert . \(J_1\ ) hand 
+ relatively simple matrix , inverted scipy.sparse.linalg.splu ( inverse approximated scipy.sparse.linalg.spilu ) . content \(M\approx{}J_1^{-1}\ ) hope best . example , use preconditioner \(M = J_1^{-1}\ ) . scipy.optimize import root scipy.sparse import dia_array , kron scipy.sparse.linalg import spilu , LinearOperator numpy import cosh , zeros_like , mgrid , zeros , eye # parameters nx , ny = 75 , 75 hx , hy = 1 . / ( nx - 1 ) , 1 . / ( ny - 1 ) P_left , P_right = 0 , 0 P_top , P_bottom = 1 , 0 def get_preconditioner ( ): " " " Compute preconditioner M " " " diags_x = zeros ( ( 3 , nx ) ) diags_x [ 0 , :] = 1 / hx / hx diags_x [ 1 , :] = - 2 / hx / hx diags_x [ 2 , :] = 1 / hx / hx Lx = dia_array ( ( diags_x , [ - 1 , 0 , 1 ] ) , shape = ( nx , nx ) ) diags_y = zeros ( ( 3 , ny ) ) diags_y [ 0 , :] = 1 / hy / hy diags_y [ 1 , :] = - 2 / hy / hy diags_y [ 2 , :] = 1 / hy / hy Ly = dia_array ( ( diags_y , [ - 1 , 0 , 1 ] ) , shape = ( ny , ny ) ) J1 = kron ( Lx , eye ( ny ) ) + kron ( eye ( nx ) , Ly ) # matrix ` J_1 ` . need find inverse ` M ` -- # , approximate inverse , use # * incomplete LU * decomposition J1_ilu = spilu ( J1 ) # returns object method .solve ( ) evaluates # corresponding matrix - vector product . need wrap # LinearOperator passed Krylov methods : M = LinearOperator ( shape = ( nx * ny , nx * ny ) , matvec = J1_ilu . solve ) return M def solve ( preconditioning = True ): " " " Compute solution " " " count = [ 0 ] def residual ( P ): count [ 0 ] + = 1 d2x = zeros_like ( P ) d2y = zeros_like ( P ) d2x [ 1 : - 1 ] = ( P [ 2 :] - 2 * P [ 1 : - 1 ] + P [: - 2 ] ) / hx / hx d2x [ 0 ] = ( P [ 1 ] - 2 * P [ 0 ] + P_left ) / hx / hx d2x [ - 1 ] = ( P_right - 2 * P [ - 1 ] + P [ - 2 ] ) / hx / hx d2y [: , 1 : - 1 ] = ( P [: , 2 :] - 2 * P [: , 1 : - 1 ] + P [: , : - 2 ] ) / hy / hy d2y [: , 0 ] = ( P [: , 1 ] - 2 * P [: , 0 ] + P_bottom ) / hy / hy d2y [: , - 1 ] = ( P_top - 2 * P [: , - 1 ] + P [: , - 2 ] ) / hy / hy return d2x + d2y + 5 * cosh ( P ) . mean ( ) * * 2 # preconditioner preconditioning : M = get_preconditioner ( ) : M = # solve guess = zeros ( ( nx , ny ) , float ) sol = root ( residual , guess , method = ' krylov ' , options = { ' disp ' : True , ' jac_options ' : { ' inner_M ' : M } } ) print ( ' Residual ' , abs ( residual ( sol . x ) ) . max ( ) ) print ( ' Evaluations ' , count [ 0 ] ) return sol . x def main ( ): sol = solve ( preconditioning = True ) # visualize import matplotlib.pyplot plt x , y = mgrid [ 0 : 1 :( nx * 1 j ) , 0 : 1 :( ny * 1 j ) ] plt . clf ( ) plt . pcolor ( x , y , sol ) plt . clim ( 0 , 1 ) plt . colorbar ( ) plt . ( ) _ _ _ _ = = " _ _ main _ _ " : main ( ) Resulting run , preconditioning : 0 : | F ( x ) | = 803.614 ; step 1 ; tol 0.000257947 1 : | F ( x ) | = 345.912 ; step 1 ; tol 0.166755 2 : | F ( x ) | = 139.159 ; step 1 ; tol 0.145657 3 : | F ( x ) | = 27.3682 ; step 1 ; tol 0.0348109 4 : | F ( x ) | = 1.03303 ; step 1 ; tol 0.00128227 5 : | F ( x ) | = 0.0406634 ; step 1 ; tol 0.00139451 6 : | F ( x ) | = 0.00344341 ; step 1 ; tol 0.00645373 7 : | F ( x ) | = 0.000153671 ; step 1 ; tol 0.00179246 8 : | F ( x ) | = 6.7424e-06 ; step 1 ; tol 0.00173256 Residual 3.57078908664e-07 Evaluations 317 preconditioning : 0 : | F ( x ) | = 136.993 ; step 1 ; tol 7.49599e-06 1 : | F ( x ) | = 4.80983 ; step 1 ; tol 0.00110945 2 : | F ( x ) | = 0.195942 ; step 1 ; tol 0.00149362 3 : | F ( x ) | = 0.000563597 ; step 1 ; tol 7.44604e-06 4 : | F ( x ) | = 1.00698e-09 ; step 1 ; tol 2.87308e-12 Residual 9.29603061195e-11 Evaluations 77 preconditioner reduced number evaluations residual function factor 4 . problems 
+ residual expensive compute , good preconditioning crucial 
+ â decide problem solvable practice 
+ . Preconditioning art , science , industry . , lucky 
+ making simple choice worked reasonably , 
+ lot depth topic shown . Linear programming ( linprog ) # function linprog minimize linear objective function 
+ subject linear equality inequality constraints . kind 
+ problem known linear programming . Linear programming solves 
+ problems following form : \[\begin{split}\min_x \ & c^T x \\ 
+ \mbox{such } \ & A_{ub } x \leq b_{ub},\\ 
+ & A_{eq } x = b_{eq},\\ 
+ & l \leq x \leq u , \end{split}\ ] \(x\ ) vector decision variables ; \(c\ ) , \(b_{ub}\ ) , \(b_{eq}\ ) , \(l\ ) , \(u\ ) vectors ; \(A_{ub}\ ) \(A_{eq}\ ) matrices . tutorial , try solve typical linear programming 
+ problem linprog . Linear programming example # Consider following simple linear programming problem : \[\begin{split}\max_{x_1 , x_2 , x_3 , x_4 } \ & 29x_1 + 45x_2 \\ 
+ \mbox{such } \ 
+ & x_1 -x_2 -3x_3 \leq 5\\ 
+ & 2x_1 -3x_2 -7x_3 + 3x_4 \geq 10\\ 
+ & 2x_1 + 8x_2 + x_3 = 60\\ 
+ & 4x_1 + 4x_2 + x_4 = 60\\ 
+ & 0 \leq x_0\\ 
+ & 0 \leq x_1 \leq 5\\ 
+ & x_2 \leq 0.5\\ 
+ & -3 \leq x_3\\\end{split}\ ] need mathematical manipulations convert target problem form accepted linprog . , letâs consider objective function . 
+ want maximize objective 
+ function , linprog accept minimization problem . easily remedied converting maximize \(29x_1 + 45x_2\ ) minimizing \(-29x_1 -45x_2\ ) . , \(x_3 , x_4\ ) shown objective 
+ function . means weights corresponding \(x_3 , x_4\ ) zero . , objective function 
+ converted : \[\min_{x_1 , x_2 , x_3 , x_4 } \ -29x_1 -45x_2 + 0x_3 + 0x_4\ ] define vector decision variables \(x = [ x_1 , x_2 , x_3 , x_4]^T\ ) , objective weights vector \(c\ ) linprog problem 
+ \[c = [ -29 , -45 , 0 , 0]^T\ ] , letâs consider inequality constraints . âless thanâ inequality , form accepted linprog . 
+ second âgreater thanâ inequality , need multiply sides \(-1\ ) convert âless thanâ inequality . 
+ Explicitly showing zero coefficients , : \[\begin{split}x_1 -x_2 -3x_3 + 0x_4   & \leq 5\\ 
+ -2x_1 + 3x_2 + 7x_3 - 3x_4 & \leq -10\\\end{split}\ ] equations converted matrix form : \[\begin{split}A_{ub } x \leq b_{ub}\\\end{split}\ ] \begin{equation * } A_{ub } = 
+  \begin{bmatrix } 1 & -1 & -3 & 0 \\ 
+                  -2 & 3 & 7 & -3 
+  \end{bmatrix } 
+  \end{equation * } \begin{equation * } b_{ub } = 
+  \begin{bmatrix } 5 \\ 
+                  -10 
+  \end{bmatrix } 
+  \end{equation * } , letâs consider equality constraints . Showing zero weights explicitly , : \[\begin{split}2x_1 + 8x_2 + 1x_3 + 0x_4 & = 60\\ 
+ 4x_1 + 4x_2 + 0x_3 + 1x_4 & = 60\\\end{split}\ ] equations converted matrix form : \[\begin{split}A_{eq } x = b_{eq}\\\end{split}\ ] \begin{equation * } A_{eq } = 
+  \begin{bmatrix } 2 & 8 & 1 & 0 \\ 
+                  4 & 4 & 0 & 1 
+  \end{bmatrix } 
+  \end{equation * } \begin{equation * } b_{eq } = 
+  \begin{bmatrix } 60 \\ 
+                  60 
+  \end{bmatrix } 
+  \end{equation * } Lastly , letâs consider separate inequality constraints individual decision variables , known 
+ âbox constraintsâ âsimple boundsâ. constraints applied bounds argument linprog . 
+ noted linprog documentation , default value bounds ( 0 , ) , meaning 
+ lower bound decision variable 0 , upper bound decision variable infinity : 
+ decision variables non - negative . bounds different , need specify lower upper bound 
+ decision variable tuple group tuples list . Finally , solve transformed problem linprog . > > > import numpy np > > > scipy.optimize import linprog > > > c = np . array ( [ - 29.0 , - 45.0 , 0.0 , 0.0 ] ) > > > A_ub = np . array ( [ [ 1.0 , - 1.0 , - 3.0 , 0.0 ] , ... [ - 2.0 , 3.0 , 7.0 , - 3.0 ] ] ) > > > b_ub = np . array ( [ 5.0 , - 10.0 ] ) > > > A_eq = np . array ( [ [ 2.0 , 8.0 , 1.0 , 0.0 ] , ... [ 4.0 , 4.0 , 0.0 , 1.0 ] ] ) > > > b_eq = np . array ( [ 60.0 , 60.0 ] ) > > > x0_bounds = ( 0 , ) > > > x1_bounds = ( 0 , 5.0 ) > > > x2_bounds = ( - np . inf , 0.5 ) # + /- np.inf instead > > > x3_bounds = ( - 3.0 , ) > > > bounds = [ x0_bounds , x1_bounds , x2_bounds , x3_bounds ] > > > result = linprog ( c , A_ub = A_ub , b_ub = b_ub , A_eq = A_eq , b_eq = b_eq , bounds = bounds ) > > > print ( result . message ) problem infeasible . ( HiGHS Status 8 : model_status Infeasible ; primal_status ) result states problem infeasible , meaning solution vector satisfies 
+ constraints . doesnât necessarily mean wrong ; problems truly infeasible . 
+ Suppose , , decide bound constraint \(x_1\ ) tight loosened 
+ \(0 \leq x_1 \leq 6\ ) . adjusting code x1_bounds = ( 0 , 6 ) reflect change executing : > > > x1_bounds = ( 0 , 6 ) > > > bounds = [ x0_bounds , x1_bounds , x2_bounds , x3_bounds ] > > > result = linprog ( c , A_ub = A_ub , b_ub = b_ub , A_eq = A_eq , b_eq = b_eq , bounds = bounds ) > > > print ( result . message ) Optimization terminated successfully . ( HiGHS Status 7 : Optimal ) result shows optimization successful . 
+ check objective value ( result.fun ) \(c^Tx\ ) : > > > x = np . array ( result . x ) > > > obj = result . fun > > > print ( c @ x ) -505.97435889013434   # vary > > > print ( obj ) -505.97435889013434   # vary check constraints satisfied reasonable tolerances : > > > print ( b_ub - ( A_ub @ x ) . flatten ( ) ) # equivalent result.slack [ 6.52747190e-10 , -2.26730279e-09 ]   # vary > > > print ( b_eq - ( A_eq @ x ) . flatten ( ) ) # equivalent result.con [ 9.78840831e-09 , 1.04662945e-08 ] ]   # vary > > > print ( [ 0 < = result . x [ 0 ] , 0 < = result . x [ 1 ] < = 6.0 , result . x [ 2 ] < = 0.5 , - 3.0 < = result . x [ 3 ] ] ) [ True , True , True , True ] Assignment problems # Linear sum assignment problem example # Consider problem selecting students swimming medley relay team . 
+ table showing times swimming style students : Student backstroke breaststroke butterfly freestyle 43.5 47.1 48.4 38.2 B 45.5 42.1 49.6 36.8 C 43.4 39.1 42.1 43.2 D 46.5 44.1 44.5 41.2 E 46.3 47.8 50.4 37.2 need choose student swimming styles 
+ total relay time minimized . 
+ typical linear sum assignment problem . use linear_sum_assignment solve . linear sum assignment problem famous combinatorial optimization problems . 
+ Given âcost matrixâ \(C\ ) , problem choose exactly element row choosing element column sum chosen elements minimized words , need assign row column sum 
+ corresponding entries minimized . Formally , let \(X\ ) boolean matrix \(X[i , j ] = 1\ ) iff row \(i\ ) assigned column \(j\ ) . 
+ optimal assignment cost \[\min \sum_i \sum_j C_{i , j } X_{i , j}\ ] step define cost matrix . 
+ example , want assign swimming style student . linear_sum_assignment able assign row cost matrix column . 
+ , form cost matrix , table needs transposed rows 
+ correspond swimming styles columns correspond students : > > > import numpy np > > > cost = np . array ( [ [ 43.5 , 45.5 , 43.4 , 46.5 , 46.3 ] , ... [ 47.1 , 42.1 , 39.1 , 44.1 , 47.8 ] , ... [ 48.4 , 49.6 , 42.1 , 44.5 , 50.4 ] , ... [ 38.2 , 36.8 , 43.2 , 41.2 , 37.2 ] ] ) solve assignment problem linear_sum_assignment : > > > scipy.optimize import linear_sum_assignment > > > row_ind , col_ind = linear_sum_assignment ( cost ) row_ind col_ind optimal assigned matrix indexes cost matrix : > > > row_ind array([0 , 1 , 2 , 3 ] ) > > > col_ind array([0 , 2 , 3 , 1 ] ) optimal assignment : > > > styles = np . array ( [ " backstroke " , " breaststroke " , " butterfly " , " freestyle " ] ) [ row_ind ] > > > students = np . array ( [ " " , " B " , " C " , " D " , " E " ] ) [ col_ind ] > > > dict ( zip ( styles , students ) ) { ' backstroke ' : ' ' , ' breaststroke ' : ' C ' , ' butterfly ' : ' D ' , ' freestyle ' : ' B ' } optimal total medley time : > > > cost [ row_ind , col_ind ] . sum ( ) 163.89999999999998 Note result sum minimum times swimming style : > > > np . min ( cost , axis = 1 ) . sum ( ) 161.39999999999998 student âCâ best swimmer âbreaststrokeâ âbutterflyâ style . 
+ assign student âCâ styles , assigned student C âbreaststrokeâ style 
+ D âbutterflyâ style minimize total time . References reading related software , Newton - Krylov [ KK ] , 
+ PETSc [ PP ] , PyAMG [ AMG ] : [ KK ] D.A. Knoll D.E. Keyes , âJacobian - free Newton - Krylov methodsâ , 
+ J. Comp . Phys . 193 , 357 ( 2004 ) . DOI:10.1016 / j.jcp.2003.08.010 [ PP ] PETSc https://www.mcs.anl.gov/petsc/ Python bindings https://bitbucket.org/petsc/petsc4py/ [ AMG ] PyAMG ( algebraic multigrid preconditioners / solvers ) pyamg / pyamg#issues Mixed integer linear programming # Knapsack problem example # knapsack problem known combinatorial optimization problem . 
+ Given set items , size value , problem choose 
+ items maximize total value condition total size 
+ certain threshold . Formally , let \(x_i\ ) boolean variable indicates item \(i\ ) 
+ included knapsack , \(n\ ) total number items , \(v_i\ ) value item \(i\ ) , \(s_i\ ) size item \(i\ ) , \(C\ ) capacity knapsack . problem : \[\max \sum_i^n   v_{i } x_{i}\ ] \[\text{subject } \sum_i^n s_{i } x_{i } \leq C ,   x_{i } \in { 0 , 1}\ ] objective function inequality constraints linear decision variables \(x_i\ ) , differs typical linear 
+ programming problem decision variables assume integer 
+ values .   Specifically , decision variables \(0\ ) \(1\ ) , known binary integer linear program ( BILP ) . 
+ problem falls larger class mixed integer linear programs ( MILPs ) , solve milp . example , 8 items choose , size value 
+ specified follows . > > > import numpy np > > > scipy import optimize > > > sizes = np . array ( [ 21 , 11 , 15 , 9 , 34 , 25 , 41 , 52 ] ) > > > values = np . array ( [ 22 , 12 , 16 , 10 , 35 , 26 , 42 , 53 ] ) need constrain decision variables binary . 
+ adding Bounds : constraint ensure lie \(0\ ) \(1\ ) , apply âintegralityâ constraints ensure 
+ \(0\ ) \(1\ ) . > > > bounds = optimize . Bounds ( 0 , 1 ) # 0 < = x_i < = 1 > > > integrality = np . full_like ( values , True ) # x_i integers knapsack capacity constraint specified LinearConstraint . > > > capacity = 100 > > > constraints = optimize . LinearConstraint ( = sizes , lb = 0 , ub = capacity ) following usual rules linear algebra , input 
+   - dimensional matrix , lower upper bounds lb ub - dimensional vectors , LinearConstraint forgiving 
+ long inputs broadcast consistent shapes . variables defined , solve knapsack problem milp . Note milp minimizes objective function , 
+ want maximize total value , set c negative values . > > > scipy.optimize import milp > > > res = milp ( c = - values , constraints = constraints , ... integrality = integrality , bounds = bounds ) Letâs check result : > > > res . success True > > > res . x array([1 . , 1 . , 0 . , 1 . , 1 . , 1 . , 0 . , 0 . ] ) means select items 1 , 2 , 4 , 5 , 6 optimize total 
+ value size constraint . Note different 
+ obtained solved linear programming relaxation ( integrality 
+ constraints ) attempted round decision variables . > > > scipy.optimize import milp > > > res = milp ( c = - values , constraints = constraints , ... integrality = False , bounds = bounds ) > > > res . x array([1 .         , 1 .         , 1 .         , 1 .         , 0.55882353 , 1 .         , 0 .         , 0 .         ] ) round solution array([1 . , 1 . , 1 . , 1 . , 1 . , 1 . , 0 . , 0 . ] ) , knapsack 
+ capacity constraint , round array([1 . , 1 . , 1 . , 1 . , 0 . , 1 . , 0 . , 0 . ] ) , sub - optimal 
+ solution . MILP tutorials , Jupyter notebooks SciPy Cookbooks : Compressed Sensing l1 program Compressed Sensing l0 program previous Multidimensional Image Processing ( scipy.ndimage ) Signal Processing ( scipy.signal ) page Local minimization multivariate scalar functions ( minimize ) Unconstrained minimization Nelder - Mead Simplex algorithm ( method='Nelder - Mead ' ) Broyden - Fletcher - Goldfarb - Shanno algorithm ( method='BFGS ' ) Newton - Conjugate - Gradient algorithm ( method='Newton - CG ' ) Trust - Region Newton - Conjugate - Gradient Algorithm ( method='trust - ncg ' ) Trust - Region Truncated Generalized Lanczos / Conjugate Gradient Algorithm ( method='trust - krylov ' ) Trust - Region Nearly Exact Algorithm ( method='trust - exact ' ) Constrained minimization Trust - Region Constrained Algorithm ( method='trust - constr ' ) Sequential SQuares Programming ( SLSQP ) Algorithm ( method='SLSQP ' ) Local minimization solver comparison Global optimization Comparison Global Optimizers - squares minimization ( least_squares ) Example solving fitting problem examples Univariate function minimizers ( minimize_scalar ) Unconstrained minimization ( method='brent ' ) Bounded minimization ( method='bounded ' ) Custom minimizers Root finding Scalar functions Fixed - point solving Sets equations Root finding large problems slow ? Preconditioning . Linear programming ( linprog ) Linear programming example Assignment problems Linear sum assignment problem example Mixed integer linear programming Knapsack problem example Â © Copyright 2008 - 2025 , SciPy community . Created Sphinx 7.3.7 . Built PyData Sphinx Theme 0.15.2 .

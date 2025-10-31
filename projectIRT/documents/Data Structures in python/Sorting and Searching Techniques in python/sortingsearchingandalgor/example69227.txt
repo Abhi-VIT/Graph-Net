@@ -1,0 +1,118 @@
+Sorting , searching algorithm analysis — Object - Oriented Programming Python 1 documentation Navigation index previous | Object - Oriented Programming Python 1 documentation » Sorting , searching algorithm analysis Â¶ Introduction Â¶ learned order write computer program 
+ performs task , construct suitable algorithm . , 
+ algorithm construct unlikely unique – 
+ likely algorithms perform task . question 
+ arises algorithms sense better 
+ . Algorithm analysis study question . chapter analyze algorithms , 
+ following tasks : ordering list values , finding position value sorted list . Algorithm analysis begin clear statement task 
+ performed . allows check algorithm 
+ correct ensure algorithms comparing perform 
+ task . general ways algorithms compared , 
+ focus attention primary importance 
+ data processing algorithms : time complexity ( number steps required depends 
+ length input ) space complexity ( extra memory storage 
+ required depends length input ) Note Computational complexity theory studies inherent complexity 
+ tasks . possible prove algorithm perform given task require 
+ minimum number steps extra storage . 
+ introduction computational complexity theory outside 
+ scope notes mention interesting results . Note common sorting searching algorithms widely implemented 
+ available programming languages . 
+ seldom implement outside exercises 
+ notes . , understanding algorithms 
+ important likely making use 
+ programs space time complexity affect 
+ algorithms . required select 
+ sorting searching algorithm use require 
+ good understanding characteristics algorithms 
+ available . Sorting algorithms Â¶ Sorting list values common computational task 
+ studied . classic description task follows : Given list values function compares 
+ values , order values list smallest largest . values integers , strings kinds 
+ objects . examine algorithms : Selection sort ( relies repeatedly selecting 
+ smallest item ) , Merge sort ( relies repeatedly merging sections 
+ list sorted ) - known algorithms sorting lists Insertion sort , Bubble sort , Heap sort , Quicksort Shell sort . variety algorithms perform sorting task 
+ restricted kinds values , example : Counting sort ( relies values belonging small set items ) Bucket sort ( relies able map value 
+ small set items ) Radix sort ( relies values sequences digits ) Restricting task enlarges set algorithms perform 
+ new algorithms ones desirable 
+ properties . example , Radix sort uses fewer steps 
+ generic sorting algorithm . Selection sort Â¶ Selection sort orders given list repeatedly selecting 
+ smallest remaining element moving end growing 
+ sorted list . illustrate selection sort , let examine operates 
+ small list elements : Initially entire list unsorted . use 
+ list hold sorted items order avoid extra storage 
+ space start sorted list . find smallest element unsorted portion 
+ list . element unsorted list candidate 
+ compare following elements turn , replacing 
+ candidate element found smaller . requires 3 
+ comparisons find element 1.5 position 2 smallest . swap element unordered list 
+ smallest element start ordered list : repeat previous steps , determining 2.7 smallest 
+ remaining element swap 3.8 , element 
+ current unordered section , : Finally , determine 3.8 smallest remaining 
+ unordered elements swap 7.2 : table shows number operations type 
+ sorting example list : Sorted List Length Comparisons Swaps Assign smallest candidate 0 - > 1 3 1 3 1 - > 2 2 1 2 2 - > 3 1 1 2 Total 6 3 7 Note number comparisons number swaps 
+ independent contents list ( true selection 
+ sort necessarily sorting algorithms ) 
+ number times assign new value smallest 
+ candidate depends contents list . generally , algorithm selection sort follows : Divide list sorted sorted portion 
+ ( initially ) unsorted portion end ( initially 
+ list ) . Find smallest element unsorted list : Select element unsorted list initial 
+ candidate . Compare candidate element unsorted list 
+ turn , replacing candidate current element 
+ current element smaller . end unsorted list reached , candidate 
+ smallest element . Swap smallest element found previous step 
+ element unsorted list , extending sorted list 
+ element . Repeat steps 2 3 element remains 
+ unsorted list . Note Selection sort algorithm described properties 
+ desirable sorting algorithms . algorithm inplace . means 
+ uses essentially extra storage required 
+ input ( unsorted list case ) . little extra storage 
+ ( example , temporary variable hold candidate 
+ smallest element ) . important property extra 
+ storage required increase size input 
+ increases . second sorting algorithm stable . means 
+ elements equal , retain initial relative 
+ ordering . important additional information 
+ attached values sorted ( example , sorting 
+ list people comparison function compares 
+ dates birth ) . Stable sorting algorithms ensure sorting 
+ sorted list leaves order list unchanged , 
+ presence elements compare equal . Exercise 1 Â¶ Complete following code perform selection sort 
+ Python . ” ... ” denotes missing code filled : def selection_sort ( items ): " " " Sorts list items ascending order selection sort algoright . " " " step range ( len ( items ) ): # Find location smallest element # items[step :] . location_of_smallest = step location range ( step , len ( items ) ): # TODO : determine location smallest ... # TODO : Exchange items[step ] items[location_of_smallest ] ... Exercise 2 Â¶ Earlier section counted number comparisons , swaps assignments example . swaps performed apply selection sort list 
+ N items ? comparisons performed apply selection sort 
+ list N items ? comparisons performed finding smallest 
+ element unsorted portion list M items ? Sum values M encountered sorting list 
+ length N find total number comparisons . number assignments ( candidate smallest number ) 
+ performed search smallest element 
+ number comparisons . Use find upper 
+ limit total number assignments performed sorting 
+ list length N. Use results previous question find upper bound 
+ total number operations ( swaps , comparisons assignments ) 
+ performed ? term number operations dominate 
+ large lists ? Merge sort Â¶ Merge sort orders list repeatedly merging sorted sub - sections 
+ list , starting sub - sections consisting single item . shortly merge sort requires significanly fewer 
+ operations selection sort . Let start small list elements : merge sections left temporary 
+ storage . imagine sections sorted piles cards , 
+ merging proceeds repeatedly taking smaller cards 
+ placing end merged list temporary 
+ storage . piles , remaining items 
+ pile placed end merged list : copy merged list temporary storage , 
+ portion list originally occupied merged subsections : repeat procedure merge second pair sorted sub - sections : Having reached end original list , return 
+ start list begin merging sorted sub - sections . repeat 
+ entire list single sorted sub - section . 
+ example , requires merge : steps Merge sort : element array single partition . Merge adjacent 
+ partitions new array , resulting partitions size 
+ . Assign new array original . pair elements array single partition . Merge 
+ adjacent partitions new array , resulting partitions 
+ size . Assign new array original . group elements original array single 
+ partition . Merge adjacent partitions new array , resulting 
+ partitions size . Assign new array original . Continue process partition size large 
+ array . Exercise 3 Â¶ Write Python function implements merge sort . help 
+ write separate function performs merges 
+ merge sort implementation . Python sorting algorithm Â¶ Python list objects use sorting algorithm called Timsort invented Tim Peters 2002 use Python . Timsort modifed 
+ version merge sort uses insertion sort arrange list 
+ items conveniently mergable sections . Note Tim Peters credited author Zen Python – 
+ attempt summarize early Python community ethos 
+ short series koans . read typing import Python console . Searching algorithms Â¶ Linear search Â¶ linear search basic kind search method . involves checking element list turn , desired element found . example , suppose want find number 3.8 following list : start element , perform comparison value value want . case , 1.5 equal 3.8 , element : perform comparison , 2.7 equal 3.8 , element : perform comparison determine found correct element . end search return position element ( index 2 ) . use total 3 comparisons searching list 4 elements . comparisons need perform depends total length list , element looking near beginning near end list . worst - case scenario , element element list , search entire list find . search list times , assuming elements equally likely searched , average search half list time .   cost ( comparisons ) performing linear search scales linearly length list . advantage linear search performed unsorted list – going examine values turn , order matter . efficient perform linear search binary search need find value large unsorted list , sorting list preparation performing binary search expensive . , , need find values large list multiple times , sorting list binary search worthwhile . Exercise 4 Â¶ Binary search Â¶ binary search efficient search algorithm relies elements list sorted .   apply search process progressively smaller sub - lists original list , starting list approximately halving search area time . check middle element list . value want , stop . higher value want , repeat search process portion list middle element .   lower value want , repeat search process portion list middle element . example , suppose want find value 3.8 following list 7 elements : compare element middle list value . 7.2 bigger 3.8 , need check half list . half list new list search .   compare element middle list value .   2.7 smaller 3.8 , need search second half sublist . second half sub - list single element , middle element .   compare element value , element want . performed 3 comparisons total searching list 7 items .   number comparisons need perform scales size list , slowly linear search – searching list length N , maximum number comparisons perform log 2 ( N ) . Exercise 5 Â¶ Algorithm complexity Â¶ Complexities common operations Python Â¶ Answers exercises Â¶ Exercise 1 Â¶ Completed selection sort implementation : def selection_sort ( items ): " " " Sorts list items ascending order selection sort algoright . " " " step range ( len ( items ) ): # Find location smallest element # items[step :] . location_of_smallest = step location range ( step , len ( items ) ): # determine location smallest items [ location ] < items [ location_of_smallest ] : location_of_smallest = location # Exchange items[step ] items[location_of_smallest ] temporary_item = items [ step ] items [ step ] = items [ location_of_smallest ] items [ location_of_smallest ] = temporary_item Exercise 2 Â¶ N - 1 swaps performed . ( N - 1 ) * N / 2 comparisons performed . M - 1 comparisons performed finding smallest element . Summing M - 1 2 N gives : 1 + 2 + 3 + ... + ( N - 1 ) 
+
+ = ( N - 1 ) * N / 2 ( N - 1 ) * N / 2 + ( N - 1 ) assignements performed . N**2 + N - 2 operations performed . long lists 
+ number operations grows N**2 . Table Contents Sorting , searching algorithm analysis Introduction Sorting algorithms Selection sort Exercise 1 Exercise 2 Merge sort Exercise 3 Python sorting algorithm Searching algorithms Linear search Exercise 4 Binary search Exercise 5 Algorithm complexity Complexities common operations Python Answers exercises Exercise 1 Exercise 2 Previous topic Introduction GUI programming tkinter Page Source Quick search Enter search terms module , class function . Navigation index previous | Object - Oriented Programming Python 1 documentation » © Copyright 2013 . 
+       Created Sphinx 1.1.3 .

@@ -1,0 +1,443 @@
+Arrays - Visual Basic | Microsoft Learn Skip main content Skip Ask Learn chat experience browser longer supported . Upgrade Microsoft Edge advantage latest features , security updates , technical support . Download Microsoft Edge info Internet Explorer Microsoft Edge Table contents Exit focus mode Ask Learn Ask Learn Read English Save Table contents Read English Add Add plan Edit Share Facebook x.com LinkedIn Email Print Note Access page requires authorization . try signing changing directories . Access page requires authorization . try changing directories . Arrays Visual Basic Article 2022 - 09 - 10 17 contributors Feedback article array set values , termed elements , logically related . example , array consist number students grade grammar school ; element array number students single grade . Similarly , array consist student grades class ; element array single grade . possible use individual variables store data items . example , application analyzes student grades , use separate variable student grade , englishGrade1 , englishGrade2 , etc . approach major limitations : know design time exactly grades handle . Handling large numbers grades quickly unwieldy . turn makes application likely bugs . difficult maintain . new grade add requires application modified , recompiled , redeployed . array , refer related values , use number thatâs called index subscript identify individual element based position array . indexes array range 0 total number elements array . use Visual Basic syntax define size array , specify highest index , total number elements array . work array unit , ability iterate elements frees needing know exactly elements contains design time . quick examples explanation : ' Declare single - dimension array 5 numbers . 
+ Dim numbers(4 ) Integer 
+
+ ' Declare single - dimension array set 4 values . 
+ Dim numbers = New Integer ( ) { 1 , 2 , 4 , 8 } 
+
+ ' Change size existing array 16 elements retain current values . 
+ ReDim Preserve numbers(15 ) 
+
+ ' Redefine size existing array reset values . 
+ ReDim numbers(15 ) 
+
+ ' Declare 6 x 6 multidimensional array . 
+ Dim matrix(5 , 5 ) Double 
+
+ ' Declare 4 x 3 multidimensional array set array element values . 
+ Dim matrix = New Integer ( , ) { { 1 , 2 , 3 } , { 2 , 3 , 4 } , { 3 , 4 , 5 } , { 4 , 5 , 6 } } 
+
+ ' Declare jagged array 
+ Dim sales ( ) ( ) Double = New Double(11 ) ( ) { } Array elements simple array Let create array named students store number students grade grammar school . indexes elements range 0 6 . array simpler declaring seven variables . following illustration shows students array . element array : index element represents grade ( index 0 represents kindergarten ) . value thatâs contained element represents number students grade . following example contains Visual Basic code creates uses array : Module SimpleArray 
+    Public Sub Main ( ) 
+       ' Declare array 7 elements . 
+       Dim students(6 ) Integer 
+
+       ' Assign values element . 
+       students(0 ) = 23 
+       students(1 ) = 19 
+       students(2 ) = 21 
+       students(3 ) = 17 
+       students(4 ) = 19 
+       students(5 ) = 20 
+       students(6 ) = 22 
+      
+       ' Display value element . 
+       ctr Integer = 0 6 
+          Dim grade String = If(ctr = 0 , " kindergarten " , $ " grade { ctr } " ) 
+          Console . WriteLine($"Students { grade } : { students(ctr ) } " ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      Students kindergarten : 23 
+ '      Students grade 1 : 19 
+ '      Students grade 2 : 21 
+ '      Students grade 3 : 17 
+ '      Students grade 4 : 19 
+ '      Students grade 5 : 20 
+ '      Students grade 6 : 22 example things : declares students array seven elements . number 6 array declaration indicates index array ; number elements array . assigns values element array . Array elements accessed array including index individual element parentheses . lists value array . example uses statement access element array index number . students array preceding example - dimensional array uses index . array uses index subscript called multidimensional . information , rest article Array Dimensions Visual Basic . Creating array define size array ways : specify size array declared : ' Declare array 10 elements . 
+ Dim cargoWeights(9 ) Double               
+ ' Declare 24 x 2 array . 
+ Dim hourlyTemperatures(23 , 1 ) Integer 
+ ' Declare jagged array 31 elements . 
+ Dim januaryInquiries(30 ) ( ) String use New clause supply size array itâs created : ' Declare array 10 elements . 
+ Dim cargoWeights ( ) Double = New Double(9 ) { } 
+ ' Declare 24 x 2 array . 
+ Dim hourlyTemperatures ( , ) Integer = New Integer(23 , 1 ) { } 
+ ' Declare jagged array 31 elements . 
+ Dim januaryInquiries ( ) ( ) String = New String(30 ) ( ) { } existing array , redefine size ReDim statement . specify ReDim statement keeps values array , specify creates array . following example shows different uses ReDim statement modify size existing array . ' Assign new array size retain current values . 
+ ReDim Preserve cargoWeights(20 ) 
+ ' Assign new array size retain values . 
+ ReDim Preserve cargoWeights(4 ) 
+ ' Assign new array size discard current element values . 
+ ReDim cargoWeights(15 ) information , ReDim Statement . Storing values array access location array index type Integer . store retrieve values array referencing array location index enclosed parentheses . Indexes multidimensional arrays separated commas ( , ) . need index array dimension . following example shows statements store retrieve values arrays . Module Example 
+    Public Sub Main ( ) 
+       ' Create 10 - element integer array . 
+       Dim numbers(9 ) Integer 
+       Dim value Integer = 2 
+        
+       ' Write values . 
+       ctr Integer = 0 9 
+          numbers(ctr ) = value 
+          value * = 2 
+       
+        
+       ' Read sum array values .  
+       Dim sum Integer 
+       ctr Integer = 0 9 
+          sum + = numbers(ctr ) 
+       
+       Console . WriteLine($"The sum values { sum : N0 } " ) 
+     End Sub 
+ End Module 
+ ' example displays following output : 
+ '      sum values 2,046 Populating array array literals array literal , populate array initial set values time create . array literal consists list comma - separated values enclosed braces ( { } ) . create array array literal , supply array type use type inference determine array type . following example shows options . ' Array literals explicit type definition . 
+ Dim numbers = New Integer ( ) { 1 , 2 , 4 , 8 } 
+ ' Array literals type inference . 
+ Dim doubles = { 1.5 , 2 , 9.9 , 18 } 
+ ' Array literals explicit type definition . 
+ Dim articles ( ) String = { " " , " " , " " } 
+
+ ' Array literals explicit widening type definition . 
+ Dim values ( ) Double = { 1 , 2 , 3 , 4 , 5 } use type inference , type array determined dominant type list literal values . dominant type type types array widen . unique type canât determined , dominant type unique type types array narrow . unique types determined , dominant type Object . example , list values thatâs supplied array literal contains values type Integer , Long , Double , resulting array type Double . Integer Long widen Double , Double dominant type . information , Widening Narrowing Conversions . Note use type inference arrays defined local variables type member . explicit type definition absent , arrays defined array literals class level type Object [ ] . information , Local type inference . Note previous example defines values array type Double array literals type Integer . create array values array literal widen Double values . create populate multidimensional array nested array literals . Nested array literals number dimensions thatâs consistent resulting array . following example creates - dimensional array integers nested array literals . ' Create populate 2 x 2 array . 
+ Dim grid1 = { { 1 , 2 } , { 3 , 4 } } 
+ ' Create populate 2 x 2 array 3 elements . 
+ Dim grid2 ( , ) = { { 1 , 2 } , { 3 , 4 } , { 5 , 6 } } nested array literals create populate array , error occurs number elements nested array literals match . error occurs explicitly declare array variable different number dimensions array literals . - dimensional arrays , rely type inference creating multidimensional array nested array literals . inferred type dominant type values array literals nesting level . following example creates - dimensional array type Double [ , ] values type Integer Double . Dim arr = { { 1 , 2.0 } , { 3 , 4 } , { 5 , 6 } , { 7 , 8 } } additional examples , : Initialize Array Variable Visual Basic . Iterating array iterate array , access element array lowest index highest highest lowest . Typically , use ... Statement ... Statement iterate elements array . know upper bounds array , Array . GetUpperBound method highest value index . lowest index value 0 , Array . GetLowerBound method lowest value index . following example iterates - dimensional array ... statement . Module IterateArray 
+    Public Sub Main ( ) 
+       Dim numbers = { 10 , 20 , 30 } 
+
+       index = 0 numbers . GetUpperBound(0 ) 
+          Console . WriteLine(numbers(index ) ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '   10 
+ '   20 
+ '   30 following example iterates multidimensional array ... statement . GetUpperBound method parameter specifies dimension . GetUpperBound(0 ) returns highest index dimension , GetUpperBound(1 ) returns highest index second dimension . Module IterateArray 
+    Public Sub Main ( ) 
+       Dim numbers = { { 1 , 2 } , { 3 , 4 } , { 5 , 6 } } 
+
+       index0 = 0 numbers . GetUpperBound(0 ) 
+          index1 = 0 numbers . GetUpperBound(1 ) 
+             Console . Write($"{numbers(index0 , index1 ) } " ) 
+          
+          Console . WriteLine ( ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ ' Output 
+ '   1 2 
+ '   3 4 
+ '   5 6 following example uses ... Statement iterate - dimensional array - dimensional array . Module IterateWithForEach 
+    Public Sub Main ( ) 
+       ' Declare iterate - dimensional array . 
+       Dim numbers1 = { 10 , 20 , 30 } 
+      
+       number numbers1 
+          Console . WriteLine(number ) 
+       
+       Console . WriteLine ( ) 
+      
+       Dim numbers = { { 1 , 2 } , { 3 , 4 } , { 5 , 6 } } 
+
+       number numbers 
+          Console . WriteLine(number ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '   10 
+ '   20 
+ '   30 
+ ' 
+ '   1 
+ '   2 
+ '   3 
+ '   4 
+ '   5 
+ '   6 Array size size array product lengths dimensions . represents total number elements currently contained array .   example , following example declares 2 - dimensional array elements dimension . output example shows , array size 16 ( ( 3 + 1 ) * ( 3 + 1 ) . Module Example 
+    Public Sub Main ( ) 
+       Dim arr(3 , 3 ) Integer 
+       Console . WriteLine(arr . Length )     
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      16 Note discussion array size apply jagged arrays . information jagged arrays determining size jagged array , Jagged arrays section . find size array Array . Length property . find length dimension multidimensional array Array . GetLength method . resize array variable assigning new array object ReDim statement . following example uses ReDim statement change 100 - element array 51 - element array . Module Example 
+    Public Sub Main ( ) 
+       Dim arr(99 ) Integer 
+       Console . WriteLine(arr . Length ) 
+      
+       Redim arr(50 ) 
+       Console . WriteLine(arr . Length ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      100 
+ '      51 things mind dealing size array . Notes Dimension Length index dimension 0 - based , means ranges 0 upper bound . , length given dimension greater declared upper bound dimension . Length Limits length dimension array limited maximum value Integer data type , Int32.MaxValue ( 2 ^ 31 ) - 1 . , total size array limited memory available system . attempt initialize array exceeds available memory , runtime throws OutOfMemoryException . Size Element Size array size independent data type elements . size represents total number elements , number bytes consume memory . Memory Consumption safe assumptions array stored memory . Storage varies platforms different data widths , array consume memory 64 - bit system 32 - bit system . Depending system configuration initialize array , common language runtime ( CLR ) assign storage pack elements close possible , align natural hardware boundaries . , array requires storage overhead control information , overhead increases added dimension . array type array data type , differs data type elements . single data type arrays . Instead , data type array determined number dimensions , rank , array , data type elements array . array variables data type rank elements data type . lengths dimensions array influence array data type . array inherits System . Array class , declare variable type Array , create array type Array . example , following code declares arr variable type Array calls Array . CreateInstance method instantiate array , array type proves Object [ ] . Module Example 
+    Public Sub Main ( ) 
+       Dim arr Array = Array . CreateInstance(GetType(Object ) , 19 ) 
+       Console . WriteLine(arr . Length ) 
+       Console . WriteLine(arr . GetType().Name ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      19 
+ '      Object [ ] , ReDim Statement operate variable declared type Array . reasons , type safety , advisable declare array specific type . find data type array elements ways . GetType method variable Type object represents run - time type variable . Type object holds extensive information properties methods . pass variable TypeName function String run - time type . following example calls GetType method TypeName function determine type array . array type Byte ( , ) . Note Type . BaseType property indicates base type byte array Array class . Module Example 
+    Public Sub Main ( ) 
+       Dim bytes(9,9 ) Byte 
+       Console . WriteLine($"Type { nameof(bytes ) } array : { bytes . GetType().Name } " ) 
+       Console . WriteLine($"Base class { nameof(bytes ) } : { bytes . GetType().BaseType . } " ) 
+       Console . WriteLine ( ) 
+       Console . WriteLine($"Type { nameof(bytes ) } array : { TypeName(bytes ) } " ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ ' Type bytes array : Byte [ , ] 
+ ' Base class bytes : Array 
+ ' 
+ ' Type bytes array : Byte ( , ) Arrays return values parameters return array Function procedure , specify array data type number dimensions return type Function Statement . function , declare local array variable data type number dimensions . Return Statement , include local array variable parentheses . specify array parameter Sub Function procedure , define parameter array specified data type number dimensions . procedure , pass array variable data type number dimensions . following example , GetNumbers function returns Integer ( ) , - dimensional array type Integer . ShowNumbers procedure accepts Integer ( ) argument . Module ReturnValuesAndParams 
+    Public Sub Main ( ) 
+       Dim numbers Integer ( ) = GetNumbers ( ) 
+       ShowNumbers(numbers ) 
+    End Sub 
+
+    Private Function GetNumbers ( ) Integer ( ) 
+       Dim numbers Integer ( ) = { 10 , 20 , 30 } 
+       Return numbers 
+    End Function 
+
+    Private Sub ShowNumbers(numbers Integer ( ) ) 
+       index = 0 numbers . GetUpperBound(0 ) 
+          Console . WriteLine($"{numbers(index ) } " ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '    10 
+ '    20 
+ '    30 following example , GetNumbersMultiDim function returns Integer ( , ) , - dimensional array type Integer .   ShowNumbersMultiDim procedure accepts Integer ( , ) argument . Module Example 
+    Public Sub Main ( ) 
+       Dim numbers Integer ( , ) = GetNumbersMultidim ( ) 
+       ShowNumbersMultidim(numbers ) 
+    End Sub 
+
+    Private Function GetNumbersMultidim ( ) Integer ( , ) 
+       Dim numbers Integer ( , ) = { { 1 , 2 } , { 3 , 4 } , { 5 , 6 } } 
+       Return numbers 
+    End Function 
+
+    Private Sub ShowNumbersMultidim(numbers Integer ( , ) ) 
+       index0 = 0 numbers . GetUpperBound(0 ) 
+          index1 = 0 numbers . GetUpperBound(1 ) 
+             Console . Write($"{numbers(index0 , index1 ) } " ) 
+          
+          Console . WriteLine ( ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      1 2 
+ '      3 4 
+ '      5 6 Jagged arrays data structure application - dimensional rectangular . example , use array store data high temperature day month . dimension array represents month , second dimension represents number days , number days month uniform . jagged array , called array arrays , designed scenarios . jagged array array elements arrays . jagged array element jagged array dimensions . following example uses array months , element array days . example uses jagged array different months different numbers days .   example shows create jagged array , assign values , retrieve display values . Imports System . Globalization 
+
+ Module JaggedArray 
+    Public Sub Main ( ) 
+       ' Declare jagged array 12 elements . element array Double . 
+       Dim sales(11 ) ( ) Double 
+       ' Set element sales array Double array appropriate size . 
+       month Integer = 0 11 
+          ' number days month determines appropriate size . 
+          Dim daysInMonth Integer = 
+             DateTime . DaysInMonth(Year(Now ) , month + 1 ) 
+          sales(month ) = New Double(daysInMonth - 1 ) { } 
+       
+
+       ' Store values element . 
+       month Integer = 0 11 
+          dayOfMonth = 0 sales(month).GetUpperBound(0 ) 
+             sales(month)(dayOfMonth ) = ( month * 100 ) + dayOfMonth 
+          
+       
+
+       ' Retrieve display array values . 
+       Dim monthNames = DateTimeFormatInfo . CurrentInfo . AbbreviatedMonthNames 
+       ' Display month names . 
+       Console . Write ( "     " ) 
+       ctr = 0 sales . GetUpperBound(0 ) 
+          Console . Write($ " { monthNames(ctr ) }    " ) 
+         
+       Console . WriteLine ( ) 
+       ' Display data day month . 
+       dayInMonth = 0 30 
+          Console . Write($"{dayInMonth + 1,2 } .   " ) 
+          monthNumber = 0 sales . GetUpperBound(0 ) 
+             dayInMonth > sales(monthNumber).GetUpperBound(0 ) 
+                Console . Write ( "        " ) 
+             
+                Console . Write($"{sales(monthNumber)(dayInMonth),-5 }   " ) 
+             End 
+            
+          Console . WriteLine ( ) 
+       
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '       Jan     Feb     Mar     Apr         Jun     Jul     Aug     Sep     Oct     Nov     Dec 
+ '   1 .   0       100     200     300     400     500     600     700     800     900     1000    1100 
+ '   2 .   1       101     201     301     401     501     601     701     801     901     1001    1101 
+ '   3 .   2       102     202     302     402     502     602     702     802     902     1002    1102 
+ '   4 .   3       103     203     303     403     503     603     703     803     903     1003    1103 
+ '   5 .   4       104     204     304     404     504     604     704     804     904     1004    1104 
+ '   6 .   5       105     205     305     405     505     605     705     805     905     1005    1105 
+ '   7 .   6       106     206     306     406     506     606     706     806     906     1006    1106 
+ '   8 .   7       107     207     307     407     507     607     707     807     907     1007    1107 
+ '   9 .   8       108     208     308     408     508     608     708     808     908     1008    1108 
+ ' 10 .   9       109     209     309     409     509     609     709     809     909     1009    1109 
+ ' 11 .   10      110     210     310     410     510     610     710     810     910     1010    1110 
+ ' 12 .   11      111     211     311     411     511     611     711     811     911     1011    1111 
+ ' 13 .   12      112     212     312     412     512     612     712     812     912     1012    1112 
+ ' 14 .   13      113     213     313     413     513     613     713     813     913     1013    1113 
+ ' 15 .   14      114     214     314     414     514     614     714     814     914     1014    1114 
+ ' 16 .   15      115     215     315     415     515     615     715     815     915     1015    1115 
+ ' 17 .   16      116     216     316     416     516     616     716     816     916     1016    1116 
+ ' 18 .   17      117     217     317     417     517     617     717     817     917     1017    1117 
+ ' 19 .   18      118     218     318     418     518     618     718     818     918     1018    1118 
+ ' 20 .   19      119     219     319     419     519     619     719     819     919     1019    1119 
+ ' 21 .   20      120     220     320     420     520     620     720     820     920     1020    1120 
+ ' 22 .   21      121     221     321     421     521     621     721     821     921     1021    1121 
+ ' 23 .   22      122     222     322     422     522     622     722     822     922     1022    1122 
+ ' 24 .   23      123     223     323     423     523     623     723     823     923     1023    1123 
+ ' 25 .   24      124     224     324     424     524     624     724     824     924     1024    1124 
+ ' 26 .   25      125     225     325     425     525     625     725     825     925     1025    1125 
+ ' 27 .   26      126     226     326     426     526     626     726     826     926     1026    1126 
+ ' 28 .   27      127     227     327     427     527     627     727     827     927     1027    1127 
+ ' 29 .   28             228     328     428     528     628     728     828     928     1028    1128 
+ ' 30 .   29             229     329     429     529     629     729     829     929     1029    1129 
+ ' 31 .   30             230            430            630     730            930            1130 previous example assigns values jagged array element - - element basis ... loop . assign values elements jagged array nested array literals . , attempt use nested array literals ( example , Dim valuesjagged = { { 1 , 2 } , { 2 , 3 , 4 } } ) generates compiler error BC30568 . correct error , enclose inner array literals parentheses . parentheses force array literal expression evaluated , resulting values outer array literal , following example shows . Module Example 
+    Public Sub Main ( ) 
+       Dim values1d = { 1 , 2 , 3 } 
+       Dim values2d = { { 1 , 2 } , { 2 , 3 } , { 3 , 4 } } 
+       Dim valuesjagged = { ( { 1 , 2 } ) , ( { 2 , 3 , 4 } ) } 
+    End Sub 
+ End Module jagged array - dimensional array elements contain arrays . , Array . Length property Array . GetLength(0 ) method return number elements - dimensional array , Array . GetLength(1 ) throws IndexOutOfRangeException jagged array multidimensional . determine number elements subarray retrieving value subarray Array . Length property . following example illustrates determine number elements jagged array . Module Example 
+    Public Sub Main ( ) 
+       Dim jagged = { ( { 1 , 2 } ) , ( { 2 , 3 , 4 } ) , ( { 5 , 6 } ) , ( { 7 , 8 , 9 , 10 } ) } 
+       Console . WriteLine($"The value jagged . Length : { jagged . Length } . " ) 
+       Dim total = jagged . Length 
+       ctr Integer = 0 jagged . GetUpperBound(0 ) 
+          Console . WriteLine($"Element { ctr + 1 } { jagged(ctr).Length } elements . " ) 
+          total + = jagged(ctr).Length 
+       
+       Console . WriteLine($"The total number elements jagged array : { total } " ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      value jagged . Length : 4 . 
+ '      Element 1 2 elements . 
+ '      Element 2 3 elements . 
+ '      Element 3 2 elements . 
+ '      Element 4 4 elements . 
+ '      total number elements jagged array : 15 Zero - length arrays Visual Basic differentiates uninitialized array ( array value ) zero - length array array ( array elements . ) uninitialized array dimensioned values assigned . example : Dim arr ( ) String zero - length array declared dimension -1 . example : Dim arrZ(-1 ) String need create zero - length array following circumstances : risking NullReferenceException exception , code access members Array class , Length Rank , Visual Basic function UBound . want code simple having check special case . code interacts application programming interface ( API ) requires pass zero - length array procedures returns zero - length array procedures . Splitting array cases , need split single array multiple arrays . involves identifying point points array split , spitting array separate arrays . Note section discuss splitting single string string array based delimiter . information splitting string , String . Split method . common criteria splitting array : number elements array . example , want split array specified number elements number approximately equal parts . purpose , use value returned Array . Length Array . GetLength method . value element , serves delimiter indicates array split . search specific value calling Array . FindIndex Array . FindLastIndex methods . determined index indexes array split , create individual arrays calling Array . Copy method . following example splits array arrays approximately equal size . ( total number array elements odd , array element second . ) Module Example 
+    Public Sub Main ( ) 
+       ' Create array 100 elements . 
+       Dim arr(99 ) Integer 
+       ' Populate array . 
+       Dim rnd new Random ( ) 
+       ctr = 0 arr . GetUpperBound(0 ) 
+          arr(ctr ) = rnd . ( ) 
+       
+      
+       ' Determine elements array . 
+       Dim divisor = 2 
+       Dim remainder Integer 
+       Dim boundary = Math . DivRem(arr . GetLength(0 ) , divisor , remainder ) 
+            
+       ' Copy array . 
+       Dim arr1(boundary - 1 + remainder ) , arr2(boundary - 1 ) Integer 
+       Array . Copy(arr , 0 , arr1 , 0 , boundary + remainder ) 
+       Array . Copy(arr , boundary + remainder , arr2 , 0 , arr . Length - boundary ) 
+    End Sub 
+ End Module following example splits string array arrays based presence element value " zzz " , serves array delimiter . new arrays include element contains delimiter . Module Example 
+    Public Sub Main ( ) 
+       Dim rnd New Random ( ) 
+      
+       ' Create array 100 elements . 
+       Dim arr(99 ) String 
+       ' Populate element arbitrary ASCII character . 
+       ctr = 0 arr . GetUpperBound(0 ) 
+          arr(ctr ) = ChrW(Rnd . Next(&h21 , & h7F ) ) 
+       
+       ' random number represent point insert delimiter . 
+       arr(rnd . Next(0 , arr . GetUpperBound(0 ) ) ) = " zzz " 
+
+       ' Find delimiter . 
+       Dim location = Array . FindIndex(arr , Function(x ) x = " zzz " ) 
+
+       ' Create arrays . 
+       Dim arr1(location - 1 ) String 
+       Dim arr2(arr . GetUpperBound(0 ) - location - 1 ) String 
+      
+       ' Populate arrays . 
+       Array . Copy(arr , 0 , arr1 , 0 , location ) 
+       Array . Copy(arr , location + 1 , arr2 , 0 , arr . GetUpperBound(0 ) - location ) 
+    End Sub 
+ End Module Joining arrays combine number arrays single larger array . , use Array . Copy method . Note section discuss joining string array single string . information joining string array , String . Join method . copying elements array new array , ensure initialized array large accommodate new array . ways : Use ReDim Preserve statement dynamically expand array adding new elements . easiest technique , result performance degradation excessive memory consumption copying large arrays . Calculate total number elements needed new large array , add elements source array . following example uses second approach add arrays elements single array . Imports System . Collections . Generic 
+ Imports System . Threading . Tasks 
+
+ Module Example 
+    Public Sub Main ( ) 
+       Dim tasks New List(Of Task(Of Integer ( ) ) ) 
+       ' Generate arrays . 
+       ctr = 0 3 
+          Dim value = ctr 
+          tasks . Add(Task . Run(Function ( ) 
+                                Dim arr(9 ) Integer 
+                                ndx = 0 arr . GetUpperBound(0 ) 
+                                   arr(ndx ) = value 
+                                
+                                Return arr 
+                             End Function ) )   
+        
+        Task . WaitAll(tasks . ToArray ( ) ) 
+        ' Compute number elements arrays . 
+        Dim elements = 0 
+        task tasks 
+           elements + = task . Result . Length 
+        
+        Dim newArray(elements - 1 ) Integer 
+        Dim index = 0 
+        task tasks 
+           Dim n = task . Result . Length 
+           Array . Copy(task . Result , 0 , newArray , index , n ) 
+           index + = n 
+        
+       Console . WriteLine($"The new array { newArray . Length } elements . " ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      new array 40 elements . case source arrays small , dynamically expand array add elements new array . following example . Imports System . Collections . Generic 
+ Imports System . Threading . Tasks 
+
+ Module Example 
+    Public Sub Main ( ) 
+       Dim tasks New List(Of Task(Of Integer ( ) ) ) 
+       ' Generate arrays . 
+       ctr = 0 3 
+          Dim value = ctr 
+          tasks . Add(Task . Run(Function ( ) 
+                                Dim arr(9 ) Integer 
+                                ndx = 0 arr . GetUpperBound(0 ) 
+                                   arr(ndx ) = value 
+                                
+                                Return arr 
+                             End Function ) )   
+        
+        Task . WaitAll(tasks . ToArray ( ) ) 
+
+        ' Dimension target array copy element source array . 
+        Dim newArray ( ) Integer = { } 
+        ' Define position copy newArray . 
+        Dim index = 0 
+        task tasks 
+           Dim n = Task . Result . Length 
+           ReDim Preserve newArray(newArray . GetUpperBound(0 ) + n ) 
+           Array . Copy(task . Result , 0 , newArray , index , n ) 
+           index + = n 
+        
+       Console . WriteLine($"The new array { newArray . Length } elements . " ) 
+    End Sub 
+ End Module 
+ ' example displays following output : 
+ '      new array 40 elements . Collections alternative arrays Arrays useful creating working fixed number strongly typed objects . Collections provide flexible way work groups objects . Unlike arrays , require explicitly change size array ReDim Statement , collections grow shrink dynamically needs application change . use ReDim redimension array , Visual Basic creates new array releases previous . takes execution time . , number items working changes frequently , predict maximum number items need , usually obtain better performance collection . collections , assign key object collection quickly retrieve object key . collection contains elements data type , use classes System . Collections . Generic namespace . generic collection enforces type safety data type added . information collections , Collections . Related topics Term Definition Array Dimensions Visual Basic Explains rank dimensions arrays . : Initialize Array Variable Visual Basic Describes populate arrays initial values . : Sort Array Visual Basic Shows sort elements array alphabetically . : Assign Array Array Describes rules steps assigning array array variable . Troubleshooting Arrays Discusses common problems arise working arrays . System . Array Dim Statement ReDim Statement Collaborate GitHub source content found GitHub , create review issues pull requests . information , contributor guide . .NET Open documentation issue Provide product feedback Additional resources Additional resources article en - Privacy Choices Theme Light Dark High contrast Previous Versions Blog Contribute Privacy Terms Use Trademarks © Microsoft 2025

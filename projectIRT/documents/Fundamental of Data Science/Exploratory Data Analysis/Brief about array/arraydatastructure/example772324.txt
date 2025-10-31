@@ -1,0 +1,403 @@
+Array Data Structure Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel DSA - Home DSA - Overview DSA - Environment Setup DSA - Algorithms Basics DSA - Asymptotic Analysis Data Structures DSA - Data Structure Basics DSA - Data Structures Types DSA - Array Data Structure DSA - Skip List Data Structure Linked Lists DSA - Linked List Data Structure DSA - Doubly Linked List Data Structure DSA - Circular Linked List Data Structure Stack & Queue DSA - Stack Data Structure DSA - Expression Parsing DSA - Queue Data Structure DSA - Circular Queue Data Structure DSA - Priority Queue Data Structure DSA - Deque Data Structure Searching Algorithms DSA - Searching Algorithms DSA - Linear Search Algorithm DSA - Binary Search Algorithm DSA - Interpolation Search DSA - Jump Search Algorithm DSA - Exponential Search DSA - Fibonacci Search DSA - Sublist Search DSA - Hash Table Sorting Algorithms DSA - Sorting Algorithms DSA - Bubble Sort Algorithm DSA - Insertion Sort Algorithm DSA - Selection Sort Algorithm DSA - Merge Sort Algorithm DSA - Shell Sort Algorithm DSA - Heap Sort Algorithm DSA - Bucket Sort Algorithm DSA - Counting Sort Algorithm DSA - Radix Sort Algorithm DSA - Quick Sort Algorithm Matrices Data Structure DSA - Matrices Data Structure DSA - Lup Decomposition Matrices DSA - Lu Decomposition Matrices Graph Data Structure DSA - Graph Data Structure DSA - Depth Traversal DSA - Breadth Traversal DSA - Spanning Tree DSA - Topological Sorting DSA - Strongly Connected Components DSA - Biconnected Components DSA - Augmenting Path DSA - Network Flow Problems DSA - Flow Networks Data Structures DSA - Edmonds Blossom Algorithm DSA - Maxflow Mincut Theorem Tree Data Structure DSA - Tree Data Structure DSA - Tree Traversal DSA - Binary Search Tree DSA - AVL Tree DSA - Red Black Trees DSA - B Trees DSA - B+ Trees DSA - Splay Trees DSA - Range Queries DSA - Segment Trees DSA - Fenwick Tree DSA - Fusion Tree DSA - Hashed Array Tree DSA - K - Ary Tree DSA - Kd Trees DSA - Priority Search Tree Data Structure Recursion DSA - Recursion Algorithms DSA - Tower Hanoi Recursion DSA - Fibonacci Series Recursion Divide Conquer DSA - Divide Conquer DSA - Max - Min Problem DSA - Strassen Matrix Multiplication DSA - Karatsuba Algorithm Greedy Algorithms DSA - Greedy Algorithms DSA - Travelling Salesman Problem ( Greedy Approach ) DSA - Prim Minimal Spanning Tree DSA - Kruskal Minimal Spanning Tree DSA - Dijkstra Shortest Path Algorithm DSA - Map Colouring Algorithm DSA - Fractional Knapsack Problem DSA - Job Sequencing Deadline DSA - Optimal Merge Pattern Algorithm Dynamic Programming DSA - Dynamic Programming DSA - Matrix Chain Multiplication DSA - Floyd Warshall Algorithm DSA - 0 - 1 Knapsack Problem DSA - Longest Common Sub - sequence Algorithm DSA - Travelling Salesman Problem ( Dynamic Approach ) Hashing DSA - Hashing Data Structure DSA - Collision Hashing Disjoint Set DSA - Disjoint Set DSA - Path Compression Union Rank Heap DSA - Heap Data Structure DSA - Binary Heap DSA - Binomial Heap DSA - Fibonacci Heap Tries Data Structure DSA - Tries DSA - Standard Tries DSA - Compressed Tries DSA - Suffix Tries Treaps DSA - Treaps Data Structure Bit Mask DSA - Bit Mask Data Structures Bloom Filter DSA - Bloom Filter Data Structure Approximation Algorithms DSA - Approximation Algorithms DSA - Vertex Cover Algorithm DSA - Set Cover Problem DSA - Travelling Salesman Problem ( Approximation Approach ) Randomized Algorithms DSA - Randomized Algorithms DSA - Randomized Quick Sort Algorithm DSA - Karger Minimum Cut Algorithm DSA - Fisher - Yates Shuffle Algorithm Miscellaneous DSA - Infix Postfix DSA - Bellmon Ford Shortest Path DSA - Maximum Bipartite Matching DSA Useful Resources DSA - Questions Answers DSA - Selection Sort Interview Questions DSA - Merge Sort Interview Questions DSA - Insertion Sort Interview Questions DSA - Heap Sort Interview Questions DSA - Bubble Sort Interview Questions DSA - Bucket Sort Interview Questions DSA - Radix Sort Interview Questions DSA - Cycle Sort Interview Questions DSA - Quick Guide DSA - Useful Resources DSA - Discussion Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Array Data Structure Previous Quiz Array ? array type linear data structure defined collection elements different data types . exist single dimension multiple dimensions . data structures come picture necessity store multiple elements similar nature place . difference array index memory address array index acts like key value label elements array . , memory address starting address free memory available . Following important terms understand concept Array . Element − item stored array called element . Index − location element array numerical index , identify element . Syntax Creating array C C++ programming languages − data_type array_name[array_size]={elements separated commas } 
+ , 
+ data_type array_name[array_size ] ; Creating array Java programming language − data_type [ ] array_name = { elements separated commas } 
+ , 
+ data_type array_name = new data_type[array_size ] ; Need Arrays Arrays solutions problems small sorting problems complex problems like travelling salesperson problem . data structures arrays provide efficient time space complexity problems , makes arrays better ? answer lies random access lookup time . Arrays provide O(1 ) random access lookup time . means , accessing 1 st index array 1000 th index array time . fact array comes pointer offset value . pointer points right location memory offset value shows far look said memory . array_name[index ] 
+                               |        | 
+                            Pointer    Offset , array 6 elements , access 1st element , array pointed 0th index . Similarly , access 6 th element , array pointed 5 th index . Array Representation Arrays represented collection buckets bucket stores element . buckets indexed ' 0 ' ' n-1 ' , n size particular array . example , array size 10 buckets indexed 0 9 . indexing similar multidimensional arrays . 2 - dimensional array , sub - buckets bucket . indexed array_name[m][n ] , m n sizes level array . illustration , following important points considered . Index starts 0 . Array length 9 means store 9 elements . element accessed index . example , fetch element index 6 23 . Basic Operations Arrays basic operations Arrays insertion , deletion , searching , display , traverse , update . operations usually performed modify data array report status array . Following basic operations supported array . Traverse − print array elements . Insertion − Adds element given index . Deletion − Deletes element given index . Search − Searches element given index value . Update − Updates element given index . Display − Displays contents array . C , array initialized size , assigns defaults values elements following order . Data Type Default Value bool false char 0 int 0 float 0.0 double 0.0f void wchar_t 0 Array - Insertion Operation insertion operation , adding elements array . Based requirement , new element added beginning , end , given index array . input statements programming languages . Algorithm Following algorithm insert elements Linear Array reach end array − 1 . Start 
+ 2 . Create Array desired datatype size . 
+ 3 . Initialize variable ' ' 0 . 
+ 4 . Enter element ith index array . 
+ 5 . Increment 1 . 
+ 6 . Repeat Steps 4 & 5 end array . 
+ 7 . Stop Example , practical implementation insertion operation , add data end array − C C++ Java Python # include < stdio.h > 
+ int main ( ) { 
+    int LA[3 ] = { } , ; 
+    printf("Array Insertion:\n " ) ; 
+    for(i = 0 ; < 3 ; i++ ) 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    printf("Inserting Elements .. \n " ) ; 
+    printf("The array elements insertion : \n " ) ; // prints array values 
+    for(i = 0 ; < 3 ; i++ ) { 
+       LA[i ] = + 2 ; 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+    return 0 ; 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA[3 ] = { } , ; 
+    cout < < " Array Insertion : " < < endl ; 
+    for(i = 0 ; < 3 ; i++ ) 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+      
+    //prints garbage values 
+    cout < < " Inserting elements .. " < < endl ; 
+    cout < < " Array Insertion : " < < endl ; // prints array values 
+    for(i = 0 ; < 5 ; i++ ) { 
+       LA[i ] = + 2 ; 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    } 
+    return 0 ; 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[3 ] ; 
+       System.out.println("Array Insertion : " ) ; 
+       for(int = 0 ; < 3 ; i++ ) 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; //prints array 
+       System.out.println("Inserting Elements .. " ) ; 
+      
+       // Printing Array Insertion 
+       System.out.println("Array Insertion : " ) ; 
+       for(int = 0 ; < 3 ; i++ ) { 
+          LA[i ] = i+3 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+    } 
+ } # python program insert element insert operation 
+ def insert(arr , element ): 
+	 arr.append(element ) 
+ # Driver code 
+ _ _ _ _ = = ' _ _ main _ _ ' : 
+	 # declaring array value insert 
+	 LA = [ 0 , 0 , 0 ] 
+	 x = 0 
+	 # array inserting element 
+	 print("Array Insertion : " ) 
+	 x range(len(LA ) ): 
+	     print("LA " , [ x ] , " = " , LA[x ] ) 
+	 print("Inserting elements .... " ) 
+	 # array Inserting element 
+	 x range(len(LA ) ): 
+	     LA.append(x ) ; 
+	     LA[x ] = x+1 ; 
+	 print("Array Insertion : " ) 
+	 x range(len(LA ) ): 
+	     print("LA " , [ x ] , " = " , LA[x ] ) Output Array Insertion : 
+ LA[0 ] = 0 
+ LA[1 ] = 0 
+ LA[2 ] = 0 
+ Inserting elements .. 
+ Array Insertion : 
+ LA[0 ] = 2 
+ LA[1 ] = 3 
+ LA[2 ] = 4 
+ LA[3 ] = 5 
+ LA[4 ] = 6 variations array insertion operation , click . Array - Deletion Operation array operation , delete element particular index array . deletion operation takes place assign value consequent index current index . Algorithm Consider LA linear array N elements K positive integer K<=N. Following algorithm delete element available K th position LA . 1 . Start 
+ 2 . Set J = K 
+ 3 . Repeat steps 4 5 J < N 
+ 4 . Set LA[J ] = LA[J + 1 ] 
+ 5 . Set J = J+1 
+ 6 . Set N = N-1 
+ 7 . Stop Example Following implementations operation programming languages − C C++ Java Python # include < stdio.h > 
+ void main ( ) { 
+    int LA [ ] = { 1,3,5 } ; 
+    int n = 3 ; 
+    int ; 
+    printf("The original array elements : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    for(i = 1 ; < n ; i++ ) { 
+       LA[i ] = LA[i+1 ] ; 
+       n = n - 1 ; 
+    } 
+    printf("The array elements deletion : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5 } ; 
+    int , n = 3 ; 
+    cout < < " original array elements : " < < endl ; 
+    for(i = 0 ; < n ; i++ ) { 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    } 
+    for(i = 1 ; < n ; i++ ) { 
+       LA[i ] = LA[i+1 ] ; 
+       n = n - 1 ; 
+    } 
+    cout < < " array elements deletion : " < < endl ; 
+    for(i = 0 ; < n ; i++ ) { 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    } 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[3 ] ; 
+       int n = LA.length ; 
+       System.out.println("Array Deletion : " ) ; 
+       for(int = 0 ; < n ; i++ ) { 
+          LA[i ] = + 3 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+       for(int = 1 ; < n-1 ; i++ ) { 
+          LA[i ] = LA[i+1 ] ; 
+          n = n - 1 ; 
+       } 
+       System.out.println("Array Deletion : " ) ; 
+       for(int = 0 ; < n ; i++ ) { 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+    } 
+ } # python program delete value delete operation 
+ _ _ _ _ = = ' _ _ main _ _ ' : 
+	 # Declaring array deleting value 
+	 LA = [ 0,0,0 ] 
+	 n = len(LA ) 
+	 print("Array Deletion : " ) 
+	 x range(len(LA ) ): 
+	     LA.append(x ) 
+	     LA[x ] = x + 3 
+	     print("LA " , [ x ] , " = " , LA[x ] ) 
+	 # delete value exists 
+	 # error exist list 
+	 x range(1 , n-1 ): 
+	     LA[x ] = LA[x+1 ] 
+	     n = n-1 
+	 print("Array Deletion : " ) 
+	 x range(n ): 
+	     print("LA " , [ x ] , " = " , LA[x ] ) Output original array elements : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 5 
+ array elements deletion : 
+ LA[0 ] = 1 
+ LA[1 ] = 5 Array - Search Operation Searching element array key ; key element sequentially compares value array check key present array . Algorithm Consider LA linear array N elements K positive integer K<=N. Following algorithm find element value ITEM sequential search . 1 . Start 
+ 2 . Set J = 0 
+ 3 . Repeat steps 4 5 J < N 
+ 4 . LA[J ] equal ITEM GOTO STEP 6 
+ 5 . Set J = J +1 
+ 6 . PRINT J , ITEM 
+ 7 . Stop Example Following implementations operation programming languages − C C++ Java Python # include < stdio.h > 
+ void main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int item = 5 , n = 5 ; 
+    int = 0 , j = 0 ; 
+    printf("The original array elements : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) { 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+    for(i = 0 ; < n ; i++ ) { 
+       ( LA[i ] = = item ) { 
+          printf("Found element % d position % d\n " , item , i+1 ) ; 
+       } 
+    } 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int item = 5 , n = 5 ; 
+    int = 0 ; 
+    cout < < " original array elements : " < < endl ; 
+    for(i = 0 ; < n ; i++ ) { 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    } 
+    for(i = 0 ; < n ; i++ ) { 
+       ( LA[i ] = = item ) { 
+          cout < < " Found element " < < item < < " position " < < i+1 < < endl ; 
+       } 
+    } 
+    return 0 ; 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[5 ] ; 
+       System.out.println("Array : " ) ; 
+       for(int = 0 ; < 5 ; i++ ) { 
+          LA[i ] = + 3 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+       for(int = 0 ; < 5 ; i++ ) { 
+          if(LA[i ] = = 6 ) 
+             System.out.println("Element " + 6 + " found index " + ) ; 
+       } 
+    } 
+ } # search operation python 
+ def findElement(arr , n , value ): 
+	 range(n ): 
+		 ( arr[i ] = = value ): 
+			 return 
+	 # key found 
+	 return -1 
+ # Driver code 
+ _ _ _ _ = = ' _ _ main _ _ ' : 
+	 LA = [ 1,3,5,7,8 ] 
+	 print("Array element : " ) 
+	 x range(len(LA ) ): 
+	     print("LA " , [ x ] , " = " , LA[x ] ) 
+	 value = 5 
+	 n = len(LA ) 
+		 # element found search operation 
+	 index = findElement(LA , n , value ) 
+	 index ! = -1 : 
+		 print("Element " , value , " Found position = " + str(index + 1 ) ) 
+	 : 
+		 print("Element found " ) Output original array elements : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 5 
+ LA[3 ] = 7 
+ LA[4 ] = 8 
+ Found element 5 position 3 Array - Traversal Operation operation traverses elements array . use loop statements carry . Algorithm Following algorithm traverse elements present Linear Array − 1   Start 
+ 2 . Initialize Array certain size datatype . 
+ 3 . Initialize variable 0 . 
+ 4 . Print ith value array increment i. 
+ 5 . Repeat Step 4 end array reached . 
+ 6 . End Example Following implementations operation programming languages − C C++ Java Python # include < stdio.h > 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int item = 10 , k = 3 , n = 5 ; 
+    int = 0 , j = n ; 
+    printf("The original array elements : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) { 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int item = 10 , k = 3 , n = 5 ; 
+    int = 0 , j = n ; 
+    cout < < " original array elements are:\n " ; 
+    for(i = 0 ; < n ; i++ ) 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    return 0 ; 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[5 ] ; 
+       System.out.println("The array elements : " ) ; 
+       for(int = 0 ; < 5 ; i++ ) { 
+          LA[i ] = + 2 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+    } 
+ } # Python code iterate array python 
+ LA = [ 1 , 3 , 5 , 7 , 8 ] 
+ # length elements 
+ length = len(LA ) 
+ # Traversing elements loop range 
+ # ' x range(len(array ) ) ' 
+ print("Array elements : " ) 
+ x range(length ): 
+	 print("LA " , [ x ] , " = " , LA[x ] ) Output original array elements : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 5 
+ LA[3 ] = 7 
+ LA[4 ] = 8 Array - Update Operation Update operation refers updating existing element array given index . Algorithm Consider LA linear array N elements K positive integer K<=N. Following algorithm update element available Kth position LA . 1 . Start 
+ 2 . Set LA[K-1 ] = ITEM 
+ 3 . Stop Example Following implementations operation programming languages − C C++ Java Python # include < stdio.h > 
+ void main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int k = 3 , n = 5 , item = 10 ; 
+    int , j ; 
+    printf("The original array elements : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) { 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+    LA[k-1 ] = item ; 
+    printf("The array elements updation : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) { 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int item = 10 , k = 3 , n = 5 ; 
+    int = 0 , j = n ; 
+    cout < < " original array elements : \n " ; 
+    for(i = 0 ; < n ; i++ ) 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    LA[2 ] = item ; 
+    cout < < " array elements updation : \n " ; 
+    for(i = 0 ; < n ; i++ ) 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    return 0 ; 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[5 ] ; 
+       int item = 15 ; 
+       System.out.println("The array elements : " ) ; 
+       for(int = 0 ; < 5 ; i++ ) { 
+          LA[i ] = + 2 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+       LA[3 ] = item ; 
+       System.out.println("The array elements updation : " ) ; 
+       for(int = 0 ; < 5 ; i++ ) 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+    } 
+ } # update operation python 
+ # Declaring array elements 
+ LA = [ 1,3,5,7,8 ] 
+ # updation 
+ print("The original array elements : " ) ; 
+ x range(len(LA ) ): 
+     print("LA " , [ x ] , " = " , LA[x ] ) 
+ # updation 
+ LA[2 ] = 10 
+ print("The array elements updation : " ) 
+ x range(len(LA ) ): 
+     print("LA " , [ x ] , " = " , LA[x ] ) Output original array elements : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 5 
+ LA[3 ] = 7 
+ LA[4 ] = 8 
+ array elements updation : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 10 
+ LA[3 ] = 7 
+ LA[4 ] = 8 Array - Display Operation operation displays elements entire array print statement . Algorithm Consider LA linear array N elements . Following algorithm display array elements . 1 . Start 
+ 2 . Print elements Array 
+ 3 . Stop Example Following implementations operation programming languages − C C++ Java Python # include < stdio.h > 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int n = 5 ; 
+    int ; 
+    printf("The original array elements : \n " ) ; 
+    for(i = 0 ; < n ; i++ ) { 
+       printf("LA[%d ] = % d \n " , , LA[i ] ) ; 
+    } 
+ } # include < iostream > 
+ namespace std ; 
+ int main ( ) { 
+    int LA [ ] = { 1,3,5,7,8 } ; 
+    int n = 5 ; 
+    int ; 
+    cout < < " original array elements : \n " ; 
+    for(i = 0 ; < n ; i++ ) 
+       cout < < " LA [ " < < < < " ] = " < < LA[i ] < < endl ; 
+    return 0 ; 
+ } public class ArrayDemo { 
+    public static void main(String [ ] args ) { 
+       int LA [ ] = new int[5 ] ; 
+       System.out.println("The array elements : " ) ; 
+       for(int = 0 ; < 5 ; i++ ) { 
+          LA[i ] = + 2 ; 
+          System.out.println("LA [ " + + " ] = " + LA[i ] ) ; 
+       } 
+    } 
+ } # Display operation python 
+ # Display operation python 
+ # Declaring array elements 
+ LA = [ 2,3,4,5,6 ] 
+ # Displaying array 
+ print("The array elements : " ) 
+ x range(len(LA ) ): 
+     print("LA " , [ x ] , " = " , LA[x ] ) Output original array elements : 
+ LA[0 ] = 1 
+ LA[1 ] = 3 
+ LA[2 ] = 5 
+ LA[3 ] = 7 
+ LA[4 ] = 8 Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

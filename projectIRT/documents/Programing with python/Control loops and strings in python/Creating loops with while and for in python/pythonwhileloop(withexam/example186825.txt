@@ -1,0 +1,72 @@
+Python Loop ( Examples ) Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Tutorials Examples Courses Try Programiz PRO Course Index Tutorials Courses Python JavaScript SQL HTML CSS R C C++ Java RUST Golang Kotlin Swift C # DSA Learn Python practically Certified . ENROLL Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Explore Python Examples Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Created decade experience . Learn Practice Compete Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA Learn C Learn C++ Learn Java View Courses Python Basics Python Intermediate C++ Basics C++ Intermediate C++ OOP C Programming Java Basics Java Intermediate Java OOP View Courses Python Challenges JavaScript Challenges Java Challenges C++ Challenges C Challenges View Challenges Learn Practice Compete Certification Courses Created decade experience thousands feedback . Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA View Courses Learn C Learn C++ Learn Java Python JavaScript SQL HTML CSS R C C++ Java languages Learn Python practically Certified . Try Programiz PRO ! Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Python Tutorials Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Python JavaScript R C C++ Java Kotlin Learn Python practically Certified . Try Programiz PRO ! Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Python Examples Python Introduction Started Python Python Program Python Comments Python Fundamentals Python Variables Literals Python Type Conversion Python Basic Input Output Python Operators Python Flow Control Python ... Statement Python Loop Python Loop Python break continue Python pass Statement Python Data types Python Numbers Mathematics Python List Python Tuple Python String Python Set Python Dictionary Python Functions Python Functions Python Function Arguments Python Variable Scope Python Global Keyword Python Recursion Python Modules Python Package Python Main function Python Files Python Directory Files Management Python CSV : Read Write CSV files Reading CSV files Python Writing CSV files Python Python Exception Handling Python Exceptions Python Exception Handling Python Custom Exceptions Python Object & Class Python Objects Classes Python Inheritance Python Multiple Inheritance Polymorphism Python Python Operator Overloading Python Advanced Topics List comprehension Python Lambda / Anonymous Function Python Iterators Python Generators Python Namespace Scope Python Closures Python Decorators Python @property decorator Python RegEx Python Date Time Python datetime Python strftime ( ) Python strptime ( ) current date 
+ time Python ? Python Current Time Python timestamp 
+ datetime vice - versa Python time Module Python sleep ( ) Additional Topic Precedence Associativity Operators Python Python Keywords Identifiers Python Asserts Python Json Python pip Python * args * * kwargs Python Tutorials Python Looping Techniques Python Loop Python break continue Python ... Statement Python match … case Statement Python range ( ) Function Python Loop Python , use loop repeat block code certain condition met . example , number = 1 
+
+ number < = 3 : 
+     print(number ) 
+     number = number + 1 Output 1 
+ 2 
+ 3 example , loop print numbers 1 3 . loop runs long condition number < = 3 True . Loop Syntax condition : 
+     # body loop , loop evaluates condition , boolean expression . condition True , body loop executed . condition evaluated . process continues condition False . condition evaluates False , loop terminates . Tip : update variables condition inside loop eventually evaluates False . , loop keeps running , creating infinite loop . Flowchart Python Loop Flowchart Python Loop Example : Python Loop # Print numbers user enters 0 
+ number = int(input('Enter number : ' ) ) 
+
+ # iterate user enters 0 
+ number ! = 0 : 
+     print(f'You entered { number } . ' ) 
+     number = int(input('Enter number : ' ) ) 
+
+ print('The end . ' ) Output Enter number : 3 
+ entered 3 . 
+ Enter number : 1 
+ entered 1 . 
+ Enter number : -4 
+ entered -4 . 
+ Enter number : 0 
+ end . program works : asks user enter number . user enters number 0 , printed . user enters 0 , loop terminates . Infinite Loop condition loop evaluates True , loop runs continuously , forming infinite loop . example , age = 32 
+
+ # test condition True 
+ age > 18 : 
+     print('You vote ' ) Output vote 
+ vote 
+ vote 
+ . 
+ . 
+ . program equivalent : age = 32 
+    
+ # test condition True 
+ True : 
+     print('You vote ' ) Python Loop Python loop break statement use break statement inside loop terminate loop immediately checking test condition . example , True : 
+     user_input = input('Enter : ' ) 
+
+     # terminate loop user enters end 
+     user_input = = ' end ' : 
+         print(f'The loop ended ' ) 
+         break  
+
+     print(f'Hi { user_input } ' ) Output Enter : Kevin 
+ Hi Kevin 
+ Enter : end 
+ loop ended , condition loop True . , user enters end , loop termiantes break statement . Python loop clause Python , loop optional clause - executed loop condition False . example , counter = 0 
+
+ counter   <   2 : 
+     print('This inside loop ' ) 
+     counter = counter + 1 : 
+     print('This inside block ' ) Output inside loop 
+ inside loop 
+ inside block , iteration , counter 2 terminates loop . executes block prints inside block . Note : block execute loop terminated break statement . Python loop vs loop loop usually sequence number iterations known . example , # loop iterated 4 times 
+ range(4 ): 
+     print(i ) Output 0 
+ 1 
+ 2 
+ 3 loop usually number iterations unknown . example , True : 
+     user_input = input("Enter password : " ) 
+
+     # terminate loop user enters exit 
+     user_input = = ' exit ' : 
+         print(f'Status : Entry Rejected ' ) 
+         break  
+
+     print(f'Status : Entry Allowed ' ) Output Enter password : Python Fun 
+ Status : Entry Allowed 
+ Enter password : exit 
+ Status : Entry Rejected Read : Python ... Statement Table Contents Introduction Loop Syntax Flowchart Python Loop Example : Python Loop Infinite Loop wrap , let knowledge Python loop test ! solve following challenge ? Challenge : Write function Fibonacci sequence given number . Fibonacci sequence starts 0 1 . subsequent number sum previous . input 22 , return value [ 0 , 1 , 1 , 2 , 3 , 5 , 8 , 13 , 21 ] Check Code Video : Python Loop Previous Tutorial : Python Loop Tutorial : Python break continue Share : find article helpful ? Sorry . improve ? Feedback * Leave field blank premium learning platform , created decade experience thousands feedbacks . Learn improve coding skills like . Try Programiz PRO Interactive Courses Certificates AI Help 2000 + Challenges Related Tutorials Python Tutorial Python Looping Techniques Python Tutorial Python Loop Python Tutorial Python break continue Python Tutorial Python ... Statement Free Tutorials Python 3 Tutorials SQL Tutorials R Tutorials HTML Tutorials CSS Tutorials JavaScript Tutorials Java Tutorials C Tutorials C++ Tutorials DSA Tutorials C # Tutorials Golang Tutorials Kotlin Tutorials Swift Tutorials Rust Tutorials Paid Courses Master Python Learn SQL Learn HTML FREE Master JavaScript Master C Master C++ Master Java Master DSA Python Online Compilers Python Compiler R Compiler SQL Editor HTML / CSS Editor JavaScript Editor Java Compiler C Compiler C++ Compiler C # Compiler Compiler PHP Compiler Swift Compiler Rust Compiler Mobile Apps Learn Python App Learn C App Learn Java App Learn C++ App Company Change Ad Consent sell data Contact Blog Youtube Careers Advertising Privacy Policy Terms & Conditions © Parewa Labs Pvt . Ltd. rights reserved .

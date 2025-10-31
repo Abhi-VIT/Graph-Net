@@ -1,0 +1,105 @@
+3.5 Evaluation | Auditing machine learning algorithms Abstract 1 Executive summary 2 Introduction 3 ML audit catalogue 3.1 Project management & governance 3.1.1 Misalignment/ diversion project objectives 3.1.2 Lack business readiness/ inability support project 3.1.3 Legal ethical issues 3.1.4 Inappropriate use ML 3.1.5 Transparency , explainability fairness 3.1.6 Privacy 3.1.7 Autonomy accountability 3.1.8 Risk assessment : Project management governance 3.2 Data 3.2.1 Personal data GDPR context ML AI 3.2.2 Risk assessment : Data 3.2.3 Possible audit tests : Data 3.3 Model development 3.3.1 Development process performance 3.3.2 Cost - benefit analysis 3.3.3 Reliability 3.3.4 Quality assurance . 3.3.5 Risk assessment : Model development 3.3.6 Possible audit tests : Model development 3.4 Model production 3.4.1 Risk assessment : Model production 3.4.2 Possible audit tests : Model production 3.5 Evaluation 3.5.1 Transparency explainability 3.5.2 Equal treatment fairness 3.5.3 Security 3.5.4 Risk assessment : Evaluation 3.5.5 Possible audit tests : Evaluation 4 Summary conclusions Appendix Classic audit components ML / AI context Personal data GDPR context ML AI Equality fairness measures classification models Auditability checklist Appendix Abbreviations Technical terminology Model evaluation terms Roles Audit helper tool Bibliography Auditing machine learning algorithms 3.5 Evaluation evaluation step includes choice âbestâ model decision deploy model ( ) , based performance indicators derived projectâs objective . addition performance directly related business objective , better services reduced costs , compliance regulations possible risks effects evaluated deployment . deployment , change AI system entail new evaluation , including passive changes like demographic shifts input data . performance optimised aspects described Section 3.3 Model development weighted aspects described . relevance relative importance respective audit parts depend type model application . 3.5.1 Transparency explainability Regulations public administration usually include requirement 
+
+ transparent procedures substantiation decisions individuals 
+
+ concerned . Use ML decision - making render requirements difficult fulfil , particular black box model . , 
+
+ approaches understand behaviour ML algorithms : 17 global relationship features model predictions 
+
+ tested visualising predictions dependent 
+
+ single features running feature importance test . approaches serve , coarse 
+
+ understanding , neglect correlations nonlinear behaviour . standard tools global explainability readily implemented 
+
+ R python packages include partial dependence plots 
+
+ ( PDP ) , individual conditional expectation ( ICE ) accumulated local 
+
+ effect ( ALE ) . usually require model available , 
+
+ use different averaging procedures . model available 
+
+ auditors , implement - mentioned approach 
+
+ , ask auditee organisation provide suitable plots . order explain particular model prediction ( example , context 
+
+ user complaint necessity justify particular 
+
+ decision ) , local explainability necessary , âlocal explainabilityâ defined need 
+
+ explain influence single features specific point 
+
+ parameter space ( , specific user case ) . common 
+
+ methods include LIME Shapley values available 
+
+ standard libraries R python . Motivation chosen method applicability documented . 18 methods use local 
+
+ approximations model need model 
+
+ available . constructive auditors test model 
+
+ behaviour methods . main objective test 
+
+ auditee organisation implemented respective methods able 
+
+ substantiate ML based decisions . users stakeholders , important understand fundamental workings ML model . verified groups know fundamental functionality model including weaknesses limitations . Risks : understanding modelâs predictions understanding effects different input variables administrative unit able explain justify decisions support ML model users understand functionality model , limited capacity judge model predictions reliability . 3.5.2 Equal treatment fairness training data ML models incorporate demographic disparities learned model , reinforced model predictions decisions impact demographics . 
+
+ common sources disparities training data training procedure . data influenced measurement procedure variable definitions ( example , model supposed find best candidate recruitment process trained data candidates passing previous recruitment criteria ) . ML models usually improve data available , performance best majority group , significantly worse results minorities . Fairness transparency kept mind model development , production . Upholding transparency fairness requirements possible continuous monitoring ( retraining model production ; compare Section 3.4 Model Production ) . Fairness ML increasingly important topic 
+
+ years . common standard ML fairness , instead , different definitions 
+
+ metrics apply . tangible class fairness definitions group 
+
+ based fairness , requires ML models treat different groups 
+
+ people way fits requirements equal 
+
+ treatment anti - discrimination laws . time , group based 
+
+ fairness easy test looking performance ML model 
+
+ separately different groups . classification models , relevant metrics based confusion matrix , shows ( simple case binary classification ) true / false cases classified correctly . 19 important auditors understand true 
+
+ distribution classes groups represented data , 
+
+ impossible satisfy fairness criteria 20 ( Appendix Equality Fairness measures classification models details ) . mathematical fact easily understood considering fairness focusing equal treatment ( procedural fairness , equality opportunity ) versus equal impact ( minimal inequality outcome ) . Auditors assess model sufficiently satisfies 
+
+ equality requirements defining relevant groups , testing 
+
+ criteria violated extent , considering 
+
+ consequences respective application model . Risks : Reinforcement inequalities picked training data Worse performance minorities Unequal treatment based protected variables , worst case discrimination groups defined gender , religion , nationality etc . 3.5.3 Security Security concerns important , higher risk personal financial damage combination event propability . aspects play key role AI security : 
+
+ - Functional security concerned securing outside world erroneous behaviour AI system . especially important fully automated real - time applications . Functional security jeopardized bad design malicious incoming data . verified , tests implemented , 
+
+ + filter malicious data entering system 
+
+ + test outgoing data leaves system ( quality assurance ) . 
+
+ includes risk disclosing personal , confidential , classified data . 
+
+ - AI systems , security concerned protecting AI system outside attacks , alter model functionality . adversarial attacks data modifications carefully designed trick algorithm , example , small stickers placed roadside stop sign image recognition system self - driving car falsely identifies speed limit sign [ 18 ] [ 19 ] . Attacks directly aim code basis model weights . 
+
+ - AI systems naturally face security issues related physical infrastructure systems . massive data computing power needed development ML models , deployed system , security distributed possibly cloud - based computing infrastructure tends relevant . Privacy protection particularly challenging data processed temporarily stored countries different regulations . examples means exhaustive . variety ML model types applications makes difficult foresee potential failures attack vectors , ML developers . 21 known security issues , proper mitigation strategies implemented tested . Procedures implemented , allow evaluate risk endangering model new developments . Security measures implemented based outcome evaluation . Risks : Security risks depend application : disclosure personal 
+
+ data confidential information , poisoning 
+
+ model , adversarial attacks AI system sufficiently secured outside attacks Physical data security guaranteed Access restrictions read , alter , save data properly set 3.5.4 Risk assessment : Evaluation risks mentioned assessed reviewing documentation internal evaluation , including internal risk assessments related relevant security risks ; comparison different models ( including defined weighting performance , transparency , fairness safety aspects ) ; approaches explain model behaviour ; approaches minimise bias ; ( applicable ) compliance privacy laws ; modelâs deployment retraining strategy documents . Table 3.5 : Aspects contact persons : Evaluation Aspect Roles Tool Product owner User Helpdesk Chief information officer Project leader Data analyst Data engineer Developer Controller security Data protection official Budget holder Helper tool reference Overall responsibility : Evaluation x x A5 , A6 Evaluation method x x x A5.001 Comparison different models x x x A5.002 , A5.003 Approaches explain model behaviour x x x x x A6.013 , A6.014 Bias tests x x x x A6.021 Compliance privacy laws ( applicable ) x x x x x A6.011 Safety risks assessment mitigation strategies x x x x x x x A5.004 , A6.015 , A6.018 Communication data subjects ( applicable ) x x A7.009 Policy human - AI interactions x x x A6.004 , A6.008 , A6.009 Quality assurance plan x x x x x A6.019 , A6.020 , A7.004 Monitoring model performance production x x x x A6.006 Strategy development / maintenance x x x A6.001 3.5.5 Possible audit tests : Evaluation evaluation phase , auditors pay close attention grounds project owner declared acceptance deliverables ML development project . addition , look following : Test global model behaviour feature , tools like 
+
+ PDP , ICE ALE . Test applicability implementation local explainability methods like LIME Shapley values . Determine laws policies apply ML application 
+
+ context ( protected groups , affirmative action ) . Calculate group - based equality fairness metrics based 
+
+ data , including predictions . 22 auditors suspect use proxy variables , independent data sources necessary correlations define relevant groups . Suggested metrics : 23 Disparity : Prevalence , predicted prevalence , precision , false 
+
+ positive rate , true positive rate , negative predictive value . Fairness metrics : Statistical parity ( called demographic parity ) , 
+
+ equalized odds ( called disparate mistreatment ) , sufficiency ( called 
+
+ predictive rate parity ) . Test model predictions feature changed ( example , change men women keeping features ) . model 
+
+ available , auditee organisation test modelâs performance 
+
+ similarly manipulated data Calculate performance / personal data . Bibliography [ 1 ] M. Brundage et al . ( 2020 ): Trustworthy AI Development : Mechanisms Supporting Verifiable Claims , https://arxiv.org/abs/2004.07213 . [ 15 ] C. Molnar ( 2019 ): Interpretable Machine Learning . Guide Making Black Box Models Explainable , https://christophm.github.io/interpretable-ml-book/ . [ 16 ] C. Molnar et al . ( 2020 ): Limitations Interpretable Machine Learning Methods , https://compstat-lmu.github.io/iml_methods_limitations/ . [ 17 ] I. E. Kumar et al . ( 2020 ): Problems Shapley - value - based explanations feature importance measures , https://arxiv.org/pdf/2002.11097.pdf . [ 18 ] K. Eykholt et al . ( 2017 ): Robust Physical - World Attacks Deep Learning Models , https://arxiv.org/abs/1707.08945 . [ 19 ] N. Morgulis et al . ( 2019 ): Fooling Real Car Adversarial Traffic Signs , https://arxiv.org/abs/1907.00374 . example , reference [ 15 ] instructive overview â © ï¸ example , [ 16 ] [ 17 ] problems explanations LIME Shapley values , respectively . â © ï¸ Appendix Equality Fairness measures classification models overview common equality fairness metrics , Appendix Model evaluation terms introduction confusion matrix . â © ï¸ unrealistic case perfect model 100 % accuracy . â © ï¸ reference [ 1 ] suggestions control measures : âbug bountiesâ appropriate public sector , independent internal party challenging application ( âred team exerciseâ ) feasible comparatively large auditee organisations . Smaller organisations apply organisational incentives independent individuals vigilant AI applications , raising issues necessary . â © ï¸ example , use python package âaequitasâ â © ï¸ Appendix Equality fairness measures classification models details â © ï¸

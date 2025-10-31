@@ -1,0 +1,421 @@
+Python Data Structures | GeeksforGeeks Skip content Courses DSA Development GATE Courses IBM Certification Newly Launched ! Master Django Framework AWS Certified Working Professionals Interview 101 : DSA & System Design Data Science Training Program JAVA Backend Development ( Live ) DevOps Engineering ( LIVE ) Data Structures & Algorithms Python Students Placement Preparation Course Data Science ( Live ) Data Structure & Algorithm - Self Paced ( C++/JAVA ) Master Competitive Programming ( Live ) Stack Development React & Node JS ( Live ) Stack Development Data Science Program Courses Tutorials Data Structures & Algorithms ML & Data Science Interview Corner Programming Languages Web Development GATE CS Subjects DevOps Linux School Learning Practice Practice Coding Problems GfG 160 Problem Day Discover GitHub Copilot Build AI Agent Contests Accenture Data & AI Week GfG Weekly [ Rated Contest ] Job - - Thon Hiring Challenge Contests Events Notifications Mark read View Notifications Mark read Unread Read caught ! ! Python Course Python Tutorial Interview Questions Python Quiz Python Glossary Python Projects Practice Python Data Science Python Python Web Dev DSA Python Python OOPs Sign ▲ Open App Explore GfG Courses Share Experiences Python Data Structures Quizzes Inbuilt Data Structures Python Python Data Types User Defined Data Structures Python struct.pack ( ) Python struct module Python Python Tuples Minute Notes ( LMNs ) – Data Structures Python Create Python Subclass Python Sets Internal implementation Data Structures Python Python Tokens Character Sets Stack Python Slots Python Python Design Patterns Tutorial Python - Copy Directory Structure Files Python - Multi - Line Statements TreeMap Python Python Virtual Machine DSA Development Course Python Data Structures Updated : 16 Aug , 2024 Comments Improve Suggest changes Like Article Like Report Data Structures way organizing data accessed efficiently depending situation . Data Structures fundamentals programming language program built . Python helps learn fundamental data structures simpler way compared programming languages . article , discuss Data Structures Python Programming Language related specific Python Data Types . discuss - built data structures like list tuples , dictionaries , etc . advanced data structures like trees , graphs , etc . Lists Python Lists like arrays , declared languages ordered collection data . flexible items list need type . implementation Python List similar Vectors C++ ArrayList JAVA . costly operation inserting deleting element beginning List elements needed shifted . Insertion deletion end list costly case preallocated memory . create list python shown . Example : Creating Python List Python List = [ 1 , 2 , 3 , " GFG " , 2.3 ] print ( List ) Output [ 1 , 2 , 3 , ' GFG ' , 2.3 ] List elements accessed assigned index . python starting index list , sequence 0 ending index ( N elements ) N-1 . Example : Python List Operations Python # Creating List # use multiple values List = [ " Geeks " , " " , " Geeks " ] print ( " \n List containing multiple values : " ) print ( List ) # Creating Multi - Dimensional List # ( Nesting list inside List ) List2 = [ [ ' Geeks ' , ' ' ] , [ ' Geeks ' ] ] print ( " \n Multi - Dimensional List : " ) print ( List2 ) # accessing element # list index number print ( " Accessing element list " ) print ( List [ 0 ] ) print ( List [ 2 ] ) # accessing element # negative indexing print ( " Accessing element negative indexing " ) # print element list print ( List [ - 1 ] ) # print element list print ( List [ - 3 ] ) Output List containing multiple values : 
+
+ [ ' Geeks ' , ' ' , ' Geeks ' ] 
+
+
+
+ Multi - Dimensional List : 
+
+ [ [ ' Geeks ' , ' ' ] , [ ' Geeks ' ] ] 
+
+ Accessing element list 
+
+ Geeks 
+
+ Geeks 
+
+ Accessing element negative indexing 
+
+ Geeks 
+
+ Geeks Dictionary Python dictionary like hash tables language time complexity O(1 ) . unordered collection data values , store data values like map , , unlike Data Types hold single value element , Dictionary holds key : value pair . Key - value provided dictionary optimized . Indexing Python Dictionary help keys . hashable type i.e. object change like strings , numbers , tuples , etc . create dictionary curly braces ( { } ) dictionary comprehension . Example : Python Dictionary Operations Python # Creating Dictionary Dict = { ' ' : ' Geeks ' , 1 : [ 1 , 2 , 3 , 4 ] } print ( " Creating Dictionary : " ) print ( Dict ) # accessing element key print ( " Accessing element key : " ) print ( Dict [ ' ' ] ) # accessing element ( ) # method print ( " Accessing element : " ) print ( Dict . ( 1 ) ) # creation Dictionary comprehension myDict = { x : x * * 2 x [ 1 , 2 , 3 , 4 , 5 ] } print ( myDict ) Output Creating Dictionary : 
+
+ { ' ' : ' Geeks ' , 1 : [ 1 , 2 , 3 , 4 ] } 
+
+ Accessing element key : 
+
+ Geeks 
+
+ Accessing element : 
+
+ [ 1 , 2 , 3 , 4 ] 
+
+ { 1 : 1 , 2 : 4 , 3 : 9 , 4 : 16 , 5 : 25 } Tuple Python Tuple collection Python objects like list Tuples immutable nature i.e. elements tuple added removed created . like List , Tuple contain elements types . Python , tuples created placing sequence values separated ‘ comma ’ use parentheses grouping data sequence . Note : Tuples created single element , bit tricky . Having element parentheses sufficient , trailing ‘ comma ’ tuple . Example : Python Tuple Operations Python # Creating Tuple # use Strings Tuple = ( ' Geeks ' , ' ' ) print ( " \n Tuple use String : " ) print ( Tuple ) # Creating Tuple # use list list1 = [ 1 , 2 , 4 , 5 , 6 ] print ( " \n Tuple List : " ) Tuple = tuple ( list1 ) # Accessing element indexing print ( " element tuple " ) print ( Tuple [ 0 ] ) # Accessing element # negative indexing print ( " \n element tuple " ) print ( Tuple [ - 1 ] ) print ( " \n element tuple " ) print ( Tuple [ - 3 ] ) Output Tuple use String : 
+
+ ( ' Geeks ' , ' ' ) 
+
+
+
+ Tuple List : 
+
+ element tuple 
+
+ 1 
+
+
+
+ element tuple 
+
+ 6 
+
+
+
+ element tuple 
+
+ 4 Set Python Set unordered collection data mutable allow duplicate element . Sets basically include membership testing eliminating duplicate entries . data structure Hashing , popular technique perform insertion , deletion , traversal O(1 ) average . Multiple values present index position , value appended index position , form Linked List . , CPython Sets implemented dictionary dummy variables , key beings members set greater optimizations time complexity . Set Implementation : Sets Numerous operations single HashTable : Example : Python Set Operations Python # Creating Set # mixed type values # ( Having numbers strings ) Set = set ( [ 1 , 2 , ' Geeks ' , 4 , ' ' , 6 , ' Geeks ' ] ) print ( " \n Set use Mixed Values " ) print ( Set ) # Accessing element # loop print ( " \n Elements set : " ) Set : print ( , end = " " ) print ( ) # Checking element # keyword print ( " Geeks " Set ) Output Set use Mixed Values 
+
+ { 1 , 2 , ' Geeks ' , 4 , 6 , ' ' } 
+
+
+
+ Elements set : 
+
+ 1 2 Geeks 4 6 
+
+ True Frozen Sets Frozen sets Python immutable objects support methods operators produce result affecting frozen set sets applied . elements set modified time , elements frozen set remain creation . parameters passed , returns frozenset . Python # { " " , " b","c " } normal_set = set ( [ " " , " b " , " c " ] ) print ( " Normal Set " ) print ( normal_set ) # frozen set frozen_set = frozenset ( [ " e " , " f " , " g " ] ) print ( " \n Frozen Set " ) print ( frozen_set ) # Uncommenting line cause error # trying add element frozen set # frozen_set.add("h " ) Output Normal Set 
+
+ { ' ' , ' c ' , ' b ' } 
+
+
+
+ Frozen Set 
+
+ frozenset({'g ' , ' e ' , ' f ' } ) String Python Strings arrays bytes representing Unicode characters . simpler terms , string immutable array characters . Python character data type , single character simply string length 1 . Note : strings immutable , modifying string result creating new copy . Example : Python Strings Operations Python String = " Welcome GeeksForGeeks " print ( " Creating String : " ) print ( String ) # Printing character print ( " \n character String : " ) print ( String [ 0 ] ) # Printing character print ( " \n character String : " ) print ( String [ - 1 ] ) Output Creating String : 
+
+ Welcome GeeksForGeeks 
+
+
+
+ character String : 
+
+ W 
+
+
+
+ character String : 
+
+ s Bytearray Python Bytearray gives mutable sequence integers range 0 < = x < 256 . Example : Python Bytearray Operations Python # Creating bytearray = bytearray ( ( 12 , 8 , 25 , 2 ) ) print ( " Creating Bytearray : " ) print ( ) # accessing elements print ( " \n Accessing Elements : " , [ 1 ] ) # modifying elements [ 1 ] = 3 print ( " \n Modifying : " ) print ( ) # Appending elements . append ( 30 ) print ( " \n Adding Elements : " ) print ( ) Output Creating Bytearray : 
+
+ bytearray(b'\x0c\x08\x19\x02 ' ) 
+
+
+
+ Accessing Elements : 8 
+
+
+
+ Modifying : 
+
+ bytearray(b'\x0c\x03\x19\x02 ' ) 
+
+
+
+ Adding Elements : 
+
+ bytearray(b'\x0c\x03\x19\x02\x1e ' ) Till studied data structures come built - core Python . let dive deep Python collections module provides containers useful cases provide features - defined functions . Collections Module Python collection module introduced improve functionality built - datatypes . provides containers let detail . Counters counter sub - class dictionary . count elements iterable form unordered dictionary key represents element iterable value represents count element iterable . equivalent bag multiset languages . Example : Python Counter Operations Python collections import Counter # sequence items print ( Counter ( [ ' B ' , ' B ' , ' ' , ' B ' , ' C ' , ' ' , ' B ' , ' B ' , ' ' , ' C ' ] ) ) # dictionary count = Counter ( { ' ' : 3 , ' B ' : 5 , ' C ' : 2 } ) print ( count ) count . update ( [ ' ' , 1 ] ) print ( count ) Output Counter({'B ' : 5 , ' ' : 3 , ' C ' : 2 } ) 
+
+ Counter({'B ' : 5 , ' ' : 3 , ' C ' : 2 } ) 
+
+ Counter({'B ' : 5 , ' ' : 4 , ' C ' : 2 , 1 : 1 } ) OrderedDict OrderedDict sub - class dictionary unlike dictionary , remembers order keys inserted . Example : Python OrderedDict Operations Python collections import OrderedDict print ( " deleting : \n " ) od = OrderedDict ( ) od [ ' ' ] = 1 od [ ' b ' ] = 2 od [ ' c ' ] = 3 od [ ' ] = 4 key , value od . items ( ): print ( key , value ) print ( " \n deleting : \n " ) od . pop ( ' c ' ) key , value od . items ( ): print ( key , value ) print ( " \n - inserting : \n " ) od [ ' c ' ] = 3 key , value od . items ( ): print ( key , value ) Output deleting : 
+
+
+
+ 1 
+
+ b 2 
+
+ c 3 
+
+ d 4 
+
+
+
+ deleting : 
+
+
+
+ 1 
+
+ b 2 
+
+ d 4 
+
+
+
+ - inserting : 
+
+
+
+ 1 
+
+ b 2 
+
+ d 4 
+
+ c 3 DefaultDict DefaultDict provide default values key exist raises KeyError . objects initialized DefaultDict ( ) method passing data type argument . Note : default_factory function provides default value dictionary created . parameter absent KeyError raised . Example : Python DefaultDict Operations Python collections import defaultdict # Defining dict d = defaultdict ( int ) L = [ 1 , 2 , 3 , 4 , 2 , 4 , 1 , 2 ] # Iterate list # keeping count L : # default value 0 # need # enter key d [ ] + = 1 print ( d ) Output defaultdict(<class ' int ' > , { 1 : 2 , 2 : 3 , 3 : 1 , 4 : 2 } ) ChainMap ChainMap encapsulates dictionaries single unit returns list dictionaries . key needed found dictionaries searched key found . Example : Python ChainMap Operations Python collections import ChainMap d1 = { ' ' : 1 , ' b ' : 2 } d2 = { ' c ' : 3 , ' : 4 } d3 = { ' e ' : 5 , ' f ' : 6 } # Defining chainmap c = ChainMap ( d1 , d2 , d3 ) print ( c ) print ( c [ ' ' ] ) print ( c [ ' g ' ] ) Output ChainMap({'a ' : 1 , ' b ' : 2 } , { ' c ' : 3 , ' : 4 } , { ' e ' : 5 , ' f ' : 6 } ) 
+
+ 1 KeyError : ' g ' NamedTuple NamedTuple returns tuple object names position ordinary tuples lack . example , consider tuple names student element represents fname , second represents lname element represents DOB . Suppose calling fname instead remembering index position actually element fname argument , easy accessing tuples element . functionality provided NamedTuple . Example : Python NamedTuple Operations Python collections import namedtuple # Declaring namedtuple ( ) Student = namedtuple ( ' Student ' , [ ' ' , ' age ' , ' DOB ' ] ) # Adding values S = Student ( ' Nandini ' , ' 19 ' , ' 2541997 ' ) # Access index print ( " Student age index : " , end = " " ) print ( S [ 1 ] ) # Access print ( " Student keyname : " , end = " " ) print ( S . ) Output Student age index : 19 
+
+ Student keyname : Nandini Deque Deque ( Doubly Ended Queue ) optimized list quicker append pop operations sides container . provides O(1 ) time complexity append pop operations compared list O(n ) time complexity . Python Deque implemented doubly linked lists performance randomly accessing elements O(n ) . Example : Python Deque Operations Python # importing " collections " deque operations import collections # initializing deque de = collections . deque ( [ 1 , 2 , 3 ] ) # append ( ) insert element right end # inserts 4 end deque de . append ( 4 ) # printing modified deque print ( " deque appending right : " ) print ( de ) # appendleft ( ) insert element left end # inserts 6 beginning deque de . appendleft ( 6 ) # printing modified deque print ( " deque appending left : " ) print ( de ) # pop ( ) delete element right end # deletes 4 right end deque de . pop ( ) # printing modified deque print ( " deque deleting right : " ) print ( de ) # popleft ( ) delete element left end # deletes 6 left end deque de . popleft ( ) # printing modified deque print ( " deque deleting left : " ) print ( de ) Output deque appending right : 
+
+ deque([1 , 2 , 3 , 4 ] ) 
+
+ deque appending left : 
+
+ deque([6 , 1 , 2 , 3 , 4 ] ) 
+
+ deque deleting right : 
+
+ deque([6 , 1 , 2 , 3 ] ) 
+
+ deque deleting left : 
+
+ deque([1 , 2 , 3 ] ) UserDict UserDict dictionary - like container acts wrapper dictionary objects . container wants create dictionary modified new functionality . Example : Python UserDict Python collections import UserDict # Creating Dictionary # deletion allowed class MyDict ( UserDict ): # Function stop deletion # dictionary def _ _ del _ _ ( self ): raise RuntimeError ( " Deletion allowed " ) # Function stop pop # dictionary def pop ( self , s = ): raise RuntimeError ( " Deletion allowed " ) # Function stop popitem # Dictionary def popitem ( self , s = ): raise RuntimeError ( " Deletion allowed " ) # Driver code d = MyDict ( { ' ' : 1 , ' b ' : 2 , ' c ' : 3 } ) print ( " Original Dictionary " ) print ( d ) d . pop ( 1 ) Output Original Dictionary 
+
+ { ' ' : 1 , ' b ' : 2 , ' c ' : 3 } RuntimeError : Deletion allowed UserList UserList list - like container acts wrapper list objects . useful wants create list modified additional functionality . Examples : Python UserList Python # Python program demonstrate # userlist collections import UserList # Creating List # deletion allowed class MyList ( UserList ): # Function stop deletion # List def remove ( self , s = ): raise RuntimeError ( " Deletion allowed " ) # Function stop pop # List def pop ( self , s = ): raise RuntimeError ( " Deletion allowed " ) # Driver code L = MyList ( [ 1 , 2 , 3 , 4 ] ) print ( " Original List " ) print ( L ) # Inserting List " L . append ( 5 ) print ( " Insertion " ) print ( L ) # Deleting List L . remove ( ) Output Original List 
+
+ [ 1 , 2 , 3 , 4 ] 
+
+ Insertion 
+
+ [ 1 , 2 , 3 , 4 , 5 ] RuntimeError : Deletion allowed UserString UserString string - like container like UserDict UserList , acts wrapper string objects . wants create strings modified additional functionality . Example : Python UserString Python collections import UserString # Creating Mutable String class Mystring ( UserString ): # Function append # string def append ( self , s ): self . data + = s # Function remove # string def remove ( self , s ): self . data = self . data . replace ( s , " " ) # Driver code s1 = Mystring ( " Geeks " ) print ( " Original String : " , s1 . data ) # Appending string s1 . append ( " s " ) print ( " String Appending : " , s1 . data ) # Removing string s1 . remove ( " e " ) print ( " String Removing : " , s1 . data ) Output Original String : Geeks 
+
+ String Appending : Geekss 
+
+ String Removing : Gkss studying data structures let advanced data structures stack , queue , graph , linked list , etc . Python Language . Linked List linked list linear data structure , elements stored contiguous memory locations . elements linked list linked pointers shown image : linked list represented pointer node linked list . node called head . linked list , value head NULL . node list consists parts : Data Pointer ( Reference ) node Example : Defining Linked List Python Python # Node class class Node : # Function initialize node object def _ _ init _ _ ( self , data ): self . data = data # Assign data self . = # Initialize # null # Linked List class class LinkedList : # Function initialize Linked # List object def _ _ init _ _ ( self ): self . head = Let create simple linked list 3 nodes . Python # simple Python program introduce linked list # Node class class Node : # Function initialise node object def _ _ init _ _ ( self , data ): self . data = data # Assign data self . = # Initialize null # Linked List class contains Node object class LinkedList : # Function initialize head def _ _ init _ _ ( self ): self . head = # Code execution starts _ _ _ _ = = ' _ _ main _ _ ' : # Start list list = LinkedList ( ) list . head = Node ( 1 ) second = Node ( 2 ) = Node ( 3 ) ' '' nodes created . references blocks head , second list.head      second              |              |                  | |              |                  | + ----+------+      + ----+------+      + ----+------+ | 1 | |      | 2 | |      | 3 | | + ----+------+      + ----+------+      + ----+------+ ' '' list . head . = second ; # Link node second ' '' Node refers second . linked . list.head      second              |              |                  | |              |                  | + ----+------+      + ----+------+      + ----+------+ | 1 | o-------->| 2 | null |      | 3 | null | + ----+------+      + ----+------+      + ----+------+ ' '' second . = ; # Link second node node ' '' second Node refers . nodes linked . list.head      second              |              |                  | |              |                  | + ----+------+      + ----+------+      + ----+------+ | 1 | o-------->| 2 | o-------->| 3 | null | + ----+------+      + ----+------+      + ----+------+ ' '' Linked List Traversal previous program , created simple linked list nodes . Let traverse created list print data node . traversal , let write general - purpose function printList ( ) prints given list . Python # simple Python program traversal linked list # Node class class Node : # Function initialise node object def _ _ init _ _ ( self , data ): self . data = data # Assign data self . = # Initialize null # Linked List class contains Node object class LinkedList : # Function initialize head def _ _ init _ _ ( self ): self . head = # function prints contents linked list # starting head def printList ( self ): temp = self . head ( temp ): print ( temp . data ) temp = temp . # Code execution starts _ _ _ _ = = ' _ _ main _ _ ' : # Start list list = LinkedList ( ) list . head = Node ( 1 ) second = Node ( 2 ) = Node ( 3 ) list . head . = second ; # Link node second second . = ; # Link second node node list . printList ( ) Output 1 
+
+ 2 
+
+ 3 Stack stack linear data structure stores items - / - ( LIFO ) - / - ( FILO ) manner . stack , new element added end element removed end . insert delete operations called push pop . functions associated stack : ( ) – Returns stack – Time Complexity : O(1 ) size ( ) – Returns size stack – Time Complexity : O(1 ) ( ) – Returns reference topmost element stack – Time Complexity : O(1 ) push(a ) – Inserts element ‘ ’ stack – Time Complexity : O(1 ) pop ( ) – Deletes topmost element stack – Time Complexity : O(1 ) Python Stack Implementation Stack Python implemented following ways : list Collections.deque queue . LifoQueue Implementation List Python built - data structure list stack . Instead push ( ) , append ( ) add elements stack pop ( ) removes element LIFO order . Python stack = [ ] # append ( ) function push # element stack stack . append ( ' g ' ) stack . append ( ' f ' ) stack . append ( ' g ' ) print ( ' Initial stack ' ) print ( stack ) # pop ( ) function pop # element stack # LIFO order print ( ' \n Elements popped stack : ' ) print ( stack . pop ( ) ) print ( stack . pop ( ) ) print ( stack . pop ( ) ) print ( ' \n Stack elements popped : ' ) print ( stack ) # uncommenting print(stack.pop ( ) ) # cause IndexError # stack Output Initial stack 
+
+ [ ' g ' , ' f ' , ' g ' ] 
+
+
+
+ Elements popped stack : 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ Stack elements popped : 
+
+ [ ] Implementation collections.deque : Python stack implemented deque class collections module . Deque preferred list cases need quicker append pop operations ends container , deque provides O(1 ) time complexity append pop operations compared list provides O(n ) time complexity . Python collections import deque stack = deque ( ) # append ( ) function push # element stack stack . append ( ' g ' ) stack . append ( ' f ' ) stack . append ( ' g ' ) print ( ' Initial stack : ' ) print ( stack ) # pop ( ) function pop # element stack # LIFO order print ( ' \n Elements popped stack : ' ) print ( stack . pop ( ) ) print ( stack . pop ( ) ) print ( stack . pop ( ) ) print ( ' \n Stack elements popped : ' ) print ( stack ) # uncommenting print(stack.pop ( ) ) # cause IndexError # stack Output Initial stack : 
+
+ deque(['g ' , ' f ' , ' g ' ] ) 
+
+
+
+ Elements popped stack : 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ Stack elements popped : 
+
+ deque ( [ ] ) Implementation queue module queue module LIFO Queue , basically Stack . Data inserted Queue ( ) function ( ) takes data Queue . Python queue import LifoQueue # Initializing stack stack = LifoQueue ( maxsize = 3 ) # qsize ( ) number elements # stack print ( stack . qsize ( ) ) # ( ) function push # element stack stack . ( ' g ' ) stack . ( ' f ' ) stack . ( ' g ' ) print ( " : " , stack . ( ) ) print ( " Size : " , stack . qsize ( ) ) # ( ) function pop # element stack # LIFO order print ( ' \n Elements popped stack ' ) print ( stack . ( ) ) print ( stack . ( ) ) print ( stack . ( ) ) print ( " \n : " , stack . ( ) ) Output 0 
+
+ :   True 
+
+ Size :   3 
+
+
+
+ Elements popped stack 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ :   True Queue stack , queue linear data structure stores items ( FIFO ) manner . queue , recently added item removed . good example queue queue consumers resource consumer came served . Operations associated queue : Enqueue : Adds item queue . queue , said Overflow condition – Time Complexity : O(1 ) Dequeue : Removes item queue . items popped order pushed . queue , said Underflow condition – Time Complexity : O(1 ) : item queue – Time Complexity : O(1 ) Rear : item queue – Time Complexity : O(1 ) Python queue Implementation Queue Python implemented following ways : list collections.deque queue . Queue Implementation list Instead enqueue ( ) dequeue ( ) , append ( ) pop ( ) function . Python # Initializing queue queue = [ ] # Adding elements queue queue . append ( ' g ' ) queue . append ( ' f ' ) queue . append ( ' g ' ) print ( " Initial queue " ) print ( queue ) # Removing elements queue print ( " \n Elements dequeued queue " ) print ( queue . pop ( 0 ) ) print ( queue . pop ( 0 ) ) print ( queue . pop ( 0 ) ) print ( " \n Queue removing elements " ) print ( queue ) # Uncommenting print(queue.pop(0 ) ) # raise IndexError # queue Output Initial queue 
+
+ [ ' g ' , ' f ' , ' g ' ] 
+
+
+
+ Elements dequeued queue 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ Queue removing elements 
+
+ [ ] Implementation collections.deque Deque preferred list cases need quicker append pop operations ends container , deque provides O(1 ) time complexity append pop operations compared list provides O(n ) time complexity . Python collections import deque # Initializing queue q = deque ( ) # Adding elements queue q . append ( ' g ' ) q . append ( ' f ' ) q . append ( ' g ' ) print ( " Initial queue " ) print ( q ) # Removing elements queue print ( " \n Elements dequeued queue " ) print ( q . popleft ( ) ) print ( q . popleft ( ) ) print ( q . popleft ( ) ) print ( " \n Queue removing elements " ) print ( q ) # Uncommenting q.popleft ( ) # raise IndexError # queue Output Initial queue 
+
+ deque(['g ' , ' f ' , ' g ' ] ) 
+
+
+
+ Elements dequeued queue 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ Queue removing elements 
+
+ deque ( [ ] ) Implementation queue . Queue queue . Queue(maxsize ) initializes variable maximum size maxsize . maxsize zero ‘ 0 ’ means infinite queue . Queue follows FIFO rule . Python queue import Queue # Initializing queue q = Queue ( maxsize = 3 ) # qsize ( ) maxsize # Queue print ( q . qsize ( ) ) # Adding element queue q . ( ' g ' ) q . ( ' f ' ) q . ( ' g ' ) # Return Boolean # Queue print ( " \n : " , q . ( ) ) # Removing element queue print ( " \n Elements dequeued queue " ) print ( q . ( ) ) print ( q . ( ) ) print ( q . ( ) ) # Return Boolean # Queue print ( " \n : " , q . ( ) ) q . ( 1 ) print ( " \n : " , q . ( ) ) print ( " : " , q . ( ) ) # result Infinite # Loop Queue . # print(q.get ( ) ) Output 0 
+
+
+
+ :   True 
+
+
+
+ Elements dequeued queue 
+
+ g 
+
+ f 
+
+ g 
+
+
+
+ :   True 
+
+
+
+ :   False 
+
+ :   False Priority Queue Priority Queues abstract data structures data / value queue certain priority . example , airlines , baggage title “ Business ” “ - class ” arrives earlier rest . Priority Queue extension queue following properties . element high priority dequeued element low priority . elements priority , served according order queue . Python # simple implementation Priority Queue # Queue . class PriorityQueue ( object ): def _ _ init _ _ ( self ): self . queue = [ ] def _ _ str _ _ ( self ): return ' ' . join ( [ str ( ) self . queue ] ) # checking queue def isEmpty ( self ): return len ( self . queue ) = = 0 # inserting element queue def insert ( self , data ): self . queue . append ( data ) # popping element based Priority def delete ( self ): try : max = 0 range ( len ( self . queue ) ): self . queue [ ] > self . queue [ max ] : max = item = self . queue [ max ] del self . queue [ max ] return item IndexError : print ( ) exit ( ) _ _ _ _ = = ' _ _ main _ _ ' : myQueue = PriorityQueue ( ) myQueue . insert ( 12 ) myQueue . insert ( 1 ) myQueue . insert ( 14 ) myQueue . insert ( 7 ) print ( myQueue ) myQueue . isEmpty ( ): print ( myQueue . delete ( ) ) Output 12 1 14 7 
+
+ 14 
+
+ 12 
+
+ 7 
+
+ 1 Heap queue ( heapq ) heapq module Python provides heap data structure mainly represent priority queue . property data structure Python time smallest heap element popped(min - heap ) . elements pushed popped , heap structure maintained . heap[0 ] element returns smallest element time . supports extraction insertion smallest element O(log n ) times . Python # importing " heapq " implement heap queue import heapq # initializing list li = [ 5 , 7 , 9 , 1 , 3 ] # heapify convert list heap heapq . heapify ( li ) # printing created heap print ( " created heap : " , end = " " ) print ( list ( li ) ) # heappush ( ) push elements heap # pushes 4 heapq . heappush ( li , 4 ) # printing modified heap print ( " modified heap push : " , end = " " ) print ( list ( li ) ) # heappop ( ) pop smallest element print ( " popped smallest element : " , end = " " ) print ( heapq . heappop ( li ) ) Output created heap : [ 1 , 3 , 9 , 7 , 5 ] 
+
+ modified heap push : [ 1 , 3 , 4 , 7 , 5 , 9 ] 
+
+ popped smallest element : 1 Binary Tree tree   hierarchical data structure looks like figure – tree 
+
+      ---- 
+
+       j     < -- root 
+
+     /    \ 
+
+    f       k  
+
+  /    \       \ 
+
+      h       z     < -- leaves topmost node tree called root bottommost nodes nodes children called leaf nodes . nodes directly node called children nodes directly called parent . binary tree tree elements children . element binary tree 2 children , typically left right children . Binary Tree node contains following parts . Data Pointer left child Pointer right child Example : Defining Node Class Python # Python class represents individual node # Binary Tree class Node : def _ _ init _ _ ( self , key ): self . left = self . right = self . val = key let create tree 4 nodes Python . Let assume tree structure looks like – tree 
+
+      ---- 
+
+       1     < -- root 
+
+     /    \ 
+
+    2      3  
+
+   /  
+
+  4 Example : Adding data tree Python # Python program introduce Binary Tree # class represents individual node # Binary Tree class Node : def _ _ init _ _ ( self , key ): self . left = self . right = self . val = key # create root root = Node ( 1 ) ' '' following tree statement 1 / \ '' ' root . left = Node ( 2 ) ; root . right = Node ( 3 ) ; ' '' 2 3 left right children 1 1 / \ 2      3 / \ / \ '' ' root . left . left = Node ( 4 ) ; '' ' 4 left child 2 1 /      \ 2          3 / \      / \ 4 / \ '' ' Tree Traversal Trees traversed different ways . Following generally ways traversing trees . Let consider tree – tree 
+
+      ---- 
+
+       1     < -- root 
+
+     /    \ 
+
+    2      3  
+
+   / \ 
+
+  4    5 Depth Traversals : Inorder ( Left , Root , Right ) : 4 2 5 1 3 Preorder ( Root , Left , Right ) : 1 2 4 5 3 Postorder ( Left , Right , Root ) : 4 5 2 3 1 Algorithm Inorder(tree ) Traverse left subtree , i.e. , Inorder(left - subtree ) Visit root . Traverse right subtree , i.e. , Inorder(right - subtree ) Algorithm Preorder(tree ) Visit root . Traverse left subtree , i.e. , Preorder(left - subtree ) Traverse right subtree , i.e. , Preorder(right - subtree ) Algorithm Postorder(tree ) Traverse left subtree , i.e. , Postorder(left - subtree ) Traverse right subtree , i.e. , Postorder(right - subtree ) Visit root . Python # Python program tree traversals # class represents individual node # Binary Tree class Node : def _ _ init _ _ ( self , key ): self . left = self . right = self . val = key # function inorder tree traversal def printInorder ( root ): root : # recur left child printInorder ( root . left ) # print data node print ( root . val ) , # recur right child printInorder ( root . right ) # function postorder tree traversal def printPostorder ( root ): root : # recur left child printPostorder ( root . left ) # recur right child printPostorder ( root . right ) # print data node print ( root . val ) , # function preorder tree traversal def printPreorder ( root ): root : # print data node print ( root . val ) , # recur left child printPreorder ( root . left ) # Finally recur right child printPreorder ( root . right ) # Driver code root = Node ( 1 ) root . left = Node ( 2 ) root . right = Node ( 3 ) root . left . left = Node ( 4 ) root . left . right = Node ( 5 ) print ( " Preorder traversal binary tree " ) printPreorder ( root ) print ( " \n Inorder traversal binary tree " ) printInorder ( root ) print ( " \n Postorder traversal binary tree " ) printPostorder ( root ) Output Preorder traversal binary tree 
+
+ 1 
+
+ 2 
+
+ 4 
+
+ 5 
+
+ 3 
+
+
+
+ Inorder traversal binary tree 
+
+ 4 
+
+ 2 
+
+ 5 
+
+ 1 
+
+ 3 
+
+
+
+ Postorder traversal binary tree 
+
+ 4 
+
+ 5 
+
+ 2 
+
+ 3 
+
+ 1 Time Complexity –   O(n ) Breadth - Level Order Traversal Level order traversal tree breadth - traversal tree . level order traversal tree 1 2 3 4 5 . node , , node visited child nodes FIFO queue . algorithm – Create queue q temp_node = root /*start root*/ Loop temp_node NULL print temp_node->data . Enqueue temp_node children ( left right children ) q Dequeue node q Python # Python program print level # order traversal Queue # node structure class Node : # utility function create new node def _ _ init _ _ ( self , key ): self . data = key self . left = self . right = # Iterative Method print # height binary tree def printLevelOrder ( root ): # Base Case root : return # Create queue # level order traversal queue = [ ] # Enqueue Root initialize height queue . append ( root ) ( len ( queue ) > 0 ): # Print queue # remove queue print ( queue [ 0 ] . data ) node = queue . pop ( 0 ) # Enqueue left child node . left : queue . append ( node . left ) # Enqueue right child node . right : queue . append ( node . right ) # Driver Program test function root = Node ( 1 ) root . left = Node ( 2 ) root . right = Node ( 3 ) root . left . left = Node ( 4 ) root . left . right = Node ( 5 ) print ( " Level Order Traversal binary tree - " ) printLevelOrder ( root ) Output Level Order Traversal binary tree - 
+
+ 1 
+
+ 2 
+
+ 3 
+
+ 4 
+
+ 5 Time Complexity : O(n ) Graph graph nonlinear data structure consisting nodes edges . nodes referred vertices edges lines arcs connect nodes graph . formally Graph defined Graph consisting finite set vertices(or nodes ) set edges connect pair nodes . Graph , set vertices V = { 0,1,2,3,4 } set edges E = { 01 , 12 , 23 , 34 , 04 , 14 , 13 } . following commonly representations graph . Adjacency Matrix Adjacency List Adjacency Matrix Adjacency Matrix 2D array size V x V V number vertices graph . Let 2D array adj [ ] [ ] , slot adj[i][j ] = 1 indicates edge vertex vertex j. adjacency matrix undirected graph symmetric . Adjacency Matrix represent weighted graphs . adj[i][j ] = w , edge vertex vertex j weight w. Python # simple representation graph Adjacency Matrix class Graph : def _ _ init _ _ ( self , numvertex ): self . adjMatrix = [ [ - 1 ] * numvertex x range ( numvertex ) ] self . numvertex = numvertex self . vertices = { } self . verticeslist = [ 0 ] * numvertex def set_vertex ( self , vtx , d ): 0 < = vtx < = self . numvertex : self . vertices [ d ] = vtx self . verticeslist [ vtx ] = d def set_edge ( self , frm , , cost = 0 ): frm = self . vertices [ frm ] = self . vertices [ ] self . adjMatrix [ frm ] [ ] = cost # directed graph add self . adjMatrix [ ] [ frm ] = cost def get_vertex ( self ): return self . verticeslist def get_edges ( self ): edges = [ ] range ( self . numvertex ): j range ( self . numvertex ): ( self . adjMatrix [ ] [ j ] ! = - 1 ): edges . append ( ( self . verticeslist [ ] , self . verticeslist [ j ] , self . adjMatrix [ ] [ j ] ) ) return edges def get_matrix ( self ): return self . adjMatrix G = Graph ( 6 ) G . set_vertex ( 0 , ' ' ) G . set_vertex ( 1 , ' b ' ) G . set_vertex ( 2 , ' c ' ) G . set_vertex ( 3 , ' ) G . set_vertex ( 4 , ' e ' ) G . set_vertex ( 5 , ' f ' ) G . set_edge ( ' ' , ' e ' , 10 ) G . set_edge ( ' ' , ' c ' , 20 ) G . set_edge ( ' c ' , ' b ' , 30 ) G . set_edge ( ' b ' , ' e ' , 40 ) G . set_edge ( ' e ' , ' , 50 ) G . set_edge ( ' f ' , ' e ' , 60 ) print ( " Vertices Graph " ) print ( G . get_vertex ( ) ) print ( " Edges Graph " ) print ( G . get_edges ( ) ) print ( " Adjacency Matrix Graph " ) print ( G . get_matrix ( ) ) Output Vertices Graph [ ‘ ’ , ‘ b ’ , ‘ c ’ , ‘ d ’ , ‘ e ’ , ‘ f ’ ] Edges Graph [ ( ‘ ’ , ‘ c ’ , 20 ) , ( ‘ ’ , ‘ e ’ , 10 ) , ( ‘ b ’ , ‘ c ’ , 30 ) , ( ‘ b ’ , ‘ e ’ , 40 ) , ( ‘ c ’ , ‘ ’ , 20 ) , ( ‘ c ’ , ‘ b ’ , 30 ) , ( ‘ d ’ , ‘ e ’ , 50 ) , ( ‘ e ’ , ‘ ’ , 10 ) , ( ‘ e ’ , ‘ b ’ , 40 ) , ( ‘ e ’ , ‘ d ’ , 50 ) , ( ‘ e ’ , ‘ f ’ , 60 ) , ( ‘ f ’ , ‘ e ’ , 60 ) ] Adjacency Matrix Graph [ [ -1 , -1 , 20 , -1 , 10 , -1 ] , [ -1 , -1 , 30 , -1 , 40 , -1 ] , [ 20 , 30 , -1 , -1 , -1 , -1 ] , [ -1 , -1 , -1 , -1 , 50 , -1 ] , [ 10 , 40 , -1 , 50 , -1 , 60 ] , [ -1 , -1 , -1 , -1 , 60 , -1 ] ] Adjacency List array lists . size array equal number vertices . Let array array [ ] . entry array[i ] represents list vertices adjacent ith vertex . representation represent weighted graph . weights edges represented lists pairs . Following adjacency list representation graph . Python # class represent adjacency list node class AdjNode : def _ _ init _ _ ( self , data ): self . vertex = data self . = # class represent graph . graph # list adjacency lists . # Size array . # vertices " V " class Graph : def _ _ init _ _ ( self , vertices ): self . V = vertices self . graph = [ ] * self . V # Function add edge undirected graph def add_edge ( self , src , dest ): # Adding node source node node = AdjNode ( dest ) node . = self . graph [ src ] self . graph [ src ] = node # Adding source node destination # undirected graph node = AdjNode ( src ) node . = self . graph [ dest ] self . graph [ dest ] = node # Function print graph def print_graph ( self ): range ( self . V ): print ( " Adjacency list vertex { } \n head " . format ( ) , end = " " ) temp = self . graph [ ] temp : print ( " - > { } " . format ( temp . vertex ) , end = " " ) temp = temp . print ( " \n " ) # Driver program graph class _ _ _ _ = = " _ _ main _ _ " : V = 5 graph = Graph ( V ) graph . add_edge ( 0 , 1 ) graph . add_edge ( 0 , 4 ) graph . add_edge ( 1 , 2 ) graph . add_edge ( 1 , 3 ) graph . add_edge ( 1 , 4 ) graph . add_edge ( 2 , 3 ) graph . add_edge ( 3 , 4 ) graph . print_graph ( ) Output Adjacency list vertex 0 
+
+  head - > 4 - > 1 
+
+
+
+ Adjacency list vertex 1 
+
+  head - > 4 - > 3 - > 2 - > 0 
+
+
+
+ Adjacency list vertex 2 
+
+  head - > 3 - > 1 
+
+
+
+ Adjacency list vertex 3 
+
+  head - > 4 - > 2 - > 1 
+
+
+
+ Adjacency list vertex 4 
+
+  head - > 3 - > 1 - > 0 Graph Traversal Breadth - Search BFS Breadth - Traversal graph similar Breadth - Traversal tree . catch , unlike trees , graphs contain cycles , come node . avoid processing node , use boolean visited array . simplicity , assumed vertices reachable starting vertex . example , following graph , start traversal vertex 2 . come vertex 0 , look adjacent vertices . 2 adjacent vertex 0 . mark visited vertices , 2 processed non - terminating process . Breadth - Traversal following graph 2 , 0 , 3 , 1 . Python # Python3 Program print BFS traversal # given source vertex . BFS(int s ) # traverses vertices reachable s. collections import defaultdict # class represents directed graph # adjacency list representation class Graph : # Constructor def _ _ init _ _ ( self ): # default dictionary store graph self . graph = defaultdict ( list ) # function add edge graph def addEdge ( self , u , v ): self . graph [ u ] . append ( v ) # Function print BFS graph def BFS ( self , s ): # Mark vertices visited visited = [ False ] * ( max ( self . graph ) + 1 ) # Create queue BFS queue = [ ] # Mark source node # visited enqueue queue . append ( s ) visited [ s ] = True queue : # Dequeue vertex # queue print s = queue . pop ( 0 ) print ( s , end = " " ) # adjacent vertices # dequeued vertex s. adjacent # visited , mark # visited enqueue self . graph [ s ] : visited [ ] = = False : queue . append ( ) visited [ ] = True # Driver code # Create graph given # diagram g = Graph ( ) g . addEdge ( 0 , 1 ) g . addEdge ( 0 , 2 ) g . addEdge ( 1 , 2 ) g . addEdge ( 2 , 0 ) g . addEdge ( 2 , 3 ) g . addEdge ( 3 , 3 ) print ( " Following Breadth Traversal " " ( starting vertex 2 ) " ) g . BFS ( 2 ) # code contributed Neelam Yadav Output Following Breadth Traversal ( starting vertex 2 ) 
+
+ 2 0 3 1 Time Complexity : O(V+E ) V number vertices graph E number edges graph . Depth Search DFS Depth Traversal graph similar Depth Traversal tree . catch , unlike trees , graphs contain cycles , node visited twice . avoid processing node , use boolean visited array . Algorithm : Create recursive function takes index node visited array . Mark current node visited print node . Traverse adjacent unmarked nodes recursive function index adjacent node . Python # Python3 program print DFS traversal # given graph collections import defaultdict # class represents directed graph # adjacency list representation class Graph : # Constructor def _ _ init _ _ ( self ): # default dictionary store graph self . graph = defaultdict ( list ) # function add edge graph def addEdge ( self , u , v ): self . graph [ u ] . append ( v ) # function DFS def DFSUtil ( self , v , visited ): # Mark current node visited # print visited . add ( v ) print ( v , end = ' ' ) # Recur vertices # adjacent vertex neighbour self . graph [ v ] : neighbour visited : self . DFSUtil ( neighbour , visited ) # function DFS traversal . uses # recursive DFSUtil ( ) def DFS ( self , v ): # Create set store visited vertices visited = set ( ) # recursive helper function # print DFS traversal self . DFSUtil ( v , visited ) # Driver code # Create graph given # diagram g = Graph ( ) g . addEdge ( 0 , 1 ) g . addEdge ( 0 , 2 ) g . addEdge ( 1 , 2 ) g . addEdge ( 2 , 0 ) g . addEdge ( 2 , 3 ) g . addEdge ( 3 , 3 ) print ( " Following DFS ( starting vertex 2 ) " ) g . DFS ( 2 ) Output Following DFS ( starting vertex 2 ) 
+
+ 2 0 1 3 Time complexity : O(V + E ) , V number vertices E number edges graph . Comment info Campus Training Program Article Create Pandas Dataframe Dictionary Dictionaries abhishek1 Follow Improve Article Tags : Python Practice Tags : python Similar Reads Python Data Types Python Data types classification categorization data items . represents kind value tells operations performed particular data .... 15 + min read Minute Notes ( LMNs ) – Data Structures Python Data Structures Algorithms ( DSA ) fundamental effective problem - solving software development . Python , simplicity flexibility , provides wide r ... 15 + min read User Defined Data Structures Python computer science , data structure logical way organizing data computer memory effectively . data structure allows data added , ... 15 + min read Python Data Structures Quizzes quiz designed test understanding Python data structures , list , strings , tuples , sets dictionaries . practicing , reinforce kn ... 2 min read TreeMap Python TreeMap data structure stores key - value pairs sorted order based keys . Python , direct built - implementation TreeMap , ... 7 min read Implementation Queue List Python queue linear data structure follows FIFO ( ) principle . element added removed . queue , ... 15 + min read Python Lists Python , list built - dynamic sized array ( automatically grows shrinks ) . store types items ( including list ) list . list conta ... 15 + min read Inbuilt Data Structures Python Python non - primitive inbuilt data structures Lists , Dictionary , Tuple Set . cover 80 % real world data structures . article w ... 13 min read Learn DSA Python | Python Data Structures Algorithms tutorial beginner - friendly guide learning data structures algorithms Python . article , discuss - built data structures ... 15 + min read File Handling Python File handling refers process performing operations file creating , opening , reading , writing closing , programming interface . invo ... 15 + min read Like 271k+ interested Geeks Python Course Online - Complete Beginner Advanced Explore 1k+ interested Geeks Complete Python Program - Mastering Fundamentals Advanced Concepts Explore 327k+ interested Geeks Data Structures & Algorithms Python - Self Paced Explore Corporate & Communications Address : A-143 , 7th Floor , Sovereign Corporate Tower , Sector- 136 , Noida , Uttar Pradesh ( 201305 ) Registered Address : K 061 , Tower K , Gulshan Vivante Apartment , Sector 137 , Noida , Gautam Buddh Nagar , Uttar Pradesh , 201305 Advertise Company Legal Privacy Policy Careers Media Contact GfG Corporate Solution Placement Training Program Explore Job - - Thon Hiring Challenge GfG Weekly Contest Offline Classroom Program DSA JAVA / C++ Master System Design Master CP GeeksforGeeks Videos Languages Python Java C++ PHP GoLang SQL R Language Android Tutorial DSA Data Structures Algorithms DSA Beginners Basic DSA Problems DSA Roadmap DSA Interview Questions Competitive Programming Data Science & ML Data Science Python Data Science Beginner Machine Learning ML Maths Data Visualisation Pandas NumPy NLP Deep Learning Web Technologies HTML CSS JavaScript TypeScript ReactJS NextJS NodeJs Bootstrap Tailwind CSS Python Tutorial Python Programming Examples Django Tutorial Python Projects Python Tkinter Web Scraping OpenCV Tutorial Python Interview Question Computer Science GATE CS Notes Operating Systems Computer Network Database Management System Software Engineering Digital Logic Design Engineering Maths DevOps Git AWS Docker Kubernetes Azure GCP DevOps Roadmap System Design High Level Design Low Level Design UML Diagrams Interview Guide Design Patterns OOAD System Design Bootcamp Interview Questions School Subjects Mathematics Physics Chemistry Biology Social Science English Grammar Databases SQL MYSQL PostgreSQL PL / SQL MongoDB Preparation Corner Company - Wise Recruitment Process Aptitude Preparation Puzzles Company - Wise Preparation Tutorials Software Development Software Testing Product Management Project Management Linux Excel Cheat Sheets Machine Learning/ Data Science Complete Machine Learning & Data Science Program - [ LIVE ] Data Analytics Training Excel , SQL , Python & PowerBI - [ LIVE ] Data Science Training Program - [ LIVE ] Data Science Course IBM Certification Programming Languages C Programming Data Structures C++ Programming Course Java Programming Course Python Course Clouds/ Devops DevOps Engineering AWS Solutions Architect Certification Salesforce Certified Administrator Course GATE 2026 GATE CS Rank Booster GATE DA Rank Booster GATE CS & Course - 2026 GATE DA Course 2026 GATE Rank Predictor @GeeksforGeeks , Sanchhaya Education Private Limited , rights reserved use cookies ensure best browsing experience website . site , 
+
+         acknowledge read understood Cookie Policy & Privacy Policy Got ! Improvement Suggest changes Suggest Changes Help improve . Share suggestions enhance article . Contribute expertise difference GeeksforGeeks portal . Create Improvement Enhance article expertise . Contribute GeeksforGeeks community help create better learning resources . Suggest Changes min 4 words , max Words Limit:1000 Thank ! suggestions valuable . kind Experience want share ? Interview Experiences Admission Experiences Career Journeys Work Experiences Campus Experiences Competitive Exam Experiences

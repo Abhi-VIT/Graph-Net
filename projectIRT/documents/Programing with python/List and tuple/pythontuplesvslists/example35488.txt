@@ -1,0 +1,48 @@
+Python Tuples vs. Lists | Built View Jobs Employers Join Log Jobs Companies Remote Articles Best Places Work items Data Science Expert Contributors Software Engineering Perspectives +2 Python Tuples vs. Lists : Use Tuples Instead Lists use Python tuples lists , including easy - - understand examples beginners . Written Erdem İŞBİLEN Image : Shutterstock / Built UPDATED Brennan Whitfield | Aug 20 , 2024 Lists dictionaries widely built - data types Python , makes best - known data types Python . comes tuples , grasping details differ lists easy task beginners similar . Python Tuples : Use Tuples vs. Lists key difference tuples lists tuples immutable objects , lists mutable . means tuples changed lists modified . Tuples memory efficient lists . comes time efficiency , tuples slight advantage lists especially consider lookup value . 
+ data change , choose tuple data type lists . article , explain key differences providing examples use cases better explain use tuples lists . Python Lists Append Lists Python Python Tutorial Beginners : Lists , Tuples Sets | Corey Schafer Python Tuples vs. Lists Tuples lists Python similarities differences , making useful certain scenarios coding . Similarities Python Tuples Lists Tuples lists store collections data . Tuples lists heterogeneous data types , means store kind data type . Tuples lists ordered , means order items kept . Tuples lists sequential data types iterate items contained . Items tuples lists accessed integer index operator , provided square brackets , [ index ] . Differences Python Tuples Lists Tuples immutable objects lists mutable objects . defined , tuples fixed length lists dynamic length . Tuples use memory faster access lists . Tuple syntax uses round brackets parenthesis , list syntax uses square brackets . Python Tuple vs. List Code Let understand differences tuples lists affect Python code terms time memory efficiency . lists mutable , Python needs allocate extra memory block case need extend size list object create . contrast , tuples immutable fixed size , Python allocates minimum memory block required data . result , tuples memory - efficient lists . Let check code block : import sys 
+
+ a_list = list ( ) 
+ a_tuple = tuple ( ) 
+
+ a_list = [ 1,2,3,4,5 ] 
+ a_tuple = ( 1,2,3,4,5 ) 
+
+ print(sys.getsizeof(a_list ) ) 
+ print(sys.getsizeof(a_tuple ) ) 
+
+ Output : 
+ 104 ( bytes list object 
+ 88 ( bytes tuple object ) output code snippet , memory required identical list tuple objects different . comes time efficiency , tuples slight advantage lists especially consider lookup value . import sys , platform 
+ import time 
+
+ print(platform.python_version ( ) ) 
+
+ start_time = time.time ( ) 
+ b_list = list(range(10000000 ) ) 
+ end_time = time.time ( ) 
+ print("Instantiation time LIST : " , end_time - start_time ) 
+
+ start_time = time.time ( ) 
+ b_tuple = tuple(range(10000000 ) ) 
+ end_time = time.time ( ) 
+ print("Instantiation time TUPLE : " , end_time - start_time ) 
+
+ start_time = time.time ( ) 
+ item b_list : 
+   aa = b_list[20000 ] 
+ end_time = time.time ( ) 
+ print("Lookup time LIST : " , end_time - start_time ) 
+
+ start_time = time.time ( ) 
+ item b_tuple : 
+   aa = b_tuple[20000 ] 
+ end_time = time.time ( ) 
+ print("Lookup time TUPLE : " , end_time - start_time ) 
+
+ Output : 
+ 3.6.9 
+ Instantiation time LIST : 0.4149961471557617 
+ Instantiation time TUPLE : 0.4139530658721924 
+ Lookup time LIST :   0.8162095546722412 
+ Lookup time TUPLE :   0.7768714427947998 Tutorials Python Experts @ Symbol Python Use ? Use Tuples vs. Lists ? use tuples lists depends needs . occasions want data changed . data meant changed place — critical information records — choose tuple data type lists . know data grow shrink runtime application , need list data type . Software Engineering Experts Create Classic Snake Game Processing Library Java Frequently Asked Questions tuples Python ? tuple built - data structure Python store multiple items single variable . Tuples similar lists Python compile ordered collection items , tuples immutable lists mutable . advantage tuple list ? advantage Python tuples immutable , meaning items order tuple changed defined . help data stored tuple secure , makes tuples faster memory - efficient lists . use list vs. tuple vs. set Python ? Python , lists best order items variable items able added , removed , replaced changed . Tuples best order items variable items unchangeable . Sets best wanting collect items order variable , items able added removed . Recent Data Science Articles Tableau ? 10 Python Image Manipulation Tools Try Today Python Databases 101 : Choose Database Library Explore Job Matches . Job Title Keyword Clear search Location Job Type Clear Apply Jobs Jobs Companies Articles Items Join Log Tech Jobs Companies Articles Remote Best Places Work Tech Hubs Post Job Built online community startups tech companies . Find 
+             startup jobs , tech news events . Story Careers Staff Writers Content Descriptions Involved Recruit Built Expert Contributor Resources Customer Support Share Feedback Report Bug Browse Jobs Tech - Z Tech Hubs Sites Learning Lab User Agreement Accessibility Statement Copyright Policy Privacy Policy Terms Use Privacy Choices / Cookie Settings Notice Collection © Built 2025

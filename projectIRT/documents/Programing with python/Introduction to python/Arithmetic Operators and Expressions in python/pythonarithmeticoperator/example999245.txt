@@ -1,0 +1,177 @@
+Python Arithmetic Operators Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - Home Python - Overview Python - History Python - Features Python vs C++ Python - Hello World Program Python - Application Areas Python - Interpreter Python - Environment Setup Python - Virtual Environment Python - Basic Syntax Python - Variables Python - Data Types Python - Type Casting Python - Unicode System Python - Literals Python - Operators Python - Arithmetic Operators Python - Comparison Operators Python - Assignment Operators Python - Logical Operators Python - Bitwise Operators Python - Membership Operators Python - Identity Operators Python - Operator Precedence Python - Comments Python - User Input Python - Numbers Python - Booleans Python - Control Flow Python - Decision Making Python - Statement Python - Python - Nested Python - Match - Case Statement Python - Loops Python - Loops Python - - Loops Python - Loops Python - break Statement Python - continue Statement Python - pass Statement Python - Nested Loops Python Functions & Modules Python - Functions Python - Default Arguments Python - Keyword Arguments Python - Keyword - Arguments Python - Positional Arguments Python - Positional - Arguments Python - Arbitrary Arguments Python - Variables Scope Python - Function Annotations Python - Modules Python - Built Functions Python Strings Python - Strings Python - Slicing Strings Python - Modify Strings Python - String Concatenation Python - String Formatting Python - Escape Characters Python - String Methods Python - String Exercises Python Lists Python - Lists Python - Access List Items Python - Change List Items Python - Add List Items Python - Remove List Items Python - Loop Lists Python - List Comprehension Python - Sort Lists Python - Copy Lists Python - Join Lists Python - List Methods Python - List Exercises Python Tuples Python - Tuples Python - Access Tuple Items Python - Update Tuples Python - Unpack Tuples Python - Loop Tuples Python - Join Tuples Python - Tuple Methods Python - Tuple Exercises Python Sets Python - Sets Python - Access Set Items Python - Add Set Items Python - Remove Set Items Python - Loop Sets Python - Join Sets Python - Copy Sets Python - Set Operators Python - Set Methods Python - Set Exercises Python Dictionaries Python - Dictionaries Python - Access Dictionary Items Python - Change Dictionary Items Python - Add Dictionary Items Python - Remove Dictionary Items Python - Dictionary View Objects Python - Loop Dictionaries Python - Copy Dictionaries Python - Nested Dictionaries Python - Dictionary Methods Python - Dictionary Exercises Python Arrays Python - Arrays Python - Access Array Items Python - Add Array Items Python - Remove Array Items Python - Loop Arrays Python - Copy Arrays Python - Reverse Arrays Python - Sort Arrays Python - Join Arrays Python - Array Methods Python - Array Exercises Python File Handling Python - File Handling Python - Write File Python - Read Files Python - Renaming Deleting Files Python - Directories Python - File Methods Python - OS File / Directory Methods Python - OS Path Methods Object Oriented Programming Python - OOPs Concepts Python - Classes & Objects Python - Class Attributes Python - Class Methods Python - Static Methods Python - Constructors Python - Access Modifiers Python - Inheritance Python - Polymorphism Python - Method Overriding Python - Method Overloading Python - Dynamic Binding Python - Dynamic Typing Python - Abstraction Python - Encapsulation Python - Interfaces Python - Packages Python - Inner Classes Python - Anonymous Class Objects Python - Singleton Class Python - Wrapper Classes Python - Enums Python - Reflection Python Errors & Exceptions Python - Syntax Errors Python - Exceptions Python - try - Block Python - try - finally Block Python - Raising Exceptions Python - Exception Chaining Python - Nested try Block Python - User - defined Exception Python - Logging Python - Assertions Python - Built - Exceptions Python Multithreading Python - Multithreading Python - Thread Life Cycle Python - Creating Thread Python - Starting Thread Python - Joining Threads Python - Naming Thread Python - Thread Scheduling Python - Thread Pools Python - Main Thread Python - Thread Priority Python - Daemon Threads Python - Synchronizing Threads Python Synchronization Python - Inter - thread Communication Python - Thread Deadlock Python - Interrupting Thread Python Networking Python - Networking Python - Socket Programming Python - URL Processing Python - Generics Python Libraries NumPy Tutorial Pandas Tutorial SciPy Tutorial Matplotlib Tutorial Django Tutorial OpenCV Tutorial Python Miscellenous Python - Date & Time Python - Maths Python - Iterators Python - Generators Python - Closures Python - Decorators Python - Recursion Python - Reg Expressions Python - PIP Python - Database Access Python - Weak References Python - Serialization Python - Templating Python - Output Formatting Python - Performance Measurement Python - Data Compression Python - CGI Programming Python - XML Processing Python - GUI Programming Python - Command - Line Arguments Python - Docstrings Python - JSON Python - Sending Email Python - Extensions Python - Tools / Utilities Python - GUIs Python Advanced Concepts Python - Abstract Base Classes Python - Custom Exceptions Python - Higher Order Functions Python - Object Internals Python - Memory Management Python - Metaclasses Python - Metaprogramming Metaclasses Python - Mocking Stubbing Python - Monkey Patching Python - Signal Handling Python - Type Hints Python - Automation Tutorial Python - Humanize Package Python - Context Managers Python - Coroutines Python - Descriptors Python - Diagnosing Fixing Memory Leaks Python - Immutable Data Structures Python Useful Resources Python - Questions & Answers Python - Interview Questions & Answers Python - Online Quiz Python - Quick Guide Python - Reference Python - Cheatsheet Python - Projects Python - Useful Resources Python - Discussion Python Compiler NumPy Compiler Matplotlib Compiler SciPy Compiler Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Arithmetic Operators Previous Quiz Python Arithmetic Operators Python arithmetic operators perform mathematical operations addition , subtraction , multiplication , division , numbers . Arithmetic operators binary operators sense operate operands . Python fully supports mixed arithmetic . , operands different number types . situation . Types Arithmetic Operators Following table lists arithmetic operators available Python : Operator Example + Addition + b = 30 - Subtraction   b = -10 * Multiplication * b = 200 / Division b / = 2 % Modulus b % = 0 * * Exponent a**b = 10**20 // Floor Division 9//2 = 4 Let study operators examples . Addition Operator addition operator represents + symbol . basic arithmetic operator . adds numeric operands returns addition result . Example add integer numbers following example , integer variables operands " + " operator . a=10 
+ b=20 
+ print ( " Addition integers " ) 
+ print ( " = " , a,"b = " , b,"addition = " , a+b ) produce following output − Addition integers 
+ = 10 b = 20 addition = 30 Example add integer float numbers Addition integer float results float . a=10 
+ b=20.5 
+ print ( " Addition integer float " ) 
+ print ( " = " , a,"b = " , b,"addition = " , a+b ) produce following output − Addition integer float 
+ = 10 b = 20.5 addition = 30.5 Example add complex numbers result adding float complex complex number . a=10 + 5j 
+ b=20.5 
+ print ( " Addition complex float " ) 
+ print ( " a=",a,"b=",b,"addition=",a+b ) produce following output − Addition complex float 
+ a= ( 10 + 5j ) b= 20.5 addition= ( 30.5 + 5j ) Subtraction Operator subtraction operator represents - symbol . subtracts second operand . resultant number negative second operand larger . Example subtract integer numbers example shows subtraction integers . a=10 
+ b=20 
+ print ( " Subtraction integers : " ) 
+ print ( " = " , a,"b = " , b,"a - b = " , - b ) 
+ print ( " = " , a,"b = " , b,"b - = " , b - ) Result − Subtraction integers 
+ = 10 b = 20 - b = -10 
+ = 10 b = 20 b - = 10 Example subtract integer float numbers Subtraction integer float follows principle . a=10 
+ b=20.5 
+ print ( " subtraction integer float " ) 
+ print ( " a=",a,"b=",b,"a - b=",a - b ) 
+ print ( " a=",a,"b=",b,"b - a=",b - ) produce following output − subtraction integer float 
+ a= 10 b= 20.5 - b= -10.5 
+ a= 10 b= 20.5 b - a= 10.5 Example subtract complex numbers subtraction involving complex float , real component involved 
+ operation . a=10 + 5j 
+ b=20.5 
+ print ( " subtraction complex float " ) 
+ print ( " a=",a,"b=",b,"a - b=",a - b ) 
+ print ( " a=",a,"b=",b,"b - a=",b - ) produce following output − subtraction complex float 
+ a= ( 10 + 5j ) b= 20.5 - b= ( -10.5 + 5j ) 
+ a= ( 10 + 5j ) b= 20.5 b - a= ( 10.5 - 5j ) Multiplication Operator * ( asterisk ) symbol defined multiplication operator Python ( languages ) . returns product operands . operands negative , result negative . negative , result positive . Changing order operands change result Example multiply integers a=10 
+ b=20 
+ print ( " Multiplication integers " ) 
+ print ( " = " , a,"b = " , b,"a*b = " , a*b ) produce following output − Multiplication integers 
+ = 10 b = 20 a*b = 200 Example multiply integer float numbers multiplication , float operand standard decimal point notation , scientific notation . a=10 
+ b=20.5 
+ print ( " Multiplication integer float " ) 
+ print ( " a=",a,"b=",b,"a*b=",a*b ) 
+
+ a=-5.55 
+ b=6.75E-3 
+ print ( " Multiplication float float " ) 
+ print ( " = " , a,"b = " , b,"a*b = " , a*b ) produce following output − Multiplication integer float 
+ = 10 b = 20.5 - b = -10.5 
+ Multiplication float float 
+ = -5.55 b = 0.00675 a*b = -0.037462499999999996 Example multiply complex numbers multiplication operation involving complex operand , operand multiplies real imaginary . a=10 + 5j 
+ b=20.5 
+ print ( " Multiplication complex float " ) 
+ print ( " = " , a,"b = " , b,"a*b = " , a*b ) produce following output − Multiplication complex float 
+ = ( 10 + 5j ) b = 20.5 a*b = ( 205 + 102.5j ) Division Operator " / " symbol usually called forward slash . result division operator numerator ( left operand ) divided denominator ( right operand ) . resultant number negative operands negative . infinity stored memory , Python raises ZeroDivisionError denominator 0 . result division operator Python float , operands integers . Example divide numbers a=10 
+ b=20 
+ print ( " Division integers " ) 
+ print ( " a=",a,"b=",b,"a / b=",a / b ) 
+ print ( " a=",a,"b=",b,"b / a=",b / ) produce following output − Division integers 
+ a= 10 b= 20 / b= 0.5 
+ a= 10 b= 20 b / a= 2.0 Example divide float numbers Division , float operand standard decimal point notation , scientific notation . a=10 
+ b=-20.5 
+ print ( " Division integer float " ) 
+ print ( " a=",a,"b=",b,"a / b=",a / b ) 
+ a=-2.50 
+ b=1.25E2 
+ print ( " Division float float " ) 
+ print ( " a=",a,"b=",b,"a / b=",a / b ) produce following output − Division integer float 
+ a= 10 b= -20.5 / b= -0.4878048780487805 
+ Division float float 
+ a= -2.5 b= 125.0 / b= -0.02 Example divide complex numbers operands complex number , division operand parts complex number ( real imaginary ) object takes place . a=7.5 + 7.5j 
+ b=2.5 
+ print ( " Division complex float " ) 
+ print ( " = " , a,"b = " , b,"a / b = " , / b ) 
+ print ( " = " , a,"b = " , b,"b / = " , b / ) produce following output − Division complex float 
+ = ( 7.5 + 7.5j ) b = 2.5 / b = ( 3 + 3j ) 
+ = ( 7.5 + 7.5j ) b = 2.5 b / = ( 0.16666666666666666 - 0.16666666666666666j ) numerator 0 , result division 0 denominator 0 , case , Python raises ZeroDivisionError wirh Division Zero error message . a=0 
+ b=2.5 
+ print ( " a=",a,"b=",b,"a / b=",a / b ) 
+ print ( " a=",a,"b=",b,"b / a=",b / ) produce following output − a= 0 b= 2.5 / b= 0.0 
+ Traceback ( recent ): 
+   File " C:\Users\mlath\examples\example.py " , line 20 , < module > 
+      print ( " a=",a,"b=",b,"b / a=",b / ) 
+                                  ~^~ 
+ ZeroDivisionError : float division zero Modulus Operator Python defines " % " symbol , known aa Percent symbol , Modulus ( modulo ) operator . returns remainder denominator divides numerator . called Remainder operator . result modulus operator number remains integer quotient . example , 10 divided 3 , quotient 3 remainder 1 . , 10%3 ( normally pronounced 10 mod 3 ) results 1 . Example modulus operation integers operands integer , modulus value integer . numerator completely divisible , remainder 0 . numerator smaller denominator , modulus equal numerator . denominator 0 , Python raises ZeroDivisionError . a=10 
+ b=2 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ a=10 
+ b=4 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ print ( " a=",a , " b=",b , " b%a= " , b%a ) 
+ a=0 
+ b=10 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ print ( " a= " , , " b= " , b , " b%a=",b%a ) produce following output − a= 10 b= 2 a%b= 0 
+ a= 10 b= 4 a%b= 2 
+ a= 10 b= 4 b%a= 4 
+ a= 0 b= 10 a%b= 0 
+ Traceback ( recent ): 
+   File " C:\Users\mlath\examples\example.py " , line 13 , < module > 
+     print ( " a= " , , " b= " , b , " b%a=",b%a ) 
+                                     ~^~ 
+ ZeroDivisionError : integer modulo zero Example modulus operation floats operands float , mod value float . a=10 
+ b=2.5 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ a=10 
+ b=1.5 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ a=7.7 
+ b=2.5 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) 
+ a=12.4 
+ b=3 
+ print ( " a=",a , " b=",b , " a%b= " , a%b ) produce following output − a= 10 b= 2.5 a%b= 0.0 
+ a= 10 b= 1.5 a%b= 1.0 
+ a= 7.7 b= 2.5 a%b= 0.20000000000000018 
+ a= 12.4 b= 3 a%b= 0.40000000000000036 Python accept complex numbers operand modulus operation . throws TypeError : unsupported operand type(s ) % . Exponent Operator Python uses * * ( double asterisk ) exponent operator ( called raised operator ) . , a**b , raised b , bth power a. exponentiation expression , operands integer , result integer . case float , result float . Similarly , operand complex number , exponent operator returns complex number . base 0 , result 0 , index 0 result 1 . Example exponent operator a=10 
+ b=2 
+ print ( " a=",a , " b=",b , " a**b= " , a**b ) 
+ a=10 
+ b=1.5 
+ print ( " a=",a , " b=",b , " a**b= " , a**b ) 
+ a=7.7 
+ b=2 
+ print ( " a=",a , " b=",b , " a**b= " , a**b ) 
+ a=1 + 2j 
+ b=4 
+ print ( " a=",a , " b=",b , " a**b= " , a**b ) 
+ a=12.4 
+ b=0 
+ print ( " a=",a , " b=",b , " a**b= " , a**b ) 
+ print ( " a=",a , " b=",b , " b**a= " , b**a ) produce following output − a= 10 b= 2 a**b= 100 
+ a= 10 b= 1.5 a**b= 31.622776601683793 
+ a= 7.7 b= 2 a**b= 59.290000000000006 
+ a= ( 1 + 2j ) b= 4 a**b= ( -7 - 24j ) 
+ a= 12.4 b= 0 a**b= 1.0 
+ a= 12.4 b= 0 b**a= 0.0 Floor Division Operator Floor division called integer division . Python uses // ( double forward slash ) symbol purpose . Unlike modulus modulo returns remainder , floor division gives quotient division operands involved . operands positive , floor operator returns number fractional removed . example , floor division 9.8 2 returns 4 ( pure division 4.9 , strip fractional , result 4 ) . operands negative , result rounded away zero ( negative infinity ) . Floor division -9.8 2 returns 5 ( pure division -4.9 , rounded away 0 ) . Example floor division operator a=9 
+ b=2 
+ print ( " a=",a , " b=",b , " a//b= " , a//b ) 
+ a=9 
+ b=-2 
+ print ( " a=",a , " b=",b , " a//b= " , a//b ) 
+ a=10 
+ b=1.5 
+ print ( " a=",a , " b=",b , " a//b= " , a//b ) 
+ a=-10 
+ b=1.5 
+ print ( " a=",a , " b=",b , " a//b= " , a//b ) produce following output − a= 9 b= 2 a//b= 4 
+ a= 9 b= -2 a//b= -5 
+ a= 10 b= 1.5 a//b= 6.0 
+ a= -10 b= 1.5 a//b= -7.0 Precedence Associativity Arithmetic Operators Operator(s ) Description Associativity * * Exponent Operator Associativity Exponent operator Right Left . % , * , / , // Modulus , Multiplication , Division , Floor Division Associativity Modulus , Multiplication , Division , Floor Division operators Left Right . + , Addition Subtraction Operators Associativity Addition Subtraction operators Left Right . following table shows precedence associativity arithmetic operators Python . Arithmetic Operators Complex Numbers Arithmetic operators behave slightly differently operands complex number objects . Addition subtraction complex numbers Addition subtraction complex numbers simple addition / subtraction respective real imaginary components . a=2.5 + 3.4j 
+ b=-3 + 1.0j 
+ print ( " Addition complex numbers - a=",a , " b=",b , " a+b= " , a+b ) 
+ print ( " Subtraction complex numbers - a=",a , " b=",b , " - b= " , - b ) produce following output − Addition complex numbers - a= ( 2.5 + 3.4j ) b= ( -3 + 1j ) a+b= ( -0.5 + 4.4j ) 
+ Subtraction complex numbers - a= ( 2.5 + 3.4j ) b= ( -3 + 1j ) - b= ( 5.5 + 2.4j ) Multiplication complex numbers Multiplication complex numbers similar multiplication binomials algebra . " a+bj " " x+yj " complex numbers , multiplication given formula − ( a+bj)*(x+yj ) = ax+ayj+xbj+byj 2 = ( ax - by)+(ay+xb)j example , a=6 + 4j 
+ b=3 + 2j 
+ c = a*b 
+ c=(18 - 8)+(12 + 12)j 
+ c=10 + 24j following program confirms result − a=6 + 4j 
+ b=3 + 2j 
+ print ( " Multplication complex numbers - a=",a , " b=",b , " a*b= " , a*b ) understand division complex numbers takes place , use conjugate complex number . Python complex object conjugate ( ) method returns complex number sign imaginary reversed . > > > a=5 + 6j 
+ > > > a.conjugate ( ) 
+ ( 5 - 6j ) Division complex numbers divide complex numbers , divide multiply numerator denominator conjugate denominator . a=6 + 4j 
+ b=3 + 2j 
+ c = / b 
+ c=(6 + 4j)/(3 + 2j ) 
+ c=(6 + 4j)*(3 - 2j)/3 + 2j)*(3 - 2j ) 
+ c=(18 - 12j+12j+8)/(9 - 6j+6j+4 ) 
+ c=26/13 
+ c=2 + 0j verify , run following code − a=6 + 4j 
+ b=3 + 2j 
+ print ( " Division complex numbers - a=",a , " b=",b , " / b= " , / b ) Complex class Python support modulus operator ( % ) floor division operator ( // ) . Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

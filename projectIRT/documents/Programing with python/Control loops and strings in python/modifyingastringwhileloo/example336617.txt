@@ -1,0 +1,46 @@
+python - Modifying string looping - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams Modifying string looping Ask Question Asked 5 years ago Modified 5 years ago Viewed 2k times 7 modify string s looping : s = ' hello ' 
+ c s : 
+     s + = c 
+     print(s ) generate infinite loop ( : add new character iteration ! ) . know years , explain . string immutability related ? c s : , original s copied memory starting loop ? case thought generate infinite loop , : s = ' hello ' 
+ def f(x ): 
+     = 0 
+     True : 
+         try : 
+             yield x[i ] 
+         IndexError : 
+             break 
+         + = 1 
+
+ c f(s ): 
+     s + = c 
+     print(s ) python string loops immutability Share Improve question Follow edited Apr 13 , 2020 15:51 Basj asked Apr 13 , 2020 15:37 Basj Basj 46.6k 110 110 gold badges 459 459 silver badges 808 808 bronze badges 5 1 correct .   iterates original object .   Rebinding new object change - loop resolve iteration . – Steven Rumbalski Commented Apr 13 , 2020 15:41 2 f(s ) evaluated , start loop . creates generator initial string object . Subsequent - assignment s object s + = c effect original object + = creates new str object – rdas Commented Apr 13 , 2020 15:42 itertools import cycle;for c cycle('hello ' ) # loop forever – Steven Rumbalski Commented Apr 13 , 2020 15:43 @rdas Yes , example def f(x ): return x irrelevant output evaluated , loop ; modified yield , problematic ! – Basj Commented Apr 13 , 2020 15:47 official loop documentation help – sahasrara62 Commented Apr 13 , 2020 15:48 Add comment | 3 Answers 3 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 3 generate infinite loop ( : add new character iteration ! ) . strings Python immutable . 
+ c s , loop iterates original object ( object containing " hello " ) s + = c , new string created , modifying original string object loop iterating . , adding @Steven Rumbalski comment answer : iterates original object . Rebinding new object change - loop resolve iteration . , Let talk second example : function f(s ) , makes formal argument x point object containing string " hello " creates generator string object . , subsequent - assignment string s ( s + = c ) actually creates string effect original object . function formal argument pointing object containing " hello " . , iteration loop second example : Formal argument function f(x ) pointing object containing " hello " . s pointing object containing " helloh " . IMPORTANT : , try code mutable data types , create infinite loop . : li = [ 1 , 2 , 3 , 4 ] 
+ li : 
+     li.append(i ) 
+     print(li ) Share Improve answer Follow edited Apr 13 , 2020 16:15 answered Apr 13 , 2020 15:46 abhiarora abhiarora 10.5k 6 6 gold badges 36 36 silver badges 63 63 bronze badges Add comment | 1 Mutate list accomplish want . array = list('hello ' ) 
+ c array : 
+     array.append(c ) 
+     print(*array , sep= '' ) prints helloh 
+ hellohe 
+ hellohel 
+ hellohell 
+ hellohello 
+ hellohelloh 
+ hellohellohe 
+ hellohellohel 
+ hellohellohell 
+ hellohellohello 
+ hellohellohelloh 
+ hellohellohellohe 
+ ... want loop character continuously itertools import cycle 
+
+ c cycle('hello ' ): 
+     print(c ) prints h 
+ e 
+ l 
+ l 
+ o 
+ h 
+ e 
+ l 
+ ... Share Improve answer Follow answered Apr 13 , 2020 15:55 Steven Rumbalski Steven Rumbalski 45.6k 10 10 gold badges 94 94 silver badges 124 124 bronze badges Add comment | 0 recursive method . perfectly fine . run pass string f('hello ' ) loop " hello " iterate . run Share Improve answer Follow answered Apr 13 , 2020 15:40 user13301358 user13301358 2 Thank answer . ( slightly modified question ) . add details ? – Basj Commented Apr 13 , 2020 15:46 Yes , answer . second Generator function . generator function generates sequence . generator function gives element sequence , item sequence . created generator function loop f(s ) infinite return " hello " loop execute similarly previous case – user13301358 Commented Apr 13 , 2020 15:55 Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python string loops immutability similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Related 0 Python : modify strings stored objects inplace loop 53 Mutable strings Python 1 multiple modifications string : , inmutable Python ? 0 getting immutable string python 0 change string object inside string object ? 1 Mutating strings python 10 Mutable Immutable Strings python 2 Changing string iteratively 3 Python strings - immutability strings 0 Inability change string Hot Network Questions Undeclined modifiers adjectival nouns structure file better ? employees store . ? Fill space arcs Story canyon mushrooms spiders Backpropagation faulty ? single word dishonestly underselling importance / credentials ? ( In)significance spaces parsing Fortran IV Difference ∃x(Sx & Px ) vs. ∃x(Sx → Px ) Meaning " chinny chin chin " given context Pope Francis die $ 100 cash assets ? Hide equations document , including ` align ` , ` subequations ` Result opposite direction hypothesis - - tailed p - value ? times people die cold year heat ? technological hole Asimov Spacer cultures ? successor 2 ordinals , ordinals . Replacement working Table purpose including " terrain permits , land immediately " engine fire checklist ? Finding probability random variable minimum random variable maximum n i.i.d . random variables government ' cash - - kills ' bounty system avoid recreating ' Great Hanoi Rat Massacre ' ? Double underline single label bird ecology ( BTO ) notation QGIS " " refer ? Doubt center mass cone Confusion max LC circuit impedance LTspice hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

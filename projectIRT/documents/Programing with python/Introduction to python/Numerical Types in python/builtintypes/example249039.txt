@@ -1,0 +1,1131 @@
+Built - Types — Python 3.13.3 documentation Theme Auto Light Dark Table Contents Built - Types Truth Value Testing Boolean Operations â , , Comparisons Numeric Types â int , float , complex Bitwise Operations Integer Types Additional Methods Integer Types Additional Methods Float Hashing numeric types Boolean Type - bool Iterator Types Generator Types Sequence Types â list , tuple , range Common Sequence Operations Immutable Sequence Types Mutable Sequence Types Lists Tuples Ranges Text Sequence Type â str String Methods Formatted String Literals ( f - strings ) printf -style String Formatting Binary Sequence Types â bytes , bytearray , memoryview Bytes Objects Bytearray Objects Bytes Bytearray Operations printf -style Bytes Formatting Memory Views Set Types â set , frozenset Mapping Types â dict Dictionary view objects Context Manager Types Type Annotation Types â Generic Alias , Union Generic Alias Type Standard Generic Classes Special Attributes GenericAlias objects Union Type Built - Types Modules Classes Class Instances Functions Methods Code Objects Type Objects Null Object Ellipsis Object NotImplemented Object Internal Objects Special Attributes Integer string conversion length limitation Affected APIs Configuring limit Recommended configuration Previous topic Built - Constants topic Built - Exceptions Page Report Bug Source Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Standard Library » Built - Types | Theme Auto Light Dark | Built - Types Â¶ following sections describe standard types built 
+ interpreter . principal built - types numerics , sequences , mappings , classes , 
+ instances exceptions . collection classes mutable .   methods add , subtract , 
+ rearrange members place , donât return specific item , return 
+ collection instance . operations supported object types ; particular , 
+ practically objects compared equality , tested truth 
+ value , converted string ( repr ( ) function 
+ slightly different str ( ) function ) .   function implicitly 
+ object written print ( ) function . Truth Value Testing Â¶ object tested truth value , use condition operand Boolean operations . default , object considered true class defines _ _ bool _ _ ( ) method returns False _ _ len _ _ ( ) method 
+ returns zero , called object . [ 1 ] built - 
+ objects considered false : constants defined false : False zero numeric type : 0 , 0.0 , 0j , Decimal(0 ) , Fraction(0 , 1 ) sequences collections : '' , ( ) , [ ] , { } , set ( ) , range(0 ) Operations built - functions Boolean result return 0 False false 1 True true , stated . 
+ ( Important exception : Boolean operations return 
+ operands . ) Boolean Operations â , , Â¶ Boolean operations , ordered ascending priority : Operation Result Notes x y x true , x , y ( 1 ) x y x false , x , y ( 2 ) x x false , True , 
+ False ( 3 ) Notes : short - circuit operator , evaluates second 
+ argument false . short - circuit operator , evaluates second 
+ argument true . lower priority non - Boolean operators , = = b 
+ interpreted ( = = b ) , = = b syntax error . Comparisons Â¶ comparison operations Python .   
+ priority ( higher Boolean operations ) .   Comparisons 
+ chained arbitrarily ; example , x < y < = z equivalent x < y y < = z , y evaluated ( cases z 
+ evaluated x < y found false ) . table summarizes comparison operations : Operation Meaning < strictly < = equal > strictly greater > = greater equal = = equal ! = equal object identity negated object identity Objects different types , different numeric types , compare equal . 
+ = = operator defined object types ( example , 
+ class objects ) equivalent . < , < = , > > = operators defined sense ; example , raise TypeError exception arguments complex number . Non - identical instances class normally compare non - equal 
+ class defines _ _ eq _ _ ( ) method . Instances class ordered respect instances 
+ class , types object , class defines 
+ methods _ _ lt _ _ ( ) , _ _ le _ _ ( ) , _ _ gt _ _ ( ) , _ _ ge _ _ ( ) ( general , _ _ lt _ _ ( ) _ _ eq _ _ ( ) sufficient , want conventional meanings 
+ comparison operators ) . behavior operators 
+ customized ; applied objects raise 
+ exception . operations syntactic priority , , supported types iterable 
+ implement _ _ contains _ _ ( ) method . Numeric Types â int , float , complex Â¶ distinct numeric types : integers , floating - point 
+ numbers , complex numbers .   addition , Booleans 
+ subtype integers .   Integers unlimited precision .   Floating - point 
+ numbers usually implemented double C ; information 
+ precision internal representation floating - point 
+ numbers machine program running available 
+ sys.float_info .   Complex numbers real imaginary 
+ , floating - point number .   extract parts 
+ complex number z , use z.real z.imag . ( standard 
+ library includes additional numeric types fractions . Fraction , 
+ rationals , decimal . Decimal , floating - point numbers 
+ user - definable precision . ) Numbers created numeric literals result built - functions 
+ operators .   Unadorned integer literals ( including hex , octal binary 
+ numbers ) yield integers .   Numeric literals containing decimal point 
+ exponent sign yield floating - point numbers .   Appending ' j ' ' J ' 
+ numeric literal yields imaginary number ( complex number zero real 
+ ) add integer float complex number real 
+ imaginary parts . Python fully supports mixed arithmetic : binary arithmetic operator 
+ operands different numeric types , operand ânarrowerâ type 
+ widened , integer narrower floating point , 
+ narrower complex . comparison numbers different types 
+ behaves exact values numbers compared . [ 2 ] constructors int ( ) , float ( ) , complex ( ) produce numbers specific type . numeric types ( complex ) support following operations ( priorities 
+ operations , Operator precedence ): Operation Result Notes documentation x + y sum x y x - y difference x y x * y product x y x / y quotient x y x // y floored quotient x y ( 1)(2 ) x % y remainder x / y ( 2 ) -x x negated + x x unchanged abs(x ) absolute value magnitude x abs ( ) int(x ) x converted integer ( 3)(6 ) int ( ) float(x ) x converted floating point ( 4)(6 ) float ( ) complex(re , m ) complex number real , imaginary m . m defaults zero . ( 6 ) complex ( ) c.conjugate ( ) conjugate complex number c divmod(x , y ) pair ( x // y , x % y ) ( 2 ) divmod ( ) pow(x , y ) x power y ( 5 ) pow ( ) x * * y x power y ( 5 ) Notes : referred integer division .   operands type int , 
+ result type int .   operands type float , 
+ result type float .   general , result 
+ integer , resultâs type necessarily int .   result 
+ rounded minus infinity : 1//2 0 , ( -1)//2 -1 , 1//(-2 ) -1 , ( -1)//(-2 ) 0 . complex numbers .   Instead convert floats abs ( ) 
+ appropriate . Conversion float int truncates , discarding 
+ fractional . functions math.floor ( ) math.ceil ( ) 
+ alternative conversions . float accepts strings ânanâ âinfâ optional prefix â+â 
+ â-â Number ( NaN ) positive negative infinity . Python defines pow(0 , 0 ) 0 * * 0 1 , common 
+ programming languages . numeric literals accepted include digits 0 9 
+ Unicode equivalent ( code points Nd property ) . Unicode Standard complete list code points Nd property . numbers . Real types ( int float ) include 
+ following operations : Operation Result math.trunc(x ) x truncated Integral round(x [ , n ] ) x rounded n digits , 
+ rounding half . n 
+ omitted , defaults 0 . math.floor(x ) greatest Integral < = x math.ceil(x ) Integral > = x additional numeric operations math cmath modules . Bitwise Operations Integer Types Â¶ Bitwise operations sense integers . result bitwise 
+ operations calculated carried twoâs complement 
+ infinite number sign bits . priorities binary bitwise operations lower numeric 
+ operations higher comparisons ; unary operation ~ 
+ priority unary numeric operations ( + - ) . table lists bitwise operations sorted ascending priority : Operation Result Notes x | y bitwise x y ( 4 ) x ^ y bitwise exclusive x y ( 4 ) x & y bitwise x y ( 4 ) x < < n x shifted left n bits ( 1)(2 ) x > > n x shifted right n bits ( 1)(3 ) ~x bits x inverted Notes : Negative shift counts illegal cause ValueError raised . left shift n bits equivalent multiplication pow(2 , n ) . right shift n bits equivalent floor division pow(2 , n ) . Performing calculations extra sign extension bit 
+ finite twoâs complement representation ( working bit - width 1 + max(x.bit_length ( ) , y.bit_length ( ) ) ) sufficient 
+ result infinite number sign bits . Additional Methods Integer Types Â¶ int type implements numbers . Integral abstract base 
+ class . addition , provides methods : int . bit_length ( ) Â¶ Return number bits necessary represent integer binary , 
+ excluding sign leading zeros : > > > n = - 37 > > > bin ( n ) ' -0b100101 ' > > > n . bit_length ( ) 6 precisely , x nonzero , x.bit_length ( ) 
+ unique positive integer k 2**(k-1 ) < = abs(x ) < 2**k . 
+ Equivalently , abs(x ) small correctly 
+ rounded logarithm , k = 1 + int(log(abs(x ) , 2 ) ) . 
+ x zero , x.bit_length ( ) returns 0 . Equivalent : def bit_length ( self ): s = bin ( self ) # binary representation :   bin(-37 ) -- > ' -0b100101 ' s = s . lstrip ( ' -0b ' ) # remove leading zeros minus sign return len ( s ) # len('100101 ' ) -- > 6 Added version 3.1 . int . bit_count ( ) Â¶ Return number ones binary representation absolute 
+ value integer . known population count . 
+ Example : > > > n = 19 > > > bin ( n ) ' 0b10011 ' > > > n . bit_count ( ) 3 > > > ( - n ) . bit_count ( ) 3 Equivalent : def bit_count ( self ): return bin ( self ) . count ( " 1 " ) Added version 3.10 . int . to_bytes ( length = 1 , byteorder = ' big ' , * , signed = False ) Â¶ Return array bytes representing integer . > > > ( 1024 ) . to_bytes ( 2 , byteorder = ' big ' ) b'\x04\x00 ' > > > ( 1024 ) . to_bytes ( 10 , byteorder = ' big ' ) b'\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00 ' > > > ( - 1024 ) . to_bytes ( 10 , byteorder = ' big ' , signed = True ) b'\xff\xff\xff\xff\xff\xff\xff\xff\xfc\x00 ' > > > x = 1000 > > > x . to_bytes ( ( x . bit_length ( ) + 7 ) // 8 , byteorder = ' little ' ) b'\xe8\x03 ' integer represented length bytes , defaults 1 .   OverflowError raised integer representable 
+ given number bytes . byteorder argument determines byte order represent 
+ integer , defaults " big " .   byteorder " big " , significant byte beginning byte 
+ array .   byteorder " little " , significant byte 
+ end byte array . signed argument determines twoâs complement 
+ represent integer .   signed False negative integer 
+ given , OverflowError raised . default value signed False . default values conveniently turn integer 
+ single byte object : > > > ( 65 ) . to_bytes ( ) b'A ' , default arguments , donât try 
+ convert value greater 255 youâll OverflowError . Equivalent : def to_bytes ( n , length = 1 , byteorder = ' big ' , signed = False ): byteorder = = ' little ' : order = range ( length ) elif byteorder = = ' big ' : order = reversed ( range ( length ) ) : raise ValueError ( " byteorder ' little ' ' big ' " ) return bytes ( ( n > > * 8 ) & 0xff order ) Added version 3.2 . Changed version 3.11 : Added default argument values length byteorder . classmethod int . from_bytes ( bytes , byteorder = ' big ' , * , signed = False ) Â¶ Return integer represented given array bytes . > > > int . from_bytes ( b ' \x00\x10 ' , byteorder = ' big ' ) 16 > > > int . from_bytes ( b ' \x00\x10 ' , byteorder = ' little ' ) 4096 > > > int . from_bytes ( b ' \xfc\x00 ' , byteorder = ' big ' , signed = True ) -1024 > > > int . from_bytes ( b ' \xfc\x00 ' , byteorder = ' big ' , signed = False ) 64512 > > > int . from_bytes ( [ 255 , 0 , 0 ] , byteorder = ' big ' ) 16711680 argument bytes bytes - like object 
+ iterable producing bytes . byteorder argument determines byte order represent 
+ integer , defaults " big " .   byteorder " big " , significant byte beginning byte 
+ array .   byteorder " little " , significant byte 
+ end byte array .   request native byte order host 
+ system , use sys.byteorder byte order value . signed argument indicates twoâs complement 
+ represent integer . Equivalent : def from_bytes ( bytes , byteorder = ' big ' , signed = False ): byteorder = = ' little ' : little_ordered = list ( bytes ) elif byteorder = = ' big ' : little_ordered = list ( reversed ( bytes ) ) : raise ValueError ( " byteorder ' little ' ' big ' " ) n = sum ( b < < * 8 , b enumerate ( little_ordered ) ) signed little_ordered ( little_ordered [ - 1 ] & 0x80 ): n -= 1 < < 8 * len ( little_ordered ) return n Added version 3.2 . Changed version 3.11 : Added default argument value byteorder . int . as_integer_ratio ( ) Â¶ Return pair integers ratio equal original 
+ integer positive denominator .   integer ratio integers 
+ ( numbers ) integer numerator 1 
+ denominator . Added version 3.8 . int . is_integer ( ) Â¶ Returns True . Exists duck type compatibility float.is_integer ( ) . Added version 3.12 . Additional Methods Float Â¶ float type implements numbers . Real abstract base 
+ class . float following additional methods . float . as_integer_ratio ( ) Â¶ Return pair integers ratio exactly equal 
+ original float . ratio lowest terms positive denominator .   Raises OverflowError infinities ValueError 
+ NaNs . float . is_integer ( ) Â¶ Return True float instance finite integral 
+ value , False : > > > ( - 2.0 ) . is_integer ( ) True > > > ( 3.2 ) . is_integer ( ) False methods support conversion 
+ hexadecimal strings .   Pythonâs floats stored 
+ internally binary numbers , converting float decimal string usually involves small rounding error .   
+ contrast , hexadecimal strings allow exact representation 
+ specification floating - point numbers .   useful 
+ debugging , numerical work . float . hex ( ) Â¶ Return representation floating - point number hexadecimal 
+ string .   finite floating - point numbers , representation 
+ include leading 0x trailing p 
+ exponent . classmethod float . fromhex ( s ) Â¶ Class method return float represented hexadecimal 
+ string s .   string s leading trailing 
+ whitespace . Note float.hex ( ) instance method , float.fromhex ( ) class method . hexadecimal string takes form : [ sign ] [ ' 0x ' ] integer [ ' . ' fraction ] [ ' p ' exponent ] optional sign + - , integer fraction strings hexadecimal digits , exponent decimal integer optional leading sign .   Case 
+ significant , hexadecimal digit 
+ integer fraction .   syntax similar 
+ syntax specified section 6.4.4.2 C99 standard , 
+ syntax Java 1.5 onwards .   particular , output float.hex ( ) usable hexadecimal floating - point literal 
+ C Java code , hexadecimal strings produced Câs % format 
+ character Javaâs Double.toHexString accepted float.fromhex ( ) . Note exponent written decimal hexadecimal , 
+ gives power 2 multiply coefficient . 
+ example , hexadecimal string 0x3.a7p10 represents 
+ floating - point number ( 3 + 10./16 + 7./16**2 ) * 2.0**10 , 3740.0 : > > > float . fromhex ( ' 0x3.a7p10 ' ) 3740.0 Applying reverse conversion 3740.0 gives different 
+ hexadecimal string representing number : > > > float . hex ( 3740.0 ) ' 0x1.d380000000000p+11 ' Hashing numeric types Â¶ numbers x y , possibly different types , itâs requirement 
+ hash(x ) = = hash(y ) x = = y ( _ _ hash _ _ ( ) method documentation details ) .   ease implementation 
+ efficiency variety numeric types ( including int , float , decimal . Decimal fractions . Fraction ) 
+ Pythonâs hash numeric types based single mathematical function 
+ thatâs defined rational number , applies instances int fractions . Fraction , finite instances float decimal . Decimal .   Essentially , function 
+ given reduction modulo P fixed prime P .   value P 
+ available Python modulus attribute sys.hash_info . CPython implementation detail : Currently , prime P = 2**31 - 1 machines 32 - bit C 
+ longs P = 2**61 - 1 machines 64 - bit C longs . rules detail : x = m / n nonnegative rational number n divisible 
+ P , define hash(x ) m * invmod(n , P ) % P , invmod(n , P ) gives inverse n modulo P . x = m / n nonnegative rational number n 
+ divisible P ( m ) n inverse 
+ modulo P rule doesnât apply ; case define hash(x ) constant value sys.hash_info.inf . x = m / n negative rational number define hash(x ) -hash(-x ) .   resulting hash -1 , replace -2 . particular values sys.hash_info.inf -sys.hash_info.inf hash values positive 
+ infinity negative infinity ( respectively ) . complex number z , hash values real 
+ imaginary parts combined computing hash(z.real ) + sys.hash_info.imag * hash(z.imag ) , reduced modulo 2**sys.hash_info.width lies range(-2**(sys.hash_info.width - 1 ) , 2**(sys.hash_info.width - 1 ) ) .   , result -1 , itâs replaced -2 . clarify rules , hereâs example Python code , 
+ equivalent built - hash , computing hash rational 
+ number , float , complex : import sys , math def hash_fraction ( m , n ): " " " Compute hash rational number m / n. Assumes m n integers , n positive . Equivalent hash(fractions . Fraction(m , n ) ) . " " " P = sys . hash_info . modulus # Remove common factors P.   ( Unnecessary m n coprime . ) m % P = = n % P = = 0 : m , n = m // P , n // P n % P = = 0 : hash_value = sys . hash_info . inf : # Fermat Little Theorem : pow(n , P-1 , P ) 1 , # pow(n , P-2 , P ) gives inverse n modulo P. hash_value = ( abs ( m ) % P ) * pow ( n , P - 2 , P ) % P m < 0 : hash_value = - hash_value hash_value = = - 1 : hash_value = - 2 return hash_value def hash_float ( x ): " " " Compute hash float x. " " " math . isnan ( x ): return object . _ _ hash _ _ ( x ) elif math . isinf ( x ): return sys . hash_info . inf x > 0 - sys . hash_info . inf : return hash_fraction ( * x . as_integer_ratio ( ) ) def hash_complex ( z ): " " " Compute hash complex number z. " " " hash_value = hash_float ( z . real ) + sys . hash_info . imag * hash_float ( z . imag ) # signed reduction modulo 2**sys.hash_info.width M = 2 * * ( sys . hash_info . width - 1 ) hash_value = ( hash_value & ( M - 1 ) ) - ( hash_value & M ) hash_value = = - 1 : hash_value = - 2 return hash_value Boolean Type - bool Â¶ Booleans represent truth values . bool type exactly 
+ constant instances : True False . built - function bool ( ) converts value boolean , 
+ value interpreted truth value ( section Truth Value Testing ) . logical operations , use boolean operators , . 
+ applying bitwise operators & , | , ^ booleans , 
+ return bool equivalent logical operations âandâ , âorâ , âxorâ. , 
+ logical operators , ! = preferred 
+ & , | ^ . Deprecated version 3.12 : use bitwise inversion operator ~ deprecated 
+ raise error Python 3.16 . bool subclass int ( Numeric Types â int , float , complex ) . 
+ numeric contexts , False True behave like integers 0 1 , respectively . 
+ , relying discouraged ; explicitly convert int ( ) instead . Iterator Types Â¶ Python supports concept iteration containers .   implemented 
+ distinct methods ; allow user - defined classes 
+ support iteration .   Sequences , described detail , support 
+ iteration methods . method needs defined container objects provide iterable support : container . _ _ iter _ _ ( ) Â¶ Return iterator object .   object required support 
+ iterator protocol described .   container supports different types 
+ iteration , additional methods provided specifically request 
+ iterators iteration types .   ( example object supporting 
+ multiple forms iteration tree structure supports 
+ breadth - depth - traversal . )   method corresponds tp_iter slot type structure Python 
+ objects Python / C API . iterator objects required support following 
+ methods , form iterator protocol : iterator . _ _ iter _ _ ( ) Â¶ Return iterator object .   required allow 
+ containers iterators statements .   method corresponds tp_iter slot type structure Python 
+ objects Python / C API . iterator . _ _ _ _ ( ) Â¶ Return item iterator .   
+ items , raise StopIteration exception .   method corresponds 
+ tp_iternext slot type structure 
+ Python objects Python / C API . Python defines iterator objects support iteration general 
+ specific sequence types , dictionaries , specialized forms .   
+ specific types important implementation iterator 
+ protocol . iteratorâs _ _ _ _ ( ) method raises StopIteration , continue subsequent calls . 
+ Implementations obey property deemed broken . Generator Types Â¶ Pythonâs generator s provide convenient way implement iterator 
+ protocol .   container objectâs _ _ iter _ _ ( ) method implemented 
+ generator , automatically return iterator object ( technically , 
+ generator object ) supplying _ _ iter _ _ ( ) _ _ _ _ ( ) methods . 
+ information generators found documentation 
+ yield expression . Sequence Types â list , tuple , range Â¶ basic sequence types : lists , tuples , range objects . 
+ Additional sequence types tailored processing binary data text strings 
+ described dedicated sections . Common Sequence Operations Â¶ operations following table supported sequence types , 
+ mutable immutable . collections.abc . Sequence ABC 
+ provided easier correctly implement operations 
+ custom sequence types . table lists sequence operations sorted ascending priority .   
+ table , s t sequences type , n , , j k 
+ integers x arbitrary object meets type value 
+ restrictions imposed s . operations priorities 
+ comparison operations . + ( concatenation ) * ( repetition ) 
+ operations priority corresponding numeric operations . [ 3 ] Operation Result Notes x s True item s 
+ equal x , False ( 1 ) x s False item s 
+ equal x , True ( 1 ) s + t concatenation s t ( 6)(7 ) s * n n * s equivalent adding s 
+ n times ( 2)(7 ) s[i ] th item s , origin 0 ( 3 ) s[i : j ] slice s j ( 3)(4 ) s[i : j : k ] slice s j step k ( 3)(5 ) len(s ) length s min(s ) smallest item s max(s ) largest item s s.index(x [ , [ , j ] ] ) index occurrence 
+ x s ( 
+ index index j ) ( 8) s.count(x ) total number occurrences x s Sequences type support comparisons .   particular , tuples 
+ lists compared lexicographically comparing corresponding elements . 
+ means compare equal , element compare equal 
+ sequences type length .   ( 
+ details Comparisons language reference . ) Forward reversed iterators mutable sequences access values 
+ index .   index continue march forward ( backward ) 
+ underlying sequence mutated .   iterator terminates IndexError StopIteration encountered ( index 
+ drops zero ) . Notes : operations simple 
+ containment testing general case , specialised sequences 
+ ( str , bytes bytearray ) use 
+ subsequence testing : > > > " gg " " eggs " True Values n 0 treated 0 ( yields 
+ sequence type s ) .   Note items sequence s copied ; referenced multiple times .   haunts 
+ new Python programmers ; consider : > > > lists = [ [ ] ] * 3 > > > lists [ [ ] , [ ] , [ ] ] > > > lists [ 0 ] . append ( 3 ) > > > lists [ [ 3 ] , [ 3 ] , [ 3 ] ] happened [ [ ] ] - element list containing 
+ list , elements [ [ ] ] * 3 references single 
+ list .   Modifying elements lists modifies single list . 
+ create list different lists way : > > > lists = [ [ ] range ( 3 ) ] > > > lists [ 0 ] . append ( 3 ) > > > lists [ 1 ] . append ( 5 ) > > > lists [ 2 ] . append ( 7 ) > > > lists [ [ 3 ] , [ 5 ] , [ 7 ] ] explanation available FAQ entry create multidimensional list ? . j negative , index relative end sequence s : len(s ) + len(s ) + j substituted .   note -0 
+ 0 . slice s j defined sequence items index k < = k < j .   j greater len(s ) , use len(s ) .   omitted , use 0 .   j omitted , use len(s ) .   greater equal j , slice 
+ . slice s j step k defined sequence 
+ items index x = + n*k 0 < = n < ( j - i)/k .   words , 
+ indices , i+k , i+2*k , i+3*k , stopping j reached ( including j ) .   k positive , j reduced len(s ) greater . 
+ k negative , j reduced len(s ) - 1 
+ greater .   j omitted , 
+ âendâ values ( end depends sign k ) .   Note , k zero . 
+ k , treated like 1 . Concatenating immutable sequences results new object .   
+ means building sequence repeated concatenation 
+ quadratic runtime cost total sequence length .   linear 
+ runtime cost , switch alternatives : concatenating str objects , build list use str.join ( ) end write io . StringIO instance retrieve value complete concatenating bytes objects , similarly use bytes.join ( ) io . BytesIO , - place 
+ concatenation bytearray object . bytearray objects mutable efficient overallocation mechanism concatenating tuple objects , extend list instead types , investigate relevant class documentation sequence types ( range ) support item sequences 
+ follow specific patterns , donât support sequence 
+ concatenation repetition . index raises ValueError x found s . 
+ implementations support passing additional arguments j . 
+ arguments allow efficient searching subsections sequence . Passing 
+ extra arguments roughly equivalent s[i : j].index(x ) , 
+ copying data returned index relative 
+ start sequence start slice . Immutable Sequence Types Â¶ operation immutable sequence types generally implement 
+ implemented mutable sequence types support hash ( ) built - . support allows immutable sequences , tuple instances , 
+ dict keys stored set frozenset instances . Attempting hash immutable sequence contains unhashable values 
+ result TypeError . Mutable Sequence Types Â¶ operations following table defined mutable sequence types . 
+ collections.abc . MutableSequence ABC provided 
+ easier correctly implement operations custom sequence types . table s instance mutable sequence type , t 
+ iterable object x arbitrary object meets type 
+ value restrictions imposed s ( example , bytearray 
+ accepts integers meet value restriction 0 < = x < = 255 ) . Operation Result Notes s[i ] = x item s replaced x s[i : j ] = t slice s j replaced contents 
+ iterable t del s[i : j ] s[i : j ] = [ ] s[i : j : k ] = t elements s[i : j : k ] replaced t ( 1 ) del s[i : j : k ] removes elements s[i : j : k ] list s.append(x ) appends x end 
+ sequence ( s[len(s):len(s ) ] = [ x ] ) s.clear ( ) removes items s ( del s [: ] ) ( 5 ) s.copy ( ) creates shallow copy s ( s [: ] ) ( 5 ) s.extend(t ) s + = t extends s 
+ contents t ( 
+ s[len(s):len(s ) ] = t ) s * = n updates s contents 
+ repeated n times ( 6 ) s.insert(i , x ) inserts x s 
+ index given ( s[i : ] = [ x ] ) s.pop ( ) s.pop(i ) retrieves item 
+ removes s ( 2 ) s.remove(x ) removes item s s[i ] equal x ( 3 ) s.reverse ( ) reverses items s 
+ place ( 4 ) Notes : k equal 1 , t length slice replacing . optional argument defaults -1 , default 
+ item removed returned . remove ( ) raises ValueError x found s . reverse ( ) method modifies sequence place economy 
+ space reversing large sequence .   remind users operates 
+ effect , return reversed sequence . clear ( ) copy ( ) included consistency 
+ interfaces mutable containers donât support slicing operations 
+ ( dict set ) . copy ( ) collections.abc . MutableSequence ABC , concrete 
+ mutable sequence classes provide . Added version 3.3 : clear ( ) copy ( ) methods . value n integer , object implementing _ _ index _ _ ( ) .   Zero negative values n clear 
+ sequence .   Items sequence copied ; referenced 
+ multiple times , explained s * n Common Sequence Operations . Lists Â¶ Lists mutable sequences , typically store collections 
+ homogeneous items ( precise degree similarity vary 
+ application ) . class list ( [ iterable ] ) Â¶ Lists constructed ways : pair square brackets denote list : [ ] square brackets , separating items commas : [ ] , [ , b , c ] list comprehension : [ x x iterable ] type constructor : list ( ) list(iterable ) constructor builds list items 
+ order iterable âs items . iterable sequence , 
+ container supports iteration , iterator object .   iterable list , copy returned , similar iterable [: ] . 
+ example , list('abc ' ) returns [ ' ' , ' b ' , ' c ' ] list ( ( 1 , 2 , 3 ) ) returns [ 1 , 2 , 3 ] . 
+ argument given , constructor creates new list , [ ] . operations produce lists , including sorted ( ) built - . Lists implement common mutable sequence operations . Lists provide 
+ following additional method : sort ( * , key = , reverse = False ) Â¶ method sorts list place , < comparisons 
+ items . Exceptions suppressed - comparison operations 
+ fail , entire sort operation fail ( list likely left 
+ partially modified state ) . sort ( ) accepts arguments passed keyword 
+ ( keyword - arguments ): key specifies function argument extract 
+ comparison key list element ( example , key = str.lower ) . 
+ key corresponding item list calculated 
+ entire sorting process . default value means list items sorted directly calculating separate 
+ key value . functools.cmp_to_key ( ) utility available convert 2.x 
+ style cmp function key function . reverse boolean value .   set True , list elements 
+ sorted comparison reversed . method modifies sequence place economy space 
+ sorting large sequence .   remind users operates 
+ effect , return sorted sequence ( use sorted ( ) 
+ explicitly request new sorted list instance ) . sort ( ) method guaranteed stable .   sort stable 
+ guarantees change relative order elements compare equal 
+ â helpful sorting multiple passes ( example , sort 
+ department , salary grade ) . sorting examples brief sorting tutorial , Sorting Techniques . CPython implementation detail : list sorted , effect attempting mutate , 
+ inspect , list undefined .   C implementation Python makes 
+ list appear duration , raises ValueError 
+ detect list mutated sort . Tuples Â¶ Tuples immutable sequences , typically store collections 
+ heterogeneous data ( 2 - tuples produced enumerate ( ) built - ) . Tuples cases immutable sequence 
+ homogeneous data needed ( allowing storage set dict instance ) . class tuple ( [ iterable ] ) Â¶ Tuples constructed number ways : pair parentheses denote tuple : ( ) trailing comma singleton tuple : , ( , ) Separating items commas : , b , c ( , b , c ) tuple ( ) built - : tuple ( ) tuple(iterable ) constructor builds tuple items 
+ order iterable âs items . iterable sequence , 
+ container supports iteration , iterator object .   iterable tuple , returned unchanged . example , tuple('abc ' ) returns ( ' ' , ' b ' , ' c ' ) tuple ( [ 1 , 2 , 3 ] ) returns ( 1 , 2 , 3 ) . 
+ argument given , constructor creates new tuple , ( ) . Note actually comma makes tuple , parentheses . 
+ parentheses optional , tuple case , 
+ needed avoid syntactic ambiguity . example , f(a , b , c ) function arguments , f((a , b , c ) ) function 3 - tuple sole argument . Tuples implement common sequence 
+ operations . heterogeneous collections data access clearer 
+ access index , collections.namedtuple ( ) appropriate 
+ choice simple tuple object . Ranges Â¶ range type represents immutable sequence numbers 
+ commonly looping specific number times loops . class range ( stop ) Â¶ class range ( start , stop [ , step ] ) arguments range constructor integers ( built - int object implements _ _ index _ _ ( ) special 
+ method ) .   step argument omitted , defaults 1 . 
+ start argument omitted , defaults 0 . 
+ step zero , ValueError raised . positive step , contents range r determined 
+ formula r[i ] = start + step*i > = 0 r[i ] < stop . negative step , contents range determined 
+ formula r[i ] = start + step*i , constraints > = 0 r[i ] > stop . range object r[0 ] meet value 
+ constraint . Ranges support negative indices , interpreted 
+ indexing end sequence determined positive 
+ indices . Ranges containing absolute values larger sys.maxsize 
+ permitted features ( len ( ) ) raise OverflowError . Range examples : > > > list ( range ( 10 ) ) [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 ] > > > list ( range ( 1 , 11 ) ) [ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 ] > > > list ( range ( 0 , 30 , 5 ) ) [ 0 , 5 , 10 , 15 , 20 , 25 ] > > > list ( range ( 0 , 10 , 3 ) ) [ 0 , 3 , 6 , 9 ] > > > list ( range ( 0 , - 10 , - 1 ) ) [ 0 , -1 , -2 , -3 , -4 , -5 , -6 , -7 , -8 , -9 ] > > > list ( range ( 0 ) ) [ ] > > > list ( range ( 1 , 0 ) ) [ ] Ranges implement common sequence operations 
+ concatenation repetition ( fact range objects 
+ represent sequences follow strict pattern repetition 
+ concatenation usually violate pattern ) . start Â¶ value start parameter ( 0 parameter 
+ supplied ) stop Â¶ value stop parameter step Â¶ value step parameter ( 1 parameter 
+ supplied ) advantage range type regular list tuple range object 
+ ( small ) memory , matter size range represents ( 
+ stores start , stop step values , calculating individual 
+ items subranges needed ) . Range objects implement collections.abc . Sequence ABC , provide 
+ features containment tests , element index lookup , slicing 
+ support negative indices ( Sequence Types â list , tuple , range ): > > > r = range ( 0 , 20 , 2 ) > > > r range(0 , 20 , 2 ) > > > 11 r False > > > 10 r True > > > r . index ( 10 ) 5 > > > r [ 5 ] 10 > > > r [: 5 ] range(0 , 10 , 2 ) > > > r [ - 1 ] 18 Testing range objects equality = = ! = compares 
+ sequences .   , range objects considered equal 
+ represent sequence values .   ( Note range 
+ objects compare equal different start , stop step attributes , example range(0 ) = = range(2 , 1 , 3 ) range(0 , 3 , 2 ) = = range(0 , 4 , 2 ) . ) Changed version 3.2 : Implement Sequence ABC . 
+ Support slicing negative indices . 
+ Test int objects membership constant time instead 
+ iterating items . Changed version 3.3 : Define â==â â!=â compare range objects based 
+ sequence values define ( instead comparing based 
+ object identity ) . Added start , stop step attributes . linspace recipe shows implement lazy version range suitable floating - point 
+ applications . Text Sequence Type â str Â¶ Textual data Python handled str objects , strings . 
+ Strings immutable sequences Unicode code points .   String literals 
+ written variety ways : Single quotes : ' allows embedded " double " quotes ' Double quotes : " allows embedded ' single ' quotes " Triple quoted : '' ' single quotes '' ' , " " " double quotes " " " Triple quoted strings span multiple lines - associated whitespace 
+ included string literal . String literals single expression whitespace 
+ implicitly converted single string literal . 
+ , ( " spam " " eggs " ) = = " spam eggs " . String Bytes literals forms string literal , 
+ including supported escape sequences , r ( ârawâ ) prefix 
+ disables escape sequence processing . Strings created objects str constructor . separate âcharacterâ type , indexing string produces 
+ strings length 1 . , non - string s , s[0 ] = = s[0:1 ] . mutable string type , str.join ( ) io . StringIO efficiently construct strings 
+ multiple fragments . Changed version 3.3 : backwards compatibility Python 2 series , u prefix 
+ permitted string literals . effect meaning 
+ string literals combined r prefix . class str ( object = '' ) Â¶ class str ( object = b '' , encoding = ' utf-8 ' , errors = ' strict ' ) Return string version object .   object 
+ provided , returns string .   , behavior str ( ) depends encoding errors given , follows . encoding errors given , str(object ) returns type(object).__str__(object ) , 
+ âinformalâ nicely 
+ printable string representation object .   string objects , 
+ string .   object _ _ str _ _ ( ) method , str ( ) falls returning repr(object ) . encoding errors given , object bytes - like object ( e.g. bytes bytearray ) .   
+ case , object bytes ( bytearray ) object , 
+ str(bytes , encoding , errors ) equivalent bytes.decode(encoding , errors ) .   , bytes 
+ object underlying buffer object obtained calling bytes.decode ( ) .   Binary Sequence Types â bytes , bytearray , memoryview Buffer Protocol information buffer objects . Passing bytes object str ( ) encoding errors arguments falls case returning informal 
+ string representation ( -b command - line option 
+ Python ) .   example : > > > str ( b ' Zoot ! ' ) " b'Zoot ! ' " information str class methods , Text Sequence Type â str String Methods section .   output 
+ formatted strings , f - strings Format String Syntax sections .   addition , Text Processing Services section . String Methods Â¶ Strings implement common sequence 
+ operations , additional methods described . Strings support styles string formatting , providing large 
+ degree flexibility customization ( str.format ( ) , Format String Syntax Custom String Formatting ) based C printf style formatting handles narrower range types 
+ slightly harder use correctly , faster cases 
+ handle ( printf - style String Formatting ) . Text Processing Services section standard library covers number 
+ modules provide text related utilities ( including regular 
+ expression support module ) . str . capitalize ( ) Â¶ Return copy string character capitalized 
+ rest lowercased . Changed version 3.8 : character titlecase uppercase . 
+ means characters like digraphs 
+ letter capitalized , instead character . str . casefold ( ) Â¶ Return casefolded copy string . Casefolded strings 
+ caseless matching . Casefolding similar lowercasing aggressive 
+ intended remove case distinctions string . example , German 
+ lowercase letter ' Ã ' equivalent " ss " . 
+ lowercase , lower ( ) ' Ã ' ; casefold ( ) converts " ss " . casefolding algorithm described section 3.13 âDefault Case Foldingâ Unicode Standard . Added version 3.3 . str . center ( width [ , fillchar ] ) Â¶ Return centered string length width . Padding 
+ specified fillchar ( default ASCII space ) . original string 
+ returned width equal len(s ) . str . count ( sub [ , start [ , end ] ] ) Â¶ Return number non - overlapping occurrences substring sub 
+ range [ start , end ] .   Optional arguments start end 
+ interpreted slice notation . sub , returns number strings characters 
+ length string plus . str . encode ( encoding = ' utf-8 ' , errors = ' strict ' ) Â¶ Return string encoded bytes . encoding defaults ' utf-8 ' ; 
+ Standard Encodings possible values . errors controls encoding errors handled . 
+ ' strict ' ( default ) , UnicodeError exception raised . 
+ possible values ' ignore ' , ' replace ' , ' xmlcharrefreplace ' , ' backslashreplace ' 
+ registered codecs.register_error ( ) . 
+ Error Handlers details . performance reasons , value errors checked validity 
+ encoding error actually occurs , Python Development Mode enabled 
+ debug build . Changed version 3.1 : Added support keyword arguments . Changed version 3.9 : value errors argument checked Python Development Mode 
+ debug mode . str . endswith ( suffix [ , start [ , end ] ] ) Â¶ Return True string ends specified suffix , return False . suffix tuple suffixes look .   optional start , test beginning position .   optional end , stop comparing 
+ position . str . expandtabs ( tabsize = 8 ) Â¶ Return copy string tab characters replaced 
+ spaces , depending current column given tab size .   Tab 
+ positions occur tabsize characters ( default 8 , giving tab 
+ positions columns 0 , 8 , 16 ) .   expand string , current 
+ column set zero string examined character character .   
+ character tab ( \t ) , space characters inserted 
+ result current column equal tab position . 
+ ( tab character copied . )   character newline 
+ ( \n ) return ( \r ) , copied current column reset 
+ zero .   character copied unchanged current column 
+ incremented regardless character represented 
+ printed . > > > ' 01 \t 012 \t 0123 \t 01234 ' . expandtabs ( ) ' 01       012      0123     01234 ' > > > ' 01 \t 012 \t 0123 \t 01234 ' . expandtabs ( 4 ) ' 01   012 0123     01234 ' str . find ( sub [ , start [ , end ] ] ) Â¶ Return lowest index string substring sub found 
+ slice s[start : end ] .   Optional arguments start end 
+ interpreted slice notation .   Return -1 sub found . Note find ( ) method need know 
+ position sub .   check sub substring , use operator : > > > ' Py ' ' Python ' True str . format ( * args , * * kwargs ) Â¶ Perform string formatting operation .   string method 
+ called contain literal text replacement fields delimited braces { } .   replacement field contains numeric index 
+ positional argument , keyword argument .   Returns copy 
+ string replacement field replaced string value 
+ corresponding argument . > > > " sum 1 + 2 { 0 } " . format ( 1 + 2 ) ' sum 1 + 2 3 ' Format String Syntax description formatting options 
+ specified format strings . Note formatting number ( int , float , complex , decimal . Decimal subclasses ) n type 
+ ( ex : ' { : n}'.format(1234 ) ) , function temporarily sets LC_CTYPE locale LC_NUMERIC locale decode decimal_point thousands_sep fields localeconv ( ) 
+ non - ASCII longer 1 byte , LC_NUMERIC locale 
+ different LC_CTYPE locale .   temporary change affects 
+ threads . Changed version 3.7 : formatting number n type , function sets 
+ temporarily LC_CTYPE locale LC_NUMERIC locale 
+ cases . str . format_map ( mapping , / ) Â¶ Similar str.format(**mapping ) , mapping 
+ directly copied dict .   useful 
+ example mapping dict subclass : > > > class Default ( dict ): ... def _ _ missing _ _ ( self , key ): ... return key ... > > > ' { } born { country } ' . format_map ( Default ( = ' Guido ' ) ) ' Guido born country ' Added version 3.2 . str . index ( sub [ , start [ , end ] ] ) Â¶ Like find ( ) , raise ValueError substring 
+ found . str . isalnum ( ) Â¶ Return True characters string alphanumeric 
+ character , False .   character c alphanumeric 
+ following returns True : c.isalpha ( ) , c.isdecimal ( ) , c.isdigit ( ) , c.isnumeric ( ) . str . isalpha ( ) Â¶ Return True characters string alphabetic 
+ character , False .   Alphabetic characters characters defined 
+ Unicode character database âLetterâ , i.e. , general category 
+ property âLmâ , âLtâ , âLuâ , âLlâ , âLoâ.   Note different 
+ Alphabetic property defined section 4.10 âLetters , Alphabetic , 
+ Ideographicâ Unicode Standard . str . isascii ( ) Â¶ Return True string characters string ASCII , False . 
+ ASCII characters code points range U+0000 - U+007F. Added version 3.7 . str . isdecimal ( ) Â¶ Return True characters string decimal 
+ characters character , False . Decimal characters form 
+ numbers base 10 , e.g. U+0660 , ARABIC - INDIC DIGIT 
+ ZERO .   Formally decimal character character Unicode 
+ General Category âNdâ. str . isdigit ( ) Â¶ Return True characters string digits 
+ character , False .   Digits include decimal characters digits need 
+ special handling , compatibility superscript digits . 
+ covers digits form numbers base 10 , 
+ like Kharosthi numbers .   Formally , digit character 
+ property value Numeric_Type = Digit Numeric_Type = Decimal . str . isidentifier ( ) Â¶ Return True string valid identifier according language 
+ definition , section Identifiers keywords . keyword.iskeyword ( ) test string s reserved 
+ identifier , def class . Example : > > > keyword import iskeyword > > > ' hello ' . isidentifier ( ) , iskeyword ( ' hello ' ) ( True , False ) > > > ' def ' . isidentifier ( ) , iskeyword ( ' def ' ) ( True , True ) str . islower ( ) Â¶ Return True cased characters [ 4 ] string lowercase 
+ cased character , False . str . isnumeric ( ) Â¶ Return True characters string numeric 
+ characters , character , False . Numeric characters include digit characters , characters 
+ Unicode numeric value property , e.g. U+2155 , 
+ VULGAR FRACTION FIFTH .   Formally , numeric characters property 
+ value Numeric_Type = Digit , Numeric_Type = Decimal Numeric_Type = Numeric . str . isprintable ( ) Â¶ Return true characters string printable , false 
+ contains non - printable character . âprintableâ means character suitable repr ( ) use 
+ output ; ânon - printableâ means repr ( ) built - types 
+ hex - escape character .   bearing handling strings 
+ written sys.stdout sys.stderr . printable characters Unicode character database 
+ ( unicodedata ) general category group Letter , Mark , 
+ Number , Punctuation , Symbol ( L , M , N , P , S ) ; plus ASCII space 0x20 . 
+ Nonprintable characters group Separator ( Z C ) , 
+ ASCII space . str . isspace ( ) Â¶ Return True whitespace characters string 
+ character , False . character whitespace Unicode character database 
+ ( unicodedata ) , general category Zs ( âSeparator , spaceâ ) , bidirectional class WS , B , S . str . istitle ( ) Â¶ Return True string titlecased string 
+ character , example uppercase characters follow uncased characters 
+ lowercase characters cased ones .   Return False . str . isupper ( ) Â¶ Return True cased characters [ 4 ] string uppercase 
+ cased character , False . > > > ' BANANA ' . isupper ( ) True > > > ' banana ' . isupper ( ) False > > > ' baNana ' . isupper ( ) False > > > ' ' . isupper ( ) False str . join ( iterable ) Â¶ Return string concatenation strings iterable . 
+ TypeError raised non - string values iterable , including bytes objects .   separator 
+ elements string providing method . str . ljust ( width [ , fillchar ] ) Â¶ Return string left justified string length width . Padding 
+ specified fillchar ( default ASCII space ) . 
+ original string returned width equal len(s ) . str . lower ( ) Â¶ Return copy string cased characters [ 4 ] converted 
+ lowercase . lowercasing algorithm described section 3.13 âDefault Case Foldingâ Unicode Standard . str . lstrip ( [ chars ] ) Â¶ Return copy string leading characters removed .   chars argument string specifying set characters removed .   omitted 
+ , chars argument defaults removing whitespace .   chars argument prefix ; , combinations values stripped : > > > '    spacious    ' . lstrip ( ) ' spacious    ' > > > ' www.example.com ' . lstrip ( ' cmowz . ' ) ' example.com ' str.removeprefix ( ) method remove single prefix 
+ string set characters .   example : > > > ' Arthur : ! ' . lstrip ( ' Arthur : ' ) ' ee ! ' > > > ' Arthur : ! ' . removeprefix ( ' Arthur : ' ) ' ! ' static str . maketrans ( x [ , y [ , z ] ] ) Â¶ static method returns translation table usable str.translate ( ) . argument , dictionary mapping Unicode 
+ ordinals ( integers ) characters ( strings length 1 ) Unicode ordinals , 
+ strings ( arbitrary lengths ) .   Character keys 
+ converted ordinals . arguments , strings equal length , 
+ resulting dictionary , character x mapped character 
+ position y.   argument , string , 
+ characters mapped result . str . partition ( sep ) Â¶ Split string occurrence sep , return 3 - tuple 
+ containing separator , separator , 
+ separator .   separator found , return 3 - tuple containing 
+ string , followed strings . str . removeprefix ( prefix , / ) Â¶ string starts prefix string , return string[len(prefix ): ] . , return copy original 
+ string : > > > ' TestHook ' . removeprefix ( ' Test ' ) ' Hook ' > > > ' BaseTestCase ' . removeprefix ( ' Test ' ) ' BaseTestCase ' Added version 3.9 . str . removesuffix ( suffix , / ) Â¶ string ends suffix string suffix , 
+ return string[:-len(suffix ) ] . , return copy 
+ original string : > > > ' MiscTests ' . removesuffix ( ' Tests ' ) ' Misc ' > > > ' TmpDirMixin ' . removesuffix ( ' Tests ' ) ' TmpDirMixin ' Added version 3.9 . str . replace ( old , new , count = -1 ) Â¶ Return copy string occurrences substring old replaced new .   count given , count occurrences replaced . 
+ count specified -1 , occurrences replaced . Changed version 3.13 : count supported keyword argument . str . rfind ( sub [ , start [ , end ] ] ) Â¶ Return highest index string substring sub found , 
+ sub contained s[start : end ] .   Optional arguments start end interpreted slice notation .   Return -1 failure . str . rindex ( sub [ , start [ , end ] ] ) Â¶ Like rfind ( ) raises ValueError substring sub 
+ found . str . rjust ( width [ , fillchar ] ) Â¶ Return string right justified string length width . Padding 
+ specified fillchar ( default ASCII space ) . 
+ original string returned width equal len(s ) . str . rpartition ( sep ) Â¶ Split string occurrence sep , return 3 - tuple 
+ containing separator , separator , 
+ separator .   separator found , return 3 - tuple containing 
+ strings , followed string . str . rsplit ( sep = , maxsplit = -1 ) Â¶ Return list words string , sep delimiter string . 
+ maxsplit given , maxsplit splits , rightmost ones .   sep specified , whitespace string 
+ separator .   splitting right , rsplit ( ) behaves like split ( ) described detail . str . rstrip ( [ chars ] ) Â¶ Return copy string trailing characters removed .   chars argument string specifying set characters removed .   omitted 
+ , chars argument defaults removing whitespace .   chars argument suffix ; , combinations values stripped : > > > '    spacious    ' . rstrip ( ) '    spacious ' > > > ' mississippi ' . rstrip ( ' ipz ' ) ' mississ ' str.removesuffix ( ) method remove single suffix 
+ string set characters .   example : > > > ' Monty Python ' . rstrip ( ' Python ' ) ' M ' > > > ' Monty Python ' . removesuffix ( ' Python ' ) ' Monty ' str . split ( sep = , maxsplit = -1 ) Â¶ Return list words string , sep delimiter 
+ string .   maxsplit given , maxsplit splits ( , 
+ list maxsplit+1 elements ) .   maxsplit 
+ specified -1 , limit number splits 
+ ( possible splits ) . sep given , consecutive delimiters grouped 
+ deemed delimit strings ( example , ' 1,,2'.split ( ' , ' ) returns [ ' 1 ' , '' , ' 2 ' ] ) .   sep argument consist multiple characters 
+ single delimiter ( split multiple delimiters , use re.split ( ) ) . Splitting string specified separator 
+ returns [ '' ] . example : > > > ' 1,2,3 ' . split ( ' , ' ) [ ' 1 ' , ' 2 ' , ' 3 ' ] > > > ' 1,2,3 ' . split ( ' , ' , maxsplit = 1 ) [ ' 1 ' , ' 2,3 ' ] > > > ' 1,2,,3 , ' . split ( ' , ' ) [ ' 1 ' , ' 2 ' , '' , ' 3 ' , '' ] > > > ' 1<>2<>3<4 ' . split ( ' < > ' ) [ ' 1 ' , ' 2 ' , ' 3<4 ' ] sep specified , different splitting algorithm 
+ applied : runs consecutive whitespace regarded single separator , 
+ result contain strings start end 
+ string leading trailing whitespace .   Consequently , splitting 
+ string string consisting whitespace separator 
+ returns [ ] . example : > > > ' 1 2 3 ' . split ( ) [ ' 1 ' , ' 2 ' , ' 3 ' ] > > > ' 1 2 3 ' . split ( maxsplit = 1 ) [ ' 1 ' , ' 2 3 ' ] > > > '    1    2    3    ' . split ( ) [ ' 1 ' , ' 2 ' , ' 3 ' ] str . splitlines ( keepends = False ) Â¶ Return list lines string , breaking line boundaries .   Line 
+ breaks included resulting list keepends given 
+ true . method splits following line boundaries .   particular , 
+ boundaries superset universal newlines . Representation Description \n Line Feed \r Carriage Return \r\n Carriage Return + Line Feed \v \x0b Line Tabulation \f \x0c Form Feed \x1c File Separator \x1d Group Separator \x1e Record Separator \x85 Line ( C1 Control Code ) \u2028 Line Separator \u2029 Paragraph Separator Changed version 3.2 : \v \f added list line boundaries . example : > > > ' ab c \n\n de fg \r kl \r\n ' . splitlines ( ) [ ' ab c ' , '' , ' de fg ' , ' kl ' ] > > > ' ab c \n\n de fg \r kl \r\n ' . splitlines ( keepends = True ) [ ' ab c\n ' , ' \n ' , ' de fg\r ' , ' kl\r\n ' ] Unlike split ( ) delimiter string sep given , 
+ method returns list string , terminal line 
+ break result extra line : > > > " " . splitlines ( ) [ ] > > > " line \n " . splitlines ( ) [ ' line ' ] comparison , split('\n ' ) gives : > > > '' . split ( ' \n ' ) [ '' ] > > > ' lines \n ' . split ( ' \n ' ) [ ' lines ' , '' ] str . startswith ( prefix [ , start [ , end ] ] ) Â¶ Return True string starts prefix , return False . prefix tuple prefixes look .   optional start , 
+ test string beginning position .   optional end , stop comparing 
+ string position . str . strip ( [ chars ] ) Â¶ Return copy string leading trailing characters removed . 
+ chars argument string specifying set characters removed . 
+ omitted , chars argument defaults removing whitespace . 
+ chars argument prefix suffix ; , combinations 
+ values stripped : > > > '    spacious    ' . strip ( ) ' spacious ' > > > ' www.example.com ' . strip ( ' cmowz . ' ) ' example ' outermost leading trailing chars argument values stripped 
+ string . Characters removed leading end 
+ reaching string character contained set 
+ characters chars . similar action takes place trailing end . 
+ example : > > > comment_string = ' # ....... Section 3.2.1 Issue # 32 ....... ' > > > comment_string . strip ( ' . # ! ' ) ' Section 3.2.1 Issue # 32 ' str . swapcase ( ) Â¶ Return copy string uppercase characters converted lowercase 
+ vice versa . Note necessarily true s.swapcase().swapcase ( ) = = s . str . title ( ) Â¶ Return titlecased version string words start uppercase 
+ character remaining characters lowercase . example : > > > ' Hello world ' . title ( ) ' Hello World ' algorithm uses simple language - independent definition word 
+ groups consecutive letters .   definition works contexts 
+ means apostrophes contractions possessives form word 
+ boundaries , desired result : > > > " bill friends UK " . title ( ) " They'Re Bill Friends Uk " string.capwords ( ) function problem , 
+ splits words spaces . Alternatively , workaround apostrophes constructed regular 
+ expressions : > > > import > > > def titlecase ( s ): ... return . sub ( r " [ - Za - z]+('[A - Za - z]+ ) ? " , ... lambda mo : mo . group ( 0 ) . capitalize ( ) , ... s ) ... > > > titlecase ( " bill friends . " ) " Bill Friends . " str . translate ( table ) Â¶ Return copy string character mapped 
+ given translation table .   table object implements 
+ indexing _ _ getitem _ _ ( ) , typically mapping sequence .   indexed Unicode ordinal ( integer ) , 
+ table object following : return Unicode ordinal 
+ string , map character characters ; return , delete character return string ; raise LookupError exception , map character . use str.maketrans ( ) create translation map 
+ character - - character mappings different formats . codecs module flexible approach custom 
+ character mappings . str . upper ( ) Â¶ Return copy string cased characters [ 4 ] converted 
+ uppercase .   Note s.upper().isupper ( ) False s contains uncased characters Unicode category resulting 
+ character(s ) âLuâ ( Letter , uppercase ) , e.g. âLtâ ( Letter , 
+ titlecase ) . uppercasing algorithm described section 3.13 âDefault Case Foldingâ Unicode Standard . str . zfill ( width ) Â¶ Return copy string left filled ASCII ' 0 ' digits 
+ string length width . leading sign prefix ( ' + ' / ' - ' ) 
+ handled inserting padding sign character 
+ . original string returned width 
+ equal len(s ) . example : > > > " 42 " . zfill ( 5 ) ' 00042 ' > > > " -42 " . zfill ( 5 ) ' -0042 ' Formatted String Literals ( f - strings ) Â¶ Added version 3.6 . Changed version 3.7 : await async expressions 
+ f - strings . Changed version 3.8 : Added debugging operator ( = ) Changed version 3.12 : restrictions expressions f - strings removed . 
+ Notably , nested strings , comments , backslashes permitted . f - string ( formally formatted string literal ) 
+ string literal prefixed f F . 
+ type string literal allows embedding arbitrary Python expressions 
+ replacement fields , delimited curly brackets ( { } ) . 
+ expressions evaluated runtime , similarly str.format ( ) , 
+ converted regular str objects . 
+ example : > > > = ' ' > > > nationality = ' Spanish ' > > > f ' { . title ( ) } expects { nationality } Inquisition ! ' ' expects Spanish Inquisition ! ' possible use multi line f - string : > > > f '' ' string ... lines '' ' ' string\non lines ' single opening curly bracket , ' { ' , marks replacement field 
+ contain Python expression : > > > nationality = ' Spanish ' > > > f ' { nationality } Inquisition ! ' ' Spanish Inquisition ! ' include literal { } , use double bracket : > > > x = 42 > > > f ' { { x } } { x } ' ' { x } 42 ' Functions , format specifiers : > > > math import sqrt > > > f ' â2 \N{ALMOST EQUAL } { sqrt ( 2 ) : .5f } ' ' â2 â 1.41421 ' non - string expression converted str ( ) , default : > > > fractions import Fraction > > > f ' { Fraction ( 1 , 3 ) } ' ' 1/3 ' use explicit conversion , use ! ( exclamation mark ) operator , 
+ followed valid formats , : Conversion Meaning ! ascii ( ) ! r repr ( ) ! s str ( ) example : > > > fractions import Fraction > > > f ' { Fraction ( 1 , 3 ) ! s } ' ' 1/3 ' > > > f ' { Fraction ( 1 , 3 ) ! r } ' ' Fraction(1 , 3 ) ' > > > question = ' Â¿DÃ³nde estÃ ¡ el Presidente ? ' > > > print ( f ' { question ! } ' ) ' \xbfD\xf3nde est\xe1 el Presidente ? ' debugging helpful expression value , 
+ equals sign ( = ) expression . 
+ preserves spaces brackets , converter . 
+ default , debugging operator uses repr ( ) ( ! r ) conversion . 
+ example : > > > fractions import Fraction > > > calculation = Fraction ( 1 , 3 ) > > > f ' { calculation = } ' ' calculation = Fraction(1 , 3 ) ' > > > f ' { calculation = } ' ' calculation = Fraction(1 , 3 ) ' > > > f ' { calculation = ! s } ' ' calculation = 1/3 ' output evaluated , formatted format specifier following colon ( ' : ' ) . 
+ expression evaluated , possibly converted string , 
+ _ _ format _ _ ( ) method result called format specifier , 
+ string format specifier given . 
+ formatted result final value replacement field . 
+ example : > > > fractions import Fraction > > > f ' { Fraction ( 1 , 7 ) : .6f } ' ' 0.142857 ' > > > f ' { Fraction ( 1 , 7 ) : _ ^+10 } ' ' _ _ _ +1/7 _ _ _ ' printf -style String Formatting Â¶ Note formatting operations described exhibit variety quirks 
+ lead number common errors ( failing display tuples 
+ dictionaries correctly ) .   newer formatted string literals , str.format ( ) interface , template strings help avoid errors .   
+ alternatives provides trade - offs benefits simplicity , 
+ flexibility , and/or extensibility . String objects unique built - operation : % operator ( modulo ) . 
+ known string formatting interpolation operator . 
+ Given format % values ( format string ) , % conversion 
+ specifications format replaced zero elements values . 
+ effect similar sprintf ( ) function C language . 
+ example : > > > print ( ' % s % d quote types . ' % ( ' Python ' , 2 ) ) Python 2 quote types . format requires single argument , values single non - tuple 
+ object . [ 5 ] , values tuple exactly number 
+ items specified format string , single mapping object ( example , 
+ dictionary ) . conversion specifier contains characters following 
+ components , occur order : ' % ' character , marks start specifier . Mapping key ( optional ) , consisting parenthesised sequence characters 
+ ( example , ( somename ) ) . Conversion flags ( optional ) , affect result conversion 
+ types . Minimum field width ( optional ) .   specified ' * ' ( asterisk ) , 
+ actual width read element tuple values , 
+ object convert comes minimum field width optional precision . Precision ( optional ) , given ' . ' ( dot ) followed precision .   
+ specified ' * ' ( asterisk ) , actual precision read 
+ element tuple values , value convert comes 
+ precision . Length modifier ( optional ) . Conversion type . right argument dictionary ( mapping type ) , 
+ formats string include parenthesised mapping key 
+ dictionary inserted immediately ' % ' character . mapping key 
+ selects value formatted mapping .   example : > > > print ( ' % ( language)s % ( number)03d quote types . ' % ... { ' language ' : " Python " , " number " : 2 } ) Python 002 quote types . case * specifiers occur format ( require 
+ sequential parameter list ) . conversion flag characters : Flag Meaning ' # ' value conversion use âalternate formâ ( defined 
+ ) . ' 0 ' conversion zero padded numeric values . ' - ' converted value left adjusted ( overrides ' 0 ' conversion given ) . ' ' ( space ) blank left positive number ( 
+ string ) produced signed conversion . ' + ' sign character ( ' + ' ' - ' ) precede conversion 
+ ( overrides âspaceâ flag ) . length modifier ( h , l , L ) present , ignored 
+ necessary Python â e.g. % ld identical % d . conversion types : Conversion Meaning Notes ' Signed integer decimal . ' ' Signed integer decimal . ' o ' Signed octal value . ( 1 ) ' u ' Obsolete type â identical ' . ( 6 ) ' x ' Signed hexadecimal ( lowercase ) . ( 2 ) ' X ' Signed hexadecimal ( uppercase ) . ( 2 ) ' e ' Floating - point exponential format ( lowercase ) . ( 3 ) ' E ' Floating - point exponential format ( uppercase ) . ( 3 ) ' f ' Floating - point decimal format . ( 3 ) ' F ' Floating - point decimal format . ( 3 ) ' g ' Floating - point format . Uses lowercase exponential 
+ format exponent -4 
+ precision , decimal format . ( 4 ) ' G ' Floating - point format . Uses uppercase exponential 
+ format exponent -4 
+ precision , decimal format . ( 4 ) ' c ' Single character ( accepts integer single 
+ character string ) . ' r ' String ( converts Python object repr ( ) ) . ( 5 ) ' String ( converts Python object str ( ) ) . ( 5 ) ' ' String ( converts Python object ascii ( ) ) . ( 5 ) ' % ' argument converted , results ' % ' character result . Notes : alternate form causes leading octal specifier ( ' 0o ' ) 
+ inserted digit . alternate form causes leading ' 0x ' ' 0X ' ( depending 
+ ' x ' ' X ' format ) inserted digit . alternate form causes result contain decimal point , 
+ digits follow . precision determines number digits decimal point 
+ defaults 6 . alternate form causes result contain decimal point , 
+ trailing zeroes removed . precision determines number significant digits 
+ decimal point defaults 6 . precision N , output truncated N characters . PEP 237 . Python strings explicit length , % s conversions assume 
+ ' \0 ' end string . Changed version 3.1 : % f conversions numbers absolute value 1e50 
+ longer replaced % g conversions . Binary Sequence Types â bytes , bytearray , memoryview Â¶ core built - types manipulating binary data bytes bytearray . supported memoryview uses 
+ buffer protocol access memory 
+ binary objects needing copy . array module supports efficient storage basic data types like 
+ 32 - bit integers IEEE754 double - precision floating values . Bytes Objects Â¶ Bytes objects immutable sequences single bytes . major 
+ binary protocols based ASCII text encoding , bytes objects offer 
+ methods valid working ASCII compatible 
+ data closely related string objects variety ways . class bytes ( [ source [ , encoding [ , errors ] ] ] ) Â¶ Firstly , syntax bytes literals largely string 
+ literals , b prefix added : Single quotes : b'still allows embedded " double " quotes ' Double quotes : b"still allows embedded ' single ' quotes " Triple quoted : b'''3 single quotes '' ' , b"""3 double quotes " " " ASCII characters permitted bytes literals ( regardless 
+ declared source code encoding ) . binary values 127 entered 
+ bytes literals appropriate escape sequence . string literals , bytes literals use r prefix disable 
+ processing escape sequences . String Bytes literals 
+ forms bytes literal , including supported escape sequences . bytes literals representations based ASCII text , bytes 
+ objects actually behave like immutable sequences integers , 
+ value sequence restricted 0 < = x < 256 ( attempts 
+ violate restriction trigger ValueError ) . 
+ deliberately emphasise binary formats include ASCII based 
+ elements usefully manipulated text - oriented algorithms , 
+ generally case arbitrary binary data ( blindly applying 
+ text processing algorithms binary data formats ASCII 
+ compatible usually lead data corruption ) . addition literal forms , bytes objects created number 
+ ways : zero - filled bytes object specified length : bytes(10 ) iterable integers : bytes(range(20 ) ) Copying existing binary data buffer protocol : bytes(obj ) bytes built - . 2 hexadecimal digits correspond precisely single byte , hexadecimal 
+ numbers commonly format describing binary data . Accordingly , 
+ bytes type additional class method read data format : classmethod fromhex ( string ) Â¶ bytes class method returns bytes object , decoding 
+ given string object .   string contain hexadecimal digits 
+ byte , ASCII whitespace ignored . > > > bytes . fromhex ( ' 2Ef0 F1f2   ' ) b'.\xf0\xf1\xf2 ' Changed version 3.7 : bytes.fromhex ( ) skips ASCII whitespace string , 
+ spaces . reverse conversion function exists transform bytes object 
+ hexadecimal representation . hex ( [ sep [ , bytes_per_sep ] ] ) Â¶ Return string object containing hexadecimal digits 
+ byte instance . > > > b ' \xf0\xf1\xf2 ' . hex ( ) ' f0f1f2 ' want hex string easier read , specify 
+ single character separator sep parameter include output . 
+ default , separator included byte . 
+ second optional bytes_per_sep parameter controls spacing . 
+ Positive values calculate separator position right , 
+ negative values left . > > > value = b ' \xf0\xf1\xf2 ' > > > value . hex ( ' - ' ) ' f0 - f1 - f2 ' > > > value . hex ( ' _ ' , 2 ) ' f0_f1f2 ' > > > b ' UUDDLRLRAB ' . hex ( ' ' , - 4 ) ' 55554444 4c524c52 4142 ' Added version 3.5 . Changed version 3.8 : bytes.hex ( ) supports optional sep bytes_per_sep parameters insert separators bytes hex output . bytes objects sequences integers ( akin tuple ) , bytes 
+ object b , b[0 ] integer , b[0:1 ] bytes 
+ object length 1 .   ( contrasts text strings , indexing 
+ slicing produce string length 1 ) representation bytes objects uses literal format ( b ' ... ' ) 
+ useful e.g. bytes([46 , 46 , 46 ] ) .   
+ convert bytes object list integers list(b ) . Bytearray Objects Â¶ bytearray objects mutable counterpart bytes objects . class bytearray ( [ source [ , encoding [ , errors ] ] ] ) Â¶ dedicated literal syntax bytearray objects , instead 
+ created calling constructor : Creating instance : bytearray ( ) Creating zero - filled instance given length : bytearray(10 ) iterable integers : bytearray(range(20 ) ) Copying existing binary data buffer protocol : bytearray(b'Hi ! ' ) bytearray objects mutable , support mutable sequence operations addition 
+ common bytes bytearray operations described Bytes Bytearray Operations . bytearray built - . 2 hexadecimal digits correspond precisely single byte , hexadecimal 
+ numbers commonly format describing binary data . Accordingly , 
+ bytearray type additional class method read data format : classmethod fromhex ( string ) Â¶ bytearray class method returns bytearray object , decoding 
+ given string object .   string contain hexadecimal digits 
+ byte , ASCII whitespace ignored . > > > bytearray . fromhex ( ' 2Ef0 F1f2   ' ) bytearray(b'.\xf0\xf1\xf2 ' ) Changed version 3.7 : bytearray.fromhex ( ) skips ASCII whitespace string , 
+ spaces . reverse conversion function exists transform bytearray object 
+ hexadecimal representation . hex ( [ sep [ , bytes_per_sep ] ] ) Â¶ Return string object containing hexadecimal digits 
+ byte instance . > > > bytearray ( b ' \xf0\xf1\xf2 ' ) . hex ( ) ' f0f1f2 ' Added version 3.5 . Changed version 3.8 : Similar bytes.hex ( ) , bytearray.hex ( ) supports 
+ optional sep bytes_per_sep parameters insert separators 
+ bytes hex output . bytearray objects sequences integers ( akin list ) , 
+ bytearray object b , b[0 ] integer , b[0:1 ] 
+ bytearray object length 1 .   ( contrasts text strings , 
+ indexing slicing produce string length 1 ) representation bytearray objects uses bytes literal format 
+ ( bytearray(b ' ... ' ) ) useful e.g. bytearray([46 , 46 , 46 ] ) .   convert bytearray object 
+ list integers list(b ) . Bytes Bytearray Operations Â¶ bytes bytearray objects support common sequence operations . interoperate operands 
+ type , bytes - like object . flexibility , 
+ freely mixed operations causing errors . , return type 
+ result depend order operands . Note methods bytes bytearray objects donât accept strings 
+ arguments , methods strings donât accept bytes 
+ arguments .   example , write : = " abc " b = . replace ( " " , " f " ) : = b " abc " b = . replace ( b " " , b " f " ) bytes bytearray operations assume use ASCII compatible 
+ binary formats , avoided working arbitrary 
+ binary data . restrictions covered . Note ASCII based operations manipulate binary data 
+ stored ASCII based format lead data corruption . following methods bytes bytearray objects 
+ arbitrary binary data . bytes . count ( sub [ , start [ , end ] ] ) Â¶ bytearray . count ( sub [ , start [ , end ] ] ) Â¶ Return number non - overlapping occurrences subsequence sub 
+ range [ start , end ] .   Optional arguments start end 
+ interpreted slice notation . subsequence search bytes - like object 
+ integer range 0 255 . sub , returns number slices characters 
+ length bytes object plus . Changed version 3.3 : accept integer range 0 255 subsequence . bytes . removeprefix ( prefix , / ) Â¶ bytearray . removeprefix ( prefix , / ) Â¶ binary data starts prefix string , return bytes[len(prefix ): ] . , return copy original 
+ binary data : > > > b ' TestHook ' . removeprefix ( b ' Test ' ) b'Hook ' > > > b ' BaseTestCase ' . removeprefix ( b ' Test ' ) b'BaseTestCase ' prefix bytes - like object . Note bytearray version method operate place - 
+ produces new object , changes . Added version 3.9 . bytes . removesuffix ( suffix , / ) Â¶ bytearray . removesuffix ( suffix , / ) Â¶ binary data ends suffix string suffix 
+ , return bytes[:-len(suffix ) ] .   , return copy 
+ original binary data : > > > b ' MiscTests ' . removesuffix ( b ' Tests ' ) b'Misc ' > > > b ' TmpDirMixin ' . removesuffix ( b ' Tests ' ) b'TmpDirMixin ' suffix bytes - like object . Note bytearray version method operate place - 
+ produces new object , changes . Added version 3.9 . bytes . decode ( encoding = ' utf-8 ' , errors = ' strict ' ) Â¶ bytearray . decode ( encoding = ' utf-8 ' , errors = ' strict ' ) Â¶ Return bytes decoded str . encoding defaults ' utf-8 ' ; 
+ Standard Encodings possible values . errors controls decoding errors handled . 
+ ' strict ' ( default ) , UnicodeError exception raised . 
+ possible values ' ignore ' , ' replace ' , 
+ registered codecs.register_error ( ) . 
+ Error Handlers details . performance reasons , value errors checked validity 
+ decoding error actually occurs , Python Development Mode enabled debug build . Note Passing encoding argument str allows decoding bytes - like object directly , needing temporary bytes bytearray object . Changed version 3.1 : Added support keyword arguments . Changed version 3.9 : value errors argument checked Python Development Mode 
+ debug mode . bytes . endswith ( suffix [ , start [ , end ] ] ) Â¶ bytearray . endswith ( suffix [ , start [ , end ] ] ) Â¶ Return True binary data ends specified suffix , 
+ return False . suffix tuple suffixes 
+ look .   optional start , test beginning position .   
+ optional end , stop comparing position . suffix(es ) search bytes - like object . bytes . find ( sub [ , start [ , end ] ] ) Â¶ bytearray . find ( sub [ , start [ , end ] ] ) Â¶ Return lowest index data subsequence sub found , 
+ sub contained slice s[start : end ] .   Optional 
+ arguments start end interpreted slice notation .   Return -1 sub found . subsequence search bytes - like object 
+ integer range 0 255 . Note find ( ) method need know 
+ position sub .   check sub substring , use operator : > > > b ' Py ' b ' Python ' True Changed version 3.3 : accept integer range 0 255 subsequence . bytes . index ( sub [ , start [ , end ] ] ) Â¶ bytearray . index ( sub [ , start [ , end ] ] ) Â¶ Like find ( ) , raise ValueError 
+ subsequence found . subsequence search bytes - like object 
+ integer range 0 255 . Changed version 3.3 : accept integer range 0 255 subsequence . bytes . join ( iterable ) Â¶ bytearray . join ( iterable ) Â¶ Return bytes bytearray object concatenation 
+ binary data sequences iterable .   TypeError raised 
+ values iterable bytes - like 
+ objects , including str objects .   
+ separator elements contents bytes 
+ bytearray object providing method . static bytes . maketrans ( , ) Â¶ static bytearray . maketrans ( , ) Â¶ static method returns translation table usable bytes.translate ( ) map character 
+ character position ; bytes - like objects length . Added version 3.1 . bytes . partition ( sep ) Â¶ bytearray . partition ( sep ) Â¶ Split sequence occurrence sep , return 3 - tuple 
+ containing separator , separator 
+ bytearray copy , separator . 
+ separator found , return 3 - tuple 
+ containing copy original sequence , followed bytes 
+ bytearray objects . separator search bytes - like object . bytes . replace ( old , new [ , count ] ) Â¶ bytearray . replace ( old , new [ , count ] ) Â¶ Return copy sequence occurrences subsequence old replaced new .   optional argument count given , 
+ count occurrences replaced . subsequence search replacement bytes - like object . Note bytearray version method operate place - 
+ produces new object , changes . bytes . rfind ( sub [ , start [ , end ] ] ) Â¶ bytearray . rfind ( sub [ , start [ , end ] ] ) Â¶ Return highest index sequence subsequence sub 
+ found , sub contained s[start : end ] .   Optional 
+ arguments start end interpreted slice notation . Return -1 failure . subsequence search bytes - like object 
+ integer range 0 255 . Changed version 3.3 : accept integer range 0 255 subsequence . bytes . rindex ( sub [ , start [ , end ] ] ) Â¶ bytearray . rindex ( sub [ , start [ , end ] ] ) Â¶ Like rfind ( ) raises ValueError 
+ subsequence sub found . subsequence search bytes - like object 
+ integer range 0 255 . Changed version 3.3 : accept integer range 0 255 subsequence . bytes . rpartition ( sep ) Â¶ bytearray . rpartition ( sep ) Â¶ Split sequence occurrence sep , return 3 - tuple 
+ containing separator , separator 
+ bytearray copy , separator . 
+ separator found , return 3 - tuple 
+ containing bytes bytearray objects , followed copy 
+ original sequence . separator search bytes - like object . bytes . startswith ( prefix [ , start [ , end ] ] ) Â¶ bytearray . startswith ( prefix [ , start [ , end ] ] ) Â¶ Return True binary data starts specified prefix , 
+ return False . prefix tuple prefixes 
+ look .   optional start , test beginning position .   
+ optional end , stop comparing position . prefix(es ) search bytes - like object . bytes . translate ( table , / , delete = b '' ) Â¶ bytearray . translate ( table , / , delete = b '' ) Â¶ Return copy bytes bytearray object bytes occurring 
+ optional argument delete removed , remaining bytes 
+ mapped given translation table , bytes 
+ object length 256 . use bytes.maketrans ( ) method create translation 
+ table . Set table argument translations delete 
+ characters : > > > b ' read short text ' . translate ( , b ' aeiou ' ) b'rd ths shrt txt ' Changed version 3.6 : delete supported keyword argument . following methods bytes bytearray objects default behaviours 
+ assume use ASCII compatible binary formats , 
+ arbitrary binary data passing appropriate arguments . Note 
+ bytearray methods section operate place , instead 
+ produce new objects . bytes . center ( width [ , fillbyte ] ) Â¶ bytearray . center ( width [ , fillbyte ] ) Â¶ Return copy object centered sequence length width . 
+ Padding specified fillbyte ( default ASCII 
+ space ) . bytes objects , original sequence returned width equal len(s ) . Note bytearray version method operate place - 
+ produces new object , changes . bytes . ljust ( width [ , fillbyte ] ) Â¶ bytearray . ljust ( width [ , fillbyte ] ) Â¶ Return copy object left justified sequence length width . 
+ Padding specified fillbyte ( default ASCII 
+ space ) . bytes objects , original sequence returned width equal len(s ) . Note bytearray version method operate place - 
+ produces new object , changes . bytes . lstrip ( [ chars ] ) Â¶ bytearray . lstrip ( [ chars ] ) Â¶ Return copy sequence specified leading bytes removed .   chars argument binary sequence specifying set byte values 
+ removed - refers fact method usually 
+ ASCII characters .   omitted , chars argument defaults 
+ removing ASCII whitespace .   chars argument prefix ; 
+ , combinations values stripped : > > > b '    spacious    ' . lstrip ( ) b'spacious    ' > > > b ' www.example.com ' . lstrip ( b ' cmowz . ' ) b'example.com ' binary sequence byte values remove bytes - like object . removeprefix ( ) method 
+ remove single prefix string set 
+ characters .   example : > > > b ' Arthur : ! ' . lstrip ( b ' Arthur : ' ) b'ee ! ' > > > b ' Arthur : ! ' . removeprefix ( b ' Arthur : ' ) b'three ! ' Note bytearray version method operate place - 
+ produces new object , changes . bytes . rjust ( width [ , fillbyte ] ) Â¶ bytearray . rjust ( width [ , fillbyte ] ) Â¶ Return copy object right justified sequence length width . 
+ Padding specified fillbyte ( default ASCII 
+ space ) . bytes objects , original sequence returned width equal len(s ) . Note bytearray version method operate place - 
+ produces new object , changes . bytes . rsplit ( sep = , maxsplit = -1 ) Â¶ bytearray . rsplit ( sep = , maxsplit = -1 ) Â¶ Split binary sequence subsequences type , sep delimiter string . maxsplit given , maxsplit splits 
+ , rightmost ones .   sep specified , 
+ subsequence consisting solely ASCII whitespace separator . 
+ splitting right , rsplit ( ) behaves like split ( ) described detail . bytes . rstrip ( [ chars ] ) Â¶ bytearray . rstrip ( [ chars ] ) Â¶ Return copy sequence specified trailing bytes removed .   chars argument binary sequence specifying set byte values 
+ removed - refers fact method usually 
+ ASCII characters .   omitted , chars argument defaults 
+ removing ASCII whitespace .   chars argument suffix ; , 
+ combinations values stripped : > > > b '    spacious    ' . rstrip ( ) b '    spacious ' > > > b ' mississippi ' . rstrip ( b ' ipz ' ) b'mississ ' binary sequence byte values remove bytes - like object . removesuffix ( ) method 
+ remove single suffix string set 
+ characters .   example : > > > b ' Monty Python ' . rstrip ( b ' Python ' ) b'M ' > > > b ' Monty Python ' . removesuffix ( b ' Python ' ) b'Monty ' Note bytearray version method operate place - 
+ produces new object , changes . bytes . split ( sep = , maxsplit = -1 ) Â¶ bytearray . split ( sep = , maxsplit = -1 ) Â¶ Split binary sequence subsequences type , sep delimiter string . maxsplit given non - negative , maxsplit splits ( , list maxsplit+1 elements ) .   maxsplit specified -1 , 
+ limit number splits ( possible splits ) . sep given , consecutive delimiters grouped 
+ deemed delimit subsequences ( example , b'1,,2'.split(b ' , ' ) returns [ b'1 ' , b '' , b'2 ' ] ) .   sep argument consist 
+ multibyte sequence single delimiter . Splitting sequence 
+ specified separator returns [ b '' ] [ bytearray(b '' ) ] depending 
+ type object split .   sep argument bytes - like object . example : > > > b ' 1,2,3 ' . split ( b ' , ' ) [ b'1 ' , b'2 ' , b'3 ' ] > > > b ' 1,2,3 ' . split ( b ' , ' , maxsplit = 1 ) [ b'1 ' , b'2,3 ' ] > > > b ' 1,2,,3 , ' . split ( b ' , ' ) [ b'1 ' , b'2 ' , b '' , b'3 ' , b '' ] > > > b ' 1<>2<>3<4 ' . split ( b ' < > ' ) [ b'1 ' , b'2 ' , b'3<4 ' ] sep specified , different splitting algorithm 
+ applied : runs consecutive ASCII whitespace regarded single 
+ separator , result contain strings start 
+ end sequence leading trailing whitespace .   Consequently , 
+ splitting sequence sequence consisting solely ASCII 
+ whitespace specified separator returns [ ] . example : > > > b ' 1 2 3 ' . split ( ) [ b'1 ' , b'2 ' , b'3 ' ] > > > b ' 1 2 3 ' . split ( maxsplit = 1 ) [ b'1 ' , b'2 3 ' ] > > > b '    1    2    3    ' . split ( ) [ b'1 ' , b'2 ' , b'3 ' ] bytes . strip ( [ chars ] ) Â¶ bytearray . strip ( [ chars ] ) Â¶ Return copy sequence specified leading trailing bytes 
+ removed . chars argument binary sequence specifying set 
+ byte values removed - refers fact method 
+ usually ASCII characters .   omitted , chars argument defaults removing ASCII whitespace . chars argument 
+ prefix suffix ; , combinations values 
+ stripped : > > > b '    spacious    ' . strip ( ) b'spacious ' > > > b ' www.example.com ' . strip ( b ' cmowz . ' ) b'example ' binary sequence byte values remove bytes - like object . Note bytearray version method operate place - 
+ produces new object , changes . following methods bytes bytearray objects assume use ASCII 
+ compatible binary formats applied arbitrary binary data . 
+ Note bytearray methods section operate 
+ place , instead produce new objects . bytes . capitalize ( ) Â¶ bytearray . capitalize ( ) Â¶ Return copy sequence byte interpreted ASCII 
+ character , byte capitalized rest lowercased . 
+ Non - ASCII byte values passed unchanged . Note bytearray version method operate place - 
+ produces new object , changes . bytes . expandtabs ( tabsize = 8 ) Â¶ bytearray . expandtabs ( tabsize = 8 ) Â¶ Return copy sequence ASCII tab characters replaced 
+ ASCII spaces , depending current column given 
+ tab size .   Tab positions occur tabsize bytes ( default 8 , 
+ giving tab positions columns 0 , 8 , 16 ) .   expand 
+ sequence , current column set zero sequence examined 
+ byte byte .   byte ASCII tab character ( b'\t ' ) , 
+ space characters inserted result current column 
+ equal tab position . ( tab character 
+ copied . )   current byte ASCII newline ( b'\n ' ) 
+ carriage return ( b'\r ' ) , copied current column reset 
+ zero .   byte value copied unchanged current column 
+ incremented regardless byte value represented 
+ printed : > > > b ' 01 \t 012 \t 0123 \t 01234 ' . expandtabs ( ) b'01       012      0123     01234 ' > > > b ' 01 \t 012 \t 0123 \t 01234 ' . expandtabs ( 4 ) b'01   012 0123     01234 ' Note bytearray version method operate place - 
+ produces new object , changes . bytes . isalnum ( ) Â¶ bytearray . isalnum ( ) Â¶ Return True bytes sequence alphabetical ASCII characters 
+ ASCII decimal digits sequence , False . 
+ Alphabetic ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ' . ASCII decimal 
+ digits byte values sequence b'0123456789 ' . example : > > > b ' ABCabc1 ' . isalnum ( ) True > > > b ' ABC abc1 ' . isalnum ( ) False bytes . isalpha ( ) Â¶ bytearray . isalpha ( ) Â¶ Return True bytes sequence alphabetic ASCII characters 
+ sequence , False .   Alphabetic ASCII 
+ characters byte values sequence b'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ' . example : > > > b ' ABCabc ' . isalpha ( ) True > > > b ' ABCabc1 ' . isalpha ( ) False bytes . isascii ( ) Â¶ bytearray . isascii ( ) Â¶ Return True sequence bytes sequence ASCII , False . 
+ ASCII bytes range 0 - 0x7F. Added version 3.7 . bytes . isdigit ( ) Â¶ bytearray . isdigit ( ) Â¶ Return True bytes sequence ASCII decimal digits 
+ sequence , False . ASCII decimal digits 
+ byte values sequence b'0123456789 ' . example : > > > b ' 1234 ' . isdigit ( ) True > > > b ' 1.23 ' . isdigit ( ) False bytes . islower ( ) Â¶ bytearray . islower ( ) Â¶ Return True lowercase ASCII character 
+ sequence uppercase ASCII characters , False . example : > > > b ' hello world ' . islower ( ) True > > > b ' Hello world ' . islower ( ) False Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . bytes . isspace ( ) Â¶ bytearray . isspace ( ) Â¶ Return True bytes sequence ASCII whitespace 
+ sequence , False .   ASCII whitespace characters 
+ byte values sequence b ' \t\n\r\x0b\f ' ( space , tab , newline , 
+ carriage return , vertical tab , form feed ) . bytes . istitle ( ) Â¶ bytearray . istitle ( ) Â¶ Return True sequence ASCII titlecase sequence 
+ , False . bytes.title ( ) details 
+ definition âtitlecaseâ. example : > > > b ' Hello World ' . istitle ( ) True > > > b ' Hello world ' . istitle ( ) False bytes . isupper ( ) Â¶ bytearray . isupper ( ) Â¶ Return True uppercase alphabetic ASCII character 
+ sequence lowercase ASCII characters , False . example : > > > b ' HELLO WORLD ' . isupper ( ) True > > > b ' Hello world ' . isupper ( ) False Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . bytes . lower ( ) Â¶ bytearray . lower ( ) Â¶ Return copy sequence uppercase ASCII characters 
+ converted corresponding lowercase counterpart . example : > > > b ' Hello World ' . lower ( ) b'hello world ' Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . Note bytearray version method operate place - 
+ produces new object , changes . bytes . splitlines ( keepends = False ) Â¶ bytearray . splitlines ( keepends = False ) Â¶ Return list lines binary sequence , breaking ASCII 
+ line boundaries . method uses universal newlines approach 
+ splitting lines . Line breaks included resulting list 
+ keepends given true . example : > > > b ' ab c \n\n de fg \r kl \r\n ' . splitlines ( ) [ b'ab c ' , b '' , b'de fg ' , b'kl ' ] > > > b ' ab c \n\n de fg \r kl \r\n ' . splitlines ( keepends = True ) [ b'ab c\n ' , b'\n ' , b'de fg\r ' , b'kl\r\n ' ] Unlike split ( ) delimiter string sep given , 
+ method returns list string , terminal line 
+ break result extra line : > > > b " " . split ( b ' \n ' ) , b " lines \n " . split ( b ' \n ' ) ( [ b '' ] , [ b'Two lines ' , b '' ] ) > > > b " " . splitlines ( ) , b " line \n " . splitlines ( ) ( [ ] , [ b'One line ' ] ) bytes . swapcase ( ) Â¶ bytearray . swapcase ( ) Â¶ Return copy sequence lowercase ASCII characters 
+ converted corresponding uppercase counterpart vice - versa . example : > > > b ' Hello World ' . swapcase ( ) b'hELLO wORLD ' Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . Unlike str.swapcase ( ) , case bin.swapcase().swapcase ( ) = = bin binary versions . Case 
+ conversions symmetrical ASCII , generally 
+ true arbitrary Unicode code points . Note bytearray version method operate place - 
+ produces new object , changes . bytes . title ( ) Â¶ bytearray . title ( ) Â¶ Return titlecased version binary sequence words start 
+ uppercase ASCII character remaining characters lowercase . 
+ Uncased byte values left unmodified . example : > > > b ' Hello world ' . title ( ) b'Hello World ' Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . 
+ byte values uncased . algorithm uses simple language - independent definition word 
+ groups consecutive letters .   definition works contexts 
+ means apostrophes contractions possessives form word 
+ boundaries , desired result : > > > b " bill friends UK " . title ( ) b"They'Re Bill Friends Uk " workaround apostrophes constructed regular expressions : > > > import > > > def titlecase ( s ): ... return . sub ( rb " [ - Za - z]+('[A - Za - z]+ ) ? " , ... lambda mo : mo . group ( 0 ) [ 0 : 1 ] . upper ( ) + ... mo . group ( 0 ) [ 1 :] . lower ( ) , ... s ) ... > > > titlecase ( b " bill friends . " ) b"They're Bill Friends . " Note bytearray version method operate place - 
+ produces new object , changes . bytes . upper ( ) Â¶ bytearray . upper ( ) Â¶ Return copy sequence lowercase ASCII characters 
+ converted corresponding uppercase counterpart . example : > > > b ' Hello World ' . upper ( ) b'HELLO WORLD ' Lowercase ASCII characters byte values sequence b'abcdefghijklmnopqrstuvwxyz ' . Uppercase ASCII characters 
+ byte values sequence b'ABCDEFGHIJKLMNOPQRSTUVWXYZ ' . Note bytearray version method operate place - 
+ produces new object , changes . bytes . zfill ( width ) Â¶ bytearray . zfill ( width ) Â¶ Return copy sequence left filled ASCII b'0 ' digits 
+ sequence length width . leading sign prefix ( b'+ ' / b'- ' ) handled inserting padding sign character 
+ . bytes objects , original sequence 
+ returned width equal len(seq ) . example : > > > b " 42 " . zfill ( 5 ) b'00042 ' > > > b " -42 " . zfill ( 5 ) b'-0042 ' Note bytearray version method operate place - 
+ produces new object , changes . printf -style Bytes Formatting Â¶ Note formatting operations described exhibit variety quirks 
+ lead number common errors ( failing display tuples 
+ dictionaries correctly ) .   value printed tuple 
+ dictionary , wrap tuple . Bytes objects ( bytes / bytearray ) unique built - operation : 
+ % operator ( modulo ) . 
+ known bytes formatting interpolation operator . 
+ Given format % values ( format bytes object ) , % conversion 
+ specifications format replaced zero elements values . 
+ effect similar sprintf ( ) C language . format requires single argument , values single non - tuple 
+ object . [ 5 ] , values tuple exactly number 
+ items specified format bytes object , single mapping object ( 
+ example , dictionary ) . conversion specifier contains characters following 
+ components , occur order : ' % ' character , marks start specifier . Mapping key ( optional ) , consisting parenthesised sequence characters 
+ ( example , ( somename ) ) . Conversion flags ( optional ) , affect result conversion 
+ types . Minimum field width ( optional ) .   specified ' * ' ( asterisk ) , 
+ actual width read element tuple values , 
+ object convert comes minimum field width optional precision . Precision ( optional ) , given ' . ' ( dot ) followed precision .   
+ specified ' * ' ( asterisk ) , actual precision read 
+ element tuple values , value convert comes 
+ precision . Length modifier ( optional ) . Conversion type . right argument dictionary ( mapping type ) , 
+ formats bytes object include parenthesised mapping key 
+ dictionary inserted immediately ' % ' character . mapping key 
+ selects value formatted mapping .   example : > > > print ( b ' % ( language)s % ( number)03d quote types . ' % ... { b ' language ' : b " Python " , b " number " : 2 } ) b'Python 002 quote types . ' case * specifiers occur format ( require 
+ sequential parameter list ) . conversion flag characters : Flag Meaning ' # ' value conversion use âalternate formâ ( defined 
+ ) . ' 0 ' conversion zero padded numeric values . ' - ' converted value left adjusted ( overrides ' 0 ' conversion given ) . ' ' ( space ) blank left positive number ( 
+ string ) produced signed conversion . ' + ' sign character ( ' + ' ' - ' ) precede conversion 
+ ( overrides âspaceâ flag ) . length modifier ( h , l , L ) present , ignored 
+ necessary Python â e.g. % ld identical % d . conversion types : Conversion Meaning Notes ' Signed integer decimal . ' ' Signed integer decimal . ' o ' Signed octal value . ( 1 ) ' u ' Obsolete type â identical ' . ( 8) ' x ' Signed hexadecimal ( lowercase ) . ( 2 ) ' X ' Signed hexadecimal ( uppercase ) . ( 2 ) ' e ' Floating - point exponential format ( lowercase ) . ( 3 ) ' E ' Floating - point exponential format ( uppercase ) . ( 3 ) ' f ' Floating - point decimal format . ( 3 ) ' F ' Floating - point decimal format . ( 3 ) ' g ' Floating - point format . Uses lowercase exponential 
+ format exponent -4 
+ precision , decimal format . ( 4 ) ' G ' Floating - point format . Uses uppercase exponential 
+ format exponent -4 
+ precision , decimal format . ( 4 ) ' c ' Single byte ( accepts integer single 
+ byte objects ) . ' b ' Bytes ( object follows buffer protocol _ _ bytes _ _ ( ) ) . ( 5 ) ' ' alias ' b ' 
+ Python2/3 code bases . ( 6 ) ' ' Bytes ( converts Python object repr(obj).encode('ascii ' , ' backslashreplace ' ) ) . ( 5 ) ' r ' ' r ' alias ' ' 
+ Python2/3 code bases . ( 7 ) ' % ' argument converted , results ' % ' character result . Notes : alternate form causes leading octal specifier ( ' 0o ' ) 
+ inserted digit . alternate form causes leading ' 0x ' ' 0X ' ( depending 
+ ' x ' ' X ' format ) inserted digit . alternate form causes result contain decimal point , 
+ digits follow . precision determines number digits decimal point 
+ defaults 6 . alternate form causes result contain decimal point , 
+ trailing zeroes removed . precision determines number significant digits 
+ decimal point defaults 6 . precision N , output truncated N characters . b'%s ' deprecated , removed 3.x series . b'%r ' deprecated , removed 3.x series . PEP 237 . Note bytearray version method operate place - 
+ produces new object , changes . PEP 461 - Adding % formatting bytes bytearray Added version 3.5 . Memory Views Â¶ memoryview objects allow Python code access internal data 
+ object supports buffer protocol 
+ copying . class memoryview ( object ) Â¶ Create memoryview references object . object 
+ support buffer protocol .   Built - objects support buffer 
+ protocol include bytes bytearray . memoryview notion element , 
+ atomic memory unit handled originating object .   simple 
+ types bytes bytearray , element single 
+ byte , types array.array bigger elements . len(view ) equal length tolist , 
+ nested list representation view . view.ndim = 1 , 
+ equal number elements view . Changed version 3.12 : view.ndim = = 0 , len(view ) raises TypeError instead returning 1 . itemsize attribute number 
+ bytes single element . memoryview supports slicing indexing expose data . 
+ - dimensional slicing result subview : > > > v = memoryview ( b ' abcefg ' ) > > > v [ 1 ] 98 > > > v [ - 1 ] 103 > > > v [ 1 : 4 ] < memory 0x7f3ddc9f4350 > > > > bytes ( v [ 1 : 4 ] ) b'bce ' format native format specifiers 
+ struct module , indexing integer tuple 
+ integers supported returns single element 
+ correct type .   - dimensional memoryviews indexed 
+ integer - integer tuple .   Multi - dimensional memoryviews 
+ indexed tuples exactly ndim integers ndim 
+ number dimensions .   Zero - dimensional memoryviews indexed 
+ tuple . example non - byte format : > > > import array > > > = array . array ( ' l ' , [ - 11111111 , 22222222 , - 33333333 , 44444444 ] ) > > > m = memoryview ( ) > > > m [ 0 ] -11111111 > > > m [ - 1 ] 44444444 > > > m [: : 2 ] . tolist ( ) [ -11111111 , -33333333 ] underlying object writable , memoryview supports 
+ - dimensional slice assignment . Resizing allowed : > > > data = bytearray ( b ' abcefg ' ) > > > v = memoryview ( data ) > > > v . readonly False > > > v [ 0 ] = ord ( b ' z ' ) > > > data bytearray(b'zbcefg ' ) > > > v [ 1 : 4 ] = b ' 123 ' > > > data bytearray(b'z123fg ' ) > > > v [ 2 : 3 ] = b ' spam ' Traceback ( recent ): File " < stdin > " , line 1 , < module > ValueError : memoryview assignment : lvalue rvalue different structures > > > v [ 2 : 6 ] = b ' spam ' > > > data bytearray(b'z1spam ' ) - dimensional memoryviews hashable ( read - ) types formats 
+ âBâ , âbâ âcâ hashable . hash defined hash(m ) = = hash(m.tobytes ( ) ) : > > > v = memoryview ( b ' abcefg ' ) > > > hash ( v ) = = hash ( b ' abcefg ' ) True > > > hash ( v [ 2 : 4 ] ) = = hash ( b ' ce ' ) True > > > hash ( v [: : - 2 ] ) = = hash ( b ' abcefg ' [: : - 2 ] ) True Changed version 3.3 : - dimensional memoryviews sliced . 
+ - dimensional memoryviews formats âBâ , âbâ âcâ hashable . Changed version 3.4 : memoryview registered automatically collections.abc . Sequence Changed version 3.5 : memoryviews indexed tuple integers . memoryview methods : _ _ eq _ _ ( exporter ) Â¶ memoryview PEP 3118 exporter equal shapes 
+ equivalent corresponding values equal operandsâ 
+ respective format codes interpreted struct syntax . subset struct format strings currently supported tolist ( ) , v w equal v.tolist ( ) = = w.tolist ( ) : > > > import array > > > = array . array ( ' ' , [ 1 , 2 , 3 , 4 , 5 ] ) > > > b = array . array ( ' , [ 1.0 , 2.0 , 3.0 , 4.0 , 5.0 ] ) > > > c = array . array ( ' b ' , [ 5 , 3 , 1 ] ) > > > x = memoryview ( ) > > > y = memoryview ( b ) > > > x = = = = y = = b True > > > x . tolist ( ) = = . tolist ( ) = = y . tolist ( ) = = b . tolist ( ) True > > > z = y [: : - 2 ] > > > z = = c True > > > z . tolist ( ) = = c . tolist ( ) True format string supported struct module , 
+ objects compare unequal ( format 
+ strings buffer contents identical ): > > > ctypes import BigEndianStructure , c_long > > > class BEPoint ( BigEndianStructure ): ... _ fields _ = [ ( " x " , c_long ) , ( " y " , c_long ) ] ... > > > point = BEPoint ( 100 , 200 ) > > > = memoryview ( point ) > > > b = memoryview ( point ) > > > = = point False > > > = = b False Note , floating - point numbers , v w imply v = = w memoryview objects . Changed version 3.3 : Previous versions compared raw memory disregarding item format 
+ logical array structure . tobytes ( order = ' C ' ) Â¶ Return data buffer bytestring .   equivalent 
+ calling bytes constructor memoryview . > > > m = memoryview ( b " abc " ) > > > m . tobytes ( ) b'abc ' > > > bytes ( m ) b'abc ' non - contiguous arrays result equal flattened list 
+ representation elements converted bytes . tobytes ( ) supports format strings , including struct module syntax . Added version 3.8 : order { âCâ , âFâ , âAâ } .   order âCâ âFâ , data 
+ original array converted C Fortran order . contiguous 
+ views , âAâ returns exact copy physical memory . particular , 
+ - memory Fortran order preserved . non - contiguous views , 
+ data converted C . order = order = âCâ . hex ( [ sep [ , bytes_per_sep ] ] ) Â¶ Return string object containing hexadecimal digits 
+ byte buffer . > > > m = memoryview ( b " abc " ) > > > m . hex ( ) ' 616263 ' Added version 3.5 . Changed version 3.8 : Similar bytes.hex ( ) , memoryview.hex ( ) supports 
+ optional sep bytes_per_sep parameters insert separators 
+ bytes hex output . tolist ( ) Â¶ Return data buffer list elements . > > > memoryview ( b ' abc ' ) . tolist ( ) [ 97 , 98 , 99 ] > > > import array > > > = array . array ( ' , [ 1.1 , 2.2 , 3.3 ] ) > > > m = memoryview ( ) > > > m . tolist ( ) [ 1.1 , 2.2 , 3.3 ] Changed version 3.3 : tolist ( ) supports single character native formats struct module syntax multi - dimensional 
+ representations . toreadonly ( ) Â¶ Return readonly version memoryview object .   original 
+ memoryview object unchanged . > > > m = memoryview ( bytearray ( b ' abc ' ) ) > > > mm = m . toreadonly ( ) > > > mm . tolist ( ) [ 97 , 98 , 99 ] > > > mm [ 0 ] = 42 Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : modify read - memory > > > m [ 0 ] = 43 > > > mm . tolist ( ) [ 43 , 98 , 99 ] Added version 3.8 . release ( ) Â¶ Release underlying buffer exposed memoryview object .   
+ objects special actions view held ( example , 
+ bytearray temporarily forbid resizing ) ; , 
+ calling release ( ) handy remove restrictions ( free 
+ dangling resources ) soon possible . method called , operation view 
+ raises ValueError ( release ( ) 
+ called multiple times ): > > > m = memoryview ( b ' abc ' ) > > > m . release ( ) > > > m [ 0 ] Traceback ( recent ): File " < stdin > " , line 1 , < module > ValueError : operation forbidden released memoryview object context management protocol similar effect , 
+ statement : > > > memoryview ( b ' abc ' ) m : ... m [ 0 ] ... 97 > > > m [ 0 ] Traceback ( recent ): File " < stdin > " , line 1 , < module > ValueError : operation forbidden released memoryview object Added version 3.2 . cast ( format [ , shape ] ) Â¶ Cast memoryview new format shape . shape defaults [ byte_length//new_itemsize ] , means result view 
+ - dimensional . return value new memoryview , 
+ buffer copied . Supported casts 1D - > C- contiguous C - contiguous - > 1D. destination format restricted single element native format struct syntax . formats byte format 
+ ( âBâ , âbâ âcâ ) . byte length result 
+ original length . 
+ Note byte lengths depend operating system . Cast 1D / long 1D / unsigned bytes : > > > import array > > > = array . array ( ' l ' , [ 1 , 2 , 3 ] ) > > > x = memoryview ( ) > > > x . format ' l ' > > > x . itemsize 8 > > > len ( x ) 3 > > > x . nbytes 24 > > > y = x . cast ( ' B ' ) > > > y . format ' B ' > > > y . itemsize 1 > > > len ( y ) 24 > > > y . nbytes 24 Cast 1D / unsigned bytes 1D / char : > > > b = bytearray ( b ' zyz ' ) > > > x = memoryview ( b ) > > > x [ 0 ] = b ' ' Traceback ( recent ): ... TypeError : memoryview : invalid type format ' B ' > > > y = x . cast ( ' c ' ) > > > y [ 0 ] = b ' ' > > > b bytearray(b'ayz ' ) Cast 1D / bytes 3D / ints 1D / signed char : > > > import struct > > > buf = struct . pack ( " " * 12 , * list ( range ( 12 ) ) ) > > > x = memoryview ( buf ) > > > y = x . cast ( ' ' , shape = [ 2 , 2 , 3 ] ) > > > y . tolist ( ) [ [ [ 0 , 1 , 2 ] , [ 3 , 4 , 5 ] ] , [ [ 6 , 7 , 8 ] , [ 9 , 10 , 11 ] ] ] > > > y . format ' ' > > > y . itemsize 4 > > > len ( y ) 2 > > > y . nbytes 48 > > > z = y . cast ( ' b ' ) > > > z . format ' b ' > > > z . itemsize 1 > > > len ( z ) 48 > > > z . nbytes 48 Cast 1D / unsigned long 2D / unsigned long : > > > buf = struct . pack ( " L " * 6 , * list ( range ( 6 ) ) ) > > > x = memoryview ( buf ) > > > y = x . cast ( ' L ' , shape = [ 2 , 3 ] ) > > > len ( y ) 2 > > > y . nbytes 48 > > > y . tolist ( ) [ [ 0 , 1 , 2 ] , [ 3 , 4 , 5 ] ] Added version 3.3 . Changed version 3.5 : source format longer restricted casting byte view . readonly attributes available : obj Â¶ underlying object memoryview : > > > b = bytearray ( b ' xyz ' ) > > > m = memoryview ( b ) > > > m . obj b True Added version 3.3 . nbytes Â¶ nbytes = = product(shape ) * itemsize = = len(m.tobytes ( ) ) . 
+ space bytes array use contiguous 
+ representation . necessarily equal len(m ) : > > > import array > > > = array . array ( ' ' , [ 1 , 2 , 3 , 4 , 5 ] ) > > > m = memoryview ( ) > > > len ( m ) 5 > > > m . nbytes 20 > > > y = m [: : 2 ] > > > len ( y ) 3 > > > y . nbytes 12 > > > len ( y . tobytes ( ) ) 12 Multi - dimensional arrays : > > > import struct > > > buf = struct . pack ( " d " * 12 , * [ 1.5 * x x range ( 12 ) ] ) > > > x = memoryview ( buf ) > > > y = x . cast ( ' , shape = [ 3 , 4 ] ) > > > y . tolist ( ) [ [ 0.0 , 1.5 , 3.0 , 4.5 ] , [ 6.0 , 7.5 , 9.0 , 10.5 ] , [ 12.0 , 13.5 , 15.0 , 16.5 ] ] > > > len ( y ) 3 > > > y . nbytes 96 Added version 3.3 . readonly Â¶ bool indicating memory read . format Â¶ string containing format ( struct module style ) 
+ element view . memoryview created exporters 
+ arbitrary format strings , methods ( e.g. tolist ( ) ) 
+ restricted native single element formats . Changed version 3.3 : format ' B ' handled according struct module syntax . 
+ means memoryview(b'abc')[0 ] = = b'abc'[0 ] = = 97 . itemsize Â¶ size bytes element memoryview : > > > import array , struct > > > m = memoryview ( array . array ( ' H ' , [ 32000 , 32001 , 32002 ] ) ) > > > m . itemsize 2 > > > m [ 0 ] 32000 > > > struct . calcsize ( ' H ' ) = = m . itemsize True ndim Â¶ integer indicating dimensions multi - dimensional array 
+ memory represents . shape Â¶ tuple integers length ndim giving shape 
+ memory N - dimensional array . Changed version 3.3 : tuple instead ndim = 0 . strides Â¶ tuple integers length ndim giving size bytes 
+ access element dimension array . Changed version 3.3 : tuple instead ndim = 0 . suboffsets Â¶ internally PIL - style arrays . value informational . c_contiguous Â¶ bool indicating memory C- contiguous . Added version 3.3 . f_contiguous Â¶ bool indicating memory Fortran contiguous . Added version 3.3 . contiguous Â¶ bool indicating memory contiguous . Added version 3.3 . Set Types â set , frozenset Â¶ set object unordered collection distinct hashable objects . 
+ Common uses include membership testing , removing duplicates sequence , 
+ computing mathematical operations intersection , union , difference , 
+ symmetric difference . 
+ ( containers built - dict , list , 
+ tuple classes , collections module . ) Like collections , sets support x set , len(set ) , x set .   unordered collection , sets record element position 
+ order insertion .   Accordingly , sets support indexing , slicing , 
+ sequence - like behavior . currently built - set types , set frozenset . 
+ set type mutable â contents changed methods 
+ like add ( ) remove ( ) .   mutable , 
+ hash value dictionary key element 
+ set .   frozenset type immutable hashable â 
+ contents altered created ; 
+ dictionary key element set . Non - sets ( frozensets ) created placing comma - separated list 
+ elements braces , example : { ' jack ' , ' sjoerd ' } , addition set constructor . constructors classes work : class set ( [ iterable ] ) Â¶ class frozenset ( [ iterable ] ) Â¶ Return new set frozenset object elements taken iterable .   elements set hashable .   
+ represent sets sets , inner sets frozenset objects .   iterable specified , new set 
+ returned . Sets created means : Use comma - separated list elements braces : { ' jack ' , ' sjoerd ' } Use set comprehension : { c c ' abracadabra ' c ' abc ' } Use type constructor : set ( ) , set('foobar ' ) , set(['a ' , ' b ' , ' foo ' ] ) Instances set frozenset provide following 
+ operations : len(s ) Return number elements set s ( cardinality s ) . x s Test x membership s . x s Test x non - membership s . isdisjoint ( ) Â¶ Return True set elements common .   Sets 
+ disjoint intersection set . issubset ( ) Â¶ set < = Test element set . set < Test set proper subset , , set < = set ! = . issuperset ( ) Â¶ set > = Test element set . set > Test set proper superset , , set > = set ! = . union ( * ) Â¶ set | | ... Return new set elements set . intersection ( * ) Â¶ set & & ... Return new set elements common set . difference ( * ) Â¶ set - - ... Return new set elements set . symmetric_difference ( ) Â¶ set ^ Return new set elements set . copy ( ) Â¶ Return shallow copy set . Note , non - operator versions union ( ) , intersection ( ) , difference ( ) , symmetric_difference ( ) , issubset ( ) , issuperset ( ) methods accept iterable argument .   
+ contrast , operator based counterparts require arguments 
+ sets .   precludes error - prone constructions like set('abc ' ) & ' cbs ' favor readable set('abc').intersection('cbs ' ) . set frozenset support set set comparisons . 
+ sets equal element set contained 
+ ( subset ) . set set 
+ set proper subset second set ( subset , 
+ equal ) . set greater set set 
+ proper superset second set ( superset , equal ) . Instances set compared instances frozenset based members .   example , set('abc ' ) = = frozenset('abc ' ) returns True set('abc ' ) set([frozenset('abc ' ) ] ) . subset equality comparisons generalize total ordering 
+ function .   example , nonempty disjoint sets equal 
+ subsets , following return False : < b , a==b , > b . sets define partial ordering ( subset relationships ) , output 
+ list.sort ( ) method undefined lists sets . Set elements , like dictionary keys , hashable . Binary operations mix set instances frozenset return type operand .   example : frozenset('ab ' ) | set('bc ' ) returns instance frozenset . following table lists operations available set 
+ apply immutable instances frozenset : update ( * ) Â¶ set |= | ... Update set , adding elements . intersection_update ( * ) Â¶ set & = & ... Update set , keeping elements found . difference_update ( * ) Â¶ set -= | ... Update set , removing elements found . symmetric_difference_update ( ) Â¶ set ^= Update set , keeping elements found set , . add ( elem ) Â¶ Add element elem set . remove ( elem ) Â¶ Remove element elem set .   Raises KeyError elem 
+ contained set . discard ( elem ) Â¶ Remove element elem set present . pop ( ) Â¶ Remove return arbitrary element set .   Raises KeyError set . clear ( ) Â¶ Remove elements set . Note , non - operator versions update ( ) , intersection_update ( ) , difference_update ( ) , symmetric_difference_update ( ) methods accept iterable 
+ argument . Note , elem argument _ _ contains _ _ ( ) , remove ( ) , discard ( ) methods set .   support searching equivalent 
+ frozenset , temporary created elem . Mapping Types â dict Â¶ mapping object maps hashable values arbitrary objects . 
+ Mappings mutable objects .   currently standard mapping 
+ type , dictionary .   ( containers built - list , set , tuple classes , collections module . ) dictionaryâs keys arbitrary values .   Values hashable , , values containing lists , dictionaries 
+ mutable types ( compared value object identity ) 
+ keys . 
+ Values compare equal ( 1 , 1.0 , True ) 
+ interchangeably index dictionary entry . class dict ( * * kwargs ) Â¶ class dict ( mapping , * * kwargs ) class dict ( iterable , * * kwargs ) Return new dictionary initialized optional positional argument 
+ possibly set keyword arguments . Dictionaries created means : Use comma - separated list key : value pairs braces : { ' jack ' : 4098 , ' sjoerd ' : 4127 } { 4098 : ' jack ' , 4127 : ' sjoerd ' } Use dict comprehension : { } , { x : x * * 2 x range(10 ) } Use type constructor : dict ( ) , dict([('foo ' , 100 ) , ( ' bar ' , 200 ) ] ) , dict(foo=100 , bar=200 ) positional argument given , dictionary created . 
+ positional argument given defines keys ( ) method , 
+ dictionary created calling _ _ getitem _ _ ( ) argument 
+ returned key method .   , positional argument iterable object .   item iterable iterable 
+ exactly elements .   element item key 
+ new dictionary , second element corresponding value .   key occurs 
+ , value key corresponding value 
+ new dictionary . keyword arguments given , keyword arguments values 
+ added dictionary created positional argument .   key 
+ added present , value keyword argument 
+ replaces value positional argument . illustrate , following examples return dictionary equal { " " : 1 , " " : 2 , " " : 3 } : > > > = dict ( = 1 , = 2 , = 3 ) > > > b = { ' ' : 1 , ' ' : 2 , ' ' : 3 } > > > c = dict ( zip ( [ ' ' , ' ' , ' ' ] , [ 1 , 2 , 3 ] ) ) > > > d = dict ( [ ( ' ' , 2 ) , ( ' ' , 1 ) , ( ' ' , 3 ) ] ) > > > e = dict ( { ' ' : 3 , ' ' : 1 , ' ' : 2 } ) > > > f = dict ( { ' ' : 1 , ' ' : 3 } , = 2 ) > > > = = b = = c = = d = = e = = f True Providing keyword arguments example works keys 
+ valid Python identifiers .   , valid keys . operations dictionaries support ( , custom 
+ mapping types support ): list(d ) Return list keys dictionary d . len(d ) Return number items dictionary d . d[key ] Return item d key key .   Raises KeyError key 
+ map . subclass dict defines method _ _ missing _ _ ( ) key present , d[key ] operation calls method key key argument .   d[key ] operation returns raises 
+ returned raised _ _ missing__(key ) . 
+ operations methods invoke _ _ missing _ _ ( ) . _ _ missing _ _ ( ) defined , KeyError raised . _ _ missing _ _ ( ) method ; instance variable : > > > class Counter ( dict ): ... def _ _ missing _ _ ( self , key ): ... return 0 ... > > > c = Counter ( ) > > > c [ ' red ' ] 0 > > > c [ ' red ' ] + = 1 > > > c [ ' red ' ] 1 example shows implementation collections . Counter .   different _ _ missing _ _ method 
+ collections.defaultdict . d[key ] = value Set d[key ] value . del d[key ] Remove d[key ] d .   Raises KeyError key 
+ map . key d Return True d key key , False . key d Equivalent key d . iter(d ) Return iterator keys dictionary .   shortcut 
+ iter(d.keys ( ) ) . clear ( ) Â¶ Remove items dictionary . copy ( ) Â¶ Return shallow copy dictionary . classmethod fromkeys ( iterable , value = , / ) Â¶ Create new dictionary keys iterable values set value . fromkeys ( ) class method returns new dictionary . value defaults .   values refer single instance , 
+ generally doesnât sense value mutable object 
+ list .   distinct values , use dict 
+ comprehension instead . ( key , default = , / ) Â¶ Return value key key dictionary , default . 
+ default given , defaults , method 
+ raises KeyError . items ( ) Â¶ Return new view dictionaryâs items ( ( key , value ) pairs ) . 
+ documentation view objects . keys ( ) Â¶ Return new view dictionaryâs keys .   documentation 
+ view objects . pop ( key [ , default ] ) Â¶ key dictionary , remove return value , return default .   default given key dictionary , 
+ KeyError raised . popitem ( ) Â¶ Remove return ( key , value ) pair dictionary . 
+ Pairs returned LIFO order . popitem ( ) useful destructively iterate dictionary , 
+ set algorithms .   dictionary , calling popitem ( ) raises KeyError . Changed version 3.7 : LIFO order guaranteed . prior versions , popitem ( ) 
+ return arbitrary key / value pair . reversed(d ) Return reverse iterator keys dictionary . 
+ shortcut reversed(d.keys ( ) ) . Added version 3.8 . setdefault ( key , default = , / ) Â¶ key dictionary , return value .   , insert key value default return default . default defaults . update ( [ ] ) Â¶ Update dictionary key / value pairs , overwriting 
+ existing keys .   Return . update ( ) accepts object keys ( ) method ( 
+ case _ _ getitem _ _ ( ) called key returned 
+ method ) iterable key / value pairs ( tuples iterables 
+ length ) . keyword arguments specified , dictionary 
+ updated key / value pairs : d.update(red=1 , blue=2 ) . values ( ) Â¶ Return new view dictionaryâs values .   documentation view objects . equality comparison dict.values ( ) view 
+ return False . applies comparing dict.values ( ) : > > > d = { ' ' : 1 } > > > d . values ( ) = = d . values ( ) False d | Create new dictionary merged keys values d , dictionaries . values 
+ priority d share keys . Added version 3.9 . d |= Update dictionary d keys values , 
+ mapping iterable key / value pairs . 
+ values priority d share keys . Added version 3.9 . Dictionaries compare equal ( key , value ) pairs ( regardless ordering ) . Order comparisons ( â<â , â<=â , â>=â , â>â ) raise TypeError . Dictionaries preserve insertion order .   Note updating key 
+ affect order .   Keys added deletion inserted end . > > > d = { " " : 1 , " " : 2 , " " : 3 , " " : 4 } > > > d { ' ' : 1 , ' ' : 2 , ' ' : 3 , ' ' : 4 } > > > list ( d ) [ ' ' , ' ' , ' ' , ' ' ] > > > list ( d . values ( ) ) [ 1 , 2 , 3 , 4 ] > > > d [ " " ] = 42 > > > d { ' ' : 42 , ' ' : 2 , ' ' : 3 , ' ' : 4 } > > > del d [ " " ] > > > d [ " " ] = > > > d { ' ' : 42 , ' ' : 3 , ' ' : 4 , ' ' : } Changed version 3.7 : Dictionary order guaranteed insertion order .   behavior 
+ implementation detail CPython 3.6 . Dictionaries dictionary views reversible . > > > d = { " " : 1 , " " : 2 , " " : 3 , " " : 4 } > > > d { ' ' : 1 , ' ' : 2 , ' ' : 3 , ' ' : 4 } > > > list ( reversed ( d ) ) [ ' ' , ' ' , ' ' , ' ' ] > > > list ( reversed ( d . values ( ) ) ) [ 4 , 3 , 2 , 1 ] > > > list ( reversed ( d . items ( ) ) ) [ ( ' ' , 4 ) , ( ' ' , 3 ) , ( ' ' , 2 ) , ( ' ' , 1 ) ] Changed version 3.8 : Dictionaries reversible . types . MappingProxyType create read - view 
+ dict . Dictionary view objects Â¶ objects returned dict.keys ( ) , dict.values ( ) dict.items ( ) view objects .   provide dynamic view 
+ dictionaryâs entries , means dictionary changes , view 
+ reflects changes . Dictionary views iterated yield respective data , 
+ support membership tests : len(dictview ) Return number entries dictionary . iter(dictview ) Return iterator keys , values items ( represented tuples ( key , value ) ) dictionary . Keys values iterated insertion order . 
+ allows creation ( value , key ) pairs 
+ zip ( ) : pairs = zip(d.values ( ) , d.keys ( ) ) .   way 
+ create list pairs = [ ( v , k ) ( k , v ) d.items ( ) ] . Iterating views adding deleting entries dictionary raise 
+ RuntimeError fail iterate entries . Changed version 3.7 : Dictionary order guaranteed insertion order . x dictview Return True x underlying dictionaryâs keys , values 
+ items ( case , x ( key , value ) tuple ) . reversed(dictview ) Return reverse iterator keys , values items dictionary . 
+ view iterated reverse order insertion . Changed version 3.8 : Dictionary views reversible . dictview.mapping Return types . MappingProxyType wraps original 
+ dictionary view refers . Added version 3.10 . Keys views set - like entries unique hashable . 
+ Items views set - like operations ( key , value ) pairs 
+ unique keys hashable . 
+ values items view hashable , 
+ items view interoperate sets . 
+ ( Values views treated set - like 
+ entries generally unique . )   set - like views , 
+ operations defined abstract base class collections.abc . Set 
+ available ( example , = = , < , ^ ) .   set operators , 
+ set - like views accept iterable operand , 
+ unlike sets accept sets input . example dictionary view usage : > > > dishes = { ' eggs ' : 2 , ' sausage ' : 1 , ' bacon ' : 1 , ' spam ' : 500 } > > > keys = dishes . keys ( ) > > > values = dishes . values ( ) > > > # iteration > > > n = 0 > > > val values : ... n + = val ... > > > print ( n ) 504 > > > # keys values iterated order ( insertion order ) > > > list ( keys ) [ ' eggs ' , ' sausage ' , ' bacon ' , ' spam ' ] > > > list ( values ) [ 2 , 1 , 1 , 500 ] > > > # view objects dynamic reflect dict changes > > > del dishes [ ' eggs ' ] > > > del dishes [ ' sausage ' ] > > > list ( keys ) [ ' bacon ' , ' spam ' ] > > > # set operations > > > keys & { ' eggs ' , ' bacon ' , ' salad ' } { ' bacon ' } > > > keys ^ { ' sausage ' , ' juice ' } = = { ' juice ' , ' sausage ' , ' bacon ' , ' spam ' } True > > > keys | [ ' juice ' , ' juice ' , ' juice ' ] = = { ' bacon ' , ' spam ' , ' juice ' } True > > > # read - proxy original dictionary > > > values . mapping mappingproxy({'bacon ' : 1 , ' spam ' : 500 } ) > > > values . mapping [ ' spam ' ] 500 Context Manager Types Â¶ Pythonâs statement supports concept runtime context 
+ defined context manager .   implemented pair methods 
+ allow user - defined classes define runtime context entered 
+ statement body executed exited statement ends : contextmanager . _ _ enter _ _ ( ) Â¶ Enter runtime context return object object 
+ related runtime context . value returned method bound 
+ identifier clause statements 
+ context manager . example context manager returns file object . 
+ File objects return _ _ enter _ _ ( ) allow open ( ) 
+ context expression statement . example context manager returns related object 
+ returned decimal.localcontext ( ) . managers set active 
+ decimal context copy original decimal context return 
+ copy . allows changes current decimal context body 
+ statement affecting code outside statement . contextmanager . _ _ exit _ _ ( exc_type , exc_val , exc_tb ) Â¶ Exit runtime context return Boolean flag indicating exception 
+ occurred suppressed . exception occurred executing 
+ body statement , arguments contain exception type , 
+ value traceback information . , arguments . Returning true value method cause statement 
+ suppress exception continue execution statement immediately 
+ following statement . exception continues 
+ propagating method finished executing . Exceptions occur 
+ execution method replace exception occurred 
+ body statement . exception passed reraised explicitly - instead , 
+ method return false value indicate method completed 
+ successfully want suppress raised exception . allows 
+ context management code easily detect _ _ exit _ _ ( ) method actually failed . Python defines context managers support easy thread synchronisation , 
+ prompt closure files objects , simpler manipulation active 
+ decimal arithmetic context . specific types treated specially 
+ implementation context management protocol . contextlib module examples . Pythonâs generator s contextlib.contextmanager decorator 
+ provide convenient way implement protocols .   generator function 
+ decorated contextlib.contextmanager decorator , return 
+ context manager implementing necessary _ _ enter _ _ ( ) _ _ exit _ _ ( ) methods , iterator produced 
+ undecorated generator function . Note specific slot methods type 
+ structure Python objects Python / C API . Extension types wanting 
+ define methods provide normal Python accessible method . 
+ Compared overhead setting runtime context , overhead 
+ single class dictionary lookup negligible . Type Annotation Types â Generic Alias , Union Â¶ core built - types type annotations Generic Alias Union . Generic Alias Type Â¶ GenericAlias objects generally created subscripting class . container classes , list dict . example , list[int ] GenericAlias object created 
+ subscripting list class argument int . GenericAlias objects intended primarily use type annotations . Note generally possible subscript class class implements 
+ special method _ _ class_getitem _ _ ( ) . GenericAlias object acts proxy generic type , 
+ implementing parameterized generics . container class , 
+ argument(s ) supplied subscription class 
+ indicate type(s ) elements object contains . example , set[bytes ] type annotations signify set 
+ elements type bytes . class defines _ _ class_getitem _ _ ( ) 
+ container , argument(s ) supplied subscription class 
+ indicate return type(s ) methods defined object . 
+ example , regular expressions str data 
+ type bytes data type : x = re.search('foo ' , ' foo ' ) , x . Match object return values x.group(0 ) x[0 ] type str . 
+ represent kind object type annotations GenericAlias . Match[str ] . y = re.search(b'bar ' , b'bar ' ) , ( note b bytes ) , y instance . Match , return 
+ values y.group(0 ) y[0 ] type bytes . type annotations , represent 
+ variety . Match objects . Match[bytes ] . GenericAlias objects instances class types . GenericAlias , create GenericAlias objects directly . T[X , Y , ... ] Creates GenericAlias representing type T parameterized types X , Y , depending T . 
+ example , function expecting list containing float elements : def average ( values : list [ float ] ) - > float : return sum ( values ) / len ( values ) example mapping objects , dict , 
+ generic type expecting type parameters representing key type 
+ value type .   example , function expects dict 
+ keys type str values type int : def send_post_request ( url : str , body : dict [ str , int ] ) - > : ... builtin functions isinstance ( ) issubclass ( ) accept GenericAlias types second argument : > > > isinstance ( [ 1 , 2 ] , list [ str ] ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : isinstance ( ) argument 2 parameterized generic Python runtime enforce type annotations . 
+ extends generic types type parameters . creating 
+ container object GenericAlias , elements container checked 
+ type . example , following code discouraged , 
+ run errors : > > > t = list [ str ] > > > t ( [ 1 , 2 , 3 ] ) [ 1 , 2 , 3 ] Furthermore , parameterized generics erase type parameters object 
+ creation : > > > t = list [ str ] > > > type ( t ) < class ' types . GenericAlias ' > > > > l = t ( ) > > > type ( l ) < class ' list ' > Calling repr ( ) str ( ) generic shows parameterized type : > > > repr ( list [ int ] ) ' list[int ] ' > > > str ( list [ int ] ) ' list[int ] ' _ _ getitem _ _ ( ) method generic containers raise 
+ exception disallow mistakes like dict[str][str ] : > > > dict [ str ] [ str ] Traceback ( recent ): ... TypeError : dict[str ] generic class , expressions valid type variables 
+ .   index elements type variable items 
+ GenericAlias objectâs _ _ args _ _ . > > > typing import TypeVar > > > Y = TypeVar ( ' Y ' ) > > > dict [ str , Y ] [ int ] dict[str , int ] Standard Generic Classes Â¶ following standard library classes support parameterized generics . 
+ list non - exhaustive . tuple list dict set frozenset type asyncio . Future asyncio . Task collections.deque collections.defaultdict collections . OrderedDict collections . Counter collections . ChainMap collections.abc . Awaitable collections.abc . Coroutine collections.abc . AsyncIterable collections.abc . AsyncIterator collections.abc . AsyncGenerator collections.abc . Iterable collections.abc . Iterator collections.abc . Generator collections.abc . Reversible collections.abc . Container collections.abc . Collection collections.abc . Callable collections.abc . Set collections.abc . MutableSet collections.abc . Mapping collections.abc . MutableMapping collections.abc . Sequence collections.abc . MutableSequence collections.abc . ByteString collections.abc . MappingView collections.abc . KeysView collections.abc . ItemsView collections.abc . ValuesView contextlib . AbstractContextManager contextlib . AbstractAsyncContextManager dataclasses . Field functools.cached_property functools.partialmethod os . PathLike queue . LifoQueue queue . Queue queue . PriorityQueue queue . SimpleQueue . Pattern . Match shelve . BsdDbShelf shelve . DbfilenameShelf shelve . Shelf types . MappingProxyType weakref . WeakKeyDictionary weakref . WeakMethod weakref . WeakSet weakref . WeakValueDictionary Special Attributes GenericAlias objects Â¶ parameterized generics implement special read - attributes . genericalias . _ _ origin _ _ Â¶ attribute points non - parameterized generic class : > > > list [ int ] . _ _ origin _ _ < class ' list ' > genericalias . _ _ args _ _ Â¶ attribute tuple ( possibly length 1 ) generic 
+ types passed original _ _ class_getitem _ _ ( ) 
+ generic class : > > > dict [ str , list [ int ] ] . _ _ args _ _ ( < class ' str ' > , list[int ] ) genericalias . _ _ parameters _ _ Â¶ attribute lazily computed tuple ( possibly ) unique type 
+ variables found _ _ args _ _ : > > > typing import TypeVar > > > T = TypeVar ( ' T ' ) > > > list [ T ] . _ _ parameters _ _ ( ~T , ) Note GenericAlias object typing . ParamSpec parameters 
+ correct _ _ parameters _ _ substitution typing . ParamSpec intended primarily static type checking . genericalias . _ _ unpacked _ _ Â¶ boolean true alias unpacked * operator ( TypeVarTuple ) . Added version 3.11 . PEP 484 - Type Hints Introducing Pythonâs framework type annotations . PEP 585 - Type Hinting Generics Standard Collections Introducing ability natively parameterize standard - library 
+ classes , provided implement special class method _ _ class_getitem _ _ ( ) . Generics , user - defined generics typing . Generic Documentation implement generic classes 
+ parameterized runtime understood static type - checkers . Added version 3.9 . Union Type Â¶ union object holds value | ( bitwise ) operation 
+ multiple type objects .   types intended 
+ primarily type annotations . union type expression 
+ enables cleaner type hinting syntax compared typing . Union . X | Y | ... Defines union object holds types X , Y , forth . X | Y means X Y.   equivalent typing . Union[X , Y ] . 
+ example , following function expects argument type int float : def square ( number : int | float ) - > int | float : return number * * 2 Note | operand runtime define unions 
+ members forward reference . example , int | " Foo " , " Foo " reference class defined , fail 
+ runtime . unions include forward references , present 
+ expression string , e.g. " int | Foo " . union_object = = Union objects tested equality union objects .   Details : Unions unions flattened : ( int | str ) | float = = int | str | float Redundant types removed : int | str | int = = int | str comparing unions , order ignored : int | str = = str | int compatible typing . Union : int | str = = typing . Union [ int , str ] Optional types spelled union : str | = = typing . Optional [ str ] isinstance(obj , union_object ) issubclass(obj , union_object ) Calls isinstance ( ) issubclass ( ) supported 
+ union object : > > > isinstance ( " " , int | str ) True , parameterized generics 
+ union objects checked : > > > isinstance ( 1 , int | list [ int ] ) # short - circuit evaluation True > > > isinstance ( [ 1 ] , int | list [ int ] ) Traceback ( recent ): ... TypeError : isinstance ( ) argument 2 parameterized generic user - exposed type union object accessed types . UnionType isinstance ( ) checks .   object 
+ instantiated type : > > > import types > > > isinstance ( int | str , types . UnionType ) True > > > types . UnionType ( ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : create ' types . UnionType ' instances Note _ _ _ _ ( ) method type objects added support syntax X | Y .   metaclass implements _ _ _ _ ( ) , Union 
+ override : > > > class M ( type ): ... def _ _ _ _ ( self , ): ... return " Hello " ... > > > class C ( metaclass = M ): ... pass ... > > > C | int ' Hello ' > > > int | C int | C PEP 604 â PEP proposing X | Y syntax Union type . Added version 3.10 . Built - Types Â¶ interpreter supports kinds objects . support 
+ operations . Modules Â¶ special operation module attribute access : m.name , m module accesses defined m âs symbol table . 
+ Module attributes assigned .   ( Note import statement , strictly speaking , operation module object ; import foo require module object named foo exist , requires 
+ ( external ) definition module named foo . ) special attribute module _ _ dict _ _ . 
+ dictionary containing moduleâs symbol table . Modifying dictionary 
+ actually change moduleâs symbol table , direct assignment _ _ dict _ _ attribute possible ( write m.__dict__['a ' ] = 1 , defines m.a 1 , canât write m.__dict _ _ = { } ) .   Modifying _ _ dict _ _ directly 
+ recommended . Modules built interpreter written like : < module ' sys ' ( built - ) > .   loaded file , written < module ' os ' ' /usr / local / lib / pythonX.Y / os.pyc ' > . Classes Class Instances Â¶ Objects , values types Class definitions . Functions Â¶ Function objects created function definitions .   operation 
+ function object : func(argument - list ) . flavors function objects : built - functions 
+ user - defined functions .   support operation ( function ) , 
+ implementation different , different object types . Function definitions information . Methods Â¶ Methods functions called attribute notation . 
+ flavors : built - methods ( append ( ) lists ) class instance method . 
+ Built - methods described types support . access method ( function defined class namespace ) 
+ instance , special object : bound method ( called instance method ) object . called , add 
+ self argument 
+ argument list .   Bound methods special read - attributes : m.__self _ _ object method 
+ operates , m.__func _ _ 
+ function implementing method .   Calling m(arg-1 , arg-2 , ... , arg - n ) completely equivalent calling m.__func__(m.__self _ _ , arg-1 , arg-2 , ... , arg - n ) . Like function objects , bound method objects support 
+ getting arbitrary 
+ attributes .   , method attributes actually stored 
+ underlying function object ( method.__func _ _ ) , setting method attributes 
+ bound methods disallowed .   Attempting set attribute method 
+ results AttributeError raised .   order set method 
+ attribute , need explicitly set underlying function object : > > > class C : ... def method ( self ): ... pass ... > > > c = C ( ) > > > c . method . whoami = ' method ' # set method Traceback ( recent ): File " < stdin > " , line 1 , < module > AttributeError : ' method ' object attribute ' whoami ' > > > c . method . _ _ func _ _ . whoami = ' method ' > > > c . method . whoami ' method ' Instance methods information . Code Objects Â¶ Code objects implementation represent âpseudo - compiledâ 
+ executable Python code function body . differ function 
+ objects donât contain reference global execution 
+ environment .   Code objects returned built - compile ( ) function 
+ extracted function objects _ _ code _ _ attribute . code module . Accessing _ _ code _ _ raises auditing event object.__getattr _ _ arguments obj " _ _ code _ _ " . code object executed evaluated passing ( instead source 
+ string ) exec ( ) eval ( ) built - functions . standard type hierarchy information . Type Objects Â¶ Type objects represent object types .   objectâs type accessed 
+ built - function type ( ) .   special operations 
+ types .   standard module types defines names standard built - 
+ types . Types written like : < class ' int ' > . Null Object Â¶ object returned functions donât explicitly return value .   
+ supports special operations .   exactly null object , named ( built - ) . type(None ) ( ) produces singleton . written . Ellipsis Object Â¶ object commonly slicing ( Slicings ) .   supports 
+ special operations .   exactly ellipsis object , named Ellipsis ( built - ) . type(Ellipsis ) ( ) produces Ellipsis singleton . written Ellipsis ... . NotImplemented Object Â¶ object returned comparisons binary operations 
+ asked operate types donât support . Comparisons 
+ information .   exactly NotImplemented object . type(NotImplemented ) ( ) produces singleton instance . written NotImplemented . Internal Objects Â¶ standard type hierarchy information .   describes stack frame objects , traceback objects , slice objects . Special Attributes Â¶ implementation adds special read - attributes object 
+ types , relevant .   reported dir ( ) built - function . definition . _ _ _ _ Â¶ class , function , method , descriptor , 
+ generator instance . definition . _ _ qualname _ _ Â¶ qualified class , function , method , descriptor , 
+ generator instance . Added version 3.3 . definition . _ _ module _ _ Â¶ module class function defined . definition . _ _ doc _ _ Â¶ documentation string class function , undefined . definition . _ _ type_params _ _ Â¶ type parameters generic classes , functions , 
+ type aliases . classes functions 
+ generic , tuple . Added version 3.12 . Integer string conversion length limitation Â¶ CPython global limit converting int str mitigate denial service attacks . limit applies decimal 
+ non - power - - number bases . Hexadecimal , octal , binary conversions 
+ unlimited . limit configured . int type CPython arbitrary length number stored binary 
+ form ( commonly known âbignumâ ) . exists algorithm convert 
+ string binary integer binary integer string linear time , base power 2 . best known algorithms base 10 
+ sub - quadratic complexity . Converting large value int('1 ' * 500_000 ) second fast CPU . Limiting conversion size offers practical way avoid CVE 2020 - 10735 . limit applied number digit characters input output 
+ string non - linear conversion algorithm involved .   Underscores 
+ sign counted limit . operation exceed limit , ValueError raised : > > > import sys > > > sys . set_int_max_str_digits ( 4300 ) # Illustrative , default . > > > _ = int ( ' 2 ' * 5432 ) Traceback ( recent ): ... ValueError : Exceeds limit ( 4300 digits ) integer string conversion : value 5432 digits ; use sys.set_int_max_str_digits ( ) increase limit > > > = int ( ' 2 ' * 4300 ) > > > len ( str ( ) ) 4300 > > > i_squared = * > > > len ( str ( i_squared ) ) Traceback ( recent ): ... ValueError : Exceeds limit ( 4300 digits ) integer string conversion ; use sys.set_int_max_str_digits ( ) increase limit > > > len ( hex ( i_squared ) ) 7144 > > > assert int ( hex ( i_squared ) , base = 16 ) = = * # Hexadecimal unlimited . default limit 4300 digits provided sys.int_info.default_max_str_digits . 
+ lowest limit configured 640 digits provided sys.int_info.str_digits_check_threshold . Verification : > > > import sys > > > assert sys . int_info . default_max_str_digits = = 4300 , sys . int_info > > > assert sys . int_info . str_digits_check_threshold = = 640 , sys . int_info > > > msg = int ( ' 578966293710682886880994035146873798396722250538762761564 ' ... ' 9252925514383915483333812743580549779436104706260696366600 ' ... ' 571186405732 ' ) . to_bytes ( 53 , ' big ' ) ... Added version 3.11 . Affected APIs Â¶ limitation applies potentially slow conversions int str bytes : int(string ) default base 10 . int(string , base ) bases power 2 . str(integer ) . repr(integer ) . string conversion base 10 , example f"{integer } " , " { } " .format(integer ) , b"%d " % integer . limitations apply functions linear algorithm : int(string , base ) base 2 , 4 , 8 , 16 , 32 . int.from_bytes ( ) int.to_bytes ( ) . hex ( ) , oct ( ) , bin ( ) . Format Specification Mini - Language hex , octal , binary numbers . str float . str decimal . Decimal . Configuring limit Â¶ Python starts use environment variable interpreter 
+ command line flag configure limit : PYTHONINTMAXSTRDIGITS , e.g. PYTHONINTMAXSTRDIGITS=640 python3 set limit 640 PYTHONINTMAXSTRDIGITS=0 python3 disable limitation . -X int_max_str_digits , e.g. python3 -X int_max_str_digits=640 sys.flags.int_max_str_digits contains value PYTHONINTMAXSTRDIGITS -X int_max_str_digits . 
+ env var -X option set , -X option takes 
+ precedence . value -1 indicates unset , value sys.int_info.default_max_str_digits initialization . code , inspect current limit set new sys APIs : sys.get_int_max_str_digits ( ) sys.set_int_max_str_digits ( ) 
+ getter setter interpreter - wide limit . Subinterpreters 
+ limit . Information default minimum found sys.int_info : sys.int_info.default_max_str_digits compiled - 
+ default limit . sys.int_info.str_digits_check_threshold lowest 
+ accepted value limit ( 0 disables ) . Added version 3.11 . Caution Setting low limit lead problems . rare , code exists 
+ contains integer constants decimal source exceed 
+ minimum threshold . consequence setting limit Python source 
+ code containing decimal integer literals longer limit 
+ encounter error parsing , usually startup time import time 
+ installation time - anytime date .pyc 
+ exist code . workaround source contains large 
+ constants convert 0x hexadecimal form limit . Test application thoroughly use low limit . Ensure tests 
+ run limit set early environment flag applies 
+ startup installation step invoke Python 
+ precompile .py sources .pyc files . Recommended configuration Â¶ default sys.int_info.default_max_str_digits expected 
+ reasonable applications . application requires different 
+ limit , set main entry point Python version agnostic code 
+ APIs added security patch releases versions 3.12 . Example : > > > import sys > > > hasattr ( sys , " set_int_max_str_digits " ): ... upper_bound = 68000 ... lower_bound = 4004 ... current_limit = sys . get_int_max_str_digits ( ) ... current_limit = = 0 current_limit > upper_bound : ... sys . set_int_max_str_digits ( upper_bound ) ... elif current_limit < lower_bound : ... sys . set_int_max_str_digits ( lower_bound ) need disable entirely , set 0 . Footnotes [ 1 ] Additional information special methods found Python 
+ Reference Manual ( Basic customization ) . [ 2 ] consequence , list [ 1 , 2 ] considered equal [ 1.0 , 2.0 ] , 
+ similarly tuples . [ 3 ] parser canât tell type operands . [ 4 ] ( 1 , 2 , 3 , 4 ) Cased characters general category property 
+ âLuâ ( Letter , uppercase ) , âLlâ ( Letter , lowercase ) , âLtâ ( Letter , titlecase ) . [ 5 ] ( 1 , 2 ) format tuple provide singleton tuple 
+ element tuple formatted . Table Contents Built - Types Truth Value Testing Boolean Operations â , , Comparisons Numeric Types â int , float , complex Bitwise Operations Integer Types Additional Methods Integer Types Additional Methods Float Hashing numeric types Boolean Type - bool Iterator Types Generator Types Sequence Types â list , tuple , range Common Sequence Operations Immutable Sequence Types Mutable Sequence Types Lists Tuples Ranges Text Sequence Type â str String Methods Formatted String Literals ( f - strings ) printf -style String Formatting Binary Sequence Types â bytes , bytearray , memoryview Bytes Objects Bytearray Objects Bytes Bytearray Operations printf -style Bytes Formatting Memory Views Set Types â set , frozenset Mapping Types â dict Dictionary view objects Context Manager Types Type Annotation Types â Generic Alias , Union Generic Alias Type Standard Generic Classes Special Attributes GenericAlias objects Union Type Built - Types Modules Classes Class Instances Functions Methods Code Objects Type Objects Null Object Ellipsis Object NotImplemented Object Internal Objects Special Attributes Integer string conversion length limitation Affected APIs Configuring limit Recommended configuration Previous topic Built - Constants topic Built - Exceptions Page Report Bug Source Â « Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Standard Library » Built - Types | Theme Auto Light Dark | © Copyright 2001 - 2025 , Python Software Foundation . page licensed Python Software Foundation License Version 2 . Examples , recipes , code documentation additionally licensed Zero Clause BSD License . History License information . Python Software Foundation non - profit corporation . donate . updated Apr 28 , 2025 ( 17:16 UTC ) . Found bug ? Created Sphinx 8.2.3 .

@@ -1,0 +1,208 @@
+Selection Sort algorithm - Python Help - Discussions Python.org Discussions Python.org Selection Sort algorithm Python Help enoren5 ( Timon Fisher ) August 14 , 2024 ,   4:34pm 1 learning algorithmic design . tackling Bubble Sort thread , venturing explore similar related algorithm : Selection Sort . bubble sort compares element swaps positions largest integer value “ bubbled ” pushed right position stops entire list sorted , selection sort , smallest ( minimum ) element pushed . Based learned far thread linked bubble sort , best - fashion selection sort , including tuple unpacking .   selection sort algorithm far output . advised course college university , pretending ask reply , provide hints , tips , references documentation web instead providing complete algorithm . way trying preserve learning experience . arr = [ 5,3,4,1,2 ] 
+
+ print(f"Original list : { arr } " ) 
+
+
+ def sorting_by_selection(arr ): 
+     iteration range(0,len(arr ) ): 
+         range(iteration ): 
+             element1 = arr[i ] 
+             element2 = arr[i+1 ] 
+             element1 < element2 : 
+                 minimum = element1 
+                 arr[minimum ] , arr[i ] = arr[minimum ] , arr[i ] 
+
+     return arr 
+
+ sorted_list = sorting_by_selection(arr ) 
+
+ print(f"Final sorted list : { sorted_list } " ) $ python   Selection - Sort / script1.py Original list : [ 5 , 3 , 4 , 1 , 2 ] Final sorted list : [ 5 , 3 , 4 , 1 , 2 ] MRAB ( Matthew Barnett ) August 14 , 2024 ,   6:21pm 2 element1 = arr[i ] , element1 value , minimum = element1 , minimum value , arr[minimum ] , arr[i ] = arr[minimum ] , arr[i ] , minimum , value , index . 1 Like bschubert ( Brian Schubert ) August 14 , 2024 ,   7:18pm 3 idea selection sort , element array , swap current element minimum element , “ selected ” elements appear current element . code , “ current element ” tracked index iteration . note current code line writes arr[iteration ] — probably things going kerflooey .   complete selection sort implementation , expect exactly write arr[iteration ] iteration outer loop . help catching issues like Barry mentioned giving variables names describe specific semantic meaning algorithm . example , instead iteration , , minimum , use like write_index , search_index , min_index obvious 1 ) missing write thing called write_index 2 ) assigning index thing called min_index , 3 ) inner loop looking elements ones min_index search_index 3 Likes enoren5 ( Timon Fisher ) August 18 , 2024 ,   6:17am 4 Brian Schubert : code , “ current element ” tracked index iteration . note current code line writes arr[iteration ] — probably things going kerflooey . complete selection sort implementation , expect exactly write arr[iteration ] iteration outer loop . coming clear . created index referred . Thank poiting . help catching issues like Barry mentioned giving variables names describe specific semantic meaning algorithm . example , instead iteration , , minimum , use like write_index , search_index , min_index obvious 1 ) missing write thing called write_index 2 ) assigning index thing called min_index , 3 ) inner loop looking elements ones min_index search_index Thank suggestion . replaced misnamed index variables ones recommended . reworked script . attempts . algorithms sort selection intended , making progress outputs partially sorted flawed . Feedback , tips , hints welcome . script expected output shell actual output . def sorting_by_selection(arr ): 
+     write_index range(0,len(arr ) ): 
+         search_index range(write_index ): 
+             element1 = arr[search_index ] 
+             element2 = arr[search_index+1 ] 
+             element1 < element2 : 
+                 min_index = element1 
+                 arr[min_index ] , arr[search_index ] =   arr[search_index ] , arr[min_index ] 
+             : 
+                 continue 
+     return arr $ python Selection - Sort / script2.py Original list : [ 5 , 3 , 4 , 1 , 2 ] Final sorted list : [ 5 , 1 , 4 , 3 , 2 ] def sorting_by_selection(arr ): 
+     write_index range(0,len(arr ) ): 
+         search_index range(write_index ): # , 0 ): 
+             element1 = arr[search_index ] 
+             element2 = arr[search_index+1 ] 
+             element1 < element2 : 
+                 arr[write_index ] = element1 
+                 element1 , element2 =   element2 , element1 
+             : 
+                 continue 
+     return arr $ python Selection - Sort / script3.py Original list : [ 5 , 3 , 4 , 1 , 2 ] Final sorted list : [ 5 , 3 , 3 , 1 , 1 ] bschubert ( Brian Schubert ) August 20 , 2024 ,   7:52pm 5 Making progress ! miscellaneous tips resources help steps . Thinking algorithms Sorting algorithms work establishing invariant gradually working data maintaining invariant invariant equivalent statement “ list fully sorted ” . writing code , think carefully invariant algorithm trying maintain . line program , ask “ code ? ” “ conditions code break invariant ? ” . answer second question yes , sure ) answer “ code ? ” fits algorithm ( different ) b ) code guards condition break invariant . selection sort , invariant want maintain ( hidden spoiler - try answer , click reveal ) entries left write_index fully sorted positions . time assign original list ( arr[abc ] = xyz ) , sure explain assignment guaranteed maintain invariant ( think abc xyz coming , true reach current state , etc . ) . assignment guaranteed maintain invariant , implemented algorithm correctly . Debugging code , want . situation find 90 % [ 1 ] programming career . great time invest learning critical skills programming : debugging . Good debugging huge topic ( entire books written ! ) . general strategies try . find information searching online . 1 . Rubber Duck Debugging program line - - line explain ( optionally inanimate choice ) line . help force think code different perspective , apparent code supposed actually thing . 2 . print logging Add bunch print statements code . Focus points key state transitions occur . want add , output unreadable . Good locations include beginning / end functions , beginning / end loop bodies , branches / elif / statement , etc . Run code .   state program evolved execution matches expectations . Oftentimes obviously suspicious . Focus solving issue moving . Rinse repeat output expected . attempts debugging print statements added , corresponding output . notice things right away . example , iteration , search_index advances list . sorting_by_selection prints def sorting_by_selection(arr ): 
+     print(f"initial array : { arr= } " ) 
+     write_index range(0,len(arr ) ): 
+         print(f"{write_index= } " ) 
+         search_index range(write_index ): 
+             element1 = arr[search_index ] 
+             element2 = arr[search_index+1 ] 
+             print(f "   { search_index= }    { element1= } { element2= } " ) 
+             element1 < element2 : 
+                 min_index = element1 
+                 print(f "     swapping entries { min_index= } { search_index= } " ) 
+                 arr[min_index ] , arr[search_index ] =   arr[search_index ] , arr[min_index ] 
+                 print(f "     array { arr= } " ) 
+             : 
+                 continue 
+     return arr output initial array : arr=[5 , 3 , 4 , 1 , 2 ] 
+ write_index=0 
+ write_index=1 
+   search_index=0    element1=5 element2=3 
+ write_index=2 
+   search_index=0    element1=5 element2=3 
+   search_index=1    element1=3 element2=4 
+     swapping entries min_index=3 search_index=1 
+     array arr=[5 , 1 , 4 , 3 , 2 ] 
+ write_index=3 
+   search_index=0    element1=5 element2=1 
+   search_index=1    element1=1 element2=4 
+     swapping entries min_index=1 search_index=1 
+     array arr=[5 , 1 , 4 , 3 , 2 ] 
+   search_index=2    element1=4 element2=3 
+ write_index=4 
+   search_index=0    element1=5 element2=1 
+   search_index=1    element1=1 element2=4 
+     swapping entries min_index=1 search_index=1 
+     array arr=[5 , 1 , 4 , 3 , 2 ] 
+   search_index=2    element1=4 element2=3 
+   search_index=3    element1=3 element2=2 3 . Write reusable tests times , course debugging , fix issue introduce new . helpful way catch maintaining suite reusable tests run time changes piece code . Writing representative test suite secondary benefit forcing think critically intended behavior code ( e.g. exactly combinations inputs allowable , happen bad inputs , relevant edge cases exist … ) . people recommend writing test suite start writing actual code ( - called test driven development ) . short scripts like . easy ad - hoc test code . example : Example 1 : Custom test runner Code : def sorting_by_selection(arr ): 
+     ... 
+
+ _ _ _ _ = = " _ _ main _ _ " : 
+     test_cases = [ 
+         [ 1 , 2 , 3 , 4 , 5 ] ,   # sorted ascending 
+         [ 5 , 4 , 3 , 2 , 1 ] ,   # sorted descending 
+         [ 5 , 3 , 4 , 1 , 2 ] ,   # unsorted 
+         [ ] ,                # 
+         [ 1 ] ,               # single entry 
+         [ 2 , 1 ] ,            # entries 
+         [ 1 , 2 , 1 , 2 , 1 ]    # repeat entries 
+     ] 
+
+     case test_cases : 
+         expected = sorted(case ) 
+         actual = sorting_by_selection(case ) 
+         actual ! = expected : 
+             print(f"FAILURE : { case= } { expected= } { actual= } " ) 
+         : 
+             print(f"OK : { case= } " ) Output : $ python3 ./sorting_by_selection_demo.py 
+ FAILURE : case=[2 , 1 , 4 , 3 , 5 ] expected=[1 , 2 , 3 , 4 , 5 ] actual=[2 , 1 , 4 , 3 , 5 ] 
+ FAILURE : case=[5 , 4 , 3 , 2 , 1 ] expected=[1 , 2 , 3 , 4 , 5 ] actual=[5 , 4 , 3 , 2 , 1 ] 
+ FAILURE : case=[5 , 1 , 4 , 3 , 2 ] expected=[1 , 2 , 3 , 4 , 5 ] actual=[5 , 1 , 4 , 3 , 2 ] 
+ OK : case= [ ] 
+ OK : case=[1 ] 
+ FAILURE : case=[2 , 1 ] expected=[1 , 2 ] actual=[2 , 1 ] 
+ FAILURE : case=[2 , 1 , 1 , 2 , 1 ] expected=[1 , 1 , 1 , 2 , 2 ] actual=[2 , 1 , 1 , 2 , 1 ] complicated code multiple independently testable units , helpful use test framework . standard library doctest ( demonstrated ) unittest . 3rd party options like pytest . Personally , use combination doctest pytest projects . Example 2 : doctests Code : def sorting_by_selection(arr ): 
+     " " " 
+     > > > sorting_by_selection([1 , 2 , 3 , 4 , 5 ] )   # sorted ascending 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+     > > > sorting_by_selection([5 , 4 , 3 , 2 , 1 ] )   # sorted descending 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+     > > > sorting_by_selection([5 , 3 , 4 , 1 , 2 ] )   # unsorted 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+     > > > sorting_by_selection ( [ ] )                # 
+     [ ] 
+     > > > sorting_by_selection([1 ] )               # single entry 
+     [ 1 ] 
+     > > > sorting_by_selection([2 , 1 ] )            # entries 
+     [ 1 , 2 ] 
+     > > > sorting_by_selection([1 , 2 , 1 , 2 , 1 ] )   # repeat entries 
+     [ 1 , 1 , 1 , 2 , 2 ] 
+     " " " 
+     ... 
+
+ _ _ _ _ = = " _ _ main _ _ " : 
+     import doctest 
+     doctest.testmod ( ) Output : $ python3 ./sorting_by_selection_demo.py 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ File " sorting_by_selection_demo.py " , line 17 , _ _ main__.sorting_by_selection 
+ Failed example : 
+     sorting_by_selection([1 , 2 , 3 , 4 , 5 ] )   # sorted ascending 
+ Expected : 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+ Got : 
+     [ 2 , 1 , 4 , 3 , 5 ] 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ File " sorting_by_selection_demo.py " , line 19 , _ _ main__.sorting_by_selection 
+ Failed example : 
+     sorting_by_selection([5 , 4 , 3 , 2 , 1 ] )   # sorted descending 
+ Expected : 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+ Got : 
+     [ 5 , 4 , 3 , 2 , 1 ] 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ File " sorting_by_selection_demo.py " , line 21 , _ _ main__.sorting_by_selection 
+ Failed example : 
+     sorting_by_selection([5 , 3 , 4 , 1 , 2 ] )   # unsorted 
+ Expected : 
+     [ 1 , 2 , 3 , 4 , 5 ] 
+ Got : 
+     [ 5 , 1 , 4 , 3 , 2 ] 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ File " sorting_by_selection_demo.py " , line 27 , _ _ main__.sorting_by_selection 
+ Failed example : 
+     sorting_by_selection([2 , 1 ] )            # entries 
+ Expected : 
+     [ 1 , 2 ] 
+ Got : 
+     [ 2 , 1 ] 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ File " sorting_by_selection_demo.py " , line 29 , _ _ main__.sorting_by_selection 
+ Failed example : 
+     sorting_by_selection([1 , 2 , 1 , 2 , 1 ] )   # repeat entries 
+ Expected : 
+     [ 1 , 1 , 1 , 2 , 2 ] 
+ Got : 
+     [ 2 , 1 , 1 , 2 , 1 ] 
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ 1 items failures : 
+    5    7 _ _ main__.sorting_by_selection 
+ * * * Test Failed * * * 5 failures . 4 . Use debugger Debuggers allow run code line - - line exact state variable program executes . Typically , IDE integrated . links use : debugging - debugger help diagnose problems ? - Stack Overflow debug small programs | Fabulous adventures coding Debug Python application | PyCharm Documentation Specific Hints Selection Sort Animation animation selection sort sorts list . Note particular relevant indices advance list points swaps occur . ( Entries pink denote current minimum search indices ) Hint 1 search_index range(write_index ): iterates range [ 0 , write_index ) , i.e. left sorted sublist . want search index iterate right unsorted sublist [ write_index , end ] . Hint 2 element1 = arr[i ] 
+ element2 = arr[i+1 ] Think carefully elements need compared inside inner loop . generally wo adjacent elements , like bubble sort . 10 % spent drinking preferred caffeinated beverage removing cat keyboard ↩ ︎ 1 Like enoren5 ( Timon Fisher ) August 31 , 2024 , 10:06am 6 @bschubert ! Thank detailed throughful reply . went great lengths support effort learn write selection sort algorithm . appreciate time care reply . wish responded sooner . apologize delay . Anyways , ! sorting algorithms use invariants . pointed , invariants usually marker designate sorted elements left remaining unsorted items right . previous code snippet , invariant write_index appropriate min_index actually originally suggested . attempt algorithm , renamed invariant : smallest . Brian Schubert : 3rd party options like pytest . pytest extensively years previous PyBites exercism.or platforms . provide unit tests check student Python script runs expected . 15 assertions unit test spend hours wrangling Python interpreter , finally reach point unit tests light green - -it head rush ! writing unit tests best practices , exploring recommendations - - debugging , print logging , rubber ducky programming . latest attempt discussion understand code work vs actually works : arr = [ 5,3,4,1,2 ] 
+ def sorting_by_selection(arr ): 
+     range(len(arr)-1 ): 
+         smallest = arr[i ] 
+         j range(i+1 , len(arr ) ): 
+             arr[j ] < smallest : 
+                 arr[smallest ] , arr[j ] = arr[j ] , arr[smallest ] 
+         arr[i ] = arr[smallest ] 
+     return arr 
+ sorted_list = sorting_by_selection(arr ) code snippet inline print statements : arr = [ 5,3,4,1,2 ] 
+ print(f"Original list : { arr } " ) 
+ def sorting_by_selection(arr ): 
+     print(f"Initial array : { arr= } " ) 
+     range(len(arr)-1 ): 
+         print(f "     Outer loop iteration : { i= } " ) 
+         smallest = arr[i ] 
+         print(f "     Invariant : { smallest= } " )        
+         j range(i+1 , len(arr ) ): 
+             print(f "         Inner loop iteration : { j= } , { smallest= } , { arr= } " ) 
+             arr[j ] < smallest : 
+                 print(f '         Swapping entries : { arr[j]= } , { smallest= } ' ) 
+                 arr[smallest ] , arr[j ] = arr[j ] , arr[smallest ] 
+         arr[i ] = arr[smallest ] 
+                 print(f '         New : { arr= } ' ) 
+     return arr 
+ sorted_list = sorting_by_selection(arr ) 
+ print(f"Final sorted list : { sorted_list } " ) traceback : $ python Selection - Sort / script5.py 
+ Original list : [ 5 , 3 , 4 , 1 , 2 ] 
+ Initial array : arr=[5 , 3 , 4 , 1 , 2 ] 
+     Outer loop iteration : i=0 
+     Invariant : smallest=5 
+         Inner loop iteration : j=1 , smallest=5 , arr=[5 , 3 , 4 , 1 , 2 ] 
+         Swapping entries : arr[j]=3 , smallest=5 
+ Traceback ( recent ): 
+   File " /home/<user>/dev / projects / python/2018 - and-2020 / algos / Selection - Sort / script5.py " , line 20 , < module > 
+     sorted_list = sorting_by_selection(arr ) 
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^ 
+   File " /home/<user>/dev / projects / python/2018 - and-2020 / algos / Selection - Sort / script5.py " , line 16 , sorting_by_selection 
+     arr[smallest ] , arr[j ] = arr[j ] , arr[smallest ] 
+                                     ~~~^^^^^^^^^^ 
+ IndexError : list index range observations . rubber ducky’ing way algorithm : invariant established outer loop smallest . iteration , left index position integer 5 largest value . invariant start context , left position happens largest integer array . means swapped . iteration inner loop , invariant checked second index position array integer value 3 . line condition compares values . case determins 3 5 , conditional triggered proceeds line supposed complete swap tuple unpacking . point expecting Python reformat array : [ 5,3,4,1,2 ] : [ 3,5,4,1,2 ] . Instead traceback throws IndexError telling “ list index range ” . sure . debugger step line confirm rubber ducky explanation . UPDATE : Having spent considerable time writing analysis , noticing ‘ swapping ’ list items “ 5 larger 3 ” - - behaviour bubble sort algorithm thing selection sort . analysis ( partially ) wrong / misguided . Arriving updated realization proof rubber ducky programming helping ! think clearly @bschubert says invariant needs remain “ guaranteed ” proceeds check list item selection sort . current script . Having said , need complete selection sort algorithm : declare arr[i ] smallest element ( invariant ) seen subarray far ( ) , rest subarray ( tried fashion second loop ) updating index smallest element time find element current smallest ( think kind - ) . right track slightly . additional hints / tips / insight folks provide greatly appreciated . Thank . Home Categories Guidelines Terms Service Privacy Policy Powered Discourse , best viewed JavaScript enabled

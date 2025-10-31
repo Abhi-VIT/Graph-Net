@@ -1,0 +1,156 @@
+Machine Learning Evaluation Mastery : Use Bootstrap Model Evaluation Comparison Skip content results Home Tutorials Machine Learning Programming Natural Language Processing Databases Web Development Latest Newsletter Privacy Policy GPTutorPro ~ Technology tutorials blogs written GPT Tutor ~ Home Tutorials Machine Learning Programming Natural Language Processing Databases Web Development Latest Newsletter Privacy Policy Search GPTutorPro ~ Technology tutorials blogs written GPT Tutor ~ Menu Home Machine Learning Evaluation Mastery Machine Learning Evaluation Mastery : Use Bootstrap Model Evaluation Comparison June 10 , 2024 blog teaches use bootstrap evaluate compare performance machine learning models confidence intervals hypothesis tests . Table Contents Toggle 1 . Introduction 2 . Bootstrap Useful Machine Learning ? 2.1 . Bootstrap Method 2.2 . Bootstrap Applications Machine Learning 3 . Perform Bootstrap Model Evaluation Comparison 3.1 . Bootstrap Resampling 3.2 . Bootstrap Estimation 3.3 . Bootstrap Hypothesis Testing 4 . Examples Bootstrap Model Evaluation Comparison Python 4.1 . Example 1 : Comparing Classification Models 4.2 . Example 2 : Comparing Regression Models 5 . Conclusion 1 . Introduction Machine learning powerful tool solving complex problems making predictions based data . , sure machine learning model reliable accurate ? compare performance different models choose best task ? way answer questions use bootstrap , statistical technique allows estimate uncertainty variability model performance . Bootstrap help evaluate compare models confidence intervals hypothesis tests , essential tools statistical inference decision making . blog , learn use bootstrap model evaluation comparison machine learning . learn : bootstrap useful machine learning ? perform bootstrap model evaluation comparison ? implement bootstrap Python scikit - learn numpy ? end blog , solid understanding bootstrap apply machine learning projects . able use bootstrap improve model performance select best model task . ready master bootstrap machine learning ? Let started ! 2 . Bootstrap Useful Machine Learning ? Bootstrap statistical technique allows estimate uncertainty variability statistic parameter based sample data . known bootstrapping resampling replacement . basic idea bootstrap create new samples original data randomly drawing observations replacement . new sample called bootstrap sample size original data . , calculate statistic parameter interest bootstrap sample use results estimate distribution , mean , standard deviation , confidence interval , measure uncertainty . Bootstrap useful machine learning help evaluate compare performance models making assumptions underlying distribution data models . example , use bootstrap : Estimate accuracy , precision , recall , F1 - score , ROC curve , metric model confidence interval . Compare performance models test difference statistically significant . Select best model set candidates based bootstrap ranking bootstrap aggregation methods . Bootstrap flexible powerful technique applied type data , model , problem . use bootstrap classification , regression , clustering , dimensionality reduction , feature selection , machine learning task . bootstrap work practice ? perform bootstrap model evaluation comparison machine learning ? Let find section ! 2.1 . Bootstrap Method bootstrap method simple powerful technique allows estimate uncertainty variability statistic parameter based sample data . bootstrap method consists main steps : Resampling : Create new samples original data randomly drawing observations replacement . new sample called bootstrap sample size original data . Estimation : Calculate statistic parameter interest bootstrap sample . example , calculate mean , median , standard deviation , correlation , accuracy , precision , recall , metric bootstrap sample . Inference : Use results estimation step estimate distribution , mean , standard deviation , confidence interval , measure uncertainty statistic parameter interest . example , use mean standard deviation bootstrap estimates construct confidence interval true value statistic parameter . bootstrap method based idea bootstrap samples representative original data bootstrap estimates representative true value statistic parameter . , bootstrap method provide accurate reliable estimates uncertainty variability statistic parameter , making assumptions underlying distribution data statistic parameter . apply bootstrap method evaluate compare machine learning models ? advantages disadvantages bootstrap method ? implement bootstrap method Python ? answer questions following sections . 2.2 . Bootstrap Applications Machine Learning Bootstrap applications machine learning , especially model evaluation comparison . section , discuss common useful applications bootstrap machine learning , : Estimating confidence interval model performance metric : use bootstrap estimate range values contains true value model performance metric ( accuracy , precision , recall , F1 - score , etc . ) certain probability ( 95 % ) . help assess reliability variability model performance compare models benchmarks . Comparing performance models hypothesis testing : use bootstrap test difference performance models statistically significant . help select best model task avoid overfitting underfitting . Selecting best model set candidates bootstrap ranking bootstrap aggregation : use bootstrap rank aggregate performance set candidate models based bootstrap estimates . help choose robust stable model performs average different bootstrap samples . applications bootstrap applied type machine learning model , classification , regression , clustering , dimensionality reduction , feature selection , etc . applied type data , numerical , categorical , text , image , audio , video , etc . perform applications bootstrap practice ? steps code implement Python ? section ! 3 . Perform Bootstrap Model Evaluation Comparison section , perform bootstrap model evaluation comparison machine learning . use Python programming language scikit - learn numpy main libraries . use libraries pandas , matplotlib , seaborn data manipulation visualization . follow general steps application bootstrap : Prepare data : Load split data training test sets . use dataset choice , use breast cancer dataset scikit - learn example . Train models : Train models training set machine learning algorithm choice . use model suits task , use logistic regression support vector machine examples . Evaluate models : Evaluate models test set performance metric choice . use metric suits task , use accuracy example . Perform bootstrap : Perform bootstrap resampling , estimation , inference test set models metric . use bootstrap method choice , use bootstrap aggregating bagging method example . Analyze results : Analyze results bootstrap draw conclusions . use analysis method choice , use descriptive statistics visualization examples . ready learn perform bootstrap model evaluation comparison machine learning ? Let dive code examples ! 3.1 . Bootstrap Resampling Bootstrap resampling step bootstrap method . involves creating new samples original data randomly drawing observations replacement . new sample called bootstrap sample size original data . Bootstrap resampling different ways , depending type data type model . example , use : Simple bootstrap : Resample entire data set , including features labels . suitable models depend order structure data , linear regression logistic regression . Stratified bootstrap : Resample data set preserving proportion class labels . suitable models sensitive class imbalance , classification models . Block bootstrap : Resample data set preserving order structure data , time series spatial data . suitable models sensitive temporal spatial correlation , time series analysis image processing . Bootstrap resampling implemented Python numpy.random.choice function , allows draw random samples array replacement . use sklearn.utils.resample function , provides options resampling , stratification weighting . example perform simple bootstrap resampling breast cancer dataset numpy : # Import numpy 
+ import numpy np 
+
+ # Load breast cancer dataset 
+ sklearn.datasets import load_breast_cancer 
+ data = load_breast_cancer ( ) 
+ X = data.data # features 
+ y = data.target # labels 
+
+ # Define number bootstrap samples 
+ n_bootstrap = 100 
+
+ # Define list store bootstrap samples 
+ bootstrap_samples = [ ] 
+
+ # Loop number bootstrap samples 
+ range(n_bootstrap ): 
+     # Draw random indices replacement 
+     indices = np.random.choice(len(X ) , size = len(X ) , replace = True ) 
+     # Extract bootstrap sample 
+     X_bootstrap = X[indices ] 
+     y_bootstrap = y[indices ] 
+     # Append bootstrap sample list 
+     bootstrap_samples.append((X_bootstrap , y_bootstrap ) ) list bootstrap samples use model evaluation comparison . ? Let section ! 3.2 . Bootstrap Estimation Bootstrap estimation second step bootstrap method . involves calculating statistic parameter interest bootstrap sample . example , calculate accuracy , precision , recall , F1 - score , metric bootstrap sample . Bootstrap estimation different ways , depending type model type metric . example , use : Point estimation : Calculate metric bootstrap sample use mean median bootstrap estimates point estimate true value metric . Interval estimation : Calculate metric bootstrap sample use lower upper percentiles bootstrap estimates lower upper bounds confidence interval true value metric . Distribution estimation : Calculate metric bootstrap sample use histogram density plot bootstrap estimates estimate distribution true value metric . Bootstrap estimation implemented Python sklearn.metrics module , provides functions calculate different metrics machine learning models . use numpy statistics module , provides functions calculate descriptive statistics percentiles . example perform bootstrap estimation breast cancer dataset sklearn numpy : # Import sklearn numpy 
+ import sklearn 
+ import numpy np 
+
+ # Load breast cancer dataset 
+ sklearn.datasets import load_breast_cancer 
+ data = load_breast_cancer ( ) 
+ X = data.data # features 
+ y = data.target # labels 
+
+ # Define number bootstrap samples 
+ n_bootstrap = 100 
+
+ # Define list store bootstrap samples 
+ bootstrap_samples = [ ] 
+
+ # Loop number bootstrap samples 
+ range(n_bootstrap ): 
+     # Draw random indices replacement 
+     indices = np.random.choice(len(X ) , size = len(X ) , replace = True ) 
+     # Extract bootstrap sample 
+     X_bootstrap = X[indices ] 
+     y_bootstrap = y[indices ] 
+     # Append bootstrap sample list 
+     bootstrap_samples.append((X_bootstrap , y_bootstrap ) ) 
+
+ # Train logistic regression model training set 
+ sklearn.linear_model import LogisticRegression 
+ model = LogisticRegression ( ) 
+ model.fit(X_train , y_train ) 
+
+ # Define list store bootstrap estimates 
+ bootstrap_estimates = [ ] 
+
+ # Loop bootstrap samples 
+ X_bootstrap , y_bootstrap bootstrap_samples : 
+     # Evaluate model bootstrap sample accuracy metric 
+     y_pred = model.predict(X_bootstrap ) 
+     accuracy = sklearn.metrics.accuracy_score(y_bootstrap , y_pred ) 
+     # Append accuracy list 
+     bootstrap_estimates.append(accuracy ) 
+
+ # Calculate point estimate accuracy mean bootstrap estimates 
+ point_estimate = np.mean(bootstrap_estimates ) 
+ print(f"The point estimate accuracy { point_estimate:.3f } " ) 
+
+ # Calculate 95 % confidence interval accuracy 2.5th 97.5th percentiles bootstrap estimates 
+ lower_bound = np.percentile(bootstrap_estimates , 2.5 ) 
+ upper_bound = np.percentile(bootstrap_estimates , 97.5 ) 
+ print(f"The 95 % confidence interval accuracy ( { lower_bound:.3f } , { upper_bound:.3f } ) " ) 
+
+ # Plot distribution accuracy histogram bootstrap estimates 
+ import matplotlib.pyplot plt 
+ plt.hist(bootstrap_estimates , bins=10 , edgecolor='black ' ) 
+ plt.xlabel('Accuracy ' ) 
+ plt.ylabel('Frequency ' ) 
+ plt.title('Bootstrap Distribution Accuracy ' ) 
+ plt.show ( ) point estimate , confidence interval , distribution accuracy model based bootstrap samples . use evaluate compare model ? Let section ! 3.3 . Bootstrap Hypothesis Testing Bootstrap hypothesis testing step bootstrap method . involves testing difference performance models statistically significant . example , test accuracy model higher accuracy model B . Bootstrap hypothesis testing different ways , depending type hypothesis type test . example , use : - sample test : Test mean median bootstrap estimates single model equal given value . example , test mean accuracy model equal 0.8 . - sample test : Test mean median bootstrap estimates models equal . example , test mean accuracy model equal mean accuracy model B . Paired test : Test mean median differences bootstrap estimates models equal zero . example , test mean difference accuracy model model B equal zero . Bootstrap hypothesis testing implemented Python scipy.stats module , provides functions perform different statistical tests . use pingouin module , provides user - friendly interface perform bootstrap hypothesis testing . example perform bootstrap hypothesis testing breast cancer dataset scipy pingouin : # Import scipy pingouin 
+ import scipy 
+ import pingouin pg 
+
+ # Load breast cancer dataset 
+ sklearn.datasets import load_breast_cancer 
+ data = load_breast_cancer ( ) 
+ X = data.data # features 
+ y = data.target # labels 
+
+ # Define number bootstrap samples 
+ n_bootstrap = 100 
+
+ # Define list store bootstrap samples 
+ bootstrap_samples = [ ] 
+
+ # Loop number bootstrap samples 
+ range(n_bootstrap ): 
+     # Draw random indices replacement 
+     indices = np.random.choice(len(X ) , size = len(X ) , replace = True ) 
+     # Extract bootstrap sample 
+     X_bootstrap = X[indices ] 
+     y_bootstrap = y[indices ] 
+     # Append bootstrap sample list 
+     bootstrap_samples.append((X_bootstrap , y_bootstrap ) ) 
+
+ # Train logistic regression model training set 
+ sklearn.linear_model import LogisticRegression 
+ model_A = LogisticRegression ( ) 
+ model_A.fit(X_train , y_train ) 
+
+ # Train support vector machine model training set 
+ sklearn.svm import SVC 
+ model_B = SVC ( ) 
+ model_B.fit(X_train , y_train ) 
+
+ # Define list store bootstrap estimates 
+ bootstrap_estimates_A = [ ] 
+ bootstrap_estimates_B = [ ] 
+
+ # Loop bootstrap samples 
+ X_bootstrap , y_bootstrap bootstrap_samples : 
+     # Evaluate models bootstrap sample accuracy metric 
+     y_pred_A = model_A.predict(X_bootstrap ) 
+     accuracy_A = sklearn.metrics.accuracy_score(y_bootstrap , y_pred_A ) 
+     y_pred_B = model_B.predict(X_bootstrap ) 
+     accuracy_B = sklearn.metrics.accuracy_score(y_bootstrap , y_pred_B ) 
+     # Append accuracies lists 
+     bootstrap_estimates_A.append(accuracy_A ) 
+     bootstrap_estimates_B.append(accuracy_B ) 
+
+ # Perform - sample test test mean accuracy model equal 0.8 
+ # Use scipy.stats.ttest_1samp function 
+ t_stat , p_value = scipy.stats.ttest_1samp(bootstrap_estimates_A , 0.8 ) 
+ print(f"The t - statistic { t_stat:.3f } p - value { p_value:.3f } " ) 
+
+ # Perform - sample test test mean accuracy model equal mean accuracy model B 
+ # Use scipy.stats.ttest_ind function 
+ t_stat , p_value = scipy.stats.ttest_ind(bootstrap_estimates_A , bootstrap_estimates_B ) 
+ print(f"The t - statistic { t_stat:.3f } p - value { p_value:.3f } " ) 
+
+ # Perform paired test test mean difference accuracy model model B equal zero 
+ # Use pingouin.ttest function paired = True 
+ t_stat , p_value = pg.ttest(bootstrap_estimates_A , bootstrap_estimates_B , paired = True ) 
+ print(f"The t - statistic { t_stat:.3f } p - value { p_value:.3f } " ) results bootstrap hypothesis testing use compare models draw conclusions . ? Let section ! 4 . Examples Bootstrap Model Evaluation Comparison Python section , examples use bootstrap model evaluation comparison Python . use breast cancer dataset scikit - learn example , use dataset choice . use logistic regression support vector machine models , use machine learning algorithm choice . demonstrate use bootstrap following applications : Example 1 : Comparing Classification Models : compare accuracy logistic regression support vector machine bootstrap hypothesis testing visualization . Example 2 : Comparing Regression Models : compare mean squared error linear regression ridge regression bootstrap hypothesis testing visualization . example , follow general steps bootstrap learned previous sections : Prepare data : Load split data training test sets . Train models : Train models training set machine learning algorithm choice . Evaluate models : Evaluate models test set performance metric choice . Perform bootstrap : Perform bootstrap resampling , estimation , inference test set models metric . Analyze results : Analyze results bootstrap draw conclusions . ready examples bootstrap model evaluation comparison Python ? Let started ! 4.1 . Example 1 : Comparing Classification Models example , compare accuracy logistic regression support vector machine bootstrap hypothesis testing visualization . use breast cancer dataset scikit - learn example , use dataset choice . follow general steps bootstrap learned previous sections : Prepare data : Load split data training test sets . Train models : Train logistic regression model support vector machine model training set . Evaluate models : Evaluate models test set accuracy metric . Perform bootstrap : Perform bootstrap resampling , estimation , hypothesis testing test set models metric . Analyze results : Analyze results bootstrap draw conclusions . Let start step : preparing data . 4.2 . Example 2 : Comparing Regression Models example , compare mean squared error linear regression ridge regression bootstrap hypothesis testing visualization . use Boston housing dataset scikit - learn example , use dataset choice . follow general steps bootstrap learned previous sections : Prepare data : Load split data training test sets . Train models : Train linear regression model ridge regression model training set . Evaluate models : Evaluate models test set mean squared error metric . Perform bootstrap : Perform bootstrap resampling , estimation , hypothesis testing test set models metric . Analyze results : Analyze results bootstrap draw conclusions . Let start step : preparing data . load split data , use sklearn.datasets.load_boston function sklearn.model_selection.train_test_split function . Boston housing dataset contains 506 observations 13 features 1 target variable , median value owner - occupied homes $ 1000s . split data 80 % training 20 % test sets , random state 42 reproducibility . code : # Import sklearn 
+ import sklearn 
+
+ # Load Boston housing dataset 
+ sklearn.datasets import load_boston 
+ data = load_boston ( ) 
+ X = data.data # features 
+ y = data.target # target 
+
+ # Split data training test sets 
+ sklearn.model_selection import train_test_split 
+ X_train , X_test , y_train , y_test = train_test_split(X , y , test_size=0.2 , random_state=42 ) data ready step : training models . 5 . Conclusion blog , learned use bootstrap model evaluation comparison machine learning . learned : bootstrap useful machine learning ? perform bootstrap model evaluation comparison ? implement bootstrap Python scikit - learn numpy ? use bootstrap hypothesis testing visualization compare performance models ? bootstrap , estimate uncertainty variability model performance compare performance different models confidence intervals hypothesis tests . Bootstrap flexible powerful technique applied type data , model , problem . Bootstrap help improve model performance select best model task . hope enjoyed blog learned new useful . questions feedback , feel free leave comment . Thank reading happy bootstrapping ! Previous Post Machine Learning Evaluation Mastery : Use Cross - Validation Model Selection Evaluation Post Machine Learning Evaluation Mastery : Use Statistical Tests Model Comparison Evaluation Leave Reply Cancel Reply email address published . Required fields marked * * Email * Website Add Comment * Save , email , website browser time comment . Post Comment Related Posts Machine Learning Evaluation Mastery : Use Statistical Tests Model Comparison Evaluation Machine Learning Evaluation Mastery : Use Cross - Validation Model Selection Evaluation Machine Learning Evaluation Mastery : Use Davies - Bouldin Index Dunn Index Clustering Problems Copyright © 2025 - WordPress Theme CreativeThemes

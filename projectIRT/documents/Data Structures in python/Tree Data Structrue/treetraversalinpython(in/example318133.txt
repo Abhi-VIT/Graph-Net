@@ -1,0 +1,75 @@
+Tree Traversal Python ( Inorder , Preorder & Postorder ) [ email   protected ] Sign Sign Live Tutors R Tutors Python Tutors Java Tutors DSA Tutors SQL Tutors Machine Learning Tutors LeetCode Tutors Works Pricing Interview Copilot Learn Blog comprehensive collection coding resources knowledge Articles Latest Coding News - Depth Tutorials Tools NEW Learn AI AI Code Generator AI Code Debugger AI Data Analysis AI Code Converter Sign / Sign Help New ? 10 favtutor Features Overlooked Read account ? Sign E - mail Password Remember Forgot password ? Account ? Sign E - mail Password account ? Sign Lost password ? enter email address . receive link create new password . E - mail log - Signing Favtutor , agree Terms Service & Privacy Policy . Close Tree Traversal Python ( Inorder , Preorder & Postorder ) 16 , 2023 10 Minutes Read Trust uphold strict editorial policy emphasizes factual accuracy , relevance , impartiality . content crafted technical writers deep knowledge fields computer science data science , ensuring piece meticulously reviewed team seasoned editors guarantee compliance highest standards educational content creation publishing . Shivali Bhadaniya Trees complex topic programming beginner . article , study Tree Traversal Python implementation Inorder , Preorder , Postorder tree traversal recursion . important topics solidify knowledge Data Structures . Tree Traversal Python ? Traversal process traversing node data structure . use data structure like stack , queue , linked list difficult traversing nodes data structure linear , time complexity traversal increases . , use tree data structures ( especially binary trees ) perform traversal process find elements easily . tree data structure , easy traverse nodes compared data structures trees store elements hierarchically , , traverse elements priority path accordingly . Tree traversing Python refers process visiting node data structure like tree . Traversal algorithms tell order nodes tree visited . , 3 main methods Tree Traversal Python recursion DFS : order Traversal ( left , root , right ) Preorder Traversal ( root , left , right ) Postorder Traversal ( left , right , root ) inorder traversal method tree traversal non - decreasing order nodes . preorder traversal method prefix expression expression tree . , preorder traversal helps create copy tree . postorder traversal method postfix expression expression tree . Remember use recursive function traversing tree function traverse nodes tree . Apart , find tree traversal recursion method . difference methods tree traversal Python recursion process utilizes stack data structure traversal recursion utilizes array data structure . Inorder Tree Traversal - order traversal method , visit left subtree original tree . traverse root node tree lastly right subtree original tree . algorithm Inorder Tree Traversal Python : Calling Inorder ( left - subtree ) Visit root node Calling Inorder ( right subtree ) Let consider following binary tree : according inorder tree traversal method , traverse left subtree original tree . Remember , traversing left subtree , follow process i.e. left - > root - > right left child node original tree furthermore child nodes . traversing left subtree , add result array shown . following step , traverse root node original tree shown . Lastly , traverse right subtree following process i.e. left - > root - > right right child node original tree child node . Python code Inorder Tree Traversal recursion : class TreeNode : def _ _ init _ _ ( self , val ): self . val = val self . left = self . right = def inorderTraversal ( root ): 
+
+     answer = [ ] 
+
+
+
+     inorderTraversalUtil(root , answer ) return answer def inorderTraversalUtil ( root , answer ): root : return inorderTraversalUtil(root . left , answer ) 
+
+     answer . append(root . val ) 
+
+     inorderTraversalUtil(root . right , answer ) return root = TreeNode ( 1 ) 
+
+ root . left = TreeNode ( 2 ) 
+
+ root . right = TreeNode ( 3 ) 
+
+ root . left . left = TreeNode ( 4 ) 
+
+ root . left . right = TreeNode ( 5 ) print ( inorderTraversal(root ) ) Output : [ 4 , 2 , 5 , 1 , 3 ] Preorder Tree Traversal preorder traversal method , visit root original tree . traverse left subtree original tree lastly right subtree original tree . Python code Preorder Tree Traversal recursion : Visit root node Calling preorder ( left - subtree ) Calling preorder ( right subtree ) Let consider following example tree : According preorder traversal method , traverse root node original tree result array shown figure . , traverse left subtree original tree calling preorder traversal method . recursively function preorder maintain process traversal i.e root - > left - > right left child original tree child node add answer array shown figure . Lastly , traverse right subtree original tree similarly like left subtree result answer array shown . Python code Preorder Tree Traversal recursion : class TreeNode : def _ _ init _ _ ( self , val ): self . val = val self . left = self . right = def preorderTraversal ( root ): 
+
+     answer = [ ] 
+
+
+
+     preorderTraversalUtil(root , answer ) return answer def preorderTraversalUtil ( root , answer ): root : return answer . append(root . val ) 
+
+
+
+     preorderTraversalUtil(root . left , answer ) 
+
+
+
+     preorderTraversalUtil(root . right , answer ) return root = TreeNode ( 1 ) 
+
+ root . left = TreeNode ( 2 ) 
+
+ root . right = TreeNode ( 3 ) 
+
+ root . left . left = TreeNode ( 4 ) 
+
+ root . left . right = TreeNode ( 5 ) print ( preorderTraversal(root ) ) Output : [ 1 , 2 , 4 , 5 , 3 ] Postorder Tree Traversal postorder tree traversal method visit left subtree original tree followed right subtree lastly root node original tree . Python code Postorder Tree Traversal recursion : Calling left - subtree Calling right - subtree Visit root node Let consider following example tree : postorder traversal method , traverse left subtree original tree . Remember follow process traversing left subtree i.e left - > right - > root left subtree child node result answer array shown figure . Later traverse right subtree original tree similarly like left subtree add answer result array shown . lastly , traverse root node original tree finish traversal method shown figure . Python code Postorder Tree Traversal recursion : class TreeNode : def _ _ init _ _ ( self , val ): self . val = val self . left = self . right = def postorderTraversal ( root ): 
+
+     answer = [ ] 
+
+
+
+     postorderTraversalUtil(root , answer ) return answer def postorderTraversalUtil ( root , answer ): root : return postorderTraversalUtil(root . left , answer ) 
+
+
+
+     postorderTraversalUtil(root . right , answer ) 
+
+
+
+     answer . append(root . val ) return root = TreeNode ( 1 ) 
+
+ root . left = TreeNode ( 2 ) 
+
+ root . right = TreeNode ( 3 ) 
+
+ root . left . left = TreeNode ( 4 ) 
+
+ root . left . right = TreeNode ( 5 ) print ( postorderTraversal(root ) ) Output : [ 4 , 5 , 2 , 3 , 1 ] Time Complexity tree traversal Python recursion , time complexity O(n ) n nodes tree . space complexity O(n ) n nodes present answer array . Python Traverse Tree Recursion act precisely viewing node tree data structure known tree traversal . major methods moving tree breadth - traversal depth - traversal . breadth - traversal frequently performed iteratively , depth - traversal performed recursively sequentially . 2 Types Tree Traversal ? Let quickly examine depth - breadth - approaches tree traversal moving breadth - traversal . Depth - Traversal : Beginning root tree proceeding far feasible turning known " depth - traversal , " requires stopping node way . Pre - order traversal , - order traversal , post - order traversal popular techniques depth - navigation . visit current node , left subtree , right subtree pre - order traversal . visit left subtree , current node , right subtree - order traversal . left subtree , followed right subtree , finally present node visited post - order traversal . depth - traversal iteratively recursively . typically easier build , recursive traversal effective deep trees . Breadth - Traversal : breadth - traversal , node tree visited level time , working root . going level , visit node previous level . queue frequently track nodes need visit breadth - traversal . root node added queue , node queue repeatedly dequeued , visited , - enqueued children . procedure carried queue . queue data structure , construct breadth - traversal Python . illustration utilize deque collections module code : collections import deque def breadth_first_traversal ( root ): 
+
+     queue = deque ( ) 
+
+     queue . append(root ) queue : 
+
+         node = queue . popleft ( ) 
+
+         visit(node ) node . left : 
+
+             queue . append(node . left ) node . right : 
+
+             queue . append(node . right ) beginning code , create deque add root node . loop continues long deque . dequeue node deque , visit , enqueue offspring present iteration loop . function accepts node argument performs action , displaying value adding list , considered visit function . Conclusion Overall , learned theory applications Tree Traversal Python recursion methods traversing recursive nature . Happy Learning :) FavTutor - 24x7 Live Coding Help Expert Tutors ! Help Author Shivali Bhadaniya Shivali Bhadaniya , computer engineer student technical content writer , enthusiastic learn explore new technologies looking great opportunities . amazing share knowledge content help curious minds . FavTutor Blogs Reverse Level Order Traversal Binary Tree ( code ) Vedanti Kshirsagar Types Inheritance Python ( Examples ) Kusum Jain xrange ( ) Python ? Kusum Jain Important Subjects Computer Science Help Data Science Help Programming Help Statistics Help Java Homework Help Python Assignment Help Tableau Assignment Help SAS Assignment Help Vue.js Expert Help Important Subjects Excel Help Deep Learning Help Machine Learning Help Data Structures   Help Data Mining Help SQL Help Power BI Assignment Help ReactJS Homework Help CCNA Assignment Help Important Subjects Data Analysis Help C Programming Help C++ Help Html Help Android Help R programming Help SPSS Assignment Help Angular Assignment Help Django Homework Help Reach +1(786 ) 231 - 3819 [ email   protected ] Trustpilot Home Work Pricing Blogs Contact Faq New Articles Terms & Conditions Privacy Policy Editorial Policy Tutor Website listed Ecomswap . © Copyright 2025 . Rights Reserved .

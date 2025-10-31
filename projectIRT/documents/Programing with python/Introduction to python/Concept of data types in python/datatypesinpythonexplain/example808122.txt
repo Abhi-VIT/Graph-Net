@@ -1,0 +1,131 @@
+Data types Python , explained ( examples ) Sign Sign Sign Sign Explore Software dev Cloud Tech Operations AI & Data Cybersecurity Contact 
+
+           sales View plans individuals businesses public sector Sign Sign Skills Sign Cloud Guru Sign Flow Explore Software dev Cloud Tech Operations AI & Data Cybersecurity View plans Contact 
+
+                 sales individuals businesses public sector Blog Software Development Data types Python , explained ( examples ) basic Python data types need know started , convert type , type checking , sequences collections . Maaike van Putten Jun 19 , 2024 • 14 Minute Read Software Development Guides Subscribe newsletter Data types foundational concepts programming . understand language , need solid grasp data types . article , help build foundation Python data types . cover : Basics Python data types Basic data types primitives Python Type checking Type conversion Sequences collections basics Python data types think variables containers store data . container label value easily . example : = " Maaike " label value Maaike . know type ? languages require specifying type obvious . , Python gives variable type . precisely , gives value type . looks value storing assigns type . variable change type value type assigned container . way typing known dynamic typing . case , type string variable stores text . examples : x = 5         # Integer 
+
+ y = " Hello "   # String 
+
+ z = True      # Boolean want type value , write ( , type ): print(type(x ) ) case , outputs : < class ' int ' > notice says class . brings point , commonly asked question : Python primitive data types ? Primitive data types Python languages , Java , distinction primitive type reference type . primitive types coming classes stored objects ( reference types ) memory . different Python . Python , data values objects . means Python primitive data types types reference types . , Python built - data types saw . Python simple types , like integers floats , behave similarly primitives languages efficiency . distinction primitive reference object academic important considering performance behavior , immutability data passed functions ( object reference ) . basic types ? distinguish following types : Numeric String Boolean Null . 1 . Numeric integer data type Let start integer data type . seen : x = 5 . unique Python maximum integer value sort unlimited . sort ? limited Python , limited memory computer . typically problem — contain huge values issues . example , fine : y = 234823923988239090823892380980238023 
+
+ print(y + 1 ) : print(pow(y , 2 ) ) big number , problem Python : 55142275277234290315055922695613570423734577103123816432796061734948529 work binary , octal , hexadecimal numbers . prefixing number : 0b binary numbers 0o octal numbers 0x hexadecimal numbers clue talking , worries . need understand . example , binary number 4 100 . write like Python , : y = 0b100 proceed print y , base 10 number , 4 . 2 . Numeric float data type Decimal ( fractional ) numbers represented float type . example : x = 3.4 typical float . Floats funky limitation , Python problem . simply problem computer memory works . precisely , inherent limitations representing numbers binary floating - point format . Let happens : print(x + 0.01 ) think , “ , need Python . 3.41 . ” hate break , Python says : 3.4099999999999997 similar following problem : write exactly floating point ? write : 0.333333333333 exactly . Adding 3 precise exactly . limitation base 10 numbers work . Similarly , express fractional numbers binary , lose precision . important mind working values precise , monetary values scientific calculations . complex numbers . yes , talking complex numbers . Let look . 3 . Numeric complex number data type Complex numbers numbers consist real imaginary . , worry understand complex numbers — probably need ( ) . imaginary denoted j ( lowercase uppercase , matter ) . example : c = 2 + 4j real imaginary parts separately : c.real 
+
+ c.imag 4 .   Boolean data type boolean data type values true false . important statements conditional expressions . example : b = True 
+
+
+
+ b : 
+
+   print("It true ! " ) print “ true ” , , true . Let string data type . 5 .   String data type string data type holding text values . create single , double , triple single quotation marks , use makes small difference . . , create string single quotes , use single quotes . need . example : text = ' said : " Hello ! " ' need single double quotes , single quote value , escape single quotes escape character ( backslash ) . backslash precedes character , means special purpose . case means “ treat single quotes ending string literal value ” : text = ' said : " Hello , how\ going ? " ' use double quotes , need escape pair double characters string : text = " said : \"Hello , going?\ " " Normally Python , new line means end statement . want new line code continue string , \ return : text = " Hello , \ 
+
+ ? " code readable . display string , hold new line . displays : Hello , ? want new line , use \n line . example : text = " Hello , \nhow ? " prints : Hello , 
+
+ ? way create string , creating string single quotes . string , use single quotes double quotes escape character . new lines string , interpreted literally — string actually contains new line . example : text = '' ' said : 
+
+ " Hello , how\ going ? " '' ' prints : said : 
+
+ Hello , going ? strings , individual letters square brackets notation . example : text = " Blabla " 
+
+ first_letter = text[0 ] Strings immutable , means changed created . wonder able : text = " Blabla " 
+
+ text = " Lala " change string object holding Blabla . Instead , creates new holding Lala assigns text variable . , concat strings , gets altered . New objects created : text = " Hi " 
+
+ text = text + " Hello ” change string object ( possible ) . creates new ones . basic data types . Let type checking type conversion . Type checking need check type variable . Maybe want verify working type working , maybe clue need check type . maybe having different options parameter , need check specific action different types . cases , check type type ( ) built - function . num = " 5 " 
+
+ print(type(num ) )   # Output : < class ' str ' > like outcome type ( ) function , change type , assuming value variable fits new type . Type conversion Changing type variable called type conversion . called casting . : num = " 5 " 
+
+ num = int(num )     # Convert string integer 
+
+ print(type(num ) )   # Output : < class ' int ' > convert data types : float function float ( ) . string function str ( ) . Boolean function bool ( ) . code examples work similar int ( ) . float_num = " 5.0 " 
+
+ float_num = float(float_num )   # Convert string float 
+
+ print(type(float_num ) )   # Output : < class ' float ' > 
+
+
+
+ text = 5 
+
+ text = str(text )   # Convert integer string 
+
+ print(type(text ) )   # Output : < class ' str ' > : list ( ) tuple ( ) set ( ) Lists , tuples , sets data types allow store multiple values variable . Let look detail . Sequences collections like languages , Python way storing multiple elements variable . data types hold multiple elements referred sequences collections . built - collection types : list , tuple , set , dictionary . Let start list : list . Lists list ordered collection items different types collection . Lists allowed contain duplicates . modify lists creation , means lists mutable . little code snippet : languages = [ " Python " , " Java " , " C # " ] 
+
+ print(languages ) output : [ ' Python ' , ' Java ' , ' C # ' ] add list append function . languages.append("JavaScript " )   # Adding item 
+
+ print(languages ) adds item output : [ ' Python ' , ' Java ' , ' C # ' , ' JavaScript ' ] access elements list index . usual , element index 0 . value Python list : print(languages[0 ] ) loop values list : language languages : 
+
+   print(language ) loops elements languages executes code block language . case , prints language . output : Python 
+
+ Java 
+
+ C # 
+
+ JavaScript ways reverse list . reverse original list reverse function . languages.reverse ( ) # Changes languages [ ' JavaScript ' , ' C # ' , ' Java ' , ' Python ' ] want alter original list , option : create new list reversed order slicing . new_languages = languages[::-1 ] way reversing stores reversed list new_languages altering original . imagine weird - looking index needs explanation . called slicing . explain briefly , worry bit complicated . Slicing way access subset original . looks complex , hard . basics . slicing syntax [ start : stop : step ] , : start index slice starts ( inclusive ) stop index slice ends ( exclusive ) step determines step slicing , indices skipped items slice . parameters omitted , default values : start defaults beginning sequence stop defaults end sequence step defaults 1 ( meaning elements skipped ) case , start stop omitted — start beginning stop end . -1 ? use -1 step value , specifies sequence traversed backwards . , -1 tells Python start end sequence backwards . thing mention reversing lists . need iterate reversed list , reversed ( ) function like : language reversed(languages ): 
+
+   print(language ) prints opposite order . create list list ( ) constructor . , turns argument list : items = list("123 " ) 
+
+ print(items ) expect . prints : [ ' 1 ' , ' 2 ' , ' 3 ' ] created list item character string . pass multiple arguments directly . pass tuple , , create list item tuple item . Wondering tuple ? Let talk . Tuple Tuples different type collection similar lists . Like lists , tuples ordered collection items . items different types , duplicates allowed . important difference : Tuples immutable . created , change content . create : dimensions = ( 1080 , 1920 ) 
+
+ print(dimensions ) , use parentheses create opposed square brackets list . try modify element tuple , error like : TypeError : ' tuple ' object support item assignment particularly useful need constant set values program want sure wo altered . Sets type collection set . Sets unordered collections unique elements . commonly membership testing , removing duplicates sequence , performing mathematical operations , intersection , union , difference , symmetric difference . create set : languages = { " Python " , " Java " , " C # " , " Java " } # Duplicates ignored 
+
+ print(languages )   # Notice duplicates removed : { ' C # ' , ' Java ' , ' Python ' } , use curly brackets creating set , duplicate value Java ignored . add elements sets like : languages.add("JavaScript " ) add element exists , happens . error , added . Dictionaries built - collection data type dictionary . Dictionaries special hold key - value pairs unordered , mutable , indexed keys . makes incredibly efficient fast lookups data . values duplicate , keys . Python know element trying retrieve keys duplicate . example dictionary : capitals = { 
+
+     " Netherlands " : " Amsterdam " , 
+
+     " France " : " Paris " , 
+
+     " Germany " : " Berlin " 
+
+ } 
+
+
+
+ print(capitals["France " ] ) prints Paris . Dictionaries Python dynamic . add new key - value pairs time created . Adding new items changing value existing items dictionary straightforward : Simply assign value key . key exists dictionary , existing value gets updated . key exist , new key - value pair added . : capitals["Italy " ] = " Rome " 
+
+
+
+ # Updating existing element 
+
+ capitals["Germany " ] = " Munich " # note actual capital Berlin ! 
+
+
+
+ print(capitals ) code snippet output : { ' Netherlands ' : ' Amsterdam ' , ' France ' : ' Paris ' , ' Germany ' : ' Munich ' , ' Italy ' : ' Rome ' } iterate dictionary . ways depending dictionary need access ( keys , values , ) . iterate keys dictionary simple loop : country capitals : 
+
+     print(country ) print : Netherlands 
+
+ France 
+
+ Germany 
+
+ Italy course , key access values : country capitals : 
+
+     print(capitals[country ] ) print : Amsterdam 
+
+ Paris 
+
+ Munich 
+
+ Rome need access values , use .values ( ) method dictionary : capital capitals.values ( ): 
+
+     print(capital ) print : Amsterdam 
+
+ Paris 
+
+ Munich 
+
+ Rome lastly , access keys values time , use .items ( ) method , returns item tuple ( key , value ): country , capital capitals.items ( ): 
+
+     print(f"The capital { country } { capital } . " ) , need specify variable key value easy access . output : capital Netherlands Amsterdam . 
+
+ capital France Paris . 
+
+ capital Germany Munich . 
+
+ capital Italy Rome . Python data types . Wrap - totally Python collection data types , article general Python data types . Data types foundational concept programming language . started basics , gone simple built - data types , shown type convert , discussed complex built - structures , like lists , tuples , sets , dictionaries . point , feel confident ability deal Python data types . Good luck fun coding ! Want learn Python ? Check Pluralsight Python 3 Learning Path , Python beginner expert . Additionally , check Python learning courses . Maaike v. Maaike trainer software developer . founded training agency Brightboost 2014 spends days nights working learning . Training gives opportunity combine love software development passion help boost careers successful . trained professionals field Java , Spring , C # , Python , Scrum , React Angular . lot time spend staying - - date latest developments field . author Advance tech skills today Access courses AI , cloud , data , security , — led industry experts . Free individual trial Free team trial Support Contact Help Center IP Allowlist Sitemap Download Pluralsight View Plans Flow Plans Professional Services Community Guides Teach Partner Pluralsight Pluralsight Authors Company Careers Newsroom Resources Industries Education Financial Services ( FSBI ) Healthcare Insurance Non - Profit Public Sector Newsletter Sign email join mailing 
+
+                                     list . like receive 
+
+                                     emails Pluralsight Submit Thank ! facebook icon Pluralsight logo Copyright © 2004 - Pluralsight LLC . 
+
+                     rights reserved Terms Use Privacy Policy Code Conduct

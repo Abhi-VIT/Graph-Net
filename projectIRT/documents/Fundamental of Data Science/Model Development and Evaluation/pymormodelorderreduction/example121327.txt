@@ -1,0 +1,49 @@
+pyMOR | Model Order Reduction Python Model Order Reduction Python View GitHub Documentation tutorials pyMOR School 2024 pyMOR - Model Order Reduction Python pyMOR software library building model order reduction applications Python programming language . 
+ algorithms pyMOR formulated terms abstract interfaces , 
+ allowing generic implementations work different backends , 
+ NumPy / SciPy external partial differential equation solver packages . Features Reduced basis methods parametric linear non - linear problems . System - theoretic methods linear time - invariant systems . Neural network - based methods parametric problems . Proper orthogonal decomposition . Dynamic mode decomposition . Rational interpolation data ( Loewner , AAA ) . Numerical linear algebra ( Gram - Schmidt , time - stepping , … ) . Pure Python implementations finite element finite volume 
+ discretizations NumPy / SciPy scientific computing stack . License pyMOR licensed BSD-2 - clause . 
+ LICENSE.txt . Citing use pyMOR academic work , consider citing publication : R. Milk , S. Rave , F. Schindler 
+ pyMOR - Generic Algorithms Interfaces Model Order Reduction 
+ SIAM J. Sci . Comput . , 38(5 ) , pp . S194 - -S216 , 2016 Installation pip pyMOR easily installed Python package managers like pip . 
+ recommend installation pyMOR virtual environment avoid dependency conflicts . installation minimal dependencies , run pip install pymor included demo scripts require Qt bindings pyside6 function , 
+ recommend install pyMOR gui extra : pip install ' pymor[gui ] ' following installs latest release pyMOR system 
+ optional dependencies : pip install ' pymor[full ] ' obtain environment exact package versions 
+ Linux continuous integration tests , use requirements-ci-current.txt , 
+ file pyMOR repository pip install -r requirements-ci-current.txt 
+ pip install pymor stable release , download file 
+ corresponding release branch repository . Additional dependencies optional packages included pymor[full ] need additional setup system : mpi4py : 
+ support MPI distributed models parallelization greedy 
+ algorithms ( requires MPI development headers C compiler ): pip install mpi4py Slycot : 
+ dense matrix equation solvers system - theoretic methods 
+ H - infinity norm calculation ( requires OpenBLAS headers 
+ Fortran compiler ): pip install slycot Note building Slycot fail following reasons : Slycot package contains cmake check fails 
+ detects multiply NumPy include directories . cause 
+ build fail venvs Python interpreter NumPy 
+ globally installed . 
+ circumvent problem , use Python interpreter . 
+ want build CPython , use pyenv , uv mise - en - place easily install interpreter . Slycot build environment contains numpy>=2 . , 
+ scikit - builds FindF2PY.cmake select globally installed f2py3 executable generate Fortran wrapper code . 
+ systems , older NumPy version installed , 
+ f2py generate incorrect wrapper code numpy>=2 . 
+ mitigate issue , install numpy>=2 venv 
+ link f2py3 f2py /bin directory . Building Slycot Windows challenging . recommend 
+ conda - forge packages instead . want install 
+ pyMOR conda - forge package , pip install pyMOR 
+ existing conda environment . Linux want build Slycot , 
+ try experimental manylinux wheels Slycot . Installation conda pyMOR packaged conda - forge installed 
+ running conda install -c conda - forge pymor install pyMOR core dependencies current active conda 
+ environment . replicate environment optional dependencies , 
+ continuous integration tests , use conda-linux-64.lock , conda-osx-64.lock , conda-win-64.lock lock files pyMOR repository : conda create -n pymorenv --file ./conda-{linux , osx , win}-64.lock 
+ conda activate pymorenv 
+ conda install pymor Documentation Documentation available online . 
+ recommend starting getting started , tutorials , technical overview . build documentation locally , 
+ run following inside root directory pyMOR source tree : docs generate HTML documentation docs/_build / html . External PDE Solvers pyMOR designed easy integration external PDE solvers mind . provide bindings following solver libraries : FEniCS MPI - compatible wrapper classes dolfin linear algebra data structures 
+   shipped pyMOR ( pymor.bindings.fenics ) . 
+   example pymordemos.thermalblock , pymordemos.thermalblock_simple . 
+   tested FEniCS version 2019.1.0 . deal . II Python bindings pyMOR wrapper classes found . NGSolve Wrapper classes NGSolve finite element library shipped pyMOR 
+   ( pymor.bindings.ngsolve ) . 
+   example pymordemos.thermalblock_simple . 
+   tested NGSolve version v6.2.2104 . simple example direct integration pyMOR custom solver 
+ found pymordemos.minimal_cpp_demo . alternative approach import system matrices file use scipy.sparse -based solvers . Environments pyMOR Development Tests Developer Documentation . Contact questions pyMOR wish contribute , 
+ hesitate send email main.developers@pymor.org pymor maintained pymor . page generated GitHub Pages .

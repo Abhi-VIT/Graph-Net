@@ -1,0 +1,133 @@
+Data preprocessing json data python ( Jupyter notebook ) - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams Data preprocessing json data python ( Jupyter notebook ) Ask Question Asked 4 years , 3 months ago Modified 4 years , 3 months ago Viewed 2k times 2 trying implement preprocessing command json dataset . easy work .csv file , able implement preprocessing command like isnull ( ) , fillna ( ) , dropna ( ) imputer class . commands executed failed perform mentioned operation able figure work Json file dataset . dataset link : https://drive.google.com/file/d/1puNNrRaV-Jt_kt709fuYGCvDW9-EuwoB/view?usp=sharing import numpy np 
+ import pandas pd 
+ import matplotlib.pyplot plt 
+ import seaborn sns 
+ import json 
+
+ dataset = pd.read_json('moviereviews.json ' , orient='columns ' ) 
+ print(dataset ) 
+
+ movies = pd.read_json ( ( dataset).to_json ( ) , orient='index ' ) 
+ print(movies ) 
+ print(type(movies ) ) 
+
+ movie = pd.read_json ( ( dataset['12 Strong']).to_json ( ) , orient='index ' ) 
+ print(movie ) 
+
+ movie_name = [ 
+     " 12 Strong " , 
+     " Ciambra " , 
+     " Money World " , 
+     " Gods : Worlds " , 
+     " Bilal : New Breed Hero " , 
+     " " , 
+     " Condorito : La Película " , 
+     " Darkest Hour " , 
+     " Den Thieves " , 
+     " Downsizing " , 
+     " Father Figures " , 
+     " Film Stars Don'T Die Liverpool " , 
+     " Forever Girl " , 
+     " Happy End " , 
+     " Hostiles " , 
+     " , Tonya " , 
+     " Fade ( Aus Dem Nichts ) " , 
+     " Insidious : Key " , 
+     " Jumanji : Welcome Jungle " , 
+     " Mary Witch Flower " , 
+     " Maze Runner : Death Cure " , 
+     " Molly Game " , 
+     " Paddington 2 " , 
+     " Padmaavat " , 
+     " Phantom Thread " , 
+     " Pitch Perfect 3 " , 
+     " Proud Mary " , 
+     " Star Wars : Episode Viii - Jedi " , 
+     " Star Wars : Jedi " , 
+     " Cage Fighter " , 
+     " Commuter " , 
+     " Final Year " , 
+     " Greatest Showman " , 
+     " Insult ( L'Insulte ) " , 
+     " Post " , 
+     " Shape Water " , 
+     " Una Mujer Fantástica " , 
+     " Winchester " 
+ ] 
+ print(movie_name ) 
+
+ data = [ ] 
+ moviename movie_name : 
+     movie = pd.read_json ( ( dataset[moviename]).to_json ( ) , orient='index ' ) 
+     data.append(movie ) 
+   
+ print(data ) python json pandas jupyter - notebook data - preprocessing Share Improve question Follow asked Jan 22 , 2021 13:07 Masoom Raza Masoom Raza 194 5 5 silver badges 21 21 bronze badges 1 1 think mean pandas . import json dataset pandas dataframe ; functions called dataset according docs . – Jason Chia Commented Jan 22 , 2021 13:23 Add comment | 2 Answers 2 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 2 split items dictionary read separately , filling NaN shot . json called data , df = pd . DataFrame(data[0].values()).fillna('None ' ) 
+ df['Movie ' ] = pd . DataFrame(data[0].keys ( ) ) 
+ df.set_index('Movie ' , inplace = True ) 
+
+ df.head ( ) 
+
+                                          Genre        Gross IMDB Metascore Popcorn Score    Rating Tomato Score popcornscore rating tomatoscore 
+ Movie 
+ 12 Strong                                Action   $ 1,465,000              54             72         R            54                     
+ Ciambra                                 Drama      unknown              70        unknown   unrated        unkown                     
+ Money World                                                                     72.0       R         76.0 
+ Gods : Worlds                                                            90.0      NR         50.0 
+ Bilal : New Breed Hero            Animation      unknown              52        unknown   unrated        unkown                     Share Improve answer Follow answered Jan 23 , 2021 3:53 Jonathan Leon Jonathan Leon 5,668 2 2 gold badges 8 8 silver badges 15 15 bronze badges Add comment | 2 challenges dataset fact different keys names data , example , ' Tomato Score ' ' tomatoscore ' . solution best optimized lot , , way easier steps implemented data consistent : import pandas pd 
+
+ open('moviereviews.json ' , " r " ) read_file : 
+     dataset = json.load(read_file ) 
+
+ data = [ ] 
+
+ index range(len(dataset ) ): 
+     key dataset[index ] : 
+         movie_name = key 
+        
+         ' Genre ' dataset[index][key ] : 
+             genre = dataset[index][key]['Genre ' ] 
+         : 
+             genre = 
+            
+         ' Gross ' dataset[index][key ] : 
+             gross = dataset[index][key]['Gross ' ] 
+         : 
+             gross = 
+            
+         ' IMDB Metascore '   dataset[index][key ] : 
+             imdb = dataset[index][key]['IMDB Metascore ' ]            
+         : 
+             imdb = 
+            
+         ' Popcorn Score ' dataset[index][key ] : 
+             popcorn = dataset[index][key]['Popcorn Score ' ]            
+         elif ' popcornscore '   dataset[index][key ] : 
+             popcorn = dataset[index][key]['popcornscore ' ] 
+         : 
+             popcorn =                                              
+                                                      
+         ' Rating ' dataset[index][key ] : 
+             rating = dataset[index][key]['Rating ' ]                                     
+         elif ' rating ' dataset[index][key ] : 
+             rating = dataset[index][key]['rating ' ] 
+         : 
+             rating = 
+            
+         ' Tomato Score ' dataset[index][key ] :                                         
+             tomato = dataset[index][key]['Tomato Score ' ]                                       
+         elif ' tomatoscore ' dataset[index][key ] : 
+             tomato = dataset[index][key]['tomatoscore ' ]                                              
+         : 
+             tomato = 
+                
+         data.append({'Movie ' : movie_name , 
+                      ' Genre ' : genre , 
+                      ' Gross ' : gross , 
+                      ' IMDB Metascore ' : imdb , 
+                      ' Popcorn Score ' : popcorn , 
+                      ' Rating ' : rating , 
+                      ' Tomato Score ' : tomato } ) 
+    
+ df = pd . DataFrame(data ) 
+
+ df Share Improve answer Follow edited Jan 24 , 2021 0:14 answered Jan 22 , 2021 19:38 Jose Miguel Jose Miguel 91 3 3 bronze badges Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python json pandas jupyter - notebook data - preprocessing similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Visit chat Related 1 converting json data dataframe csv 1 Nested JSON Pandas 1 Convert Json data Python DataFrame 0 Data analysis .json file Python 0 JSON data Pandas DataFrame 2 JSON Python Dataframe 1 JSON Python Pandas dataframe 3 Pandas dataframe conversion Json 1 Complicated JSON Pandas Dataframe 1 Best way extract / format data JSON format Python ? Hot Network Questions executive orders controversial ? chief executive telling executive branch ? SQL Server maintain rowcount metadata ? Riddle Cheshire Crossing comic Undeclined modifiers adjectival nouns ROS2 Humble : Python service build reports success , _ * .py file generated ( ModuleNotFoundError ) \clist_map_inline : Nn return ? Slow SQL query nested subquery Manual editing Z value multiple vertices QGIS Locally free coherent module open disc Inductive kickback requires capacitor " kick " ? supposed plug PCIe SSD ? happened flight / aircraft ? Pope Francis die $ 100 cash assets ? order preserving injection unwell orders ? Double underline single label bird ecology ( BTO ) notation QGIS misfiled attorney - client memo fair game use trial ? use quick delayed fuses panel ? style custom tikz family ? Rules written , Orcs Drow functionally ? ship warp drive propulsion experience G - Forces accelerating ? Meaning " chinny chin chin " given context Transit Heathrow : Terminal 5 Terminal 2 Transfer Indian passport Ireland strangling animals prohibited Acts 15 ? Backpropagation faulty ? hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

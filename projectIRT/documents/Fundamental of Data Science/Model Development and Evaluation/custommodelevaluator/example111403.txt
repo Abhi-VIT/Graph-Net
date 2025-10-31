@@ -1,0 +1,86 @@
+Evaluate model â¢ Model evaluators â¢ Custom model evaluator â¢ Palantir Search Palantir Documentation Documentation Apollo Gotham Search documentation Search karat + K API Reference â Send feedback en en jp kr zh AB XY AB XY AB XY AB XY AB XY AB XY AB XY Capabilities Data connectivity & integration Model connectivity & development Ontology building Developer toolchain Use case development Analytics Product delivery Security & governance Management & enablement Getting started Platform updates Announcements Release notes Model connectivity & development Overview Getting started Core concepts Models Modeling Objectives Modeling experiments Functions models Selecting right modeling tool Tutorial : Supervised machine learning Overview Set machine learning project Foundry Train model JupyterÂ ® notebooks Train model Code Repositories Evaluate model Modeling Objectives application Productionize model Conclusion steps Release notes â Integrate models Models Overview Model adapters Overview Creating model adapters Model serialization Model adapters Ontology Model API definition Model experiments Overview Visualize experiments Models trained Foundry Train JupyterÂ ® notebook Train Code Repositories Example : Binary classification scikit - learn Spark ML models Upgrade Model Adapter Retraining Models uploaded files Upload model pre - trained files Example : Upload scikit - learn model Container models Overview Upload images container model Example : Implement container model adapter FAQ Language models Import language model Add support new language model Externally hosted models Integrate externally hosted model Example : Integrate SageMaker model Example : Integrate Vertex AI model Example : Integrate Open AI model API References API : ModelAdapter reference API : Model save load API : Model experiments API : Language model adapters API : Language model transform inputs Dataset - backed models ( foundry_ml ) Overview Explore model stages , features , hyperparameters Configure Python dependencies Save Python function model Dataset models Code Repositories Use scikit - learn SparkML pipelines spaCy NLP Search natively supported libraries Add support modeling library Perform GridSearch Author models TypeScript Migrate foundry_ml palantir_models Migrate foundry_ml [ planned deprecation ] palantir_models Migration instructions : foundry_ml [ planned deprecation ] palantir_models Palantir models migration FAQ Manage models Manage modeling project Create modeling objective Create direct model deployment Directly publish models function API : Query live deployment Modeling objective configuration Submit model objective Configure objective metadata Set checks submissions Review model submission Release model Archive models objective Set use Modeling Objective live deployment Set batch deployment Define modeling objective API Modeling objective settings Model inference history Modeling live deployment reference & FAQ Models Ontology Modeling Objective live deployment FAQ Live deployment compute usage Evaluate model Evaluate models Automatically evaluate model performance Evaluate model performance code Review model metrics evaluation dashboard Customize modeling objective metric views MetricSet reference Model evaluators Binary classification Regression Custom model evaluator Add modeling resources Marketplace product AIP Model Catalog AIP Model Catalog Overview Model connectivity & development Evaluate model Model evaluators Custom model evaluator Custom evaluation library evaluation library published Python package Foundry produces model evaluator . Evaluation libraries measure model performance , model fairness , model robustness , metrics reusable way different modeling objectives . addition Foundry default model evaluators binary classification regression models , Foundry allows create custom model evaluator natively modeling objective . Custom evaluator inside modeling objective custom evaluator , configuration options , produced metrics displayed Modeling Objectives application names descriptions specified docstring evaluator implementation . custom evaluator published , available Modeling Objective application users view access published library . enables write reusable logic calculating standardized metrics organization . custom evaluator selectable inside evaluation library configuration modeling objective ; library configurable based parameter defined evaluator . Create custom evaluator create custom evaluator : Create code repository Model Evaluator Template Library . Implement custom evaluator . Add parameters custom evaluator . Commit publish new tag changes . Create code repository Code Repositories application template implementations ; , Model Evaluator Template Library . Navigate Foundry Project , select + New > Repository type > Model Integration > Language template , select Model Evaluator Template Library , finally select Initialize repository . Evaluator template structure Model Evaluator Template Library example implementation file src / evaluator / custom_evaluator.py . implementation Evaluator Python interface automatically registered available publish new version repository new repository version tag . repository contains custom evaluator logic publish multiple evaluators . additional evaluator implementation files need added reference list model evaluator modules build.gradle evaluator template . Implement custom evaluator implement custom evaluator , need create implementation Evaluator interface optionally provide configuration fields interpretation Modeling Objectives application . evaluator template library , add evaluator file src / evaluator / custom_evaluator.py . Evaluator interface interface evaluator defined : Copied ! 1 2 3 4 5 6 7 8 9 10 11 class Evaluator ( ): 
+
+     def apply_spark(self , df : DataFrame ) - > List[ComputedMetricValue ] : 
+         " " " 
+         Applies evaluator compute metrics PySpark Dataframe . 
+
+         : param df : PySpark DataFrame compute metrics 
+         : return : list computed metric values 
+         " " " 
+
+         pass use newly configured custom evaluator Modeling Objectives application , need publish new version repository , providing new repository version tag . Evaluator documentation custom evaluator configuration options produced metrics displayed Modeling Objectives application names descriptions specified docstring implementation . required values : display - : display evaluator description :   description evaluator optionally add zero following : param : configuration parameter custom evaluator metric : metric produced evaluator Example evaluator implementation example evaluator calculates row count input dataset . example evaluator displayed Modeling Objectives application : title Row Count Evaluator . description evaluator calculates row count input DataFrame . produced metric Row Count description row count . Zero configuration parameters . Copied ! 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 pyspark.sql import DataFrame 
+ pyspark.sql import functions F 
+ foundry_ml_metrics.evaluation import ComputedMetricValue , Evaluator 
+
+ class CustomEvaluator(Evaluator ): 
+     " " " 
+         : display - : Row Count Evaluator 
+         : description : evaluator calculates row count input DataFrame . 
+
+         : metric Row Count : row count 
+     " " " 
+
+     def apply_spark(self , df : DataFrame ) - > List[ComputedMetricValue ] : 
+         row_count = df.count ( ) 
+
+         return [ 
+             ComputedMetricValue ( 
+                 metric_name='Row Count ' , 
+                 metric_value = row_count 
+             ) 
+         ] Parameterize evaluator evaluator configurable Modeling Objectives application providing configuration parameters . 
+ configuration parameters populated Modeling Objectives application user - entered value run time . 
+ user evaluator opportunity configure values parameters configure automated evaluation modeling objective . allowed configuration fields : int : integer number float : floating point number bool : Boolean value ( True False ) str : string value Field[float ] : floating point column input DataFrame Field[int ] : integer column input DataFrame Field[str ] : string column input DataFrame Parameters optional wrapping Optional ( built - typing package ) . example : optional str Optional[str ] optional Field[str ] Optional[Field[str ] ] Example evaluator configuration fields example evaluator calculates row count input dataset row count input dataframe filtered input column column value value . example evaluator displayed Modeling Objectives application : title Configurable Row Count Evaluator . description evaluator calculates row count input DataFrame , filtered specified value . produced metric Row Count description unfiltered row count . produced metric Filtered Row Count description filtered row count configuration parameters : column evaluation dataset integer column description Filtered column . integer value value description Filtered value . Copied ! 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 pyspark.sql import DataFrame 
+ pyspark.sql import functions F 
+ foundry_ml_metrics.evaluation import ComputedMetricValue , Evaluator , Field 
+
+ class CustomEvaluator(Evaluator ): 
+     " " " 
+         : display - : Configurable Row Count Evaluator 
+         : description : evaluator calculates row count input DataFrame , filtered specified value . 
+
+         : param column : Filtered column 
+         : param value : Filtered value 
+
+         : metric Row Count : unfiltered row count 
+         : metric Filtered Row Count : filtered row count 
+     " " " 
+
+     column : Field[int ] 
+     value : int 
+
+     def _ _ init__(self , column : Field[int ] , value : int ): 
+         self.column = column 
+         self.value = value 
+
+     def apply_spark(self , df : DataFrame ) - > List[ComputedMetricValue ] : 
+         column_name = self.column.name 
+         column_value = self.value 
+
+         row_count = df.count ( ) 
+
+         filtered_row_count = df.filter ( 
+             F.col(column_name ) = = column_value 
+         ) .count ( ) 
+
+         return [ 
+             ComputedMetricValue ( 
+                 metric_name='Row Count ' , 
+                 metric_value = row_count 
+             ) , 
+             ComputedMetricValue ( 
+                 metric_name='Filtered Row Count ' , 
+                 metric_value = filtered_row_count 
+             ) 
+         ] Reference classes classes provided reference . Field Fields configuration parameters evaluator library tell Modeling Objective application properties need implemented . 
+ Field following interface . Copied ! 1 2 class Field ( ): 
+     : str ComputedMetricValue ComputedMetricValue stores information metric attach Foundry model . Copied ! 1 2 3 4 5 6 7 8 9 10 class ComputedMetricValue ( ): 
+     " " " 
+     Metric computed evaluators comprising metric , value , subset information . 
+     " " " 
+     metric_name : str 
+     metric_value : MetricValue 
+
+     def _ _ init__(self , metric_name , metric_value ): 
+         self.metric_name = metric_name 
+         self.metric_value = metric_value MetricValue MetricValue following : numeric value types : int np.int8 np.int16 np.int32 np.int64 np.uint8 np.uint16 np.uint32 np.uint64 float np.float32 np.float64 figure types : matplotlib . Figure matplotlib.pyplot . Figure class implements exactly methods : get_figure(self ) - > Figure : Note seaborn plots implement function . save(self , path : str ) : Note seaborn plots implement function . savefig(self , path : str ) BarChart LineChart â PREVIOUS Regression Add modeling resources Marketplace product â Contents Custom evaluation library Custom evaluator inside modeling objective Create custom evaluator Implement custom evaluator Reference classes Â © 2025 Palantir Technologies Inc. rights reserved . Cookies Statement â Privacy Statement â Cookie Settings

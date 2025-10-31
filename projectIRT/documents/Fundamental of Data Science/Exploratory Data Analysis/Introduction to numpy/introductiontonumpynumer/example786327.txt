@@ -1,0 +1,211 @@
+1 . Introduction NumPy | Numerical Programming | python-course.eu python - course . eu Search site : Home Python Tutorial OOP Advanced Annotations Applications Numerical Programming Machine Learning Tkinter Projects Python Training Courses Live Python classes highly experienced instructors : Instructor - led training courses Bernd Klein Numerical Programming chapter Numerical Programming Python Introduction NumPy Creating Numpy Arrays Numpy Data Objects , dtype Numerical Operations Numpy Arrays Numpy Arrays : Concatenating , Flattening Adding Dimensions Python , Random Numbers Probability Weighted Probabilities Synthetical Test Data Python Numpy : Boolean Indexing Matrix Arithmetics NumPy Python Reading Writing Data Files : ndarrays Overview Matplotlib Formatting plot Matplotlib Matplotlib Object Hierarchy Spines Ticks Matplotlib Adding Legends Annotations Matplotlib Creating Subplots Matplotlib Gridspec Matplotlib Histograms Matplotlib Contour Plots Matplotlib Image Processing Python Matplotlib Image Processing Techniques Python Matplotlib Creating Videos Images Moving Watermarks Video Python Introduction Pandas Pandas DataFrame Accessing Changing values DataFrames Pandas Styling Pandas Pivot Pandas : groupby Pandas Groupby Example Reading Writing Data Pandas Dealing NaN Binning Python Pandas Multi - level Indexing Pandas Data Visualization Pandas Python Date Time Time Series Pandas Python Expenses income example Pandas Python Net Income Method Example Numpy , Matplotlib Scipy Estimation Corona cases Python Pandas Linear Combinations Python Classroom Training Courses website contains free extensive online tutorial Bernd Klein , material classroom Python training courses . interested instructor - led classroom training course , look Python classes : Instructor - led training course Bernd Klein Bodenseo Image © kabliczech - Fotolia.com Deutsche Ausgabe DE Numpy - Tutorial Page author page written Bernd Klein . Bernd experienced computer scientist history working education management industry skilled Python , Perl , Computer Science , C++ . Dipl.-Informatiker / Master Degree focused Computer Science Saarland University . Bernd Klein Facebook Bernd Klein LinkedIn python - course Facebook PDF version PDF version site Help Needed website free annoying ads . want like . help donation : need donations 1 . Introduction NumPy Bernd Klein . modified : 01 Feb 2022 . page ➤ Introduction NumPy module Python . acronym " Numeric Python " " Numerical Python " . pronounced /ˈnʌmpaɪ/ ( NUM - py ) /ˈnʌmpi ( NUM - pee ) ) . extension module Python , written C. makes sure precompiled mathematical numerical functions functionalities Numpy guarantee great execution speed . Furthermore , NumPy enriches programming language Python powerful data structures , implementing multi - dimensional arrays matrices . data structures guarantee efficient calculations matrices arrays . implementation aiming huge matrices arrays , better know heading " big data " . module supplies large library high - level mathematical functions operate matrices arrays . SciPy ( Scientific Python ) mentioned breath NumPy . SciPy needs Numpy , based data structures Numpy furthermore basic creation manipulation functions . extends capabilities NumPy useful functions minimization , regression , Fourier - transformation . NumPy SciPy basic Python installation . installed Python installation . NumPy installed installing SciPy . image graphical visualisation matrix 14 rows 20 columns . - called Hinton diagram . size square diagram corresponds size value depicted matrix . colour determines , value positive negative . example : colour red denotes negative values colour green denotes positive values . NumPy based earlier Python modules dealing arrays . Numeric . Numeric like NumPy Python module high - performance , numeric computing , obsolete nowadays . predecessor NumPy Numarray , complete rewrite Numeric deprecated . NumPy merger , i.e. build code Numeric features Numarray . Live Python training Enjoying page ? offer live Python training courses covering content site . Python training courses Machine Learning Python training courses Comparison Core Python Numpy " Core Python " , mean Python special modules , i.e. especially NumPy . advantages Core Python : high - level number objects : integers , floating point containers : lists cheap insertion append methods , dictionaries fast lookup Advantages Numpy Python : array oriented computing efficiently implemented multi - dimensional arrays designed scientific computation Simple Numpy Example use NumPy import . imported like module : import numpy hardly . Numpy usually renamed np : import numpy np simple Numpy example deals temperatures . Given list values , e.g. temperatures Celsius : cvalues = [ 20.1 , 20.8 , 21.9 , 22.5 , 22.7 , 22.3 , 21.8 , 21.2 , 20.9 , 20.1 ] turn list " cvalues " - dimensional numpy array : C = np.array(cvalues ) 
+
+ print(C ) OUTPUT : [ 20.1 20.8 21.9 22.5 22.7 22.3 21.8 21.2 20.9 20.1 ] Let assume , want turn values degrees Fahrenheit . easy accomplish numpy array . solution problem achieved simple scalar multiplication : print(C * 9 / 5 + 32 ) OUTPUT : [ 68.18 69.44 71.42 72.5   72.86 72.14 71.24 70.16 69.62 68.18 ] array C changed expression : print(C ) OUTPUT : [ 20.1 20.8 21.9 22.5 22.7 22.3 21.8 21.2 20.9 20.1 ] Compared , solution Python list looks awkward : fvalues = [ x*9/5 + 32 x cvalues ] 
+
+ print(fvalues ) OUTPUT : [ 68.18 , 69.44 , 71.42 , 72.5 , 72.86 , 72.14 , 71.24000000000001 , 70.16 , 69.62 , 68.18 ] far , referred C array . internal type " ndarray " precise " C instance class numpy.ndarray " : type(C ) OUTPUT : numpy.ndarray following , use terms " array " " ndarray " cases synonymously . Live Python training Enjoying page ? offer live Python training courses covering content site . Upcoming online Courses Python Intensive Course 23 Jun 27 Jun 2025 28 Jul 01 Aug 2025 08 Sep 12 Sep 2025 20 Oct 24 Oct 2025 Data Analysis Python 04 Jun 06 Jun 2025 30 Jul 01 Aug 2025 10 Sep 12 Sep 2025 22 Oct 24 Oct 2025 Efficient Data Analysis Pandas 02 Jun 03 Jun 2025 23 Jun 24 Jun 2025 28 Jul 29 Jul 2025 08 Sep 09 Sep 2025 20 Oct 21 Oct 2025 Python Text Processing Course 04 Jun 06 Jun 2025 10 Sep 12 Sep 2025 22 Oct 24 Oct 2025 Python training courses Machine Learning Python training courses Graphical Representation Values want cover module matplotlib later chapter , want demonstrate use module depict temperature values . , package pyplot matplotlib . use jupyter notebook , advised include following line code prevent external window pop diagram included notebook : % matplotlib inline code generate plot values looks like : import matplotlib.pyplot plt 
+
+
+
+ plt.plot(C ) 
+
+ plt.show ( ) function plot uses values array C values ordinate , i.e. y - axis . indices array C taken values abscissa , i.e. x - axis . Memory Consumption : ndarray list main benefits numpy arrays smaller memory consumption better runtime behaviour . want look memory usage numpy arrays subchapter turorial compare memory consumption Python lists . calculate memory consumption list picture , use function getsizeof module sys . sys import getsizeof size 
+
+
+
+ lst = [ 24 , 12 , 57 ] 
+
+
+
+ size_of_list_object = size(lst )    # green box 
+
+ size_of_elements = len(lst ) * size(lst[0 ] ) # 24 , 12 , 57 
+
+
+
+ total_list_size = size_of_list_object + size_of_elements 
+
+ print("Size size elements : " , size_of_list_object ) 
+
+ print("Size elements : " , size_of_elements ) 
+
+ print("Total size list , including elements : " , total_list_size ) OUTPUT : Size size elements :   96 
+
+ Size elements :   84 
+
+ Total size list , including elements :   180 size Python list consists general list information , size needed references elements size elements list . apply sys.getsizeof list , size size elements . previous example , assumption integer elements list size . course , valid general , memory consumption higher larger integers . check , memory usage changes , add integer element list . look list : lst = [ 24 , 12 , 57 , 42 ] 
+
+
+
+ size_of_list_object = size(lst )    # green box 
+
+ size_of_elements = len(lst ) * size(lst[0 ] ) # 24 , 12 , 57 , 42 
+
+
+
+ total_list_size = size_of_list_object + size_of_elements 
+
+ print("Size size elements : " , size_of_list_object ) 
+
+ print("Size elements : " , size_of_elements ) 
+
+ print("Total size list , including elements : " , total_list_size ) 
+
+ 
+
+ lst = [ ] 
+
+ print("Emtpy list size : " , size(lst ) ) OUTPUT : Size size elements :   104 
+
+ Size elements :   112 
+
+ Total size list , including elements :   216 
+
+ Emtpy list size :   72 conclude new element , need bytes reference new object . new integer object consumes 28 bytes . size list " lst " size elements calculated : 64 + 8 * len(lst ) complete size arbitrary list integers , add sum sizes integers . examine memory consumption numpy.array . purpose , look implementation following picture : create numpy array previous diagram calculate memory usage : = np.array([24 , 12 , 57 ] ) 
+
+ print(size(a ) ) OUTPUT : 120 memory usage general array information creating array : e = np.array ( [ ] ) 
+
+ print(size(e ) ) OUTPUT : 96 difference array " e " array " " integers consists 24 Bytes . means arbitrary integer array length " n " numpy needs 96 + n * 8 Bytes list integers needs , seen 64 + 8 len(lst ) + len(lst ) 28 minimum estimation , Python integers use 28 bytes . define Numpy array , numpy automatically chooses fixed integer size . example " int64 " . determine size integers , define array . Needless , changes memory requirement : = np.array([24 , 12 , 57 ] , np.int8 ) 
+
+ print(size(a ) - 96 ) 
+
+
+
+ = np.array([24 , 12 , 57 ] , np.int16 ) 
+
+ print(size(a ) - 96 ) 
+
+
+
+ = np.array([24 , 12 , 57 ] , np.int32 ) 
+
+ print(size(a ) - 96 ) 
+
+
+
+ = np.array([24 , 12 , 57 ] , np.int64 ) 
+
+ print(size(a ) - 96 ) OUTPUT : 3 
+
+ 6 
+
+ 12 
+
+ 24 Live Python training Enjoying page ? offer live Python training courses covering content site . Python training courses Machine Learning Python training courses Time Comparison Python Lists Numpy Arrays main advantages NumPy advantage time compared standard Python . Let look following functions : import time 
+
+ size_of_vec = 1000 
+
+
+
+ def pure_python_version ( ): 
+
+     t1 = time.time ( ) 
+
+     X = range(size_of_vec ) 
+
+     Y = range(size_of_vec ) 
+
+     Z = [ X[i ] + Y[i ] range(len(X ) ) ] 
+
+     return time.time ( ) - t1 
+
+
+
+ def numpy_version ( ): 
+
+     t1 = time.time ( ) 
+
+     X = np.arange(size_of_vec ) 
+
+     Y = np.arange(size_of_vec ) 
+
+     Z = X + Y 
+
+     return time.time ( ) - t1 Let functions time consumption : t1 = pure_python_version ( ) 
+
+ t2 = numpy_version ( ) 
+
+
+
+ print(t1 , t2 ) 
+
+ print("Numpy example " + str(t1 / t2 ) + " faster ! " ) OUTPUT : 0.0010614395141601562 5.2928924560546875e-05 
+
+ Numpy example 20.054054054054053 faster ! easier better way measure times timeit module . use Timer class following script . constructor Timer object takes statement timed , additional statement setup , timer function . statements default ' pass ' . statements contain newlines , long contain multi - line string literals . Timer object timeit method . timeit called parameter number : timeit(number=1000000 ) main statement executed " number " times . executes setup statement , returns time takes execute main statement " number " times . returns time seconds . import numpy np 
+
+ timeit import Timer 
+
+
+
+ size_of_vec = 1000 
+
+
+
+ X_list = range(size_of_vec ) 
+
+ Y_list = range(size_of_vec ) 
+
+
+
+ X = np.arange(size_of_vec ) 
+
+ Y = np.arange(size_of_vec ) 
+
+
+
+ def pure_python_version ( ): 
+
+     Z = [ X_list[i ] + Y_list[i ] range(len(X_list ) ) ] 
+
+
+
+ def numpy_version ( ): 
+
+     Z = X + Y 
+
+
+
+
+
+ # timer_obj = Timer("x = x + 1 " , " x = 0 " ) 
+
+ timer_obj1 = Timer("pure_python_version ( ) " , 
+
+                    " _ _ main _ _ import pure_python_version " ) 
+
+ timer_obj2 = Timer("numpy_version ( ) " , 
+
+                    " _ _ main _ _ import numpy_version " ) 
+
+
+
+ range(3 ): 
+
+     t1 = timer_obj1.timeit(10 ) 
+
+     t2 = timer_obj2.timeit(10 ) 
+
+     print("time pure Python version : " , t1 ) 
+
+     print("time Numpy version : " , t2 ) 
+
+     print(f"Numpy { t1 / t2:7.2f } times faster ! " ) OUTPUT : time pure Python version :   0.0021230499987723306 
+
+ time Numpy version :   0.0004346180066931993 
+
+ Numpy     4.88 times faster ! 
+
+ time pure Python version :   0.003020321993972175 
+
+ time Numpy version :   0.00014882600225973874 
+
+ Numpy    20.29 times faster ! 
+
+ time pure Python version :   0.002028984992648475 
+
+ time Numpy version :   0.0002098319964716211 
+
+ Numpy     9.67 times faster ! repeat ( ) method convenience timeit ( ) multiple times return list results : print(timer_obj1.repeat(repeat=3 , number=10 ) ) 
+
+ print(timer_obj2.repeat(repeat=3 , number=10 ) ) OUTPUT : [ 0.0030275019962573424 , 0.002999588003149256 , 0.0022120869980426505 ] 
+
+ [ 6.104000203777105e-05 , 0.0001641790004214272 , 1.904800592456013e-05 ] Live Python training Enjoying page ? offer live Python training courses covering content site . Upcoming online Courses Python Intensive Course 23 Jun 27 Jun 2025 28 Jul 01 Aug 2025 08 Sep 12 Sep 2025 20 Oct 24 Oct 2025 Data Analysis Python 04 Jun 06 Jun 2025 30 Jul 01 Aug 2025 10 Sep 12 Sep 2025 22 Oct 24 Oct 2025 Efficient Data Analysis Pandas 02 Jun 03 Jun 2025 23 Jun 24 Jun 2025 28 Jul 29 Jul 2025 08 Sep 09 Sep 2025 20 Oct 21 Oct 2025 Python Text Processing Course 04 Jun 06 Jun 2025 10 Sep 12 Sep 2025 22 Oct 24 Oct 2025 Python training courses Machine Learning Python training courses page « PREVIOUS : 0 . Numerical Programming Python : 2 . Creating Numpy Arrays » Home site Live courses Contact Donate python-course.eu News Sitemap PDF version site Data Protection Declaration

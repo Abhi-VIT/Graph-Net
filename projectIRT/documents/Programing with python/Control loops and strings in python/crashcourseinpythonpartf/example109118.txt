@@ -1,0 +1,187 @@
+Crash Course Python 2 : Flow Control , Loops , Functions , Generators — MEM T680 : Fall 2022 : Data Analysis Machine Learning Toggle navigation sidebar Toggle - page Table Contents MEM T680 : Fall 2022 : Data Analysis Machine Learning MEM T680 : Data Analysis Machine Learning Course Content ð Course Materials Syllabus Course Survey Survey Responses Final Project Topic 1ï¸â£ Importance Challenges Data Analysis Importance Data Analysis Challenges Data Analysis Topic 2ï¸â£ Setting Computing Environment Introduction Course Machinery Project Jupyter Setting Computing Environment Welcome Colaboratory Introduction GitHub Topic 3ï¸â£ Machine Learning Machine Learning Topic 4ï¸â£ Crash Course Python Crash Course Python : 1 Crash Course Python 2 : Flow Control , Loops , Functions , Generators Crash Course Python : 3 Topic 5ï¸â£ Tools Scientific Python NumPy ? Welcome NumPy ! Introduction Plotting Python Interactive Graphing Dash Introduction SciPy Symbolic Solving SymPy Topic 6ï¸â£ Image Analysis Python Introduction Image Analysis Scikit - Image Topic 7ï¸â£ Scientific Data Management DataFed Installing DataFed Introduction DataFed DataFed Tutorial Topic 8ï¸â£ Linear Supervised Machine Learning Introduction Linear Machine Learning Linear Supervised Machine Learning Scikit - Learn Logistic Regression Support Vector Machines Nonlinear Data Decision Trees Hyperparameter tuning grid - search Topic 9ï¸â£ Unsupervised Learning Clustering Algorithms Decomposition Algorithms Manifold Learning Topic ð Deep Learning Pytorch Quickstart Tensors Datasets & DataLoaders Transforms neural network Automatic Differentiation torch.autograd Optimizing Model Parameters Save Load Model ð Homework Homework Assignments ð Homework 1 Designing Metadata Schema ð Homework 2 Scripting Python ð Homework 3 Machine Learning Semiconductor Manufacturing Home Midterm Home Midterm Final Exam Materials Topics Final Exam Final Exam Assignment Final Project Resources Final Project Resources Find Dataset ? White Paper Submission Final Project Booking Final Project Presentation Schedule Powered Jupyter Book Binder JupyterHub Colab Live Code repository open issue .ipynb .pdf Contents Flow Control statement Example Statement - Example - statement - nested Example Nested statements - elif - ladder Loops Example : Loops Python List Example : Loops Dictionaries Example : Loops Strings Loops Controlled Range - class exercise : class exercise Example : Loops statements Loop Control Statements Continue Statement Example : Use Continue Statement Break Statement Example use Break Statement Pass Statement Example Pass Statement Example Functions loops Example Loop Example Loop List Example : Loops Control Statements Example : Loop break statement Example : Loop Statement Functions simple function Importing Modules Iterators Example Iterator Example : Iterating Different Data Structures Return Yield Statements Return Statement Example : Return Statement Yield Statement Example : Yield Statement loop Generators Example Simple Generator Example : Python program demonstrate use generator object ( ) Class Example : Python program generate squares 1 100 yield generator Crash Course Python 2 : Flow Control , Loops , Functions , Generators Contents Flow Control statement Example Statement - Example - statement - nested Example Nested statements - elif - ladder Loops Example : Loops Python List Example : Loops Dictionaries Example : Loops Strings Loops Controlled Range - class exercise : class exercise Example : Loops statements Loop Control Statements Continue Statement Example : Use Continue Statement Break Statement Example use Break Statement Pass Statement Example Pass Statement Example Functions loops Example Loop Example Loop List Example : Loops Control Statements Example : Loop break statement Example : Loop Statement Functions simple function Importing Modules Iterators Example Iterator Example : Iterating Different Data Structures Return Yield Statements Return Statement Example : Return Statement Yield Statement Example : Yield Statement loop Generators Example Simple Generator Example : Python program demonstrate use generator object ( ) Class Example : Python program generate squares 1 100 yield generator Crash Course Python 2 : Flow Control , Loops , Functions , Generators # Flow Control # comes situations real life need decisions based decisions , decide . Similar situations arise programming need decisions based decisions execute block code . Decision - making statements programming languages decide direction flow program execution . statement # decide certain statement block statements executed condition : # Statements execute # condition true condition evaluation true false statement accepts boolean values â value true execute block statements . Python uses indentation identify block . block statement identified shown example : condition : statement1 statement2 # condition true , block # consider statement1 inside # block . Example Statement # # python program illustrate statement = 10 > 15 : print ( " 10 15 " ) print ( " " ) - # statement tells condition true execute block statements condition false wonât . want condition false ? comes statement . use statement statement execute block code condition false . ( condition ): # Executes block # condition true : # Executes block # condition false Example - statement # = 20 < 15 : print ( " smaller 15 " ) print ( " Block " ) : print ( " greater 15 " ) print ( " Block " ) print ( " Block " ) greater 15 
+
+ Block 
+
+ Block - nested # statements nested inside statements Example Nested statements # = 10 = = 10 : #   statement < 15 : print ( " smaller 15 " ) # Nested - statement # executed statement # true < 12 : print ( " smaller 12 " ) : print ( " greater 15 " ) smaller 15 
+
+ smaller 12 - elif - ladder # possible flow - - statements = 20 = = 10 : print ( " 10 " ) elif = = 15 : print ( " 15 " ) elif = = 20 : print ( " 20 " ) : print ( " present " ) 20 Loops # Python loop sequential traversal i.e. iterating iterable like String , Tuple , List , Set Dictionary . var iterable : # statements Example : Loops Python List # # Python program illustrate # Iterating list l = [ " Drexel " , " " , " Engineering " ] l : print ( ) Drexel 
+
+ 
+
+ Engineering Example : Loops Dictionaries # # Iterating dictionary print ( " Dictionary Iteration " ) d = dict ( ) d [ " xyz " ] = 123 d [ " abc " ] = 345 d : print ( f " { } { d [ ] } " ) Dictionary Iteration 
+
+ xyz 123 
+
+ abc 345 Example : Loops Strings # # Iterating String print ( " String Iteration " ) s = " Drexel " s : print ( ) String Iteration 
+
+ D 
+
+ r 
+
+ e 
+
+ x 
+
+ e 
+
+ l Loops Controlled Range # range ( ) function execute loop certain number times - class exercise : # Use range function print values 1 9 # Python Program # range ( ) basics # printing number range ( 1 , 10 ): print ( , end = " " ) 1 2 3 4 5 6 7 8 9 class exercise # Compute sum numbers 1 - 9 range ( ) function loop # performing sum 10 numbers sum = 0 range ( 1 , 10 ): sum + = print ( " \n Sum 10 numbers : " , sum ) Sum 10 numbers : 45 Example : Loops statements # # Python program demonstrate # - loop range ( 1 , 4 ): print ( ) : # Executed break print ( " Break " ) 1 
+
+ 2 
+
+ 3 
+
+ Break Loop Control Statements # Loop control statements change execution normal sequence execution leaves scope , automatic objects created scope destroyed Continue Statement # Returns control beginning loop Example : Use Continue Statement # # Prints letters ' e ' ' g ' letter " Drexel Engineering " : letter = = " e " letter = = " g " : continue print ( " Current Letter : " , letter ) Current Letter : D 
+
+ Current Letter : r 
+
+ Current Letter : x 
+
+ Current Letter : l 
+
+ Current Letter :  
+
+ Current Letter : E 
+
+ Current Letter : n 
+
+ Current Letter : 
+
+ Current Letter : n 
+
+ Current Letter : r 
+
+ Current Letter : 
+
+ Current Letter : n Break Statement # control statement bring process loop Example use Break Statement # letter " Drexel Engineering " : # break loop soon sees ' e ' # ' letter = = " e " letter = = " s " : break print ( " Current Letter : " , letter ) Current Letter : e Pass Statement # code execute pass different continue continue causes loop restart , pass loop . pass usually future placeholder Example Pass Statement # # loop letter " Drexel Engineering " : pass print ( " Letter : " , letter ) Letter : g Example Functions # # Explicit function def digitSum ( n ): dsum = 0 ele str ( n ): dsum + = int ( ele ) return dsum # Initializing list List = [ 367 , 111 , 562 , 945 , 6726 , 873 ] # function odd elements list newList = [ digitSum ( ) List & 1 ] # Displaying new list print ( newList ) [ 16 , 3 , 18 , 18 ] loops # Python Loop execute block statements repeatedly given condition satisfied . condition false , line immediately loop program executed . expression : statement ( s ) Example Loop # # Python program illustrate # loop count = 0 count < 3 : count = count + 1 print ( " Hello Drexel Dragon " ) Hello Drexel Dragon 
+
+ Hello Drexel Dragon 
+
+ Hello Drexel Dragon Example Loop List # # checks list # contains element = [ 1 , 2 , 3 , 4 ] : print ( . pop ( ) ) 4 
+
+ 3 
+
+ 2 
+
+ 1 Example : Loops Control Statements # # Prints letters ' e ' ' ' = 0 = " Drexel Dragons " < len ( ): [ ] = = " e " [ ] = = " " : + = 1 continue print ( " Current Letter : " , [ ] ) + = 1 Current Letter : D 
+
+ Current Letter : r 
+
+ Current Letter : x 
+
+ Current Letter : l 
+
+ Current Letter : D 
+
+ Current Letter : r 
+
+ Current Letter : 
+
+ Current Letter : g 
+
+ Current Letter : o 
+
+ Current Letter : n 
+
+ Current Letter : s Example : Loop break statement # # Breaks loop soon sees ' e ' ' ' = 0 = " Drexel Dragons " < len ( ): [ ] = = " e " [ ] = = " " : + = 1 break print ( " Current Letter : " , [ ] ) + = 1 Current Letter : D 
+
+ Current Letter : r Example : Loop Statement # # Python program demonstrate # - loop = 0 < 4 : + = 1 print ( ) : # Executed break print ( " Break " ) 1 
+
+ 2 
+
+ 3 
+
+ 4 
+
+ Break = 0 < 4 : + = 1 print ( ) break : # executed break print ( " Break " ) 1 Functions # expression takes inputs \(\rightarrow\ ) \(\rightarrow\ ) returns output simple function # Letâs function squares number def square ( x ): y = x * * 2 return y Letâs test function print ( square ( 10 ) ) 100 Letâs function subtracts values def subtract ( x , y ): z = x - y return z print ( subtract ( 10 , 5 ) ) 5 Importing Modules # Python contains basic functions power comes ability import , create , share , co - develop packages modules available imported python use write code , sure exist think built want â ¦ probably Note * * Installing Packages * * easy install Python packages . packages developed listed Python Package Index ( PyPI ) . packages installed pip install < package_name > # Imports built package random import random # Imports built function randrange package random random import randrange # instantiates function prob = random . random ( ) # prints output function print ( prob ) 0.37668223102913545 # ways instantiate function diceThrow = random . randrange ( 1 , 7 ) diceThrow = randrange ( 1 , 7 ) # prints output print ( diceThrow ) 5 Iterators # iterator python object iterate iterable objects like lists , tuples , dicts , sets iterator object initialized iter ( ) method uses ( ) method iteration Iterators lot machine learning _ _ iter(iterable ) _ _ method called initialization iterator . returns iterator object _ _ _ _ method returns value iterable . Example Iterator # # example python inbuilt iterator # value iterate iterable_value = " Drexel Dragons " iterable_obj = iter ( iterable_value ) True : try : # Iterate calling item = ( iterable_obj ) print ( item ) StopIteration : # exception happen iteration break D 
+
+ r 
+
+ e 
+
+ x 
+
+ e 
+
+ l 
+
+ 
+
+ D 
+
+ r 
+
+ 
+
+ g 
+
+ o 
+
+ n 
+
+ s Example : Iterating Different Data Structures # # Sample built - iterators # Iterating list print ( " List Iteration " ) l = [ " Drexel " , " " , " Engineering " ] l : print ( ) List Iteration 
+
+ Drexel 
+
+ 
+
+ Engineering # Iterating tuple ( immutable ) print ( " Tuple Iteration " ) t = ( " Drexel " , " " , " Engineering " ) t : print ( ) Tuple Iteration 
+
+ Drexel 
+
+ 
+
+ Engineering # Iterating String print ( " String Iteration " ) s = " Drexel " s : print ( ) String Iteration 
+
+ D 
+
+ r 
+
+ e 
+
+ x 
+
+ e 
+
+ l # Iterating dictionary print ( " Dictionary Iteration " ) d = dict ( ) d [ " xyz " ] = 123 d [ " abc " ] = 345 d : print ( " % s % d " % ( , d [ ] ) ) Dictionary Iteration 
+
+ xyz   123 
+
+ abc   345 Return Yield Statements # Return Statement # return statement immediately terminates function execution sends return value caller code Example : Return Statement # def return_42 ( number ): number = = 42 : return 42 print ( " number 42 " ) print ( return_42 ( 42 ) ) print ( " Notice second print command " ) print ( " \n " ) return_42 ( 24 ) 42 
+
+ Notice second print command 
+
+
+
+ 
+
+ number 42 Yield Statement # yield statement suspends functionâs execution sends value caller , retains state enable function resume left function resumes , continues execution immediately yield run . allows code produce series values time , computing sending like list yield statement intrinsic generator yield useful want iterate sequence want save data memory Example : Yield Statement loop # # Simple Python program demonstrate working # yield # generator function yields 1 time , # 2 second time 3 time def simpleGeneratorFun ( ): yield 1 yield 2 yield 3 # Driver code check generator function value simpleGeneratorFun ( ): print ( value ) 1 
+
+ 2 
+
+ 3 Generators # generator - function defined like normal function , needs generate value , yield keyword return . body def contains yield , function automatically generator function . Example Simple Generator # # generator function yields 1 time , # 2 second time 3 time def simpleGeneratorFun ( ): yield 1 yield 2 yield 3 # Driver code check generator function value simpleGeneratorFun ( ): print ( value ) 1 
+
+ 2 
+
+ 3 Example : Python program demonstrate use generator object ( ) # # generator function def simpleGeneratorFun ( ): yield 1 yield 2 yield 3 # x generator object x = simpleGeneratorFun ( ) # Iterating generator object print ( x . _ _ _ _ ( ) ) print ( x . _ _ _ _ ( ) ) print ( x . _ _ _ _ ( ) ) 1 
+
+ 2 
+
+ 3 Class Example : Python program generate squares 1 100 yield generator # function nextSquare ( ) uses loop print squares ( yield ) 100 . Try think way efficient def nextSquare ( ): # Code next_square = nextSquare ( ) range ( 100 ): try : print ( ) # Add code calls iterator StopIteration : break Cell [ 1 ] , line 4 next_square = nextSquare ( ) ^ IndentationError : expected indented block function definition line 1 def nextSquare ( ): = 1 # Infinite loop generate squares True : * > 100 : break yield * + = 1 # execution resumes # point next_square = nextSquare ( ) range ( 100 ): try : print ( next_square . _ _ _ _ ( ) ) StopIteration : break 1 
+
+ 4 
+
+ 9 
+
+ 16 
+
+ 25 
+
+ 36 
+
+ 49 
+
+ 64 
+
+ 81 
+
+ 100 previous Crash Course Python : 1 Crash Course Python : 3 Joshua C. Agar © Copyright 2022 .

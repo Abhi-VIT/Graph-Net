@@ -1,0 +1,63 @@
+difference list syntax tuple syntax ? - Python Help - Discussions Python.org Discussions Python.org difference list syntax tuple syntax ? Python Help help GaarXeriss ( Gaar Xeriss ) 6 , 2022 , 11:17pm 1 Hey started learning 3 days ago ,   list tuples section legit question , purpose post acquainted python community sort introduction . question , video noticed example list listtA   = [ 5 , 10 , 15 , 20 ] , example tuples listA =[ ' ' , ' date ' , ' city ' , ' state ' , ' country ’ ] lead belive difference syntaxs quotation . correct ? facelessuser ( Isaac Muse ) 6 , 2022 , 11:23pm 2 Gaar Xeriss : , example tuples listA =[ ' ' , ' date ' , ' city ' , ' state ' , ' country ’ ] , list : > > > t = ( ' ' , ' date ' , ' city ' , ' state ' , ' country ' ) 
+ > > > type(t ) 
+ < class ' tuple ' > noted round brackets explicitly needed , makes tuple simply commas . People wrap round brackets separate data things , simply brains like better way . > > > t = ' ' , ' date ' , ' city ' , ' state ' , ' country ' 
+ > > > type(t ) 
+ < class ' tuple ' > 1 Like GaarXeriss ( Gaar Xeriss ) 6 , 2022 , 11:32pm 3 clarification listA = ( ‘ ’ , ‘ city ’ , ‘ state ’ ) tuple ’   word ? thanks quick reply ! ! rob42 ( Rob ) 6 , 2022 , 11:32pm 4 notes : List list simply sequence values stored specific order value identified position order . list finite . List items separated commas surrounded square brackets . Number List even_numbers = [ 2,4,6,8,10 ] Word List words = [ ' the','cat','sat','on','the','mat ' ] String List > > > list ( ‘ Hello ! ’ ) [ ' H ' , ' e ' , ' l ' , ' l ' , ' o ' , ' ! ' ] Lists … ordered items defined order , order change . indexed item index [ 0 ] , second item index [ 1 ] etc . changeable meaning change , add , remove items list created . add new items list , new items placed end list . lists indexed , lists items duplicate values . List items data type : Example # String , int boolean data types : 
+ list1 = [ " apple " , " banana " , " cherry " ] 
+ list2 = [ 1 , 5 , 7 , 9 , 3 ] 
+ list3 = [ True , False , False ] list contain different data types : Example # list strings , integers boolean values : 
+ list1 = [ " abc " , 34 , True , 40 , " male " , False ] change item list referencing index number . numbers = [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 ] 
+
+ n = numbers[4 ] 
+
+ print(n ) 
+
+ numbers[4 ] = 40 
+
+ n = numbers[4 ] 
+
+ print(n ) .append ( ) add item end list . remove delete list item , ways : del list_name[index_number ] list_name.remove(index_number ) Tuple Tuples created round brackets , items ordered , unchangeable allow duplicate values . Example # Create Tuple : 
+ thistuple = ( " apple " , " banana " , " cherry " ) 
+ print(thistuple ) Tuples … ordered items defined order , order change . indexed item index [ 0 ] , second item index [ 1 ] etc . unchangeable meaning change , add , remove items Tuple created . tuples indexed , tuples items duplicate values strings , integers boolean values Example # String , int boolean data types : 
+ tuple2 = ( " cherry " , " apple " , " banana " , " cherry " ) 
+ tuple2 = ( 1 , 5 , 7 , 9 , 3 , 1 , 0 , 9 ) 
+ tuple3 = ( True , False , False ) 1 Like GaarXeriss ( Gaar Xeriss ) 6 , 2022 , 11:35pm 5 ah brackets ! ! rob42 ( Rob ) 6 , 2022 , 11:39pm 6 biggest difference list changeable tuple . easier spot code block use brackets . Yes : [ ] list ( ) tuple 1 Like facelessuser ( Isaac Muse ) 6 , 2022 , 11:41pm 7 clarify , round brackets responsible making Tuple . Yes , people use parenthesis defining tuples , organization separation . create tuples round brackets , visually printed round brackets : > > > t = ' ' , ' date ' , ' city ' , ' state ' , ' country ' 
+ > > > t 
+ ( ' ' , ' date ' , ' city ' , ' state ' , ' country ' ) 
+ > > > type(t ) 
+ < class ' tuple ' > , people , [ ] means lists , ( ) means Tuples . remember , ( ) Tuple , associate Tuples . organizational symbols : > > > = ( 3 ) 
+ > > > 
+ 3 
+ > > > type(a ) 
+ < class ' int ' > , makes tuple ( lack list brackets , set braces , etc . ) . 3 Likes GaarXeriss ( Gaar Xeriss ) 6 , 2022 , 11:51pm 8 Isaac Muse : remember , ( ) Tuple , associate Tuples . organizational symbols : hey , searching sites looked stated exact opposite . echoed @rob42 notes link like facelessuser ( Isaac Muse ) 7 , 2022 , 12:03am 9 demonstrated actual python response . believe , try . 2 Likes rob42 ( Rob ) 7 , 2022 , 12:05am 10 @facelessuser correct brackets object tuple , usual define integer like : = ( 2 ) common : = 2 demonstrate . = ( 2 ) 
+ print(type(a ) ) 
+
+ = ( 1 , 2 ) 
+ print(type(a ) ) 1 Like steven.daprano ( Steven D'Aprano ) 7 , 2022 , 12:40am 11 quotation marks items strings . anumber = 123 
+ astring = ' 123 ' tuple strings , numbers , : atuple = ( ' Hello ' , ' world ' , 1234 , 5678 ) 2 Likes GaarXeriss ( Gaar Xeriss ) 7 , 2022 ,   2:00am 12 ok testing listA =( " apple " , " banana " , " car " ) listL =[ " apple " , " banana " , " car " ] print(dir(listA ) ) [ ‘ add ’ , ‘ class ’ , ‘ contains ’ , ‘ delattr ’ , ‘ dir ’ , ‘ doc ’ , ‘ eq ’ , ‘ format ’ , ‘ ge ’ , ‘ getattribute ’ , ‘ getitem ’ , ‘ getnewargs ’ , ‘ gt ’ , ‘ hash ’ , ‘ init ’ , ‘ init_subclass ’ , ‘ iter ’ , ‘ le ’ , ‘ len ’ , ‘ lt ’ , ‘ mul ’ , ‘ ne ’ , ‘ new ’ , ‘ reduce ’ , ‘ reduce_ex ’ , ‘ repr ’ , ‘ rmul ’ , ‘ setattr ’ , ‘ sizeof ’ , ‘ str ’ , ‘ subclasshook ’ , ‘ count ’ , ‘ index ’ ] print(dir(listL ) ) [ ‘ add ’ , ‘ class ’ , ‘ contains ’ , ‘ delattr ’ , ‘ delitem ’ , ‘ dir ’ , ‘ doc ’ , ‘ eq ’ , ‘ format ’ , ‘ ge ’ , ‘ getattribute ’ , ‘ getitem ’ , ‘ gt ’ , ‘ hash ’ , ‘ iadd ’ , ‘ imul ’ , ‘ init ’ , ‘ init_subclass ’ , ‘ iter ’ , ‘ le ’ , ‘ len ’ , ‘ lt ’ , ‘ mul ’ , ‘ ne ’ , ‘ new ’ , ‘ reduce ’ , ‘ reduce_ex ’ , ‘ repr ’ , ‘ reversed ’ , ‘ rmul ’ , ‘ setattr ’ , ‘ setitem ’ , ‘ sizeof ’ , ‘ str ’ , ‘ subclasshook ’ , ‘ append ’ , ‘ clear ’ , ‘ copy ’ , ‘ count ’ , ‘ extend ’ , ‘ index ’ , ‘ insert ’ , ‘ pop ’ , ‘ remove ’ , ‘ reverse ’ , ‘ sort ’ ] listL true list append . thing differently brackets . missing ? , want thank time . glad know community supportive facelessuser ( Isaac Muse ) 7 , 2022 ,   2:06am 13 missing . Yes , switching brackets turn list tuple . Removing brackets tuple . Lists append mutable add . Tuples immutable modified . 1 Like facelessuser ( Isaac Muse ) 7 , 2022 ,   2:10am 14 reason point brackets people burned forget brackets item tuple , brackets list list : > > > = [ 1 ] 
+ > > > type(a ) 
+ < class ' list ' > 
+ > > > b = ( 1 ) 
+ > > > type(b ) 
+ < class ' int ' > 
+ > > > c = ( 1 , ) 
+ > > > type(c ) 
+ < class ' tuple ' > 
+ > > > d = 1 , 
+ > > > type(d ) 
+ < class ' tuple ' > 3 Likes GaarXeriss ( Gaar Xeriss ) 7 , 2022 ,   2:13am 15 idea happy learning , appreciate information shared . deeper understanding going thanks jpgoldberg ( Jeffrey Goldberg ) 7 , 2022 ,   7:31am 16 Early , got mildly singed “ parentheses tuple ” misconception . starting . recall exact thing extra work caused , gotten head func1 func2 different return types def func1 ( ): 
+     return 1 , 2 
+
+ def func2 ( ): 
+    return ( 1 , 2 ) needed things like x , y = func1 ( ) versus ( x , y ) = func2 ( ) . misconception cause actual problems way parenthesis needed . know use parentheses tuples communicate human reader , use ( ) needed purpose . rob42 ( Rob ) 7 , 2022 ,   2:54pm 17 finished writing notes turns , demonstrates use list tuple syntax functionality . script , numbList list weights tuple import random 
+
+ numberList = [ 100 , 200 , 300 , 400 , 500 ] 
+
+ outList = ( random.choices(numberList , weights=(10 , 20 , 40 , 80 , 160 ) , k=10 ) ) 
+
+ print('Results :') 
+ print('100 : ' , outList.count(100 ) ) 
+ print('200 : ' , outList.count(200 ) ) 
+ print('300 : ' , outList.count(300 ) ) 
+ print('400 : ' , outList.count(400 ) ) 
+ print('500 : ' , outList.count(500 ) ) script : chosen maximum 10 elements ( k=10 ) highest probability ( 160 ) set returning number 500 numberList lowest probability ( 10 ) set returning number 100 numberList . Home Categories Guidelines Terms Service Privacy Policy Powered Discourse , best viewed JavaScript enabled

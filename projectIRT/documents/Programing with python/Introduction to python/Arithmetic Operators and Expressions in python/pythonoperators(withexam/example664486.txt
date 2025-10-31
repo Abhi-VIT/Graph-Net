@@ -1,0 +1,109 @@
+Python Operators ( Examples ) Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Tutorials Examples Courses Try Programiz PRO Course Index Tutorials Courses Python JavaScript SQL HTML CSS R C C++ Java RUST Golang Kotlin Swift C # DSA Learn Python practically Certified . ENROLL Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Explore Python Examples Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Created decade experience . Learn Practice Compete Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA Learn C Learn C++ Learn Java View Courses Python Basics Python Intermediate C++ Basics C++ Intermediate C++ OOP C Programming Java Basics Java Intermediate Java OOP View Courses Python Challenges JavaScript Challenges Java Challenges C++ Challenges C Challenges View Challenges Learn Practice Compete Certification Courses Created decade experience thousands feedback . Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA View Courses Learn C Learn C++ Learn Java Python JavaScript SQL HTML CSS R C C++ Java languages Learn Python practically Certified . Try Programiz PRO ! Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Python Tutorials Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Python JavaScript R C C++ Java Kotlin Learn Python practically Certified . Try Programiz PRO ! Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Python Examples Python Introduction Started Python Python Program Python Comments Python Fundamentals Python Variables Literals Python Type Conversion Python Basic Input Output Python Operators Python Flow Control Python ... Statement Python Loop Python Loop Python break continue Python pass Statement Python Data types Python Numbers Mathematics Python List Python Tuple Python String Python Set Python Dictionary Python Functions Python Functions Python Function Arguments Python Variable Scope Python Global Keyword Python Recursion Python Modules Python Package Python Main function Python Files Python Directory Files Management Python CSV : Read Write CSV files Reading CSV files Python Writing CSV files Python Python Exception Handling Python Exceptions Python Exception Handling Python Custom Exceptions Python Object & Class Python Objects Classes Python Inheritance Python Multiple Inheritance Polymorphism Python Python Operator Overloading Python Advanced Topics List comprehension Python Lambda / Anonymous Function Python Iterators Python Generators Python Namespace Scope Python Closures Python Decorators Python @property decorator Python RegEx Python Date Time Python datetime Python strftime ( ) Python strptime ( ) current date 
+ time Python ? Python Current Time Python timestamp 
+ datetime vice - versa Python time Module Python sleep ( ) Additional Topic Precedence Associativity Operators Python Python Keywords Identifiers Python Asserts Python Json Python pip Python * args * * kwargs Python Tutorials Precedence Associativity Operators Python Python Operator Overloading Python ... Statement Python 3 Tutorial Python Strings Python ( ) Python Operators Operators special symbols perform operations variables values . example , print(5 + 6 )    # 11 , + operator adds numbers : 5 6 . Types Python Operators list different types Python operators learn tutorial . Arithmetic Operators Assignment Operators Comparison Operators Logical Operators Bitwise Operators Special Operators 1 . Python Arithmetic Operators Arithmetic operators perform mathematical operations like addition , subtraction , multiplication , etc . example , sub = 10 - 5 # 5 , - arithmetic operator subtracts values variables . Operator Operation Example + Addition 5 + 2 = 7 - Subtraction 4 - 2 = 2 * Multiplication 2 * 3 = 6 / Division 4 / 2 = 2 // Floor Division 10 // 3 = 3 % Modulo 5 % 2 = 1 * * Power 4 * * 2 = 16 Example 1 : Arithmetic Operators Python = 7 
+ b = 2 
+
+ # addition 
+ print ( ' Sum : ' , + b )  
+
+ # subtraction 
+ print ( ' Subtraction : ' , - b )   
+
+ # multiplication 
+ print ( ' Multiplication : ' , * b )  
+
+ # division 
+ print ( ' Division : ' , / b ) 
+
+ # floor division 
+ print ( ' Floor Division : ' , // b ) 
+
+ # modulo 
+ print ( ' Modulo : ' , % b )  
+
+ # power b 
+ print ( ' Power : ' , * * b ) Output Sum : 9 
+ Subtraction : 5 
+ Multiplication : 14 
+ Division : 3.5 
+ Floor Division : 3 
+ Modulo : 1 
+ Power : 49 example , multiple arithmetic operators , + add b - subtract b * multiply b / divide b // floor divide b % remainder * * power b 2 . Python Assignment Operators Assignment operators assign values variables . example , # assign 5 x 
+ x = 5 , = assignment operator assigns 5 x . list different assignment operators available Python . Operator Example = Assignment Operator = 7 + = Addition Assignment + = 1 # = + 1 -= Subtraction Assignment -= 3 # = - 3 * = Multiplication Assignment * = 4 # = * 4 /= Division Assignment /= 3 # = / 3 % = Remainder Assignment % = 10 # = % 10 * * = Exponent Assignment * * = 10 # = * * 10 Example 2 : Assignment Operators # assign 10 
+ = 10 
+
+ # assign 5 b 
+ b = 5 
+
+ # assign sum b 
+ + = b       # = + b 
+
+ print(a ) 
+
+ # Output : 15 , + = operator assign sum b . Similarly , use assignment operators needs . 3 . Python Comparison Operators Comparison operators compare values / variables return boolean result : True False . example , = 5 
+ b = 2 
+
+ print ( > b )     # True , > comparison operator compare greater b . Operator Meaning Example = = Equal 3 = = 5 gives False ! = Equal 3 ! = 5 gives True > Greater 3 > 5 gives False < 3 < 5 gives True > = Greater Equal 3 > = 5 False < = Equal 3 < = 5 gives True Example 3 : Comparison Operators = 5 
+
+ b = 2 
+
+ # equal operator 
+ print('a = = b = ' , = = b ) 
+
+ # equal operator 
+ print('a ! = b = ' , ! = b ) 
+
+ # greater operator 
+ print('a > b = ' , > b ) 
+
+ # operator 
+ print('a < b = ' , < b ) 
+
+ # greater equal operator 
+ print('a > = b = ' , > = b ) 
+
+ # equal operator 
+ print('a < = b = ' , < = b ) Output = = b = False 
+ ! = b = True 
+ > b = True 
+ < b = False 
+ > = b = True 
+ < = b = False Note : Comparison operators decision - making loops . discuss comparison operator decision - making later tutorials . 4 . Python Logical Operators Logical operators check expression True False . decision - making . example , = 5 
+ b = 6 
+
+ print((a > 2 ) ( b > = 6 ) )     # True , logical operator . > 2 b > = 6 True , result True . Operator Example Meaning b Logical : True operands True b Logical : True operands True Logical : True operand False vice - versa . Example 4 : Logical Operators # logical 
+ print(True True )      # True 
+ print(True False )     # False 
+
+ # logical 
+ print(True False )      # True 
+
+ # logical 
+ print(not True )           # False Note : truth table logical operators . 5 . Python Bitwise operators Bitwise operators act operands strings binary digits . operate bit bit , . example , 2 10 binary , 7 111 . table : Let x = 10 ( 0000 1010 binary ) y = 4 ( 0000 0100 binary ) Operator Meaning Example & Bitwise x & y = 0 ( 0000 0000 ) | Bitwise x | y = 14 ( 0000 1110 ) ~ Bitwise ~x = -11 ( 1111 0101 ) ^ Bitwise XOR x ^ y = 14 ( 0000 1110 ) > > Bitwise right shift x > > 2 = 2 ( 0000 0010 ) < < Bitwise left shift x 0010 1000 ) 6 . Python Special operators Python language offers special types operators like identity operator membership operator . described examples . Identity operators Python , check values located memory location . important note having variables equal values necessarily mean identical . Operator Meaning Example True operands identical ( refer object ) x True True operands identical ( refer object ) x True Example 4 : Identity operators Python x1 = 5 
+ y1 = 5 
+ x2 = ' Hello ' 
+ y2 = ' Hello ' 
+ x3 = [ 1,2,3 ] 
+ y3 = [ 1,2,3 ] 
+
+ print(x1 y1 )   # prints False 
+
+ print(x2 y2 )   # prints True 
+
+ print(x3 y3 )   # prints False , x1 y1 integers values , equal identical . case x2 y2 ( strings ) . x3 y3 lists . equal identical . interpreter locates separately memory , equal . Membership operators Python , membership operators . test value variable found sequence ( string , list , tuple , set dictionary ) . dictionary , test presence key , value . Operator Meaning Example True value / variable found sequence 5 x True value / variable found sequence 5 x Example 5 : Membership operators Python message = ' Hello world ' 
+ dict1 = { 1:'a ' , 2:'b ' } 
+
+ # check ' H ' present message string 
+ print('H ' message )   # prints True 
+
+ # check ' hello ' present message string 
+ print('hello ' message )   # prints True 
+
+ # check ' 1 ' key present dict1 
+ print(1 dict1 )   # prints True 
+
+ # check ' ' key present dict1 
+ print('a ' dict1 )   # prints False Output True 
+ True 
+ True 
+ False , ' H ' message , ' hello ' present message ( remember , Python case - sensitive ) . Similarly , 1 key , ' ' value dictionary dict1 . , ' ' y returns False . Read : Precedence Associativity operators Python Python Operator Overloading Table Contents Introduction Types Python Operators Python Arithmetic Operators Python Assignment Operators Python Comparison Operators Python Logical Operators Python Bitwise operators Python Special operators Identity operators Membership operators wrap , let knowledge Python operators test ! solve following challenge ? Challenge : Write function split restaurant bill friends . subtotal bill number friends inputs . Calculate total bill adding 20 % tax subtotal divide number friends . Return friend pay , rounded decimal places . Check Code Video : Operators Python Previous Tutorial : Python Basic Input Output Tutorial : Python ... Statement Share : find article helpful ? Sorry . improve ? Feedback * Leave field blank premium learning platform , created decade experience thousands feedbacks . Learn improve coding skills like . Try Programiz PRO Interactive Courses Certificates AI Help 2000 + Challenges Related Tutorials Python Tutorial Precedence Associativity Operators Python Python Tutorial Python Operator Overloading Python Tutorial Python ... Statement Python Tutorial Python 3 Tutorial Free Tutorials Python 3 Tutorials SQL Tutorials R Tutorials HTML Tutorials CSS Tutorials JavaScript Tutorials Java Tutorials C Tutorials C++ Tutorials DSA Tutorials C # Tutorials Golang Tutorials Kotlin Tutorials Swift Tutorials Rust Tutorials Paid Courses Master Python Learn SQL Learn HTML FREE Master JavaScript Master C Master C++ Master Java Master DSA Python Online Compilers Python Compiler R Compiler SQL Editor HTML / CSS Editor JavaScript Editor Java Compiler C Compiler C++ Compiler C # Compiler Compiler PHP Compiler Swift Compiler Rust Compiler Mobile Apps Learn Python App Learn C App Learn Java App Learn C++ App Company Change Ad Consent sell data Contact Blog Youtube Careers Advertising Privacy Policy Terms & Conditions © Parewa Labs Pvt . Ltd. rights reserved .

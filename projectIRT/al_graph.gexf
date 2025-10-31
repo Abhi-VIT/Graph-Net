@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-05-02">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="0" title="networkx_key" type="long" />
+    </attributes>
+    <nodes>
+      <node id="sorting" label="sorting" />
+      <node id="searching" label="searching" />
+      <node id="selection sort" label="selection sort" />
+      <node id="bubble sort" label="bubble sort" />
+      <node id="insertion sort" label="insertion sort" />
+      <node id="quick sort" label="quick sort" />
+      <node id="linear search" label="linear search" />
+      <node id="binary search" label="binary search" />
+      <node id="merging" label="merging" />
+      <node id="traversal" label="traversal" />
+    </nodes>
+    <edges>
+      <edge source="sorting" target="bubble sort" id="0" weight="0.52">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="sorting" target="insertion sort" id="1" weight="0.63">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="sorting" target="quick sort" id="2" weight="0.84">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="sorting" target="linear search" id="3" weight="0.52">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="searching" target="binary search" id="4" weight="0.83">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="searching" target="merging" id="5" weight="1.04">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="searching" target="traversal" id="6" weight="0.52">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="selection sort" target="searching" id="7" weight="0.78">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="selection sort" target="bubble sort" id="8" weight="0.96">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="selection sort" target="binary search" id="9" weight="1.08">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="selection sort" target="traversal" id="10" weight="0.83">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="bubble sort" target="quick sort" id="11" weight="0.64">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="insertion sort" target="selection sort" id="12" weight="0.64">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="insertion sort" target="binary search" id="13" weight="0.68">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="quick sort" target="searching" id="14" weight="0.5">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="quick sort" target="binary search" id="15" weight="0.72">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="quick sort" target="traversal" id="16" weight="0.67">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="linear search" target="quick sort" id="17" weight="1.21">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="linear search" target="binary search" id="18" weight="0.59">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="linear search" target="merging" id="19" weight="3.58">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="binary search" target="searching" id="20" weight="2.11">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="binary search" target="insertion sort" id="21" weight="0.53">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="binary search" target="quick sort" id="22" weight="0.51">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="binary search" target="linear search" id="23" weight="0.5">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="binary search" target="merging" id="24" weight="1.08">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="merging" target="insertion sort" id="25" weight="0.61">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="traversal" target="sorting" id="26" weight="0.51">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="traversal" target="searching" id="27" weight="0.63">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="traversal" target="bubble sort" id="28" weight="0.6">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="traversal" target="insertion sort" id="29" weight="0.77">
+        <attvalues>
+          <attvalue for="0" value="0" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

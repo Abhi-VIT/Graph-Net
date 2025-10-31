@@ -1,0 +1,934 @@
+Cluster Analysis : Measuring Similarity & Dissimilarity | PPT Submit Search Cluster Analysis : Measuring Similarity & Dissimilarity 7 , 2024 0 likes 253 views S ShivarkarSandip Dissimilarity Numeric Data : Minskowski Distance Euclidean 
+ distance Manhattan distance Proximity Measures Categorical , 
+ Ordinal Attributes , Ratio scaled variables ; Dissimilarity Attributes 
+ Mixed Types , Cosine Similarity , partitioning methods- k - means , kmedoids Read 1 38 Download Download read offline Recommended 08 Kύματα 08 Kύματα sfoti Small Sampling Theory Presentation1 Small Sampling Theory Presentation1 jravish Small sample theory deals statistical inference sample sizes small ( n ≤ 30 ) . involves t F distributions defined terms degrees freedom . t - distribution developed William Gosset sample sizes small . bell shape spread normal distribution . F - distribution test variances equal defined ratio chi - square variables . distributions depend degrees freedom . Παρουσιαση Παρουσιαση Eleni Smyrniou 基礎からのベイズ統計学 3章（3.1～3.3 ） 基礎からのベイズ統計学 3章（3.1～3.3 ） TeranishiKeisuke 勉強会 BOOTSTRAPPING STATISTICS BOOTSTRAPPING STATISTICS Suvam Das Bootstrapping statistical method estimating properties population resampling original sample replacement times . generates multiple simulated samples single sample estimate statistic estimates population parameter large sample assumptions . document discusses bootstrapping , useful , works resampling sample multiple times estimate properties like confidence intervals , examples bootstrapping statistics . Datamining 8th Hclustering Datamining 8th Hclustering sesejun Datamining tools techniques_lec-2.ppt Datamining tools techniques_lec-2.ppt SCIENCEQBHHSS Data mining concepts techniques lecture o1 similarities-knn-1.ppt similarities-knn-1.ppt satvikpatil5 document discusses distance similarity measures commonly data mining analytics tasks involving comparison objects . defines similarity dissimilarity , notes measures involve representing objects feature vectors computing distances vectors . specific distance measures numeric categorical data described , including Euclidean distance , Manhattan distance , cosine similarity . document discusses techniques like k - nearest neighbors classification rely computing distances objects . 4_22865_IS465_2019_1__2_1_02Data-2.ppt 4_22865_IS465_2019_1__2_1_02Data-2.ppt PaoloOchengco document discusses techniques analyzing visualizing data gain insights . covers data attribute types , basic statistical descriptions understand data distribution outliers , different visualization methods discover patterns relationships , ways measure similarity data objects , including distances , coefficients , cosine similarity text . goal preprocess understand data high level applying advanced analytics . 3.1 clustering 3.1 clustering Krish_ver2 Cluster analysis unsupervised machine learning technique groups similar data objects clusters . finds internal structures unlabeled data partitioning groups based similarity . key applications cluster analysis include market segmentation , document classification , identifying subtypes diseases . quality clusters depends similarity measure objects grouped cluster versus clusters . DM UNIT_4 PPT btech final year students DM UNIT_4 PPT btech final year students sriharipatilin enjoy guyzzz similarities-knn.pptx similarities-knn.pptx ZhammerEsrael2 Installing configuring computer systems involves competencies assemble computer hardware , install operating systems drivers peripherals / devices , install application software conduct testing documentation . 
+ learning activity sheet help understand better concepts skills installing configuring computer systems . Try best activities answer questions items asked . 
+ Learning Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf PRABHUCECC Machine learning nearest neighbourhood algorithm mathematical formulation implementation algorithm COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING IJORCS Clustering plays vital role areas research like Data Mining , Image Retrieval , Bio - computing lot . Distance measure plays important role clustering data points . Choosing right distance measure given dataset biggest challenge . paper , study distance measures effect different clustering . paper surveys existing distance measures clustering present comparison based application domain , efficiency , benefits drawbacks . comparison helps researchers quick decision distance measure use clustering . conclude work identifying trends challenges research development clustering . Cs501 cluster analysis Cs501 cluster analysis Kamal Singh Lodhi document provides overview cluster analysis techniques . begins defining cluster analysis applications . categorizes major clustering methods partitioning methods ( like k - means k - medoids ) , hierarchical methods , density - based methods , grid - based methods , model - based methods . document discusses different data types clustered measures determining cluster quality . outlines requirements effective clustering data mining . Cluster Analysis Business Research Methods Cluster Analysis Business Research Methods ufkconsumerproducts Cluster Analysis Business Research Methods Clustering Clustering Shubra Singh document discusses cluster analysis clustering methods . begins defining cluster analysis key concepts . discusses different types applications cluster analysis . , covers different data types calculate distances data points different attribute types . Finally , provides overview major clustering methods including partitioning methods , hierarchical methods , density - based methods , grid - based methods , model - based methods . 09Evaluation_Clustering.pdf 09Evaluation_Clustering.pdf BizuayehuDesalegn document provides overview clustering evaluation practical issues advanced data mining . discusses extrinsic intrinsic evaluation clustering results measures like purity , normalized mutual information , precision , recall , silhouette coefficient . covers similarity dissimilarity measures different data types , including numeric , binary , mixed attribute data . Standardization techniques numeric data distance measures like Minkowski cosine similarity summarized . Chap2-Data.pptx . data data mining . Chap2-Data.pptx . data data mining . stuti8985 Data Know Data data mining applications Know Data data mining applications MaleehaSheikh2 Data attributes data mining Clustering Clustering Smrutiranjan Sahu Clustering algorithms group similar data points . K - means clustering aims partition data k clusters minimizing distances data points cluster centers . Hierarchical clustering builds nested clusters merging splitting clusters based distance metrics . Density - based clustering identifies clusters areas high density separated areas low density , like DBScan uses parameters minimum points epsilon distance . Clique sting Clique sting Subramanyam Natarajan CLIQUE algorithm subspace clustering high - dimensional data . works steps : ( 1 ) partitions dimension data space intervals equal length form grid , ( 2 ) identifies dense units grid finds clusters maximal sets connected dense units . CLIQUE efficiently discovers clusters identifying dense units subspaces intersecting obtain candidate dense units higher dimensions . automatically determines relevant subspaces clustering scales large , high - dimensional datasets . [ PPT ] [ PPT ] butest document discusses techniques clustering dimensionality reduction web documents . introduces machine learning clustering methods like k - means clustering discusses challenges like handling different cluster sizes shapes . covers dimensionality reduction methods like principal component analysis ( PCA ) locality - sensitive hashing cluster high dimensional web document datasets reducing dimensionality . Cluster Cluster maheswari narne document discusses cluster analysis outlier analysis techniques data mining . covers key topics defining clusters goal cluster analysis , different types data analyzed clustering , major categories clustering methods like partitioning , hierarchical , density - based , model - based approaches . Specific clustering algorithms discussed include k - means , k - medoids , hierarchical clustering , DBSCAN , EM . document provides examples clustering applications discusses evaluating clustering quality requirements clustering data mining . Data Mining :   Concepts Techniques  — Chapter 2 — Data Mining :   Concepts Techniques  — Chapter 2 — Salah Amean presentation contains following : 
+
+ -Data Objects Attribute Types . 
+
+ -Basic Statistical Descriptions Data . 
+
+ -Data Visualization . 
+
+ -Measuring Data Similarity Dissimilarity . 
+
+ -Summary . Data mining : Concepts Techniques Chapter 2 , data Data mining : Concepts Techniques Chapter 2 , data Salah Amean slides contain : 
+
+ Data Objects Attribute Types , 
+
+ Basic Statistical Descriptions Data , 
+
+ Data Visualization , 
+
+ Measuring Data Similarity Dissimilarity , 
+
+ Summary , 
+
+
+
+ 
+
+ Jiawei Han , Micheline Kamber , Jian Pei , 
+
+ University Illinois Urbana - Champaign & 
+
+ Simon Fraser University , 
+
+ © 2013 Han , Kamber & Pei .   rights reserved . Lect4 Lect4 sumit621 document discusses clustering algorithms concepts : 
+ 1 ) K - means clustering groups data minimizing distances points cluster centers , sensitive initialization find local optima . 
+ 2 ) K - medians clustering similar uses point medians instead means cluster representatives . 
+ 3 ) K - center clustering aims minimize maximum distances points clusters , approximated farthest - traversal algorithm . 02 data 02 data phakhwan22 chapter discusses getting know data analysis visualization . covers data objects attribute types , statistical descriptions data including measures central tendency dispersion , visualization techniques like histograms scatter plots , measuring similarity data objects . goal better understand data characteristics applying advanced mining techniques . NBaysian classifier , Naive Bayes classifier NBaysian classifier , Naive Bayes classifier ShivarkarSandip Baysian classifier , Naive Bayes classifier , K - nearest neighbor classifier , K - nearest neighbor classifier selection criteria , 
+ Constraints K - nearest neighbor Supervised Learning Ensemble Techniques Machine Learning Supervised Learning Ensemble Techniques Machine Learning ShivarkarSandip Supervised Learning Ensemble Techniques , Bagging - Random Forest trees , Voting types , Boosting -Ada boost , gradient boosting Related Content Similar Cluster Analysis : Measuring Similarity & Dissimilarity ( 20 ) 4_22865_IS465_2019_1__2_1_02Data-2.ppt 4_22865_IS465_2019_1__2_1_02Data-2.ppt PaoloOchengco document discusses techniques analyzing visualizing data gain insights . covers data attribute types , basic statistical descriptions understand data distribution outliers , different visualization methods discover patterns relationships , ways measure similarity data objects , including distances , coefficients , cosine similarity text . goal preprocess understand data high level applying advanced analytics . 3.1 clustering 3.1 clustering Krish_ver2 Cluster analysis unsupervised machine learning technique groups similar data objects clusters . finds internal structures unlabeled data partitioning groups based similarity . key applications cluster analysis include market segmentation , document classification , identifying subtypes diseases . quality clusters depends similarity measure objects grouped cluster versus clusters . DM UNIT_4 PPT btech final year students DM UNIT_4 PPT btech final year students sriharipatilin enjoy guyzzz similarities-knn.pptx similarities-knn.pptx ZhammerEsrael2 Installing configuring computer systems involves competencies assemble computer hardware , install operating systems drivers peripherals / devices , install application software conduct testing documentation . 
+ learning activity sheet help understand better concepts skills installing configuring computer systems . Try best activities answer questions items asked . 
+ Learning Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf PRABHUCECC Machine learning nearest neighbourhood algorithm mathematical formulation implementation algorithm COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING IJORCS Clustering plays vital role areas research like Data Mining , Image Retrieval , Bio - computing lot . Distance measure plays important role clustering data points . Choosing right distance measure given dataset biggest challenge . paper , study distance measures effect different clustering . paper surveys existing distance measures clustering present comparison based application domain , efficiency , benefits drawbacks . comparison helps researchers quick decision distance measure use clustering . conclude work identifying trends challenges research development clustering . Cs501 cluster analysis Cs501 cluster analysis Kamal Singh Lodhi document provides overview cluster analysis techniques . begins defining cluster analysis applications . categorizes major clustering methods partitioning methods ( like k - means k - medoids ) , hierarchical methods , density - based methods , grid - based methods , model - based methods . document discusses different data types clustered measures determining cluster quality . outlines requirements effective clustering data mining . Cluster Analysis Business Research Methods Cluster Analysis Business Research Methods ufkconsumerproducts Cluster Analysis Business Research Methods Clustering Clustering Shubra Singh document discusses cluster analysis clustering methods . begins defining cluster analysis key concepts . discusses different types applications cluster analysis . , covers different data types calculate distances data points different attribute types . Finally , provides overview major clustering methods including partitioning methods , hierarchical methods , density - based methods , grid - based methods , model - based methods . 09Evaluation_Clustering.pdf 09Evaluation_Clustering.pdf BizuayehuDesalegn document provides overview clustering evaluation practical issues advanced data mining . discusses extrinsic intrinsic evaluation clustering results measures like purity , normalized mutual information , precision , recall , silhouette coefficient . covers similarity dissimilarity measures different data types , including numeric , binary , mixed attribute data . Standardization techniques numeric data distance measures like Minkowski cosine similarity summarized . Chap2-Data.pptx . data data mining . Chap2-Data.pptx . data data mining . stuti8985 Data Know Data data mining applications Know Data data mining applications MaleehaSheikh2 Data attributes data mining Clustering Clustering Smrutiranjan Sahu Clustering algorithms group similar data points . K - means clustering aims partition data k clusters minimizing distances data points cluster centers . Hierarchical clustering builds nested clusters merging splitting clusters based distance metrics . Density - based clustering identifies clusters areas high density separated areas low density , like DBScan uses parameters minimum points epsilon distance . Clique sting Clique sting Subramanyam Natarajan CLIQUE algorithm subspace clustering high - dimensional data . works steps : ( 1 ) partitions dimension data space intervals equal length form grid , ( 2 ) identifies dense units grid finds clusters maximal sets connected dense units . CLIQUE efficiently discovers clusters identifying dense units subspaces intersecting obtain candidate dense units higher dimensions . automatically determines relevant subspaces clustering scales large , high - dimensional datasets . [ PPT ] [ PPT ] butest document discusses techniques clustering dimensionality reduction web documents . introduces machine learning clustering methods like k - means clustering discusses challenges like handling different cluster sizes shapes . covers dimensionality reduction methods like principal component analysis ( PCA ) locality - sensitive hashing cluster high dimensional web document datasets reducing dimensionality . Cluster Cluster maheswari narne document discusses cluster analysis outlier analysis techniques data mining . covers key topics defining clusters goal cluster analysis , different types data analyzed clustering , major categories clustering methods like partitioning , hierarchical , density - based , model - based approaches . Specific clustering algorithms discussed include k - means , k - medoids , hierarchical clustering , DBSCAN , EM . document provides examples clustering applications discusses evaluating clustering quality requirements clustering data mining . Data Mining :   Concepts Techniques  — Chapter 2 — Data Mining :   Concepts Techniques  — Chapter 2 — Salah Amean presentation contains following : 
+
+ -Data Objects Attribute Types . 
+
+ -Basic Statistical Descriptions Data . 
+
+ -Data Visualization . 
+
+ -Measuring Data Similarity Dissimilarity . 
+
+ -Summary . Data mining : Concepts Techniques Chapter 2 , data Data mining : Concepts Techniques Chapter 2 , data Salah Amean slides contain : 
+
+ Data Objects Attribute Types , 
+
+ Basic Statistical Descriptions Data , 
+
+ Data Visualization , 
+
+ Measuring Data Similarity Dissimilarity , 
+
+ Summary , 
+
+
+
+ 
+
+ Jiawei Han , Micheline Kamber , Jian Pei , 
+
+ University Illinois Urbana - Champaign & 
+
+ Simon Fraser University , 
+
+ © 2013 Han , Kamber & Pei .   rights reserved . Lect4 Lect4 sumit621 document discusses clustering algorithms concepts : 
+ 1 ) K - means clustering groups data minimizing distances points cluster centers , sensitive initialization find local optima . 
+ 2 ) K - medians clustering similar uses point medians instead means cluster representatives . 
+ 3 ) K - center clustering aims minimize maximum distances points clusters , approximated farthest - traversal algorithm . 02 data 02 data phakhwan22 chapter discusses getting know data analysis visualization . covers data objects attribute types , statistical descriptions data including measures central tendency dispersion , visualization techniques like histograms scatter plots , measuring similarity data objects . goal better understand data characteristics applying advanced mining techniques . 4_22865_IS465_2019_1__2_1_02Data-2.ppt 4_22865_IS465_2019_1__2_1_02Data-2.ppt PaoloOchengco 3.1 clustering 3.1 clustering Krish_ver2 DM UNIT_4 PPT btech final year students DM UNIT_4 PPT btech final year students sriharipatilin similarities-knn.pptx similarities-knn.pptx ZhammerEsrael2 Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf Chapter2 NEAREST NEIGHBOURHOOD ALGORITHMS.pdf PRABHUCECC COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING COMPARATIVE STUDY DISTANCE MEASURING APPROACHES CLUSTERING IJORCS Cs501 cluster analysis Cs501 cluster analysis Kamal Singh Lodhi Cluster Analysis Business Research Methods Cluster Analysis Business Research Methods ufkconsumerproducts Clustering Clustering Shubra Singh 09Evaluation_Clustering.pdf 09Evaluation_Clustering.pdf BizuayehuDesalegn Chap2-Data.pptx . data data mining . Chap2-Data.pptx . data data mining . stuti8985 Know Data data mining applications Know Data data mining applications MaleehaSheikh2 Clustering Clustering Smrutiranjan Sahu Clique sting Clique sting Subramanyam Natarajan [ PPT ] [ PPT ] butest Cluster Cluster maheswari narne Data Mining :   Concepts Techniques  — Chapter 2 — Data Mining :   Concepts Techniques  — Chapter 2 — Salah Amean Data mining : Concepts Techniques Chapter 2 , data Data mining : Concepts Techniques Chapter 2 , data Salah Amean Lect4 Lect4 sumit621 02 data 02 data phakhwan22 ShivarkarSandip ( 20 ) NBaysian classifier , Naive Bayes classifier NBaysian classifier , Naive Bayes classifier ShivarkarSandip Baysian classifier , Naive Bayes classifier , K - nearest neighbor classifier , K - nearest neighbor classifier selection criteria , 
+ Constraints K - nearest neighbor Supervised Learning Ensemble Techniques Machine Learning Supervised Learning Ensemble Techniques Machine Learning ShivarkarSandip Supervised Learning Ensemble Techniques , Bagging - Random Forest trees , Voting types , Boosting -Ada boost , gradient boosting Microcontroller 8051- Architecture Memory Organization Microcontroller 8051- Architecture Memory Organization ShivarkarSandip Microcontroller , Applications , 8051- Architecture , Memory Organization , Addressing Modes 8051 , 8051 Instructions Data Preprocessing -Data Quality Noisy Data Data Preprocessing -Data Quality Noisy Data ShivarkarSandip Data Preprocessing , Noisy Data Supervised Learning Decision Trees   Review Entropy Supervised Learning Decision Trees   Review Entropy ShivarkarSandip Supervised Learning Decision Trees Supervised Learning Decision Trees Machine Learning Supervised Learning Decision Trees Machine Learning ShivarkarSandip Supervised Learning Decision Trees Classification , Attribute Selection , Classifiers- Decision Tree , ID3,C4.5,Nav ... Classification , Attribute Selection , Classifiers- Decision Tree , ID3,C4.5,Nav ... ShivarkarSandip Classification Frequent Pattern Analysis , Apriori FP Growth Algorithm Frequent Pattern Analysis , Apriori FP Growth Algorithm ShivarkarSandip Frequent Pattern Analysis Data Warehouse Architecture , OLAP Operation Data Warehouse Architecture , OLAP Operation ShivarkarSandip Data Warehouse Architecture Data Preparation Preprocessing , Data Cleaning Data Preparation Preprocessing , Data Cleaning ShivarkarSandip Data Preprocessing Introduction Data Mining , KDD Process , OLTP OLAP Introduction Data Mining , KDD Process , OLTP OLAP ShivarkarSandip Introduction Data Mining Introduction Data Mining KDD Process OLAP Introduction Data Mining KDD Process OLAP ShivarkarSandip Introduction Data Mining Issues data mining   Patterns Online Analytical Processing Issues data mining   Patterns Online Analytical Processing ShivarkarSandip document contains lecture material introduction data mining . discusses key topics : 
+
+ - different types patterns mined data , including descriptive predictive patterns . 
+
+ - Common data mining techniques like characterization , discrimination , clustering , frequent pattern mining . 
+
+ - Key concepts pattern mining including support , confidence , differences data , information knowledge . 
+
+ - Analytical techniques data mining like online analytical processing ( OLAP ) . Introduction data mining covers basics Introduction data mining covers basics ShivarkarSandip document provides overview key concepts data mining knowledge discovery . defines data mining process extracting useful patterns large data sets . document outlines typical steps knowledge discovery process including data cleaning , transformation , mining , interpretation . describes different data mining techniques like classification , clustering , association rule mining etc . common attribute types like nominal , binary , discrete vs continuous attributes . Overall , document serves introductory primer fundamental concepts data mining . Introduction Data Communication.pdf Introduction Data Communication.pdf ShivarkarSandip document provides overview data communication networking concepts . discusses data communication changing business conducted people live . covers data communication topics like computer networks , technological advancements enabling faster communication , different modes communication ( local vs. remote ) , definitions data data communication , factors affecting effectiveness communication systems , modulation techniques broadband transmission . discusses transmission media including guided media like twisted pair cable , coaxial cable fiber optic cable , unguided wireless media like radio waves , microwaves infrared signals . Classification Signal.pdf Classification Signal.pdf ShivarkarSandip 1 . signal defined function represents variation physical quantity time space . Signals classified continuous discrete , deterministic random , periodic non - periodic , .  
+ 2 . Analog signals continuous time digital signals discrete levels . Analog digital conversion involves sampling , quantization , encoding represent analog signals digitally . 
+ 3 . Sampling converts continuous signal discrete signal taking values regular time intervals . Quantization maps infinite amplitude values finite set values . Encoding represents quantized value binary code . Sequential Circuit Design-2.pdf Sequential Circuit Design-2.pdf ShivarkarSandip document discusses sequential circuit design registers shift registers . begins defining different types registers including serial serial ( SISO ) , serial parallel ( SIPO ) , parallel parallel ( PIPO ) , parallel serial ( PISO ) registers . provides examples writing reading SISO register . Applications shift registers like sequence generators , sequence detectors , parallel serial converters covered . Specific sequential circuits like ring counters , Johnson counters , sequence generators JK flip - flops designed operation explained state tables diagrams . Finally , differences Mealy Moore models sequential circuit design summarized . Sequential Ckt.pdf Sequential Ckt.pdf ShivarkarSandip document discusses sequential circuit design types flip - flops . begins explaining bit memory cell cross - coupled inverters . describes SR latch adding Set Reset inputs addresses issues basic latch . SR , JK , D , T , clocked flip - flops defined truth tables . Implementation different flip - flops covered . Counters flip - flops introduced synchronous asynchronous types . Preset Clear inputs flip - flops explained . Finally , relationship number states counter number flip - flops defined . Flip Flop.pdf Flip Flop.pdf ShivarkarSandip 1 . document discusses types sequential circuits like latches , flip - flops , counters working . 
+ 2 . explains working SR latch , JK flip - flop , D flip - flop T flip - flop . Excitation tables provided different types flip - flops . 
+ 3 . Asynchronous synchronous counters described 2 - bit ripple counter design T flip - flops . Preset clear inputs flip - flops usage covered . Combinational Ckt.pdf Combinational Ckt.pdf ShivarkarSandip 1 . multiplexer combinational circuit selects input lines outputs data line . multiple data inputs , select line , single output . value select line determines input directed output . 
+
+ 2 . demultiplexer reverse multiplexer . single input multiple outputs , select line determining output input data directed . 
+
+ 3 . Combinational logic circuits like adders , comparators , encoders designed multiplexers demultiplexers . Truth tables derive logic expressions implemented multiplexer / demultiplexer . NBaysian classifier , Naive Bayes classifier NBaysian classifier , Naive Bayes classifier ShivarkarSandip Supervised Learning Ensemble Techniques Machine Learning Supervised Learning Ensemble Techniques Machine Learning ShivarkarSandip Microcontroller 8051- Architecture Memory Organization Microcontroller 8051- Architecture Memory Organization ShivarkarSandip Data Preprocessing -Data Quality Noisy Data Data Preprocessing -Data Quality Noisy Data ShivarkarSandip Supervised Learning Decision Trees   Review Entropy Supervised Learning Decision Trees   Review Entropy ShivarkarSandip Supervised Learning Decision Trees Machine Learning Supervised Learning Decision Trees Machine Learning ShivarkarSandip Classification , Attribute Selection , Classifiers- Decision Tree , ID3,C4.5,Nav ... Classification , Attribute Selection , Classifiers- Decision Tree , ID3,C4.5,Nav ... ShivarkarSandip Frequent Pattern Analysis , Apriori FP Growth Algorithm Frequent Pattern Analysis , Apriori FP Growth Algorithm ShivarkarSandip Data Warehouse Architecture , OLAP Operation Data Warehouse Architecture , OLAP Operation ShivarkarSandip Data Preparation Preprocessing , Data Cleaning Data Preparation Preprocessing , Data Cleaning ShivarkarSandip Introduction Data Mining , KDD Process , OLTP OLAP Introduction Data Mining , KDD Process , OLTP OLAP ShivarkarSandip Introduction Data Mining KDD Process OLAP Introduction Data Mining KDD Process OLAP ShivarkarSandip Issues data mining   Patterns Online Analytical Processing Issues data mining   Patterns Online Analytical Processing ShivarkarSandip Introduction data mining covers basics Introduction data mining covers basics ShivarkarSandip Introduction Data Communication.pdf Introduction Data Communication.pdf ShivarkarSandip Classification Signal.pdf Classification Signal.pdf ShivarkarSandip Sequential Circuit Design-2.pdf Sequential Circuit Design-2.pdf ShivarkarSandip Sequential Ckt.pdf Sequential Ckt.pdf ShivarkarSandip Flip Flop.pdf Flip Flop.pdf ShivarkarSandip Combinational Ckt.pdf Combinational Ckt.pdf ShivarkarSandip Recently uploaded ( 20 ) cd70_bss_counter_blocks.ppt study telecom working cd70_bss_counter_blocks.ppt study telecom working AmitSharma801433 study Smart AI Chatbot Agricultural Farmer.pptx Smart AI Chatbot Agricultural Farmer.pptx anamika23bce11759 Smart AI Chatbot Agriculture uses variety cutting - edge technologies guarantee effectiveness , usability , pertinence . technology uses Deep Learning model trained agricultural datasets provide tailored recommendations . models evaluate user inputs provide customized guidance irrigation techniques , crop selection , pest control . properly format agricultural data , initial phase data preparation cleansing , normalization , tokenization utilizing libraries like Pandas , NumPy , NLTK . chatbot trained recognize intent provide context - aware answers enhanced data . chatbot uses PyTorch TensorFlow create machine learning models comprehend natural language . Lastly , Speech Recognition libraries integrate multilingual , voice - enabled interface , guaranteeing real - time , accessible interactions catered farmers ' needs . combined , strategies chatbot ability deliver actionable , region - specific , real - time information help farmers better decisions increase agricultural output . India farmers frequently struggle obtain - - date , precise , region - specific agricultural knowledge . Conventional information - dissemination techniques , field trips hotlines , need lot time resources . Furthermore , utility current digital solutions restricted language hurdles dispersed information sources . eventually affects farmers ' livelihoods agricultural economy leading poor farming techniques , low output , lost opportunities government assistance . 
+ 1.5 Objective work 
+ objective current project create Farmer Support ChatBot employ interactive conversational interface help farmers farming needs . providing real - time advice crucial topics including crop selection , pest control , weather forecasts , market trends , government programs , chatbot seeks close knowledge gap . intuitive cutting - edge technology solution , project ultimately aims increase resource efficiency , decrease reliance middlemen , improve farmers ' overall standard living . 
+ 1.6 Organization Project 
+ Smart AI Chatbot Agriculture organized sections . project begins Introduction , highlighting motivation , challenges agriculture , potential AI addressing issues . Followed overview Related work investigation agricultural AI identifying gaps chatbot aims bridge . Problem Statement Objectives section clearly defines issues faced farmers outlines specific goals project . Methodology section describes approach developing chatbot , including data collection ,   model training , use NLP conversational capabilities . INDIAN STANDARD CODE NUMBER   4984 1995 pdf INDIAN STANDARD CODE NUMBER   4984 1995 pdf vinnusmart0031 is.4984.1995 ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf AshikaAgarwal6 NOTES ELECTROCHEMISTRY Papers - 6th International Conference Natural Language Computing ... Papers - 6th International Conference Natural Language Computing ... CSEIJJournal 6th International Conference Natural Language Computing AI ( NLCAI 2025 ) provide excellent international forum sharing knowledge results theory , methodology applications Natural Language Computing , AI . Conference looks significant contributions major fields Natural Language processing machine learning theoretical practical aspects . Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx pateljeel24 Diagrams.pptx Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 AhmedSaeed115917 Cryptography 3 Machine Learning_2025_First Module_1.pdf Machine Learning_2025_First Module_1.pdf Dr. Shivashankar Machine Learning_22IS62_First Module Transportation Design Ajeenkya DY Patil Univeristy Transportation Design Ajeenkya DY Patil Univeristy sourabhmore19 Transportation Design creative technical process designing vehicles mobility systems — cars bikes aircraft public transport . blends aesthetics , innovation , functionality shape people , focusing sustainability , user experience , future technologies like EVs autonomous mobility . Module-7 - Industrial applications-Loganathan.pptx Module-7 - Industrial applications-Loganathan.pptx DeveshwarUmapathy ghdtfxet6udhjg downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx pateljeel24 downloads_powerbi-presentation.pptx EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure KikiRezkiLestari1 EXAFS ( Extended X - ray Absorption Fine Structure ) 
+  portion absorption spectrum starts 20 volts Fermi energy . Typically EXAFS analyzed 
+ removing background function AUTOBK similar program . resulting oscillatory function Fourier transformed . Presentation ( 2).pptxxxxxxxxxxxxxxxxxxxx Presentation ( 2).pptxxxxxxxxxxxxxxxxxxxx kousarunnisa66 Ffds X - ray Absorption Spectroscopy : XAS , XAFS , EXAFS XANES . X - ray Absorption Spectroscopy : XAS , XAFS , EXAFS XANES . KikiRezkiLestari1 XAFS  
+ XANES  
+ EXAFS 
+  X - ray Absorption Fine - Structure Spectroscopy (= XAS )  
+ X - ray Absorption Near - Edge Spectroscopy 
+  Extended X - ray Absorption Fine - Structure DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... johnmathew9417 paper describes procedure creating tactile interfaces Android smart phones . uses 
+ HTML5 Vibration API Javascript programming language create vibration patterns order 
+ increase interaction visually impaired people smart phones . research study focuses flood hazard analysis Chbar Ampov distr ... research study focuses flood hazard analysis Chbar Ampov distr ... Panha NUTH research study focuses flood hazard analysis Chbar Ampov district Phnom Penh , Cambodia . The_Evolution_of_Software_Configuration_Management.pdf The_Evolution_of_Software_Configuration_Management.pdf vemiri6305 cs Safety pdf , tha important & useful safety Safety pdf , tha important & useful safety arpit987dwivedi Safety tha priority Control Servo Motor Arduino Control Servo Motor Arduino CircuitDigest Learn interface servo motor Arduino precise motion control . guide covers wiring , coding , real - world applications like robotics automation . great starting point electronics enthusiasts . safety moment road project plan.pptx safety moment road project plan.pptx baramasIsaac safety moment oil roads . cd70_bss_counter_blocks.ppt study telecom working cd70_bss_counter_blocks.ppt study telecom working AmitSharma801433 Smart AI Chatbot Agricultural Farmer.pptx Smart AI Chatbot Agricultural Farmer.pptx anamika23bce11759 INDIAN STANDARD CODE NUMBER   4984 1995 pdf INDIAN STANDARD CODE NUMBER   4984 1995 pdf vinnusmart0031 ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf AshikaAgarwal6 Papers - 6th International Conference Natural Language Computing ... Papers - 6th International Conference Natural Language Computing ... CSEIJJournal Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx Diagrams.pptx pateljeel24 Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 Cryptography 3 AhmedSaeed115917 Machine Learning_2025_First Module_1.pdf Machine Learning_2025_First Module_1.pdf Dr. Shivashankar Transportation Design Ajeenkya DY Patil Univeristy Transportation Design Ajeenkya DY Patil Univeristy sourabhmore19 Module-7 - Industrial applications-Loganathan.pptx Module-7 - Industrial applications-Loganathan.pptx DeveshwarUmapathy downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx pateljeel24 EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure KikiRezkiLestari1 Presentation ( 2).pptxxxxxxxxxxxxxxxxxxxx Presentation ( 2).pptxxxxxxxxxxxxxxxxxxxx kousarunnisa66 X - ray Absorption Spectroscopy : XAS , XAFS , EXAFS XANES . X - ray Absorption Spectroscopy : XAS , XAFS , EXAFS XANES . KikiRezkiLestari1 DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... johnmathew9417 research study focuses flood hazard analysis Chbar Ampov distr ... research study focuses flood hazard analysis Chbar Ampov distr ... Panha NUTH The_Evolution_of_Software_Configuration_Management.pdf The_Evolution_of_Software_Configuration_Management.pdf vemiri6305 Safety pdf , tha important & useful safety Safety pdf , tha important & useful safety arpit987dwivedi Control Servo Motor Arduino Control Servo Motor Arduino CircuitDigest safety moment road project plan.pptx safety moment road project plan.pptx baramasIsaac Cluster Analysis : Measuring Similarity & Dissimilarity 1 . Sanjivani Rural Education Society 
+ Sanjivani College Engineering , Kopargaon-423 603 
+ ( Autonomous Institute , Affiliated Savitribai Phule Pune University , Pune ) 
+ NACC ‘ ’ Grade Accredited , ISO 9001:2015 Certified 
+ Department Computer Engineering 
+ ( NBA Accredited ) 
+ Prof. S. A. Shivarkar 
+ Assistant Professor 
+ Contact No.8275032712 
+ Email- shivarkarsandipcomp@sanjivani.org.in 
+ Subject- Data Mining Warehousing ( CO314 ) 
+ Unit – IV : Cluster Analysis : Measuring Similarity & 
+ Dissimilarity 2 . Content 
+  Measuring Data Similarity Dissimilarity , Proximity Measures Nominal 
+ Attributes Binary Attributes , interval scaled ; 
+  Dissimilarity Numeric Data : Minskowski Distance Euclidean distance 
+ Manhattan distance 
+  Proximity Measures Categorical , Ordinal Attributes , Ratio scaled 
+ variables ; 
+  Dissimilarity Attributes Mixed Types , Cosine Similarity , 
+  Partitioning methods- k - means , kmedoids , outlier detection . 3 . Clustering ? 
+  Clustering process grouping set data objects 
+ multiple groups clusters objects 
+ cluster high similarity , dissimilar objects 
+ clusters . 
+  Dissimilarities similarities assessed based 
+ attribute values describing objects involve 
+ distance measures 4 . Cluster Analysis ? 
+  Cluster : collection data objects 
+  similar ( related ) group 
+  dissimilar ( unrelated ) objects groups 
+  Cluster analysis ( clustering , data segmentation , … ) 
+  Finding similarities data according 
+ characteristics found data grouping similar 
+ data objects clusters 
+  Unsupervised learning : predefined classes ( i.e. , learning 
+ observations vs. learning examples : supervised ) 
+  Typical applications 
+  stand - tool insight data distribution 
+  preprocessing step algorithms 5 . Clustering Data Understanding Applications 
+  Biology : taxonomy living things : kingdom , phylum , class , order , family , 
+ genus species 
+  Information retrieval : document clustering 
+  Land use : Identification areas similar land use earth observation 
+ database 
+  Marketing : Help marketers discover distinct groups customer bases , 
+ use knowledge develop targeted marketing programs 
+  City - planning : Identifying groups houses according house type , 
+ value , geographical location 
+  Earth - quake studies : Observed earth quake epicenters clustered 
+ continent faults 
+  Climate : understanding earth climate , find patterns atmospheric ocean 
+  Economic Science : market research 6 . Quality : Good Clustering ? 
+  good clustering method produce high quality 
+ clusters 
+  high intra - class similarity : cohesive clusters 
+  low inter - class similarity : distinctive clusters 
+  quality clustering method depends 
+  similarity measure method 
+  implementation , 
+  ability discover hidden patterns 7 . Measure Quality Clustering 
+  Dissimilarity / Similarity metric 
+  Similarity expressed terms distance function , typically metric : 
+ d(i , j ) 
+  definitions distance functions usually different 
+ interval - scaled , boolean , categorical , ordinal ratio , vector variables 
+  Weights associated different variables based 
+ applications data semantics 
+  Quality clustering : 
+  usually separate “ quality ” function measures 
+ “ goodness ” cluster . 
+  hard define “ similar ” “ good ” 
+  answer typically highly subjective 8 . Similarity Dissimilarity 
+  Similarity 
+  Numerical measure alike data objects 
+  Value higher objects alike 
+  falls range [ 0,1 ] 
+  Dissimilarity ( e.g. , distance ) 
+  Numerical measure different data objects 
+ 
+  Lower objects alike 
+  Minimum dissimilarity 0 
+  Upper limit varies 
+  Proximity refers similarity dissimilarity 9 . Data Matrix Dissimilarity Matrix 
+  Data matrix 
+  n data points p 
+ dimensions 
+  modes 
+  N P matrix 
+  Dissimilarity matrix 
+  n data points , 
+ registers 
+ distance 
+  triangular matrix 
+  Single mode 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ np 
+ x 
+ ... 
+ nf 
+ x 
+ ... 
+ n1 
+ x 
+ ... 
+ ... 
+ ... 
+ ... 
+ ... 
+ ip 
+ x 
+ ... 
+ 
+ x 
+ ... 
+ i1 
+ x 
+ ... 
+ ... 
+ ... 
+ ... 
+ ... 
+ 1p 
+ x 
+ ... 
+ 1f 
+ x 
+ ... 
+ 11 
+ x 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 0 
+ ... 
+ ) 
+ 2 
+ , 
+ ( 
+ ) 
+ 1 
+ , 
+ ( 
+ : 
+ : 
+ : 
+ ) 
+ 2 
+ , 
+ 3 
+ ( 
+ ) 
+ ... 
+ n 
+ d 
+ n 
+ d 
+ 0 
+ d 
+ d(3,1 
+ 0 
+ d(2,1 ) 
+ 0 10 . Proximity Measure Nominal Attributes 
+  2 states , e.g. , red , yellow , blue , green 
+ ( generalization binary attribute ) 
+  Method 1 : Simple matching 
+  m : . matches , p : total . variables 
+  Method 2 : Use large number binary attributes 
+  creating new binary attribute M nominal states 
+ p 
+ m 
+ p 
+ j 
+ 
+ d  
+  
+ ) 
+ , 
+ ( 11 . Proximity Measure Binary Attributes 
+  contingency table binary data 
+  Distance measure symmetric 
+ binary variables : 
+  Distance measure asymmetric 
+ binary variables : 
+  Jaccard coefficient ( similarity 
+ measure asymmetric binary 
+ variables ): 
+  Note : Jaccard coefficient “ coherence ” : 12 . Dissimilarity Binary Variables 
+  Example 
+  Gender symmetric attribute going consider . 
+  remaining asymmetric binary attributes going calculate 
+ dissimilarity : 
+  Let values Y P 1 , value N 0 
+ Gender Fever Cough Test-1 Test-2 Test-3 Test-4 
+ Jack M Y N P N N N 
+ Mary F Y N P N P N 
+ Jim M Y P N N N N 
+ 75 
+ . 
+ 0 
+ 2 
+ 1 
+ 1 
+ 2 
+ 1 
+ ) 
+ , 
+ ( 
+ 67 
+ . 
+ 0 
+ 1 
+ 1 
+ 1 
+ 1 
+ 1 
+ ) 
+ , 
+ ( 
+ 33 
+ . 
+ 0 
+ 1 
+ 0 
+ 2 
+ 1 
+ 0 
+ ) 
+ , 
+ ( 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ mary 
+ jim 
+ d 
+ jim 
+ jack 
+ d 
+ mary 
+ jack 
+ d 13 . Standardizing Numeric Data 
+  Numeric data biased , varies range e.g. 1,100,100000 . 
+  needs normalize . 
+  Z - score : 
+  X : raw score standardized , μ : mean population , σ : standard 
+ deviation 
+  distance raw score population mean units 
+ standard deviation 
+  negative raw score mean , “ + ” 
+  alternative way : Calculate mean absolute deviation 
+ 
+  standardized measure ( z - score ): 
+  mean absolute deviation robust standard deviation 
+ . 
+ ) 
+ ... 
+ 2 
+ 1 
+ 1 
+ nf 
+ f 
+ f 
+ f 
+ x 
+ x 
+ ( x 
+ n 
+ m  
+  
+  
+  
+ | ) 
+ | 
+ ... 
+ | 
+ | 
+ | 
+ ( | 
+ 1 
+ 2 
+ 1 f 
+ nf 
+ f 
+ f 
+ f 
+ f 
+ f 
+ m 
+ x 
+ m 
+ x 
+ m 
+ x 
+ n 
+ s  
+  
+  
+  
+  
+  
+  
+ f 
+ f 
+ 
+ s 
+ m 
+ x 
+ z 
+  
+  
+  
+  
+  
+  x 
+ z 14 . Example : Data Matrix Dissimilarity Matrix 
+ point attribute1 attribute2 
+ x1 1 2 
+ x2 3 5 
+ x3 2 0 
+ x4 4 5 
+ Dissimilarity Matrix 
+ ( Euclidean Distance ) 
+ x1 x2 x3 x4 
+ x1 0 
+ x2 3.61 0 
+ x3 5.1 5.1 0 
+ x4 4.24 1 5.39 0 
+ Data Matrix 15 . Distance Numeric Data : Minkowski Distance 
+  Minkowski distance : popular distance measure 
+ = ( xi1 , xi2 , … , xip ) j = ( xj1 , xj2 , … , xjp ) p - dimensional 
+ data objects , h order ( distance defined called 
+ L - h norm ) 
+  Properties 
+  d(i , j ) > 0 ≠ j , d(i , ) = 0 ( Positive definiteness ) 
+  d(i , j ) = d(j , ) ( Symmetry ) 
+  d(i , j )  d(i , k ) + d(k , j ) ( Triangle Inequality ) 
+  distance satisfies properties metric 16 . Special Cases Minkowski Distance 
+  h = 1 : Manhattan ( city block , L1 norm ) distance 
+  E.g. , Hamming distance : number bits different 
+ binary vectors 
+  h = 2 : ( L2 norm ) Euclidean distance 
+  h  . “ supremum ” ( Lmax norm , L norm ) distance . 
+  maximum difference component ( attribute ) 
+ vectors 
+ ) 
+ | 
+ | 
+ ... 
+ | 
+ | 
+ | 
+ ( | 
+ ) 
+ , 
+ ( 2 
+ 2 
+ 2 
+ 2 
+ 2 
+ 1 
+ 1 p 
+ p j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ 
+ d  
+  
+  
+  
+  
+  
+  
+ | 
+ | 
+ ... 
+ | 
+ | 
+ | 
+ | 
+ ) 
+ , 
+ ( 2 
+ 2 
+ 1 
+ 1 p 
+ p j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ 
+ d  
+  
+  
+  
+  
+  
+  17 . Special Cases Minkowski Distance 
+  h = 1 : Manhattan ( city block , L1 norm ) distance 
+  E.g. , Hamming distance : number bits different 
+ binary vectors 
+  h = 2 : ( L2 norm ) Euclidean distance 
+  h  . “ supremum ” ( Lmax norm , L norm ) distance . 
+  maximum difference component ( attribute ) 
+ vectors 
+ ) 
+ | 
+ | 
+ ... 
+ | 
+ | 
+ | 
+ ( | 
+ ) 
+ , 
+ ( 2 
+ 2 
+ 2 
+ 2 
+ 2 
+ 1 
+ 1 p 
+ p j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ 
+ d  
+  
+  
+  
+  
+  
+  
+ | 
+ | 
+ ... 
+ | 
+ | 
+ | 
+ | 
+ ) 
+ , 
+ ( 2 
+ 2 
+ 1 
+ 1 p 
+ p j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ 
+ d  
+  
+  
+  
+  
+  
+  18 . Example Minkowski Distance 
+ Dissimilarity Matrices 
+ point attribute 1 attribute 2 
+ x1 1 2 
+ x2 3 5 
+ x3 2 0 
+ x4 4 5 
+ L x1 x2 x3 x4 
+ x1 0 
+ x2 5 0 
+ x3 3 6 0 
+ x4 6 1 7 0 
+ L2 x1 x2 x3 x4 
+ x1 0 
+ x2 3.61 0 
+ x3 2.24 5.1 0 
+ x4 4.24 1 5.39 0 
+ L x1 x2 x3 x4 
+ x1 0 
+ x2 3 0 
+ x3 2 5 0 
+ x4 3 1 5 0 
+ Manhattan ( L1 ) 
+ Euclidean ( L2 ) 
+ Supremum 19 . Ordinal Variable 
+  ordinal variable discrete continuous 
+  Order important , e.g. , rank 
+  treated like interval - scaled 
+  replace xif rank 
+  map range variable [ 0 , 1 ] replacing 
+ - th object f - th variable 
+  compute dissimilarity methods interval- 
+ scaled variables 
+ 1 
+ 1 
+  
+  
+  
+ f 
+ 
+ M 
+ r 
+ z 
+ } 
+ , ... , 
+ 1 
+ { f 
+ 
+ M 
+ r  20 . Attributes Mixed Type 
+  database contain attribute types 
+  Nominal , symmetric binary , asymmetric binary , numeric , 
+ ordinal 
+  use weighted formula combine effects 
+  f binary nominal : 
+ dij 
+ ( f ) = 0 xif = xjf , dij 
+ ( f ) = 1 
+  f numeric : use normalized distance 
+  f ordinal 
+  Compute ranks rif 
+  Treat zif interval - scaled 
+ ) 
+ ( 
+ 1 
+ ) 
+ ( 
+ ) 
+ ( 
+ 1 
+ ) 
+ , 
+ ( f 
+ ij 
+ p 
+ f 
+ f 
+ ij 
+ f 
+ ij 
+ p 
+ f 
+ d 
+ j 
+ 
+ d 
+  
+  
+  
+  
+  
+  
+  
+ 1 
+ 1 
+  
+  
+  
+ f 
+ 
+ M 
+ r 
+ zif 21 . Cosine Similarity 
+  document represented thousands attributes , 
+ recording frequency particular word ( keywords ) 
+ phrase document . 
+  vector objects : gene features micro - arrays , … 
+  Applications : information retrieval , biologic taxonomy , gene feature 
+ mapping , ... 
+  Cosine measure : d1 d2 vectors ( e.g. , term - frequency 
+ vectors ) , 
+ cos(d1 , d2 ) = ( d1  d2 ) /||d1|| ||d2|| , 
+  indicates vector dot product , ||d|| : length vector d 22 . Cosine Similarity Example 
+  cos(d1 , d2 ) = ( d1  d2 ) /||d1|| ||d2|| , 
+  indicates vector dot product , ||d| : length vector d 
+  Ex : Find similarity documents 1 2 . 
+ d1 = ( 5 , 0 , 3 , 0 , 2 , 0 , 0 , 2 , 0 , 0 ) 
+ d2 = ( 3 , 0 , 2 , 0 , 1 , 1 , 0 , 1 , 0 , 1 ) 
+ d1d2 = 5 * 3 + 0 * 0 + 3 * 2 + 0 * 0 + 2 * 1 + 0 * 1 + 0 * 1 + 2 * 1 + 0 * 0 + 0 * 1 = 25 
+ ||d1||= ( 5 * 5 + 0 * 0 + 3 * 3 + 0 * 0 + 2 * 2 + 0 * 0 + 0 * 0 + 2 * 2 + 0 * 0 + 0 * 0)0.5=(42)0.5 = 6.481 
+ ||d2||= ( 3 * 3 + 0 * 0 + 2 * 2 + 0 * 0 + 1 * 1 + 1 * 1 + 0 * 0 + 1 * 1 + 0 * 0 + 1 * 1)0.5=(17)0.5 = 4.12 
+ cos(d1 , d2 ) = 0.94 23 . Measure Quality Clustering 
+  Partitioning criteria 
+  Single level vs. hierarchical partitioning ( , multi - level hierarchical partitioning 
+ desirable ) 
+  Separation clusters 
+  Exclusive ( e.g. , customer belongs region ) vs. non - exclusive ( e.g. , 
+ document belong class ) 
+  Similarity measure 
+  Distance - based ( e.g. , Euclidian , road network , vector ) vs. connectivity - based 
+ ( e.g. , density contiguity ) 
+  Clustering space 
+  space ( low dimensional ) vs. subspaces ( high - dimensional 
+ clustering ) 24 . Requirements Challenges 
+  Scalability 
+  Clustering data instead samples 
+  Ability deal different types attributes 
+  Numerical , binary , categorical , ordinal , linked , mixture 
+ 
+  Constraint - based clustering 
+  User inputs constraints 
+  Use domain knowledge determine input parameters 
+  Interpretability usability 
+  
+  Discovery clusters arbitrary shape 
+  Ability deal noisy data 
+  Incremental clustering insensitivity input order 
+  High dimensionality 25 . Major Clustering Approaches 
+  major clustering approaches ? 
+  Partitioning approach : 
+  Construct partitions evaluate criterion , e.g. , minimizing 
+ sum square errors 
+  Typical methods : k - means , k - medoids , CLARANS 
+  Hierarchical approach : 
+  Create hierarchical decomposition set data ( objects ) criterion 
+  Typical methods : Diana , Agnes , BIRCH , CAMELEON 
+  Density - based approach : 
+  Based connectivity density functions 
+  Typical methods : DBSACN , OPTICS , DenClue 
+  Grid - based approach : 
+  based multiple - level granularity structure 
+  Typical methods : STING , WaveCluster , CLIQUE 26 . Major Clustering Approaches 
+  Model - based : 
+  model hypothesized clusters tries find 
+ best fit model 
+  Typical methods : EM , SOM , COBWEB 
+  Frequent pattern - based : 
+  Based analysis frequent patterns 
+  Typical methods : p - Cluster 
+  User - guided constraint - based : 
+  Clustering considering user - specified application - specific 
+ constraints 
+  Typical methods : COD ( obstacles ) , constrained clustering 
+  Link - based clustering : 
+  Objects linked ways 
+  Massive links cluster objects : SimRank , LinkClus 27 . Partitioning Algorithms : Basic Concept 
+  Partitioning method : Partitioning database D n objects set k clusters , 
+ sum squared distances minimized ( ci centroid medoid cluster Ci ) 
+  Given k , find partition k clusters optimizes chosen partitioning criterion 
+  Global optimal : exhaustively enumerate partitions 
+  Heuristic methods : k - means k - medoids algorithms 
+  k - means ( MacQueen’67 , Lloyd’57/’82 ): cluster represented center 
+ cluster 
+  k - medoids PAM ( Partition medoids ) ( Kaufman & Rousseeuw’87 ): cluster 
+ represented objects cluster 
+ 2 
+ 1 ) 
+ ( 
+ C 
+ p 
+ k 
+ c 
+ p 
+ E 
+  
+  
+  
+   
+  28 . K - Means Clustering Method 
+  Given k , k - means algorithm implemented steps : 
+  Partition objects k nonempty subsets 
+  Compute seed points centroids clusters current 
+ partitioning ( centroid center , i.e. , mean point , cluster ) 
+  Assign object cluster nearest seed point 
+  Step 2 , stop assignment change 29 . Example K - Means Clustering 
+ K=2 
+ Arbitrarily 
+ partition 
+ objects 
+ k groups 
+ Update 
+ cluster 
+ centroids 
+ Update 
+ cluster 
+ centroids 
+ Reassign objects 
+ Loop 
+ needed 
+ initial data set 
+  Partition objects k nonempty 
+ subsets 
+  Repeat 
+  Compute centroid ( i.e. , mean 
+ point ) partition 
+  Assign object 
+ cluster nearest centroid 
+  change 30 . K - Means Clustering : Example 
+  Suppose data mining task cluster points ( ( x , y ) 
+ representing location ) clusters , points : 
+ A1 ( 2,10 ) , A2 ( 2,5 ) A3 ( 8,4 ) , B1(5,8 ) , B2(7,5 ) , B3(6,4 ) , C1(1,2 ) , C2(4,9 ) . 
+ distance function Euclidean distance . Suppose initially assign A1 , B1 , 
+ C1 center cluster , respectively . 
+  Use k - means algorithm : 
+  cluster centers round execution . 
+  final clusters . 31 . Comments K - Means Method 
+  Strength : Efficient : O(tkn ) , n # objects , k # clusters , t # iterations . 
+ Normally , k , t < < n. 
+  Comparing : PAM : O(k(n - k)2 ) , CLARA : O(ks2 + k(n - k ) ) 
+  Comment : terminates local optimal . 
+  Weakness 
+  Applicable objects continuous n - dimensional space 
+  k - modes method categorical data 
+  comparison , k - medoids applied wide range data 
+  Need specify k , number clusters , advance ( ways 
+ automatically determine best k ( Hastie et al . , 2009 ) 
+  Sensitive noisy data outliers 
+  suitable discover clusters non - convex shapes 32 . Variations K - Means Method 
+  variants k - means differ 
+  Selection initial k means 
+  Dissimilarity calculations 
+  Strategies calculate cluster means 
+  Handling categorical data : k - modes 
+  Replacing means clusters modes 
+  new dissimilarity measures deal categorical objects 
+  frequency - based method update modes clusters 
+  mixture categorical numerical data : k - prototype method 33 . Problem K - Means Method ? 34 . K - Medoid Clustering Method 
+  K - Medoids Clustering : Find representative objects ( medoids ) clusters 
+  PAM ( Partitioning Medoids , Kaufmann & Rousseeuw 1987 ) 
+  Starts initial set medoids iteratively replaces medoids 
+ non - medoids improves total distance resulting clustering 
+  PAM works effectively small data sets , scale large data sets 
+ ( computational complexity ) 
+  Efficiency improvement PAM 
+  CLARA ( Kaufmann & Rousseeuw , 1990 ): PAM samples 
+  CLARANS ( Ng & Han , 1994 ): Randomized - sampling 35 . K - Medoid Clustering Method 36 . K - Medoid Clustering Steps 
+  Select medoids randomly . 
+  Calculate Manhattan distance d medoids . 
+  Assign data points cluster min distance . 
+  Calculate total cost cluster . 
+  Randomly select non medoid point swap existing medoids ( previous 
+ iteration ) recalculate total cost . 
+  Calculate S , S = Current total cost - Previous total cost 
+  S>0 , old clusters correct . 37 . K- Medoid Clustering Steps 
+ x y 
+ X1 2 6 
+ X2 3 4 
+ X3 3 8 
+ X4 4 7 
+ X5 6 2 
+ X6 6 4 
+ X7 7 3 
+ X8 7 4 
+ X9 8 5 
+ X10 7 6 38 . DEPARTMENT COMPUTER ENGINEERING , Sanjivani COE , Kopargaon 38 
+ Reference 
+  Han , Jiawei Kamber , Micheline Pei Jian , “ Data Mining : Concepts 
+ Techniques”,Elsevier Publishers , ISBN:9780123814791 , 9780123814807 . 
+  https://onlinecourses.nptel.ac.in/noc24_cs22 Download Support Terms Privacy Copyright sell share personal information Cookie Preferences English Current Language © 2025 SlideShare Scribd

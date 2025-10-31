@@ -1,0 +1,68 @@
+NumPy ? — NumPy v2.2 Manual Skip main content Ctrl + K User Guide API reference Building source Development Release notes Learn NEPs Choose version GitHub User Guide API reference Building source Development Release notes Learn NEPs Choose version GitHub Section Navigation Getting started NumPy ? Installation NumPy quickstart NumPy : absolute basics beginners Fundamentals usage NumPy fundamentals NumPy MATLAB users NumPy tutorials NumPy - tos Advanced usage interoperability NumPy C - API F2PY user guide reference manual - - hood documentation developers Interoperability NumPy Extras Glossary Release notes NumPy 2.0 migration guide NumPy license NumPy user guide NumPy ? NumPy ? # NumPy fundamental package scientific computing Python . 
+ Python library provides multidimensional array object , 
+ derived objects ( masked arrays matrices ) , 
+ assortment routines fast operations arrays , including 
+ mathematical , logical , shape manipulation , sorting , selecting , / O , 
+ discrete Fourier transforms , basic linear algebra , basic statistical 
+ operations , random simulation . core NumPy package , ndarray object .   
+ encapsulates n -dimensional arrays homogeneous data types , 
+ operations performed compiled code performance . 
+ important differences NumPy arrays 
+ standard Python sequences : NumPy arrays fixed size creation , unlike Python lists 
+ ( grow dynamically ) . Changing size ndarray 
+ create new array delete original . elements NumPy array required 
+ data type , size memory .   exception : 
+ arrays ( Python , including NumPy ) objects , 
+ allowing arrays different sized elements . NumPy arrays facilitate advanced mathematical types 
+ operations large numbers data .   Typically , operations 
+ executed efficiently code possible 
+ Python built - sequences . growing plethora scientific mathematical Python - based 
+ packages NumPy arrays ; typically support 
+ Python - sequence input , convert input NumPy arrays prior 
+ processing , output NumPy arrays .   words , 
+ order efficiently use ( ) today 
+ scientific / mathematical Python - based software , knowing 
+ use Python built - sequence types insufficient - 
+ needs know use NumPy arrays . points sequence size speed particularly important 
+ scientific computing .   simple example , consider case 
+ multiplying element 1 - D sequence corresponding 
+ element sequence length .   data 
+ stored Python lists , b , iterate 
+ element : c = [ ] range ( len ( ) ): c . append ( [ ] * b [ ] ) produces correct answer , b contain 
+ millions numbers , pay price inefficiencies 
+ looping Python .   accomplish task 
+ quickly C writing ( clarity neglect variable declarations 
+ initializations , memory allocation , etc . ) ( = 0 ; < rows ; + + ) { c [ ] = [ ] * b [ ] ; } saves overhead involved interpreting Python code 
+ manipulating Python objects , expense benefits 
+ gained coding Python .   Furthermore , coding work required 
+ increases dimensionality data . case 2 - D 
+ array , example , C code ( abridged ) expands ( = 0 ; < rows ; + + ) { ( j = 0 ; j < columns ; j + + ) { c [ ] [ j ] = [ ] [ j ] * b [ ] [ j ] ; } } NumPy gives best worlds : element - - element operations 
+ “ default mode ” ndarray involved , 
+ element - - element operation speedily executed pre - compiled C 
+ code .   NumPy c = * b earlier examples , near - C speeds , code 
+ simplicity expect based Python . , NumPy 
+ idiom simpler !   example illustrates NumPy 
+ features basis power : vectorization 
+ broadcasting . NumPy fast ? # Vectorization describes absence explicit looping , indexing , 
+ etc . , code - things taking place , course , 
+ “ scenes ” optimized , pre - compiled C code .   Vectorized 
+ code advantages , : vectorized code concise easier read fewer lines code generally means fewer bugs code closely resembles standard mathematical notation 
+ ( making easier , typically , correctly code mathematical 
+ constructs ) vectorization results “ Pythonic ” code . 
+ vectorization , code littered inefficient 
+ difficult read loops . Broadcasting term describe implicit 
+ element - - element behavior operations ; generally speaking , 
+ NumPy operations , arithmetic operations , 
+ logical , bit - wise , functional , etc . , behave implicit 
+ element - - element fashion , i.e. , broadcast .   , 
+ example , b multidimensional arrays 
+ shape , scalar array , arrays 
+ different shapes , provided smaller array “ expandable ” 
+ shape larger way resulting broadcast 
+ unambiguous . detailed “ rules ” broadcasting Broadcasting . uses NumPy ? # NumPy fully supports object - oriented approach , starting , 
+ , ndarray .   example , ndarray class , possessing 
+ numerous methods attributes .   methods mirrored 
+ functions outer - NumPy namespace , allowing programmer 
+ code whichever paradigm prefer . flexibility allowed 
+ NumPy array dialect NumPy ndarray class de - facto language 
+ multi - dimensional data interchange Python . previous NumPy user guide NumPy quickstart page NumPy fast ? uses NumPy ? © Copyright 2008 - 2024 , NumPy Developers . Created Sphinx 7.2.6 . Built PyData Sphinx Theme 0.16.0 .

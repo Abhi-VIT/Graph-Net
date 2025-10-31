@@ -1,0 +1,186 @@
+sorting - Selection Sort Python - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams Selection Sort Python Ask Question Asked 12 years , 1 month ago Modified 3 years , 1 month ago Viewed 41k times 7 like simple question attempted implement selection sort Python , sorted list . wrong implementation ? subsetting problem . source = [ 4,2,1,10,5,3,100 ] 
+ range(len(source ) ): 
+   mini = min(source[i :] ) # find minimum element 
+   min_index = source[i:].index(mini)-1 # find index minimum element 
+   source[i:][min_index]= source[i:][0 ] # replace element min_index element 
+   source[i:][0 ] = mini                   # replace element min element 
+ print source python sorting Share Improve question Follow asked Mar 5 , 2013 22:19 lord12 lord12 2,937 10 10 gold badges 37 37 silver badges 48 48 bronze badges 1 possible duplicate selection sort python – Michael Edenfield Commented Mar 10 , 2013 16:04 Add comment | 14 Answers 14 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 14 think couple issues . , source[i :] , believe returns new array sub - elements requested original array , modify , modify original . Second , subtracting 1 index . source = [ 4,2,1,10,5,3,100 ] 
+ range(len(source ) ): 
+     mini = min(source[i :] ) # find minimum element 
+     min_index = source[i:].index(mini ) # find index minimum element 
+     source[i + min_index ] = source[i ] # replace element min_index element 
+     source[i ] = mini                   # replace element min element 
+ print source gives : [ 1 , 2 , 3 , 4 , 5 , 10 , 100 ] Share Improve answer Follow edited Mar 5 , 2013 22:32 Eric Postpischil 227k 14 14 gold badges 192 192 silver badges 366 366 bronze badges answered Mar 5 , 2013 22:29 Ryan Morlok Ryan Morlok 806 9 9 silver badges 13 13 bronze badges 1 instead finding min_index source[1:].index try finding source.index , simplify step swap , swap   source[i],source[min_index ] = source[min_index ] , source[i ] . – frp farhan Commented Mar 8 , 2018 12:52 Add comment | 4 rewrite code .   course Python use list.sort ( ) sort list , selection sort Python . generator expression returns tuples ( value , ) value index list .   min ( ) evaluates find minimum , finds lowest tuple value ; value comes tuple index , value important , min ( ) find lowest value .   ( tie , min ( ) use second tuple , index , tie - breaker .   sort care ties broken . ) , instead searching sub - list find min value , searching figure index , search min value index . actually care min value ; care index .   min ( ) , throw away actual value index .   Adjust index correct list ( slice list ) swap . use standard Python idiom swapping values .   Python build tuple object intermediate , unpack tuple left - hand - . lst = [ 4,2,1,10,5,3,100 ] 
+
+ i_sortpos range(len(lst ) ): 
+     # generator expression return ( value , ) pairs . 
+     genexp = ( ( n , ) , n enumerate(lst[i_sortpos :] ) ) 
+     # Use genexp min ( ) find lowest index . 
+     # ( Use ' _ ' variable actual value ; use . ) 
+     _ , i_min = min(genexp ) 
+     # Adjust index correct list . 
+     i_min + = i_sortpos 
+     # Swap number i_sortpos lowest found . 
+     lst[i_sortpos ] , lst[i_min ] = lst[i_min ] , lst[i_sortpos ] 
+
+ print(lst ) EDIT : refinement .   slice list actually allocates new list ; code need new list , needs convenient way examine sublist .   itertools module offers function , islice ( ) , returns iterator iterates slice list .   avoids repeatedly creating destroying lists examine sublist . believe efficient way selection sort Python .   ( rid bind generator expression genexp save microseconds ... min ( ) long - liner .   worth loss readability . ) import itertools 
+
+ lst = [ 4,2,1,10,5,3,100 ] 
+
+ i_sortpos range(len(lst ) ): 
+     # generator expression return ( value , ) pairs . 
+     # Use it.islice ( ) look sublist . 
+     genexp = ( ( n , ) , n enumerate(it.islice(lst , i_sortpos , len(lst ) ) ) ) 
+     # Use genexp min ( ) find lowest index . 
+     # ( Use ' _ ' variable actual value ; use . ) 
+     _ , i_min = min(genexp ) 
+     # Adjust index correct list . 
+     i_min + = i_sortpos 
+     # Swap number i_sortpos lowest found . 
+     lst[i_sortpos ] , lst[i_min ] = lst[i_min ] , lst[i_sortpos ] 
+
+ print(lst ) Share Improve answer Follow edited Mar 5 , 2013 23:08 answered Mar 5 , 2013 23:01 steveha steveha 76.9k 21 21 gold badges 93 93 silver badges 119 119 bronze badges 2 _ , i_min = min(genexp ) wrong ? min(genexp ) consider index compare , rectified min(genexp , lambda key : key[0 ] ) ... thought learned lot answer . Thanks ! – Grijesh Chauhan Commented Sep 28 , 2013 18:29 1 @GrijeshChauhan discussed issue raised , second paragraph . min ( ) tuples compare items index 0 tuple , use items index 1 case tie ; sorting care tie resolved , works fine .   way , Python provides cool feature use instead lambda expression : operator.itemgetter ( ) slightly faster way item particular index . – steveha Commented Sep 30 , 2013 6:43 Add comment | 1 def selectionSort(List _ ): 
+     range(len(List _ ) ): ` 
+         # track current smallest value 
+         smallIndex = 
+             # loop current smallest value 
+             j range(i+1,len(List _ ) ) 
+                 List_[j ] < List_[smallIndex ] : 
+                     # new value smallest value , change 
+                     # smallest value 
+                     smallIndex = j 
+             smallIndex ! = : 
+                 # swap values 
+                 List_[smallIndex],List_[i ] = List_[i],List_[smallIndex ] 
+     # return sorted list 
+     return List _ Share Improve answer Follow edited Nov 1 , 2017 10:30 Dmitry 7,276 14 14 gold badges 41 41 silver badges 41 41 bronze badges answered Nov 1 , 2017 9:54 Joshua Enos Joshua Enos 81 2 2 bronze badges Add comment | 0 def ss(l ):    
+     range(0,len(l ) ): 
+         d = l.index(min(l[i :] ) )        
+         c = l[i ] 
+         l[i]=min(l[i :] ) 
+         l[d]=c 
+         print(l )   # prints step selection sort 
+ y=[10,9,1,5,0,6 ] 
+ ss(y ) Share Improve answer Follow answered Oct 18 , 2015 21:05 Vibhore Gupta Vibhore Gupta 1 1 1 bronze badge 3 [ 0 , 9 , 1 , 5 , 10 , 6 ] [ 0 , 1 , 9 , 5 , 10 , 6 ] [ 0 , 1 , 5 , 9 , 10 , 6 ] [ 0 , 1 , 5 , 6 , 10 , 9 ] [ 0 , 1 , 5 , 6 , 9 , 10 ] [ 0 , 1 , 5 , 6 , 9 , 10 ] # output – Vibhore Gupta Commented Oct 18 , 2015 21:05 explain answer ? – Zulu Commented Oct 18 , 2015 23:10 m taking min value list replacing element replacing element min value element . changes occur position min value element rest element remains . 2nd time loop work start 2nd position list thing happens till end . loop required . graphical analysis visit link link :   : cs.armstrong.edu/liang/animation/web/SelectionSort.html – Vibhore Gupta Commented Oct 19 , 2015 3:57 Add comment | 0 def selSort(L ): 
+     " " " 
+     Find smallest element list ( swap ) location , 
+     Find second element ( swap ) second locaiton , . 
+
+     " " " 
+     range(len(L ) - 1 ): 
+         minIndx = 
+         minVal= L[i ] 
+         j = + 1 
+         j < len(L ): 
+             minVal > L[j ] : 
+                 minIndx = j 
+                 minVal= L[j ] 
+             j + = 1 
+         temp = L[i ] 
+         L[i ] = L[minIndx ] 
+         L[minIndx ] = temp 
+     return L : print ( selSort([120,11,0,1,3,2,3,4,5,6,7,8,9,10 ] ) ) Output [ 0 , 1 , 2 , 3 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 120 ] Share Improve answer Follow answered Jan 3 , 2017 20:07 Amjad Amjad 3,718 2 2 gold badges 22 22 silver badges 19 19 bronze badges Add comment | 0 s = [ 1,8,4,9,3,6,2 ] 
+ range(len(s ) ): 
+     maxi = max(s[0 : len(s)-i ] )      # find max element 
+     tempi = s.index(maxi )          # find index max element 
+     temp = s[len(s)-1 - ]           # assign element temp 
+     s[len(s)-1 - ] = maxi           # max element position 
+     s[tempi ] = temp                # element initially new 
+
+ print s Share Improve answer Follow answered Feb 13 , 2017 10:36 Himanshu Soni Himanshu Soni 11 2 2 bronze badges 1 problems : 1 . max function better reimplemented max index operation , built max index O(n ) operations . 2 . use multi - value assignment instead creating extra temp variable swap largest tail elements . – dotslashlu Commented 23 , 2018 7:22 Add comment | 0 Find position(first ) , swap elements lower . nums = [ 4,2,1,10,5,3,100 ] 
+ def sort(nums ): 
+      # # # Find position 0th element sorted rest unsorted 
+     # Second iteration 2 element sorted 
+     range(len(nums)-1 ): 
+         miniposition = 
+         j range(i , len(nums ) ): 
+             nums[j ] < nums[miniposition ] : 
+                 miniposition = j 
+         temp = nums[i ] 
+         nums[i ] = nums[miniposition ] 
+         nums[miniposition ] = temp 
+ sort(nums ) 
+ print ( nums ) iteration(swapped 4 1 ) [ 1 , 2 , 4 , 10 , 5 , 3 , 100 ] [ 1 , 2 , 4 , 10 , 5 , 3 , 100 ] 
+ [ 1 , 2 , 3 , 10 , 5 , 4 , 100 ] 
+ [ 1 , 2 , 3 , 4 , 5 , 10 , 100 ] 
+ [ 1 , 2 , 3 , 4 , 5 , 10 , 100 ] 
+ [ 1 , 2 , 3 , 4 , 5 , 10 , 100 ] way nums = [ 4,2,1,10,5,3,100 ] 
+ = 0 
+ < len(nums ): 
+     # smallest element sublist 
+     smallest = min(nums[i :] ) 
+     # index smallest element 
+     index_of_smallest = nums.index(smallest ) 
+     # swapping 
+     nums[i],nums[index_of_smallest ] = nums[index_of_smallest],nums[i ] 
+     = i+1 
+ print ( nums ) Share Improve answer Follow edited Sep 27 , 2019 6:11 answered Sep 27 , 2019 5:13 user1464878 user1464878 Add comment | 0 slight variation solution provided def selection_sort(l ): 
+ = 0 
+ < len(l ): 
+     minium_value = min(l[i :] ) # minium value ith iteration 
+     minium_value_index = l[i:].index(minium_value ) # minium value index th iteration 
+
+     minium_value < l[i ] : # current value min , skip 
+         l[i + minium_value_index ] = l[i ] # current value min value index - swap 1 
+         l[i ] = minium_value # set current value min value- swap 2 
+     + = 1 
+
+ return l Share Improve answer Follow answered Jul 17 , 2021 17:47 Suvro Choudhury Suvro Choudhury 145 1 1 gold badge 7 7 silver badges 20 20 bronze badges Add comment | 0 def selection_sort_min ( ): # sorting number 
+
+     range(len(num)-1 ): 
+         current_min_index = 
+         j range(i+1,len(num ) ): 
+               num[j ] < num[current_min_index ] : 
+                 current_min_index = j 
+         num[i],num[current_min_index ] = num [ current_min_index],num[i ] 
+     print(num ) 
+ num = [ 23,89,12,0,3,7,33 ] 
+
+ selection_sort_min ( ) Share Improve answer Follow edited Mar 24 , 2022 6:01 Samsul Islam 2,619 2 2 gold badges 20 20 silver badges 24 24 bronze badges answered Aug 25 , 2021 3:20 Nazmul Hassan Riaz Nazmul Hassan Riaz 19 4 4 bronze badges 1 essentially copy @Amjad answer . Stop necrobumping , ... – H. Doebler Commented Aug 25 , 2021 22:37 Add comment | -1 think good way sort list numbers hope helps : list=[5,4,3,1,6,8,10,9 ] 
+ listsorted= [ ] 
+ range(len(list ) ): 
+     x = min(list ) 
+     list.remove(x ) 
+     listsorted.append(x ) 
+ print listsorted result [ 1 , 3 , 4 , 5 , 6 , 8 , 9 , 10 ] Share Improve answer Follow answered Feb 19 , 2016 21:36 urnatatio urnatatio 1 1 1 algorithm place sort purpose selection sort – sri85 Commented 10 , 2016 15:50 Add comment | -1 think " accepted " answer unhelpful .   look e.g. mini = min(source[i :] ) # find minimum element 
+ min_index = source[i:].index(mini ) # find index minimum element inefficient terms creating list slices unnecessarily , searched unnecessarily .   reasonably concise think best solution . Share Improve answer Follow answered Oct 28 , 2017 17:54 billr billr 17 1 1 bronze badge 0 Add comment | -2 def Selection_Sort(Sarray ): 
+     length = len(Sarray ) 
+     = 0 
+     j = 0 
+     range(length ): 
+         j = i+1 
+         j range(length ): 
+             Sarray[i ] < Sarray[j ] 
+                 t = Sarray[i ] 
+                 Sarray[i ] = Sarray[j ] 
+                 Sarray[j ] = t 
+         j = j+1 
+         = i+1 
+
+     return Sarray Share Improve answer Follow edited 13 , 2015 6:22 hamidfzm 4,695 10 10 gold badges 51 51 silver badges 80 80 bronze badges answered Apr 16 , 2015 10:18 user4795998 user4795998 1 1 description answer finds problem code question , alternate implementation selection sort . – John Colanduoni Commented Apr 16 , 2015 10:37 Add comment | -2 Code select sort MIT online course . def selSort(L ): 
+     range(len(L ) - 1 ): 
+         minIndx = 
+         minVal = L[i ] 
+         j = i+1 
+         j < len(L ): 
+             minVal > L[j ] : 
+                 minIndx = j 
+                 minVal = L[j ] 
+             j + = 1 
+         minIndx ! = : 
+             temp = L[i ] 
+             L[i ] = L[minIndx ] 
+             L[minIndx ] = temp Share Improve answer Follow edited Jul 16 , 2015 11:45 answered Jul 16 , 2015 8:35 David Yachnis David Yachnis 504 5 5 silver badges 16 16 bronze badges Add comment | -2 def selectSort(L ): 
+   range(len(L ) ): 
+     print L 
+     minIndex = 
+     minValue = L[i ] 
+     j = + 1 
+     j < len(L ): 
+         minValue > L[j ] : 
+             minIndex = j 
+             minValue = L[j ]  
+         j + = 1 
+     temp = L[i ] 
+     L[i ] = L[minIndex ] 
+     L[minIndex ] = temp Share Improve answer Follow edited Aug 25 , 2015 5:14 answered Aug 25 , 2015 5:07 Yang Wang Yang Wang 620 5 5 silver badges 16 16 bronze badges Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python sorting similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Linked -1 apply sorting algorithms dictionary ? Related 0 selection sort python 0 Selection Sort ( low high ) python 0 Selection sort program python 2 Selection Sort Python working 1 implement Selection Sort list ? 0 Selection Sort Algorithm Python 0 Proper Python SelectionSort 1 Selection Sort Python sorting 0 Selection Sort Python working place 1 Selection sort implementation python Hot Network Questions Germany allow help introduce Deutsche Mark Montenegro ? misfiled attorney - client memo fair game use trial ? known Free Complete Heyting Algebras Exist ? Replacement working Table structure file better ? normal phd supervisor raises new questions revise time reviewing manuscript ? Revising manuscript covered referee report rapid oxidation change reddish - brown black copper dust sanding copper plate dust small particle size / exposure ? Spoke tension question single word dishonestly underselling importance / credentials ? OLS miss statistically significant coefficient small ? tunneling ? mean carry service normally provided network ? Rules written , Orcs Drow functionally ? irrationals partitioned dense , disjoint subsets ? Physics equations universal meaning possible ? employees store . ? Implement PHMINPOSUW ( Packed Horizontal Word Minimum ) Locally free coherent module open disc strangling animals prohibited Acts 15 ? Slight modification Erdős – Rado theorem Story canyon mushrooms spiders orange button antique Black & Decker drill ? Siunitx formatting dynamically loaded numbers CMOS inverter output zero hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

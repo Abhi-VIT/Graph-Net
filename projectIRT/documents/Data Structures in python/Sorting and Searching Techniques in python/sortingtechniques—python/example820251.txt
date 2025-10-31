@@ -1,0 +1,66 @@
+Sorting Techniques — Python 3.13.3 documentation Theme Auto Light Dark Table Contents Sorting Techniques Sorting Basics Key Functions Operator Module Functions Partial Function Evaluation Ascending Descending Sort Stability Complex Sorts Decorate - Sort - Undecorate Comparison Functions Odds Ends Partial Sorts Previous topic Socket Programming HOWTO topic Unicode HOWTO Page Report Bug Source Navigation index modules | | previous | Python » 3.13.3 Documentation » Python HOWTOs » Sorting Techniques | Theme Auto Light Dark | Sorting Techniques Â¶ Author : Andrew Dalke Raymond Hettinger Python lists built - list.sort ( ) method modifies list 
+ - place .   sorted ( ) built - function builds new 
+ sorted list iterable . document , explore techniques sorting data Python . Sorting Basics Â¶ simple ascending sort easy : sorted ( ) function . 
+ returns new sorted list : > > > sorted ( [ 5 , 2 , 3 , 1 , 4 ] ) [ 1 , 2 , 3 , 4 , 5 ] use list.sort ( ) method . modifies list 
+ - place ( returns avoid confusion ) . Usually itâs convenient 
+ sorted ( ) - donât need original list , itâs slightly 
+ efficient . > > > = [ 5 , 2 , 3 , 1 , 4 ] > > > . sort ( ) > > > [ 1 , 2 , 3 , 4 , 5 ] difference list.sort ( ) method defined 
+ lists . contrast , sorted ( ) function accepts iterable . > > > sorted ( { 1 : ' D ' , 2 : ' B ' , 3 : ' B ' , 4 : ' E ' , 5 : ' ' } ) [ 1 , 2 , 3 , 4 , 5 ] Key Functions Â¶ list.sort ( ) sorted ( ) key parameter specify 
+ function ( callable ) called list element prior making 
+ comparisons . example , hereâs case - insensitive string comparison : > > > sorted ( " test string Andrew " . split ( ) , key = str . casefold ) [ ' ' , ' Andrew ' , ' ' , ' ' , ' string ' , ' test ' , ' ' ] value key parameter function ( callable ) 
+ takes single argument returns key use sorting purposes . 
+ technique fast key function called exactly 
+ input record . common pattern sort complex objects objectâs indices 
+ keys . example : > > > student_tuples = [ ... ( ' john ' , ' ' , 15 ) , ... ( ' jane ' , ' B ' , 12 ) , ... ( ' dave ' , ' B ' , 10 ) , ... ] > > > sorted ( student_tuples , key = lambda student : student [ 2 ] ) # sort age [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] technique works objects named attributes . example : > > > class Student : ... def _ _ init _ _ ( self , , grade , age ): ... self . = ... self . grade = grade ... self . age = age ... def _ _ repr _ _ ( self ): ... return repr ( ( self . , self . grade , self . age ) ) > > > student_objects = [ ... Student ( ' john ' , ' ' , 15 ) , ... Student ( ' jane ' , ' B ' , 12 ) , ... Student ( ' dave ' , ' B ' , 10 ) , ... ] > > > sorted ( student_objects , key = lambda student : student . age ) # sort age [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] Objects named attributes regular class shown 
+ , instances dataclass 
+ named tuple . Operator Module Functions Partial Function Evaluation Â¶ key function patterns shown common , Python provides 
+ convenience functions accessor functions easier faster . operator module itemgetter ( ) , attrgetter ( ) , methodcaller ( ) function . functions , examples simpler faster : > > > operator import itemgetter , attrgetter > > > sorted ( student_tuples , key = itemgetter ( 2 ) ) [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] > > > sorted ( student_objects , key = attrgetter ( ' age ' ) ) [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] operator module functions allow multiple levels sorting . example , 
+ sort grade age : > > > sorted ( student_tuples , key = itemgetter ( 1 , 2 ) ) [ ( ' john ' , ' ' , 15 ) , ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) ] > > > sorted ( student_objects , key = attrgetter ( ' grade ' , ' age ' ) ) [ ( ' john ' , ' ' , 15 ) , ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) ] functools module provides helpful tool making 
+ key - functions .   partial ( ) function reduce arity multi - argument 
+ function making suitable use key - function . > > > functools import partial > > > unicodedata import normalize > > > names = ' ZoÃ « Ã  bjÃ¸rn NÃºÃ±ez Ãlana Zeke Abe Nubia Eloise ' . split ( ) > > > sorted ( names , key = partial ( normalize , ' NFD ' ) ) [ ' Abe ' , ' Ã  bjÃ¸rn ' , ' Eloise ' , ' Ãlana ' , ' Nubia ' , ' NÃºÃ±ez ' , ' Zeke ' , ' ZoÃ « ' ] > > > sorted ( names , key = partial ( normalize , ' NFC ' ) ) [ ' Abe ' , ' Eloise ' , ' Nubia ' , ' NÃºÃ±ez ' , ' Zeke ' , ' ZoÃ « ' , ' Ã  bjÃ¸rn ' , ' Ãlana ' ] Ascending Descending Â¶ list.sort ( ) sorted ( ) accept reverse parameter 
+ boolean value . flag descending sorts . example , 
+ student data reverse age order : > > > sorted ( student_tuples , key = itemgetter ( 2 ) , reverse = True ) [ ( ' john ' , ' ' , 15 ) , ( ' jane ' , ' B ' , 12 ) , ( ' dave ' , ' B ' , 10 ) ] > > > sorted ( student_objects , key = attrgetter ( ' age ' ) , reverse = True ) [ ( ' john ' , ' ' , 15 ) , ( ' jane ' , ' B ' , 12 ) , ( ' dave ' , ' B ' , 10 ) ] Sort Stability Complex Sorts Â¶ Sorts guaranteed stable . means 
+ multiple records key , original order preserved . > > > data = [ ( ' red ' , 1 ) , ( ' blue ' , 1 ) , ( ' red ' , 2 ) , ( ' blue ' , 2 ) ] > > > sorted ( data , key = itemgetter ( 0 ) ) [ ( ' blue ' , 1 ) , ( ' blue ' , 2 ) , ( ' red ' , 1 ) , ( ' red ' , 2 ) ] Notice records blue retain original order ( ' blue ' , 1 ) guaranteed precede ( ' blue ' , 2 ) . wonderful property lets build complex sorts series sorting 
+ steps . example , sort student data descending grade 
+ ascending age , age sort sort grade : > > > s = sorted ( student_objects , key = attrgetter ( ' age ' ) ) # sort secondary key > > > sorted ( s , key = attrgetter ( ' grade ' ) , reverse = True ) # sort primary key , descending [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] abstracted wrapper function list 
+ tuples field order sort multiple passes . > > > def multisort ( xs , specs ): ... key , reverse reversed ( specs ): ... xs . sort ( key = attrgetter ( key ) , reverse = reverse ) ... return xs > > > multisort ( list ( student_objects ) , ( ( ' grade ' , True ) , ( ' age ' , False ) ) ) [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] Timsort algorithm Python 
+ multiple sorts efficiently advantage ordering 
+ present dataset . Decorate - Sort - Undecorate Â¶ idiom called Decorate - Sort - Undecorate steps : , initial list decorated new values control sort order . Second , decorated list sorted . Finally , decorations removed , creating list contains 
+ initial values new order . example , sort student data grade DSU approach : > > > decorated = [ ( student . grade , , student ) , student enumerate ( student_objects ) ] > > > decorated . sort ( ) > > > [ student grade , , student decorated ] # undecorate [ ( ' john ' , ' ' , 15 ) , ( ' jane ' , ' B ' , 12 ) , ( ' dave ' , ' B ' , 10 ) ] idiom works tuples compared lexicographically ; items 
+ compared ; second items compared , 
+ . strictly necessary cases include index 
+ decorated list , including gives benefits : sort stable â items key , order 
+ preserved sorted list . original items comparable ordering 
+ decorated tuples determined items . 
+ example original list contain complex numbers sorted 
+ directly . idiom Schwartzian transform , 
+ Randal L. Schwartz , popularized Perl programmers . Python sorting provides key - functions , technique needed . Comparison Functions Â¶ Unlike key functions return absolute value sorting , comparison 
+ function computes relative ordering inputs . example , balance scale compares samples giving relative ordering : lighter , equal , heavier . 
+ Likewise , comparison function cmp(a , b ) return negative 
+ value - , zero inputs equal , positive value 
+ greater - . common encounter comparison functions translating algorithms 
+ languages .   , libraries provide comparison functions 
+ API .   example , locale.strcoll ( ) comparison function . accommodate situations , Python provides functools.cmp_to_key wrap comparison function 
+ usable key function : sorted ( words , key = cmp_to_key ( strcoll ) ) # locale - aware sort order Odds Ends Â¶ locale aware sorting , use locale.strxfrm ( ) key function locale.strcoll ( ) comparison function .   necessary 
+ âalphabeticalâ sort orderings vary cultures 
+ underlying alphabet . reverse parameter maintains sort stability ( records 
+ equal keys retain original order ) . Interestingly , effect 
+ simulated parameter builtin reversed ( ) function 
+ twice : > > > data = [ ( ' red ' , 1 ) , ( ' blue ' , 1 ) , ( ' red ' , 2 ) , ( ' blue ' , 2 ) ] > > > standard_way = sorted ( data , key = itemgetter ( 0 ) , reverse = True ) > > > double_reversed = list ( reversed ( sorted ( reversed ( data ) , key = itemgetter ( 0 ) ) ) ) > > > assert standard_way = = double_reversed > > > standard_way [ ( ' red ' , 1 ) , ( ' red ' , 2 ) , ( ' blue ' , 1 ) , ( ' blue ' , 2 ) ] sort routines use < making comparisons 
+ objects . , easy add standard sort order class 
+ defining _ _ lt _ _ ( ) method : > > > Student . _ _ lt _ _ = lambda self , : self . age < . age > > > sorted ( student_objects ) [ ( ' dave ' , ' B ' , 10 ) , ( ' jane ' , ' B ' , 12 ) , ( ' john ' , ' ' , 15 ) ] , note < fall _ _ gt _ _ ( ) _ _ lt _ _ ( ) implemented ( object.__lt _ _ ( ) details mechanics ) .   avoid surprises , PEP 8 recommends comparison methods implemented . 
+ total_ordering ( ) decorator provided 
+ task easier . Key functions need depend directly objects sorted . key 
+ function access external resources . instance , student grades 
+ stored dictionary , sort separate list student 
+ names : > > > students = [ ' dave ' , ' john ' , ' jane ' ] > > > newgrades = { ' john ' : ' F ' , ' jane ' : ' ' , ' dave ' : ' C ' } > > > sorted ( students , key = newgrades . _ _ getitem _ _ ) [ ' jane ' , ' dave ' , ' john ' ] Partial Sorts Â¶ applications require data ordered .   standard 
+ library provides tools work sort : min ( ) max ( ) return smallest largest values , 
+ respectively .   functions single pass input data 
+ require auxiliary memory . heapq.nsmallest ( ) heapq.nlargest ( ) return 
+ n smallest largest values , respectively .   functions 
+ single pass data keeping n elements memory 
+ time .   values n small relative number 
+ inputs , functions far fewer comparisons sort . heapq.heappush ( ) heapq.heappop ( ) create maintain 
+ partially sorted arrangement data keeps smallest element 
+ position 0 .   functions suitable implementing 
+ priority queues commonly task scheduling . Table Contents Sorting Techniques Sorting Basics Key Functions Operator Module Functions Partial Function Evaluation Ascending Descending Sort Stability Complex Sorts Decorate - Sort - Undecorate Comparison Functions Odds Ends Partial Sorts Previous topic Socket Programming HOWTO topic Unicode HOWTO Page Report Bug Source Â « Navigation index modules | | previous | Python » 3.13.3 Documentation » Python HOWTOs » Sorting Techniques | Theme Auto Light Dark | © Copyright 2001 - 2025 , Python Software Foundation . page licensed Python Software Foundation License Version 2 . Examples , recipes , code documentation additionally licensed Zero Clause BSD License . History License information . Python Software Foundation non - profit corporation . donate . updated Apr 28 , 2025 ( 17:16 UTC ) . Found bug ? Created Sphinx 8.2.3 .

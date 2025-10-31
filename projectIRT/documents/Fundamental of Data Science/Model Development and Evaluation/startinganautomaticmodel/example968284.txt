@@ -1,0 +1,81 @@
+Starting automatic model evaluation job Amazon Bedrock - Amazon Bedrock Starting automatic model evaluation job Amazon Bedrock - Amazon Bedrock Documentation Amazon Bedrock User Guide Starting automatic model 
+			 evaluation job Amazon Bedrock create automatic model evaluation job AWS Management Console , AWS CLI , 
+		 supported AWS SDK . automatic model evaluation job , model select performs 
+		 inference prompts supported built - dataset custom prompt 
+		 dataset . job requires select task type . task type provides 
+		 recommended metrics , built - prompt datasets . learn available task 
+		 types metrics , Model evaluation task types Amazon Bedrock . following examples create automatic model evaluation job 
+		 Amazon Bedrock console , AWS CLI , SDK Python . automatic model evaluation jobs require create IAM service role . 
+		 learn IAM requirements setting model evaluation job , Service role requirements model evaluation jobs . following examples create automatic model evaluation job . 
+		 API , include inference profile job specifying ARN modelIdentifier field . Amazon Bedrock console Use following procedure create model evaluation job Amazon Bedrock 
+					 console . successfully complete procedure sure IAM user , 
+					 group , role sufficient permissions access console . learn 
+					 , Required console permissions create automatic 
+				 model evaluation job . , custom prompt datasets want specify model 
+					 evaluation job required CORS permissions added Amazon S3 bucket . 
+					 learn adding required CORS permissions , Required Cross Origin Resource Sharing 
+             ( CORS ) permissions S3 buckets . create automatic model evaluation job Open Amazon Bedrock console : https://console.aws.amazon.com/bedrock/ navigation pane , choose Model 
+							 evaluation . Build evaluation card , Automatic choose Create automatic 
+								 evaluation . Create automatic evaluation page , provide 
+							 following information Evaluation â model 
+									 evaluation job describes job . shown 
+									 model evaluation job list . unique 
+									 account AWS Region . Description ( Optional ) â Provide 
+									 optional description . Models â Choose model want 
+									 use model evaluation job . learn available models accessing 
+									 Amazon Bedrock , Access Amazon Bedrock foundation models . ( Optional ) change inference configuration choose update . Changing inference configuration changes responses 
+									 generated selected models . learn 
+									 available inferences parameters , Inference request parameters response fields foundation models . Task type â Choose type 
+									 task want model attempt perform model 
+									 evaluation job . Metrics datasets â list 
+									 available metrics built - prompt datasets change based 
+									 task select . choose list Available built - datasets 
+									 choose Use prompt dataset . 
+									 choose use prompt dataset , enter exact S3 URI 
+									 prompt dataset file choose Browse 
+										 S3 search prompt data set . > Evaluation results âSpecify 
+									 S3 URI directory want results saved . Choose Browse S3 search 
+									 location Amazon S3 . ( Optional ) enable use customer managed key Choose Customize encryption settings 
+										 ( advanced ) . , provide ARN AWS KMS 
+									 key want use . Amazon Bedrock IAM role â Choose Use existing role use IAM 
+									 service role required permissions , 
+									 choose Create new role 
+									 create new IAM service role . , choose Create . status changes Completed , view 
+					 job report card . SDK Python following example creates automatic evaluation job 
+					 Python . import boto3 
+ client = boto3.client('bedrock ' ) 
+
+ job_request = client.create_evaluation_job ( 
+     jobName= " api - auto - job - titan " , 
+     jobDescription="two different task types " , 
+     roleArn="arn : aws : iam : : 111122223333 : role/ role - " , 
+     inferenceConfig= { " models " : [ { " bedrockModel " : { " modelIdentifier":"arn : aws : bedrock : - west-2::foundation - model / amazon.titan - text - lite - v1 " , 
+                     " inferenceParams " : " { \"inferenceConfig\ " : { \"maxTokens\ " : 512,\"temperature\":0.7,\"topP\":0.9 } } " 
+                 } 
+
+             } 
+         ] 
+
+     } , 
+     outputDataConfig= { " s3Uri":"s3:// amzn - s3 - demo - bucket - model - evaluations / outputs/ " 
+     } , 
+     evaluationConfig= { " automated " : { " datasetMetricConfigs " : [ { " taskType " : " QuestionAndAnswer " , 
+                     " dataset " : { " " : " Builtin . BoolQ " 
+                     } , 
+                     " metricNames " : [ 
+                         " Builtin . Accuracy " , 
+                         " Builtin . Robustness " 
+                     ] 
+                 } 
+             ] 
+         } 
+     } 
+ ) 
+
+ print(job_request ) AWS CLI AWS CLI , use help command 
+					 parameters required , parameters optional specifying create - evaluation - job AWS CLI . aws bedrock create - evaluation - job help aws bedrock create - evaluation - job \ 
+ --job - ' automatic - eval - job - cli-001 ' \ 
+ --role - arn ' arn : aws : iam : : 111122223333 : role/ role - ' \ 
+ --evaluation - config ' { " automated " : { " datasetMetricConfigs " : [ { " taskType " : " QuestionAndAnswer","dataset " : { " " : " Builtin . BoolQ"},"metricNames " : [ " Builtin . Accuracy","Builtin . Robustness " ] } ] } } ' \ 
+ --inference - config ' { " models " : [ { " bedrockModel " : { " modelIdentifier":"arn : aws : bedrock : - west-2::foundation - model / amazon.titan - text - lite - v1","inferenceParams " : " { \"inferenceConfig\ " : { \"maxTokens\ " : 512,\"temperature\":0.7,\"topP\":0.9 } } " } } ] } ' \ 
+ --output - data - config ' { " s3Uri":"s3:// automatic - eval - jobs / outputs " } ' Javascript disabled unavailable browser . use Amazon Web Services Documentation , Javascript enabled . refer browser Help pages instructions . Document Conventions Prompt datasets List job page help ? - Yes Thanks letting know good job ! got moment , tell right . page help ? - Thanks letting know page needs work . sorry let . got moment , tell documentation better .

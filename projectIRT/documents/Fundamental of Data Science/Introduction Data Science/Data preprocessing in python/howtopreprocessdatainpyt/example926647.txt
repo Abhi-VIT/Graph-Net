@@ -1,0 +1,73 @@
+Preprocess Data Python | Built View Jobs Employers Join Log Jobs Companies Remote Articles Best Places Work items Data Science Expert Contributors Machine Learning +2 Preprocess Data Python step - - step tutorial data preprocessing implementation Python , NumPy Pandas . Written Afroz Chakure Image : Shutterstock UPDATED Matthew Urwin | Aug 20 , 2024 article , prep machine learning model predict survived Titanic . , clean data . apply preprocessing techniques Titanic data set . Preprocess Data Python Step - - Step Load data Pandas . Drop columns useful . Drop rows missing values . Create dummy variables . care missing data . Convert data frame NumPy . Divide data set training data test data . started , need : Python NumPy Pandas Titanic data set Data Preprocessing Need ? machine learning algorithms work , necessary convert raw data clean data set , means convert data set numeric data . encoding categorical labels column vectors binary values . Missing values , NaNs ( number ) data set annoying problem . drop missing rows fill mean interpolated values . Kaggle provides data sets : training data results data . data sets dimensions model produce accurate results . 1 . Load Data Pandas work data , load CSV Excel Pandas . purposes tutorial , load CSV data Pandas . df = pd.read_csv('train.csv ' ) Let look data format : > > > df.info ( ) 
+ < class ' pandas.core.frame . DataFrame ' > 
+ Int64Index : 891 entries , 0 890 
+ Data columns ( total 12 columns ): 
+ PassengerId 891 non - null int64 
+ Survived 891 non - null int64 
+ Pclass 891 non - null int64 
+ 891 non - null object 
+ Sex 891 non - null object 
+ Age 714 non - null float64 
+ SibSp 891 non - null int64 
+ Parch 891 non - null int64 
+ Ticket 891 non - null object 
+ Fare 891 non - null float64 
+ Cabin 204 non - null object 
+ Embarked 889 non - null object carefully observe summary Pandas , 891 total rows Age shows 714 ( means missing data ) , Embarked missing rows Cabin missing lot . Object data types non - numeric find way encode numerical values . Afroz Chakure Random Forest Regression Python Explained 2 . Drop Columns Useful Let try drop columns wo contribute machine learning model . start , Ticket Cabin . cols = [ ' ' , ' Ticket ' , ' Cabin ' ] 
+ df = df.drop(cols , axis=1 ) dropped columns : > > > df.info ( ) 
+ PassengerId 891 non - null int64 
+ Survived 891 non - null int64 
+ Pclass 891 non - null int64 
+ Sex 891 non - null object 
+ Age 714 non - null float64 
+ SibSp 891 non - null int64 
+ Parch 891 non - null int64 
+ Fare 891 non - null float64 
+ Embarked 889 non - null object 3 . Drop Rows Missing Values drop rows data missing values ( NaNs ) . : > > > df = df.dropna ( ) 
+
+ > > > df.info ( ) 
+ Int64Index : 712 entries , 0 890 
+ Data columns ( total 9 columns ): 
+ PassengerId 712 non - null int64 
+ Survived 712 non - null int64 
+ Pclass 712 non - null int64 
+ Sex 712 non - null object 
+ Age 712 non - null float64 
+ SibSp 712 non - null int64 
+ Parch 712 non - null int64 
+ Fare 712 non - null float64 
+ Embarked 712 non - null object Problem Dropping Rows dropping rows missing values , find data set reduced 712 rows 891 , means wasting data . Machine learning models need data train perform . , let preserve data use . . Built Expert Contributors Help Find Residuals Regression Analysis 4 . Creating Dummy Variables Instead wasting data , let convert   Pclass , Sex Embarked columns Pandas drop conversion . dummies = [ ] 
+ cols = [ ' Pclass ' , ' Sex ' , ' Embarked ' ] 
+ col cols : 
+    dummies.append(pd.get_dummies(df[col ] ) ) … titanic_dummies = pd.concat(dummies , axis=1 ) transformed    columns 1 , 2 3 represent passenger class . Finally concatenate original data frame , column - wise : df = pd.concat((df , titanic_dummies ) , axis=1 ) converted Pclass , Sex Embarked values columns , drop redundant columns data frame . df = df.drop(['Pclass ' , ' Sex ' , ' Embarked ' ] , axis=1 ) Let look new data frame : > > > df.info ( ) 
+ PassengerId 891 non - null int64 
+ Survived 891 non - null int64 
+ Age 714 non - null float64 
+ SibSp 891 non - null int64 
+ Parch 891 non - null int64 
+ Fare 891 non - null float64 
+ 1 891 non - null float64 
+ 2 891 non - null float64 
+ 3 891 non - null float64 
+ female 891 non - null float64 
+ male 891 non - null float64 
+ C 891 non - null float64 
+ Q 891 non - null float64 
+ S 891 non - null float64 Data Preprocessing Pandas Matplotlib Dummy Variables Beware Dummy Variable Trap Pandas 5 . Care Missing Data clean , Age , lots missing values . Let compute median interpolate ( ) ages fill missing age values . Pandas interpolate ( ) function replace missing NaNs interpolated values . df['Age ' ] = df['Age'].interpolate ( ) let observe data columns . Notice Age interpolated imputed new values . > > > df.info ( ) 
+ Data columns ( total 14 columns ): 
+ PassengerId 891 non - null int64 
+ Survived 891 non - null int64 
+ Age 891 non - null float64 
+ SibSp 891 non - null int64 
+ Parch 891 non - null int64 
+ Fare 891 non - null float64 
+ 1 891 non - null float64 
+ 2 891 non - null float64 
+ 3 891 non - null float64 
+ female 891 non - null float64 
+ male 891 non - null float64 
+ C 891 non - null float64 
+ Q 891 non - null float64 Python Tutorials Find Outliers IQR Python 6 . Convert Data Frame NumPy converted data integers , time prepare data machine learning models . scikit - learn NumPy come play : X = Input set 14 attributes y = Small y output , case Survived convert data frame Pandas NumPy assign input output : X = df.values 
+ y = df['Survived'].values X Survived values , . drop NumPy column , column . X = np.delete(X , 1 , axis=1 ) Tutorials Built Experts Use Float Python ( Sample Code ! ) 7 . Divide Data Set Training Data Test Data ready   X y , let split data set : allocate 70 percent training 30 percent tests scikit model_selection . sklearn.model_selection import train_test_split 
+ X_train , X_test , y_train , y_test = train_test_split(X , y , test_size=0.3 , random_state=0 ) preprocess data . try start building models making predictions . Frequently Asked Questions mean preprocess data Python ? Preprocessing data refers transforming raw data clean data set filling missing values , removing repetitive features making sure data fits uniform scale , techniques . way , machine learning algorithms understand data improve performance result . preprocess data Python code ? preprocess data Python , follow guidelines : Load data Remove unnecessary data Remove rows missing data Create dummy variables Fill remaining missing data Convert data Split data set training test data Recent Data Science Articles Tableau ? 10 Python Image Manipulation Tools Try Today Python Databases 101 : Choose Database Library Explore Job Matches . Job Title Keyword Clear search Location Job Type Clear Apply Jobs Jobs Companies Articles Items Join Log Tech Jobs Companies Articles Remote Best Places Work Tech Hubs Post Job Built online community startups tech companies . Find 
+             startup jobs , tech news events . Story Careers Staff Writers Content Descriptions Involved Recruit Built Expert Contributor Resources Customer Support Share Feedback Report Bug Browse Jobs Tech - Z Tech Hubs Sites Learning Lab User Agreement Accessibility Statement Copyright Policy Privacy Policy Terms Use Privacy Choices / Cookie Settings Notice Collection © Built 2025

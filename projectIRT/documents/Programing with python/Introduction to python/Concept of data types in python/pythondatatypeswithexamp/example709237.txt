@@ -1,0 +1,298 @@
+Python Data Types Master Generative AI 10 + Real - world Projects 2025 ! d : h : m : s Download Projects Free Courses Learning Paths GenAI Pinnacle Plus New Agentic AI Pioneer DHS 2025 Login Switch Mode Logout Interview Prep Career GenAI Prompt Engg ChatGPT LLM Langchain RAG AI Agents Machine Learning Deep Learning GenAI Tools LLMOps Python NLP SQL AIML Projects Reading list Intoduction Python Brief Introduction Python Installing Python Windows , Linux , Mac Jupyter Notebook Google Colab Variables data types Variables Datatypes OOPs Concepts OOPs Concepts Conditional statement Conditional Statements Looping Constructs Looping Constructs Iterators Generators Data Structures Data Structures List Tuples Sets Dictionary String Manipulation Strings Functions Functions Lambda Functions Recursion Modules , Packages Standard Libraries Introduction Modules python Python Libraries Data Science Introduction Python Libraries Data Science Basics Numpy Basics Pandas Basics Matplotlib Basics Statsmodel Reading Data Files Python Reading Commonly File Formats Reading CSV files Reading Big CSV files Reading Excel & Spreadsheet Files Preprocessing , Subsetting Modifying Pandas Dataframes Subsetting Modifying Data Loc vs ILoc Sorting Aggregating Data Pandas Preprocessing , Sorting Aggregating Data Concatenating Dataframes Aggregating Summarizing Dataframes Data Munging Visualizing Patterns Trends Data Visualizing Patterns Trends Data Basics Matplotlib Basics Seaborn Data Visualization Seaborn Exploring Data Python Programming Tips Technique Optimize Python Code Home Python Python Data Types Examples Python Data Types Examples Nishtha Updated : 
+                                 21 Nov , 2024 13 min read Python versatile powerful language offers multitude possibilities application development . interested system administration , building GUI programs , creating database applications , scripting , Python got covered . critical strengths Python lies extensive collection data types python , class ‘ float , class ‘ int , class ‘ str , frozen set , enables efficient effective implementation wide range applications . Additionally , Python provides robust data structures like python list python string , essential handling data . Furthermore , understanding Python objects built - functions help utilize potential Python . article , explore data types Python examples , learn data types exist Python , delve numeric data types Python , discover handy Python data types cheat sheet quick reference . Learning Outcomes Learn manipulate mutable sequences bytes bytearray type . Perform arithmetic operations manage floating - point numbers float . Execute integer - specific operations understand use int Python . Handle text data string operations str class effectively . Use lists ordered collections learn methods list manipulation Python . Perform variety operations strings , core sequence type Python . Understand sequence types like lists , strings , bytearrays , use cases . Access beginner - friendly tutorials build strong foundation Python programming . Explore NumPy efficient numerical computations handling large data arrays . article published Data Science Blogathon . Table contents Data Types Python ? Data Types Python ? Numeric Types Sequence Types Text Sequence Type Mapping Type Set Types Boolean Type Binary Sequence Types Built - Data Types Python Numeric Data Types Integers ( int ) Floating - Point Numbers ( float ) Complex Numbers ( complex ) Textual Data Types – Strings Boolean Data Type Collection Data Types Lists ( list ) Dictionary Sets ( set ) Tuples ( tuple ) Custom Data Types Classes Conclusion Frequently Asked Questions Data Types Python ? Data types Python refer classifying categorizing data objects based characteristics behavior . determine type values variables hold specify operations performed values . instance , Python built - data types , including numeric types ( int , float , complex ) , string ( str ) , boolean ( bool ) , collection types ( list , tuple , dict , set ) . , data type set properties , methods , behaviors allow programmers manipulate process data effectively programs . Data Types Python ? Python built - data types categorized following main groups : Numeric Types int : Integers ( numbers ) float : Floating - point numbers ( decimal numbers ) complex : Complex numbers Sequence Types list : Ordered collection items tuple : Ordered , immutable collection items range : Sequence numbers Text Sequence Type str : Sequence Unicode characters ( strings ) Mapping Type dict : Unordered collection key - value pairs Set Types set : Unordered collection unique items frozenset : Immutable version set Boolean Type bool : Represents True False Binary Sequence Types bytes : Immutable sequence 8 - bit integers bytearray : Mutable sequence 8 - bit integers memoryview : Provides view bytes - like object Built - Data Types Python Built - data types Python fundamental data structures provided Python programming language . Pre - defined available use requiring additional libraries modules . Python offers built - data types , including : Numeric Data Types : Numeric data types Python represent numerical values . Python provides primary numeric datatype python : Integer ( int ): Integers numbers decimal points . positive negative . Floating - Point ( float ): Floating - point numbers represent decimal values . positive negative contain decimal point . Complex ( complex ): People use complex numbers represent numbers real imaginary . write form + bj , real b imaginary . String Data Type(str ): Represents sequence characters enclosed single quotes ( ‘ ‘ ) double quotes ( ” “ ) , “ Hello , World ! ” , ‘ Python ’ . Boolean Data Type(bool ) : Represents True False , logical operations conditions . Collection Data Types : list : Represents ordered mutable collection items , enclosed square brackets ( [ ] ) . tuple : Represents ordered immutable collection items , enclosed parentheses ( ) . dict : Represents collection key - value pairs enclosed curly braces ( { } ) unique keys . set : Represents unordered mutable collection unique elements , enclosed curly braces ( { } ) set ( ) function . Checkout article Learn Python Step - Step Guide Beginners Numeric Data Types People use numeric data types Python represent numerical values . Python provides primary numeric data types – integer ( int ) , floating - Point ( float ) complex ( complex ) . numeric data types allow performing arithmetic operations , addition , subtraction , multiplication , division . provide necessary flexibility work numerical data Python programs . Int – stores integers values positive negative contain decimal point . Example : num1=10 , num2 = 15 Float – floating - point real numbers stores decimal values . consists integer fraction parts . Example : fnum = 25.4 , fnum1=67.8 Complex – complex numbers specified real imaginary . stored form + bj real j represents imaginary . Example : num3= 2 + 3j , numcom = 5 – 7j Python Code : num1 = 10 
+ print(num1 ) 
+ print("Dtype num1 is",type(num1 ) ) 
+
+ fnum = 26.5 
+ print(fnum ) 
+ print("Dtype fnum is",type(fnum ) ) 
+
+ num3 = 2 + 6j 
+ print(num3 ) 
+ print('Dtype num3 is',type(num3 ) ) Integers ( int ) Python integer data type ( int ) represents numbers decimal points . stores positive negative numbers . Integers immutability , meaning change value assigned . Example1 : # Assigning integer values variables 
+ x = 5 
+ y = -10 
+ # Performing arithmetic operations 
+ sum_result = x + y 
+ difference_result = x - y 
+ multiplication_result = x * y 
+ division_result = x / y 
+ # Printing results 
+ print("Sum : " , sum_result ) 
+ print("Difference : " , difference_result ) 
+ print("Multiplication : " , multiplication_result ) 
+ print("Division : " , division_result ) Output Sum : -5 
+ Difference : 15 
+ Multiplication : -50 
+ Division : -0.5 Example2 : # integer values comparisons 
+ = 10 
+ b = 20 
+ # Comparing values 
+ greater_than = > b 
+ less_than_or_equal = < = b 
+ equal_to = = = b 
+ not_equal_to = ! = b 
+ # Printing results 
+ print("Greater : " , greater_than ) 
+ print("Less equal : " , less_than_or_equal ) 
+ print("Equal : " , equal_to ) 
+ print("Not equal : " , not_equal_to ) Output : Greater : False 
+ equal : True 
+ Equal : False 
+ equal : True Floating - Point Numbers ( float ) Python , people use float datatype python represent floating - point numbers , numbers decimal points . Floats offer precision integers needed . Floats immutable like integers follow IEEE 754 standard representing real numbers . Example1 : # Assigning float values variables 
+ x = 3.14 
+ y = 2.5 
+ # Performing arithmetic operations 
+ sum_result = x + y 
+ difference_result = x - y 
+ multiplication_result = x * y 
+ division_result = x / y 
+ # Printing results 
+ print("Sum : " , sum_result ) 
+ print("Difference : " , difference_result ) 
+ print("Multiplication : " , multiplication_result ) 
+ print("Division : " , division_result ) Output : Sum : 5.64 
+ Difference : 0.64 
+ Multiplication : 7.85 
+ Division : 1.256 Example2 : # float values comparisons 
+ = 1.2 
+ b = 2.7 
+ # Comparing values 
+ greater_than = > b 
+ less_than_or_equal = < = b 
+ equal_to = = = b 
+ not_equal_to = ! = b 
+ # Printing results 
+ print("Greater : " , greater_than ) 
+ print("Less equal : " , less_than_or_equal ) 
+ print("Equal : " , equal_to ) 
+ print("Not equal : " , not_equal_to ) Output : Greater : False 
+ equal : True 
+ Equal : False 
+ equal : True Complex Numbers ( complex ) Python , people use complex datatype python represent numbers real imaginary parts . write form + bj , represents real b represents imaginary . Complex numbers useful mathematical calculations scientific computations involve imaginary quantities . Checkout article Mathematical Operations Python Numpy Example1 : # Assigning complex values variables 
+ x = 2 + 3j 
+ y = -1 + 2j 
+ # Performing arithmetic operations 
+ sum_result = x + y 
+ difference_result = x - y 
+ multiplication_result = x * y 
+ division_result = x / y 
+ # Printing results 
+ print("Sum : " , sum_result ) 
+ print("Difference : " , difference_result ) 
+ print("Multiplication : " , multiplication_result ) 
+ print("Division : " , division_result ) Output : Sum : ( 1 + 5j ) 
+ Difference : ( 3 + 1j ) 
+ Multiplication : ( -8 + 1j ) 
+ Division : ( 0.8 - 1.4j ) Example2 : # complex values comparisons 
+ = 1 + 2j 
+ b = 3 + 4j 
+ # Comparing values 
+ equal_to = = = b 
+ not_equal_to = ! = b 
+ # Printing results 
+ print("Equal : " , equal_to ) 
+ print("Not equal : " , not_equal_to ) Output : Equal : False 
+ equal : True Textual Data Types – Strings People use textual python data types Python represent manipulate sequences characters , words , sentences , larger blocks text . primary textual data type Python string ( str ) . enclose strings quotes ( ‘ ‘ , ” “ , “ ” ” “ ” ” ) manipulate string methods . immutable , meaning change values assigned . People commonly use string data types tasks like text processing , input / output operations , data manipulation . Know Strings Python Beginners article ! Accessing String Values express character string technique called indexing . indexing , character index value represented positive negative integer starting 0 . Syntax:- stringname[index ] Example 1 : Str1=”Python 
+ # accessing second character 
+ Str1[1 ] 
+ # accessing characters 
+ Str1[0:4 ]   # print value index 0 3 
+ str1="Python " 
+ > > > str1[1 ] 
+ ' y ' 
+ > > > str1[0:4 ] 
+ ' Pyth ' Positive indexing 0 1 2 3 4 5 String P y t h o n Negative indexing -6 -5 -4 -3 -2 -1 String Operations Concatenation : Python allows join different strings concatenation operator ‘ + ’ Syntax : – str1 + str2 Example1 : > > > str1="Analytic " 
+ > > > str2="Vidya " 
+ > > > str3 = str1 + str2 
+ > > > print(str3 ) 
+ AnalyticVidya Repetitions : Python allows repeat given string help ‘ * ‘ operator . Syntax : – stringname * integervalue Example2 : > > > str2 = " python " 
+ > > > str2 * 3 
+ ' pythonpythonpython ' Membership : Membership operator helps check given character present string help operators . operator returns boolean value True False . Syntax : – character / stringname Example3 : > > > str1="python " 
+ > > > " p "   str1 
+ True 
+ > > > " f " str1 
+ False Built - Functions String Len ( ) – calculate length given string . Syntax : – len(stringname ) > > > str1="Python " 
+ > > > len(str1 ) 
+ 6 isupper ( ) – function r ( ) checks letters string upper case . characters upper case returns True returns False . Syntax : – stringname.isupper ( ) > > > str1= " Hello " 
+ > > > str1.isupper ( ) 
+ False 
+ > > > str2="HELLO " 
+ > > > str2.isupper ( ) 
+ True islower ( ) – function check letters string lowercase . characters lower case returns True returns False . Syntax : – stringname.islower ( ) > > > s="hello " 
+ > > > s.islower ( ) 
+ True 
+ > > > s1="hey Folks ! " 
+ > > > s1.islower ( ) 
+ False upper ( ) – convert characters string uppercase . Syntax : – stringname.upper ( ) > > > str1= " Hello " 
+ > > > str1.upper ( ) 
+ ' HELLO ' lower ( ) – convert characters string lowercase . Syntax : – stringname.lower ( ) > > > str2="HELLO " 
+ > > > str2.lower ( ) 
+ ' hello ' Boolean Data Type boolean python data types Python represents logical values True False . , evaluate conditions logical decisions program . Additionally , Booleans result comparisons logical operations . Logical operations booleans # Logical operations booleans 
+ = True 
+ b = False 
+ result_and = b 
+ result_or = b 
+ result_not = 
+ print(result_and ) 
+ print(result_or ) 
+ print(result_not ) Output : False 
+ True 
+ False Comparisons booleans # Comparisons booleans 
+ x = 5 
+ y = 10 
+ greater_than = x > y 
+ less_than_or_equal = x < = y 
+ equal_to = x = = y 
+ not_equal_to = x ! = y 
+ print(greater_than ) 
+ print(less_than_or_equal ) 
+ print(equal_to ) 
+ print(not_equal_to ) Output : False 
+ True 
+ False 
+ True Collection Data Types Collection data types Python store organize multiple values single entity . Python provides built - collection data types , including lists , tuples , dictionaries , sets . Lists ( list ) list data type Python store multiple items single variable . Additionally , lists ordered , mutable , contain elements different data types . Specifically , created enclosing comma - separated values square brackets [ ] . List1=[123,567,89 ] # list numbers 
+
+ List2=[“hello”,”how”,”are ” ] # list strings 
+
+ List3= [ “ hey”,1223,”hello ” ] # list mixed data type . Accessing Elements List Elements list accessed string help positive negative indexing . Slicing access list elements single element accessed time . List1=[“apple”,123,”mango”,[2,3,4 , ] ] Positive index 0 1 2 3 List “ apple ” 123 “ mango ” [ 2,3,4 ] Negative index -4 -3 -2 -1 > > > list1=['apple',123,"mango",[2,3,4 , ] ] 
+ > > > list1[0 ] 
+ ' apple ' 
+ > > > list1[3 ] 
+ [ 2 , 3 , 4 ] 
+ > > > list1[1:3 ] 
+ [ 123 , ' mango ' ] Operations List Concatenation : lists concatenated help “ + ” operator . Syntax:- list1 + list2 > > > list1=["apple","mango",123,345 ] 
+ > > > list2 = [ " grapes " ] 
+ > > > list1 + list2 
+ [ ' apple ' , ' mango ' , 123 , 345 , ' grapes ' ] Repititions : help ‘ * ‘ operator list repeated n number times . Syntax:- list1 * number > > > list1=["apple","mango",123,345 ] 
+ > > > list1 * 2 
+ [ ' apple ' , ' mango ' , 123 , 345 , ' apple ' , ' mango ' , 123 , 345 ] Membership : ‘ ‘ ‘ ‘ membership operators check given element present list return Boolean value True False . Syntax : – element / list1 > > > list1=["apple","mango",123,345 ] 
+ > > > ' apple ' list1 
+ True 
+ > > > ' apple ' list1 
+ False Built - functions list append ( ) : function add single element end list . single element added python data types like integer , list , string , etc . Syntax : - listname.append(element ) > > > list1=["apple","mango","grapes",123,345 ] 
+ > > > list1.append("orange " ) 
+ > > > list1 
+ [ ' apple ' , ' mango ' , ' grapes ' , 123 , 345 , ' orange ' ] 
+ > > > list1.append([12,34,55 ] ) 
+ > > > list1 
+ [ ' apple ' , ' mango ' , ' grapes ' , 123 , 345 , ' orange ' , [ 12 , 34 , 55 ] ] insert ( ) : insert ( ) function add element list help insert add element particular index list . index present add element end list . Syntax : - listname.insert ( index , element ) > > > list2=["apple","mango","grapes",123,345 ] 
+ > > > list2.insert(0,234 ) 
+ > > > list2 
+ [ 234 , ' apple ' , ' mango ' , ' grapes ' , 123 , 345 ] 
+ > > > list2.insert(6,"papapa " ) 
+ > > > list2 
+ [ 234 , ' apple ' , ' mango ' , ' grapes ' , 123 , 345 , ' papapa ' ] count ( ) : count function count number time element occurs list . Syntax : – listname.count(element ) > > > list3=[12,45,12,67,78,90 ] 
+ > > > list3.count(12 ) 
+ 2 
+ > > > list3.count(11 ) 
+ 0 reverse ( ) : reverse function reverse order elements list . Syntax : – listname.reverse ( ) > > > list3=[12,45,12,67,78,90 ] 
+ > > > list3.reverse ( ) 
+ > > > list3 
+ [ 90 , 78 , 67 , 12 , 45 , 12 ] sort ( ) : sort function arrange elements list ascending order . function list contain elements data type integers strings . Syntax : – listname.sort ( ) list4=["grapes","banana","apple","mango " ] 
+ > > > list4.sort ( ) 
+ > > > list4 
+ [ ' apple ' , ' banana ' , ' grapes ' , ' mango ' ] 
+ > > > list5=[12,45,12,67,78,90 ] 
+ > > > list5.sort ( ) 
+ [ 12,12,45,67,78,90 ] Dictionary Dictionary special data type mapping set keys set values . represents key - value pair enclosed curly brackets , element separated comma . Additionally , key - value pairs separated colon . Furthermore , elements dictionaries unordered , key unique value dictionary . elements dictionary mutable elements changed created . Syntax:- Dictionaryname={key : value } Example1 : Dict1={“comp ” : “ computer ” , “ sci ” : “ science ” } 
+
+ Dict2={“123”:”computer”,456 : “ maths ” } Accessing Elements Dictionary elements dictionary accessed help keys . key serves index maps value dictionary . Syntax:- dictionaryname[key ] > > > dict1={"comp " : " computer " , " sci " : " science " } 
+ > > > dict1["comp " ] 
+ ' computer ' 
+ > > > dict1["sci " ] 
+ ' science ' New elements added dictionary help new key . > > > dict1={"comp " : " computer " , " sci " : " science " } 
+ > > > dict1["comm"]="commerce " 
+ > > > dict1 
+ { ' comp ' : ' computer ' , ' sci ' : ' science ' , ' comm ' : ' commerce ' } Built - Functions Dictionary items ( ) : items ( ) function returns list tuples key - value pair dictionary . Syntax:- dictionaryname.items ( ) > > > dict1={"comp " : " computer " , " sci " : " science","comm":"commerce " } 
+ > > > dict1.items ( ) 
+ dict_items([('comp ' , ' computer ' ) , ( ' sci ' , ' science ' ) , ( ' comm ' , ' commerce ' ) ] ) keys ( ): function returns list keys dictionary . Syntax:- dictionaryname.keys ( ) > > > dict1={"comp " : " computer " , " sci " : " science","comm":"commerce " } 
+ > > > dict1.keys ( ) 
+ dict_keys(['comp ' , ' sci ' , ' comm ' ] ) values ( ) : returns list values dictionary . Syntax:- dictionaryname.values ( ) > > > dict1={"comp " : " computer " , " sci " : " science","comm":"commerce " } 
+ > > > dict1.values ( ) 
+ dict_values(['computer ' , ' science ' , ' commerce ' ] ) len ( ) : length function count total number elements dictionary . Syntax:- len(dictionaryname ) > > > dict1={"comp " : " computer " , " sci " : " science","comm":"commerce " } 
+ > > > len(dict1 ) 
+ 3 update ( ) : appends key - value pair dictionary passed argument key - value pair given dictionary . Syntax:- dictionary1.update(dictionary2 ) > > > dict1={"comp " : " computer " , " sci " : " science","comm":"commerce " } 
+ > > > dict2={"acc":"accounts","bst":"business studies " } 
+ > > > dict1.update(dict2 ) 
+ > > > dict1 
+ { ' comp ' : ' computer ' , ' sci ' : ' science ' , ' comm ' : ' commerce ' , ' acc ' : ' accounts ' , ' bst ' : ' business studies ' } Sets ( set ) set data type Python unordered collection unique elements . , people use store multiple items duplicates . create sets enclosing comma - separated elements curly braces { } set ( ) constructor . Set creation accessing elements # Creating set 
+ my_set = { 1 , 2 , 3 , 4 , 5 } 
+ # Accessing elements 
+ element my_set : 
+     print(element ) 
+ # Checking membership 
+ is_present = 3 my_set 
+ # Printing results 
+ print(my_set ) 
+ print(is_present ) Output : 1 
+ 2 
+ 3 
+ 4 
+ 5 
+
+ { 1 , 2 , 3 , 4 , 5 } 
+
+ True Set operations # Set operations 
+
+ set1 = { 1 , 2 , 3 , 4 , 5 } 
+ set2 = { 4 , 5 , 6 , 7 , 8 } 
+ # Union sets 
+ union = set1.union(set2 ) 
+ # Intersection sets 
+ intersection = set1.intersection(set2 ) 
+ # Difference sets 
+ difference = set1.difference(set2 ) 
+ # Printing results 
+ print(union ) 
+ print(intersection ) 
+ print(difference ) Output : Copy code 
+ { 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 } 
+ { 4 , 5 } 
+ { 1 , 2 , 3 } Tuples ( tuple ) tuple data type Python similar list crucial difference : tuples immutable . create tuple , modify elements . create tuples enclosing comma - separated values parentheses ( ) . Tuple creation accessing elements # Creating tuple 
+ my_tuple = ( 1 , 2 , 3 , 4 , 5 ) 
+ # Accessing elements index 
+ first_element = my_tuple[0 ] 
+ last_element = my_tuple[-1 ] 
+ # Slicing tuple 
+ subset = my_tuple[1:4 ] 
+ # Printing results 
+ print(my_tuple ) 
+ print(first_element ) 
+ print(last_element ) 
+ print(subset ) Output : ( 1 , 2 , 3 , 4 , 5 ) 
+ 1 
+ 5 
+ ( 2 , 3 , 4 ) Custom Data Types Classes Python , classes provide way define custom python data types . Specifically , classes encapsulate data methods , allowing creation objects specific attributes behaviors . , classes serve blueprints creating objects . define structure behavior objects , including attributes ( data ) methods ( functions ) . Consequently , objects instances classes , object unique state behavior . Want know Methods Python Checkout article ! Creating class instantiating objects # Defining class 
+ class Point : 
+     def _ _ init__(self , x , y ): 
+         self.x = x 
+         self.y = y 
+
+ # Creating objects 
+ point1 = Point(2 , 3 ) 
+ point2 = Point(5 , 7 ) 
+
+ # Accessing object attributes 
+ print(point1.x , point1.y ) 
+ print(point2.x , point2.y ) Output : 2 3 
+ 5 7 Adding methods class # Defining class methods 
+ class Circle : 
+     def _ _ init__(self , radius ): 
+         self.radius = radius 
+     def area(self ): 
+         return 3.14 * self.radius * * 2 
+
+ # Creating object methods 
+ circle = Circle(5 ) 
+ print(circle.area ( ) ) Output : 78.5 Conclusion Python data types form foundation Python programming endeavor . , understanding utilizing data types effectively essential developing robust efficient applications . Consequently , mastering intricacies Python data types , necessary skills tackle complex programming challenges . doubts need help Python concepts , enroll Introduction Python Program . Hope like article ! Python , different data types examples like numbers ( int , float , complex ) . main data types Python . Numeric data types Python important math . Python data types cheat sheet great tool beginners learn quickly . Key Takeaways NumPy provides powerful capabilities numerical computations , including support large , multi - dimensional arrays matrices . Python 3 introduced improvements features Python 2 , making preferred version modern development . Python object , including numbers , strings , functions , attributes methods . Understanding type data crucial Python appropriate operations method applications . Use underscores separate words Python variable names ( e.g. , my_variable_name ) better readability descriptive consistent variable names enhances code readability maintainability . Frequently Asked Questions Q1 . Python class data type ? A. Yes , Python class data type . Python , object , classes blueprints creating objects . , class defines new type data . Q2 . 8 data types Python ? A. Integer ( int ) Float ( float ) String ( str ) Boolean ( bool ) List ( list ) : Ordered collection , like [ 1 , 2 , 3 ] . Tuple ( tuple ) : Ordered , immutable collection , like ( 1 , 2 , 3 ) . Set ( set ) : Unordered collection unique items , like { 1 , 2 , 3 } . Dictionary ( dict ) : Key - value pairs , like { “ key ” : “ value ” } . Q3 . 5 standard data types Python ? A. Integer ( int ) Float ( float ) String ( str ) List ( list ) Dictionary ( dict ) Q4 . data types Python ? A. Python data types , main ones include 8 primary types listed ( int , float , str , bool , list , tuple , set , dict ) . Additionally , Python supports complex numbers , bytes , byte arrays , , making flexible . Nishtha Beginner Programming Python Python Login continue reading enjoy expert - curated content . Reading Free Free Courses 4.7 Generative AI - Way Life Explore Generative AI beginners : create text images , use AI tools , learn practical skills , ethics . 4.5 Getting Started Large Language Models Master Large Language Models ( LLMs ) course , offering clear guidance NLP model training simple . 4.6 Building LLM Applications Prompt Engineering free course guides building LLM apps , mastering prompt engineering , developing chatbots enterprise data . 4.8 Improving Real World RAG Systems : Key Challenges & Practical Solutions Explore practical solutions , advanced retrieval strategies , agentic RAG systems improve context , relevance , accuracy AI - driven applications . 4.7 Microsoft Excel : Formulas & Functions Master MS Excel data analysis key formulas , functions , LookUp tools comprehensive course . Recommended Articles 90 + Python Interview Questions Answers ( 202 ... Beginner Guide Standard Data Types ... Data Structures Python Beginners ’ Guide Data Structures ... DataTypes Containers Python : complete ... Comprehensive List Different Python Da ... Fundamentals Python Programming Beginners Comprehensive Guide Python Built - Data Str ... Know Built - Data ... Responses Readers Cancel reply Clear Submit reply Δ Shane Welcher explained & helpful , helps talking wash type & giving simple example . 
+
+
+
+ read phone & till gained lot knowledge . 
+
+
+
+ Thank writing & time . 123 Cancel reply Clear Submit reply Δ Bawe Gerard Nfor Jr Stumbled post chance google android . tell , , day ! hearing Python ' obvious syntax language . 
+
+ Right decided deep . program Matlab . , compare . 123 Cancel reply Clear Submit reply Δ Narendra large number , separate millions , thousands , etc . underscores : 42_000 valid int literal recent versions Python . 123 Cancel reply Clear Submit reply Δ Write Write , captivate , earn accolades rewards work Reach Global Audience Expert Feedback Build Brand & Audience Cash Knowledge Join Thriving Community Level Data Science Game use cookies essential site function . click help improve usefulness additional cookies . Learn use cookies Privacy Policy & Cookies Policy . details Accept cookies Use necessary cookies Powered Consent Details Cookies site uses cookies ensure best experience possible . learn use cookies , refer Privacy Policy & Cookies Policy . Necessary ( 2 ) Necessary cookies help website usable enabling basic functions like page navigation access secure areas website . website function properly cookies . Analytics Vidhya ( 4 ) learn analytics vidhya privacy brahmaid needed personalizing website . Expiry : Session Type : HTTP csrftoken cookie prevent Cross - site request forgery ( abbreviated CSRF ) attacks website Expiry : Session Type : HTTPS Identityid Preserves login / logout state users site . Expiry : Session Type : HTTPS sessionid Preserves users ' states page requests . Expiry : Session Type : HTTPS Google ( 1 ) learn google privacy g_state Google - Tap login adds g_state cookie set user status interact - Tap modal . Expiry : 365 days Type : HTTP Statistics ( 4 ) Statistic cookies help website owners understand visitors interact websites collecting reporting information anonymously . Microsoft ( 7 ) learn microsoft policy MUID Microsoft Clarity , store track visits websites . Expiry : 1 Year Type : HTTP _ clck Microsoft Clarity , Persists Clarity User ID preferences , unique site , browser . ensures behavior subsequent visits site attributed user ID . Expiry : 1 Year Type : HTTP _ clsk Microsoft Clarity , Connects multiple page views user single Clarity session recording . Expiry : 1 Day Type : HTTP SRM_I Collects user data specifically adapted user device . user followed outside loaded website , creating picture visitor behavior . Expiry : 2 Years Type : HTTP SM Use measure use website internal analytics Expiry : 1 Years Type : HTTP CLID cookie set embedded Microsoft Clarity scripts . purpose cookie heatmap session recording . Expiry : 1 Year Type : HTTP SRM_B Collected user data specifically adapted user device . user followed outside loaded website , creating picture visitor behavior . Expiry : 2 Months Type : HTTP Google ( 7 ) learn google privacy _ gid cookie installed Google Analytics . cookie store information visitors use website helps creating analytics report website . data collected includes number visitors , source come , pages visited anonymous form . Expiry : 399 Days Type : HTTP _ ga _ # Google Analytics , store count pageviews . Expiry : 399 Days Type : HTTP _ gat _ # Google Analytics collect data number times user visited website dates recent visit . Expiry : 1 Day Type : HTTP collect send data Google Analytics visitor device behavior . Tracks visitor devices marketing channels . Expiry : Session Type : PIXEL AEC cookies ensure requests browsing session user , sites . Expiry : 6 Months Type : HTTP G_ENABLED_IDPS use cookie customers want referral gmail contacts ; helps auth gmail account . Expiry : 2 Years Type : HTTP test_cookie cookie set DoubleClick ( owned Google ) determine website visitor browser supports cookies . Expiry : 1 Year Type : HTTP Webengage ( 2 ) Learn webengage privacy _ we_us send push notification webengage . Expiry : 1 Year Type : HTTP WebKlipperAuth webenage track auth webenagage . Expiry : Session Type : HTTP LinkedIn ( 16 ) learn linkedin privacy ln_or Linkedin sets cookie registers statistical data users ' behavior website internal analytics . Expiry : 1 Day Type : HTTP JSESSIONID Use maintain anonymous user session server . Expiry : 1 Year Type : HTTP li_rm LinkedIn Remember feature set user clicks Remember device easier sign device . Expiry : 1 Year Type : HTTP AnalyticsSyncHistory store information time sync lms_analytics cookie took place users Designated Countries . Expiry : 6 Months Type : HTTP lms_analytics store information time sync AnalyticsSyncHistory cookie took place users Designated Countries . Expiry : 6 Months Type : HTTP liap Cookie Sign - Linkedin and/or allow Linkedin follow feature . Expiry : 6 Months Type : HTTP visit allow Linkedin follow feature . Expiry : 1 Year Type : HTTP li_at identify , including , interests , previous activity . Expiry : 2 Months Type : HTTP s_plt Tracks time previous page took load Expiry : Session Type : HTTP lang remember user language setting ensure LinkedIn.com displays language selected user settings Expiry : Session Type : HTTP s_tp Tracks percent page viewed Expiry : Session Type : HTTP AMCV_14215E3D5995C57C0A495C55%40AdobeOrg Indicates start session Adobe Experience Cloud Expiry : Session Type : HTTP s_pltp Provides page value ( URL ) use Adobe Analytics Expiry : Session Type : HTTP s_tslv retain fetch time visit Adobe Analytics Expiry : 6 Months Type : HTTP li_theme Remembers user display preference / theme setting Expiry : 6 Months Type : HTTP li_theme_set Remembers users updated display / theme preferences Expiry : 6 Months Type : HTTP Preferences ( 0 ) Preference cookies enable website remember information changes way website behaves looks , like preferred language region . use cookies type . Marketing ( 4 ) Marketing cookies track visitors websites . intention display ads relevant engaging individual user valuable publishers party advertisers . Google ( 11 ) learn google privacy _ gcl_au Google Adsense , store track conversions . Expiry : 3 Months Type : HTTP SID Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP SAPISID Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP _ _ Secure- # Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP APISID Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP SSID Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP HSID Save certain preferences , example number search results page activation SafeSearch Filter . Adjusts ads appear Google Search . Expiry : 2 Years Type : HTTP DV cookies purpose targeted advertising . Expiry : 6 Hours Type : HTTP NID cookies purpose targeted advertising . Expiry : 1 Month Type : HTTP 1P_JAR cookies gather website statistics , track conversion rates . Expiry : 1 Month Type : HTTP OTZ Aggregate analysis website visitors Expiry : 6 Months Type : HTTP Facebook ( 2 ) learn facebook privacy _ fbp cookie set Facebook deliver advertisements Facebook digital platform powered Facebook advertising visiting website . Expiry : 4 Months Type : HTTP fr Contains unique browser user ID , targeted advertising . Expiry : 2 Months Type : HTTP LinkedIn ( 6 ) Learn linkedin policy bscookie LinkedIn track use embedded services . Expiry : 1 Year Type : HTTP lidc LinkedIn tracking use embedded services . Expiry : 1 Day Type : HTTP bcookie LinkedIn track use embedded services . Expiry : 6 Months Type : HTTP aam_uuid Use cookies assign unique ID users visit website . Expiry : 6 Months Type : HTTP UserMatchHistory cookies set LinkedIn advertising purposes , including : tracking visitors relevant ads presented , allowing users use ' Apply LinkedIn ' ' Sign - LinkedIn ' functions , collecting information visitors use site , etc . Expiry : 6 Months Type : HTTP li_sugr probabilistic match user identity outside Designated Countries Expiry : 90 Days Type : HTTP Microsoft ( 2 ) Learn microsoft privacy . MR collect information analytics purposes . Expiry : 1 year Type : HTTP ANONCHK store session ID users session ensure clicks adverts Bing search engine verified reporting purposes personalisation Expiry : 1 Day Type : HTTP UnclassNameified ( 0 ) UnclassNameified cookies cookies process classNameifying , providers individual cookies . use cookies type . Cookie declaration updated 24/03/2023 Analytics Vidhya . Cookies small text files websites user experience efficient . law states store cookies device strictly necessary operation site . types cookies , need permission . site uses different types cookies . cookies placed - party services appear pages . Learn , contact , process personal data Privacy Policy . Accept cookies Use necessary cookies Flagship Programs GenAI Pinnacle Program | GenAI Pinnacle Plus Program | AI / ML BlackBelt Program | Agentic AI Pioneer Program Free Courses Generative AI | DeepSeek | OpenAI Agent SDK | LLM Applications Prompt Engineering | DeepSeek Scratch | Stability . AI | SSM & MAMBA | RAG Systems LlamaIndex | Building LLMs Code | Python | Microsoft Excel | Machine Learning | Deep Learning | Mastering Multimodal RAG | Introduction Transformer Model | Bagging & Boosting | Loan Prediction | Time Series Forecasting | Tableau | Business Analytics | Vibe Coding Windsurf | Model Deployment FastAPI | Building Data Analyst AI Agent | Getting started OpenAI o3 - mini | Introduction Transformers Attention Mechanisms Popular Categories AI Agents | Generative AI | Prompt Engineering | Generative AI Application | News | Technical Guides | AI Tools | Interview Preparation | Research Papers | Success Stories | Quiz | Use Cases | Listicles Generative AI Tools Techniques GANs | VAEs | Transformers | StyleGAN | Pix2Pix | Autoencoders | GPT | BERT | Word2Vec | LSTM | Attention Mechanisms | Diffusion Models | LLMs | SLMs | Encoder Decoder Models | Prompt Engineering | LangChain | LlamaIndex | RAG | Fine - tuning | LangChain AI Agent | Multimodal Models | RNNs | DCGAN | ProGAN | Text - - Image Models | DDPM | Document Question Answering | Imagen | T5 ( Text - - Text Transfer Transformer ) | Seq2seq Models | WaveNet | Attention Need ( Transformer Architecture ) | WindSurf | Cursor Popular GenAI Models Llama 4 | Llama 3.1 | GPT 4.5 | GPT 4.1 | GPT 4o | o3 - mini | Sora | DeepSeek R1 | DeepSeek V3 | Janus Pro | Veo 2 | Gemini 2.5 Pro | Gemini 2.0 | Gemma 3 | Claude Sonnet 3.7 | Claude 3.5 Sonnet | Phi 4 | Phi 3.5 | Mistral Small 3.1 | Mistral NeMo | Mistral-7b | Bedrock | Vertex AI | Qwen QwQ 32B | Qwen 2 | Qwen 2.5 VL | Qwen Chat | Grok 3 AI Development Frameworks n8n | LangChain | Agent SDK | A2A Google | SmolAgents | LangGraph | CrewAI | Agno | LangFlow | AutoGen | LlamaIndex | Swarm | AutoGPT Data Science Tools Techniques Python | R | SQL | Jupyter Notebooks | TensorFlow | Scikit - learn | PyTorch | Tableau | Apache Spark | Matplotlib | Seaborn | Pandas | Hadoop | Docker | Git | Keras | Apache Kafka | AWS | NLP | Random Forest | Computer Vision | Data Visualization | Data Exploration | Big Data | Common Machine Learning Algorithms | Machine Learning | Google Data Science Agent Company Contact Careers Discover Blogs Expert Sessions Learning Paths Comprehensive Guides Learn Free Courses AI&ML Program Pinnacle Plus Program Agentic AI Program Engage Community Hackathons Events Podcasts Contribute Author Speaker Mentor Instructor Enterprise Offerings Trainings Data Culture AI Newsletter Terms & conditions Refund Policy Privacy Policy Cookies Policy © Analytics Vidhya 2025.All rights reserved . Free Course GenAI Landscape Beginner Level 1 Hour Duration Enroll Free Know SKIP Continue learning FREE Login Google Login Email Forgot password ? accept Terms Conditions Receive updates WhatsApp Enter email address continue Email address OTP Enter OTP sent Edit Enter OTP Resend OTP Resend OTP 45s Verify OTP

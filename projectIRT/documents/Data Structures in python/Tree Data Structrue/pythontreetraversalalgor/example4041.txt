@@ -1,0 +1,148 @@
+Python Tree Traversal Algorithms Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - DS Home Python - DS Introduction Python - DS Environment Python - Arrays Python - Lists Python - Tuples Python - Dictionary Python - 2 - D Array Python - Matrix Python - Sets Python - Maps Python - Linked Lists Python - Stack Python - Queue Python - Dequeue Python - Advanced Linked list Python - Hash Table Python - Binary Tree Python - Search Tree Python - Heaps Python - Graphs Python - Algorithm Design Python - Divide Conquer Python - Recursion Python - Backtracking Python - Sorting Algorithms Python - Searching Algorithms Python - Graph Algorithms Python - Algorithm Analysis Python - Big - O Notation Python - Algorithm Classes Python - Amortized Analysis Python - Algorithm Justifications Python - Quick Guide Python - Useful Resources Python - Discussion Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Tree Traversal Algorithms Previous Quiz Traversal process visit nodes tree print values . , nodes connected edges ( links ) start root ( head ) node . , randomly access node tree . ways use traverse tree − - order Traversal Pre - order Traversal Post - order Traversal - order Traversal traversal method , left subtree visited , root later right sub - tree . remember node represent subtree . python program , use Node class create place holders root node left right nodes . create insert function add data tree . 
+ Finally Inorder traversal logic implemented creating list adding left node followed root parent node . left node added complete Inorder traversal . 
+ note process repeated sub - tree nodes traversed . class Node : 
+
+     def _ _ init__(self , data ): 
+
+         self.left = 
+         self.right = 
+         self.data = data 
+ # Insert Node 
+     def insert(self , data ): 
+
+         self.data : 
+             data   self.data : 
+                 self.right : 
+                     self.right = Node(data ) 
+                 : 
+                     self.right.insert(data ) 
+         : 
+             self.data = data 
+
+ # Print Tree 
+     def PrintTree(self ): 
+         self.left : 
+             self.left . PrintTree ( ) 
+         print ( self.data ) , 
+         self.right : 
+             self.right . PrintTree ( ) 
+
+ # Inorder traversal 
+ # Left - > Root - > Right 
+     def inorderTraversal(self , root ): 
+         res = [ ] 
+         root : 
+             res = self.inorderTraversal(root.left ) 
+             res.append(root.data ) 
+             res = res + self.inorderTraversal(root.right ) 
+         return res 
+
+ root = Node(27 ) 
+ root.insert(14 ) 
+ root.insert(35 ) 
+ root.insert(10 ) 
+ root.insert(19 ) 
+ root.insert(31 ) 
+ root.insert(42 ) 
+ print(root.inorderTraversal(root ) ) code executed , produces following result − [ 10 , 14 , 19 , 27 , 31 , 35 , 42 ] Pre - order Traversal traversal method , root node visited , left subtree finally right subtree . python program , use Node class create place holders root node left right nodes . create insert function add data tree . 
+ Finally Pre - order traversal logic implemented creating list adding root node followed left node . right node added complete Pre - order traversal . 
+ note process repeated sub - tree nodes traversed . class Node : 
+
+     def _ _ init__(self , data ): 
+
+         self.left = 
+         self.right = 
+         self.data = data 
+ # Insert Node 
+     def insert(self , data ): 
+
+         self.data : 
+             data   self.data : 
+                 self.right : 
+                     self.right = Node(data ) 
+                 : 
+                     self.right.insert(data ) 
+         : 
+             self.data = data 
+
+ # Print Tree 
+     def PrintTree(self ): 
+         self.left : 
+             self.left . PrintTree ( ) 
+         print ( self.data ) , 
+         self.right : 
+             self.right . PrintTree ( ) 
+
+ # Preorder traversal 
+ # Root - > Left ->Right 
+     def PreorderTraversal(self , root ): 
+         res = [ ] 
+         root : 
+             res.append(root.data ) 
+             res = res + self . PreorderTraversal(root.left ) 
+             res = res + self . PreorderTraversal(root.right ) 
+         return res 
+
+ root = Node(27 ) 
+ root.insert(14 ) 
+ root.insert(35 ) 
+ root.insert(10 ) 
+ root.insert(19 ) 
+ root.insert(31 ) 
+ root.insert(42 ) 
+ print(root . PreorderTraversal(root ) ) code executed , produces following result − [ 27 , 14 , 10 , 19 , 35 , 31 , 42 ] Post - order Traversal traversal method , root node visited , . traverse left subtree , right subtree finally root node . python program , use Node class create place holders root node left right nodes . create insert function add data tree . 
+ Finally Post - order traversal logic implemented creating list adding left node followed right node . root parent node added complete Post - order traversal . 
+ note process repeated sub - tree nodes traversed . class Node : 
+
+     def _ _ init__(self , data ): 
+
+         self.left = 
+         self.right = 
+         self.data = data 
+ # Insert Node 
+     def insert(self , data ): 
+
+         self.data : 
+             data   self.data : 
+                 self.right : 
+                     self.right = Node(data ) 
+                 : 
+                     self.right.insert(data ) 
+         : 
+             self.data = data 
+
+ # Print Tree 
+     def PrintTree(self ): 
+         self.left : 
+             self.left . PrintTree ( ) 
+         print ( self.data ) , 
+         self.right : 
+             self.right . PrintTree ( ) 
+
+ # Postorder traversal 
+ # Left ->Right - > Root 
+     def PostorderTraversal(self , root ): 
+         res = [ ] 
+         root : 
+             res = self . PostorderTraversal(root.left ) 
+             res = res + self . PostorderTraversal(root.right ) 
+             res.append(root.data ) 
+         return res 
+
+ root = Node(27 ) 
+ root.insert(14 ) 
+ root.insert(35 ) 
+ root.insert(10 ) 
+ root.insert(19 ) 
+ root.insert(31 ) 
+ root.insert(42 ) 
+ print(root . PostorderTraversal(root ) ) code executed , produces following result − [ 10 , 19 , 14 , 31 , 42 , 35 , 27 ] Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

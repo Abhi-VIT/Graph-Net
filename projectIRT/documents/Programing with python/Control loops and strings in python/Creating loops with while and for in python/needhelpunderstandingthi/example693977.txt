@@ -1,0 +1,104 @@
+Need help understanding loop - Python Help - Discussions Python.org Discussions Python.org Need help understanding loop Python Help CozyBoat ( Clark ) February 13 , 2024 ,   1:37am 1 new loops , going code book : current_number = 1 
+ current_number < = 5 : 
+     print(current_number ) 
+     current_number + = 1 watching video YouTube , current_number + = 1 escape infinite loop , saw experimenting , understand code print . typing realized print comes supposed prints ( know sure actually lol ) . current_number + = 1 print returned values “ 2 , 3 , 4 , 5 , 6 ” . 6 ? onePythonUser ( Paul ) February 13 , 2024 ,   2:02am 2 Clark : current_number = 1 
+ current_number < = 5 : 
+     print(current_number ) 
+     current_number + = 1 Response : current_number = 1          # Initialize test variable 
+ current_number < = 5 : # Condition statement satisfy order execute loop body 
+     print(current_number )   # Print value variable 
+     current_number + = 1     # Increment variable incrementing variable , goes conditional statement test condition met .   , execute statements body .   condition satisfied , loop continue statement loop body . Stefan2 ( Stefan ) February 13 , 2024 ,   2:34am 3 Clark : 6 ? adding 1 5 . onePythonUser ( Paul ) February 13 , 2024 ,   2:39am 4 test variable current_number reaches 6 , applied conditional statement ( like previous value ): current_number < = 5 6 equal 5 ?   answer .   , execute body statements exits loop . CAM - Gerlach ( C.A.M. Gerlach ) February 13 , 2024 ,   3:52am 5 case causing confusion , condition checked time , statement loop . , value incremented print statement , condition checked value printed . think code , let suppose , starting later number brevity : current_number = 5 
+ current_number < = 5 : 
+     print(current_number ) 
+     current_number + = 1 current_number < = 5 , loop runs , 5 printed current_number incremented 6 . condition checked , condition 6 < = 6 false , loop terminates . contrast , current_number = 5 
+ current_number < = 5 : 
+     current_number + = 1 
+     print(current_number ) … happens , number incremented 6 print , 6 printed . sort errors particularly common loops careful , reason real life use loop sort iteration , sequence things want iterate fixed number times : current_number range(1 , 6 ): 
+     print(current_number ) shorter avoids type “ ” errors order action incrementing . 4 Likes CozyBoat ( Clark ) February 13 , 2024 ,   4:24pm 6 Thanks helpful replies . reading posts trying clear . reason increment variable indented working directly print function right ? like print function . know , yeah . Maybe saying sense , think good thoughts . Maybe people think . “ continue statement loop body ” , mean increment variable , print ? onePythonUser ( Paul ) February 13 , 2024 ,   4:34pm 7 increment variable statement ( current_number + = 1 ) loop body , print statement . Clark : “ continue statement loop body ” , mean increment variable , print ? Suppose worked warehouse .   boss told inventory parts ‘ ’ type currently available hand .   completed task , packaging parts type ` B ’ .   , 2nd task task completed .   essence meant .   loop task completed , continue task .   code , state explicitly code thing .   , continue . CozyBoat ( Clark ) February 13 , 2024 ,   4:39pm 8 Thanks helpful reply . understand saying starting current number = 5 instead 1 , , value starts 1 original formula increment placed print function , values returned 2,3,4,5 instead 2,3,4,5,6 ? understand 1 incremented 2 , condition says terminate 5 . CozyBoat ( Clark ) February 13 , 2024 ,   4:51pm 9 understand , trying figure increment variable placed print , values returned goes 2 - 6 instead 2 - 5 . chepner ( Clint Hepner ) February 13 , 2024 ,   4:53pm 10 Clark : values returned 2,3,4,5 instead 2,3,4,5,6 ? Statements executed . loop executes small group statements repeated , condition false . loop , statements executed . Let rewrite loop hypothetical goto command . ( similar loop implemented low -level code , like assembly language . ) number lines ease reference ; line numbers hypothetical code . 1         current_number = 1 
+ 2 START : ( current_number < = 5 ): 
+ 3             goto END  
+ 4         print(current_number ) 
+ 5         current_number + = 1 
+ 6         goto START 
+ 7 END     ... Tracing execution code , following lines executed , order ( comments ): 1     # initialize current_number 1 
+ 2     # iteration 
+ 4     # output 1    
+ 5 
+ 6 
+ 2     # second iteration 
+ 4     # output 2 
+ 5 
+ 6 
+ 2     # iteration 
+ 4     # output 3 
+ 5 
+ 6 
+ 2     # fourth iteration 
+ 4     # output 4 
+ 5 
+ 6 
+ 2     # fifth iteration 
+ 4     # output 5 
+ 5 
+ 6 
+ 2     # fifth iteration : current_value 6 
+ 3     # comparison finally failed 
+ 7     # current_value = = 6 , * print * value . swap lines 4 5 , 2,3,4,5,6 instead 1,2,3,4,5 output , incremented number verifying 6 printed - than-6 value . loop gets rid need ( use ) goto . basically combines statement goto statements single piece code restricts control goes . longer jump arbitrary line code ; jump statement loop beginning loop . current_number = 1 
+ current_number < = 5 :   # ( current_number < = 5 ): goto END 
+     print(current_number ) 
+     current_number + = 1 
+     # goto START implicit 
+ ... onePythonUser ( Paul ) February 13 , 2024 ,   5:02pm 11 Maybe add print statemen follow increment variable bit closely : current_number = 1 
+
+ current_number < = 5 : 
+     print('\ncurrent_number = ' , current_number ) 
+     current_number + = 1 
+     print('current_number increment = ' , current_number ) Run code , study output .   sense ? Stefan2 ( Stefan ) February 13 , 2024 ,   5:28pm 12 Clark : current_number + = 1 escape infinite loop think immediately triggers escape . . eventually makes current_number large time - condition evaluated , condition false loop body entered . happens current execution loop body completed . 2 Likes MRAB ( Matthew Barnett ) February 13 , 2024 ,   6:27pm 13 think misled meaning word “ ” English . Python English . Python , programming languages , thing instructions syntax . natural languages , short , reasonably descriptive words natural languages abbreviations useful mnemonic . Calling kind structure “ ” loop close behaviour precisely correct according English meaning word . 1 Like cameron ( Cameron Simpson ) February 13 , 2024 , 10:13pm 14 printing increment happns instead . Paul suggestion : current_number = 1 
+  current_number < = 5 : 
+      print('\ncurrent_number = ' , current_number ) 
+      current_number + = 1 
+      print('current_number increment = ' , current_number ) clear print ( ) printing “ current ” value current_number . Notice value increment 2 - 5 mention , 1 - 5 . values increment 2 - 6 ; board . statement runs sequence . rendering loop like operations clear ? current_number = 1 
+  True : 
+      print('\ncurrent_number = ' , current_number ) 
+      ( current_number < = 5 ): 
+          # leave loop 
+          break 
+      current_number + = 1 
+      print('current_number increment = ' , current_number ) CozyBoat ( Clark ) February 13 , 2024 , 10:55pm 15 Ah . Thanks . CozyBoat ( Clark ) February 13 , 2024 , 11:24pm 16 Ok . studying code thread experimenting , tell got right . current number 1 . set conditional loop says exit loop 5 . increment variable print function saying : Pete : Hey , Phil . need numbers printed . printer set start 1 , want 2 - 6 . +1 button , kick things 2 . Set cycle end 5 , +1 end 6 . hit print button acknowledges want . Phil : start 2 end 6 hitting +1 button ? Pete : printer programmers better . unlike range loop ( 1,6 ) 1 - 5 , ( 1,5 ) 2 - 6 , print . onePythonUser ( Paul ) February 13 , 2024 , 11:59pm 17 visual help . Note diamond decision block square statement block . follow diagram , piece paper create columns . labeled printed number new number , : printed number = print(current_number ) new number = current_number + = 1 iteration , write values . sense . mind user ‘ sees ’ value new number incrementation .   user sees allow print statement . 4 Likes bryevdv ( Bryan Van de Ven ) February 13 , 2024 , 11:59pm 18 Clark : set conditional loop says exit loop 5 . express loop condition skips loop body current_number greater 5 .   ( general ) number iterations . Consider complete loop runs iterations prints : current_number = 6 
+ current_number < = 5 : 
+     print(current_number ) prints “ 3 ” infinite number times : current_number = 3 
+ current_number < = 5 : 
+     print(current_number ) Python imperative programming language , means statement executed time , . comments like : need numbers printed . mark . print statement “ told ” print number . printed depends iterations loop happen . depends times condition current_number < = 5 True execution hits loop body . da - dada ( Georg Klingenberg ) February 14 , 2024 , 10:01pm 19 @CozyBoat real importance loop comes asyncio example ( embedded GUI ) actually frame input / output logic ending usually far away definition easily source error logic app threading import Thread 
+ import datetime 
+ import asyncio 
+
+ class Main ( ): 
+     def _ _ init__(self ): 
+         self.cnt = -1 
+         RunAsync(self.async_gui ) 
+
+     def async_gui(self , ):            # bridges async thread & Gui ! ! ! 
+         self.cnt + = 1 
+         self.cnt < 6 : 
+             print(f'{self.cnt+1 } . { } ' ) 
+             return True 
+         return False 
+
+ class RunAsync(Thread ): 
+     def _ _ init__(self , evh ): 
+         super().__init _ _ ( ) 
+         self.evh = evh 
+         self.start ( ) 
+
+     def run(self ): 
+         asyncio.run(self.main ( ) ) 
+
+     async def async_task(self ):          # receives stop 
+         return self.evh ( 
+             f'{datetime.datetime.now():%a % b % d % Y   % H:%M:%S } ' ) 
+
+     async def main(self ):                    # scheduler 
+         await self.async_task ( ): 
+             await asyncio.sleep(1 ) 
+
+ Main ( ) CozyBoat ( Clark ) February 16 , 2024 , 12:30am 20 Thanks making flowchart ! drew created columns . clear , thing sure , starting maybe , 2 - 6 thing . printing stops going 5 , stop increment ? putting print kick 2 ( printed ) hits 5 , adds 1 , ends 6 printing “ current_number +1 ” , printing ( current_number ) , scenarios , print function , ends 5 . Maybe realize current_number stop   “ current_number + = 1 ” thing . Edit : Hopefully right track . - reading typed , sounds kinda contradictory printing “ current_number = + 1 ” add 1 code print , current_number like end 5 , goes 6 scenario 5 6 team point . page → Home Categories Guidelines Terms Service Privacy Policy Powered Discourse , best viewed JavaScript enabled

@@ -1,0 +1,109 @@
+Python Numbers : int , float , complex ( Examples ) Follow Articles .NET C # C # OOP ASP.NET Core ASP.NET MVC LINQ Inversion Control ( IoC ) Web API JavaScript JavaScript TypeScript jQuery Angular 11 Node.js D3.js Sass Programming Python lang HTTPS ( SSL ) Regex Database SQL SQL Server PostgreSQL MongoDB Online Tests Articles Python - Started Python ? use Python ? Python Version History Install Python Python - Shell / REPL Python IDLE Python Editors Python Syntax Python Keywords Python Variables Python Data Types Number String List Tuple Set Dictionary Python Operators Python Conditions - , elif Python Loop Python Loop User Defined Functions Lambda Functions Variable Scope Python Modules Module Attributes Python Packages Python PIP _ _ main _ _ ,   _ _ _ _ Python Built - Modules OS Module Sys Module Math Module Statistics Module Collections Module Random Module Python Generator Function Python List Comprehension Python Recursion Python Built - Error Types Python Exception Handling Python Assert Statement Define Class Python Inheritance Python Python Access Modifiers Python Decorators @property Decorator @classmethod Decorator @staticmethod Decorator Python Dunder Methods CRUD Operations Python Python Read , Write Files Regex Python Create GUI Tkinter Entity Framework Extensions - Boost EF Core 9 Bulk Insert Bulk Delete Bulk Update Bulk Merge Python Number Types : int , float , complex Python supports numeric types represent numbers : integers , float , complex number . learn number type . Int Python , integers zero , positive negative numbers fractional having unlimited precision , e.g. 0 , 100 , -10 . followings valid integer literals Python . Example : Python Numbers Copy # integer variables 
+ x = 0 
+ print(x ) 
+
+ x = 100 
+ print(x ) 
+
+ x = -10 
+ print(x ) 
+
+ x = 1234567890 
+ print(x ) 
+
+ x = 5000000000000000000000000000000000000000000000000000000 
+ print(x ) Try Integers binary , octal , hexadecimal values . Example : Python Numbers Copy b = 0b11011000 # binary 
+ print(b ) 
+
+ o = 0o12 # octal 
+ print(o ) 
+
+ h = 0x12 # hexadecimal 
+ print(h ) Try integer literals variables objects int class . Use type ( ) method class , shown . Example : Python Numbers Copy print(type(100 ) ) 
+
+ x=1234567890 
+ print(type(x ) ) 
+
+ y=5000000000000000000000000000000000000000000000000000000 
+ print(type(y ) ) Try Note : Leading zeros non - zero integers allowed Python , e.g. 000123 invalid number 0000 0 . x=001234567890 # syntaxError : invalid token Python allow comma number delimiter . Use underscore _ delimiter instead . Example : Number Delimiter Copy x = 1_234_567_890 
+ print(x ) # output : 1234567890 Try Note integers fractional ( decimal point ) . includes fractional float . Example : Python Numbers Copy x=5 
+ print(type(x ) ) # output : < class ' int ' > 
+
+ x=5.0 
+ print(type(x ) ) # output : < class ' float ' > Try int ( ) function converts string float int . Example : int ( ) Function Copy x = int('100 ' ) 
+ print(x ) # output : 100 
+
+ y = int('-10 ' ) 
+ print(y ) # output : -10 
+
+ z = int(5.5 ) 
+ print(z ) # output : 5 
+
+ n = int('100 ' , 2 ) 
+ print(n ) # output : 4 Try Binary number having 0b digits combination 0 1 represent binary numbers Python . example , 0b11011000 binary number equivalent integer 216 . Example : Binary Numbers Copy x = 0b11011000 
+ print(x ) 
+
+ x = 0b_1101_1000 
+ print(x ) 
+ print(type(x ) ) Try Octal number having 0o 0O prefix represents octal number . example , 0O12 equivalent integer 10 . Example : Octal Numbers Copy x = 0o12 
+
+ print(x ) 
+ print(type(x ) ) Try Hexadecimal number 0x 0X prefix represents hexadecimal number . example , 0x12 equivalent integer 18 . Example : Hexadecimal Numbers Copy x = 0x12 
+
+ print(x ) 
+ print(type(x ) ) Try Float Python , floating point numbers ( float ) positive negative real numbers fractional denoted decimal symbol . scientific notation E e , e.g. 1234.56 , 3.142 , -1.55 , 0.23 . Example : Float Numbers Copy f = 1.2 
+ print(f ) # output : 1.2 
+ print(type(f ) ) # output : < class ' float ' > 
+
+ f=123_42.222_013 # output : 12342.222013 
+ print(f ) 
+
+ f=2e400 
+ print(f ) # output : inf Try , floating point number separated underscore _ . maximum size float depend system . float maximum size referred inf , Inf , INFINITY , infinity . example , float number 2e400 considered infinity systems . Scientific notation short representation express floats having digits . example : 345.56789 represented 3.4556789e2 3.4556789E2 Example : Scienticific Numbers Copy f = 1e3 
+ print(f ) # output : 1000.0 
+
+ f = 1e5 
+ print(f ) # output:100000.0 
+
+ f = 3.4556789e2 
+ print(f ) # output : 
+ print(type(f ) ) # output:345.56789 Try Use float ( ) function convert string , int float . Example : float ( ) Function Copy f = float('5.5 ' ) 
+ print(f ) # output : 5.5 
+
+ f = float('5 ' ) 
+ print(f ) # output : 5.0 
+
+ f = float ( '      -5 ' ) 
+ print(f ) # output : -5.0 
+
+ f = float('1e3 ' ) 
+ print(f ) # output : 1000.0 
+
+ f = float('-Infinity ' ) 
+ print(f ) # output : -inf 
+
+ f = float('inf ' ) 
+ print(f )   # output : inf 
+ print(type(f ) ) # output:<class ' float ' > Try Complex Numbers complex number number real imaginary components . example , 5 + 6j complex number 5 real component 6 multiplied j imaginary component . Example : Complex Numbers Copy = 5 + 2j 
+ print(a ) 
+ print(type(a ) ) Try use j J imaginary component . character throw syntax error . Example : Invalid Complex Numbers Copy a=5 + 2k 
+ a=5+j 
+ a=5i+2j Try Arithmetic Operators following table list arithmetic operators integer values : Operator Description Example + ( Addition ) Adds operands operator . , b = 10 , 20 print(a+b ) # 30 - ( Subtraction ) Subtracts right - hand operand left - hand operand . , b = 10 , 20 print(a - b ) # -10 * ( Multiplication ) Multiplies values operator . , b = 10 , 20 print(a*b ) # 200 / ( Division ) Divides left - hand operand right - hand operand . , b = 10 , 20 print(b / ) # 2.0 % ( Modulus ) Returns remainder division left - hand operand right - hand operand . , b = 10 , 22 print(a+b ) # 2 * * ( Exponent ) Calculates value left - operand raised right - operand . a=3 print(a**2 ) # 9 print(a**3 ) # 27 // ( Floor Division ) division operands result quotient digits decimal point removed . operands negative , result floored , i.e. , rounded away zero ( negative infinity ): , b = 9 , 2 print(a//b ) # 4 Try Arithmetic Operations Complex Numbers Addition subtraction complex numbers straightforward . Real imaginary parts added / subtracted result . Example : Arithmetic Operation Complex Numbers Copy a=6 + 4j 
+ b=3 + 2j 
+
+ print("a+2=",a+2 ) 
+ print("a*2=",a*2 ) 
+ print("a/2=",a/2 ) 
+ print("a**2=",a**2 ) 
+ print("a+b=",a+b ) 
+ print("a - b=",a - b ) Try example , arithmetic operators complex numbers . process multiplying complex numbers similar multiplying binomials . Multiply term number term second number . Example : Multiply Complex Numbers Copy a=6 + 4j             
+ b=3 + 2j  
+
+ c = a*b   
+ print(c ) 
+
+ c=(6 + 4j)*(3 + 2j )    
+ print(c ) 
+
+ c=(18 + 12j+14j+8 * 1 ) 
+ print(c ) Try Numeric Functions numeric object type converted type following functions : Built - Function Description int Returns integer object float string containing digits . float Returns floating - point number object number string containing digits decimal point scientific notation . complex Returns complex number real imaginary components . hex Converts decimal integer hexadecimal number 0x prefix . oct Converts decimal integer octal representation 0o prefix . pow Returns power specified numbers . abs Returns absolute value number considering sign . round Returns rounded number . TUTORIALSTEACHER.COM TutorialsTeacher.com authoritative source comprehensive technologies tutorials , tailored guide mastering web technologies step - - step approach . content helps learn technologies easily quickly learners levels . accessing platform , acknowledge reviewed consented abide Terms Use Privacy Policy , designed safeguard experience privacy rights . [ email   protected ] TERMS USE PRIVACY POLICY 2024 TutorialsTeacher.com . ( v 1.2 ) Rights Reserved .

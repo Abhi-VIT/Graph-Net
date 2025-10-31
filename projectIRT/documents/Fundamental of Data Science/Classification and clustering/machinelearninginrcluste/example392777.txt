@@ -1,0 +1,41 @@
+Machine Learning R : Clustering Classification ( 1 2 ) 2024 - 05 - 23 - University California , Davis Skip main content Media Playlists Login Add New Media Upload Media Playlists Login Home Home Machine Learning R : Clustering Classification ( 1 2 ) 2024 - 05 - 23 Glenda Gaines likes views comments Related Media Details - workshop series provides introduction R 
+
+  popular machine learning techniques : clustering 
+
+ classification .    Clustering involves identifying groups similar 
+
+ observations ( called clusters )   data . Clustering 
+
+ effective tool finding patterns important exploratory 
+
+  data analysis .   Classification refers modeling categorical variables . 
+
+  Classification models provide insight relationship 
+
+  predictors response , way predictions 
+
+  new observations . workshop series , learners able : Assess classification clustering relevant research problems data sets ; Explain tradeoffs popular clustering algorithms ; Run clustering algorithm data ; Build train classification model data ; Use cross - validation estimate accuracy tune hyperparameters classification models ; Identify strategies improve results classification models . Prerequisites : workshop designed researchers data 
+
+  working R. Participants taken   DataLab 
+
+ “ Overview Statistical Machine Learning , ” “ R Basics , ” “ Regression 
+
+ R ” workshop series , equivalent prior experience . Completion 
+
+ DataLab “ Intermediate R ” series recommended required . 
+
+ Participants comfortable basic R syntax , 
+
+ latest version R pre - installed running laptops . 
+
+ focus workshop   implementing clustering classification 
+
+ R , learning   R language . Bring laptop 
+
+ latest version R RStudio . copyright 
+
+ video owned Regents University California 
+
+ licensed reuse Creative Commons Attribution 4.0 International ( CC 
+
+ 4.0 ) License . Tags AggieVideo video portal Academic Technology Services UC Davis | Information Educational Technology | User Guides Technical Documentation

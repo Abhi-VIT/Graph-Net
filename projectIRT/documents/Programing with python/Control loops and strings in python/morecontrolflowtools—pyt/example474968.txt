@@ -1,0 +1,238 @@
+4 . Control Flow Tools — Python 3.13.3 documentation Theme Auto Light Dark Table Contents 4 . Control Flow Tools 4.1 . Statements 4.2 . Statements 4.3 . range ( ) Function 4.4 . break continue Statements 4.5 . Clauses Loops 4.6 . pass Statements 4.7 . match Statements 4.8 . Defining Functions 4.9 . Defining Functions 4.9.1 . Default Argument Values 4.9.2 . Keyword Arguments 4.9.3 . Special parameters 4.9.3.1 . Positional - - Keyword Arguments 4.9.3.2 . Positional - Parameters 4.9.3.3 . Keyword - Arguments 4.9.3.4 . Function Examples 4.9.3.5 . Recap 4.9.4 . Arbitrary Argument Lists 4.9.5 . Unpacking Argument Lists 4.9.6 . Lambda Expressions 4.9.7 . Documentation Strings 4.9.8 . Function Annotations 4.10 . Intermezzo : Coding Style Previous topic 3 . Informal Introduction Python topic 5 . Data Structures Page Report Bug Source Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Tutorial » 4 . Control Flow Tools | Theme Auto Light Dark | 4 . Control Flow Tools Â¶ statement introduced , Python uses 
+ encounter chapter . 4.1 . Statements Â¶ - known statement type statement .   
+ example : > > > x = int ( input ( " enter integer : " ) ) enter integer : 42 > > > x < 0 : ... x = 0 ... print ( ' Negative changed zero ' ) ... elif x = = 0 : ... print ( ' Zero ' ) ... elif x = = 1 : ... print ( ' Single ' ) ... : ... print ( ' ' ) ... zero elif parts , 
+ optional .   keyword â elif â short âelse ifâ , useful 
+ avoid excessive indentation .   â ¦ elif â ¦ elif â ¦ sequence substitute switch case statements found languages . youâre comparing value constants , checking specific types 
+ attributes , find match statement useful . 
+ details match Statements . 4.2 . Statements Â¶ statement Python differs bit 
+ C Pascal .   iterating arithmetic progression 
+ numbers ( like Pascal ) , giving user ability define 
+ iteration step halting condition ( C ) , Pythonâs statement 
+ iterates items sequence ( list string ) , order 
+ appear sequence .   example ( pun intended ): > > > # Measure strings : > > > words = [ ' cat ' , ' window ' , ' defenestrate ' ] > > > w words : ... print ( w , len ( w ) ) ... cat 3 window 6 defenestrate 12 Code modifies collection iterating collection 
+ tricky right .   Instead , usually straight - forward loop 
+ copy collection create new collection : # Create sample collection users = { ' Hans ' : ' active ' , ' ÃlÃ © onore ' : ' inactive ' , ' æ¯å¤ªé ' : ' active ' } # Strategy :   Iterate copy user , status users . copy ( ) . items ( ): status = = ' inactive ' : del users [ user ] # Strategy :   Create new collection active_users = { } user , status users . items ( ): status = = ' active ' : active_users [ user ] = status 4.3 . range ( ) Function Â¶ need iterate sequence numbers , built - function range ( ) comes handy .   generates arithmetic progressions : > > > range ( 5 ): ... print ( ) ... 0 1 2 3 4 given end point generated sequence ; range(10 ) generates 
+ 10 values , legal indices items sequence length 10 .   
+ possible let range start number , specify different 
+ increment ( negative ; called âstepâ ): > > > list ( range ( 5 , 10 ) ) [ 5 , 6 , 7 , 8 , 9 ] > > > list ( range ( 0 , 10 , 3 ) ) [ 0 , 3 , 6 , 9 ] > > > list ( range ( - 10 , - 100 , - 30 ) ) [ -10 , -40 , -70 ] iterate indices sequence , combine range ( ) len ( ) follows : > > > = [ ' Mary ' , ' ' , ' ' , ' little ' , ' lamb ' ] > > > range ( len ( ) ): ... print ( , [ ] ) ... 0 Mary 1 2 3 little 4 lamb cases , , convenient use enumerate ( ) function , Looping Techniques . strange thing happens print range : > > > range ( 10 ) range(0 , 10 ) ways object returned range ( ) behaves list , 
+ fact isnât . object returns successive items 
+ desired sequence iterate , doesnât 
+ list , saving space . object iterable , , suitable target 
+ functions constructs expect 
+ obtain successive items supply exhausted .   seen 
+ statement construct , example function 
+ takes iterable sum ( ) : > > > sum ( range ( 4 ) ) # 0 + 1 + 2 + 3 6 Later functions return iterables iterables 
+ arguments .   chapter Data Structures , discuss detail list ( ) . 4.4 . break continue Statements Â¶ break statement breaks innermost enclosing loop : > > > n range ( 2 , 10 ): ... x range ( 2 , n ): ... n % x = = 0 : ... print ( f " { n } equals { x } * { n // x } " ) ... break ... 4 equals 2 * 2 6 equals 2 * 3 8 equals 2 * 4 9 equals 3 * 3 continue statement continues 
+ iteration loop : > > > num range ( 2 , 10 ): ... num % 2 = = 0 : ... print ( f " Found number { num } " ) ... continue ... print ( f " Found odd number { num } " ) ... Found number 2 Found odd number 3 Found number 4 Found odd number 5 Found number 6 Found odd number 7 Found number 8 Found odd number 9 4.5 . Clauses Loops Â¶ loop break statement 
+ paired clause .   loop finishes 
+ executing break , clause executes . loop , clause executed 
+ loop finishes final iteration , , break occurred . loop , itâs executed loopâs condition false . kind loop , clause executed 
+ loop terminated break .   course , ways ending 
+ loop early , return raised exception , skip 
+ execution clause . exemplified following loop , 
+ searches prime numbers : > > > n range ( 2 , 10 ): ... x range ( 2 , n ): ... n % x = = 0 : ... print ( n , ' equals ' , x , ' * ' , n // x ) ... break ... : ... # loop fell finding factor ... print ( n , ' prime number ' ) ... 2 prime number 3 prime number 4 equals 2 * 2 5 prime number 6 equals 2 * 3 7 prime number 8 equals 2 * 4 9 equals 3 * 3 ( Yes , correct code .   Look closely : clause belongs 
+ loop , statement . ) way think clause imagine paired inside loop .   loop executes , run sequence like 
+ / / / . inside loop , encountered number times . 
+ condition true , break happen . condition 
+ true , clause outside loop execute . loop , clause common clause try statement statements : try statementâs clause runs exception 
+ occurs , loopâs clause runs break occurs . 
+ try statement exceptions , Handling Exceptions . 4.6 . pass Statements Â¶ pass statement . statement 
+ required syntactically program requires action . example : > > > True : ... pass # Busy - wait keyboard interrupt ( Ctrl+C ) ... commonly creating minimal classes : > > > class MyEmptyClass : ... pass ... place pass place - holder function 
+ conditional body working new code , allowing thinking 
+ abstract level .   pass silently ignored : > > > def initlog ( * args ): ... pass # Remember implement ! ... 4.7 . match Statements Â¶ match statement takes expression compares value successive 
+ patterns given case blocks .   superficially 
+ similar switch statement C , Java JavaScript ( 
+ languages ) , itâs similar pattern matching 
+ languages like Rust Haskell . pattern matches 
+ gets executed extract components ( sequence elements 
+ object attributes ) value variables . simplest form compares subject value literals : def http_error ( status ): match status : case 400 : return " Bad request " case 404 : return " found " case 418 : return " teapot " case _ : return " wrong internet " Note block : âvariable nameâ _ acts wildcard 
+ fails match . case matches , branches executed . combine literals single pattern | ( âorâ ): case 401 | 403 | 404 : return " allowed " Patterns look like unpacking assignments , bind 
+ variables : # point ( x , y ) tuple match point : case ( 0 , 0 ): print ( " Origin " ) case ( 0 , y ): print ( f " Y= { y } " ) case ( x , 0 ): print ( f " X= { x } " ) case ( x , y ): print ( f " X= { x } , Y= { y } " ) case _ : raise ValueError ( " point " ) Study carefully !   pattern literals , 
+ thought extension literal pattern shown .   
+ patterns combine literal variable , 
+ variable binds value subject ( point ) .   fourth 
+ pattern captures values , makes conceptually similar 
+ unpacking assignment ( x , y ) = point . classes structure data 
+ use class followed argument list resembling 
+ constructor , ability capture attributes variables : class Point : def _ _ init _ _ ( self , x , y ): self . x = x self . y = y def where_is ( point ): match point : case Point ( x = 0 , y = 0 ): print ( " Origin " ) case Point ( x = 0 , y = y ): print ( f " Y= { y } " ) case Point ( x = x , y = 0 ): print ( f " X= { x } " ) case Point ( ): print ( " " ) case _ : print ( " point " ) use positional parameters builtin classes provide 
+ ordering attributes ( e.g. dataclasses ) . define specific 
+ position attributes patterns setting _ _ match_args _ _ special 
+ attribute classes . itâs set ( âxâ , âyâ ) , following patterns 
+ equivalent ( bind y attribute var variable ): Point ( 1 , var ) Point ( 1 , y = var ) Point ( x = 1 , y = var ) Point ( y = var , x = 1 ) recommended way read patterns look extended form 
+ left assignment , understand variables set 
+ . 
+ standalone names ( like var ) assigned match statement . 
+ Dotted names ( like foo.bar ) , attribute names ( x= y= ) class names 
+ ( recognized â(â ¦ )â like Point ) assigned . Patterns arbitrarily nested .   example , short 
+ list Points , _ _ match_args _ _ added , match like : class Point : _ _ match_args _ _ = ( ' x ' , ' y ' ) def _ _ init _ _ ( self , x , y ): self . x = x self . y = y match points : case [ ] : print ( " points " ) case [ Point ( 0 , 0 ) ] : print ( " origin " ) case [ Point ( x , y ) ] : print ( f " Single point { x } , { y } " ) case [ Point ( 0 , y1 ) , Point ( 0 , y2 ) ] : print ( f " Y axis { y1 } , { y2 } " ) case _ : print ( " " ) add clause pattern , known âguardâ.   
+ guard false , match goes try case block .   Note 
+ value capture happens guard evaluated : match point : case Point ( x , y ) x = = y : print ( f " Y = X { x } " ) case Point ( x , y ): print ( f " diagonal " ) key features statement : Like unpacking assignments , tuple list patterns exactly 
+ meaning actually match arbitrary sequences .   important 
+ exception donât match iterators strings . Sequence patterns support extended unpacking : [ x , y , * rest ] ( x , y , * rest ) work similar unpacking assignments .   
+ * _ , ( x , y , * _ ) matches sequence 
+ items binding remaining items . Mapping patterns : { " bandwidth " : b , " latency " : l } captures " bandwidth " " latency " values dictionary .   Unlike sequence 
+ patterns , extra keys ignored .   unpacking like * * rest 
+ supported .   ( * * _ redundant , allowed . ) Subpatterns captured keyword : case ( Point ( x1 , y1 ) , Point ( x2 , y2 ) p2 ): ... capture second element input p2 ( long input 
+ sequence points ) literals compared equality , singletons True , False compared identity . Patterns use named constants .   dotted names 
+ prevent interpreted capture variable : enum import Enum class Color ( Enum ): RED = ' red ' GREEN = ' green ' BLUE = ' blue ' color = Color ( input ( " Enter choice ' red ' , ' blue ' ' green ' : " ) ) match color : case Color . RED : print ( " red ! " ) case Color . GREEN : print ( " Grass green " ) case Color . BLUE : print ( " feeling blues :( " ) detailed explanation additional examples , look PEP 636 written tutorial format . 4.8 . Defining Functions Â¶ create function writes Fibonacci series arbitrary 
+ boundary : > > > def fib ( n ): # write Fibonacci series n ... " " " Print Fibonacci series n. " " " ... , b = 0 , 1 ... < n : ... print ( , end = ' ' ) ... , b = b , + b ... print ( ) ... > > > # function defined : > > > fib ( 2000 ) 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 keyword def introduces function definition .   
+ followed function parenthesized list formal parameters . 
+ statements form body function start line , 
+ indented . statement function body optionally string literal ; 
+ string literal functionâs documentation string , docstring . 
+ ( docstrings found section Documentation Strings . ) 
+ tools use docstrings automatically produce online printed 
+ documentation , let user interactively browse code ; itâs good 
+ practice include docstrings code write , habit . execution function introduces new symbol table local 
+ variables function .   precisely , variable assignments 
+ function store value local symbol table ; variable references 
+ look local symbol table , local symbol tables 
+ enclosing functions , global symbol table , finally table 
+ built - names . , global variables variables enclosing functions 
+ directly assigned value function ( , global 
+ variables , named global statement , , variables enclosing 
+ functions , named nonlocal statement ) , 
+ referenced . actual parameters ( arguments ) function introduced local 
+ symbol table called function called ; , arguments 
+ passed value ( value object reference , 
+ value object ) . [ 1 ] function calls function , 
+ calls recursively , new 
+ local symbol table created . function definition associates function function object 
+ current symbol table .   interpreter recognizes object pointed 
+ user - defined function .   names point 
+ function object access function : > > > fib < function fib 10042ed0 > > > > f = fib > > > f ( 100 ) 0 1 1 2 3 5 8 13 21 34 55 89 Coming languages , object fib function 
+ procedure doesnât return value .   fact , functions return statement return value , albeit boring .   
+ value called ( itâs built - ) .   Writing value 
+ normally suppressed interpreter value written . 
+ want print ( ) : > > > fib ( 0 ) > > > print ( fib ( 0 ) ) simple write function returns list numbers 
+ Fibonacci series , instead printing : > > > def fib2 ( n ): # return Fibonacci series n ... " " " Return list containing Fibonacci series n. " " " ... result = [ ] ... , b = 0 , 1 ... < n : ... result . append ( ) # ... , b = b , + b ... return result ... > > > f100 = fib2 ( 100 ) # > > > f100 # write result [ 0 , 1 , 1 , 2 , 3 , 5 , 8 , 13 , 21 , 34 , 55 , 89 ] example , usual , demonstrates new Python features : return statement returns value function . return expression argument returns . Falling 
+ end function returns . statement result.append(a ) calls method list object result .   method function âbelongsâ object named obj.methodname , obj object ( expression ) , 
+ methodname method defined objectâs type . 
+ Different types define different methods .   Methods different types 
+ causing ambiguity .   ( possible define 
+ object types methods , classes , Classes ) 
+ method append ( ) shown example defined list objects ; 
+ adds new element end list .   example equivalent result = result + [ ] , efficient . 4.9 . Defining Functions Â¶ possible define functions variable number arguments . 
+ forms , combined . 4.9.1 . Default Argument Values Â¶ useful form specify default value arguments . 
+ creates function called fewer arguments 
+ defined allow .   example : def ask_ok ( prompt , retries = 4 , reminder = ' try ! ' ): True : reply = input ( prompt ) reply { ' y ' , ' ye ' , ' yes ' } : return True reply { ' n ' , ' ' , ' nop ' , ' nope ' } : return False retries = retries - 1 retries < 0 : raise ValueError ( ' invalid user response ' ) print ( reminder ) function called ways : giving mandatory argument : ask_ok('Do want quit ? ' ) giving optional arguments : ask_ok('OK overwrite file ? ' , 2 ) giving arguments : ask_ok('OK overwrite file ? ' , 2 , ' Come , yes ! ' ) example introduces keyword . tests 
+ sequence contains certain value . default values evaluated point function definition defining scope , = 5 def f ( arg = ): print ( arg ) = 6 f ( ) print 5 . Important warning : default value evaluated . makes 
+ difference default mutable object list , dictionary , 
+ instances classes .   example , following function accumulates 
+ arguments passed subsequent calls : def f ( , L = [ ] ): L . append ( ) return L print ( f ( 1 ) ) print ( f ( 2 ) ) print ( f ( 3 ) ) print [ 1 ] [ 1 , 2 ] [ 1 , 2 , 3 ] donât want default shared subsequent calls , 
+ write function like instead : def f ( , L = ): L : L = [ ] L . append ( ) return L 4.9.2 . Keyword Arguments Â¶ Functions called keyword arguments form kwarg = value .   instance , following function : def parrot ( voltage , state = ' stiff ' , action = ' voom ' , type = ' Norwegian Blue ' ): print ( " -- parrot " , action , end = ' ' ) print ( " " , voltage , " volts . " ) print ( " -- Lovely plumage , " , type ) print ( " -- " , state , " ! " ) accepts required argument ( voltage ) optional arguments 
+ ( state , action , type ) .   function called 
+ following ways : parrot ( 1000 ) # 1 positional argument parrot ( voltage = 1000 ) # 1 keyword argument parrot ( voltage = 1000000 , action = ' VOOOOOM ' ) # 2 keyword arguments parrot ( action = ' VOOOOOM ' , voltage = 1000000 ) # 2 keyword arguments parrot ( ' million ' , ' bereft life ' , ' jump ' ) # 3 positional arguments parrot ( ' thousand ' , state = ' pushing daisies ' ) # 1 positional , 1 keyword following calls invalid : parrot ( ) # required argument missing parrot ( voltage = 5.0 , ' dead ' ) # non - keyword argument keyword argument parrot ( 110 , voltage = 220 ) # duplicate value argument parrot ( actor = ' John Cleese ' ) # unknown keyword argument function , keyword arguments follow positional arguments . 
+ keyword arguments passed match arguments 
+ accepted function ( e.g. actor valid argument parrot function ) , order important .   includes 
+ non - optional arguments ( e.g. parrot(voltage=1000 ) valid ) . 
+ argument receive value . 
+ Hereâs example fails restriction : > > > def function ( ): ... pass ... > > > function ( 0 , = 0 ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : function ( ) got multiple values argument ' ' final formal parameter form * * present , receives 
+ dictionary ( Mapping Types â dict ) containing keyword arguments 
+ corresponding formal parameter .   combined formal 
+ parameter form * ( described subsection ) 
+ receives tuple containing positional 
+ arguments formal parameter list .   ( * occur 
+ * * . ) example , define function like : def cheeseshop ( kind , * arguments , * * keywords ): print ( " -- " , kind , " ? " ) print ( " -- sorry , " , kind ) arg arguments : print ( arg ) print ( " - " * 40 ) kw keywords : print ( kw , " : " , keywords [ kw ] ) called like : cheeseshop ( " Limburger " , " runny , sir . " , " , runny , sir . " , shopkeeper = " Michael Palin " , client = " John Cleese " , sketch = " Cheese Shop Sketch " ) course print : -- Limburger ? 
+ -- sorry , Limburger 
+ runny , sir . 
+ , runny , sir . 
+ ---------------------------------------- 
+ shopkeeper : Michael Palin 
+ client : John Cleese 
+ sketch : Cheese Shop Sketch Note order keyword arguments printed guaranteed 
+ match order provided function . 4.9.3 . Special parameters Â¶ default , arguments passed Python function position 
+ explicitly keyword . readability performance , makes sense 
+ restrict way arguments passed developer need look 
+ function definition determine items passed position , 
+ position keyword , keyword . function definition look like : def f(pos1 , pos2 , / , pos_or_kwd , * , kwd1 , kwd2 ): 
+       -----------     ----------      ---------- 
+         |              |                   | 
+         |         Positional keyword    | 
+         |                                 - Keyword 
+          -- Positional / * optional . , symbols indicate kind 
+ parameter arguments passed function : 
+ positional - , positional - - keyword , keyword - . Keyword parameters 
+ referred named parameters . 4.9.3.1 . Positional - - Keyword Arguments Â¶ / * present function definition , arguments 
+ passed function position keyword . 4.9.3.2 . Positional - Parameters Â¶ Looking bit detail , possible mark certain parameters 
+ positional - . positional - , parametersâ order matters , 
+ parameters passed keyword . Positional - parameters 
+ placed / ( forward - slash ) . / logically 
+ separate positional - parameters rest parameters . 
+ / function definition , positional - 
+ parameters . Parameters following / positional - - keyword keyword - . 4.9.3.3 . Keyword - Arguments Â¶ mark parameters keyword - , indicating parameters passed 
+ keyword argument , place * arguments list keyword - parameter . 4.9.3.4 . Function Examples Â¶ Consider following example function definitions paying close attention 
+ markers / * : > > > def standard_arg ( arg ): ... print ( arg ) ... > > > def pos_only_arg ( arg , / ): ... print ( arg ) ... > > > def kwd_only_arg ( * , arg ): ... print ( arg ) ... > > > def combined_example ( pos_only , / , standard , * , kwd_only ): ... print ( pos_only , standard , kwd_only ) function definition , standard_arg , familiar form , 
+ places restrictions calling convention arguments 
+ passed position keyword : > > > standard_arg ( 2 ) 2 > > > standard_arg ( arg = 2 ) 2 second function pos_only_arg restricted use positional 
+ parameters / function definition : > > > pos_only_arg ( 1 ) 1 > > > pos_only_arg ( arg = 1 ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : pos_only_arg ( ) got positional - arguments passed keyword arguments : ' arg ' function kwd_only_arg allows keyword arguments indicated 
+ * function definition : > > > kwd_only_arg ( 3 ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : kwd_only_arg ( ) takes 0 positional arguments 1 given > > > kwd_only_arg ( arg = 3 ) 3 uses calling conventions function 
+ definition : > > > combined_example ( 1 , 2 , 3 ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : combined_example ( ) takes 2 positional arguments 3 given > > > combined_example ( 1 , 2 , kwd_only = 3 ) 1 2 3 > > > combined_example ( 1 , standard = 2 , kwd_only = 3 ) 1 2 3 > > > combined_example ( pos_only = 1 , standard = 2 , kwd_only = 3 ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : combined_example ( ) got positional - arguments passed keyword arguments : ' pos_only ' Finally , consider function definition potential collision positional argument * * kwds key : def foo ( , * * kwds ): return ' ' kwds possible return True keyword ' ' bind parameter . example : > > > foo ( 1 , * * { ' ' : 2 } ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : foo ( ) got multiple values argument ' ' > > > / ( positional arguments ) , possible allows positional argument ' ' key keyword arguments : > > > def foo ( , / , * * kwds ): ... return ' ' kwds ... > > > foo ( 1 , * * { ' ' : 2 } ) True words , names positional - parameters * * kwds ambiguity . 4.9.3.5 . Recap Â¶ use case determine parameters use function definition : def f ( pos1 , pos2 , / , pos_or_kwd , * , kwd1 , kwd2 ): guidance : Use positional - want parameters 
+ available user . useful parameter names real 
+ meaning , want enforce order arguments function 
+ called need positional parameters arbitrary 
+ keywords . Use keyword - names meaning function definition 
+ understandable explicit names want prevent 
+ users relying position argument passed . API , use positional - prevent breaking API changes 
+ parameterâs modified future . 4.9.4 . Arbitrary Argument Lists Â¶ Finally , frequently option specify function 
+ called arbitrary number arguments .   arguments wrapped 
+ tuple ( Tuples Sequences ) .   variable number arguments , 
+ zero normal arguments occur . def write_multiple_items ( file , separator , * args ): file . write ( separator . join ( args ) ) Normally , variadic arguments list formal 
+ parameters , scoop remaining input arguments 
+ passed function . formal parameters occur * args parameter âkeyword - onlyâ arguments , meaning 
+ keywords positional arguments . > > > def concat ( * args , sep = " / " ): ... return sep . join ( args ) ... > > > concat ( " earth " , " mars " , " venus " ) ' earth / mars / venus ' > > > concat ( " earth " , " mars " , " venus " , sep = " . " ) ' earth.mars.venus ' 4.9.5 . Unpacking Argument Lists Â¶ reverse situation occurs arguments list tuple 
+ need unpacked function requiring separate positional 
+ arguments .   instance , built - range ( ) function expects separate start stop arguments .   available separately , write 
+ function * -operator unpack arguments list 
+ tuple : > > > list ( range ( 3 , 6 ) ) # normal separate arguments [ 3 , 4 , 5 ] > > > args = [ 3 , 6 ] > > > list ( range ( * args ) ) # arguments unpacked list [ 3 , 4 , 5 ] fashion , dictionaries deliver keyword arguments * * -operator : > > > def parrot ( voltage , state = ' stiff ' , action = ' voom ' ): ... print ( " -- parrot " , action , end = ' ' ) ... print ( " " , voltage , " volts . " , end = ' ' ) ... print ( " E " , state , " ! " ) ... > > > d = { " voltage " : " million " , " state " : " bleedin ' demised " , " action " : " VOOM " } > > > parrot ( * * d ) -- parrot VOOM million volts . E bleedin ' demised ! 4.9.6 . Lambda Expressions Â¶ Small anonymous functions created lambda keyword . 
+ function returns sum arguments : lambda , b : a+b . 
+ Lambda functions function objects required .   
+ syntactically restricted single expression .   Semantically , 
+ syntactic sugar normal function definition .   Like nested function 
+ definitions , lambda functions reference variables containing 
+ scope : > > > def make_incrementor ( n ): ... return lambda x : x + n ... > > > f = make_incrementor ( 42 ) > > > f ( 0 ) 42 > > > f ( 1 ) 43 example uses lambda expression return function .   use 
+ pass small function argument : > > > pairs = [ ( 1 , ' ' ) , ( 2 , ' ' ) , ( 3 , ' ' ) , ( 4 , ' ' ) ] > > > pairs . sort ( key = lambda pair : pair [ 1 ] ) > > > pairs [ ( 4 , ' ' ) , ( 1 , ' ' ) , ( 3 , ' ' ) , ( 2 , ' ' ) ] 4.9.7 . Documentation Strings Â¶ conventions content formatting documentation 
+ strings . line short , concise summary objectâs 
+ purpose .   brevity , explicitly state objectâs type , 
+ available means ( happens 
+ verb describing functionâs operation ) .   line begin capital 
+ letter end period . lines documentation string , second line 
+ blank , visually separating summary rest description .   
+ following lines paragraphs describing objectâs calling 
+ conventions , effects , etc . Python parser strip indentation multi - line string literals 
+ Python , tools process documentation strip indentation 
+ desired .   following convention . non - blank line line string determines indentation 
+ entire documentation string .   ( canât use line 
+ generally adjacent stringâs opening quotes indentation 
+ apparent string literal . )   Whitespace âequivalentâ indentation 
+ stripped start lines string .   Lines 
+ indented occur , occur leading whitespace 
+ stripped .   Equivalence whitespace tested expansion 
+ tabs ( 8 spaces , normally ) . example multi - line docstring : > > > def my_function ( ): ... " " " , document . ... ... , , . ... " " " ... pass ... > > > print ( my_function . _ _ doc _ _ ) , document . , , . 4.9.8 . Function Annotations Â¶ Function annotations completely optional metadata 
+ information types user - defined functions ( PEP 3107 PEP 484 information ) . Annotations stored _ _ annotations _ _ attribute function dictionary effect 
+ function .   Parameter annotations defined colon parameter , followed 
+ expression evaluating value annotation .   Return annotations 
+ defined literal - > , followed expression , parameter 
+ list colon denoting end def statement .   
+ following example required argument , optional argument , return 
+ value annotated : > > > def f ( ham : str , eggs : str = ' eggs ' ) - > str : ... print ( " Annotations : " , f . _ _ annotations _ _ ) ... print ( " Arguments : " , ham , eggs ) ... return ham + ' ' + eggs ... > > > f ( ' spam ' ) Annotations : { ' ham ' : < class ' str ' > , ' return ' : < class ' str ' > , ' eggs ' : < class ' str ' > } Arguments : spam eggs ' spam eggs ' 4.10 . Intermezzo : Coding Style Â¶ write longer , complex pieces Python , 
+ good time talk coding style .   languages written ( 
+ concise , formatted ) different styles ; readable . 
+ Making easy read code good idea , adopting 
+ nice coding style helps tremendously . Python , PEP 8 emerged style guide projects adhere ; 
+ promotes readable eye - pleasing coding style .   Python 
+ developer read point ; important points 
+ extracted : Use 4 - space indentation , tabs . 4 spaces good compromise small indentation ( allows greater 
+ nesting depth ) large indentation ( easier read ) .   Tabs introduce 
+ confusion , best left . Wrap lines donât exceed 79 characters . helps users small displays makes possible 
+ code files - - larger displays . Use blank lines separate functions classes , larger blocks 
+ code inside functions . possible , comments line . Use docstrings . Use spaces operators commas , directly inside 
+ bracketing constructs : = f(1 , 2 ) + g(3 , 4 ) . classes functions consistently ; convention use UpperCamelCase classes lowercase_with_underscores functions 
+ methods .   use self method argument 
+ ( Look Classes classes methods ) . Donât use fancy encodings code meant international 
+ environments .   Pythonâs default , UTF-8 , plain ASCII work best 
+ case . Likewise , donât use non - ASCII characters identifiers 
+ slightest chance people speaking different language read maintain 
+ code . Footnotes [ 1 ] Actually , object reference better description , 
+ mutable object passed , caller changes 
+ callee makes ( items inserted list ) . Table Contents 4 . Control Flow Tools 4.1 . Statements 4.2 . Statements 4.3 . range ( ) Function 4.4 . break continue Statements 4.5 . Clauses Loops 4.6 . pass Statements 4.7 . match Statements 4.8 . Defining Functions 4.9 . Defining Functions 4.9.1 . Default Argument Values 4.9.2 . Keyword Arguments 4.9.3 . Special parameters 4.9.3.1 . Positional - - Keyword Arguments 4.9.3.2 . Positional - Parameters 4.9.3.3 . Keyword - Arguments 4.9.3.4 . Function Examples 4.9.3.5 . Recap 4.9.4 . Arbitrary Argument Lists 4.9.5 . Unpacking Argument Lists 4.9.6 . Lambda Expressions 4.9.7 . Documentation Strings 4.9.8 . Function Annotations 4.10 . Intermezzo : Coding Style Previous topic 3 . Informal Introduction Python topic 5 . Data Structures Page Report Bug Source Â « Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Tutorial » 4 . Control Flow Tools | Theme Auto Light Dark | © Copyright 2001 - 2025 , Python Software Foundation . page licensed Python Software Foundation License Version 2 . Examples , recipes , code documentation additionally licensed Zero Clause BSD License . History License information . Python Software Foundation non - profit corporation . donate . updated Apr 28 , 2025 ( 17:16 UTC ) . Found bug ? Created Sphinx 8.2.3 .

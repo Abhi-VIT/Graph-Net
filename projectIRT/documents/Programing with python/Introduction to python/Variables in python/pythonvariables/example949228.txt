@@ -1,0 +1,137 @@
+Python Variables Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - Home Python - Overview Python - History Python - Features Python vs C++ Python - Hello World Program Python - Application Areas Python - Interpreter Python - Environment Setup Python - Virtual Environment Python - Basic Syntax Python - Variables Python - Data Types Python - Type Casting Python - Unicode System Python - Literals Python - Operators Python - Arithmetic Operators Python - Comparison Operators Python - Assignment Operators Python - Logical Operators Python - Bitwise Operators Python - Membership Operators Python - Identity Operators Python - Operator Precedence Python - Comments Python - User Input Python - Numbers Python - Booleans Python - Control Flow Python - Decision Making Python - Statement Python - Python - Nested Python - Match - Case Statement Python - Loops Python - Loops Python - - Loops Python - Loops Python - break Statement Python - continue Statement Python - pass Statement Python - Nested Loops Python Functions & Modules Python - Functions Python - Default Arguments Python - Keyword Arguments Python - Keyword - Arguments Python - Positional Arguments Python - Positional - Arguments Python - Arbitrary Arguments Python - Variables Scope Python - Function Annotations Python - Modules Python - Built Functions Python Strings Python - Strings Python - Slicing Strings Python - Modify Strings Python - String Concatenation Python - String Formatting Python - Escape Characters Python - String Methods Python - String Exercises Python Lists Python - Lists Python - Access List Items Python - Change List Items Python - Add List Items Python - Remove List Items Python - Loop Lists Python - List Comprehension Python - Sort Lists Python - Copy Lists Python - Join Lists Python - List Methods Python - List Exercises Python Tuples Python - Tuples Python - Access Tuple Items Python - Update Tuples Python - Unpack Tuples Python - Loop Tuples Python - Join Tuples Python - Tuple Methods Python - Tuple Exercises Python Sets Python - Sets Python - Access Set Items Python - Add Set Items Python - Remove Set Items Python - Loop Sets Python - Join Sets Python - Copy Sets Python - Set Operators Python - Set Methods Python - Set Exercises Python Dictionaries Python - Dictionaries Python - Access Dictionary Items Python - Change Dictionary Items Python - Add Dictionary Items Python - Remove Dictionary Items Python - Dictionary View Objects Python - Loop Dictionaries Python - Copy Dictionaries Python - Nested Dictionaries Python - Dictionary Methods Python - Dictionary Exercises Python Arrays Python - Arrays Python - Access Array Items Python - Add Array Items Python - Remove Array Items Python - Loop Arrays Python - Copy Arrays Python - Reverse Arrays Python - Sort Arrays Python - Join Arrays Python - Array Methods Python - Array Exercises Python File Handling Python - File Handling Python - Write File Python - Read Files Python - Renaming Deleting Files Python - Directories Python - File Methods Python - OS File / Directory Methods Python - OS Path Methods Object Oriented Programming Python - OOPs Concepts Python - Classes & Objects Python - Class Attributes Python - Class Methods Python - Static Methods Python - Constructors Python - Access Modifiers Python - Inheritance Python - Polymorphism Python - Method Overriding Python - Method Overloading Python - Dynamic Binding Python - Dynamic Typing Python - Abstraction Python - Encapsulation Python - Interfaces Python - Packages Python - Inner Classes Python - Anonymous Class Objects Python - Singleton Class Python - Wrapper Classes Python - Enums Python - Reflection Python Errors & Exceptions Python - Syntax Errors Python - Exceptions Python - try - Block Python - try - finally Block Python - Raising Exceptions Python - Exception Chaining Python - Nested try Block Python - User - defined Exception Python - Logging Python - Assertions Python - Built - Exceptions Python Multithreading Python - Multithreading Python - Thread Life Cycle Python - Creating Thread Python - Starting Thread Python - Joining Threads Python - Naming Thread Python - Thread Scheduling Python - Thread Pools Python - Main Thread Python - Thread Priority Python - Daemon Threads Python - Synchronizing Threads Python Synchronization Python - Inter - thread Communication Python - Thread Deadlock Python - Interrupting Thread Python Networking Python - Networking Python - Socket Programming Python - URL Processing Python - Generics Python Libraries NumPy Tutorial Pandas Tutorial SciPy Tutorial Matplotlib Tutorial Django Tutorial OpenCV Tutorial Python Miscellenous Python - Date & Time Python - Maths Python - Iterators Python - Generators Python - Closures Python - Decorators Python - Recursion Python - Reg Expressions Python - PIP Python - Database Access Python - Weak References Python - Serialization Python - Templating Python - Output Formatting Python - Performance Measurement Python - Data Compression Python - CGI Programming Python - XML Processing Python - GUI Programming Python - Command - Line Arguments Python - Docstrings Python - JSON Python - Sending Email Python - Extensions Python - Tools / Utilities Python - GUIs Python Advanced Concepts Python - Abstract Base Classes Python - Custom Exceptions Python - Higher Order Functions Python - Object Internals Python - Memory Management Python - Metaclasses Python - Metaprogramming Metaclasses Python - Mocking Stubbing Python - Monkey Patching Python - Signal Handling Python - Type Hints Python - Automation Tutorial Python - Humanize Package Python - Context Managers Python - Coroutines Python - Descriptors Python - Diagnosing Fixing Memory Leaks Python - Immutable Data Structures Python Useful Resources Python - Questions & Answers Python - Interview Questions & Answers Python - Online Quiz Python - Quick Guide Python - Reference Python - Cheatsheet Python - Projects Python - Useful Resources Python - Discussion Python Compiler NumPy Compiler Matplotlib Compiler SciPy Compiler Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Variables Previous Quiz Python Variables Python variables reserved memory locations store values Python Program . means create variable reserve space memory . Based data type variable , memory space allocated . , assigning different data types Python variables , store integers , decimals characters variables . Memory Addresses Data items belonging different data types stored computer memory . Computer memory locations having number address , internally represented binary form . Data stored binary form computer works principle binary representation . following diagram , string number 18 shown stored memory locations . know assembly language , covert data items memory address , machine language instruction . , easy everybody . Language translator Python interpreter performs type conversion . stores object randomly chosen memory location . Python built - d ( ) function returns address object stored . > > > " " 
+ 
+ > > > id("May " ) 
+ 2167264641264 
+
+ > > > 18 
+ 18 
+ > > > id(18 ) 
+ 140714055169352 data stored memory , accessed repeatedly performing certain process . Obviously , fetching data ID cumbersome . High level languages like Python possible suitable alias label refer memory location . example , let label location month , location 18 stored age . Python uses assignment operator ( =) bind object label . > > > month="May " 
+ > > > age=18 data object ( ) ( month ) d ( ) . d ( ) 18 age . > > > id(month ) 
+ 2167264641264 
+ > > > id(age ) 
+ 140714055169352 label identifier . usually called variable . Python variable symbolic reference pointer object . Creating Python Variables Python variables need explicit declaration reserve memory space create variable . Python variable created automatically assign value . equal sign ( =) assign values variables . operand left = operator variable operand right = operator value stored variable . example − Example Create Python Variables example creates different types ( integer , float , string ) variables . counter = 100           # Creates integer variable 
+ miles    = 1000.0        # Creates floating point variable 
+     = " Zara Ali "    # Creates string variable Printing Python Variables create Python variable assign value , print print ( ) function . Following extension previous example shows print different variables Python : Example Print Python Variables example prints variables . counter = 100           # Creates integer variable 
+ miles    = 1000.0        # Creates floating point variable 
+     = " Zara Ali "    # Creates string variable 
+
+ print ( counter ) 
+ print ( miles ) 
+ print ( ) , 100 , 1000.0   " Zara Ali " values assigned counter , miles , variables , respectively . running Python program , produces following result − 100 
+ 1000.0 
+ Zara Ali Deleting Python Variables delete reference number object del statement . syntax del statement − del var1[,var2[,var3[ .... ,varN ] ] ] ] delete single object multiple objects del statement . example − del var 
+ del var_a , var_b Example Following examples shows delete variable try use deleted variable Python interpreter throw error : counter = 100 
+ print ( counter ) 
+
+ del counter 
+ print ( counter ) produce following result : 100 
+ Traceback ( recent ): 
+   File " main.py " , line 7 , < module > 
+     print ( counter ) 
+ NameError : ' counter ' defined Getting Type Variable data type Python variable python built - function type ( ) follows . Example : Printing Variables Type x = " Zara " 
+ y =   10 
+ z =   10.10 
+
+ print(type(x ) ) 
+ print(type(y ) ) 
+ print(type(z ) ) produce following result : < class ' str ' > 
+ < class ' int ' > 
+ < class ' float ' > Casting Python Variables specify data type variable help casting follows : Example example demonstrates case sensitivity variables . x = str(10 )     # x ' 10 ' 
+ y = int(10 )     # y 10 
+ z = float(10 )   # z 10.0 
+
+ print ( " x = " , x ) 
+ print ( " y = " , y ) 
+ print ( " z = " , z ) produce following result : x = 10 
+ y = 10 
+ z = 10.0 Case - Sensitivity Python Variables Python variables case sensitive means Age age different variables : age = 20 
+ Age = 30 
+
+ print ( " age = " , age ) 
+ print ( " Age = " , Age ) produce following result : age = 20 
+ Age = 30 Python Variables - Multiple Assignment Python allows initialize variables single statement . following case , variables value . > > > a=10 
+ > > > b=10 
+ > > > c=10 Instead separate assignments , single assignment statement follows − > > > = b = c=10 
+ > > > print ( , b , c ) 
+ 10 10 10 following case , variables different values . > > > a=10 
+ > > > b=20 
+ > > > c=30 separate assignment statements combined . need comma separated variable names left , comma separated values right = operator . > > > , b , c = 10,20,30 
+ > > > print ( , b , c ) 
+ 10 20 30 Let try examples script mode : − = b = c = 100 
+
+ print ( ) 
+ print ( b ) 
+ print ( c ) produces following result : 100 
+ 100 
+ 100 , integer object created value 1 , variables assigned memory location . assign multiple objects multiple variables . example − , b , c = 1,2,"Zara Ali " 
+
+ print ( ) 
+ print ( b ) 
+ print ( c ) produces following result : 1 
+ 2 
+ Zara Ali , integer objects values 1 2 assigned variables b respectively , string object value " Zara Ali " assigned variable c. Python Variables - Naming Convention Python variable unique like , b , c. variable meaningful like color , age , etc . certain rules taken care naming Python variable : variable start letter underscore character variable start number special character like $ , ( , * % etc . variable contain alpha - numeric characters underscores ( - z , 0 - 9 , _ ) Python variable names case - sensitive means different variables Python . Python reserved keywords naming variable . variable contains multiple words , use naming patterns − Camel case − letter lowercase , letter subsequent word uppercase . example : kmPerHour , pricePerLitre Pascal case − letter word uppercase . example : KmPerHour , 
+ PricePerLitre Snake case − Use single underscore ( _ ) character separate words . example : km_per_hour , price_per_litre Example Following valid Python variable names : counter = 100 
+ _ count   = 100 
+ name1 = " Zara " 
+ name2 = " Nuha " 
+ Age   = 20 
+ zara_salary = 100000 
+
+ print ( counter ) 
+ print ( _ count ) 
+ print ( name1 ) 
+ print ( name2 ) 
+ print ( Age ) 
+ print ( zara_salary ) produce following result : 100 
+ 100 
+ Zara 
+ Nuha 
+ 20 
+ 100000 Example Following invalid Python variable names : 1counter = 100 
+ $ _ count   = 100 
+ zara - salary = 100000 
+
+ print ( 1counter ) 
+ print ( $ count ) 
+ print ( zara - salary ) produce following result : File " main.py " , line 3 
+     1counter = 100 
+            ^ 
+ SyntaxError : invalid syntax Example use variable identify data object , repeatedly d ( ) value . , variables height width rectangle . compute area perimeter variables . > > > width=10 
+ > > > height=20 
+ > > > area = width*height 
+ > > > area 
+ 200 
+ > > > perimeter=2*(width+height ) 
+ > > > perimeter 
+ 60 Use variables especially advantageous writing scripts programs . Following script uses variables . # ! /usr / bin / python3 
+
+ width = 10 
+ height = 20 
+ area = width*height 
+ perimeter = 2*(width+height ) 
+ print ( " Area = " , area ) 
+ print ( " Perimeter = " , perimeter ) Save script .py extension execute command - line . result − Area = 200 
+ Perimeter = 60 Python Local Variables Python Local Variables defined inside function . access variable outside function . Python functions piece reusable code learn function Python - Functions tutorial . Example Following example usage local variables : def sum(x , y ): 
+    sum = x + y 
+    return sum 
+ print(sum(5 , 10 ) ) produce following result − 15 Python Global Variables variable created outside function accessed function global scope . Example Following example global variables − x = 5 
+ y = 10 
+ def sum ( ): 
+    sum = x + y 
+    return sum 
+ print(sum ( ) ) produce following result − 15 Constants Python Python formally defined constants , indicate variable treated constant - caps names underscores . example , PI_VALUE indicates want variable redefined changed way . naming convention - caps referred screaming snake case - - caps ( screaming ) underscores ( snakes ) . Python vs C / C++ Variables concept variable works differently Python C / C++ . C / C++ , variable named memory location . a=10 b=10 , different memory locations . Let assume memory address 100 200 respectively . different value assigned " " - 50 , 10 address 100 overwritten . Python variable refers object memory location . object stored 
+ memory . Multiple variables multiple labels object . statement a=50 creates new int object 50 memory location , leaving object 10 referred " b " . , assign value b , object 10 remains unreferred . Python garbage collector mechanism releases memory occupied unreferred object . Python identity operator returns True operands d ( ) value . > > > = b=10 
+ > > > b 
+ True 
+ > > > id(a ) , id(b ) 
+ ( 140731955278920 , 140731955278920 ) Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

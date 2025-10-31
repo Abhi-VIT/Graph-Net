@@ -1,0 +1,68 @@
+list - Inorder Binary Tree Traversal ( Python ) - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams Inorder Binary Tree Traversal ( Python ) Ask Question Asked 8 years , 3 months ago Modified 2 years , 6 months ago Viewed 50k times 14 trying perform inorder traversal tree . code feels right , working properly . feeling condition , append works python , return . works correctly use print instead return , think , want able use return correct answer . example , tree [ 1,None,2,3 ] , code returns [ 1 ] clearly incorrect . Additionally possible solve problem list comprehension ? , sample code greatly appreciated . code : class Solution(object ): 
+         def inorderTraversal(self , root ): 
+             res = [ ] 
+             root : 
+                 self.inorderTraversal(root.left ) 
+                 res.append(root.val ) 
+                 self.inorderTraversal(root.right ) 
+             return res marking duplicate , know order traversals asked Stackoverflow ( plenty times ) , helped understand understanding wrong . grateful helped learn correct approach versus simply posting link explanation . Thank ! python list binary - tree inorder Share Improve question Follow asked Jan 12 , 2017 20:15 Jane Sully Jane Sully 3,357 14 14 gold badges 59 59 silver badges 95 95 bronze badges 3 tree structured ? – Patrick Haugh Commented Jan 12 , 2017 20:23 binary tree ( necessarily binary search ) . example , list passed root format root , left tree , right tree .... [1,None,2,3 ] root 1 , left child , right child 2 ( left child 3 ) . – Jane Sully Commented Jan 12 , 2017 20:34 reason ask passing list root ,    lists left right attribute – Patrick Haugh Commented Jan 12 , 2017 20:39 Add comment | 5 Answers 5 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 28 reason work res value node appended ; time recursively recall function , makes new res . simple fix , follows : class Solution(object ): 
+     def inorderTraversal(self , root ): 
+         res = [ ] 
+         root : 
+             res = self.inorderTraversal(root.left ) 
+             res.append(root.val ) 
+             res = res + self.inorderTraversal(root.right ) 
+         return res , returns left branch , value , right . briefly follows : class Solution(object ): 
+     def inorderTraversal(self , root ): 
+         return ( self.inorderTraversal(root.left ) + [ root.val ] + self.inorderTraversal(root.right ) ) root [ ] Share Improve answer Follow answered Jan 12 , 2017 20:38 Benedict Randall Shaw Benedict Randall Shaw 738 6 6 silver badges 15 15 bronze badges 3 Thank ! makes perfect sense . – Jane Sully Commented Jan 12 , 2017 20:42 inorderTraversal reset results list string thing function ? – Nicholas Johnson Commented Dec 23 , 2019 5:09 1 @NicholasJohnson ; inorderTraversal contains independent instance res , unique . – Benedict Randall Shaw Commented Feb 16 , 2020 14:52 Add comment | 5 Use instead , simple recursion : : class Node : 
+     def _ _ init__(self , key ): 
+         self.left = 
+         self.right = 
+         self.val = key 
+
+ def printInorder(root ): 
+     root : 
+         printInorder(root.left ) 
+         print(root.val ) 
+         printInorder(root.right ) 
+
+ def printPostorder(root ): 
+     root : 
+         printPostorder(root.left ) 
+         printPostorder(root.right ) 
+         print(root.val ) 
+
+ def printPreorder(root ): 
+     root : 
+         print(root.val ) 
+         printPreorder(root.left ) 
+         printPreorder(root.right ) 
+
+ # Driver code 
+ root = Node(1 ) 
+ root.left       = Node(2 ) 
+ root.right      = Node(3 ) 
+ root.left.left   = Node(4 ) 
+ root.left.right   = Node(5 ) 
+ print " Preorder traversal binary tree " 
+ printPreorder(root ) 
+
+ print " \nInorder traversal binary tree " 
+ printInorder(root ) 
+
+ print " \nPostorder traversal binary tree " 
+ printPostorder(root ) Source : : Share Improve answer Follow answered Jan 12 , 2018 12:10 Akash Kandpal Akash Kandpal 3,404 29 29 silver badges 26 26 bronze badges Add comment | 1 @Benedict Randall Shaw answer perfect . want add fun pythonic way . doc suggest mutable object default parameter , somewhat simplify code treating default mutable list class member python function . difference + = replaced = , res list object inside function function object garbage collected . def inorderTraversal(root , res= [ ] ): 
+     root : 
+         res = inorderTraversal(root.left ) 
+         res.append(root.val ) 
+         res = inorderTraversal(root.right ) 
+ return res Share Improve answer Follow answered Oct 1 , 2019 23:14 Yossarian42 Yossarian42 2,089 20 20 silver badges 17 17 bronze badges 1 problem approach list ' res ' maintained lifetime function ' inorderTraversal ( ) ' . Multiple calls function appending ' res ' list . – MLKing Commented Jul 4 , 2021 19:48 Add comment | 0 approach output list , advantage need add values single list : def inorder(root ): 
+     return_list = [ ] 
+     def innerInOrder(root ): 
+         root = = : 
+           return 
+         innnerInOrder(root.left ) 
+         return_list.append(root.data ) 
+         innerInOrder(root.right ) 
+     innerInOrder(root ) 
+     return return_list Share Improve answer Follow answered Sep 2 , 2021 11:28 okay okay 13 1 1 silver badge 4 4 bronze badges Add comment | 0 declare list outside function create new list everytime function ( recursive function ) , use approaches posted . :-) Share Improve answer Follow answered Oct 11 , 2022 20:03 Abhinav Reddy Abhinav Reddy 1 1 1 silver badge 1 1 bronze badge Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python list binary - tree inorder similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Linked 0 create string representation - order traversal recursive ? 0 Binary tree node sum children Related 2 List implemented inorder binary tree 1 InOrder Traversal Python 2 Binary tree inorder traversal Python 0 inorder traversal tree 8 Inorder Traversal Tree Python Returning List 0 Binary Tree Inorder Traversal 1 Binary Tree Iterative Inorder Traversal 3 Ouputting binary tree - order pre - order traversal 0 Iterative binary tree inorder traversal python 0 Tree Inorder Traversal Python Hot Network Questions " Presenting " versus " bearing " U.S.A. passport entering Canada U.S.A happened flight / aircraft ? rapid oxidation change reddish - brown black copper dust sanding copper plate dust small particle size / exposure ? CMOS inverter output zero Reasoning quest story deadlocks etc Attack bonus casterless Arcane Hand reconcile old school tropes modern sensibilities ? single word dishonestly underselling importance / credentials ? strangling animals prohibited Acts 15 ? Estimating topological errors CCZ factory intelligence non intelligence , consciousness non consciousness ? convincingly erase population memory ? Idiomatic way generating unique filename ? layman Eastern Rite elected Pope , Rite ordained Pope ? executive orders controversial ? chief executive telling executive branch ? Manual editing Z value multiple vertices QGIS model dodecahedron Rubick cube ? Rules written , Orcs Drow functionally ? Riddle Cheshire Crossing comic Physics equations universal meaning possible ? Accepting Postdoc TT Position structure file better ? Slight modification Erdős – Rado theorem tunneling ? mean carry service normally provided network ? hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

@@ -1,0 +1,92 @@
+Programming - Arrays Arrays Arrays " lists " related values .   value array usually 
+         exact type differentiated position 
+         array .   example , quiz scores test stored array 
+         single variable : quiz_scores .   students quiz score 
+         found " bucket " array , second students score 
+         " second " bucket , etc . Arrays general information data types arrays topic Data Types . Arrays store lists related information .   shopping list ( Type = 
+         string ) ; names students class ( type = string ) grades 
+         exam ( type = numbers ) . Note : Array variables usually named " plural " words .   
+         example : grades , students , words . Arrays couple interesting properties / terminologies 
+         : Index array Arrays single , values .   ( programmer ) define 
+             particular value interested ?   answer , provide 
+             numerical " index " . index array number representing bucket 
+             currently interest .   Consider array following 5 
+             grades : [ 100 , 95 , 99 , 87 , 90 ] ; 3rd value array 99 . idea related list information prevalent , languages 
+             support arrays form .   , " semantics " arrays 
+             .   " syntax " " usage " arrays vary .   
+             discus differences C , Matlab , Actionscript Matlab Arrays start index : Arrays initialized [ ] brackets : grades = [ 99 , 100 , 50 ] ; Arrays indexed syntax : parentheses , grades(1 ) = 99 ; % 
+               %   Create array , print 3rd value array , update value , print new value . 
+               % 
+               grades = [ 100 , 90 , 50 ] ; 
+
+               fprintf('the 3rd grade array % f\n ' , grades(3 ) ) ; 
+
+               grades(3 ) = 70 ; 
+
+               fprintf('the updated 3rd grade array % f\n ' , grades(3 ) ) ; C Language Arrays start index : ZERO size array declared array : int grades[3 ] Arrays initialized ( creation ) curly brackets { } : int grades[3 ] = { 99 , 100 , 50 } ; Arrays indexed syntax : square brackets , grades[0 ] = 99 ; // 
+               //   Create array , print 3rd value array , update value , print new value . 
+               // 
+               int grades[3 ] = { 100 , 90 , 50 } ; 
+
+               printf("the 3rd grade array % f\n " , grades[2 ] ) ; 
+
+               grades[2 ] = 70 ; // NOTICE 2 means value array ! ! ! ! ZERO BASED ! ! ! 
+
+               printf("the updated 3rd grade array % f\n " , grades[2 ] ) ; Actionscript Arrays start index : ZERO size array declared array , added later : var grades : Array = new Array(3 ) Arrays initialized ( creation ) square brackets [ ] : var grades = new array([99 , 100 , 50 ] ) ; Arrays indexed syntax : square brackets , grades[0 ] = 99 ; / * 
+                *   Create array , print 3rd value array , update value , print new value . 
+                * / 
+               var grades = new Array ( [ 100 , 90 , 50 ] ) ; 
+
+               trace("the 3rd grade array " + grades[2 ] ) ; 
+
+               grades[2 ] = 70 ; // NOTICE 2 means value array ! ! ! ! ZERO BASED ! ! ! 
+
+               trace("the updated 3rd grade array " + grades[2 ] ) ; Remember : C , Java Actionscript , arrays indexed 
+             0 , Matlab indexed 1 . Key Idea : value bucket array index bucket 
+             separate things .   value stored location 
+             index . Arrays Loops arrays " indexed " numbers , " iterate " entire array 
+             code : grades = ... ;   % create array grades 
+
+               index assigned 1 length grades array 
+                 print grade " index "   grades(index ) 
+               end use symbolic variable " index " reference current value 
+             array concerned . Size Length size array ( known length ) number buckets 
+             array data .   time use symbolic " length " array coding .   seldom " hard 
+             code " actual number , 7 , length array .. Example : Matlab % 
+               % Sum values variabled named array_of_grades 
+               % 
+               total = 0 ; 
+
+               = 1 : length(array_of_grades )   % length function tells number values array ! ! ! 
+                 total = total + array_of_grades(i ) ; 
+               end C Code // 
+               // Sum values variabled named array_of_grades 
+               // 
+               float total = 0 ; 
+               float array_of_grades[100 ] ; 
+               int    length_of_array = 100 ;   // length function , " hard code " length 
+
+               ( int i=0 ; < length_of_array ; i++ ) 
+               { 
+                 total = total + array_of_grades[i ] ; 
+               } ActionScript // 
+               // Sum values variabled named array_of_grades 
+               // 
+               var   total   : float   = 0 ; 
+               var   grades : Array   = new Array(100 ) ; // 100 possible values array 
+
+               ( var : int=0 ; < grades.length ; i++ ) 
+               { 
+                 total = total + grades[i ] ; 
+               } , find " Size " array , use following 
+             syntax : Matlab length(name ) ;        % provides number characters string 
+             length(grade_list ) ; % provides number numbers array C Code // . create variable   track 
+             // size Java grade_list.length ( ) ;   // length list grades ActionScript grade_list.length ; Capacity capacity array values stored . 
+             languags like Matlab , number " expandable " ( grow 
+             larger ) .   languages like C , number " fixed " ( 
+             set immediately change ) . languages , number " hidden " 
+             internally computer efficiency purposes 
+             ( i.e. , preallocating large capacity , expand 
+             array data encountered ( waste 
+             space manner ) ) . purposes , length ( size ) array 
+             important . Topics List

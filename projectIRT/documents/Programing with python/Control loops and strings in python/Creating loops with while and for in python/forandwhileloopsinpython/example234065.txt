@@ -1,0 +1,90 @@
+loops Python - LogRocket Blog Advisory boards executives . Join LogRocket Content Advisory Board today → Blog Dev Product Management UX Design Podcast Features Solutions Solve User - Reported Issues Find Issues Faster Optimize Conversion Adoption Start Monitoring Free Sign 2021 - 10 - 28 1896 # python Hussain Arif 73297 Oct 28 , 2021 ⋅ 6 min read loops Python Hussain Arif Hussain CS student Pakistan biggest interest learning teaching programming world better place . Table contents loops List comprehension loops Loop control statements Introducing Galileo AI LogRocket Galileo AI watches session , surfacing impactful user struggle key behavior patterns . READ BLOG POST loops use ? Loops essential construct programming languages . loop structure , program checks condition . condition true , piece code run . code running condition invalid . example , look following block pseudo code : stomach_empty 
+   eat_food ( ) 
+ ENDIF 
+ //check stomach . 
+ stomach_empty 
+   eat_food ( ) 
+ ENDIF 
+ //check stomach , 
+ // .... , checking stomach_empty variable true . condition met , program execute eat_food method . Furthermore , notice typing code multiple times , means breaks DRY rule programming . mitigate problem , use loop structure like : stomach_empty //this code running stomach_empty true 
+   eat_food ( ) 
+ ENDWHILE code , statement . , loop analyzes stomach_empty Boolean true . condition satisfied , program keeps running eat_food function condition false . learn loops later article . summarize , developers use loops run piece code multiple times certain condition met . result , saves time promotes code readability . Types loops Python , kinds loop structures : : Iterate predefined number times . known definite iteration : iterating condition false . known indefinite iteration article , learn following concepts : loops Syntax Looping numbers Looping lists List comprehension Syntax Usage lists Usage numbers loops Syntax Looping numbers Looping lists Loop control statements break statement continue statement pass statement clause loops loop type loop runs preset number times . ability iterate items sequence , list string . Syntax < collection > : 
+   < loop body > , collection list objects . loop variable , , takes value element collection time loop . code loop body keeps running reaches end collection . Looping numbers demonstrate loops , let use numeric range loop : range(10 ):   # collection numbers 0 9 
+     print(i ) piece code , range function create collection numbers 0 9 . Later , print function log value loop variable , . result , output list numbers ranging 0 9 . range(<end > ) method returns iterable returns integers starting 0 , including < end > . use conditional statements loops like : range(10 ):   # numbers 0 - 9 
+     % 2 = = 0 :   # divsible 2 ? ( number ) 
+         print(i ) # print . block code output numbers ranging 0 9 . Looping lists use loop iterate lists : names = [ " Bill Gates " , " Steve Jobs " , " Mark Zuckerberg " ] # create list 
+ names :   # load list names iterate 
+     print(name ) snippet , created list called names . Later , command iterate names array logged contents list . snippet uses statement return names include letter ‘ B ’ : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " ]   # create list 
+ names :   # load list names iterate 
+     " B " :   # include ' B ' ? 
+         print(name ) List comprehension cases , want create new list based data existing list . example , look following code : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ] 
+ namesWithB = [ ] 
+ names : 
+     " B " : 
+         namesWithB.append(name ) # add element array . 
+ print(namesWithB ) code , command iterate names array checked element contains letter B . true , program appends corresponding element namesWithB list . 200k developers use LogRocket create better digital experiences Learn → power list comprehension , shrink block code large extent . Syntax newlist = [ < expression > < loop variable > < list > ( condition ) ] , expression piece code returns value , example , method . elements list appended newlist array loop variable fulfills condition . Usage lists Let rewrite code wrote earlier list comprehension : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ] 
+ namesWithB = [ names " B " ] 
+ print(namesWithB ) code , iterated names array . According condition , elements containing letter B added namesWithB list . Usage numbers use range method list comprehension like : numbers = [ range(10 ) ] 
+ print(numbers ) Notice case , conditional statement . means conditions optional . snippet code use condition list numbers 0 9 : loops loop , execute block code long condition true . Syntax < condition > : 
+   < loop body > loop , condition checked . true , code loop body executed . process repeat condition false . Looping numbers piece code prints integers 0 9 . n = 0 
+ n < 10 : # n 10 , 
+     print(n ) # print value n 
+     n + = 1 # happening example : initial value n 0 . program checks n 10 . true , loop body runs loop , printing value n . Later , incrementing 1 . body loop finished , program execution evaluates condition . true , body executes . continues n exceeds 10 . point , expression tested , false , loop halts . Looping lists use block iterate lists like : numbers = [ 0 , 5 , 10 , 6 , 3 ] 
+ length = len(numbers ) # length array . 
+ n = 0 
+ n < length : # loop condition 
+     print(numbers[n ] ) 
+     n + = 1 breakdown program : len function returns number elements present numbers array statement checks n length variable . true , program print items numbers list . end , incrementing n variable n exceeds length , loop halts Loop control statements loop control statements : break : Terminates loop specific condition met continue : Skips iteration loop specified condition met , continues iteration . difference continue break break keyword “ jump ” loop , continue “ jump ” cycle loop pass : want command code execute . use loops . 1 . break break statement useful want exit loop condition true . break keyword action : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ] 
+ names : 
+     = = " Mark Zuckerberg " :  
+         print("loop exit . " ) 
+         break   # end loop condition true . 
+     print(name ) 
+ print("Out loop " ) inferences code : program iterates names array cycle , Python checks current value Mark Zuckerberg condition satisfied , program tell user halted loop , condition false , program print value 2 . continue continue statement tells Python skip current iteration . example : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ]  
+ names : 
+     = = " Mark Zuckerberg " : 
+         print("Skipping iteration . " ) 
+         continue   # Skip iteration true . 
+     print(name ) 
+ print("Out loop " ) breakdown script : names array app encounters element value Mark Zuckerberg , use continue statement jump iteration , print value loop counter , 3 . pass Use pass statement want command run . words , pass allows perform “ null ” operation . crucial places code written . simple example pass keyword : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ] 
+ names : 
+     = = " Mark Zuckerberg " : 
+         print("Just passing ... " ) 
+         pass   # iteration 
+     print(name ) 
+ print("Out loop " ) output : 4 . clause Python allows append statements loops . code block executes loop terminates . syntax : # ' ' loops 
+ < collection > : 
+   < loop body > 
+ : 
+   < code block > # run loop halts . 
+ # ' ' loops 
+ < condition > : 
+   < loop body > 
+ : 
+   < code block > # run loop halts , think , “ code code block immediately loop ? Wo accomplish thing ? ” minor difference . , code block run loop terminates , matter . , statement , code block run loop terminates break keyword . example properly understand purpose : names = [ " Bill Gates " , " Billie Eilish " , " Mark Zuckerberg " , " Hussain " ] 
+ print("Else wo run . " ) 
+ names : 
+     = = " Mark Zuckerberg " : 
+         print("Loop halted break " ) 
+         break   # Halt loop 
+     print(name ) 
+ : # wo work ' break ' . 
+     print("Loop finished " ) 
+
+ print ( " \n statement run : " ) 
+ names : 
+     print(name ) 
+ : # work ' break ' statement 
+     print("second Loop finished " ) output : Conclusion article , learned use loop Python programming . , learned fundamentals list comprehension loop altering statements . crucial concepts help increasing Python skills . Thank reading ! set LogRocket modern error tracking minutes : Visit https://logrocket.com/signup/ 
+             app ID Install LogRocket npm script tag . LogRocket.init ( ) called client - , 
+             server - npm Script tag $ npm --save logrocket 
+
+ // Code : 
+
+ import LogRocket ' logrocket ' ; 
+ LogRocket.init('app / id ' ) ; // Add HTML : 
+
+ < script src="https://cdn.lr - ingest.com / LogRocket.min.js"></script > 
+ < script > window . LogRocket & & window . LogRocket.init('app / id');</script > ( Optional ) Install plugins deeper integrations stack : Redux middleware NgRx middleware Vuex plugin started Share : Click share Twitter ( Opens new window ) Click share Reddit ( Opens new window ) Click share LinkedIn ( Opens new window ) Click share Facebook ( Opens new window ) # python Hey , want help blog better ? Yea Thanks Join LogRocket Content Advisory Board . help inform type 
+             content create access exclusive meetups , social accreditation , 
+             swag . Sign Stop guessing digital experience LogRocket started free Recent posts : 6 hidden gems JavaScript API Explore underrated JavaScript APIs like ` structuredClone ` ` AbortController ` let build dynamic , performant , user - friendly apps . Rahul Padalkar Apr 28 , 2025 ⋅ 10 min read configure Next.js environmental variables Learn manage environment variables Next.js , influence application behaves different contexts environments . Joseph Mawa Apr 25 , 2025 ⋅ 9 min read useActionState React : practical guide examples Discover React useActionState Hook makes easier handle user actions , especially form submissions async state changes . Rishi Purwar Apr 25 , 2025 ⋅ 5 min read Three.js vs. Babylon.js : better 3D web development ? Compare libraries support creating 3D experiences browser . Learn started , core features , key differences . Elijah Asaolu Apr 24 , 2025 ⋅ 7 min read View posts Leave Reply Cancel reply Loading Comments ... Write Comment ... Email ( Required ) ( Required ) Website

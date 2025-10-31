@@ -1,0 +1,58 @@
+algorithm - traverse tree line ? ( python , tree traversal ) - Stack Overflow Skip main content Stack Overflow Products OverflowAI Stack Overflow Teams developers & technologists share private knowledge coworkers Advertising & Talent Reach devs & technologists worldwide product , service employer brand OverflowAI GenAI features Teams OverflowAPI Train & fine - tune LLMs Labs future collective knowledge sharing company Visit blog Loading … current community Stack Overflow help chat Meta Stack Overflow communities Sign log customize list . stack exchange communities company blog Log Sign Home Questions Tags Discussions Labs Chat Users Companies Collectives Communities favorite technologies . Explore Collectives Teams Ask questions , find answers collaborate work Stack Overflow Teams . Try Teams free Explore Teams Teams Ask questions , find answers collaborate work Stack Overflow Teams . Explore Teams Collectives ™ Stack Overflow Find centralized , trusted content collaborate technologies use . Learn Collectives Teams Q&A work Connect share knowledge single location structured easy search . Learn Teams traverse tree line ? ( python , tree traversal ) Ask Question Asked 4 years ago Modified 1 year , 4 months ago Viewed 818 times -1 binary tree , traverse line like ( inorder , preorder , postorder ok ): # Definition binary tree node . 
+ # class TreeNode : 
+ #      def _ _ init__(self , val=0 , left = , right = ): 
+ #          self.val = val 
+ #          self.left = left 
+ #          self.right = right 
+
+ # preorder traversal line : 
+
+ class Solution : 
+     def preorderTraversal(self , root ) - > List[int ] : 
+         return [ ] root [ r.val ] + self.preorderTraversal(r.left ) + self.preorderTraversal(r.right ) tree multi - child node , complete traversal work line ? 
+ think list comprehension possible method , complete work line . " " " 
+ # Definition Node . 
+ class Node : 
+     def _ _ init__(self , val = , children = ): 
+         self.val = val 
+         self.children = children 
+ " " " 
+ class Solution : 
+     def preorder(self , root : ' Node ' ) - > List[int ] : 
+         root : return [ ] 
+         ans = [ root.val ] 
+         [ ans.extend(x ) x [ self.preorder(child ) child root.children ] ] 
+         return ans 
+
+ # normal traversal : 
+ # class Solution : 
+ #      def preorder(self , root : ' Node ' ) - > List[int ] : 
+ #          root : return [ ] 
+ #          ans = [ root.val ] 
+ #          child root.children : 
+ #              ans + = self.preorder(child ) 
+ #          return ans python algorithm tree - traversal Share Improve question Follow edited Apr 25 , 2021 15:04 njulhy asked Apr 25 , 2021 14:59 njulhy njulhy 55 1 1 silver badge 4 4 bronze badges 1 Specifying result list somewhat restricting . – greybeard Commented Dec 10 , 2023 12:06 Add comment | 2 Answers 2 Sorted : Reset default Highest score ( default ) Trending ( recent votes count ) Date modified ( newest ) Date created ( oldest ) 1 Use list comprehension gather traversal root children , regardless children . class Solution : 
+     def preorderTraversal(self , root ) - > List[int ] : 
+         # Original hard - coded approach binary trees 
+         # return [ ] root [ r.val ] \ 
+         #    + self.preorderTraversal(root.left ) + self.preorderTraversal(root.right ) 
+
+         # Generalized approach binary trees 
+         # return [ ] root [ r.val ] \ 
+         #    + [ y child [ root.left , root.right ] y self.preorderTraversal(child ) ] 
+
+         # Generalized approach tree arbitrary children node 
+         return [ ] root ( [ root.val ] 
+           + [ y child root.children y self.preorderTraversal(child ) ] ) Share Improve answer Follow answered Apr 25 , 2021 15:25 chepner chepner 534k 77 77 gold badges 587 587 silver badges 738 738 bronze badges Add comment | 0 work like : class Solution : 
+     def preorder(self , root ): 
+         return [ ] root [ root.val ] + [ value 
+             child ( root.children [ ] ) 
+                 value self.preorder(child ) ] idea list comprehension replaces repeated append , extend . non - comprehension code , maps list comprehension version , : class Solution : 
+     def preorder(self , root ): 
+         root : 
+             return [ ] 
+         res = [ root.val ] 
+         child ( root.children [ ] ): 
+             value self.preorder(child ): 
+                 res.append(value ) 
+         return res Share Improve answer Follow edited Apr 25 , 2021 15:24 answered Apr 25 , 2021 15:17 trincot trincot 353k 37 37 gold badges 273 273 silver badges 328 328 bronze badges Add comment | Answer Thanks contributing answer Stack Overflow ! sure answer question . Provide details share research ! avoid … Asking help , clarification , responding answers . Making statements based opinion ; references personal experience . learn , tips writing great answers . Draft saved Draft discarded Sign log Sign Google Sign Email Password Submit Post guest Email Required , shown Post guest Email Required , shown Post Answer Discard clicking “ Post Answer ” , agree terms service acknowledge read privacy policy . Start asking answers Find answer question asking . Ask question Explore related questions python algorithm tree - traversal similar questions tags . Overflow Blog Grab bag ! floor HumanX self - supervised language revolutionized natural language processing ... Featured Meta Updates advertising guidelines Evolving comments : experiment encourage engagement follow - questions Policy : Generative AI ( e.g. , ChatGPT ) banned Learned Follow - Questions Linked 7 generators perform inorder tree traversal BST Related 3 Traversing unusual tree Python 5 Traversing binary tree Python 7 Python - Tree traversal question 5 Traversing non - binary tree 0 traversing tree 1 traverse tree ? 2 Traversing binary tree level order python 0 Tree traverse Python 4 solution tree traversal python 0 tree traversal ? Hot Network Questions executive orders controversial ? chief executive telling executive branch ? ROS2 Humble : Python service build reports success , _ * .py file generated ( ModuleNotFoundError ) ( In)significance spaces parsing Fortran IV Undeclined modifiers adjectival nouns infected attack ? Germany allow help introduce Deutsche Mark Montenegro ? rules ancient rabbis named ? normal phd supervisor raises new questions revise time reviewing manuscript ? reconcile old school tropes modern sensibilities ? rapid oxidation change reddish - brown black copper dust sanding copper plate dust small particle size / exposure ? owed money non - profit services rendered , unresponsive BRUH achievement Streetoir ? Difference ∃x(Sx & Px ) vs. ∃x(Sx → Px ) Questions Jean - Rayleigh derivation Ultraviolet Catastrophe purpose including " terrain permits , land immediately " engine fire checklist ? Locally free coherent module open disc Spoke tension question replace x^1 x^n model dodecahedron Rubick cube ? differentiate Chinese Translation " Specialized High Schools " " Special Education School " ? happened flight / aircraft ? Revising manuscript covered referee report style custom tikz family ? Slow SQL query nested subquery hot questions Question feed Subscribe RSS Question feed subscribe RSS feed , copy paste URL RSS reader . lang - py Stack Overflow Questions Help Chat Products Teams Advertising Talent Company Press Work Legal Privacy Policy Terms Service Contact Cookie Settings Cookie Policy Stack Exchange Network Technology Culture & recreation Life & arts Science Professional Business API Data Blog Facebook Twitter LinkedIn Instagram Site design / logo © 2025 Stack Exchange Inc ; user contributions licensed CC - SA . rev   2025.4.24.25623

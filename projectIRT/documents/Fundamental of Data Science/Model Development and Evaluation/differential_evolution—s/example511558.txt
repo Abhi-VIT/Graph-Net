@@ -1,0 +1,156 @@
+differential_evolution — SciPy v1.15.2 Manual Skip main content Ctrl + K SciPy Installing User Guide API reference Building source Development Release notes GitHub Twitter Installing User Guide API reference Building source Development Release notes GitHub Twitter Section Navigation scipy scipy.cluster scipy.constants scipy.datasets scipy.differentiate scipy.fft scipy.fftpack scipy.integrate scipy.interpolate scipy.io scipy.linalg scipy.ndimage scipy.odr scipy.optimize scipy.signal scipy.sparse scipy.spatial scipy.special scipy.stats SciPy API Optimization root finding ( scipy.optimize ) differential ... scipy.optimize . differential_evolution # scipy.optimize . differential_evolution ( func , bounds , args = ( ) , strategy = ' best1bin ' , maxiter = 1000 , popsize = 15 , tol = 0.01 , mutation = ( 0.5 , 1 ) , recombination = 0.7 , rng = , callback = , disp = False , polish = True , init = ' latinhypercube ' , atol = 0 , updating = ' immediate ' , workers = 1 , constraints = ( ) , x0 = , * , integrality = , vectorized = False ) [ source ] # Finds global minimum multivariate function . differential evolution method [ 1 ] stochastic nature . 
+ use gradient methods find minimum , search large areas 
+ candidate space , requires larger numbers function 
+ evaluations conventional gradient - based techniques . algorithm Storn Price [ 2 ] . Parameters : func callable objective function minimized . form f(x , * args ) , x argument form 1 - D array 
+ args tuple additional fixed parameters needed 
+ completely specify function . number parameters , N , equal 
+ len(x ) . bounds sequence Bounds Bounds variables . ways specify bounds : Instance Bounds class . ( min , max ) pairs element x , defining 
+ finite lower upper bounds optimizing argument func . total number bounds determine number 
+ parameters , N. parameters bounds equal total 
+ number free parameters N - N_equal . args tuple , optional additional fixed parameters needed 
+ completely specify objective function . strategy { str , callable } , optional differential evolution strategy use . : âbest1binâ âbest1expâ ârand1binâ ârand1expâ ârand2binâ ârand2expâ ârandtobest1binâ ârandtobest1expâ âcurrenttobest1binâ âcurrenttobest1expâ âbest2expâ âbest2binâ default âbest1binâ. Strategies implemented 
+ outlined âNotesâ. 
+ Alternatively differential evolution strategy customized 
+ providing callable constructs trial vector . callable 
+ form strategy(candidate : int , population : np.ndarray , rng = ) , 
+ candidate integer specifying entry 
+ population evolved , population array shape ( S , N ) containing population members ( S 
+ total population size ) , rng random number generator 
+ solver . candidate range [ 0 , S ) . strategy return trial vector shape ( N , ) . 
+ fitness trial vector compared fitness population[candidate ] . Changed version 1.12.0 : Customization evolution strategy callable . maxiter int , optional maximum number generations entire population 
+ evolved . maximum number function evaluations ( polishing ) 
+ : ( maxiter + 1 ) * popsize * ( N - N_equal ) popsize int , optional multiplier setting total population size . population popsize * ( N - N_equal ) individuals . keyword overridden 
+ initial population supplied init keyword . init='sobol ' population size calculated power 
+ 2 popsize * ( N - N_equal ) . tol float , optional Relative tolerance convergence , solving stops np.std(population_energies ) < = atol + tol * np.abs(np.mean(population_energies ) ) , 
+ atol tol absolute relative tolerance 
+ respectively . mutation float tuple(float , float ) , optional mutation constant . literature known 
+ differential weight , denoted \(F\ ) . 
+ specified float range [ 0 , 2 ) . 
+ specified tuple ( min , max ) dithering employed . Dithering 
+ randomly changes mutation constant generation generation 
+ basis . mutation constant generation taken U[min , max ) . Dithering help speed convergence significantly . 
+ Increasing mutation constant increases search radius , 
+ slow convergence . recombination float , optional recombination constant , range [ 0 , 1 ] . 
+ literature known crossover probability , 
+ denoted CR . Increasing value allows larger number mutants 
+ progress generation , risk population 
+ stability . rng { , int , numpy.random . Generator } , optional rng passed keyword , types numpy.random . Generator 
+ passed numpy.random.default_rng instantiate Generator . 
+ rng Generator instance , provided instance 
+ . Specify rng repeatable function behavior . argument passed position seed passed keyword , 
+ legacy behavior argument seed applies : seed ( numpy.random ) , numpy.random . RandomState singleton . seed int , new RandomState instance , 
+ seeded seed . seed Generator RandomState instance 
+ instance . Changed version 1.15.0 : SPEC-007 transition use numpy.random . RandomState numpy.random . Generator , keyword changed seed rng . 
+ interim period , keywords continue work , 
+ specified time . interim period , function calls seed keyword emit warnings . behavior seed rng outlined , rng keyword new code . disp bool , optional Prints evaluated func iteration . callback callable , optional callable called iteration . signature : callback ( intermediate_result : OptimizeResult ) intermediate_result keyword parameter containing OptimizeResult attributes x fun , best solution 
+ found far objective function . Note 
+ parameter intermediate_result callback 
+ passed OptimizeResult . callback supports signature like : callback ( x , convergence : float = val ) val represents fractional value population convergence . 
+ val greater 1.0 , function halts . Introspection determine signatures invoked . Global minimization halt callback raises StopIteration returns True ; polishing carried . Changed version 1.12.0 : callback accepts intermediate_result keyword . polish bool , optional True ( default ) , scipy.optimize.minimize L - BFGS - B method polish best population member end , 
+ improve minimization slightly . constrained problem 
+ studied trust - constr method instead . large 
+ problems constraints , polishing long time 
+ Jacobian computations . Changed version 1.15.0 : workers specified map - like callable wraps func supplied minimize instead func directly . allows caller control 
+ invocations actually run . init str array - like , optional Specify type population initialization performed . 
+ : âlatinhypercubeâ âsobolâ âhaltonâ ârandomâ array specifying initial population . array 
+ shape ( S , N ) , S total population size N 
+ number parameters . init clipped bounds use . default âlatinhypercubeâ. Latin Hypercube sampling tries 
+ maximize coverage available parameter space . âsobolâ âhaltonâ superior alternatives maximize 
+ parameter space . âsobolâ enforce initial population 
+ size calculated power 2 popsize * ( N - N_equal ) . âhaltonâ requirements bit 
+ efficient . scipy.stats.qmc details . ârandomâ initializes population randomly - drawback 
+ clustering occur , preventing parameter space 
+ covered . Use array specify population , 
+ example , create tight bunch initial guesses location 
+ solution known exist , reducing time 
+ convergence . atol float , optional Absolute tolerance convergence , solving stops np.std(pop ) < = atol + tol * np.abs(np.mean(population_energies ) ) , 
+ atol tol absolute relative tolerance 
+ respectively . updating { âimmediateâ , âdeferredâ } , optional ' immediate ' , best solution vector continuously updated 
+ single generation [ 4 ] . lead faster convergence 
+ trial vectors advantage continuous improvements best 
+ solution . 
+ ' deferred ' , best solution vector updated 
+ generation . ' deferred ' compatible parallelization 
+ vectorization , workers vectorized keywords 
+ - ride option . Added version 1.2.0 . workers int map - like callable , optional workers int population subdivided workers sections evaluated parallel 
+ ( uses multiprocessing . Pool ) . 
+ Supply -1 use available CPU cores . 
+ Alternatively supply map - like callable , multiprocessing.Pool.map evaluating population parallel . 
+ evaluation carried workers(func , iterable ) . 
+ option override updating keyword updating='deferred ' workers ! = 1 . 
+ option overrides vectorized keyword workers ! = 1 . 
+ Requires func pickleable . Added version 1.2.0 . constraints { NonLinearConstraint , LinearConstraint , Bounds } Constraints solver , applied bounds kwd . Uses approach Lampinen [ 5 ] . Added version 1.4.0 . x0 array - like , optional Provides initial guess minimization . population 
+ initialized vector replaces ( best ) member . 
+ replacement init given initial population . x0.shape = = ( N , ) . Added version 1.7.0 . integrality 1 - D array , optional decision variable , boolean value indicating 
+ decision variable constrained integer values . array 
+ broadcast ( N , ) . 
+ decision variables constrained integral , 
+ changed polishing . 
+ integer values lying lower upper bounds . 
+ integer values lying bounds ValueError raised . Added version 1.9.0 . vectorized bool , optional vectorized True , func sent x array x.shape = = ( N , S ) , expected return array shape ( S , ) , S number solution vectors calculated . 
+ constraints applied , functions construct 
+ Constraint object accept x array x.shape = = ( N , S ) , return array shape ( M , S ) , M number constraint components . 
+ option alternative parallelization offered workers , help optimization speed reducing interpreter 
+ overhead multiple function calls . keyword ignored workers ! = 1 . 
+ option override updating keyword updating='deferred ' . 
+ notes section discussion use ' vectorized ' , use ' workers ' . Added version 1.9.0 . Returns : res OptimizeResult optimization result represented OptimizeResult object . 
+ Important attributes : x solution array , success 
+ Boolean flag indicating optimizer exited successfully , message describes cause termination , population solution vectors present population , population_energies value objective function 
+ entry population . 
+ OptimizeResult description attributes . polish employed , lower minimum obtained polishing , 
+ OptimizeResult contains jac attribute . 
+ eventual solution satisfy applied constraints success False . Notes Differential evolution stochastic population based method 
+ useful global optimization problems . pass 
+ population algorithm mutates candidate solution mixing 
+ candidate solutions create trial candidate . 
+ strategies [ 3 ] creating trial candidates , suit problems 
+ . âbest1binâ strategy good starting point 
+ systems . strategy members population randomly 
+ chosen . difference mutate best member ( âbestâ 
+ âbest1binâ ) , \(x_0\ ) , far : \[b ' = x_0 + F \cdot ( x_{r_0 } - x_{r_1})\ ] \(F\ ) mutation parameter . 
+ trial vector constructed . Starting randomly chosen ith 
+ parameter trial sequentially filled ( modulo ) parameters 
+ b ' original candidate . choice use b ' original candidate binomial distribution ( âbinâ 
+ âbest1binâ ) - random number [ 0 , 1 ) generated . number 
+ recombination constant parameter loaded b ' , loaded original candidate . final 
+ parameter loaded b ' . trial candidate built 
+ fitness assessed . trial better original candidate 
+ takes place . better best overall 
+ candidate replaces . strategies available outlined Qiang 
+ Mitchell ( 2014 ) [ 3 ] . rand1 : \(b ' = x_{r_0 } + F \cdot ( x_{r_1 } - x_{r_2})\ ) rand2 : \(b ' = x_{r_0 } + F \cdot ( x_{r_1 } + x_{r_2 } - x_{r_3 } - x_{r_4})\ ) best1 : \(b ' = x_0 + F \cdot ( x_{r_0 } - x_{r_1})\ ) best2 : \(b ' = x_0 + F \cdot ( x_{r_0 } + x_{r_1 } - x_{r_2 } - x_{r_3})\ ) currenttobest1 : \(b ' = x_i + F \cdot ( x_0 - x_i + x_{r_0 } - x_{r_1})\ ) randtobest1 : \(b ' = x_{r_0 } + F \cdot ( x_0 - x_{r_0 } + x_{r_1 } - x_{r_2})\ ) integers \(r_0 , r_1 , r_2 , r_3 , r_4\ ) chosen randomly 
+ interval [ 0 , NP ) NP total population size 
+ original candidate having index . user fully customize 
+ generation trial candidates supplying callable strategy . improve chances finding global minimum use higher popsize values , higher mutation ( dithering ) , lower recombination values . effect widening search radius , slowing 
+ convergence . default best solution vector updated continuously single 
+ iteration ( updating='immediate ' ) . modification [ 4 ] 
+ original differential evolution algorithm lead faster 
+ convergence trial vectors immediately benefit improved 
+ solutions . use original Storn Price behaviour , updating best 
+ solution iteration , set updating='deferred ' . 
+ ' deferred ' approach compatible parallelization 
+ vectorization ( ' workers ' ' vectorized ' keywords ) . 
+ improve minimization speed computer resources efficiently . 
+ ' workers ' distribute calculations multiple processors . 
+ default Python multiprocessing module , approaches 
+ possible , Message Passing Interface ( MPI ) 
+ clusters [ 6 ] [ 7 ] . overhead approaches ( creating new 
+ Processes , etc ) significant , meaning computational speed 
+ doesnât necessarily scale number processors . 
+ Parallelization best suited computationally expensive objective 
+ functions . objective function expensive , ' vectorized ' aid calling objective function 
+ iteration , multiple times population members ; 
+ interpreter overhead reduced . Added version 0.15.0 . References [ 1 ] Differential evolution , Wikipedia , http://en.wikipedia.org/wiki/Differential_evolution [ 2 ] Storn , R Price , K , Differential Evolution - Simple 
+ Efficient Heuristic Global Optimization Continuous Spaces , 
+ Journal Global Optimization , 1997 , 11 , 341 - 359 . [ 3 ] ( 1 , 2 ) Qiang , J. , Mitchell , C. , Unified Differential Evolution Algorithm 
+ Global Optimization , 2014 , https://www.osti.gov/servlets/purl/1163659 [ 4 ] ( 1 , 2 ) Wormington , M. , Panaccione , C. , Matney , K. M. , Bowen , D. K. , - 
+ Characterization structures X - ray scattering data 
+ genetic algorithms , Phil . Trans . R. Soc . Lond . , 1999 , 357 , 
+ 2827 - 2848 [ 5 ] Lampinen , J. , constraint handling approach differential 
+ evolution algorithm . Proceedings 2002 Congress 
+ Evolutionary Computation . CECâ02 ( Cat . . 02TH8600 ) . Vol . 2 . IEEE , 
+ 2002 . [ 6 ] https://mpi4py.readthedocs.io/en/stable/ [ 7 ] https://schwimmbad.readthedocs.io/en/latest/ Examples Try browser ! Let consider problem minimizing Rosenbrock function . 
+ function implemented rosen scipy.optimize . > > > import numpy np > > > scipy.optimize import rosen , differential_evolution > > > bounds = [ ( 0 , 2 ) , ( 0 , 2 ) , ( 0 , 2 ) , ( 0 , 2 ) , ( 0 , 2 ) ] > > > result = differential_evolution ( rosen , bounds ) > > > result . x , result . fun ( array([1 . , 1 . , 1 . , 1 . , 1 . ] ) , 1.9216496320061384e-19 ) repeat , parallelization . > > > result = differential_evolution ( rosen , bounds , updating = ' deferred ' , ... workers = 2 ) > > > result . x , result . fun ( array([1 . , 1 . , 1 . , 1 . , 1 . ] ) , 1.9216496320061384e-19 ) Letâs constrained minimization . > > > scipy.optimize import LinearConstraint , Bounds add constraint sum x[0 ] x[1 ] 
+ equal 1.9 .   linear constraint , written @ x < = 1.9 , = array([[1 , 1 ] ] ) .   encoded 
+ LinearConstraint instance : > > > lc = LinearConstraint ( [ [ 1 , 1 ] ] , - np . inf , 1.9 ) Specify limits Bounds object . > > > bounds = Bounds ( [ 0 . , 0 . ] , [ 2 . , 2 . ] ) > > > result = differential_evolution ( rosen , bounds , constraints = lc , ... rng = 1 ) > > > result . x , result . fun ( array([0.96632622 , 0.93367155 ] ) , 0.0011352416852625719 ) find minimum Ackley function 
+ ( https://en.wikipedia.org/wiki/Test_functions_for_optimization ) . > > > def ackley ( x ): ... arg1 = - 0.2 * np . sqrt ( 0.5 * ( x [ 0 ] * * 2 + x [ 1 ] * * 2 ) ) ... arg2 = 0.5 * ( np . cos ( 2 . * np . pi * x [ 0 ] ) + np . cos ( 2 . * np . pi * x [ 1 ] ) ) ... return - 20 . * np . exp ( arg1 ) - np . exp ( arg2 ) + 20 . + np . e > > > bounds = [ ( - 5 , 5 ) , ( - 5 , 5 ) ] > > > result = differential_evolution ( ackley , bounds , rng = 1 ) > > > result . x , result . fun ( array([0 . , 0 . ] ) , 4.440892098500626e-16 ) Ackley function written vectorized manner , ' vectorized ' keyword employed . Note reduced number 
+ function evaluations . > > > result = differential_evolution ( ... ackley , bounds , vectorized = True , updating = ' deferred ' , rng = 1 ... ) > > > result . x , result . fun ( array([0 . , 0 . ] ) , 4.440892098500626e-16 ) following custom strategy function mimics âbest1binâ : > > > def custom_strategy_fn ( candidate , population , rng = ): ... parameter_count = population . shape ( - 1 ) ... mutation , recombination = 0.7 , 0.9 ... trial = np . copy ( population [ candidate ] ) ... fill_point = rng . choice ( parameter_count ) ... ... pool = np . arange ( len ( population ) ) ... rng . shuffle ( pool ) ... ... # unique random numbers , ... # equal candidate . ... idxs = [ ] ... len ( idxs ) < 2 len ( pool ) > 0 : ... idx = pool [ 0 ] ... pool = pool [ 1 :] ... idx ! = candidate : ... idxs . append ( idx ) ... ... r0 , r1 = idxs [: 2 ] ... ... bprime = ( population [ 0 ] + mutation * ... ( population [ r0 ] - population [ r1 ] ) ) ... ... crossovers = rng . uniform ( size = parameter_count ) ... crossovers = crossovers < recombination ... crossovers [ fill_point ] = True ... trial = np . ( crossovers , bprime , trial ) ... return trial Open Tab previous brute shgo page differential_evolution Â © Copyright 2008 - 2025 , SciPy community . Created Sphinx 7.3.7 . Built PyData Sphinx Theme 0.15.2 .

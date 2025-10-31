@@ -1,0 +1,897 @@
+Chapter 4 - Backtracking Tree Traversal Algorithms ( close ) Use link discount Automate Boring Stuff online video course . Support Patreon Prev : Chapter 3 - Classic Recursion Algorithms | : Chapter 5 - Divide - - Conquer Algorithms 4 Backtracking Tree Traversal Algorithms previous chapters , learned recursion especially suited problems involve tree - like structure backtracking , maze - solving algorithms . , consider tree trunk splits multiple branches . branches split branches . words , tree recursive , self - similar shape . maze represented tree data structure , mazes branch different paths , turn branch paths . reach dead end maze , backtrack earlier branching point . task traversing tree graphs tightly linked recursive algorithms , maze - solving algorithm chapter maze - generation program Chapter 11 . look tree traversal algorithms employ find certain names tree data structure . use tree traversal algorithm obtain deepest node tree . Finally , mazes represented tree data structure , employ tree traversal backtracking find path start maze exit . Tree Traversal program Python JavaScript , working list , array , dictionary data structures . encounter tree data structures dealing low - level details certain computer science algorithms abstract syntax trees , priority queues , Adelson - Velsky - Landis ( AVL ) trees , concepts scope book . , trees simple concepts . tree data structure data structure composed nodes connected nodes edges . nodes contain data , edges represent relationship node . Nodes called vertices . starting node tree called root , nodes end called leaves . Trees exactly root . Parent nodes edges zero child nodes beneath . , leaves nodes children , parent nodes non - leaf nodes , child nodes non - root nodes . Nodes tree edges multiple child nodes . parent nodes connect child node root node called child node ancestors . child nodes parent node leaf node called parent node descendants . Parent nodes tree multiple child nodes . child node exactly parent , root node , zero parents . trees , path exist nodes . Figure 4 - 1 shows example tree examples structures trees . Figure 4 - 1 : tree ( left ) examples non - trees , child nodes parent edge creates loop , structure longer considered tree . recursive algorithms cover chapter apply tree data structures . Tree Data Structure Python JavaScript Tree data structures drawn growing downward , root . Figure 4 - 2 shows tree created following Python code ( valid JavaScript code ): root   = { ' data ' : ' ' , ' children ' : [ ] } 
+
+ node2 = { ' data ' : ' B ' , ' children ' : [ ] } 
+
+ node3 = { ' data ' : ' C ' , ' children ' : [ ] } 
+
+ node4 = { ' data ' : ' D ' , ' children ' : [ ] } 
+
+ node5 = { ' data ' : ' E ' , ' children ' : [ ] } 
+
+ node6 = { ' data ' : ' F ' , ' children ' : [ ] } 
+
+ node7 = { ' data ' : ' G ' , ' children ' : [ ] } 
+
+ node8 = { ' data ' : ' H ' , ' children ' : [ ] } 
+
+ root['children ' ] = [ node2 , node3 ] 
+
+ node2['children ' ] = [ node4 ] 
+
+ node3['children ' ] = [ node5 , node6 ] 
+
+ node5['children ' ] = [ node7 , node8 ] Figure 4 - 2 : tree root leaves D , G , H , F , traversal orders node tree contains piece data ( string letter H ) list child nodes . preorder , postorder , inorder information Figure 4 - 2 explained subsequent sections . code tree , node represented Python dictionary ( JavaScript object ) key data stores node data , key children list nodes . use root node2 node8 variables store node code readable , required . following Python / JavaScript code equivalent previous code listing , harder humans read : root = { ' data ' : ' ' , ' children ' : [ { ' data ' : ' B ' , ' children ' : 
+
+ [ { ' data ' : ' D ' , ' children ' : [ ] } ] } , { ' data ' : ' C ' , ' children ' : 
+
+ [ { ' data ' : ' E ' , ' children ' : [ { ' data ' : ' G ' , ' children ' : [ ] } , 
+
+ { ' data ' : ' H ' , ' children ' : [ ] } ] } , { ' data ' : ' F ' , ' children ' : [ ] } ] } ] } tree Figure 4 - 2 specific kind data structure called directed acyclic graph ( DAG ) . mathematics computer science , graph collection nodes edges , tree kind graph . graph directed edges direction : parent child node . Edges DAG undirected — , bidirectional . ( Graphs general restriction edges directions , including child node parent node . ) graph acyclic loops , cycles , child nodes ancestor nodes ; “ branches ” tree growing direction . think lists , arrays , strings linear trees ; root element , nodes child node . linear tree terminates leaf node . linear trees called linked lists , node “ ” node end list . Figure 4 - 3 shows linked list stores characters word HELLO . Figure 4 - 3 : linked list data structure storing HELLO . Linked lists considered kind tree data structure . use code tree Figure 4 - 2 chapter examples . tree traversal algorithm visit nodes tree following edges , starting root node . Traversing Tree write code access data node starting root node root . example , entering tree code Python JavaScript interactive shell , run following : > > > root['children'][1]['data ' ] ' C ' 
+
+ > > > root['children'][1]['children'][0]['data ' ] ' E ' tree traversal code written recursive function tree data structures self - similar structure : parent node child nodes , child node parent node children . Tree traversal algorithms ensure programs access modify data node tree matter shape size . Let ask questions recursive algorithms tree traversal code : base case ? leaf node , children requires recursive calls , causing algorithm backtrack previous parent node . argument passed recursive function ? node traverse , child nodes nodes traverse . argument closer base case ? cycles DAG , following descendant nodes eventually reach leaf node . mind tree data structures especially deep cause stack overflow algorithm traverses deeper nodes . happens level deeper tree requires function , function calls returning cause stack overflows . , unlikely broad , - balanced trees deep . node 1,000 level deep tree children , tree 2 1000 nodes . atoms universe , unlikely tree data structure big . Trees kinds tree traversal algorithms : preorder , postorder , inorder . discuss sections . Preorder Tree Traversal Preorder tree traversal algorithms access node data traversing child nodes . Use preorder traversal algorithm needs access data parent nodes data child nodes . example , preorder traversals creating copy tree data structure , need create parent nodes child nodes duplicate tree . following preorderTraversal.py program preorderTraverse ( ) function accesses node data print screen , traversing child node : Python root = { ' data ' : ' ' , ' children ' : [ { ' data ' : ' B ' , ' children ' : 
+
+ [ { ' data ' : ' D ' , ' children ' : [ ] } ] } , { ' data ' : ' C ' , ' children ' : 
+
+ [ { ' data ' : ' E ' , ' children ' : [ { ' data ' : ' G ' , ' children ' : [ ] } , 
+
+ { ' data ' : ' H ' , ' children ' : [ ] } ] } , { ' data ' : ' F ' , ' children ' : [ ] } ] } ] } 
+
+
+
+ def preorderTraverse(node ): 
+
+     print(node['data ' ] , end= ' ' ) # Access node data . ❶ len(node['children ' ] ) > 0 : 
+
+         # RECURSIVE CASE 
+
+         child node['children ' ] : 
+
+             preorderTraverse(child ) # Traverse child nodes . 
+
+     # BASE CASE ❷ return 
+
+
+
+ preorderTraverse(root ) equivalent JavaScript program preorderTraversal.html : JavaScript < script type="text / javascript " > 
+
+ root = { " data " : " " , " children " : [ { " data " : " B " , " children " : 
+
+ [ { " data " : " D " , " children " : [ ] } ] } , { " data " : " C " , " children " : 
+
+ [ { " data " : " E " , " children " : [ { " data " : " G " , " children " : [ ] } , 
+
+ { " data " : " H " , " children " : [ ] } ] } , { " data " : " F " , " children " : [ ] } ] } ] } ; 
+
+
+
+ function preorderTraverse(node ) { 
+
+     document.write(node["data " ] + " " ) ; // Access node data . ❶ ( node["children"].length > 0 ) { 
+
+         // RECURSIVE CASE 
+
+         ( let = 0 ; < node["children"].length ; i++ ) { preorderTraverse(node["children"][i ] ) ; // Traverse child nodes . 
+
+         } 
+
+     } 
+
+     // BASE CASE ❷ return ; 
+
+ } 
+
+
+
+ preorderTraverse(root ) ; 
+
+ < /script > output programs node data preorder order : B D C E G H F look tree Figure 4 - 1 , notice preorder traversal order displays data left nodes right nodes , nodes nodes . tree traversals begin passing root node recursive function . function makes recursive passes root node children argument . child nodes children , traversal continues leaf node children reached . point , function simply returns . recursive case occurs node child nodes ❶ , case recursive children node argument . node children , base case happens end function returns ❷ . Postorder Tree Traversal Postorder tree traversal traverses node child nodes accessing node data . example , traversal deleting tree ensuring child nodes “ orphaned ” deleting parent nodes , leaving child node inaccessible root node . code following postorderTraversal.py program similar preorder traversal code previous section , recursive function comes print ( ) : Python root = { ' data ' : ' ' , ' children ' : [ { ' data ' : ' B ' , ' children ' : 
+
+ [ { ' data ' : ' D ' , ' children ' : [ ] } ] } , { ' data ' : ' C ' , ' children ' : 
+
+ [ { ' data ' : ' E ' , ' children ' : [ { ' data ' : ' G ' , ' children ' : [ ] } , 
+
+ { ' data ' : ' H ' , ' children ' : [ ] } ] } , { ' data ' : ' F ' , ' children ' : [ ] } ] } ] } 
+
+
+
+ def postorderTraverse(node ): 
+
+     child node['children ' ] : 
+
+         # RECURSIVE CASE 
+
+         postorderTraverse(child ) # Traverse child nodes . 
+
+     print(node['data ' ] , end= ' ' ) # Access node data . 
+
+     # BASE CASE 
+
+     return 
+
+
+
+ postorderTraverse(root ) postorderTraversal.html program equivalent JavaScript code : JavaScript < script type="text / javascript " > 
+
+ root = { " data " : " " , " children " : [ { " data " : " B " , " children " : 
+
+ [ { " data " : " D " , " children " : [ ] } ] } , { " data " : " C " , " children " : 
+
+ [ { " data " : " E " , " children " : [ { " data " : " G " , " children " : [ ] } , 
+
+ { " data " : " H " , " children " : [ ] } ] } , { " data " : " F " , " children " : [ ] } ] } ] } ; 
+
+
+
+ function postorderTraverse(node ) { 
+
+     ( let = 0 ; < node["children"].length ; i++ ) { 
+
+         // RECURSIVE CASE 
+
+         postorderTraverse(node["children"][i ] ) ; // Traverse child nodes . 
+
+     } 
+
+     document.write(node["data " ] + " " ) ; // Access node data . 
+
+     // BASE CASE 
+
+     return ; 
+
+ } 
+
+
+
+ postorderTraverse(root ) ; 
+
+ < /script > output programs node data postorder order : D B G H E F C postorder traversal order nodes displays data left nodes right nodes , nodes nodes . compare postorderTraverse ( ) preorderTraverse ( ) functions , find names bit misnomer : pre post refer order nodes visited . nodes traversed order ; child nodes ( called depth - search ) opposed visiting nodes level going deeper ( called breadth - search ) . pre post refer node data accessed : traversing node children . Inorder Tree Traversal Binary trees tree data structures child nodes , called left child right child . inorder tree traversal traverses left child node , accesses node data , traverses right child node . traversal algorithms deal binary search trees ( scope book ) . inorderTraversal.py program contains Python code performs kind traversal : Python root = { ' data ' : ' ' , ' children ' : [ { ' data ' : ' B ' , ' children ' : 
+
+ [ { ' data ' : ' D ' , ' children ' : [ ] } ] } , { ' data ' : ' C ' , ' children ' : 
+
+ [ { ' data ' : ' E ' , ' children ' : [ { ' data ' : ' G ' , ' children ' : [ ] } , 
+
+ { ' data ' : ' H ' , ' children ' : [ ] } ] } , { ' data ' : ' F ' , ' children ' : [ ] } ] } ] } 
+
+
+
+ def inorderTraverse(node ): 
+
+     len(node['children ' ] ) > = 1 : 
+
+         # RECURSIVE CASE inorderTraverse(node['children'][0 ] ) # Traverse left child . 
+
+     print(node['data ' ] , end= ' ' ) # Access node data . 
+
+     len(node['children ' ] ) > = 2 : 
+
+         # RECURSIVE CASE 
+
+         inorderTraverse(node['children'][1 ] ) # Traverse right child . 
+
+     # BASE CASE 
+
+     return 
+
+
+
+ inorderTraverse(root ) inorderTraversal.html program contains equivalent JavaScript code : JavaScript < script type="text / javascript " > 
+
+ root = { " data " : " " , " children " : [ { " data " : " B " , " children " : 
+
+ [ { " data " : " D " , " children " : [ ] } ] } , { " data " : " C " , " children " : 
+
+ [ { " data " : " E " , " children " : [ { " data " : " G " , " children " : [ ] } , 
+
+ { " data " : " H " , " children " : [ ] } ] } , { " data " : " F " , " children " : [ ] } ] } ] } ; 
+
+
+
+ function inorderTraverse(node ) { 
+
+     ( node["children"].length > = 1 ) { 
+
+         // RECURSIVE CASE 
+
+         inorderTraverse(node["children"][0 ] ) ; // Traverse left child . 
+
+     } 
+
+     document.write(node["data " ] + " " ) ; // Access node data . 
+
+     ( node["children"].length > = 2 ) { 
+
+         // RECURSIVE CASE 
+
+         inorderTraverse(node["children"][1 ] ) ; // Traverse right child . 
+
+     } 
+
+     // BASE CASE 
+
+     return ; 
+
+ } 
+
+
+
+ inorderTraverse(root ) ; 
+
+ < /script > output programs looks like : D B G E H C F Inorder traversal typically refers traversal binary trees , processing node data traversing node traversing node count inorder traversal trees size . Finding - Letter Names Tree Instead printing data node traverse , use depth - search find specific data tree data structure . write algorithm searches tree Figure 4 - 4 names exactly letters long . contrived example , shows algorithm use tree traversal retrieve data tree data structure . Figure 4 - 4 : tree stores names depthFirstSearch.py depthFirstSearch.html programs Let ask questions recursive algorithms tree traversal code . answers similar answers tree traversal algorithms : base case ? leaf node causing algorithm backtrack , node containing - letter . argument passed recursive function ? node traverse , child nodes nodes traverse . argument closer base case ? cycles DAG , following descendant nodes eventually reach leaf node . depthFirstSearch.py program contains Python code performs depth - search preorder traversal : Python root = { ' ' : ' Alice ' , ' children ' : [ { ' ' : ' Bob ' , ' children ' : 
+
+ [ { ' ' : ' Darya ' , ' children ' : [ ] } ] } , { ' ' : ' Caroline ' , 
+
+ ' children ' : [ { ' ' : ' Eve ' , ' children ' : [ { ' ' : ' Gonzalo ' , 
+
+ ' children ' : [ ] } , { ' ' : ' Hadassah ' , ' children ' : [ ] } ] } , { ' ' : ' Fred ' , ' children ' : [ ] } ] } ] } 
+
+
+
+ def find8LetterName(node ): 
+
+     print ( ' Visiting node ' + node['name ' ] + ' ... ' ) 
+
+
+
+     # Preorder depth - search : 
+
+     print('Checking ' + node['name ' ] + ' 8 letters ... ' ) ❶ len(node['name ' ] ) = = 8 : return node['name ' ] # BASE CASE 
+
+
+
+     len(node['children ' ] ) > 0 : 
+
+         # RECURSIVE CASE 
+
+         child node['children ' ] : 
+
+             returnValue = find8LetterName(child ) 
+
+             returnValue ! = : 
+
+                 return returnValue # Postorder depth - search : 
+
+     # print('Checking ' + node['name ' ] + ' 8 letters ... ' ) ❷ # len(node['name ' ] ) = = 8 : return node['name ' ] # BASE CASE 
+
+
+
+     # Value found children . 
+
+     return # BASE CASE 
+
+
+
+ print('Found 8 - letter : ' + str(find8LetterName(root ) ) ) depthFirstSearch.html program contains equivalent JavaScript program : JavaScript < script type="text / javascript " > 
+
+ root = { ' ' : ' Alice ' , ' children ' : [ { ' ' : ' Bob ' , ' children ' : 
+
+ [ { ' ' : ' Darya ' , ' children ' : [ ] } ] } , { ' ' : ' Caroline ' , 
+
+ ' children ' : [ { ' ' : ' Eve ' , ' children ' : [ { ' ' : ' Gonzalo ' , 
+
+ ' children ' : [ ] } , { ' ' : ' Hadassah ' , ' children ' : [ ] } ] } , { ' ' : ' Fred ' , ' children ' : [ ] } ] } ] } ; 
+
+
+
+ function find8LetterName(node , value ) { 
+
+     document.write("Visiting node " + node.name + " ... < br / > " ) ; 
+
+
+
+     // Preorder depth - search : 
+
+     document.write("Checking " + node.name + " 8 letters ... <br / > " ) ; ❶ ( node.name.length = = = 8) return node.name ; // BASE CASE 
+
+
+
+     ( node.children.length > 0 ) { 
+
+         // RECURSIVE CASE 
+
+         ( let child node.children ) { 
+
+             let returnValue = find8LetterName(child ) ; 
+
+             ( returnValue ! = null ) { 
+
+                 return returnValue ; 
+
+             } 
+
+         } 
+
+     } 
+
+
+
+     // Postorder depth - search : 
+
+     document.write("Checking " + node.name + " 8 letters ... <br / > " ) ; ❷ //if ( node.name.length = = = 8) return node.name ; // BASE CASE 
+
+
+
+     // Value found children . 
+
+     return null ; // BASE CASE 
+
+ } 
+
+
+
+ document.write("Found 8 - letter : " + find8LetterName(root ) ) ; 
+
+ < /script > output programs looks like : Visiting node Alice ... 
+
+ Checking Alice 8 letters ... 
+
+ Visiting node Bob ... 
+
+ Checking Bob 8 letters ... 
+
+ Visiting node Darya ... Checking Darya 8 letters ... 
+
+ Visiting node Caroline ... 
+
+ Checking Caroline 8 letters ... 
+
+ Found 8 - letter : Caroline find8LetterName ( ) function operates way previous tree traversal functions , instead printing node data , function checks stored node returns - letter finds . change preorder traversal postorder traversal commenting earlier length comparison Checking line ❶ uncommenting later length comparison Checking line ❷ . change , - letter function finds Hadassah : Visiting node Alice ... 
+
+ Visiting node Bob ... 
+
+ Visiting node Darya ... 
+
+ Checking Darya 8 letters ... 
+
+ Checking Bob 8 letters ... 
+
+ Visiting node Caroline ... 
+
+ Visiting node Eve ... 
+
+ Visiting node Gonzalo ... 
+
+ Checking Gonzalo 8 letters ... 
+
+ Visiting node Hadassah ... 
+
+ Checking Hadassah 8 letters ... 
+
+ Found 8 - letter : Hadassah traversal orders correctly find - letter , changing order tree traversal alter behavior program . Getting Maximum Tree Depth algorithm determine deepest branch tree recursively asking child nodes deep . depth node number edges root node . root node depth 0 , immediate child root node depth 1 , . need information larger algorithm gather information general size tree data structure . function named getDepth ( ) node argument return depth deepest child node . leaf node ( base case ) simply returns 0 . example , given root node tree Figure 4 - 1 , getDepth ( ) pass root node ( node ) . return depth children , B C nodes , plus . function recursive getDepth ( ) find information . Eventually , node getDepth ( ) C , E . E calls getDepth ( ) children , G H , return 0 , getDepth ( ) called E returns 1 , making getDepth ( ) called C return 2 , making getDepth ( ) called ( root node ) return 3 . tree greatest depth levels . Let ask recursive algorithm questions getDepth ( ) function : base case ? leaf node children , nature depth level . argument passed recursive function ? node greatest depth want find . argument closer base case ? DAG cycles , following descendant nodes eventually reach leaf node . following getDepth.py program contains recursive getDepth ( ) function returns number levels contained deepest node tree : Python root = { ' data ' : ' ' , ' children ' : [ { ' data ' : ' B ' , ' children ' : 
+
+ [ { ' data ' : ' D ' , ' children ' : [ ] } ] } , { ' data ' : ' C ' , ' children ' : 
+
+ [ { ' data ' : ' E ' , ' children ' : [ { ' data ' : ' G ' , ' children ' : [ ] } , 
+
+ { ' data ' : ' H ' , ' children ' : [ ] } ] } , { ' data ' : ' F ' , ' children ' : [ ] } ] } ] } 
+
+
+
+ def getDepth(node ): 
+
+     len(node['children ' ] ) = = 0 : 
+
+         # BASE CASE 
+
+         return 0 
+
+     : 
+
+         # RECURSIVE CASE 
+
+         maxChildDepth = 0 
+
+         child node['children ' ] : 
+
+             # Find depth child node : 
+
+             childDepth = getDepth(child ) 
+
+             childDepth > maxChildDepth : 
+
+                 # child deepest child node found far : 
+
+                 maxChildDepth = childDepth 
+
+         return maxChildDepth + 1 
+
+
+
+ print('Depth tree ' + str(getDepth(root ) ) ) getDepth.html program contains JavaScript equivalent : JavaScript < script type="text / javascript " > 
+
+ root = { " data " : " " , " children " : [ { " data " : " B " , " children " : 
+
+ [ { " data " : " D " , " children " : [ ] } ] } , { " data " : " C " , " children " : 
+
+ [ { " data " : " E " , " children " : [ { " data " : " G " , " children " : [ ] } , 
+
+ { " data " : " H " , " children " : [ ] } ] } , { " data " : " F " , " children " : [ ] } ] } ] } ; 
+
+
+
+ function getDepth(node ) { 
+
+     ( node.children.length = = = 0 ) { 
+
+         // BASE CASE 
+
+         return 0 ; 
+
+     } { 
+
+         // RECURSIVE CASE 
+
+         let maxChildDepth = 0 ; 
+
+         ( let child node.children ) { 
+
+             // Find depth child node : let childDepth = getDepth(child ) ; 
+
+             ( childDepth > maxChildDepth ) { 
+
+                 // child deepest child node found far : 
+
+                 maxChildDepth = childDepth ; 
+
+             } 
+
+         } 
+
+         return maxChildDepth + 1 ; 
+
+     } 
+
+ } 
+
+
+
+ document.write("Depth tree " + getDepth(root ) + " < br / > " ) ; 
+
+ < /script > output programs follows : Depth tree 3 matches Figure 4 - 2 : number levels root node lowest nodes G H levels . Solving Mazes mazes come shapes sizes , simply connected mazes , called perfect mazes , contain loops . perfect maze exactly path points , start exit . mazes represented DAG . example , Figure 4 - 5 shows maze maze program solves , Figure 4 - 6 shows DAG form . capital S marks start maze , capital E marks exit . intersections marked lowercase letters maze correspond nodes DAG . Figure 4 - 5 : maze solved maze program chapter . intersections lowercase letters correspond nodes Figure 4 - 6 . Figure 4 - 6 : DAG representation maze , nodes represent intersections , edges represent north , south , east , west path intersection . nodes lowercase letters correspond intersections Figure 4 - 5 . similarity structure , use tree traversal algorithm solve maze . nodes tree graph represent intersections maze solver choose north , south , east , west paths follow intersection . root node start maze , leaf nodes represent dead ends . recursive case occurs tree traversal algorithm moves node . tree traversal reaches leaf node ( dead end maze ) , algorithm reached base case backtrack earlier node follow different path . algorithm reaches exit node , path took root node represents maze solution . Let ask recursive algorithm questions maze - solving algorithm : base case ? Reaching dead end exit maze . argument passed recursive function ? x , y coordinates , maze data list visited x , y coordinates . argument closer base case ? Like flood fill algorithm , x , y coordinates moving neighboring coordinates eventually reach dead ends final exit . mazeSolver.py program contains Python code solving maze stored MAZE variable : Python # Create maze data structure : 
+
+ # copy - paste inventwithpython.com/examplemaze.txt 
+
+ MAZE = " " " 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # S #                  #        # #    #      #          #      #    #          # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # #    #      #      #      #    # # #    # #    # #        # # # #      # #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #      # # #      #    #    #    #          #        #    #    #    #    # # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #        # # # #      # #      # #    #    #    #      # # #    #          #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # # #    # # #    # # #      #      #    #    #    #    #    #      #          # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    # #    # #    # #      #    #      #        #    #      # #      #      #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #          #      #      #        #    # #    # #      #    # #    # #    # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #    #        # #      #    #    #      #        # # #      # # #    # #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #      #          #      #        #            #      #            # #       E # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ " " " .split('\n ' ) 
+
+
+
+ # Constants program : 
+
+ = ' ' 
+
+ START = ' 
+
+ EXIT = ' E ' PATH = ' . ' 
+
+
+
+ # height width maze : 
+
+ HEIGHT = len(MAZE ) 
+
+ WIDTH = 0 
+
+ row MAZE : # Set WIDTH widest row width . 
+
+     len(row ) > WIDTH : 
+
+         WIDTH = len(row ) 
+
+ # row maze list wide WIDTH : 
+
+ range(len(MAZE ) ): 
+
+     MAZE[i ] = list(MAZE[i ] ) 
+
+     len(MAZE[i ] ) ! = WIDTH : 
+
+         MAZE[i ] = [ ] * WIDTH # blank row . 
+
+
+
+ def printMaze(maze ): 
+
+     y range(HEIGHT ): 
+
+         # Print row . 
+
+         x range(WIDTH ): 
+
+             # Print column row . 
+
+             print(maze[y][x ] , end= '' ) 
+
+         print ( ) # Print newline end row . 
+
+     print ( ) 
+
+
+
+ def findStart(maze ): 
+
+     x range(WIDTH ): 
+
+         y range(HEIGHT ): 
+
+             maze[y][x ] = = START : 
+
+                 return ( x , y ) # Return starting coordinates . 
+
+
+
+ def solveMaze(maze , x = , y = , visited = ): 
+
+     x = = y = = : 
+
+         x , y = findStart(maze ) 
+
+         maze[y][x ] = # rid ' maze . 
+
+     visited = = : ❶ visited = [ ] # Create new list visited points . 
+
+
+
+     maze[y][x ] = = EXIT : 
+
+          return True # Found exit , return True . 
+
+
+
+     maze[y][x ] = PATH # Mark path maze . ❷ visited.append(str(x ) + ' , ' + str(y ) ) ❸ # printMaze(maze ) # Uncomment view forward step . 
+
+
+
+     # Explore north neighboring point : 
+
+     y + 1 < HEIGHT maze[y + 1][x ] ( , EXIT ) \ 
+
+     str(x ) + ' , ' + str(y + 1 ) visited : 
+
+         # RECURSIVE CASE 
+
+         solveMaze(maze , x , y + 1 , visited ): 
+
+             return True # BASE CASE 
+
+     # Explore south neighboring point : 
+
+     y - 1 > = 0 maze[y - 1][x ] ( , EXIT ) \ 
+
+     str(x ) + ' , ' + str(y - 1 ) visited : 
+
+         # RECURSIVE CASE 
+
+         solveMaze(maze , x , y - 1 , visited ): 
+
+             return True # BASE CASE # Explore east neighboring point : 
+
+     x + 1 < WIDTH maze[y][x + 1 ] ( , EXIT ) \ 
+
+     str(x + 1 ) + ' , ' + str(y ) visited : 
+
+         # RECURSIVE CASE 
+
+         solveMaze(maze , x + 1 , y , visited ): 
+
+             return True # BASE CASE 
+
+     # Explore west neighboring point : 
+
+     x - 1 > = 0 maze[y][x - 1 ] ( , EXIT ) \ 
+
+     str(x - 1 ) + ' , ' + str(y ) visited : 
+
+         # RECURSIVE CASE 
+
+         solveMaze(maze , x - 1 , y , visited ): 
+
+             return True # BASE CASE 
+
+
+
+     maze[y][x ] = # Reset space . ❹ # printMaze(maze ) # Uncomment view backtrack step . 
+
+
+
+     return False # BASE CASE 
+
+
+
+ printMaze(MAZE )   # Display original maze . 
+
+ solveMaze(MAZE ) 
+
+ printMaze(MAZE )   # Display solved maze . mazeSolver.html program contains JavaScript equivalent : JavaScript < script type="text / javascript " > 
+
+ // Create maze data structure : 
+
+ // copy - paste inventwithpython.com/examplemaze.txt 
+
+ let MAZE = ` 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # S #                  #        # #    #      #          #      #    #          # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # #    #      #      #      #    # # #    # #    # #        # # # #      # #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #      # # #      #    #    #    #          #        #    #    #    #    # # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #        # # # #      # #      # #    #    #    #      # # #    #          #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ # # #    # # #    # # #      #      #    #    #    #    #    #      #          # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    # #    # #    # #      #    #      #        #    #      # #      #      #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #          #      #      #        #    # #    # #      #    # #    # #    # # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #    #    #        # #      #    #    #      #        # # #      # # #    # #    # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ #      #          #      #        #            #      #            # #       E # 
+
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+ ` .split("\n " ) ; 
+
+
+
+ // Constants program : 
+
+ const = " " ; 
+
+ const START = " S " ; 
+
+ const EXIT = " E " ; 
+
+ const PATH = " . " ; // height width maze : 
+
+ const HEIGHT = MAZE.length ; 
+
+ let maxWidthSoFar = MAZE[0].length ; 
+
+ ( let row MAZE ) { // Set WIDTH widest row width . 
+
+     ( row.length > maxWidthSoFar ) { 
+
+         maxWidthSoFar = row.length ; 
+
+     } 
+
+ } 
+
+ const WIDTH = maxWidthSoFar ; 
+
+ // row maze list wide WIDTH : 
+
+ ( let = 0 ; < MAZE.length ; i++ ) { 
+
+     MAZE[i ] = MAZE[i].split ( " " ) ; 
+
+     ( MAZE[i].length ! = = WIDTH ) { 
+
+         MAZE[i ] = EMPTY.repeat(WIDTH).split ( " " ) ; // blank row . 
+
+     } 
+
+ } 
+
+
+
+ function printMaze(maze ) { 
+
+     document.write("<pre > " ) ; 
+
+     ( let y = 0 ; y < HEIGHT ; y++ ) { 
+
+         // Print row . 
+
+         ( let x = 0 ; x < WIDTH ; x++ ) { 
+
+             // Print column row . 
+
+             document.write(maze[y][x ] ) ; 
+
+         } 
+
+         document.write("\n " ) ; // Print newline end row . 
+
+     } 
+
+     document.write("\n</pre > " ) ; 
+
+ } 
+
+
+
+ function findStart(maze ) { 
+
+     ( let x = 0 ; x < WIDTH ; x++ ) { 
+
+         ( let y = 0 ; y < HEIGHT ; y++ ) { 
+
+             ( maze[y][x ] = = = START ) { 
+
+                 return [ x , y ] ; // Return starting coordinates . 
+
+             } 
+
+         } 
+
+     } 
+
+ } 
+
+
+
+ function solveMaze(maze , x , y , visited ) { 
+
+     ( x = = = undefined || y = = = undefined ) { 
+
+         [ x , y ] = findStart(maze ) ; 
+
+         maze[y][x ] = ; // rid ' maze . 
+
+     } 
+
+     ( visited = = = undefined ) { ❶ visited = [ ] ; // Create new list visited points . 
+
+     } 
+
+
+
+     ( maze[y][x ] = = EXIT ) { 
+
+          return true ; // Found exit , return true . 
+
+     } 
+
+
+
+     maze[y][x ] = PATH ; // Mark path maze . ❷ visited.push(String(x ) + " , " + String(y ) ) ; ❸ //printMaze(maze ) // Uncomment view forward step . 
+
+
+
+     // Explore north neighboring point : 
+
+     ( ( y + 1 < HEIGHT ) & & ( ( maze[y + 1][x ] = = ) || 
+
+     ( maze[y + 1][x ] = = EXIT ) ) & & 
+
+     ( visited.indexOf(String(x ) + " , " + String(y + 1 ) ) = = = -1 ) ) { 
+
+         // RECURSIVE CASE 
+
+         ( solveMaze(maze , x , y + 1 , visited ) ) { 
+
+             return true ; // BASE CASE 
+
+         } 
+
+     } 
+
+     // Explore south neighboring point : 
+
+     ( ( y - 1 > = 0 ) & & ( ( maze[y - 1][x ] = = ) || 
+
+     ( maze[y - 1][x ] = = EXIT ) ) & & 
+
+     ( visited.indexOf(String(x ) + " , " + String(y - 1 ) ) = = = -1 ) ) { 
+
+         // RECURSIVE CASE 
+
+         ( solveMaze(maze , x , y - 1 , visited ) ) { 
+
+             return true ; // BASE CASE 
+
+         } 
+
+     } 
+
+     // Explore east neighboring point : 
+
+     ( ( x + 1 < WIDTH ) & & ( ( maze[y][x + 1 ] = = ) || 
+
+     ( maze[y][x + 1 ] = = EXIT ) ) & & 
+
+     ( visited.indexOf(String(x + 1 ) + " , " + String(y ) ) = = = -1 ) ) { 
+
+         // RECURSIVE CASE 
+
+         ( solveMaze(maze , x + 1 , y , visited ) ) { 
+
+             return true ; // BASE CASE 
+
+         } 
+
+     } 
+
+     // Explore west neighboring point : 
+
+     ( ( x - 1 > = 0 ) & & ( ( maze[y][x - 1 ] = = ) || 
+
+     ( maze[y][x - 1 ] = = EXIT ) ) & & 
+
+     ( visited.indexOf(String(x - 1 ) + " , " + String(y ) ) = = = -1 ) ) { 
+
+         // RECURSIVE CASE 
+
+         ( solveMaze(maze , x - 1 , y , visited ) ) { 
+
+             return true ; // BASE CASE 
+
+         } 
+
+     } 
+
+
+
+     maze[y][x ] = ; // Reset space . ❹ //printMaze(maze ) ; // Uncomment view backtrack step . 
+
+     return false ; // BASE CASE 
+
+ } 
+
+
+
+ printMaze(MAZE ) ;   // Display original maze . 
+
+ solveMaze(MAZE ) ; 
+
+ printMaze(MAZE ) ;   // Display solved maze . 
+
+ < /script > lot code directly related recursive maze - solving algorithm . MAZE variable stores maze data multiline string hashtags represent walls , S starting point , E exit . string converted list contains lists strings , string representing single character maze . allows access MAZE[y][x ] ( note y comes ) character x , y coordinate original MAZE string . printMaze ( ) function accept list - - list data structure display maze screen . findStart ( ) function accepts data structure returns x , y coordinates S starting point . Feel free edit maze string — remember , order solving algorithm work , maze loops . recursive algorithm solveMaze ( ) function . arguments function maze data structure , current x- y - coordinates , visited list ( created supplied ) ❶ . visited list contains coordinates previously visited algorithm backtracks dead end earlier intersection , knows paths tried try different . path start exit marked replacing spaces ( matching constant ) maze data structure periods ( PATH constant ) . maze - solving algorithm similar flood fill program Chapter 3 “ spreads ” neighboring coordinates , reaches dead end , backtracks earlier intersection . solveMaze ( ) function receives x , y coordinates indicating algorithm current location maze . exit , function returns True , causing recursive calls return True . maze data structure remains marked solution path . , algorithm marks current x , y coordinates maze data structure period adds coordinates visited list ❷ . looks x , y coordinates north current coordinates point edge map , exit space , visited . conditions met , algorithm makes recursive solveMaze ( ) northern coordinates . conditions met recursive solveMaze ( ) returns False , algorithm continues check south , east , west coordinates . Like flood fill algorithm , recursive calls neighboring coordinates . Modifying List Array Place Python pass copy lists , JavaScript pass copy arrays , function calls . , pass reference list . , changes list array ( ones maze visited ) remain function returns . called modifying list place . recursive functions , think maze data structure collection visited coordinates single copy shared recursive function calls , unlike x y arguments . data structure MAZE modified solveMaze ( ) returns . better idea algorithm works , uncomment printMaze(MAZE ) calls ❸ ❹ inside solveMaze ( ) function . display maze data structure attempts new paths , reaches dead ends , backtracks , tries different paths . Summary chapter explored algorithms use tree data structures backtracking , features problem suitable solving recursive algorithms . covered tree data structures , composed nodes contain data edges relate nodes parent – child relationships . particular , examined specific kind tree called directed acyclic graph ( DAG ) recursive algorithms . recursive function analogous traversing child node tree , returning recursive function analogous backtracking previous parent node . recursion overused simple programming problems , matched problems involve tree - like structures backtracking . ideas tree - like structures , wrote algorithms traversing , searching , determining depth tree structures . showed simply connected maze tree - like structure , employed recursion backtracking solve maze . Reading far trees tree traversal brief description DAGs presented chapter . Wikipedia articles https://en.wikipedia.org/wiki/Tree_(data_structure ) https://en.wikipedia.org/wiki/Tree_traversal provide additional context concepts , computer science . Computerphile YouTube channel video titled “ Maze Solving ” https://youtu.be/rop0W4QDOUI discusses concepts . V. Anton Spraul , author Think Like Programmer ( Starch Press , 2012 ) , video maze solving titled “ Backtracking ” https://youtu.be/gBC_Fd8EE8A . freeCodeCamp organization ( https://freeCodeCamp.org ) video series backtracking algorithms https://youtu.be/A80YzvNwqXA . addition maze solving , recursive backtracker algorithm uses recursion generate mazes . find maze - generating algorithms https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker . Practice Questions Test comprehension answering following questions : nodes edges ? root leaf nodes ? tree traversal orders ? DAG stand ? cycle , DAGs cycles ? binary tree ? child nodes binary tree called ? parent node edge child node , child node edge parent node , graph considered DAG ? backtracking tree traversal algorithm ? following tree traversal problems , use Python / JavaScript code “ Tree Data Structure Python JavaScript ” Chapter 4 tree multiline MAZE string mazeSolver.py mazeSolver.html programs maze data . Answer questions recursive solutions recursive algorithms presented chapter : base case ? argument passed recursive function ? argument closer base case ? - create recursive algorithms chapter looking original code . Practice Projects practice , write function following tasks : Create reverse - inorder search , performs inorder traversal traverses right child node left child node . Create function , given root node argument , proceeds tree level deeper adding child node leaf node original tree . function need perform tree traversal , detect reached leaf node , add child node leaf node . sure add child node new leaf node , eventually cause stack overflow . Prev : Chapter 3 - Classic Recursion Algorithms | : Chapter 5 - Divide - - Conquer Algorithms

@@ -1,0 +1,51 @@
+Variables Types - Learn Python - Free Interactive Python Tutorial learnpython.org Home ( current ) Certify Languages Python Java HTML C C++ JavaScript TypeScript PHP Shell C # Perl Ruby Scala SQL العربية Български Čeština Dansk Deutsch Ελληνικά English Español Suomi Français עברית हिन्दी Magyar Bahasa Indonesia Italiano 日本語 한국어 Bahasa Melayu Nederlands Norsk Polski Português Română Русский Svenska ไทย Türkçe Українська Tiếng Việt 中文 Star Fork Python Java HTML C C++ JavaScript TypeScript PHP Shell C # Perl Ruby Scala SQL Welcome / Variables Types started learning Python DataCamp free Intro Python tutorial . Learn Data Science completing interactive coding challenges watching videos expert instructors . Start ! site generously supported DataCamp . DataCamp offers online interactive Python Tutorials Data Science . Join 11 million learners started learning Python data science today ! Good news ! save 25 % Datacamp annual subscription code LEARNPYTHON23ALE25 - Click redeem discount Variables Types Python completely object oriented , " statically typed " . need declare variables , declare type . variable Python object . tutorial basic types variables . Numbers Python supports types numbers - integers(whole numbers ) floating point numbers(decimals ) . ( supports complex numbers , explained tutorial ) . define integer , use following syntax : myint = 7 
+ print(myint ) define floating point number , use following notations : myfloat = 7.0 
+ print(myfloat ) 
+ myfloat = float(7 ) 
+ print(myfloat ) Strings Strings defined single quote double quotes . mystring = ' hello ' 
+ print(mystring ) 
+ mystring = " hello " 
+ print(mystring ) difference double quotes makes easy include apostrophes ( terminate string single quotes ) mystring = " worry apostrophes " 
+ print(mystring ) additional variations defining strings easier include things carriage returns , backslashes Unicode characters . scope tutorial , covered Python documentation . Simple operators executed numbers strings : = 1 
+ = 2 
+ = + 
+ print(three ) 
+
+ hello = " hello " 
+ world = " world " 
+ helloworld = hello + " " + world 
+ print(helloworld ) Assignments variable " simultaneously " line like , b = 3 , 4 
+ print(a , b ) Mixing operators numbers strings supported : # work ! 
+ = 1 
+ = 2 
+ hello = " hello " 
+
+ print(one + + hello ) Exercise target exercise create string , integer , floating point number . string named mystring contain word " hello " . floating point number named myfloat contain number 10.0 , integer named myint contain number 20 . # change code 
+ mystring = 
+ myfloat = 
+ myint = 
+
+ # testing code 
+ mystring = = " hello " : 
+     print("String : % s " % mystring ) 
+ isinstance(myfloat , float ) myfloat = = 10.0 : 
+     print("Float : % f " % myfloat ) 
+ isinstance(myint , int ) myint = = 20 : 
+     print("Integer : % d " % myint ) # change code 
+ mystring = " hello " 
+ myfloat = 10.0 
+ myint = 20 
+
+ # testing code 
+ mystring = = " hello " : 
+     print("String : % s " % mystring ) 
+ isinstance(myfloat , float ) myfloat = = 10.0 : 
+     print("Float : % f " % myfloat ) 
+ isinstance(myint , int ) myint = = 20 : 
+     print("Integer : % d " % myint ) test_object('mystring ' , incorrect_msg="Don't forget change ` mystring ` correct value exercise description . " ) 
+ test_object('myfloat ' , incorrect_msg="Don't forget change ` myfloat ` correct value exercise description . " ) 
+ test_object('myint ' , incorrect_msg="Don't forget change ` myint ` correct value exercise description . " ) 
+ test_output_contains("String : hello",no_output_msg= " sure string matches exactly exercise desciption . " ) 
+ test_output_contains("Float : 10.000000",no_output_msg= " sure float matches exactly exercise desciption . " ) 
+ test_output_contains("Integer : 20",no_output_msg= " sure integer matches exactly exercise desciption . " ) 
+ success_msg("Great job ! " ) site generously supported DataCamp . DataCamp offers online interactive Python Tutorials Data Science . Join million learners started learning Python data science today ! Previous Tutorial Tutorial Test Sponsors Chapters Hello , World ! Variables Types Lists Basic Operators String Formatting Basic String Operations Conditions Loops Functions Classes Objects Dictionaries Modules Packages Input Output Generators List Comprehensions Lambda functions Multiple Function Arguments Regular Expressions Exception Handling Sets Serialization Partial functions Code Introspection Closures Decorators Map , Filter , Reduce Parsing CSV Files DataCamp Copyright © learnpython.org . Read Terms Use Privacy Policy

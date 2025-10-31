@@ -1,0 +1,211 @@
+Python Linked Lists Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - DS Home Python - DS Introduction Python - DS Environment Python - Arrays Python - Lists Python - Tuples Python - Dictionary Python - 2 - D Array Python - Matrix Python - Sets Python - Maps Python - Linked Lists Python - Stack Python - Queue Python - Dequeue Python - Advanced Linked list Python - Hash Table Python - Binary Tree Python - Search Tree Python - Heaps Python - Graphs Python - Algorithm Design Python - Divide Conquer Python - Recursion Python - Backtracking Python - Sorting Algorithms Python - Searching Algorithms Python - Graph Algorithms Python - Algorithm Analysis Python - Big - O Notation Python - Algorithm Classes Python - Amortized Analysis Python - Algorithm Justifications Python - Quick Guide Python - Useful Resources Python - Discussion Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Linked Lists Previous Quiz linked list sequence data elements , connected links . data element contains connection data element form pointer . Python linked lists standard library . implement concept linked lists concept nodes discussed previous chapter . seen create node class traverse elements node . chapter going study types linked lists known singly linked lists . type data structure link data elements . create list create additional methods insert , update remove elements list . Creation Linked list linked list created node class studied chapter . create Node object create class use ode object . pass appropriate values node object point data elements . program creates linked list data elements . section traverse linked list . class Node : 
+    def _ _ init__(self , dataval = ): 
+       self.dataval = dataval 
+       self.nextval = 
+
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.headval = 
+
+ list1 = SLinkedList ( ) 
+ list1.headval = Node("Mon " ) 
+ e2 = Node("Tue " ) 
+ e3 = Node("Wed " ) 
+ # Link Node second node 
+ list1.headval.nextval = e2 
+
+ # Link second Node node 
+ e2.nextval = e3 Traversing Linked List Singly linked lists traversed forward direction starting form data element . simply print value data element assigning pointer node current data element . Example class Node : 
+    def _ _ init__(self , dataval = ): 
+       self.dataval = dataval 
+       self.nextval = 
+
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.headval = 
+
+    def listprint(self ): 
+       printval = self.headval 
+       printval : 
+          print ( printval.dataval ) 
+          printval = printval.nextval 
+
+ list = SLinkedList ( ) 
+ list.headval = Node("Mon " ) 
+ e2 = Node("Tue " ) 
+ e3 = Node("Wed " ) 
+
+ # Link Node second node 
+ list.headval.nextval = e2 
+
+ # Link second Node node 
+ e2.nextval = e3 
+
+ list.listprint ( ) Output code executed , produces following result − Mon 
+ Tue 
+ d Insertion Linked List Inserting element linked list involves reassigning pointers existing nodes newly inserted node . Depending new data element getting inserted beginning middle end linked list , scenarios . Inserting Beginning involves pointing pointer new data node current head linked list . current head linked list second data element new node head linked list . Example class Node : 
+    def _ _ init__(self , dataval = ): 
+       self.dataval = dataval 
+       self.nextval = 
+
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.headval = 
+ # Print linked list 
+    def listprint(self ): 
+       printval = self.headval 
+       printval : 
+          print ( printval.dataval ) 
+          printval = printval.nextval 
+    def AtBegining(self , newdata ): 
+       NewNode = Node(newdata ) 
+
+ # Update new nodes val existing node 
+    NewNode.nextval = self.headval 
+    self.headval = NewNode 
+
+ list = SLinkedList ( ) 
+ list.headval = Node("Mon " ) 
+ e2 = Node("Tue " ) 
+ e3 = Node("Wed " ) 
+
+ list.headval.nextval = e2 
+ e2.nextval = e3 
+
+ list . AtBegining("Sun " ) 
+ list.listprint ( ) Output code executed , produces following result − Sun 
+ Mon 
+ Tue 
+ d Inserting End involves pointing pointer current node linked list new data node . current node linked list second data node new node node linked list . Example class Node : 
+    def _ _ init__(self , dataval = ): 
+       self.dataval = dataval 
+       self.nextval = 
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.headval = 
+ # Function add newnode 
+    def AtEnd(self , newdata ): 
+       NewNode = Node(newdata ) 
+       self.headval : 
+          self.headval = NewNode 
+          return 
+       laste = self.headval 
+       while(laste.nextval ): 
+          laste = laste.nextval 
+       laste.nextval = NewNode 
+ # Print linked list 
+    def listprint(self ): 
+       printval = self.headval 
+       printval : 
+          print ( printval.dataval ) 
+          printval = printval.nextval 
+
+ list = SLinkedList ( ) 
+ list.headval = Node("Mon " ) 
+ e2 = Node("Tue " ) 
+ e3 = Node("Wed " ) 
+
+ list.headval.nextval = e2 
+ e2.nextval = e3 
+
+ list . AtEnd("Thu " ) 
+
+ list.listprint ( ) Output code executed , produces following result − Mon 
+ Tue 
+ d 
+ Thu Inserting Data Nodes involves changing pointer specific node point new node . possible passing new node existing node new node inserted . define additional class change pointer new node pointer middle node . assign new node pointer middle node . class Node : 
+    def _ _ init__(self , dataval = ): 
+       self.dataval = dataval 
+       self.nextval = 
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.headval = 
+
+ # Function add node 
+    def Inbetween(self , middle_node , newdata ): 
+       middle_node : 
+          print("The mentioned node absent " ) 
+          return 
+
+       NewNode = Node(newdata ) 
+       NewNode.nextval = middle_node.nextval 
+       middle_node.nextval = NewNode 
+
+ # Print linked list 
+    def listprint(self ): 
+       printval = self.headval 
+       printval : 
+          print ( printval.dataval ) 
+          printval = printval.nextval 
+
+ list = SLinkedList ( ) 
+ list.headval = Node("Mon " ) 
+ e2 = Node("Tue " ) 
+ e3 = Node("Thu " ) 
+
+ list.headval.nextval = e2 
+ e2.nextval = e3 
+
+ list . Inbetween(list.headval.nextval,"Fri " ) 
+
+ list.listprint ( ) Output code executed , produces following result − Mon 
+ Tue 
+ Fri 
+ Thu Removing Item remove existing node key node . program locate previous node node deleted . , point pointer node node node deleted . Example class Node : 
+    def _ _ init__(self , data = ): 
+       self.data = data 
+       self.next = 
+ class SLinkedList : 
+    def _ _ init__(self ): 
+       self.head = 
+
+    def Atbegining(self , data_in ): 
+       NewNode = Node(data_in ) 
+       NewNode.next = self.head 
+       self.head = NewNode 
+
+ # Function remove node 
+    def RemoveNode(self , Removekey ): 
+       HeadVal = self.head 
+         
+       ( HeadVal ): 
+          ( HeadVal.data = = Removekey ): 
+             self.head = HeadVal.next 
+             HeadVal = 
+             return 
+       ( HeadVal ): 
+          HeadVal.data = = Removekey : 
+             break 
+          prev = HeadVal 
+          HeadVal = HeadVal.next 
+
+       ( HeadVal = = ): 
+          return 
+
+       prev.next = HeadVal.next 
+       HeadVal = 
+
+    def LListprint(self ): 
+       printval = self.head 
+       ( printval ): 
+          print(printval.data ) , 
+          printval = printval.next 
+
+ llist = SLinkedList ( ) 
+ llist . Atbegining("Mon " ) 
+ llist . Atbegining("Tue " ) 
+ llist . Atbegining("Wed " ) 
+ llist . Atbegining("Thu " ) 
+ llist . RemoveNode("Tue " ) 
+ llist . LListprint ( ) Output code executed , produces following result − Thu 
+ d 
+ Mon Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

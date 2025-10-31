@@ -1,0 +1,246 @@
+Python Data Types Home Whiteboard AI Assistant Online Compilers Jobs Tools Articles Corporate Training Practice Chapters Categories AI , ML , Data Science Programming Languages Web Development Languages DevOps Databases Computer Science Subjects Python Technologies Software Testing Cyber Security Categories Artificial Intelligence Machine Learning ML Python Data Science Statistics NLP Neural Networks TensorFlow PyTorch Matplotlib NumPy Pandas SciPy Big Data Analytics Learn Python Learn Java Learn C++ Learn C Learn PHP Learn Learn Kotlin Learn R Learn ASP.Net Learn C#.Net Learn VB.Net Learn Scala Learn Swift Learn Perl Learn Ruby Learn Rust Learn Lua Learn HTML Learn CSS Learn JavaScript Learn jQuery ReactJs NodeJs Wordpress AngularJs Learn PHP Django Learn JSON Codeigniter TypeScript Learn Ajax Bootstrap Learn Sass AppML GIT AWS Docker Kubernetes Azure Gitlab Jira Gerrit Ansible Bugzilla Chef SaltStack OpenShift Puppet UNIX Linux Admin Ubuntu DBMS SQL PL / SQL MySQL TinyDB SQL Server MongoDB PostgreSQL SQLite Redis PHP MyAdmin MariaDB CouchDB DB2 Computer Fundamentals Operating System DBMS DSA Computer Networks Software Engineering Computer Graphics Data Mining Digital Marketing SEO Digital Circuits Discrete Mathematics Cryptography Cloud Computing Compiler Design Embedded Systems Microprocessors Python NumPy Pandas Matplotlib Django PyQt PyCharm Pillow OpenCV Seaborn ML Python SciPy Software Testing Jira Selenium TestRail Postman Cucumber Cypress Watir Agile jMeter Blockchain Information Security Computer Security Internet Security Network Security Wireless Security Library Courses Certifications Login SQL HTML CSS Javascript Python Java C C++ PHP Scala C # Tailwind CSS Node.js MySQL MongoDB PL / SQL Swift Bootstrap R Machine Learning Blockchain Angular React Native Computer Fundamentals Compiler Design Operating System Data Structure Algorithms Computer Network DBMS Excel Python - Home Python - Overview Python - History Python - Features Python vs C++ Python - Hello World Program Python - Application Areas Python - Interpreter Python - Environment Setup Python - Virtual Environment Python - Basic Syntax Python - Variables Python - Data Types Python - Type Casting Python - Unicode System Python - Literals Python - Operators Python - Arithmetic Operators Python - Comparison Operators Python - Assignment Operators Python - Logical Operators Python - Bitwise Operators Python - Membership Operators Python - Identity Operators Python - Operator Precedence Python - Comments Python - User Input Python - Numbers Python - Booleans Python - Control Flow Python - Decision Making Python - Statement Python - Python - Nested Python - Match - Case Statement Python - Loops Python - Loops Python - - Loops Python - Loops Python - break Statement Python - continue Statement Python - pass Statement Python - Nested Loops Python Functions & Modules Python - Functions Python - Default Arguments Python - Keyword Arguments Python - Keyword - Arguments Python - Positional Arguments Python - Positional - Arguments Python - Arbitrary Arguments Python - Variables Scope Python - Function Annotations Python - Modules Python - Built Functions Python Strings Python - Strings Python - Slicing Strings Python - Modify Strings Python - String Concatenation Python - String Formatting Python - Escape Characters Python - String Methods Python - String Exercises Python Lists Python - Lists Python - Access List Items Python - Change List Items Python - Add List Items Python - Remove List Items Python - Loop Lists Python - List Comprehension Python - Sort Lists Python - Copy Lists Python - Join Lists Python - List Methods Python - List Exercises Python Tuples Python - Tuples Python - Access Tuple Items Python - Update Tuples Python - Unpack Tuples Python - Loop Tuples Python - Join Tuples Python - Tuple Methods Python - Tuple Exercises Python Sets Python - Sets Python - Access Set Items Python - Add Set Items Python - Remove Set Items Python - Loop Sets Python - Join Sets Python - Copy Sets Python - Set Operators Python - Set Methods Python - Set Exercises Python Dictionaries Python - Dictionaries Python - Access Dictionary Items Python - Change Dictionary Items Python - Add Dictionary Items Python - Remove Dictionary Items Python - Dictionary View Objects Python - Loop Dictionaries Python - Copy Dictionaries Python - Nested Dictionaries Python - Dictionary Methods Python - Dictionary Exercises Python Arrays Python - Arrays Python - Access Array Items Python - Add Array Items Python - Remove Array Items Python - Loop Arrays Python - Copy Arrays Python - Reverse Arrays Python - Sort Arrays Python - Join Arrays Python - Array Methods Python - Array Exercises Python File Handling Python - File Handling Python - Write File Python - Read Files Python - Renaming Deleting Files Python - Directories Python - File Methods Python - OS File / Directory Methods Python - OS Path Methods Object Oriented Programming Python - OOPs Concepts Python - Classes & Objects Python - Class Attributes Python - Class Methods Python - Static Methods Python - Constructors Python - Access Modifiers Python - Inheritance Python - Polymorphism Python - Method Overriding Python - Method Overloading Python - Dynamic Binding Python - Dynamic Typing Python - Abstraction Python - Encapsulation Python - Interfaces Python - Packages Python - Inner Classes Python - Anonymous Class Objects Python - Singleton Class Python - Wrapper Classes Python - Enums Python - Reflection Python Errors & Exceptions Python - Syntax Errors Python - Exceptions Python - try - Block Python - try - finally Block Python - Raising Exceptions Python - Exception Chaining Python - Nested try Block Python - User - defined Exception Python - Logging Python - Assertions Python - Built - Exceptions Python Multithreading Python - Multithreading Python - Thread Life Cycle Python - Creating Thread Python - Starting Thread Python - Joining Threads Python - Naming Thread Python - Thread Scheduling Python - Thread Pools Python - Main Thread Python - Thread Priority Python - Daemon Threads Python - Synchronizing Threads Python Synchronization Python - Inter - thread Communication Python - Thread Deadlock Python - Interrupting Thread Python Networking Python - Networking Python - Socket Programming Python - URL Processing Python - Generics Python Libraries NumPy Tutorial Pandas Tutorial SciPy Tutorial Matplotlib Tutorial Django Tutorial OpenCV Tutorial Python Miscellenous Python - Date & Time Python - Maths Python - Iterators Python - Generators Python - Closures Python - Decorators Python - Recursion Python - Reg Expressions Python - PIP Python - Database Access Python - Weak References Python - Serialization Python - Templating Python - Output Formatting Python - Performance Measurement Python - Data Compression Python - CGI Programming Python - XML Processing Python - GUI Programming Python - Command - Line Arguments Python - Docstrings Python - JSON Python - Sending Email Python - Extensions Python - Tools / Utilities Python - GUIs Python Advanced Concepts Python - Abstract Base Classes Python - Custom Exceptions Python - Higher Order Functions Python - Object Internals Python - Memory Management Python - Metaclasses Python - Metaprogramming Metaclasses Python - Mocking Stubbing Python - Monkey Patching Python - Signal Handling Python - Type Hints Python - Automation Tutorial Python - Humanize Package Python - Context Managers Python - Coroutines Python - Descriptors Python - Diagnosing Fixing Memory Leaks Python - Immutable Data Structures Python Useful Resources Python - Questions & Answers Python - Interview Questions & Answers Python - Online Quiz Python - Quick Guide Python - Reference Python - Cheatsheet Python - Projects Python - Useful Resources Python - Discussion Python Compiler NumPy Compiler Matplotlib Compiler SciPy Compiler Selected Reading UPSC IAS Exams Notes Developer Best Practices Questions Answers Effective Resume Writing AI Based Resume Builder Personal AI Study Assistant Generate Coding Logic HR Interview Questions Computer Glossary Python - Data Types Previous Quiz Python Data Types Python data types actually classes , defined variables instances objects . Python dynamically typed , data type variable determined runtime based assigned value . general , data types define type variable . represents type data going store variable determines operations . programming language classification data items . datatypes , store different types data values . Types Data Types Python Python supports following built - data types − Numeric Data Types int flot complex String Data Types Sequence Data Types list tuple range Binary Data Types bytes bytearray memoryview Dictionary Data Type Set Data Type set frozenset Boolean Data Type Type 1 . Python Numeric Data Types Python numeric data types store numeric values . Number objects created assign value . example − var1 = 1        # int data type 
+ var2 = True     # bool data type 
+ var3 = 10.023   # float data type 
+ var4 = 10 + 3j    # complex data type Python supports different numerical types built - classes Python library , called int , bool , float complex respectively − int ( signed integers ) float ( floating point real values ) complex ( complex numbers ) complex number parts - real imaginary . separated ' + ' ' - ' signs . imaginary suffixed ' j ' imaginary number . square root -1 ( $ & bsol;sqrt{-1}$ ) , defined imaginary number . Complex number Python represented x+yj , x real , y imaginary . , 5 + 6j complex number . > > > type(5 + 6j ) 
+ < class ' complex ' > examples numbers − int float complex 10 0.0 3.14j 0O777 15.20 45.j -786 -21.9 9.322e-36j 080 32.3+e18 .876j 0x17 -90 . -.6545 + 0J -0x260 -32.54e100 3e+26J 0x69 70.2 - E12 4.53e-7j Example Numeric Data Types Following example usage Integer , Float Complex numbers : # integer variable . 
+ a=100 
+ print("The type variable having value " , , " " , type(a ) ) 
+
+ # float variable . 
+ c=20.345 
+ print("The type variable having value " , c , " " , type(c ) ) 
+
+ # complex variable . 
+ d=10 + 3j 
+ print("The type variable having value " , d , " " , type(d ) ) 2 . Python String Data Type Python string sequence Unicode characters , enclosed single , double triple quotation marks ( called inverted commas ) . Python strings immutable means perform operation strings , produce new string object type , mutating existing string . long sequence characters enclosed , single double triple quotes matter . , following string representations equivalent . > > > ' TutorialsPoint ' 
+ ' TutorialsPoint ' 
+ > > > " TutorialsPoint " 
+ ' TutorialsPoint ' 
+ > > > '' ' TutorialsPoint '' ' 
+ ' TutorialsPoint ' string Python object str class . verified type ( ) function . > > > type("Welcome TutorialsPoint " ) 
+ < class ' str ' > string non - numeric data type . Obviously , perform arithmetic operations . , operations slicing concatenation . Python str class defines number useful methods string processing . Subsets strings taken slice operator ( [ ] [ :] ) indexes starting 0 beginning string working way -1 end . plus ( + ) sign string concatenation operator asterisk ( * ) repetition operator Python . Example String Data Type str = ' Hello World ! ' 
+
+ print ( str )           # Prints complete string 
+ print ( str[0 ] )        # Prints character string 
+ print ( str[2:5 ] )      # Prints characters starting 3rd 5th 
+ print ( str[2 :] )       # Prints string starting 3rd character 
+ print ( str * 2 )       # Prints string times 
+ print ( str + " TEST " ) # Prints concatenated string produce following result − Hello World ! 
+ H 
+ llo 
+ llo World ! 
+ Hello World!Hello World ! 
+ Hello World!TEST 3 . Python Sequence Data Types Sequence collection data type . ordered collection items . Items sequence positional index starting 0 . conceptually similar array C C++ . following sequence data types defined Python . List Data Type Tuple Data Type Range Data Type Python sequences bounded iterable - iterable Python , means sequence data type ( example , list ) . ( ) Python List Data Type Python Lists versatile compound data types . Python list contains items separated commas enclosed square brackets ( [ ] ) . extent , Python lists similar arrays C. difference items belonging Python list different data type C array store elements related particular data type . > > > [ 2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 ] list Python object list class . check type ( ) function . > > > type([2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 ] ) 
+ < class ' list ' > mentioned , item list data type . means list object 
+ item list . case , nested list . > > > [ [ ' ' , ' ' , ' ' ] , [ 1,2,3 ] , [ 1.0 , 2.0 , 3.0 ] ] list items simple numbers , strings , tuple , dictionary , set object user defined class . values stored Python list accessed slice operator ( [ ] [ :] ) indexes starting 0 beginning list working way end -1 . plus ( + ) sign list concatenation operator , asterisk ( * ) repetition operator . Example List Data Type list = [ ' abcd ' , 786 , 2.23 , ' john ' , 70.2 ] 
+ tinylist = [ 123 , ' john ' ] 
+
+ print ( list )             # Prints complete list 
+ print ( list[0 ] )          # Prints element list 
+ print ( list[1:3 ] )        # Prints elements starting 2nd till 3rd 
+ print ( list[2 :] )         # Prints elements starting 3rd element 
+ print ( tinylist * 2 )     # Prints list times 
+ print ( list + tinylist ) # Prints concatenated lists produce following result − [ ' abcd ' , 786 , 2.23 , ' john ' , 70.2 ] 
+ abcd 
+ [ 786 , 2.23 ] 
+ [ 2.23 , ' john ' , 70.2 ] 
+ [ 123 , ' john ' , 123 , ' john ' ] 
+ [ ' abcd ' , 786 , 2.23 , ' john ' , 70.2 , 123 , ' john ' ] ( b ) Python Tuple Data Type Python tuple sequence data type similar list . Python tuple consists number values separated commas . Unlike lists , , tuples enclosed parentheses ( ... ) . tuple sequence , item tuple index referring position collection . index starts 0 . > > > ( 2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 ) Python , tuple object tuple class . check type ( ) function . > > > type((2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 ) ) 
+ < class ' tuple ' > case list , item tuple list , tuple object Python class . > > > ( [ ' ' , ' ' , ' ' ] , 1,2.0,3 , ( 1.0 , 2.0 , 3.0 ) ) form tuple , use parentheses optional . Data items separated comma enclosing symbols treated tuple default . > > > 2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 
+ ( 2023 , ' Python ' , 3.11 , ( 5 + 6j ) , 0.000123 ) Example Tuple data Type tuple = ( ' abcd ' , 786 , 2.23 , ' john ' , 70.2   ) 
+ tinytuple = ( 123 , ' john ' ) 
+
+ print ( tuple )                # Prints complete tuple 
+ print ( tuple[0 ] )             # Prints element tuple 
+ print ( tuple[1:3 ] )           # Prints elements tuple starting 2nd till 3rd 
+ print ( tuple[2 :] )            # Prints elements tuple starting 3rd element 
+ print ( tinytuple * 2 )        # Prints contents tuple twice 
+ print ( tuple + tinytuple )    # Prints concatenated tuples produce following result − ( ' abcd ' , 786 , 2.23 , ' john ' , 70.2 ) 
+ abcd 
+ ( 786 , 2.23 ) 
+ ( 2.23 , ' john ' , 70.2 ) 
+ ( 123 , ' john ' , 123 , ' john ' ) 
+ ( ' abcd ' , 786 , 2.23 , ' john ' , 70.2 , 123 , ' john ' ) main differences lists tuples : Lists enclosed brackets ( [ ] ) elements size changed i.e. lists mutable , tuples enclosed parentheses ( ( ) ) updated ( immutable ) . Tuples thought read - lists . following code invalid tuple , attempted update tuple , allowed . Similar case possible lists − tuple = ( ' abcd ' , 786 , 2.23 , ' john ' , 70.2   ) 
+ list = [ ' abcd ' , 786 , 2.23 , ' john ' , 70.2   ] 
+ tuple[2 ] = 1000     # Invalid syntax tuple 
+ list[2 ] = 1000      # Valid syntax list ( c ) Python Range Data Type Python range immutable sequence numbers typically iterate specific number items . represented Range class . constructor class accepts sequence numbers starting 0 increments 1 reaches specified number . Following syntax function − range(start , stop , step ) description parameters − start : Integer number specify starting position , ( optional , Default : 0 ) stop : Integer number specify ending position ( mandatory ) step : Integer number specify increment , ( optional , Default : 1 ) Example Range Data Type Following program uses loop print number 0 4 − range(5 ): 
+   print(i ) produce following result − 0 
+ 1 
+ 2 
+ 3 
+ 4 let modify program print number starting 2 instead 0 − range(2 , 5 ): 
+   print(i ) produce following result − 2 
+ 3 
+ 4 , let modify program print number starting 1 increment 2 instead 1 : range(1 , 5 , 2 ): 
+   print(i ) produce following result − 1 
+ 3 4 . Python Binary Data Types binary data type Python way represent data series binary digits , 0 1 . like special language computers understand store process information efficiently . type data commonly dealing things like files , images , represented possible values . , instead regular numbers letters , binary sequence data types use combination 0s 1s represent information . Python provides different ways represent binary data . follows − bytes bytearray memoryview Let discuss data types individually − ( ) Python Bytes Data Type byte data type Python represents sequence bytes . byte integer value 0 255 . commonly store binary data , images , files , network packets . create bytes Python built - bytes ( ) function prefixing sequence numbers b . Example Bytes Data Type following example , built - bytes ( ) function explicitly specify sequence numbers representing ASCII values − # bytes ( ) function create bytes 
+ b1 = bytes([65 , 66 , 67 , 68 , 69 ] )  
+ print(b1 ) result obtained follows − b'ABCDE ' , " b " prefix string automatically create bytes object − # prefix ' b ' create bytes 
+ b2 = b'Hello '  
+ print(b2 ) Following output code − b'Hello ' ( b ) Python Bytearray Data Type bytearray data type Python similar bytes data type , key difference : mutable , meaning modify values stored created . create bytearray methods , including passing iterable integers representing byte values , encoding string , converting existing bytes bytearray object . , use bytearray ( ) function . Example Bytearray Data Type example , creating bytearray passing iterable integers representing byte values − # Creating bytearray iterable integers 
+ value = bytearray([72 , 101 , 108 , 108 , 111 ] )  
+ print(value ) output obtained shown − bytearray(b'Hello ' ) , creating bytearray encoding string " UTF-8 " encoding − # Creating bytearray encoding string 
+ val = bytearray("Hello " , ' utf-8 ' )  
+ print(val ) result produced follows − bytearray(b'Hello ' ) ( c ) Python Memoryview Data Type Python , memoryview built - object provides view memory original object , generally objects support buffer protocol , byte arrays ( bytearray ) bytes ( bytes ) . allows access underlying data original object copying , providing efficient memory access large datasets . create memoryview methods . methods include memoryview ( ) constructor , slicing bytes bytearray objects , extracting array objects , built - functions like open ( ) reading files . Example Memoryview Data Type given example , creating memoryview object directly passing supported object memoryview ( ) constructor . supported objects generally include byte arrays ( bytearray ) , bytes ( bytes ) , objects support buffer protocol − data = bytearray(b'Hello , world ! ' ) 
+ view = memoryview(data ) 
+ print(view ) Following output code − < memory 0x00000186FFAA3580 > array object , create memoryview buffer interface shown − import array 
+ arr = array.array('i ' , [ 1 , 2 , 3 , 4 , 5 ] ) 
+ view = memoryview(arr ) 
+ print(view ) output obtained shown − < memory 0x0000017963CD3580 > create memoryview slicing bytes bytearray object − data = b'Hello , world ! ' 
+ # Creating view data 
+ view = memoryview(data[7 :] )  
+ print(view ) result obtained follows − < memory 0x00000200D9AA3580 > 5 . Python Dictionary Data Type Python dictionaries kind hash table type . dictionary key Python type , usually numbers strings . Values , hand , arbitrary Python object . Python dictionary like associative arrays hashes found Perl consist key : value pairs . pairs separated comma inside curly brackets { } . establish mapping key value , semicolon ' : ' symbol . > > > { 1:'one ' , 2:'two ' , 3:'three ' } Python , dictionary object built - dict class . check type ( ) function . > > > type({1:'one ' , 2:'two ' , 3:'three ' } ) 
+ < class ' dict ' > Dictionaries enclosed curly braces ( { } ) values assigned accessed square braces ( [ ] ) . Example Dictionary Data Type dict = { } 
+ dict['one ' ] = " " 
+ dict[2 ]      = " " 
+
+ tinydict = { ' ' : ' john','code':6734 , ' dept ' : ' sales ' } 
+
+
+ print ( dict['one ' ] )        # Prints value ' ' key 
+ print ( dict[2 ] )            # Prints value 2 key 
+ print ( tinydict )           # Prints complete dictionary 
+ print ( tinydict.keys ( ) )    # Prints keys 
+ print ( tinydict.values ( ) ) # Prints values produce following result − 
+ 
+ { ' dept ' : ' sales ' , ' code ' : 6734 , ' ' : ' john ' } 
+ [ ' dept ' , ' code ' , ' ' ] 
+ [ ' sales ' , 6734 , ' john ' ] Python dictionary sequence . collection items item ( key : value pair ) identified positional index string , list tuple . , slicing operation dictionary . Dictionary mutable object , possible perform add , modify delete actions corresponding functionality defined dict class . operations explained subsequent chapter . 6 . Python Set Data Type Set Python implementation set defined Mathematics . set Python collection , indexed ordered collection string , list tuple . object appear set , List Tuple , object appear . Comma separated items set inside curly brackets braces { } . Items set collection different data types . > > > { 2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 } 
+ { ( 5 + 6j ) , 3.11 , 0.000123 , ' Python ' , 2023 } Note items set collection follow order entered . position items optimized Python perform operations set defined mathematics . Python Set object built - set class , checked type ( ) function . > > > type({2023 , " Python " , 3.11 , 5 + 6j , 1.23E-4 } ) 
+ < class ' set ' > set store immutable objects number ( int , float , complex bool ) , string tuple . try list dictionary set collection , Python raises TypeError . > > > { [ ' ' , ' ' , ' ' ] , 1,2,3 , ( 1.0 , 2.0 , 3.0 ) } 
+ Traceback ( recent ): 
+    File " < stdin > " , line 1 , < module > 
+ TypeError : unhashable type : ' list ' Hashing mechanism computer science enables quicker searching objects computer memory . immutable objects hashable . set allow mutable items , set mutable . , add / delete / update operations permitted set object , methods built - set class . Python set operators perform set manipulation . methods operators explained chapters Example Set set1 = { 123 , 452 , 5 , 6 } 
+ set2 = { ' Java ' , ' Python ' , ' JavaScript ' } 
+
+ print(set1 ) 
+ print(set2 ) generate following output − { 123 , 452 , 5 , 6 } 
+ { ' Python ' , ' JavaScript ' , ' Java ' } 7 . Python Boolean Data Type Python boolean type built - data types represents values True False . Python bool ( ) function allows evaluate value expression returns True False based expression . Boolean number possible values , represented keywords , True False . correspond integer 1 0 respectively . > > > type ( True ) 
+ < class ' bool ' > 
+ > > > type(False ) 
+ < class ' bool ' > Example Boolean Data Type Following program prints value boolean variables b − = True 
+ # display value 
+ print(a ) 
+
+ # display data type 
+ print(type(a ) ) produce following result − true 
+ < class ' bool ' > Following program evaluates expressions prints return values − # Returns false equal b 
+ = 2 
+ b = 4 
+ print(bool(a==b ) ) 
+
+ # Following prints 
+ print(a==b ) 
+
+ # Returns False 
+ = 
+ print(bool(a ) ) 
+
+ # Returns false sequence 
+ = ( ) 
+ print(bool(a ) ) 
+
+ # Returns false 0 
+ = 0.0 
+ print(bool(a ) ) 
+
+ # Returns false 10 
+ = 10 
+ print(bool(a ) ) produce following result − False 
+ False 
+ False 
+ False 
+ False 
+ True 8 . Python Type Python type represented " nonetype . " object data type . nonetype represents null type values absence value . Example Type following example , assigning variable x printing type , nonetyoe − # Declaring variable 
+ # , assigning Null value ( ) 
+
+ x = 
+
+ # Printing value type 
+ print("x = " , x ) 
+ print("type x = " , type(x ) ) produce following result − x =   
+ type x =   < class ' NoneType ' > Getting Data Type data types Python , use type ( ) function . type ( ) built - function returns class given object . Example following example , getting type values variables − # Getting type values 
+ print(type(123 ) ) 
+ print(type(9.99 ) ) 
+
+ # Getting type variables 
+ = 10 
+ b = 2.12 
+ c = " Hello " 
+ d = ( 10 , 20 , 30 ) 
+ e = [ 10 , 20 , 30 ] 
+
+ print(type(a ) ) 
+ print(type(b ) ) 
+ print(type(c ) ) 
+ print(type(d ) ) 
+ print(type(e ) ) produce following result − < class ' int ' > 
+ < class ' float ' > 
+ < class ' int ' > 
+ < class ' float ' > 
+ < class ' str ' > 
+ < class ' tuple ' > 
+ < class ' list ' > Setting Data Type Python , declaring variable object , need set data types . Data type set automatically based assigned value . Example following example , demonstrating variable data type set based given value − # Declaring variable 
+ # , assigning integer value 
+
+ x = 10 
+
+ # Printing value type 
+ print("x = " , x ) 
+ print("type x = " , type(x ) ) 
+
+ # , assigning string value 
+ # variable 
+ x = " Hello World ! " 
+
+ # Printing value type 
+ print("x = " , x ) 
+ print("type x = " , type(x ) ) produce following result − x =   10 
+ type x =   < class ' int ' > 
+ x =   Hello World ! 
+ type x =   < class ' str ' > Primitive Non - primitive Data Types - explained data types categorized primitive non - primitive . 1 . Primitive Types primitive data types fundamental data types create complex data types ( called complex data structures ) . mainly primitive data types , − Integers Floats Booleans , Strings 2 . Non - primitive Types non - primitive data types store values collections values . mainly types non - primitive types , − Lists Tuples Dictionaries , Sets Python Data Type Conversion , need perform conversions built - data types . convert data different Python data types , simply use type function . Read : Python Type Casting Example Following example converts different values integer , floating point string values respectively − print("Conversion integer data type " ) 
+ = int(1 )      # 1 
+ b = int(2.2 )    # b 2 
+ c = int("3.3 " )    # c 3 
+
+ print ( ) 
+ print ( b ) 
+ print ( c ) 
+
+ print("Conversion floating point number " ) 
+ = float(1 )      # 1.0 
+ b = float(2.2 )    # b 2.2 
+ c = float("3.3 " ) # c 3.3 
+
+ print ( ) 
+ print ( b ) 
+ print ( c ) 
+
+ print("Conversion string " ) 
+ = str(1 )      # " 1 " 
+ b = str(2.2 )    # b " 2.2 " 
+ c = str("3.3 " ) # c " 3.3 " 
+
+ print ( ) 
+ print ( b ) 
+ print ( c ) produce following result − Conversion integer data type 
+ 1 
+ 2 
+ 3 
+ Conversion floating point number 
+ 1.0 
+ 2.2 
+ 3.3 
+ Conversion string 
+ 1 
+ 2.2 
+ 3.3 Data Type Conversion Functions built - functions perform conversion data type . functions return new object representing converted value . Sr . . Function & Description 1 Python int ( ) function Converts x integer . base specifies base x string . 2 Python long ( ) function Converts x long integer . base specifies base x string . function deprecated . 3 Python float ( ) function Converts x floating - point number . 4 Python complex ( ) function Creates complex number . 5 Python str ( ) function Converts object x string representation . 6 Python repr ( ) function Converts object x expression string . 7 Python eval ( ) function Evaluates string returns object . 8 Python tuple ( ) function Converts s tuple . 9 Python list ( ) function Converts s list . 10 Python set ( ) function Converts s set . 11 Python dict ( ) function Creates dictionary . d sequence ( key , value ) tuples . 12 Python frozenset ( ) function Converts s frozen set . 13 Python chr ( ) function Converts integer character . 14 Python unichr ( ) function Converts integer Unicode character . 15 Python ord ( ) function Converts single character integer value . 16 Python hex ( ) function Converts integer hexadecimal string . 17 Python oct ( ) function Converts integer octal string . Print Page Previous Advertisements TUTORIALS Python Tutorial Java Tutorial C++ Tutorial C Programming 
+                         Tutorial C # Tutorial PHP Tutorial R Tutorial HTML Tutorial CSS Tutorial JavaScript Tutorial SQL Tutorial TRENDING TECHNOLOGIES Cloud Computing 
+                         Tutorial Amazon Web 
+                         Services Tutorial Microsoft Azure 
+                         Tutorial Git Tutorial Ethical Hacking 
+                         Tutorial Docker Tutorial Kubernetes Tutorial DSA 
+                         Tutorial Spring Boot Tutorial SDLC Tutorial Unix Tutorial CERTIFICATIONS Business Analytics Certification Java & 
+                         Spring Boot Advanced Certification Data Science Advanced Certification Cloud Computing DevOps Advanced Certification Business Analytics Artificial Intelligence Machine Learning DevOps Certification Game Development Certification - End Developer Certification AWS 
+                         Certification Training Python Programming Certification COMPILERS & EDITORS Online Java Compiler Online Python Compiler Online Compiler Online C Compiler Online C++ Compiler Online C # Compiler Online PHP Compiler Online MATLAB Compiler Online Bash Compiler Online SQL Compiler Online Html Editor TEAM CAREERS JOBS CONTACT TERMS USE PRIVACY POLICY REFUND POLICY COOKIES POLICY FAQ Tutorials Point leading Ed Tech company striving provide best learning material technical 
+                non - technical subjects . © Copyright 2025 . Rights Reserved .

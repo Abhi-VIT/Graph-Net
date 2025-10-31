@@ -1,0 +1,273 @@
+Tree Traversal Optimize code career DSA , - demanded course . Learn code efficiently DSA Learn Programiz PRO Sale ends Optimize code career DSA , - demanded course . Learn code efficiently DSA Learn Programiz PRO Sale ends Tutorials Examples Courses Try Programiz PRO Course Index Tutorials Courses Python JavaScript SQL HTML CSS R C C++ Java RUST Golang Kotlin Swift C # DSA Learn Python practically Certified . ENROLL Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Explore Python Examples Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Created decade experience . Learn Practice Compete Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA Learn C Learn C++ Learn Java View Courses Python Basics Python Intermediate C++ Basics C++ Intermediate C++ OOP C Programming Java Basics Java Intermediate Java OOP View Courses Python Challenges JavaScript Challenges Java Challenges C++ Challenges C Challenges View Challenges Learn Practice Compete Certification Courses Created decade experience thousands feedback . Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA View Courses Learn C Learn C++ Learn Java Python JavaScript SQL HTML CSS R C C++ Java languages Learn Python practically Certified . Try Programiz PRO ! Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Python Tutorials Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Python JavaScript R C C++ Java Kotlin Learn Python practically Certified . Try Programiz PRO ! Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Python Examples DSA Introduction Getting Started DSA algorithm ? Data Structure Types learn DSA ? Asymptotic Notations Master Theorem Divide Conquer Algorithm Data Structures ( ) Stack Queue Types Queue Circular Queue Priority Queue Deque Data Structures ( II ) Linked List Linked List Operations Types Linked List Hash Table Heap Data Structure Fibonacci Heap Decrease Key Delete Node Operations Fibonacci Heap Tree based DSA ( ) Tree Data Structure Tree Traversal Binary Tree Binary Tree Perfect Binary Tree Complete Binary Tree Balanced Binary Tree Binary Search Tree AVL Tree Tree based DSA ( II ) B Tree Insertion B - tree Deletion B - tree B+ Tree Insertion B+ Tree Deletion B+ Tree Red - Black Tree Red - Black Tree Insertion Red - Black Tree Deletion Graph based DSA Graph Data Structure Spanning Tree Strongly Connected Components Adjacency Matrix Adjacency List DFS Algorithm Breadth - Search Bellman Ford Algorithm Sorting Searching Algorithms Bubble Sort Selection Sort Insertion Sort Merge Sort Quicksort Counting Sort Radix Sort Bucket Sort Heap Sort Shell Sort Linear Search Binary Search Greedy Algorithms Greedy Algorithm Ford - Fulkerson Algorithm Dijkstra Algorithm Kruskal Algorithm Prim Algorithm Huffman Coding Dynamic Programming Dynamic Programming Floyd - Warshall Algorithm Longest Common Sequence Algorithms Backtracking Algorithm Rabin - Karp Algorithm DSA Tutorials Binary Tree Binary Tree Perfect Binary Tree Balanced Binary Tree Binary Search Tree(BST ) Complete Binary Tree Tree Traversal - inorder , preorder postorder Traversing tree means visiting node tree . , instance , want add values tree find largest . operations , need visit node tree . Linear data structures like arrays , stacks , queues , linked list way read data . hierarchical data structure like tree traversed different ways . Tree traversal Let think read elements tree image shown . Starting , Left right 1 - > 12 - > 5 - > 6 - > 9 Starting , Left right 5 - > 6 - > 12 - > 9 - > 1 process somewhat easy , respect hierarchy tree , depth nodes . Instead , use traversal methods account basic structure tree i.e. struct node { 
+     int data ; 
+     struct node * left ; 
+     struct node * right ; 
+ } struct node pointed left right left right children think sub - trees instead sub - nodes . According structure , tree combination node carrying data subtrees Left Right Subtree Remember goal visit node , need visit nodes subtree , visit root node visit nodes right subtree . Depending order , types traversal . Inorder traversal , visit nodes left subtree root node Visit nodes right subtree inorder(root->left ) 
+ display(root->data ) 
+ inorder(root->right ) Preorder traversal Visit root node Visit nodes left subtree Visit nodes right subtree display(root->data ) 
+ preorder(root->left ) 
+ preorder(root->right ) Postorder traversal Visit nodes left subtree Visit nodes right subtree Visit root node postorder(root->left ) 
+ postorder(root->right ) 
+ display(root->data ) Let visualize - order traversal . start root node . Left Right Subtree traverse left subtree . need remember visit root node right subtree tree . Let stack remember . Stack traverse subtree pointed stack . , follow rule inorder Left subtree - > root - > right subtree traversing left subtree , left Final Stack node " 5 " subtrees , print directly . print parent " 12 " right child " 6 " . Putting stack helpful left - subtree root node traversed , print right subtree . going elements , inorder traversal 5 - > 12 - > 6 - > 1 - > 9 create stack recursion maintains correct order . Python , Java C / C++ Examples Python Java C C++ # Tree traversal Python 
+
+
+ class Node : 
+     def _ _ init__(self , item ): 
+         self.left = 
+         self.right = 
+         self.val = item 
+
+
+ def inorder(root ): 
+
+     root : 
+         # Traverse left 
+         inorder(root.left ) 
+         # Traverse root 
+         print(str(root.val ) + " - > " , end= '' ) 
+         # Traverse right 
+         inorder(root.right ) 
+
+
+ def postorder(root ): 
+
+     root : 
+         # Traverse left 
+         postorder(root.left ) 
+         # Traverse right 
+         postorder(root.right ) 
+         # Traverse root 
+         print(str(root.val ) + " - > " , end= '' ) 
+
+
+ def preorder(root ): 
+
+     root : 
+         # Traverse root 
+         print(str(root.val ) + " - > " , end= '' ) 
+         # Traverse left 
+         preorder(root.left ) 
+         # Traverse right 
+         preorder(root.right ) 
+
+
+ root = Node(1 ) 
+ root.left = Node(2 ) 
+ root.right = Node(3 ) 
+ root.left.left = Node(4 ) 
+ root.left.right = Node(5 ) 
+
+ print("Inorder traversal " ) 
+ inorder(root ) 
+
+ print("\nPreorder traversal " ) 
+ preorder(root ) 
+
+ print("\nPostorder traversal " ) 
+ postorder(root ) // Tree traversal Java 
+
+ class Node { 
+   int item ; 
+   Node left , right ; 
+
+   public Node(int key ) { 
+   item = key ; 
+   left = right = null ; 
+   } 
+ } 
+
+ class BinaryTree { 
+   // Root Binary Tree 
+   Node root ; 
+
+   BinaryTree ( ) { 
+   root = null ; 
+   } 
+
+   void postorder(Node node ) { 
+   ( node = = null ) 
+     return ; 
+
+   // Traverse left 
+   postorder(node.left ) ; 
+   // Traverse right 
+   postorder(node.right ) ; 
+   // Traverse root 
+   System.out.print(node.item + " - > " ) ; 
+   } 
+
+   void inorder(Node node ) { 
+   ( node = = null ) 
+     return ; 
+
+   // Traverse left 
+   inorder(node.left ) ; 
+   // Traverse root 
+   System.out.print(node.item + " - > " ) ; 
+   // Traverse right 
+   inorder(node.right ) ; 
+   } 
+
+   void preorder(Node node ) { 
+   ( node = = null ) 
+     return ; 
+
+   // Traverse root 
+   System.out.print(node.item + " - > " ) ; 
+   // Traverse left 
+   preorder(node.left ) ; 
+   // Traverse right 
+   preorder(node.right ) ; 
+   } 
+
+   public static void main(String [ ] args ) { 
+   BinaryTree tree = new BinaryTree ( ) ; 
+   tree.root = new Node(1 ) ; 
+   tree.root.left = new Node(12 ) ; 
+   tree.root.right = new Node(9 ) ; 
+   tree.root.left.left = new Node(5 ) ; 
+   tree.root.left.right = new Node(6 ) ; 
+
+   System.out.println("Inorder traversal " ) ; 
+   tree.inorder(tree.root ) ; 
+
+   System.out.println("\nPreorder traversal " ) ; 
+   tree.preorder(tree.root ) ; 
+
+   System.out.println("\nPostorder traversal " ) ; 
+   tree.postorder(tree.root ) ; 
+   } 
+ } // Tree traversal C 
+
+ # include < stdio.h > 
+ # include < stdlib.h > 
+
+ struct node { 
+   int item ; 
+   struct node * left ; 
+   struct node * right ; 
+ } ; 
+
+ // Inorder traversal 
+ void inorderTraversal(struct node * root ) { 
+   ( root = = NULL ) return ; 
+   inorderTraversal(root->left ) ; 
+   printf("%d - > " , root->item ) ; 
+   inorderTraversal(root->right ) ; 
+ } 
+
+ // preorderTraversal traversal 
+ void preorderTraversal(struct node * root ) { 
+   ( root = = NULL ) return ; 
+   printf("%d - > " , root->item ) ; 
+   preorderTraversal(root->left ) ; 
+   preorderTraversal(root->right ) ; 
+ } 
+
+ // postorderTraversal traversal 
+ void postorderTraversal(struct node * root ) { 
+   ( root = = NULL ) return ; 
+   postorderTraversal(root->left ) ; 
+   postorderTraversal(root->right ) ; 
+   printf("%d - > " , root->item ) ; 
+ } 
+
+ // Create new Node 
+ struct node * createNode(value ) { 
+   struct node * newNode = malloc(sizeof(struct node ) ) ; 
+   newNode->item = value ; 
+   newNode->left = NULL ; 
+   newNode->right = NULL ; 
+
+   return newNode ; 
+ } 
+
+ // Insert left node 
+ struct node * insertLeft(struct node * root , int value ) { 
+   root->left = createNode(value ) ; 
+   return root->left ; 
+ } 
+
+ // Insert right node 
+ struct node * insertRight(struct node * root , int value ) { 
+   root->right = createNode(value ) ; 
+   return root->right ; 
+ } 
+
+ int main ( ) { 
+   struct node * root = createNode(1 ) ; 
+   insertLeft(root , 12 ) ; 
+   insertRight(root , 9 ) ; 
+
+   insertLeft(root->left , 5 ) ; 
+   insertRight(root->left , 6 ) ; 
+
+   printf("Inorder traversal \n " ) ; 
+   inorderTraversal(root ) ; 
+
+   printf("\nPreorder traversal \n " ) ; 
+   preorderTraversal(root ) ; 
+
+   printf("\nPostorder traversal \n " ) ; 
+   postorderTraversal(root ) ; 
+ } // Tree traversal C++ 
+
+ # include < iostream > 
+ namespace std ; 
+
+ struct Node { 
+   int data ; 
+   struct Node * left , * right ; 
+   Node(int data ) { 
+     this->data = data ; 
+     left = right = NULL ; 
+   } 
+ } ; 
+
+ // Preorder traversal 
+ void preorderTraversal(struct Node * node ) { 
+   ( node = = NULL ) 
+     return ; 
+
+   cout < < node->data < < " - > " ; 
+   preorderTraversal(node->left ) ; 
+   preorderTraversal(node->right ) ; 
+ } 
+
+ // Postorder traversal 
+ void postorderTraversal(struct Node * node ) { 
+   ( node = = NULL ) 
+     return ; 
+
+   postorderTraversal(node->left ) ; 
+   postorderTraversal(node->right ) ; 
+   cout < < node->data < < " - > " ; 
+ } 
+
+ // Inorder traversal 
+ void inorderTraversal(struct Node * node ) { 
+   ( node = = NULL ) 
+     return ; 
+
+   inorderTraversal(node->left ) ; 
+   cout < < node->data < < " - > " ; 
+   inorderTraversal(node->right ) ; 
+ } 
+
+ int main ( ) { 
+   struct Node * root = new Node(1 ) ; 
+   root->left = new Node(12 ) ; 
+   root->right = new Node(9 ) ; 
+   root->left->left = new Node(5 ) ; 
+   root->left->right = new Node(6 ) ; 
+
+   cout < < " Inorder traversal " ; 
+   inorderTraversal(root ) ; 
+
+   cout < < " \nPreorder traversal " ; 
+   preorderTraversal(root ) ; 
+
+   cout < < " \nPostorder traversal " ; 
+   postorderTraversal(root ) ; 
+   return 0 ;  
+ } Table Contents Introduction Inorder traversal Preorder traversal Postorder traversal Python , Java C / C++ Examples Previous Tutorial : Tree Data Structure Tutorial : Binary Tree Share : find article helpful ? Sorry . improve ? Feedback * Leave field blank premium learning platform , created decade experience thousands feedbacks . Learn improve coding skills like . Try Programiz PRO Interactive Courses Certificates AI Help 2000 + Challenges Related Tutorials DS & Algorithms Binary Tree DS & Algorithms Binary Tree DS & Algorithms Perfect Binary Tree DS & Algorithms Balanced Binary Tree Free Tutorials Python 3 Tutorials SQL Tutorials R Tutorials HTML Tutorials CSS Tutorials JavaScript Tutorials Java Tutorials C Tutorials C++ Tutorials DSA Tutorials C # Tutorials Golang Tutorials Kotlin Tutorials Swift Tutorials Rust Tutorials Paid Courses Master Python Learn SQL Learn HTML FREE Master JavaScript Master C Master C++ Master Java Master DSA Python Online Compilers Python Compiler R Compiler SQL Editor HTML / CSS Editor JavaScript Editor Java Compiler C Compiler C++ Compiler C # Compiler Compiler PHP Compiler Swift Compiler Rust Compiler Mobile Apps Learn Python App Learn C App Learn Java App Learn C++ App Company Change Ad Consent sell data Contact Blog Youtube Careers Advertising Privacy Policy Terms & Conditions © Parewa Labs Pvt . Ltd. rights reserved .

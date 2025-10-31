@@ -1,0 +1,41 @@
+clustering ?   |    Machine Learning   |    Google Developers Skip main content Machine Learning Foundational courses Advanced courses Guides Glossary terms Clustering Decision Forests Fundamentals GCP Generative AI Image Lang Eval Metrics Recommendation Systems Reinforcement Learning Responsible AI Sequence Models TensorFlow / English Deutsch Español Español – América Latina Français Indonesia Italiano Polski Português – Brasil Tiếng Việt Türkçe Русский עברית العربيّة فارسی हिंदी বাংলা ภาษาไทย 中文 – 简体 中文 – 繁體 日本語 한국어 Sign Advanced courses Home Clustering Machine Learning Foundational courses Advanced courses Home Clustering Guides Glossary Overview ( 45 min ) course clustering ? Clustering algorithms Clustering workflow Data preparation K - means clustering ( 35 min ) k - means clustering ? Manual similarity measure Evaluating results Advantages disadvantages Neural nets clustering ( 25 min ) Autoencoders , predictors , embeddings Measuring similarity embeddings Check understanding Summary ( 5 min ) Clustering review terms Clustering Decision Forests Fundamentals GCP Generative AI Image Lang Eval Metrics Recommendation Systems Reinforcement Learning Responsible AI Sequence Models TensorFlow Home Products Machine Learning Advanced courses Clustering Send feedback clustering ? Stay organized collections Save categorize content based preferences . Suppose working dataset includes patient information 
+ healthcare system . dataset complex includes categorical 
+ numeric features . want find patterns similarities dataset . 
+ approach task ? Clustering unsupervised 
+ machine learning technique designed group unlabeled examples based similarity . ( examples labeled , 
+ kind grouping called classification . ) 
+ Consider hypothetical patient 
+ study designed evaluate new treatment protocol . study , patients 
+ report times week experience symptoms severity 
+ symptoms . Researchers use clustering analysis group patients similar 
+ treatment responses clusters . Figure 1 demonstrates possible grouping 
+ simulated data clusters . Figure 1 : Unlabeled examples grouped clusters 
+   ( simulated data ) . Looking unlabeled data left Figure 1 , guess 
+ data forms clusters , formal definition similarity 
+ data points . real - world applications , , need explicitly 
+ define similarity measure , metric compare samples , 
+ terms dataset features . examples couple features , 
+ visualizing measuring similarity straightforward . number 
+ features increases , combining comparing features intuitive 
+ complex . Different similarity measures appropriate 
+ different clustering scenarios , course address choosing 
+ appropriate similarity measure later sections : Manual similarity measures Similarity measure embeddings . clustering , group assigned unique label called cluster ID . 
+ Clustering powerful simplify large , complex datasets 
+ features single cluster ID . Clustering use cases Clustering useful variety industries . common applications 
+ clustering : Market segmentation Social network analysis Search result grouping Medical imaging Image segmentation Anomaly detection specific examples clustering : Hertzsprung - Russell diagram shows clusters stars plotted luminosity temperature . Gene sequencing shows previously unknown genetic similarities 
+ dissimilarities species led revision taxonomies 
+ previously based appearances . Big 5 model personality traits developed clustering words 
+ describe personality 5 groups . HEXACO model uses 6 clusters instead 5 . Imputation examples cluster missing feature data , infer 
+ missing data examples cluster . called imputation . 
+ example , popular videos clustered popular videos 
+ improve video recommendations . Data compression discussed , relevant cluster ID replace features 
+ examples cluster . substitution reduces number features 
+ reduces resources needed store , process , train models 
+ data . large datasets , savings significant . example , single YouTube video feature data including : viewer location , time , demographics comment timestamps , text , user IDs video tags Clustering YouTube videos replaces set features 
+ single cluster ID , compressing data . Privacy preservation preserve privacy somewhat clustering users associating user data 
+ cluster IDs instead user IDs . possible example , want 
+ train model YouTube users ' watch history . Instead passing user IDs 
+ model , cluster users pass cluster ID . 
+ keeps individual watch histories attached individual users . Note 
+ cluster contain sufficiently large number users order 
+ preserve privacy . Key terms : clustering example unlabeled example classification Previous arrow_back course Clustering algorithms arrow_forward Send feedback noted , content page licensed Creative Commons Attribution 4.0 License , code samples licensed Apache 2.0 License . details , Google Developers Site Policies . Java registered trademark Oracle and/or affiliates . updated 2025 - 02 - 25 UTC . Connect Blog Instagram LinkedIn X ( Twitter ) YouTube Programs Google Developer Groups Google Developer Experts Accelerators Women Techmakers Developer consoles Google API Console Google Cloud Platform Console Google Play Console Firebase Console Actions Google Console Cast SDK Developer Console Chrome Web Store Dashboard Google Home Developer Console Android Chrome Firebase Google Cloud Platform Google AI products Terms Privacy Manage cookies Sign Google Developers newsletter Subscribe English Deutsch Español Español – América Latina Français Indonesia Italiano Polski Português – Brasil Tiếng Việt Türkçe Русский עברית العربيّة فارسی हिंदी বাংলা ภาษาไทย 中文 – 简体 中文 – 繁體 日本語 한국어

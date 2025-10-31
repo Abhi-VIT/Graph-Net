@@ -1,0 +1,98 @@
+Python Lists Vs Tuples ( Examples ) Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Learn code solving problems writing code hands - Python course . Learn code solving problems hands - Python course ! Try Programiz PRO today . Sale ends Tutorials Examples Courses Try Programiz PRO Course Index Tutorials Courses Python JavaScript SQL HTML CSS R C C++ Java RUST Golang Kotlin Swift C # DSA Learn Python practically Certified . ENROLL Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Explore Python Examples Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Created decade experience . Learn Practice Compete Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA Learn C Learn C++ Learn Java View Courses Python Basics Python Intermediate C++ Basics C++ Intermediate C++ OOP C Programming Java Basics Java Intermediate Java OOP View Courses Python Challenges JavaScript Challenges Java Challenges C++ Challenges C Challenges View Challenges Learn Practice Compete Certification Courses Created decade experience thousands feedback . Learn Python Learn HTML Learn JavaScript Learn SQL Learn DSA View Courses Learn C Learn C++ Learn Java Python JavaScript SQL HTML CSS R C C++ Java languages Learn Python practically Certified . Try Programiz PRO ! Popular Tutorials Getting Started Python Python Statement Loop Python Python Lists Dictionaries Python Start Learning Python Python Tutorials Reference Materials Built - Functions List Methods Dictionary Methods String Methods View Python JavaScript R C C++ Java Kotlin Learn Python practically Certified . Try Programiz PRO ! Popular Examples Add numbers Check prime number Find factorial number Print Fibonacci sequence Check leap year Python Examples Python Introduction Started Python Python Program Python Comments Python Fundamentals Python Variables Literals Python Type Conversion Python Basic Input Output Python Operators Python Flow Control Python ... Statement Python Loop Python Loop Python break continue Python pass Statement Python Data types Python Numbers Mathematics Python List Python Tuple Python String Python Set Python Dictionary Python Functions Python Functions Python Function Arguments Python Variable Scope Python Global Keyword Python Recursion Python Modules Python Package Python Main function Python Files Python Directory Files Management Python CSV : Read Write CSV files Reading CSV files Python Writing CSV files Python Python Exception Handling Python Exceptions Python Exception Handling Python Custom Exceptions Python Object & Class Python Objects Classes Python Inheritance Python Multiple Inheritance Polymorphism Python Python Operator Overloading Python Advanced Topics List comprehension Python Lambda / Anonymous Function Python Iterators Python Generators Python Namespace Scope Python Closures Python Decorators Python @property decorator Python RegEx Python Date Time Python datetime Python strftime ( ) Python strptime ( ) current date 
+ time Python ? Python Current Time Python timestamp 
+ datetime vice - versa Python time Module Python sleep ( ) Additional Topic Precedence Associativity Operators Python Python Keywords Identifiers Python Asserts Python Json Python pip Python * args * * kwargs Python Tutorials Python dir ( ) Python tuple ( ) Python Tuple count ( ) Python list ( ) Python Tuple Python del Statement Python Lists Vs Tuples Lists Tuples store objects values specific order . objects stored list tuple type including type defined Keyword . Lists Tuples similar context differences going find article . Syntax Differences Syntax list tuple slightly different . Lists surrounded square brackets [ ] Tuples surrounded parenthesis ( ) . Example 1.1 : Creating List vs.   Creating Tuple list_num = [ 1,2,3,4 ] 
+ tup_num = ( 1,2,3,4 ) 
+
+ print(list_num ) 
+ print(tup_num ) Output : [ 1,2,3,4 ] 
+ ( 1,2,3,4 ) , defined variable called list_num hold list numbers 1 4 .The list surrounded brackets [ ] . , defined variable tup_num ; contains tuple number 1 4 . tuple surrounded parenthesis ( ) . python type ( ) function gives type object created . Example 1.2 : Find type data structure type ( ) function type(list_num ) 
+ type(tup_num ) Output : list 
+ tuple Mutable List vs Immutable Tuples List mutable nature i.e. , list changed modified creation according needs tuple immutable nature i.e. , tuple changed modified creation . Example 2.1 : Modify item   List vs.   Tuple list_num[2 ] = 5 
+ print(list_num ) 
+
+ tup_num[2 ] = 5 Output : [ 1,2,5,4 ] Traceback ( recent ): 
+  File " python " , line 6 , < module > 
+ TypeError : ' tuple ' object support item assignment code assigned 5 list_num index 2 found 5 index 2 output . , assigned 5 tup_num index 2 got type error . modify tuple immutable nature . Note : tuple immutable fixed size list variable   size . Available Operations Lists builtin function tuple . use dir([object ] ) inbuilt function associated functions list tuple . Example 3.1 : List Directory dir(list_num ) Output : [ ' _ _ add _ _ ' , 
+ ' _ _ class _ _ ' , 
+ ' _ _ contains _ _ ' , 
+ ' _ _ delattr _ _ ' , 
+ ' _ _ delitem _ _ ' , 
+ ' _ _ dir _ _ ' , 
+ ' _ _ doc _ _ ' , 
+ ' _ _ eq _ _ ' , 
+ ' _ _ format _ _ ' , 
+ ' _ _ ge _ _ ' , 
+ ' _ _ getattribute _ _ ' , 
+ ' _ _ getitem _ _ ' , 
+ ' _ _ gt _ _ ' , 
+ ' _ _ hash _ _ ' , 
+ ' _ _ iadd _ _ ' , 
+ ' _ _ imul _ _ ' , 
+ ' _ _ init _ _ ' , 
+ ' _ _ init_subclass _ _ ' , 
+ ' _ _ iter _ _ ' , 
+ ' _ _ le _ _ ' , 
+ ' _ _ len _ _ ' , 
+ ' _ _ lt _ _ ' , 
+ ' _ _ mul _ _ ' , 
+ ' _ _ ne _ _ ' , 
+ ' _ _ new _ _ ' , 
+ ' _ _ reduce _ _ ' , 
+ ' _ _ reduce_ex _ _ ' , 
+ ' _ _ repr _ _ ' , 
+ ' _ _ reversed _ _ ' , 
+ ' _ _ rmul _ _ ' , 
+ ' _ _ setattr _ _ ' , 
+ ' _ _ setitem _ _ ' , 
+ ' _ _ sizeof _ _ ' , 
+ ' _ _ str _ _ ' , 
+ ' _ _ subclasshook _ _ ' , 
+ ' append ' , 
+ ' clear ' , 
+ ' copy ' , 
+ ' count ' , 
+ ' extend ' , 
+ ' index ' , 
+ ' insert ' , 
+ ' pop ' , 
+ ' remove ' , 
+ ' reverse ' , 
+ ' sort ' ] Example 3.2 : Tuple Directory dir(tup_num ) Output : [ ' _ _ add _ _ ' , 
+ ' _ _ class _ _ ' , 
+ ' _ _ contains _ _ ' , 
+ ' _ _ delattr _ _ ' , 
+ ' _ _ dir _ _ ' , 
+ ' _ _ doc _ _ ' , 
+ ' _ _ eq _ _ ' , 
+ ' _ _ format _ _ ' , 
+ ' _ _ ge _ _ ' , 
+ ' _ _ getattribute _ _ ' , 
+ ' _ _ getitem _ _ ' , 
+ ' _ _ getnewargs _ _ ' , 
+ ' _ _ gt _ _ ' , 
+ ' _ _ hash _ _ ' , 
+ ' _ _ init _ _ ' , 
+ ' _ _ init_subclass _ _ ' , 
+ ' _ _ iter _ _ ' , 
+ ' _ _ le _ _ ' , 
+ ' _ _ len _ _ ' , 
+ ' _ _ lt _ _ ' , 
+ ' _ _ mul _ _ ' , 
+ ' _ _ ne _ _ ' , 
+ ' _ _ new _ _ ' , 
+ ' _ _ reduce _ _ ' , 
+ ' _ _ reduce_ex _ _ ' , 
+ ' _ _ repr _ _ ' , 
+ ' _ _ rmul _ _ ' , 
+ ' _ _ setattr _ _ ' , 
+ ' _ _ sizeof _ _ ' , 
+ ' _ _ str _ _ ' , 
+ ' _ _ subclasshook _ _ ' , 
+ ' count ' , 
+ ' index ' ] clearly , additional functionalities associated list tuple . insert pop operation , removing sorting elements list inbuilt functions available Tuple . Size Comparison Tuples operation smaller size list , makes bit faster mention huge number elements . Example 5.1 : Calculate size List vs.   Tuple a= ( 1,2,3,4,5,6,7,8,9,0 ) 
+ b= [ 1,2,3,4,5,6,7,8,9,0 ] 
+
+ print('a=',a.__sizeof _ _ ( ) ) 
+ print('b=',b.__sizeof _ _ ( ) ) Output : a= 104 
+ b= 120 code tuple list b items size tuple list . Different Use Cases sight , lists replace tuples . tuples extremely useful data structures tuple instead list programmer interpreter hint data changed . Tuples commonly equivalent dictionary keys store data . Example , [ ( ' Swordfish ' , ' Dominic Sena ' , 2001 ) , ( ' Snowden ' , ' Oliver Stone ' , 2016 ) , ( ' Taxi Driver ' , ' Martin Scorsese ' , 1976 ) ] example contains tuples inside list list movies . Reading data simpler tuples stored inside list . example , [ ( 2,4 ) , ( 5,7 ) , ( 3,8 ) , ( 5,9 ) ] easier read [ [ 2,4 ] , [ 5,7 ] , [ 3,8 ] , [ 5,9 ] ] Tuple key dictionary hashable immutable nature Lists key dictionary list handle _ _ hash _ _ ( ) mutable nature . key_val= { ( ' alpha','bravo'):123 } # Valid 
+ key_val = { [ ' alpha','bravo']:123 } # Invalid Key points remember : literal syntax tuples shown parentheses ( ) literal syntax lists shown square brackets [ ] . Lists variable length , tuple fixed length . List mutable nature , tuple immutable nature . List functionality tuple . Table Contents Syntax   Differences Mutable   List vs Immutable Tuples Available   Operations Size   Comparison Different Use Cases Key Points Remember Share : find article helpful ? Sorry . improve ? Feedback * Leave field blank premium learning platform , created decade experience thousands feedbacks . Learn improve coding skills like . Try Programiz PRO Interactive Courses Certificates AI Help 2000 + Challenges Related Tutorials Python Library Python dir ( ) Python Library Python tuple ( ) Python Library Python Tuple count ( ) Python Library Python list ( ) Free Tutorials Python 3 Tutorials SQL Tutorials R Tutorials HTML Tutorials CSS Tutorials JavaScript Tutorials Java Tutorials C Tutorials C++ Tutorials DSA Tutorials C # Tutorials Golang Tutorials Kotlin Tutorials Swift Tutorials Rust Tutorials Paid Courses Master Python Learn SQL Learn HTML FREE Master JavaScript Master C Master C++ Master Java Master DSA Python Online Compilers Python Compiler R Compiler SQL Editor HTML / CSS Editor JavaScript Editor Java Compiler C Compiler C++ Compiler C # Compiler Compiler PHP Compiler Swift Compiler Rust Compiler Mobile Apps Learn Python App Learn C App Learn Java App Learn C++ App Company Change Ad Consent sell data Contact Blog Youtube Careers Advertising Privacy Policy Terms & Conditions © Parewa Labs Pvt . Ltd. rights reserved .

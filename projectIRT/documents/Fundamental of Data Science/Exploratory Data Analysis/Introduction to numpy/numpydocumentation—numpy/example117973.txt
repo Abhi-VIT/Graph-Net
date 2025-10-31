@@ -1,0 +1,13 @@
+NumPy documentation — NumPy v2.2 Manual Skip main content Ctrl + K User Guide API reference Building source Development Release notes Learn NEPs Choose version GitHub User Guide API reference Building source Development Release notes Learn NEPs Choose version GitHub NumPy documentation # Version : 2.2 Download documentation : User guide ( PDF ) | Reference guide ( PDF ) | ( ZIP ) | Historical versions documentation Useful links : Installation | Source Repository | Issue Tracker | Q&A Support | Mailing List NumPy fundamental package scientific computing Python . 
+ Python library provides multidimensional array object , derived 
+ objects ( masked arrays matrices ) , assortment routines 
+ fast operations arrays , including mathematical , logical , shape manipulation , 
+ sorting , selecting , / O , discrete Fourier transforms , basic linear algebra , 
+ basic statistical operations , random simulation . Getting started New NumPy ? Check Absolute Beginner Guide . contains 
+ introduction NumPy main concepts links additional tutorials . absolute beginner guide User guide user guide provides - depth information 
+ key concepts NumPy useful background information explanation . user guide API reference reference guide contains detailed description functions , 
+ modules , objects included NumPy . reference describes 
+ methods work parameters . assumes 
+ understanding key concepts . reference guide Contributor guide Want add codebase ? help add translation flowchart 
+ documentation ? contributing guidelines guide 
+ process improving NumPy . contributor guide NumPy user guide © Copyright 2008 - 2024 , NumPy Developers . Created Sphinx 7.2.6 . Built PyData Sphinx Theme 0.16.0 .

@@ -1,0 +1,561 @@
+6 . Expressions — Python 3.13.3 documentation Theme Auto Light Dark Table Contents 6 . Expressions 6.1 . Arithmetic conversions 6.2 . Atoms 6.2.1 . Identifiers ( Names ) 6.2.1.1 . Private mangling 6.2.2 . Literals 6.2.3 . Parenthesized forms 6.2.4 . Displays lists , sets dictionaries 6.2.5 . List displays 6.2.6 . Set displays 6.2.7 . Dictionary displays 6.2.8 . Generator expressions 6.2.9 . Yield expressions 6.2.9.1 . Generator - iterator methods 6.2.9.2 . Examples 6.2.9.3 . Asynchronous generator functions 6.2.9.4 . Asynchronous generator - iterator methods 6.3 . Primaries 6.3.1 . Attribute references 6.3.2 . Subscriptions 6.3.3 . Slicings 6.3.4 . Calls 6.4 . Await expression 6.5 . power operator 6.6 . Unary arithmetic bitwise operations 6.7 . Binary arithmetic operations 6.8 . Shifting operations 6.9 . Binary bitwise operations 6.10 . Comparisons 6.10.1 . Value comparisons 6.10.2 . Membership test operations 6.10.3 . Identity comparisons 6.11 . Boolean operations 6.12 . Assignment expressions 6.13 . Conditional expressions 6.14 . Lambdas 6.15 . Expression lists 6.16 . Evaluation order 6.17 . Operator precedence Previous topic 5 . import system topic 7 . Simple statements Page Report Bug Source Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Language Reference » 6 . Expressions | Theme Auto Light Dark | 6 . Expressions Â¶ chapter explains meaning elements expressions Python . Syntax Notes : following chapters , extended BNF notation 
+ describe syntax , lexical analysis .   ( alternative ) 
+ syntax rule form : : = othername semantics given , semantics form 
+ othername . 6.1 . Arithmetic conversions Â¶ description arithmetic operator uses phrase âthe numeric 
+ arguments converted common typeâ , means operator 
+ implementation built - types works follows : argument complex number , converted complex ; , argument floating - point number , 
+ converted floating point ; , integers conversion necessary . additional rules apply certain operators ( e.g. , string left 
+ argument â%â operator ) .   Extensions define conversion 
+ behavior . 6.2 . Atoms Â¶ Atoms basic elements expressions .   simplest atoms 
+ identifiers literals .   Forms enclosed parentheses , brackets braces 
+ categorized syntactically atoms .   syntax atoms : atom : : = identifier | literal | enclosure enclosure : : = parenth_form | list_display | dict_display | set_display | generator_expression | yield_atom 6.2.1 . Identifiers ( Names ) Â¶ identifier occurring atom .   section Identifiers keywords lexical definition section Naming binding documentation naming 
+ binding . bound object , evaluation atom yields object . 
+ bound , attempt evaluate raises NameError exception . 6.2.1.1 . Private mangling Â¶ identifier textually occurs class definition begins 
+ underscore characters end underscores , 
+ considered private class . class specifications . precisely , private names transformed longer form code 
+ generated .   transformed longer 255 characters , 
+ implementation - defined truncation happen . transformation independent syntactical context 
+ identifier following private identifiers mangled : variable assigned read 
+ attribute accessed . _ _ _ _ attribute nested functions , classes , 
+ type aliases mangled . imported modules , e.g. , _ _ spam import _ _ spam . 
+ module package ( i.e. , contains dot ) , 
+ mangled , e.g. , _ _ foo import _ _ foo.bar mangled . imported member , e.g. , _ _ f spam import _ _ f . transformation rule defined follows : class , leading underscores removed single leading 
+ underscore inserted , inserted identifier , e.g. , 
+ identifier _ _ spam occurring class named Foo , _ Foo _ _ Foo transformed _ Foo__spam . class consists underscores , transformation 
+ identity , e.g. , identifier _ _ spam occurring class named _ _ _ left . 6.2.2 . Literals Â¶ Python supports string bytes literals numeric literals : literal : : = stringliteral | bytesliteral | integer | floatnumber | imagnumber Evaluation literal yields object given type ( string , bytes , 
+ integer , floating - point number , complex number ) given value .   value 
+ approximated case floating - point imaginary ( complex ) 
+ literals .   section Literals details . literals correspond immutable data types , objectâs identity 
+ important value .   Multiple evaluations literals 
+ value ( occurrence program text different 
+ occurrence ) obtain object different object 
+ value . 6.2.3 . Parenthesized forms Â¶ parenthesized form optional expression list enclosed parentheses : parenth_form : : = " ( " [ starred_expression ] " ) " parenthesized expression list yields expression list yields : 
+ list contains comma , yields tuple ; , yields 
+ single expression makes expression list . pair parentheses yields tuple object .   tuples 
+ immutable , rules literals apply ( i.e. , occurrences 
+ tuple yield object ) . Note tuples formed parentheses , use 
+ comma .   exception tuple , parentheses required â allowing unparenthesized ânothingâ expressions cause 
+ ambiguities allow common typos pass uncaught . 6.2.4 . Displays lists , sets dictionaries Â¶ constructing list , set dictionary Python provides special syntax 
+ called âdisplaysâ , flavors : container contents listed explicitly , computed set looping filtering instructions , called comprehension . Common syntax elements comprehensions : comprehension : : = assignment_expression comp_for comp_for : : = [ " async " ] " " target_list " " or_test [ comp_iter ] comp_iter : : = comp_for | comp_if comp_if : : = " " or_test [ comp_iter ] comprehension consists single expression followed clause zero clauses . 
+ case , elements new container produced 
+ considering clauses block , 
+ nesting left right , evaluating expression produce element 
+ time innermost block reached . , aside iterable expression leftmost clause , 
+ comprehension executed separate implicitly nested scope . ensures 
+ names assigned target list donât âleakâ enclosing scope . iterable expression leftmost clause evaluated 
+ directly enclosing scope passed argument implicitly 
+ nested scope . Subsequent clauses filter condition 
+ leftmost clause evaluated enclosing scope 
+ depend values obtained leftmost iterable . example : [ x*y x range(10 ) y range(x , x+10 ) ] . ensure comprehension results container appropriate 
+ type , yield yield expressions prohibited implicitly 
+ nested scope . Python 3.6 , async def function , async clause iterate asynchronous iterator . 
+ comprehension async def function consist async clause following leading 
+ expression , contain additional async clauses , use await expressions . comprehension contains async clauses , contains await expressions asynchronous comprehensions 
+ iterable expression leftmost clause , called asynchronous comprehension . asynchronous comprehension suspend 
+ execution coroutine function appears . 
+ PEP 530 . Added version 3.6 : Asynchronous comprehensions introduced . Changed version 3.8 : yield yield prohibited implicitly nested scope . Changed version 3.11 : Asynchronous comprehensions allowed inside comprehensions 
+ asynchronous functions . Outer comprehensions implicitly 
+ asynchronous . 6.2.5 . List displays Â¶ list display possibly series expressions enclosed square 
+ brackets : list_display : : = " [ " [ flexible_expression_list | comprehension ] " ] " list display yields new list object , contents specified 
+ list expressions comprehension .   comma - separated list 
+ expressions supplied , elements evaluated left right 
+ placed list object order .   comprehension supplied , 
+ list constructed elements resulting comprehension . 6.2.6 . Set displays Â¶ set display denoted curly braces distinguishable dictionary 
+ displays lack colons separating keys values : set_display : : = " { " ( flexible_expression_list | comprehension ) " } " set display yields new mutable set object , contents specified 
+ sequence expressions comprehension .   comma - separated 
+ list expressions supplied , elements evaluated left right 
+ added set object .   comprehension supplied , set 
+ constructed elements resulting comprehension . set constructed { } ; literal constructs 
+ dictionary . 6.2.7 . Dictionary displays Â¶ dictionary display possibly series dict items ( key / value pairs ) 
+ enclosed curly braces : dict_display : : = " { " [ dict_item_list | dict_comprehension ] " } " dict_item_list : : = dict_item ( " , " dict_item ) * [ " , " ] dict_item : : = expression " : " expression | " * * " or_expr dict_comprehension : : = expression " : " expression comp_for dictionary display yields new dictionary object . comma - separated sequence dict items given , evaluated 
+ left right define entries dictionary : key object 
+ key dictionary store corresponding value .   means 
+ specify key multiple times dict item list , 
+ final dictionaryâs value key given . double asterisk * * denotes dictionary unpacking . 
+ operand mapping .   mapping item added 
+ new dictionary .   Later values replace values set 
+ earlier dict items earlier dictionary unpackings . Added version 3.5 : Unpacking dictionary displays , originally proposed PEP 448 . dict comprehension , contrast list set comprehensions , needs 
+ expressions separated colon followed usual âforâ âifâ clauses . 
+ comprehension run , resulting key value elements inserted 
+ new dictionary order produced . Restrictions types key values listed earlier section standard type hierarchy .   ( summarize , key type hashable , excludes 
+ mutable objects . )   Clashes duplicate keys detected ; 
+ value ( textually rightmost display ) stored given key value 
+ prevails . Changed version 3.8 : Prior Python 3.8 , dict comprehensions , evaluation order key 
+ value - defined .   CPython , value evaluated 
+ key .   Starting 3.8 , key evaluated value , 
+ proposed PEP 572 . 6.2.8 . Generator expressions Â¶ generator expression compact generator notation parentheses : generator_expression : : = " ( " expression comp_for " ) " generator expression yields new generator object .   syntax 
+ comprehensions , enclosed parentheses instead 
+ brackets curly braces . Variables generator expression evaluated lazily _ _ _ _ ( ) method called generator object ( 
+ fashion normal generators ) .   , iterable expression 
+ leftmost clause immediately evaluated , error 
+ produced emitted point generator expression 
+ defined , point value retrieved . 
+ Subsequent clauses filter condition leftmost clause evaluated enclosing scope 
+ depend values obtained leftmost iterable . example : ( x*y x range(10 ) y range(x , x+10 ) ) . parentheses omitted calls argument .   section Calls details . avoid interfering expected operation generator expression 
+ , yield yield expressions prohibited 
+ implicitly defined generator . generator expression contains async clauses await expressions called asynchronous generator expression .   asynchronous generator 
+ expression returns new asynchronous generator object , 
+ asynchronous iterator ( Asynchronous Iterators ) . Added version 3.6 : Asynchronous generator expressions introduced . Changed version 3.7 : Prior Python 3.7 , asynchronous generator expressions 
+ appear async def coroutines .   Starting 
+ 3.7 , function use asynchronous generator expressions . Changed version 3.8 : yield yield prohibited implicitly nested scope . 6.2.9 . Yield expressions Â¶ yield_atom : : = " ( " yield_expression " ) " yield_from : : = " yield " " " expression yield_expression : : = " yield " yield_list | yield_from yield expression defining generator function 
+ asynchronous generator function 
+ body function definition .   yield 
+ expression functionâs body causes function generator function , 
+ async def functionâs body causes 
+ coroutine function asynchronous generator function . example : def gen ( ): # defines generator function yield 123 async def agen ( ): # defines asynchronous generator function yield 123 effects containing scope , yield expressions 
+ permitted implicitly defined scopes 
+ implement comprehensions generator expressions . Changed version 3.8 : Yield expressions prohibited implicitly nested scopes 
+ implement comprehensions generator expressions . Generator functions described , asynchronous generator 
+ functions described separately section Asynchronous generator functions . generator function called , returns iterator known 
+ generator .   generator controls execution generator 
+ function .   execution starts generatorâs methods called . 
+ time , execution proceeds yield expression , 
+ suspended , returning value yield_list generatorâs caller , 
+ yield_list omitted . 
+ suspended , mean local state 
+ retained , including current bindings local variables , instruction 
+ pointer , internal evaluation stack , state exception handling . 
+ execution resumed calling generatorâs methods , 
+ function proceed exactly yield expression 
+ external .   value yield expression resuming depends 
+ method resumed execution .   _ _ _ _ ( ) 
+ ( typically ( ) builtin ) 
+ result .   , send ( ) , 
+ result value passed method . makes generator functions similar coroutines ; yield 
+ multiple times , entry point execution 
+ suspended .   difference generator function control 
+ execution continue yields ; control 
+ transferred generatorâs caller . Yield expressions allowed try construct .   
+ generator resumed 
+ finalized ( reaching zero reference count garbage collected ) , 
+ generator - iteratorâs close ( ) method called , 
+ allowing pending finally clauses execute . yield < expr > , supplied expression 
+ iterable . values produced iterating iterable passed directly 
+ caller current generatorâs methods . values passed send ( ) exceptions passed throw ( ) passed underlying iterator 
+ appropriate methods .   case , send ( ) raise AttributeError TypeError , throw ( ) raise passed exception immediately . underlying iterator complete , value attribute raised StopIteration instance value 
+ yield expression . set explicitly raising StopIteration , automatically subiterator generator 
+ ( returning value subgenerator ) . Changed version 3.3 : Added yield < expr > delegate control flow subiterator . parentheses omitted yield expression sole expression 
+ right hand assignment statement . PEP 255 - Simple Generators proposal adding generators yield statement Python . PEP 342 - Coroutines Enhanced Generators proposal enhance API syntax generators , making 
+ usable simple coroutines . PEP 380 - Syntax Delegating Subgenerator proposal introduce yield_from syntax , 
+ making delegation subgenerators easy . PEP 525 - Asynchronous Generators proposal expanded PEP 492 adding generator capabilities 
+ coroutine functions . 6.2.9.1 . Generator - iterator methods Â¶ subsection describes methods generator iterator .   
+ control execution generator function . Note calling generator methods generator 
+ executing raises ValueError exception . generator . _ _ _ _ ( ) Â¶ Starts execution generator function resumes 
+ executed yield expression .   generator function resumed _ _ _ _ ( ) method , current yield expression 
+ evaluates .   execution continues yield 
+ expression , generator suspended , value yield_list returned _ _ _ _ ( ) âs 
+ caller .   generator exits yielding value , StopIteration exception raised . method normally called implicitly , e.g. loop , 
+ built - ( ) function . generator . send ( value ) Â¶ Resumes execution âsendsâ value generator function .   value argument result current yield expression .   send ( ) method returns value yielded generator , 
+ raises StopIteration generator exits yielding 
+ value .   send ( ) called start generator , called 
+ argument , yield expression 
+ receive value . generator . throw ( value ) Â¶ generator . throw ( type [ , value [ , traceback ] ] ) Raises exception point generator paused , 
+ returns value yielded generator function .   generator 
+ exits yielding value , StopIteration exception 
+ raised .   generator function catch passed - exception , 
+ raises different exception , exception propagates caller . typical use , called single exception instance similar 
+ way raise keyword . backwards compatibility , , second signature 
+ supported , following convention older versions Python . 
+ type argument exception class , value exception instance . value provided , type constructor called instance . traceback provided , set exception , existing _ _ traceback _ _ attribute stored value 
+ cleared . Changed version 3.12 : second signature ( type [ , value [ , traceback ] ] ) deprecated 
+ removed future version Python . generator . close ( ) Â¶ Raises GeneratorExit point generator function 
+ paused .   generator function catches exception returns 
+ value , value returned close ( ) .   generator function 
+ closed , raises GeneratorExit ( catching 
+ exception ) , close ( ) returns .   generator yields 
+ value , RuntimeError raised .   generator raises 
+ exception , propagated caller .   generator 
+ exited exception normal exit , close ( ) returns effect . Changed version 3.13 : generator returns value closed , value returned 
+ close ( ) . 6.2.9.2 . Examples Â¶ simple example demonstrates behavior generators 
+ generator functions : > > > def echo ( value = ): ... print ( " Execution starts ' ( ) ' called time . " ) ... try : ... True : ... try : ... value = ( yield value ) ... Exception e : ... value = e ... finally : ... print ( " forget clean ' close ( ) ' called . " ) ... > > > generator = echo ( 1 ) > > > print ( ( generator ) ) Execution starts ' ( ) ' called time . 1 > > > print ( ( generator ) ) > > > print ( generator . send ( 2 ) ) 2 > > > generator . throw ( TypeError , " spam " ) TypeError('spam ' , ) > > > generator . close ( ) forget clean ' close ( ) ' called . examples yield , PEP 380 : Syntax Delegating Subgenerator âWhatâs New 
+ Python.â 6.2.9.3 . Asynchronous generator functions Â¶ presence yield expression function method defined async def defines function asynchronous generator function . asynchronous generator function called , returns 
+ asynchronous iterator known asynchronous generator object . 
+ object controls execution generator function . 
+ asynchronous generator object typically async statement coroutine function analogously 
+ generator object statement . Calling asynchronous generatorâs methods returns awaitable object , execution starts object awaited . time , 
+ execution proceeds yield expression , suspended 
+ , returning value yield_list 
+ awaiting coroutine . generator , suspension means local state 
+ retained , including current bindings local variables , instruction 
+ pointer , internal evaluation stack , state exception handling . 
+ execution resumed awaiting object returned 
+ asynchronous generatorâs methods , function proceed exactly 
+ yield expression external . value yield 
+ expression resuming depends method resumed execution .   _ _ anext _ _ ( ) result . , asend ( ) , result value passed 
+ method . asynchronous generator happens exit early break , caller 
+ task cancelled , exceptions , generatorâs async cleanup code 
+ run possibly raise exceptions access context variables 
+ unexpected contextâperhaps lifetime tasks depends , 
+ event loop shutdown async - generator garbage collection hook 
+ called . 
+ prevent , caller explicitly close async generator calling aclose ( ) method finalize generator ultimately detach 
+ event loop . asynchronous generator function , yield expressions allowed 
+ try construct . , asynchronous generator 
+ resumed finalized ( reaching zero reference count 
+ garbage collected ) , yield expression try construct result failure execute pending finally clauses .   case , responsibility event loop 
+ scheduler running asynchronous generator asynchronous 
+ generator - iteratorâs aclose ( ) method run resulting 
+ coroutine object , allowing pending finally clauses 
+ execute . care finalization event loop termination , event loop 
+ define finalizer function takes asynchronous generator - iterator 
+ presumably calls aclose ( ) executes coroutine . 
+ finalizer registered calling sys.set_asyncgen_hooks ( ) . 
+ iterated , asynchronous generator - iterator store 
+ registered finalizer called finalization . reference example 
+ finalizer method implementation asyncio . Loop.shutdown_asyncgens Lib / asyncio / base_events.py . expression yield < expr > syntax error 
+ asynchronous generator function . 6.2.9.4 . Asynchronous generator - iterator methods Â¶ subsection describes methods asynchronous generator iterator , 
+ control execution generator function . async agen . _ _ anext _ _ ( ) Â¶ Returns awaitable run starts execute asynchronous 
+ generator resumes executed yield expression .   
+ asynchronous generator function resumed _ _ anext _ _ ( ) method , current yield expression evaluates 
+ returned awaitable , run continue yield 
+ expression . value yield_list 
+ yield expression value StopIteration exception raised 
+ completing coroutine .   asynchronous generator exits 
+ yielding value , awaitable instead raises StopAsyncIteration exception , signalling asynchronous 
+ iteration completed . method normally called implicitly async loop . async agen . asend ( value ) Â¶ Returns awaitable run resumes execution 
+ asynchronous generator . send ( ) method 
+ generator , âsendsâ value asynchronous generator function , 
+ value argument result current yield expression . 
+ awaitable returned asend ( ) method return 
+ value yielded generator value raised StopIteration , raises StopAsyncIteration 
+ asynchronous generator exits yielding value .   asend ( ) called start asynchronous 
+ generator , called argument , 
+ yield expression receive value . async agen . athrow ( value ) Â¶ async agen . athrow ( type [ , value [ , traceback ] ] ) Returns awaitable raises exception type type point 
+ asynchronous generator paused , returns value 
+ yielded generator function value raised StopIteration exception .   asynchronous generator exits 
+ yielding value , StopAsyncIteration exception 
+ raised awaitable . 
+ generator function catch passed - exception , 
+ raises different exception , awaitable run exception 
+ propagates caller awaitable . Changed version 3.12 : second signature ( type [ , value [ , traceback ] ] ) deprecated 
+ removed future version Python . async agen . aclose ( ) Â¶ Returns awaitable run throw GeneratorExit 
+ asynchronous generator function point paused . 
+ asynchronous generator function exits gracefully , 
+ closed , raises GeneratorExit ( catching exception ) , 
+ returned awaitable raise StopIteration exception . 
+ awaitables returned subsequent calls asynchronous 
+ generator raise StopAsyncIteration exception .   
+ asynchronous generator yields value , RuntimeError raised 
+ awaitable .   asynchronous generator raises exception , 
+ propagated caller awaitable .   asynchronous 
+ generator exited exception normal exit , 
+ calls aclose ( ) return awaitable . 6.3 . Primaries Â¶ Primaries represent tightly bound operations language . 
+ syntax : primary : : = atom | attributeref | subscription | slicing | 6.3.1 . Attribute references Â¶ attribute reference primary followed period : attributeref : : = primary " . " identifier primary evaluate object type supports attribute 
+ references , objects .   object asked produce 
+ attribute identifier . type value produced 
+ determined object .   Multiple evaluations attribute 
+ reference yield different objects . production customized overriding _ _ getattribute _ _ ( ) method _ _ getattr _ _ ( ) method .   _ _ getattribute _ _ ( ) method called 
+ returns value raises AttributeError attribute 
+ available . AttributeError raised object _ _ getattr _ _ ( ) method , method called fallback . 6.3.2 . Subscriptions Â¶ subscription instance container class generally select element container . subscription generic class generally return GenericAlias object . subscription : : = primary " [ " flexible_expression_list " ] " object subscripted , interpreter evaluate primary 
+ expression list . primary evaluate object supports subscription . object 
+ support subscription defining _ _ getitem _ _ ( ) _ _ class_getitem _ _ ( ) . 
+ primary subscripted , evaluated result expression list 
+ passed methods . details _ _ class_getitem _ _ called instead _ _ getitem _ _ , _ _ class_getitem _ _ versus _ _ getitem _ _ . expression list contains comma , expressions 
+ starred , expression list evaluate tuple containing 
+ items expression list . , expression list evaluate 
+ value listâs sole member . Changed version 3.11 : Expressions expression list starred . PEP 646 . built - objects , types objects support subscription 
+ _ _ getitem _ _ ( ) : Mappings . primary mapping , expression list 
+ evaluate object value keys mapping , 
+ subscription selects value mapping corresponds key . 
+ example builtin mapping class dict class . Sequences . primary sequence , expression list 
+ evaluate int slice ( discussed 
+ following section ) . Examples builtin sequence classes include str , list tuple classes . formal syntax makes special provision negative indices sequences . , built - sequences provide _ _ getitem _ _ ( ) method interprets negative indices adding length sequence 
+ index , example , x[-1 ] selects item x . 
+ resulting value nonnegative integer number items 
+ sequence , subscription selects item index value 
+ ( counting zero ) . support negative indices slicing 
+ occurs objectâs _ _ getitem _ _ ( ) method , subclasses overriding 
+ method need explicitly add support . string special kind sequence items characters . character separate data type 
+ string exactly character . 6.3.3 . Slicings Â¶ slicing selects range items sequence object ( e.g. , string , tuple 
+ list ) .   Slicings expressions targets assignment del statements .   syntax slicing : slicing : : = primary " [ " slice_list " ] " slice_list : : = slice_item ( " , " slice_item ) * [ " , " ] slice_item : : = expression | proper_slice proper_slice : : = [ lower_bound ] " : " [ upper_bound ] [ " : " [ stride ] ] lower_bound : : = expression upper_bound : : = expression stride : : = expression ambiguity formal syntax : looks like 
+ expression list looks like slice list , subscription 
+ interpreted slicing .   complicating syntax , 
+ disambiguated defining case interpretation subscription 
+ takes priority interpretation slicing ( case 
+ slice list contains proper slice ) . semantics slicing follows .   primary indexed ( 
+ _ _ getitem _ _ ( ) method 
+ normal subscription ) key constructed slice list , 
+ follows .   slice list contains comma , key tuple 
+ containing conversion slice items ; , conversion 
+ lone slice item key .   conversion slice item 
+ expression expression .   conversion proper slice slice 
+ object ( section standard type hierarchy ) start , stop step attributes values 
+ expressions given lower bound , upper bound stride , respectively , 
+ substituting missing expressions . 6.3.4 . Calls Â¶ calls callable object ( e.g. , function ) possibly 
+ series arguments : : : = primary " ( " [ argument_list [ " , " ] | comprehension ] " ) " argument_list : : = positional_arguments [ " , " starred_and_keywords ] 
+                          [ " , " keywords_arguments ] 
+                          | starred_and_keywords [ " , " keywords_arguments ] 
+                          | keywords_arguments positional_arguments : : = positional_item ( " , " positional_item ) * positional_item : : = assignment_expression | " * " expression starred_and_keywords : : = ( " * " expression | keyword_item ) 
+                          ( " , " " * " expression | " , " keyword_item ) * keywords_arguments : : = ( keyword_item | " * * " expression ) 
+                          ( " , " keyword_item | " , " " * * " expression ) * keyword_item : : = identifier " = " expression optional trailing comma present positional keyword arguments 
+ affect semantics . primary evaluate callable object ( user - defined functions , built - 
+ functions , methods built - objects , class objects , methods class 
+ instances , objects having _ _ _ _ ( ) method callable ) .   
+ argument expressions evaluated attempted .   refer 
+ section Function definitions syntax formal parameter lists . keyword arguments present , converted positional 
+ arguments , follows .   , list unfilled slots created 
+ formal parameters .   N positional arguments , placed 
+ N slots .   , keyword argument , identifier 
+ determine corresponding slot ( identifier 
+ formal parameter , slot , ) .   slot 
+ filled , TypeError exception raised . , 
+ argument placed slot , filling ( expression , fills slot ) .   arguments processed , slots 
+ unfilled filled corresponding default value 
+ function definition .   ( Default values calculated , , function 
+ defined ; , mutable object list dictionary default 
+ value shared calls donât specify argument value 
+ corresponding slot ; usually avoided . )   unfilled 
+ slots default value specified , TypeError exception 
+ raised .   , list filled slots argument list 
+ . CPython implementation detail : implementation provide built - functions positional parameters 
+ names , ânamedâ purpose documentation , 
+ supplied keyword .   CPython , 
+ case functions implemented C use PyArg_ParseTuple ( ) 
+ parse arguments . positional arguments formal parameter slots , TypeError exception raised , formal parameter syntax * identifier present ; case , formal parameter receives tuple 
+ containing excess positional arguments ( tuple 
+ excess positional arguments ) . keyword argument correspond formal parameter , TypeError exception raised , formal parameter syntax * * identifier present ; case , formal parameter receives 
+ dictionary containing excess keyword arguments ( keywords keys 
+ argument values corresponding values ) , ( new ) dictionary 
+ excess keyword arguments . syntax * expression appears function , expression 
+ evaluate iterable .   Elements iterables 
+ treated additional positional arguments .   f(x1 , x2 , * y , x3 , x4 ) , y evaluates sequence y1 , â ¦ , yM , 
+ equivalent M+4 positional arguments x1 , x2 , y1 , â ¦ , yM , x3 , x4 . consequence * expression syntax appear explicit keyword arguments , processed 
+ keyword arguments ( * * expression arguments â ) .   : > > > def f ( , b ): ... print ( , b ) ... > > > f ( b = 1 , * ( 2 , ) ) 2 1 > > > f ( = 1 , * ( 2 , ) ) Traceback ( recent ): File " < stdin > " , line 1 , < module > TypeError : f ( ) got multiple values keyword argument ' ' > > > f ( 1 , * ( 2 , ) ) 1 2 unusual keyword arguments * expression syntax 
+ , practice confusion arise . syntax * * expression appears function , expression 
+ evaluate mapping , contents treated 
+ additional keyword arguments . parameter matching key 
+ given value ( explicit keyword argument , unpacking ) , 
+ TypeError exception raised . * * expression , key mapping 
+ string . 
+ value mapping assigned formal parameter 
+ eligible keyword assignment equal key . 
+ key need Python identifier ( e.g. " max - temp Â ° F " acceptable , 
+ match formal parameter declared ) . 
+ match formal parameter 
+ key - value pair collected * * parameter , , 
+ , TypeError exception raised . Formal parameters syntax * identifier * * identifier 
+ positional argument slots keyword argument names . Changed version 3.5 : Function calls accept number * * * unpackings , 
+ positional arguments follow iterable unpackings ( * ) , 
+ keyword arguments follow dictionary unpackings ( * * ) . 
+ Originally proposed PEP 448 . returns value , possibly , raises 
+ exception .   value computed depends type callable 
+ object . isâ user - defined function : code block function executed , passing argument list .   
+ thing code block bind formal parameters 
+ arguments ; described section Function definitions .   code block 
+ executes return statement , specifies return value 
+ function .   execution reaches end code block 
+ executing return statement , return value . built - function method : result interpreter ; Built - Functions 
+ descriptions built - functions methods . class object : new instance class returned . class instance method : corresponding user - defined function called , argument list 
+ longer argument list : instance 
+ argument . class instance : class define _ _ _ _ ( ) method ; effect 
+ method called . 6.4 . Await expression Â¶ Suspend execution coroutine awaitable object . 
+ inside coroutine function . await_expr : : = " await " primary Added version 3.5 . 6.5 . power operator Â¶ power operator binds tightly unary operators left ; binds 
+ tightly unary operators right .   syntax : power : : = ( await_expr | primary ) [ " * * " u_expr ] , unparenthesized sequence power unary operators , operators 
+ evaluated right left ( constrain evaluation order 
+ operands ): -1**2 results -1 . power operator semantics built - pow ( ) function , 
+ called arguments : yields left argument raised power 
+ right argument .   numeric arguments converted common 
+ type , result type . int operands , result type operands second 
+ argument negative ; case , arguments converted float 
+ float result delivered . example , 10**2 returns 100 , 10**-2 returns 0.01 . Raising 0.0 negative power results ZeroDivisionError . 
+ Raising negative number fractional power results complex number . ( earlier versions raised ValueError . ) operation customized special _ _ pow _ _ ( ) _ _ rpow _ _ ( ) methods . 6.6 . Unary arithmetic bitwise operations Â¶ unary arithmetic bitwise operations priority : u_expr : : = power | " - " u_expr | " + " u_expr | " ~ " u_expr unary - ( minus ) operator yields negation numeric argument ; 
+ operation overridden _ _ neg _ _ ( ) special method . unary + ( plus ) operator yields numeric argument unchanged ; 
+ operation overridden _ _ pos _ _ ( ) special method . unary ~ ( invert ) operator yields bitwise inversion integer 
+ argument .   bitwise inversion x defined -(x+1 ) .   
+ applies integral numbers custom objects override _ _ invert _ _ ( ) special method . cases , argument proper type , TypeError exception raised . 6.7 . Binary arithmetic operations Â¶ binary arithmetic operations conventional priority levels .   Note 
+ operations apply certain non - numeric types .   Apart 
+ power operator , levels , multiplicative 
+ operators additive operators : m_expr : : = u_expr | m_expr " * " u_expr | m_expr " @ " m_expr | m_expr " // " u_expr | m_expr " / " u_expr | m_expr " % " u_expr a_expr : : = m_expr | a_expr " + " m_expr | a_expr " - " m_expr * ( multiplication ) operator yields product arguments .   
+ arguments numbers , argument integer 
+ sequence . case , numbers converted 
+ common type multiplied .   case , sequence 
+ repetition performed ; negative repetition factor yields sequence . operation customized special _ _ mul _ _ ( ) _ _ rmul _ _ ( ) methods . @ ( ) operator intended matrix multiplication .   
+ builtin Python types implement operator . operation customized special _ _ matmul _ _ ( ) _ _ rmatmul _ _ ( ) methods . Added version 3.5 . / ( division ) // ( floor division ) operators yield quotient 
+ arguments .   numeric arguments converted common type . 
+ Division integers yields float , floor division integers results 
+ integer ; result mathematical division âfloorâ function 
+ applied result .   Division zero raises ZeroDivisionError exception . division operation customized special _ _ truediv _ _ ( ) _ _ rtruediv _ _ ( ) methods . 
+ floor division operation customized special _ _ floordiv _ _ ( ) _ _ rfloordiv _ _ ( ) methods . % ( modulo ) operator yields remainder division 
+ argument second .   numeric arguments converted common 
+ type .   zero right argument raises ZeroDivisionError exception .   
+ arguments floating - point numbers , e.g. , 3.14%0.7 equals 0.34 ( 3.14 equals 4 * 0.7 + 0.34 . )   modulo operator yields 
+ result sign second operand ( zero ) ; absolute value 
+ result strictly smaller absolute value second operand [ 1 ] . floor division modulo operators connected following 
+ identity : x = = ( x//y)*y + ( x%y ) .   Floor division modulo 
+ connected built - function divmod ( ) : divmod(x , y ) = = ( x//y , x%y ) . [ 2 ] . addition performing modulo operation numbers , % operator 
+ overloaded string objects perform old - style string formatting ( 
+ known interpolation ) .   syntax string formatting described 
+ Python Library Reference , section printf - style String Formatting . modulo operation customized special _ _ mod _ _ ( ) _ _ rmod _ _ ( ) methods . floor division operator , modulo operator , divmod ( ) function defined complex numbers .   Instead , convert 
+ floating - point number abs ( ) function appropriate . + ( addition ) operator yields sum arguments .   arguments 
+ numbers sequences type .   
+ case , numbers converted common type added . 
+ case , sequences concatenated . operation customized special _ _ add _ _ ( ) _ _ radd _ _ ( ) methods . - ( subtraction ) operator yields difference arguments .   
+ numeric arguments converted common type . operation customized special _ _ sub _ _ ( ) _ _ rsub _ _ ( ) methods . 6.8 . Shifting operations Â¶ shifting operations lower priority arithmetic operations : shift_expr : : = a_expr | shift_expr ( " < < " | " > > " ) a_expr operators accept integers arguments .   shift argument 
+ left right number bits given second argument . left shift operation customized special _ _ lshift _ _ ( ) _ _ rlshift _ _ ( ) methods . 
+ right shift operation customized special _ _ rshift _ _ ( ) _ _ rrshift _ _ ( ) methods . right shift n bits defined floor division pow(2,n ) .   left 
+ shift n bits defined multiplication pow(2,n ) . 6.9 . Binary bitwise operations Â¶ bitwise operations different priority level : and_expr : : = shift_expr | and_expr " & " shift_expr xor_expr : : = and_expr | xor_expr " ^ " and_expr or_expr : : = xor_expr | or_expr " | " xor_expr & operator yields bitwise arguments , 
+ integers custom object overriding _ _ _ _ ( ) _ _ rand _ _ ( ) special methods . ^ operator yields bitwise XOR ( exclusive ) arguments , 
+ integers custom object overriding _ _ xor _ _ ( ) _ _ rxor _ _ ( ) special methods . | operator yields bitwise ( inclusive ) arguments , 
+ integers custom object overriding _ _ _ _ ( ) _ _ ror _ _ ( ) special methods . 6.10 . Comparisons Â¶ Unlike C , comparison operations Python priority , 
+ lower arithmetic , shifting bitwise operation .   unlike 
+ C , expressions like < b < c interpretation conventional 
+ mathematics : comparison : : = or_expr ( comp_operator or_expr ) * comp_operator : : = " < " | " > " | " = = " | " > = " | " < = " | " ! = " 
+                   | " " [ " " ] | [ " " ] " " Comparisons yield boolean values : True False . Custom rich comparison methods return non - boolean values . case 
+ Python bool ( ) value boolean contexts . Comparisons chained arbitrarily , e.g. , x < y < = z equivalent x < y y < = z , y evaluated ( 
+ cases z evaluated x < y found false ) . Formally , , b , c , â ¦ , y , z expressions op1 , op2 , â ¦ , opN comparison operators , op1 b op2 c ... y opN z equivalent 
+ op1 b b op2 c ... y opN z , expression 
+ evaluated . Note op1 b op2 c doesnât imply kind comparison c , , e.g. , x < y > z perfectly legal ( 
+ pretty ) . 6.10.1 . Value comparisons Â¶ operators < , > , = = , > = , < = , ! = compare 
+ values objects .   objects need type . Chapter Objects , values types states objects value ( addition type 
+ identity ) .   value object abstract notion Python : 
+ example , canonical access method objectâs value .   , 
+ requirement value object constructed 
+ particular way , e.g. comprised data attributes . Comparison operators 
+ implement particular notion value object .   think 
+ defining value object indirectly , means 
+ comparison implementation . types ( direct indirect ) subtypes object , 
+ inherit default comparison behavior object .   Types 
+ customize comparison behavior implementing rich comparison methods like _ _ lt _ _ ( ) , described Basic customization . default behavior equality comparison ( = = ! = ) based 
+ identity objects .   , equality comparison instances 
+ identity results equality , equality comparison instances 
+ different identities results inequality .   motivation default 
+ behavior desire objects reflexive ( i.e. x y implies x = = y ) . default order comparison ( < , > , < = , > = ) provided ; 
+ attempt raises TypeError .   motivation default behavior 
+ lack similar invariant equality . behavior default equality comparison , instances different 
+ identities unequal , contrast types need 
+ sensible definition object value value - based equality .   
+ types need customize comparison behavior , fact , number 
+ built - types . following list describes comparison behavior important 
+ built - types . Numbers built - numeric types ( Numeric Types â int , float , complex ) standard 
+ library types fractions . Fraction decimal . Decimal 
+ compared types , restriction complex 
+ numbers support order comparison .   limits types 
+ involved , compare mathematically ( algorithmically ) correct loss 
+ precision . - - number values float('NaN ' ) decimal . Decimal('NaN ' ) 
+ special .   ordered comparison number - - number value false . 
+ counter - intuitive implication - - number values equal 
+ .   example , x = float('NaN ' ) , 3 < x , x < 3 x = = x false , x ! = x true .   behavior 
+ compliant IEEE 754 . NotImplemented singletons . PEP 8 advises 
+ comparisons singletons , 
+ equality operators . Binary sequences ( instances bytes bytearray ) 
+ compared types .   compare lexicographically 
+ numeric values elements . Strings ( instances str ) compare lexicographically 
+ numerical Unicode code points ( result built - function ord ( ) ) characters . [ 3 ] Strings binary sequences directly compared . Sequences ( instances tuple , list , range ) 
+ compared types , restriction ranges 
+ support order comparison .   Equality comparison types 
+ results inequality , ordering comparison types raises TypeError . Sequences compare lexicographically comparison corresponding 
+ elements .   built - containers typically assume identical objects 
+ equal .   lets bypass equality tests identical 
+ objects improve performance maintain internal invariants . Lexicographical comparison built - collections works follows : collections compare equal , type , 
+ length , pair corresponding elements compare 
+ equal ( example , [ 1,2 ] = = ( 1,2 ) false type 
+ ) . Collections support order comparison ordered 
+ unequal elements ( example , [ 1,2,x ] < = [ 1,2,y ] 
+ value x < = y ) .   corresponding element exist , 
+ shorter collection ordered ( example , [ 1,2 ] < [ 1,2,3 ] 
+ true ) . Mappings ( instances dict ) compare equal 
+ equal ( key , value ) pairs . Equality comparison keys values 
+ enforces reflexivity . Order comparisons ( < , > , < = , > = ) raise TypeError . Sets ( instances set frozenset ) compared 
+ types . define order 
+ comparison operators mean subset superset tests .   relations 
+ define total orderings ( example , sets { 1,2 } { 2,3 } equal , subsets , supersets 
+ ) .   Accordingly , sets appropriate arguments functions 
+ depend total ordering ( example , min ( ) , max ( ) , sorted ( ) produce undefined results given list sets inputs ) . Comparison sets enforces reflexivity elements . built - types comparison methods implemented , 
+ inherit default comparison behavior . User - defined classes customize comparison behavior follow 
+ consistency rules , possible : Equality comparison reflexive . 
+ words , identical objects compare equal : x y implies x = = y Comparison symmetric . 
+ words , following expressions result : x = = y y = = x x ! = y y ! = x x < y y > x x < = y y > = x Comparison transitive . 
+ following ( non - exhaustive ) examples illustrate : x > y y > z implies x > z x < y y < = z implies x < z Inverse comparison result boolean negation . 
+ words , following expressions result : x = = y x ! = y x < y x > = y ( total ordering ) x > y x < = y ( total ordering ) expressions apply totally ordered collections ( e.g. 
+ sequences , sets mappings ) . total_ordering ( ) decorator . hash ( ) result consistent equality . 
+ Objects equal hash value , 
+ marked unhashable . Python enforce consistency rules . fact , - - number 
+ values example following rules . 6.10.2 . Membership test operations Â¶ operators test membership . x s evaluates True x member s , False . x s returns negation x s .   built - sequences 
+ set types support dictionary , tests 
+ dictionary given key . container types list , tuple , 
+ set , frozenset , dict , collections.deque , expression x y equivalent 
+ any(x e x = = e e y ) . string bytes types , x y True x 
+ substring y .   equivalent test y.find(x ) ! = -1 .   strings 
+ considered substring string , " " " abc " 
+ return True . user - defined classes define _ _ contains _ _ ( ) method , x y returns True y.__contains__(x ) returns true value , False . user - defined classes define _ _ contains _ _ ( ) define _ _ iter _ _ ( ) , x y True value z , 
+ expression x z x = = z true , produced iterating y . 
+ exception raised iteration , raised 
+ exception . Lastly , old - style iteration protocol tried : class defines _ _ getitem _ _ ( ) , x y True non - negative 
+ integer index x y[i ] x = = y[i ] , lower integer index 
+ raises IndexError exception .   ( exception raised , 
+ raised exception ) . operator defined inverse truth value . 6.10.3 . Identity comparisons Â¶ operators test objectâs identity : x y true x y object .   Objectâs identity 
+ determined d ( ) function . x y yields inverse 
+ truth value . [ 4 ] 6.11 . Boolean operations Â¶ or_test : : = and_test | or_test " " and_test and_test : : = not_test | and_test " " not_test not_test : : = comparison | " " not_test context Boolean operations , expressions 
+ control flow statements , following values interpreted false : False , , numeric zero types , strings containers 
+ ( including strings , tuples , lists , dictionaries , sets frozensets ) .   
+ values interpreted true .   User - defined objects customize 
+ truth value providing _ _ bool _ _ ( ) method . operator yields True argument false , False . expression x y evaluates x ; x false , value 
+ returned ; , y evaluated resulting value returned . expression x y evaluates x ; x true , value 
+ returned ; , y evaluated resulting value returned . Note restrict value type 
+ return False True , return evaluated 
+ argument .   useful , e.g. , s string 
+ replaced default value , expression s ' foo ' yields 
+ desired value .   create new value , 
+ returns boolean value regardless type argument 
+ ( example , ' foo ' produces False '' . ) 6.12 . Assignment expressions Â¶ assignment_expression : : = [ identifier " : = " ] expression assignment expression ( called ânamed expressionâ 
+ âwalrusâ ) assigns expression identifier , returning value expression . common use case handling matched regular expressions : matching : = pattern . search ( data ): do_something ( matching ) , processing file stream chunks : chunk : = file . read ( 9000 ): process ( chunk ) Assignment expressions surrounded parentheses 
+ expression statements sub - expressions 
+ slicing , conditional , lambda , 
+ keyword - argument , comprehension - expressions 
+ assert , , assignment statements . 
+ places , parentheses required , 
+ including statements . Added version 3.8 : PEP 572 details assignment expressions . 6.13 . Conditional expressions Â¶ conditional_expression : : = or_test [ " " or_test " " expression ] expression : : = conditional_expression | lambda_expr Conditional expressions ( called âternary operatorâ ) lowest 
+ priority Python operations . expression x C y evaluates condition , C x . 
+ C true , x evaluated value returned ; , y 
+ evaluated value returned . PEP 308 details conditional expressions . 6.14 . Lambdas Â¶ lambda_expr : : = " lambda " [ parameter_list ] " : " expression Lambda expressions ( called lambda forms ) create anonymous 
+ functions . expression lambda parameters : expression yields function 
+ object .   unnamed object behaves like function object defined : def < lambda>(parameters ): 
+     return expression section Function definitions syntax parameter lists .   Note 
+ functions created lambda expressions contain statements 
+ annotations . 6.15 . Expression lists Â¶ starred_expression : : = [ " * " ] or_expr flexible_expression : : = assignment_expression | starred_expression flexible_expression_list : : = flexible_expression ( " , " flexible_expression ) * [ " , " ] starred_expression_list : : = starred_expression ( " , " starred_expression ) * [ " , " ] expression_list : : = expression ( " , " expression ) * [ " , " ] yield_list : : = expression_list | starred_expression " , " [ starred_expression_list ] list set display , expression list 
+ containing comma yields tuple .   length 
+ tuple number expressions list .   expressions 
+ evaluated left right . asterisk * denotes iterable unpacking .   operand 
+ iterable .   iterable expanded sequence items , 
+ included new tuple , list , set , site 
+ unpacking . Added version 3.5 : Iterable unpacking expression lists , originally proposed PEP 448 . Added version 3.11 : item expression list starred . PEP 646 . trailing comma required create - item tuple , 
+ 1 , ; optional cases . 
+ single expression 
+ trailing comma doesnât create tuple , yields value 
+ expression . ( create tuple , use pair parentheses : ( ) . ) 6.16 . Evaluation order Â¶ Python evaluates expressions left right .   Notice evaluating 
+ assignment , right - hand evaluated left - hand . following lines , expressions evaluated arithmetic order 
+ suffixes : expr1 , expr2 , expr3 , expr4 ( expr1 , expr2 , expr3 , expr4 ) { expr1 : expr2 , expr3 : expr4 } expr1 + expr2 * ( expr3 - expr4 ) expr1 ( expr2 , expr3 , * expr4 , * * expr5 ) expr3 , expr4 = expr1 , expr2 6.17 . Operator precedence Â¶ following table summarizes operator precedence Python , highest 
+ precedence ( binding ) lowest precedence ( binding ) .   Operators 
+ box precedence .   syntax explicitly given , 
+ operators binary .   Operators box group left right ( 
+ exponentiation conditional expressions , group right left ) . Note comparisons , membership tests , identity tests , 
+ precedence left - - right chaining feature described Comparisons section . Operator Description ( expressions ... ) , [ expressions ... ] , { key : value ... } , { expressions ... } Binding parenthesized 
+ expression , 
+ list display , 
+ dictionary display , 
+ set display x[index ] , x[index : index ] , x(arguments ... ) , x.attribute Subscription , slicing , 
+ , attribute reference await x Await expression * * Exponentiation [ 5 ] + x , -x , ~x Positive , negative , bitwise * , @ , / , // , % Multiplication , matrix 
+ multiplication , division , floor 
+ division , remainder [ 6 ] + , - Addition subtraction < < , > > Shifts & Bitwise ^ Bitwise XOR | Bitwise , , , , < , < = , > , > = , ! = , = = Comparisons , including membership 
+ tests identity tests x Boolean Boolean Boolean â Conditional expression lambda Lambda expression : = Assignment expression Footnotes [ 1 ] abs(x%y ) < abs(y ) true mathematically , floats 
+ true numerically roundoff .   example , assuming platform 
+ Python float IEEE 754 double - precision number , order -1e-100 % 1e100 sign 1e100 , computed result -1e-100 + 1e100 , numerically exactly equal 1e100 .   function math.fmod ( ) returns result sign matches sign 
+ argument instead , returns -1e-100 case . approach 
+ appropriate depends application . [ 2 ] x close exact integer multiple y , itâs possible x//y larger ( x - x%y)//y rounding .   
+ cases , Python returns result , order preserve divmod(x , y)[0 ] * y + x % y close x . [ 3 ] Unicode standard distinguishes code points ( e.g. U+0041 ) abstract characters ( e.g. âLATIN CAPITAL LETTER Aâ ) . 
+ abstract characters Unicode represented 
+ code point , number abstract characters addition 
+ represented sequence code point .   example , 
+ abstract character âLATIN CAPITAL LETTER C CEDILLAâ represented 
+ single precomposed character code position U+00C7 , 
+ sequence base character code position U+0043 ( LATIN CAPITAL 
+ LETTER C ) , followed combining character code position U+0327 
+ ( COMBINING CEDILLA ) . comparison operators strings compare level Unicode code 
+ points . counter - intuitive humans .   example , " \u00C7 " = = " \u0043\u0327 " False , strings 
+ represent abstract character âLATIN CAPITAL LETTER C CEDILLAâ. compare strings level abstract characters ( , way 
+ intuitive humans ) , use unicodedata.normalize ( ) . [ 4 ] automatic garbage - collection , free lists , dynamic nature 
+ descriptors , notice seemingly unusual behaviour certain uses 
+ operator , like involving comparisons instance 
+ methods , constants .   Check documentation info . [ 5 ] power operator * * binds tightly arithmetic 
+ bitwise unary operator right , , 2**-1 0.5 . [ 6 ] % operator string formatting ; 
+ precedence applies . Table Contents 6 . Expressions 6.1 . Arithmetic conversions 6.2 . Atoms 6.2.1 . Identifiers ( Names ) 6.2.1.1 . Private mangling 6.2.2 . Literals 6.2.3 . Parenthesized forms 6.2.4 . Displays lists , sets dictionaries 6.2.5 . List displays 6.2.6 . Set displays 6.2.7 . Dictionary displays 6.2.8 . Generator expressions 6.2.9 . Yield expressions 6.2.9.1 . Generator - iterator methods 6.2.9.2 . Examples 6.2.9.3 . Asynchronous generator functions 6.2.9.4 . Asynchronous generator - iterator methods 6.3 . Primaries 6.3.1 . Attribute references 6.3.2 . Subscriptions 6.3.3 . Slicings 6.3.4 . Calls 6.4 . Await expression 6.5 . power operator 6.6 . Unary arithmetic bitwise operations 6.7 . Binary arithmetic operations 6.8 . Shifting operations 6.9 . Binary bitwise operations 6.10 . Comparisons 6.10.1 . Value comparisons 6.10.2 . Membership test operations 6.10.3 . Identity comparisons 6.11 . Boolean operations 6.12 . Assignment expressions 6.13 . Conditional expressions 6.14 . Lambdas 6.15 . Expression lists 6.16 . Evaluation order 6.17 . Operator precedence Previous topic 5 . import system topic 7 . Simple statements Page Report Bug Source Â « Navigation index modules | | previous | Python » 3.13.3 Documentation » Python Language Reference » 6 . Expressions | Theme Auto Light Dark | © Copyright 2001 - 2025 , Python Software Foundation . page licensed Python Software Foundation License Version 2 . Examples , recipes , code documentation additionally licensed Zero Clause BSD License . History License information . Python Software Foundation non - profit corporation . donate . updated Apr 28 , 2025 ( 17:16 UTC ) . Found bug ? Created Sphinx 8.2.3 .

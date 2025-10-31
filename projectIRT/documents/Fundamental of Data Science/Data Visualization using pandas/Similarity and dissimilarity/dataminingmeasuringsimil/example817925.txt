@@ -1,0 +1,1211 @@
+Data mining Measuring similarity desimilarity | PPT Submit Search Data mining Measuring similarity desimilarity Jul 4 , 2020 Download PPTX , PDF 3 likes 11,206 views AI - enhanced description Rushali Deshmukh document defines key concepts related data including : 
+ - Data collection objects attributes . attribute describes property object . 
+ - Attributes nominal , ordinal , interval , ratio scales depending properties . 
+ - Similarity dissimilarity measures quantify alike different objects based attributes . 
+ - Data organized data matrix dissimilarities stored dissimilarity matrix . Read 1 46 Download Downloaded 26 times Recommended Clustering Data Mining Clustering Data Mining Archana Swaminathan Clustering unsupervised learning technique group unlabeled data points based similarities . aims maximize similarity clusters minimize similarity clusters . clustering methods including partitioning , hierarchical , density - based , grid - based , model - based . Clustering applications pattern recognition , image processing , market research , bioinformatics . useful extracting hidden patterns large , complex datasets . K mean - clustering algorithm K mean - clustering algorithm parry prabhu k - means clustering aims partition n observations k clusters observation belongs cluster nearest mean , serving prototype cluster . results partitioning data space Voronoi cells . Classification data mining Classification data mining Sulman Ahmed course data mining optimized results . included types use techniques . course data mining optimized results . included types use techniques . course data mining optimized results . included types use techniques . course data mining optimized results . included types use techniques . course data mining optimized results . included types use techniques Agent architectures Agent architectures Antonio Moreno document provides overview different agent architectures , including reactive , deliberative , hybrid architectures . discusses key concepts like types environments agents operate , including accessible vs inaccessible , deterministic vs non - deterministic , episodic vs non - episodic , static vs dynamic environments . Reactive architectures focused fast reactions environmental changes minimal internal representation computation . Deliberative architectures emphasize long - term planning goal - driven behavior symbolic representations . Rodney Brooks proposed intelligence emerge interaction simple agents following stimulus - response rules , complex internal models , seen ant colonies . Network layer - design Issues Network layer - design Issues قصي نسور Network layer - design Issues , Store - - Forward Packet Switching , Services Provided Transport Layer , service best   , Implementation Service , Implementation Connectionless Service , Implementation Connection - Oriented Service Machine learning clustering Machine learning clustering CosmoAIMS Bassett document discusses machine learning concepts including supervised vs. unsupervised learning , clustering algorithms , specific clustering methods like k - means k - nearest neighbors . provides examples clustering applications market segmentation astronomical data analysis . Key clustering algorithms covered hierarchy methods , partitioning methods , k - means groups data assigning objects closest cluster center , k - nearest neighbors classifies new data based closest training examples . Data mining tasks Data mining tasks Khwaja Aamer document discusses data mining different types data mining techniques . defines data mining process analyzing large amounts data discover patterns relationships . document describes predictive data mining , makes predictions based historical data , descriptive data mining , identifies patterns relationships . discusses classification , clustering , time - series analysis , data summarization specific data mining techniques . Machine Learning Decision trees Machine Learning Decision trees Knoldus Inc. Decision tree type supervised learning algorithm ( having pre - defined target variable ) classification problems . tree branch node represents choice number alternatives , leaf node represents decision . 3.2 partitioning methods 3.2 partitioning methods Krish_ver2 document discusses clustering approaches including partitioning , hierarchical , density - based , grid - based , model - based , frequent pattern - based , constraint - based methods . focuses partitioning methods k - means k - medoids clustering . K - means clustering aims partition objects k clusters minimizing total intra - cluster variance , representing cluster centroid . K - medoids clustering robust variant represents cluster medoid centrally located object . document covers algorithms implementing k - means k - medoids clustering . 1.7 data reduction 1.7 data reduction Krish_ver2 document discusses data reduction strategies including attribute subset selection , numerosity reduction , dimensionality reduction . Attribute subset selection aims select minimal set important attributes . Numerosity reduction techniques like regression , log - linear models , histograms , clustering , sampling reduce data volume finding alternative representations like model parameters cluster centroids . Dimensionality reduction techniques include discrete wavelet transformation principal component analysis , transform high - dimensional data lower - dimensional representation . DESIGN ANALYSIS ALGORITHMS DESIGN ANALYSIS ALGORITHMS Gayathri Gaayu document discusses algorithms analysis . defines algorithm step - - step procedure solve problem calculate quantity . Algorithm analysis involves evaluating memory usage time complexity . Asymptotics , Big - O notation , formalize growth rates algorithms . Common sorting algorithms like insertion sort quicksort analyzed recurrence relations determine time complexities O(n^2 ) O(nlogn ) , respectively . Recognition - - tokens Recognition - - tokens Dattatray Gandhmal Relational operator transition diagram , transition diagram identifiers digits , Token Recognition , rules specify recognize token Presentation K - Means Clustering Presentation K - Means Clustering Pabna University Science & Technology presentation introduces clustering analysis k - means clustering technique . defines clustering unsupervised method segment data groups similar traits . presentation outlines different clustering types ( hard vs soft ) , techniques ( partitioning , hierarchical , etc . ) , describes k - means algorithm detail multiple steps . discusses requirements clustering , provides examples applications , reviews advantages disadvantages k - means clustering . Network layer tanenbaum Network layer tanenbaum Mahesh Kumar Chelimilla document provides overview key concepts network layer design , including : 
+
+ - Store - - forward packet switching services provided transport layer . 
+
+ - Implementation connectionless connection - oriented services , comparison virtual circuits datagrams . 
+
+ - Routing algorithms like shortest path , flooding , distance vector , link state , hierarchical routing . 
+
+ - Quality service techniques including integrated services , differentiated services , MPLS . 
+
+ - Internetworking issues connecting different networks , concatenated virtual circuits , tunneling , fragmentation . 
+
+ - overview network layer Internet including IP , addressing , routing protocols like OSPF BGP , Data preprocessing Data preprocessing Jason Rodrigues Data preprocessing techniques 
+
+
+
+
+
+ Paris applied psychology conference paper 
+
+
+
+ https://www.slideshare.net/jasonrodrigues/paris-conference-on-applied-psychology 
+
+ 
+
+ https://prezi.com/view/KBP8JnekVH9LkLOiKY3w/ Data preprocessing Data preprocessing ankur bhalla Data preprocessing involves transforming raw data understandable consistent format . includes data cleaning , integration , transformation , reduction . Data cleaning aims fill missing values , smooth noise , resolve inconsistencies . Data integration combines data multiple sources . Data transformation handles tasks like normalization aggregation prepare data mining . Data reduction techniques obtain reduced representation data maintains analytical results reduces volume , aggregation , dimensionality reduction , discretization , sampling . Type Checking(Compiler Design ) # ShareThisIfYouLike Type Checking(Compiler Design ) # ShareThisIfYouLike United International University purpose types : 
+
+
+
+ define program . 
+
+
+
+     e.g. read array integers return double 
+
+
+
+ guarantee program meaningful . 
+
+
+
+     add string integer 
+
+     variables declared 
+
+
+
+ document programmer intentions . 
+
+
+
+     better comments , checked compiler 
+
+
+
+ optimize use hardware . 
+
+
+
+     reserve minimal memory , 
+
+     use appropriate machine instructions . Network Layer design Issues.pptx Network Layer design Issues.pptx Acad network layer provides main services : connectionless connection - oriented . Connectionless service routes packets independently routers destination addresses routing tables . Connection - oriented service establishes virtual circuit source destination , routing related traffic pre - determined path . document discusses store - - forward packet switching , packets stored fully received forwarded , services provided transport layer like uniform addressing . 5.1 mining data streams 5.1 mining data streams Krish_ver2 document discusses techniques mining data streams . begins defining different types streaming data like time - series data sequence data . discusses characteristics data streams like huge volume , fast changing nature , requirement real - time processing . key challenges stream query processing unbounded memory requirements need approximate query answering . document outlines synopsis data structures techniques mining data streams , including random sampling , histograms , sketches , randomized algorithms . discusses architectures stream query processing classification dynamic data streams . 8 queens problem tracking 8 queens problem tracking Tech_MX document discusses solving 8 queens problem backtracking . begins explaining backtracking algorithm builds partial candidates solutions incrementally abandons partial candidate completed valid solution . provides details 8 queens problem - goal place 8 queens chessboard queens attack . Backtracking - suited solving problem attempting place queens backtracking invalid placement found . Relational algebra ppt Relational algebra ppt GirdharRatne DBMS ( DataBase Management System ) , relation algebra important term understand queries SQL ( Structured Query Language ) database system . overview operators DBMS method relational algebra relational calculus . Grid based method & model based clustering method Grid based method & model based clustering method rajshreemuthiah document discusses grid - based , density - based , conceptual clustering algorithms . Grid - based approaches like STING WAVECLUSTER cluster data quantizing space grids cells . CLIQUE uses grid - based approach identify dense units data . Conceptual clustering algorithms like COBWEB create hierarchical cluster trees classify objects based attribute probabilities . Bayes Belief Networks Bayes Belief Networks Sai Kumar Kodam document discusses Bayesian belief networks ( BBNs ) , represent probabilistic relationships variables . BBNs consist directed acyclic graph showing dependencies nodes / variables , conditional probability tables quantifying effects . allow representing conditional independence non - descendant variables given parents . document provides example BBN modeling home alarm system neighbors calling police . shows calculations find probability burglary given neighbor called police network . Advantages handling incomplete data , learning causation , prior knowledge , disadvantage complex graph construction . Deductive databases Deductive databases Dabbal Singh Mahara document discusses deductive databases differ conventional databases . Deductive databases contain facts rules allow implicit facts deduced stored information . reduces storage needed compared explicitly storing facts . Deductive databases use logic programming languages like Datalog specify rules define virtual relations . rules allow new facts inferred inference engine explicitly represented . Tree pruning Tree pruning Shivangi Gupta process adjusting Decision Tree minimize “ misclassification error ” called   pruning . 2 types prepruning post pruning . Segments Graphics Segments Graphics Rajani Thite document discusses image segmentation use segments structure image display . describes display file divided segments segment table . segment table uses arrays linked lists store segment information like start position , size , attributes . Algorithms provided creating , closing , deleting , renaming segments dynamically manage image display . Visibility attributes allow hiding showing segments needed . lazy learners classication methods lazy learners classication methods rajshreemuthiah Lazy learning machine learning method generalization training data delayed query , unlike eager learning generalizes queries . K - nearest neighbors case - based reasoning examples lazy learners , store training data classify new data based similarity . Case - based reasoning specifically stores prior problem solutions solve new problems combining similar past case solutions . Distributed DBMS - Unit 6 - Query Processing Distributed DBMS - Unit 6 - Query Processing Gyanmanjari Institute Technology Query Processing : Query Processing Problem , Layers Query Processing Query Processing Centralized Systems – Parsing & Translation , Optimization , Code generation , Example Query Processing Distributed Systems – Mapping global query local , Optimization , Data Mining DataLecture Notes Chapter 2Introduc.docx Data Mining DataLecture Notes Chapter 2Introduc.docx whittemorelucilla Data Mining : Data 
+ Lecture Notes Chapter 2 
+
+ Introduction Data Mining 
+ 
+ Tan , Steinbach , Kumar 
+
+
+
+
+
+
+
+
+
+
+
+ Data?Collection data objects attributes 
+ attribute property characteristic objectExamples : eye color person , temperature , etc . Attribute known variable , field , characteristic , featureA collection attributes describe objectObject known record , point , case , sample , entity , instance 
+ Attributes 
+
+ Objects 
+
+
+
+
+
+
+
+ Attribute ValuesAttribute values numbers symbols assigned attribute 
+ Distinction attributes attribute valuesSame attribute mapped different attribute values Example : height measured feet meters 
+ Different attributes mapped set values Example : Attribute values ID age integers properties attribute values different 
+ ID limit age maximum minimum value 
+
+
+
+ Measurement Length way measure attribute somewhat match attributes properties . 
+
+
+
+
+
+
+
+ Types Attributes   different types attributesNominalExamples : ID numbers , eye color , zip codesOrdinalExamples : rankings ( e.g. , taste potato chips scale 1 - 10 ) , grades , height { tall , medium , short}IntervalExamples : calendar dates , temperatures Celsius Fahrenheit . RatioExamples : temperature Kelvin , length , time , counts 
+
+
+
+
+
+
+ Properties Attribute Values type attribute depends following properties possesses : Distinctness :   =   Order :   <   >   Addition :   +   - Multiplication : * / 
+ Nominal attribute : distinctnessOrdinal attribute : distinctness & orderInterval attribute : distinctness , order & additionRatio attribute : 4 properties 
+
+
+
+
+
+
+ Attribute Type 
+
+
+ Description 
+
+
+ Examples 
+
+
+ Operations 
+
+
+ Nominal 
+
+ values nominal attribute different names , i.e. , nominal attributes provide information distinguish object . (= ,  ) 
+
+ zip codes , employee ID numbers , eye color , sex : { male , female } 
+
+ mode , entropy , contingency correlation , 2 test 
+
+ Ordinal 
+
+ values ordinal attribute provide information order objects . ( < , > ) 
+
+ hardness minerals , { good , better , best } , 
+
+ grades , street numbers 
+
+ median , percentiles , rank correlation , run tests , sign tests 
+
+ Interval 
+
+ interval attributes , differences values meaningful , i.e. , unit measurement exists .  
+
+ ( + , - ) 
+
+ calendar dates , temperature Celsius Fahrenheit 
+
+ mean , standard deviation , Pearson correlation , t F tests 
+
+ Ratio 
+
+ ratio variables , differences ratios meaningful . ( * , / ) 
+
+ temperature Kelvin , monetary quantities , counts , age , mass , length , electrical current 
+
+ geometric mean , harmonic mean , percent variation 
+
+
+
+
+
+ Attribute Level 
+
+
+ Transformation 
+
+
+ Comments 
+
+
+ Nominal 
+
+ permutation values 
+
+ employee ID numbers reassigned , difference ? 
+
+ Ordinal 
+
+ . Data Datamining Data Datamining Datamining Tools document discusses different types data attributes , including nominal , ordinal , interval , ratio attributes . describes structured unstructured data types , records , matrices , documents , transactions , graphs , web data . Finally , covers data preprocessing techniques like aggregation , sampling , dimensionality reduction , feature selection creation , data transformation . Related Content hot ( 20 ) 3.2 partitioning methods 3.2 partitioning methods Krish_ver2 document discusses clustering approaches including partitioning , hierarchical , density - based , grid - based , model - based , frequent pattern - based , constraint - based methods . focuses partitioning methods k - means k - medoids clustering . K - means clustering aims partition objects k clusters minimizing total intra - cluster variance , representing cluster centroid . K - medoids clustering robust variant represents cluster medoid centrally located object . document covers algorithms implementing k - means k - medoids clustering . 1.7 data reduction 1.7 data reduction Krish_ver2 document discusses data reduction strategies including attribute subset selection , numerosity reduction , dimensionality reduction . Attribute subset selection aims select minimal set important attributes . Numerosity reduction techniques like regression , log - linear models , histograms , clustering , sampling reduce data volume finding alternative representations like model parameters cluster centroids . Dimensionality reduction techniques include discrete wavelet transformation principal component analysis , transform high - dimensional data lower - dimensional representation . DESIGN ANALYSIS ALGORITHMS DESIGN ANALYSIS ALGORITHMS Gayathri Gaayu document discusses algorithms analysis . defines algorithm step - - step procedure solve problem calculate quantity . Algorithm analysis involves evaluating memory usage time complexity . Asymptotics , Big - O notation , formalize growth rates algorithms . Common sorting algorithms like insertion sort quicksort analyzed recurrence relations determine time complexities O(n^2 ) O(nlogn ) , respectively . Recognition - - tokens Recognition - - tokens Dattatray Gandhmal Relational operator transition diagram , transition diagram identifiers digits , Token Recognition , rules specify recognize token Presentation K - Means Clustering Presentation K - Means Clustering Pabna University Science & Technology presentation introduces clustering analysis k - means clustering technique . defines clustering unsupervised method segment data groups similar traits . presentation outlines different clustering types ( hard vs soft ) , techniques ( partitioning , hierarchical , etc . ) , describes k - means algorithm detail multiple steps . discusses requirements clustering , provides examples applications , reviews advantages disadvantages k - means clustering . Network layer tanenbaum Network layer tanenbaum Mahesh Kumar Chelimilla document provides overview key concepts network layer design , including : 
+
+ - Store - - forward packet switching services provided transport layer . 
+
+ - Implementation connectionless connection - oriented services , comparison virtual circuits datagrams . 
+
+ - Routing algorithms like shortest path , flooding , distance vector , link state , hierarchical routing . 
+
+ - Quality service techniques including integrated services , differentiated services , MPLS . 
+
+ - Internetworking issues connecting different networks , concatenated virtual circuits , tunneling , fragmentation . 
+
+ - overview network layer Internet including IP , addressing , routing protocols like OSPF BGP , Data preprocessing Data preprocessing Jason Rodrigues Data preprocessing techniques 
+
+
+
+
+
+ Paris applied psychology conference paper 
+
+
+
+ https://www.slideshare.net/jasonrodrigues/paris-conference-on-applied-psychology 
+
+ 
+
+ https://prezi.com/view/KBP8JnekVH9LkLOiKY3w/ Data preprocessing Data preprocessing ankur bhalla Data preprocessing involves transforming raw data understandable consistent format . includes data cleaning , integration , transformation , reduction . Data cleaning aims fill missing values , smooth noise , resolve inconsistencies . Data integration combines data multiple sources . Data transformation handles tasks like normalization aggregation prepare data mining . Data reduction techniques obtain reduced representation data maintains analytical results reduces volume , aggregation , dimensionality reduction , discretization , sampling . Type Checking(Compiler Design ) # ShareThisIfYouLike Type Checking(Compiler Design ) # ShareThisIfYouLike United International University purpose types : 
+
+
+
+ define program . 
+
+
+
+     e.g. read array integers return double 
+
+
+
+ guarantee program meaningful . 
+
+
+
+     add string integer 
+
+     variables declared 
+
+
+
+ document programmer intentions . 
+
+
+
+     better comments , checked compiler 
+
+
+
+ optimize use hardware . 
+
+
+
+     reserve minimal memory , 
+
+     use appropriate machine instructions . Network Layer design Issues.pptx Network Layer design Issues.pptx Acad network layer provides main services : connectionless connection - oriented . Connectionless service routes packets independently routers destination addresses routing tables . Connection - oriented service establishes virtual circuit source destination , routing related traffic pre - determined path . document discusses store - - forward packet switching , packets stored fully received forwarded , services provided transport layer like uniform addressing . 5.1 mining data streams 5.1 mining data streams Krish_ver2 document discusses techniques mining data streams . begins defining different types streaming data like time - series data sequence data . discusses characteristics data streams like huge volume , fast changing nature , requirement real - time processing . key challenges stream query processing unbounded memory requirements need approximate query answering . document outlines synopsis data structures techniques mining data streams , including random sampling , histograms , sketches , randomized algorithms . discusses architectures stream query processing classification dynamic data streams . 8 queens problem tracking 8 queens problem tracking Tech_MX document discusses solving 8 queens problem backtracking . begins explaining backtracking algorithm builds partial candidates solutions incrementally abandons partial candidate completed valid solution . provides details 8 queens problem - goal place 8 queens chessboard queens attack . Backtracking - suited solving problem attempting place queens backtracking invalid placement found . Relational algebra ppt Relational algebra ppt GirdharRatne DBMS ( DataBase Management System ) , relation algebra important term understand queries SQL ( Structured Query Language ) database system . overview operators DBMS method relational algebra relational calculus . Grid based method & model based clustering method Grid based method & model based clustering method rajshreemuthiah document discusses grid - based , density - based , conceptual clustering algorithms . Grid - based approaches like STING WAVECLUSTER cluster data quantizing space grids cells . CLIQUE uses grid - based approach identify dense units data . Conceptual clustering algorithms like COBWEB create hierarchical cluster trees classify objects based attribute probabilities . Bayes Belief Networks Bayes Belief Networks Sai Kumar Kodam document discusses Bayesian belief networks ( BBNs ) , represent probabilistic relationships variables . BBNs consist directed acyclic graph showing dependencies nodes / variables , conditional probability tables quantifying effects . allow representing conditional independence non - descendant variables given parents . document provides example BBN modeling home alarm system neighbors calling police . shows calculations find probability burglary given neighbor called police network . Advantages handling incomplete data , learning causation , prior knowledge , disadvantage complex graph construction . Deductive databases Deductive databases Dabbal Singh Mahara document discusses deductive databases differ conventional databases . Deductive databases contain facts rules allow implicit facts deduced stored information . reduces storage needed compared explicitly storing facts . Deductive databases use logic programming languages like Datalog specify rules define virtual relations . rules allow new facts inferred inference engine explicitly represented . Tree pruning Tree pruning Shivangi Gupta process adjusting Decision Tree minimize “ misclassification error ” called   pruning . 2 types prepruning post pruning . Segments Graphics Segments Graphics Rajani Thite document discusses image segmentation use segments structure image display . describes display file divided segments segment table . segment table uses arrays linked lists store segment information like start position , size , attributes . Algorithms provided creating , closing , deleting , renaming segments dynamically manage image display . Visibility attributes allow hiding showing segments needed . lazy learners classication methods lazy learners classication methods rajshreemuthiah Lazy learning machine learning method generalization training data delayed query , unlike eager learning generalizes queries . K - nearest neighbors case - based reasoning examples lazy learners , store training data classify new data based similarity . Case - based reasoning specifically stores prior problem solutions solve new problems combining similar past case solutions . Distributed DBMS - Unit 6 - Query Processing Distributed DBMS - Unit 6 - Query Processing Gyanmanjari Institute Technology Query Processing : Query Processing Problem , Layers Query Processing Query Processing Centralized Systems – Parsing & Translation , Optimization , Code generation , Example Query Processing Distributed Systems – Mapping global query local , Optimization , 3.2 partitioning methods 3.2 partitioning methods Krish_ver2 1.7 data reduction 1.7 data reduction Krish_ver2 DESIGN ANALYSIS ALGORITHMS DESIGN ANALYSIS ALGORITHMS Gayathri Gaayu Recognition - - tokens Recognition - - tokens Dattatray Gandhmal Presentation K - Means Clustering Presentation K - Means Clustering Pabna University Science & Technology Network layer tanenbaum Network layer tanenbaum Mahesh Kumar Chelimilla Data preprocessing Data preprocessing Jason Rodrigues Data preprocessing Data preprocessing ankur bhalla Type Checking(Compiler Design ) # ShareThisIfYouLike Type Checking(Compiler Design ) # ShareThisIfYouLike United International University Network Layer design Issues.pptx Network Layer design Issues.pptx Acad 5.1 mining data streams 5.1 mining data streams Krish_ver2 8 queens problem tracking 8 queens problem tracking Tech_MX Relational algebra ppt Relational algebra ppt GirdharRatne Grid based method & model based clustering method Grid based method & model based clustering method rajshreemuthiah Bayes Belief Networks Bayes Belief Networks Sai Kumar Kodam Deductive databases Deductive databases Dabbal Singh Mahara Tree pruning Tree pruning Shivangi Gupta Segments Graphics Segments Graphics Rajani Thite lazy learners classication methods lazy learners classication methods rajshreemuthiah Distributed DBMS - Unit 6 - Query Processing Distributed DBMS - Unit 6 - Query Processing Gyanmanjari Institute Technology Similar Data mining Measuring similarity desimilarity ( 20 ) Data Mining DataLecture Notes Chapter 2Introduc.docx Data Mining DataLecture Notes Chapter 2Introduc.docx whittemorelucilla Data Mining : Data 
+ Lecture Notes Chapter 2 
+
+ Introduction Data Mining 
+ 
+ Tan , Steinbach , Kumar 
+
+
+
+
+
+
+
+
+
+
+
+ Data?Collection data objects attributes 
+ attribute property characteristic objectExamples : eye color person , temperature , etc . Attribute known variable , field , characteristic , featureA collection attributes describe objectObject known record , point , case , sample , entity , instance 
+ Attributes 
+
+ Objects 
+
+
+
+
+
+
+
+ Attribute ValuesAttribute values numbers symbols assigned attribute 
+ Distinction attributes attribute valuesSame attribute mapped different attribute values Example : height measured feet meters 
+ Different attributes mapped set values Example : Attribute values ID age integers properties attribute values different 
+ ID limit age maximum minimum value 
+
+
+
+ Measurement Length way measure attribute somewhat match attributes properties . 
+
+
+
+
+
+
+
+ Types Attributes   different types attributesNominalExamples : ID numbers , eye color , zip codesOrdinalExamples : rankings ( e.g. , taste potato chips scale 1 - 10 ) , grades , height { tall , medium , short}IntervalExamples : calendar dates , temperatures Celsius Fahrenheit . RatioExamples : temperature Kelvin , length , time , counts 
+
+
+
+
+
+
+ Properties Attribute Values type attribute depends following properties possesses : Distinctness :   =   Order :   <   >   Addition :   +   - Multiplication : * / 
+ Nominal attribute : distinctnessOrdinal attribute : distinctness & orderInterval attribute : distinctness , order & additionRatio attribute : 4 properties 
+
+
+
+
+
+
+ Attribute Type 
+
+
+ Description 
+
+
+ Examples 
+
+
+ Operations 
+
+
+ Nominal 
+
+ values nominal attribute different names , i.e. , nominal attributes provide information distinguish object . (= ,  ) 
+
+ zip codes , employee ID numbers , eye color , sex : { male , female } 
+
+ mode , entropy , contingency correlation , 2 test 
+
+ Ordinal 
+
+ values ordinal attribute provide information order objects . ( < , > ) 
+
+ hardness minerals , { good , better , best } , 
+
+ grades , street numbers 
+
+ median , percentiles , rank correlation , run tests , sign tests 
+
+ Interval 
+
+ interval attributes , differences values meaningful , i.e. , unit measurement exists .  
+
+ ( + , - ) 
+
+ calendar dates , temperature Celsius Fahrenheit 
+
+ mean , standard deviation , Pearson correlation , t F tests 
+
+ Ratio 
+
+ ratio variables , differences ratios meaningful . ( * , / ) 
+
+ temperature Kelvin , monetary quantities , counts , age , mass , length , electrical current 
+
+ geometric mean , harmonic mean , percent variation 
+
+
+
+
+
+ Attribute Level 
+
+
+ Transformation 
+
+
+ Comments 
+
+
+ Nominal 
+
+ permutation values 
+
+ employee ID numbers reassigned , difference ? 
+
+ Ordinal 
+
+ . Data Datamining Data Datamining Datamining Tools document discusses different types data attributes , including nominal , ordinal , interval , ratio attributes . describes structured unstructured data types , records , matrices , documents , transactions , graphs , web data . Finally , covers data preprocessing techniques like aggregation , sampling , dimensionality reduction , feature selection creation , data transformation . Data Datamining Data Datamining DataminingTools Inc document discusses data attributes data mining . defines data collection objects properties attributes . Attributes nominal , ordinal , interval ratio . document describes different types attributes data sets , important characteristics like dimensionality sparsity . covers data quality issues , preprocessing techniques like aggregation , sampling feature selection , measures similarity dissimilarity data objects . Lect 2 getting know data Lect 2 getting know data hktripathy document provides overview getting know data data mining data warehousing . defines key concepts like data objects , attributes , attribute types , data sets , data quality issues . Data objects described set attributes , qualitative like nominal ordinal , quantitative like interval ratio scaled . Different types data sets discussed including data matrices , documents , transactions , graphs , ordered data . Common data quality problems addressed noise , outliers , missing values , duplicate data . Methods measuring similarity dissimilarity data objects introduced . Data Mining DataLecture Notes Chapter 2Introduc Data Mining DataLecture Notes Chapter 2Introduc OllieShoresna Data Mining : Data 
+ Lecture Notes Chapter 2 
+
+ Introduction Data Mining 
+ 
+ Tan , Steinbach , Kumar 
+
+
+
+
+
+
+
+
+
+
+
+ Data?Collection data objects attributes 
+ attribute property characteristic objectExamples : eye color person , temperature , etc . Attribute known variable , field , characteristic , featureA collection attributes describe objectObject known record , point , case , sample , entity , instance 
+ Attributes 
+
+ Objects 
+
+
+
+
+
+
+
+ Attribute ValuesAttribute values numbers symbols assigned attribute 
+ Distinction attributes attribute valuesSame attribute mapped different attribute values Example : height measured feet meters 
+ Different attributes mapped set values Example : Attribute values ID age integers properties attribute values different 
+ ID limit age maximum minimum value 
+
+
+
+ Types Attributes   different types attributesNominalExamples : ID numbers , eye color , zip codesOrdinalExamples : rankings ( e.g. , taste potato chips scale 1 - 10 ) , grades , height { tall , medium , short}IntervalExamples : calendar dates , temperatures Celsius Fahrenheit . RatioExamples : temperature Kelvin , length , time , counts 
+
+
+
+
+
+
+ Properties Attribute Values type attribute depends following properties possesses : Distinctness :   =   Order :   <   >   Addition :   +   - Multiplication : * / 
+ Nominal attribute : distinctnessOrdinal attribute : distinctness & orderInterval attribute : distinctness , order & additionRatio attribute : 4 properties 
+
+
+
+
+
+
+ Attribute Type 
+
+
+ Description 
+
+
+ Examples 
+
+
+ Operations 
+
+
+ Nominal 
+
+ values nominal attribute different names , i.e. , nominal attributes provide information distinguish object . (= ,  ) 
+
+ zip codes , employee ID numbers , eye color , sex : { male , female } 
+
+ mode , entropy , contingency correlation , 2 test 
+
+ Ordinal 
+
+ values ordinal attribute provide information order objects . ( < , > ) 
+
+ hardness minerals , { good , better , best } , 
+
+ grades , street numbers 
+
+ median , percentiles , rank correlation , run tests , sign tests 
+
+ Interval 
+
+ interval attributes , differences values meaningful , i.e. , unit measurement exists .  
+
+ ( + , - ) 
+
+ calendar dates , temperature Celsius Fahrenheit 
+
+ mean , standard deviation , Pearson correlation , t F tests 
+
+ Ratio 
+
+ ratio variables , differences ratios meaningful . ( * , / ) 
+
+ temperature Kelvin , monetary quantities , counts , age , mass , length , electrical current 
+
+ geometric mean , harmonic mean , percent variation 
+
+
+
+
+
+ Attribute Level 
+
+
+ Transformation 
+
+
+ Comments 
+
+
+ Nominal 
+
+ permutation values 
+
+ employee ID numbers reassigned , difference ? 
+
+ Ordinal 
+
+ order preserving change values , i.e. , 
+
+ new_value = f(old_value ) 
+
+ f monotonic function . 
+
+ attribut ... Pengertian data dan Informasi pada mata kuliah analisa data Pengertian data dan Informasi pada mata kuliah analisa data wiwid59 Pengertian data Lecture 2 - Data Mining ( Data mining).pdf Lecture 2 - Data Mining ( Data mining).pdf medooali6262 Lecture 2 - Data Mining ( Data mining).pdf Cluster Analysis : Measuring Similarity & Dissimilarity Cluster Analysis : Measuring Similarity & Dissimilarity ShivarkarSandip Dissimilarity Numeric Data : Minskowski Distance Euclidean 
+ distance Manhattan distance Proximity Measures Categorical , 
+ Ordinal Attributes , Ratio scaled variables ; Dissimilarity Attributes 
+ Mixed Types , Cosine Similarity , partitioning methods- k - means , kmedoids Lect 2 getting know data Lect 2 getting know data hktripathy document discusses data objects , attributes , data types . begins defining data object entity attributes describe characteristics . Attributes nominal , ordinal , interval , ratio , discrete , continuous . document discusses different types data structures like records , graphs , ordered data , . covers measuring similarity dissimilarity data objects distances properties good distance measures . summary , document provides overview fundamental concepts data including objects , attributes , data types , structures , measuring similarity . 02Data(1).ppt   Computer Science   Computer Science 02Data(1).ppt   Computer Science   Computer Science HaiderAli84963 Computer Science Chap2-Data.pptx . data data mining . Chap2-Data.pptx . data data mining . stuti8985 Data Data Mining Lecture_5.pptx Data Mining Lecture_5.pptx Subrata Kumer Paul Lecture 5 : Similarity Distance . Metrics . Min - wise independent hashing . ( ppt , pdf ) 
+
+ Chapter 3 book Mining Massive Datasets Anand Rajaraman Jeff Ullman . 
+ Chapter 2 book “ Introduction Data Mining ” Tan , Steinbach , Kumar . Data Mining :   Concepts Techniques  — Chapter 2 — Data Mining :   Concepts Techniques  — Chapter 2 — Salah Amean presentation contains following : 
+
+ -Data Objects Attribute Types . 
+
+ -Basic Statistical Descriptions Data . 
+
+ -Data Visualization . 
+
+ -Measuring Data Similarity Dissimilarity . 
+
+ -Summary . Data mining : Concepts Techniques Chapter 2 , data Data mining : Concepts Techniques Chapter 2 , data Salah Amean slides contain : 
+
+ Data Objects Attribute Types , 
+
+ Basic Statistical Descriptions Data , 
+
+ Data Visualization , 
+
+ Measuring Data Similarity Dissimilarity , 
+
+ Summary , 
+
+
+
+ 
+
+ Jiawei Han , Micheline Kamber , Jian Pei , 
+
+ University Illinois Urbana - Champaign & 
+
+ Simon Fraser University , 
+
+ © 2013 Han , Kamber & Pei .   rights reserved . Descriptive Statistics.pptx Descriptive Statistics.pptx SaiMohnishMuralidhar Descriptive statistics exploratory data analysis ( EDA ) discover patterns insights data making assumptions probabilistic models . EDA involves summarizing dataset properties measures central tendency like mean , median mode dispersion range , variance , standard deviation , quantiles . Visualizing univariate data distributions histograms , boxplots scatterplots reveal outliers data symmetric skewed . Correlation analysis examines relationships variables . , techniques provide overall understanding dataset inform analysis modeling . Getting Know Data sources access datasets ... Getting Know Data sources access datasets ... AkshayRF Data sets data objects . 
+ data object represents entity . 
+ Examples : 
+ sales database :   customers , store items , sales 
+ medical database : patients , treatments 
+ university database : students , professors , courses 
+ called samples , examples , instances , data points , objects , tuples . 
+ Data objects described attributes . 
+ Database rows - > data objects ; columns ->attributes . 02 data 02 data phakhwan22 chapter discusses getting know data analysis visualization . covers data objects attribute types , statistical descriptions data including measures central tendency dispersion , visualization techniques like histograms scatter plots , measuring similarity data objects . goal better understand data characteristics applying advanced mining techniques . Google BigQuery popular enterprise warehouse built co ... Google BigQuery popular enterprise warehouse built co ... Abebe Admasu document discusses techniques quantifying similarity distance data objects . begins explaining similarity distance measures needed solve problems like recommending similar items customers grouping similar web documents . covers specific measures like Jaccard similarity , cosine similarity , Lp norms / Minkowski distance , edit distance . discusses properties measures satisfy considered valid distance metric . Finally , discusses applications similarity measures recommendation systems challenges . 2 UNIT-DSP.pptx 2 UNIT-DSP.pptx PothyeswariPothyes document discusses different types data distributions including normal , binomial , Poisson , exponential , Bernoulli distributions . provides formulas properties distribution . example , states normal distribution commonly data science bell - shaped , symmetric curve . Poisson distribution outlines probability events fixed time periods rate parameter λ . exponential distribution gives probability time event uses rate parameter formula . Know Data data mining applications Know Data data mining applications MaleehaSheikh2 Data attributes data mining Data Mining DataLecture Notes Chapter 2Introduc.docx Data Mining DataLecture Notes Chapter 2Introduc.docx whittemorelucilla Data Datamining Data Datamining Datamining Tools Data Datamining Data Datamining DataminingTools Inc Lect 2 getting know data Lect 2 getting know data hktripathy Data Mining DataLecture Notes Chapter 2Introduc Data Mining DataLecture Notes Chapter 2Introduc OllieShoresna Pengertian data dan Informasi pada mata kuliah analisa data Pengertian data dan Informasi pada mata kuliah analisa data wiwid59 Lecture 2 - Data Mining ( Data mining).pdf Lecture 2 - Data Mining ( Data mining).pdf medooali6262 Cluster Analysis : Measuring Similarity & Dissimilarity Cluster Analysis : Measuring Similarity & Dissimilarity ShivarkarSandip Lect 2 getting know data Lect 2 getting know data hktripathy 02Data(1).ppt   Computer Science   Computer Science 02Data(1).ppt   Computer Science   Computer Science HaiderAli84963 Chap2-Data.pptx . data data mining . Chap2-Data.pptx . data data mining . stuti8985 Data Mining Lecture_5.pptx Data Mining Lecture_5.pptx Subrata Kumer Paul Data Mining :   Concepts Techniques  — Chapter 2 — Data Mining :   Concepts Techniques  — Chapter 2 — Salah Amean Data mining : Concepts Techniques Chapter 2 , data Data mining : Concepts Techniques Chapter 2 , data Salah Amean Descriptive Statistics.pptx Descriptive Statistics.pptx SaiMohnishMuralidhar Getting Know Data sources access datasets ... Getting Know Data sources access datasets ... AkshayRF 02 data 02 data phakhwan22 Google BigQuery popular enterprise warehouse built co ... Google BigQuery popular enterprise warehouse built co ... Abebe Admasu 2 UNIT-DSP.pptx 2 UNIT-DSP.pptx PothyeswariPothyes Know Data data mining applications Know Data data mining applications MaleehaSheikh2 Recently uploaded ( 20 ) Scale formation Chemistry lecture.ppt Scale formation Chemistry lecture.ppt mfarooquechemist Lecture Module-7 - Industrial applications-Loganathan.pptx Module-7 - Industrial applications-Loganathan.pptx DeveshwarUmapathy ghdtfxet6udhjg Papers - 6th International Conference Advances Artificial Inte ... Papers - 6th International Conference Advances Artificial Inte ... AIRCC Publishing Corporation 6th International Conference Advances Artificial Intelligence Techniques ( ArIT 
+ 2025 ) provide excellent international forum sharing knowledge results 
+ theory , methodology applications Artificial Intelligence advances . 
+ Conference looks significant contributions major fields Artificial Intelligence 
+ theoretical practical aspects . aim Conference provide platform 
+ researchers practitioners academia industry meet share 
+ cutting - edge development field Elevate Workflow Elevate Workflow NickHuld Technical presentation SOLIDWORKS tips tricks time - saving . Experimental techniques instrumentation Experimental techniques instrumentation drharipriya42 details case study institution building Muscat ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf AshikaAgarwal6 NOTES ELECTROCHEMISTRY DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... johnmathew9417 paper describes procedure creating tactile interfaces Android smart phones . uses 
+ HTML5 Vibration API Javascript programming language create vibration patterns order 
+ increase interaction visually impaired people smart phones . Module-4 Biomass Energy              .pptx Module-4 Biomass Energy              .pptx vinobharathi2305157 Nnn Introduction-to-Micro-Nanofabrication.pdf Introduction-to-Micro-Nanofabrication.pdf buttermasala Introduction - - Micro - Nanofabrication Narmada Main Canal Maintenance Work .pptx Narmada Main Canal Maintenance Work .pptx NWRWS&K closure Narmada Main Canal ( NMC ) essential operational maintenance purposes ensure efficient long - term functionality . primary reasons closing canal maintenance repair work . time , silt , debris , vegetation accumulate canal , reducing discharge capacity . Periodic desilting cleaning necessary restore optimal water flow . Additionally , canal lining , expansion joints , embankments , control structures gates regulators require regular inspection repair prevent seepage , structural failures , operational inefficiencies . Closure facilitates maintenance bridges , cross - drainage works , aqueducts , siphons canal . 
+
+  closure Narmada Main Canal ( NMC ) necessary address waterlogging issues nearby villages like nagla , dodgam , bhapi , bhadodar . certain areas , excessive seepage canal , combined inadequate drainage systems , lead water accumulation agricultural fields residential areas . prolonged waterlogging affects crop productivity damages infrastructure creates health hazards local communities . 
+
+ Proper planning execution canal closures help maintaining balance water supply environmental sustainability . Coordinated efforts irrigation authorities , local governance bodies , affected villagers ensure waterlogging problems effectively controlled maintaining canal operational efficiency . 
+
+ closure Narmada Main Canal ( NMC ) scheduled 1 , 2023 15 2023 , second closure took place June 15 , 2023 , June 30 , 2023 . development studies 2024 - CSU 07302.pptxx development studies 2024 - CSU 07302.pptxx hafidhadam2002 PowerPoint Lecture Week 6 Process Synchronisation.pptx Lecture Week 6 Process Synchronisation.pptx vemiri6305 computer science Mohamed Ahmed Ali Ahmed Ali Katheer CV new update Mohamed Ahmed Ali Ahmed Ali Katheer CV new update AhmedKatheer1 safety security professional 07 years experience , including 05years Qatar , working major companies . 
+
+ Key Skills 
+ • Manage safety security systems according international standards . 
+ • Ability contain problems workplaces find effective solutions . 
+ • Implement safety policies procedures ensure safe work environment . 
+ • Supervise inspections audits ensure compliance safety requirements . 
+ • Train educate employees emergency procedures occupational safety . 
+
+ Working Experience 
+
+ • Supervise implementation safety security policies industrial facilities workplaces . 
+ • Handle incidents emergencies professional manner according approved safety standards . 
+ • Provide periodic reports performance safety systems recommend necessary improvements . 
+
+ Languages 
+ • Arabic ( native language ) 
+
+ English professional level Safety pdf , tha important & useful safety Safety pdf , tha important & useful safety arpit987dwivedi Safety tha priority downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx pateljeel24 downloads_powerbi-presentation.pptx Quality Assurance Procedure – KBT Waterproofing Type 5 Membrane Quality Assurance Procedure – KBT Waterproofing Type 5 Membrane BrianBertelThomsen complete QA / QC overview KBT Waterproofing synthetic membrane system critical infrastructure . Includes adhesion testing , layer control , final documentation . Low cost Housing Apartment Literature review Low cost Housing Apartment Literature review sadikshyaripple Case study literature review EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure KikiRezkiLestari1 EXAFS ( Extended X - ray Absorption Fine Structure ) 
+  portion absorption spectrum starts 20 volts Fermi energy . Typically EXAFS analyzed 
+ removing background function AUTOBK similar program . resulting oscillatory function Fourier transformed . Tanvir Ahmed Sohel _ Tools Software Engineer Needs 2024 Boost ... Tanvir Ahmed Sohel _ Tools Software Engineer Needs 2024 Boost ... Tanbir Ahmed   Shohel fast - paced world software development , staying updated latest tools key maintaining productivity ensuring code efficient error - free . 2024 , tools essential software engineers seeking enhance workflows , collaborate better , write robust code . Tanvir Ahmed Sohel explains , tools help developers optimize processes , writing testing code managing projects deploying applications . Software Screen Universal Snubber machine ( 2).pptx Software Screen Universal Snubber machine ( 2).pptx Neometrix_Engineering_Pvt_Ltd Software Screen Universal Snubber machine Scale formation Chemistry lecture.ppt Scale formation Chemistry lecture.ppt mfarooquechemist Module-7 - Industrial applications-Loganathan.pptx Module-7 - Industrial applications-Loganathan.pptx DeveshwarUmapathy Papers - 6th International Conference Advances Artificial Inte ... Papers - 6th International Conference Advances Artificial Inte ... AIRCC Publishing Corporation Elevate Workflow Elevate Workflow NickHuld Experimental techniques instrumentation Experimental techniques instrumentation drharipriya42 ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf ELECTROCHEMISTRY 1ST YEAR CHEMISTRY.pdf AshikaAgarwal6 DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... DESIGN TACTILE INTERFACES VIBRATION PATTERNS HTML5 SMARTPHONE USE ... johnmathew9417 Module-4 Biomass Energy              .pptx Module-4 Biomass Energy              .pptx vinobharathi2305157 Introduction-to-Micro-Nanofabrication.pdf Introduction-to-Micro-Nanofabrication.pdf buttermasala Narmada Main Canal Maintenance Work .pptx Narmada Main Canal Maintenance Work .pptx NWRWS&K development studies 2024 - CSU 07302.pptxx development studies 2024 - CSU 07302.pptxx hafidhadam2002 Lecture Week 6 Process Synchronisation.pptx Lecture Week 6 Process Synchronisation.pptx vemiri6305 Mohamed Ahmed Ali Ahmed Ali Katheer CV new update Mohamed Ahmed Ali Ahmed Ali Katheer CV new update AhmedKatheer1 Safety pdf , tha important & useful safety Safety pdf , tha important & useful safety arpit987dwivedi downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx downloads_powerbi-presentation.pptx pateljeel24 Quality Assurance Procedure – KBT Waterproofing Type 5 Membrane Quality Assurance Procedure – KBT Waterproofing Type 5 Membrane BrianBertelThomsen Low cost Housing Apartment Literature review Low cost Housing Apartment Literature review sadikshyaripple EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure EXAFS Structural Characterization , Extended X - ray Absorption Fine Structure KikiRezkiLestari1 Tanvir Ahmed Sohel _ Tools Software Engineer Needs 2024 Boost ... Tanvir Ahmed Sohel _ Tools Software Engineer Needs 2024 Boost ... Tanbir Ahmed   Shohel Software Screen Universal Snubber machine ( 2).pptx Software Screen Universal Snubber machine ( 2).pptx Neometrix_Engineering_Pvt_Ltd Data mining Measuring similarity desimilarity 2 . Data ? 
+  Collection data objects 
+ attributes 
+  attribute property 
+ characteristic object 
+  Examples : eye color person , 
+ temperature , etc . 
+  Attribute known 
+ variable , field , characteristic , 
+ feature 
+  collection attributes 
+ describe object 
+  Object known record , 
+ point , case , sample , entity , 
+ instance 
+ Tid Refund Marital 
+ Status 
+ Taxable 
+ Income Cheat 
+ 1 Yes Single 125 K 
+ 2 Married 100 K 
+ 3 Single 70 K 
+ 4 Yes Married 120 K 
+ 5 Divorced 95 K Yes 
+ 6 Married 60 K 
+ 7 Yes Divorced 220 K 
+ 8 Single 85 K Yes 
+ 9 Married 75 K 
+ 10 Single 90 K Yes 
+ 10 
+ Attributes 
+ Objects 3 . Attribute Values 
+  Attribute values numbers symbols assigned 
+ attribute 
+  Distinction attributes attribute values 
+  attribute mapped different attribute 
+ values 
+  Example : height measured feet meters 
+  Different attributes mapped set 
+ values 
+  Example : Attribute values ID age integers 
+  properties attribute values different 
+  ID limit age maximum minimum value 4 . Similarity Dissimilarity Measures 
+ CS 40003 : Data Analytics 4 
+ • clustering techniques , similarity ( dissimilarity ) important measurement . 
+ • Informally , similarity objects ( e.g. , images , documents , 
+ records , etc . ) numerical measure degree objects alike . 
+ • dissimilarity hand , alternative ( opposite ) measure 
+ degree objects different . 
+ • similarity dissimilarity termed proximity . 
+ • Usually , similarity dissimilarity non - negative numbers range 
+ zero ( highly dissimilar ( similar ) ) finite / infinite value ( highly similar ( 
+ dissimilar ) ) . 
+ Note : 
+ • Frequently , term distance synonym dissimilarity 
+ • fact , refer special case dissimilarity . 5 . Similarity Dissimilarity 
+  Similarity 
+  Numerical measure alike data objects 
+  Value higher objects alike 
+  falls range [ 0,1 ] 
+  Dissimilarity ( e.g. , distance ) 
+  Numerical measure different data objects 
+  Lower objects alike 
+  Minimum dissimilarity 0 
+  Upper limit varies 
+  Proximity refers similarity dissimilarity 
+ 5 6 . Data Matrix Dissimilarity Matrix 
+  Data matrix 
+  n data points p 
+ dimensions 
+  modes 
+  Dissimilarity matrix 
+  n data points , 
+ registers 
+ distance 
+  triangular matrix 
+  Single mode 
+ 6 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ npx ... nfx ... n1x 
+ ............... 
+ ipx ... ifx ... i1x 
+ ............... 
+ 1px ... 1fx ... 11x 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 0 ... )2,()1 , ( 
+ : : : 
+ ) 2,3 ( ) 
+ ... ndnd 
+ 0dd(3,1 
+ 0d(2,1 ) 
+ 0 7 . Attribute Types 
+  Nominal : categories , states , “ names things ” 
+  Hair_color = { auburn , black , blond , brown , grey , red , white } 
+  marital status , occupation , ID numbers , zip codes 
+  Binary 
+  Nominal attribute 2 states ( 0 1 ) 
+  Symmetric binary : outcomes equally important 
+  e.g. , gender 
+  Asymmetric binary : outcomes equally important . 
+  e.g. , medical test ( positive vs. negative ) 
+  Convention : assign 1 important outcome ( e.g. , HIV 
+ positive ) 
+  Ordinal 
+  Values meaningful order ( ranking ) magnitude 
+ successive values known . 
+  Size = { small , medium , large } , grades , army rankings 
+ 7 8 . Numeric Attribute Types 
+  Quantity ( integer real - valued ) 
+  Interval 
+  Measured scale equal - sized units 
+  Values order 
+  E.g. , temperature C˚or F˚ , calendar dates 
+  true zero - point 
+  Ratio 
+  Inherent zero - point 
+  speak values order magnitude 
+ larger unit measurement ( 10 K˚ twice high 
+ 5 K˚ ) . 
+  e.g. , temperature Kelvin , length , counts , 
+ monetary quantities 
+ 8 9 . Properties Attribute Values 
+  type attribute depends 
+ following properties possesses : 
+  Distinctness : =  
+  Order : < > 
+  Addition : + - 
+  Multiplication : * / 
+  Nominal attribute : distinctness 
+  Ordinal attribute : distinctness & order 
+  Interval attribute : distinctness , order & addition 
+  Ratio attribute : 4 properties 10 . Attribute 
+ Type 
+ Description Examples Operations 
+ Nominal values nominal attribute 
+ different names , i.e. , nominal 
+ attributes provide 
+ information distinguish object 
+ . (= ,  ) 
+ zip codes , 
+ employee ID 
+ numbers , eye 
+ color , sex : { male , 
+ female } 
+ mode , entropy , 
+ contingency 
+ correlation , 2 
+ test 
+ Ordinal values ordinal 
+ attribute provide 
+ information order objects . 
+ ( < , > ) 
+ hardness 
+ minerals , { good , 
+ better , best } , 
+ grades , street 
+ numbers 
+ median , 
+ percentiles , rank 
+ correlation , run 
+ tests , sign tests 
+ Interval interval attributes , 
+ differences values 
+ meaningful , i.e. , unit 
+ measurement exists . 
+ ( + , - ) 
+ calendar dates , 
+ temperature 
+ Celsius 
+ Fahrenheit 
+ mean , standard 
+ deviation , 
+ Pearson 
+ correlation , t 
+ F tests 
+ Ratio ratio variables , 
+ differences ratios 
+ meaningful . ( * , / ) 
+ temperature 
+ Kelvin , monetary 
+ quantities , counts , 
+ age , mass , length , 
+ electrical current 
+ geometric 
+ mean , harmonic 
+ mean , percent 
+ variation 11 . Attribute 
+ Level 
+ Transformation Comments 
+ Nominal permutation values employee ID numbers 
+ reassigned , 
+ difference ? 
+ Ordinal order preserving change 
+ values , i.e. , 
+ new_value = f(old_value ) 
+ f monotonic function . 
+ attribute encompassing 
+ notion good , better 
+ best represented 
+ equally values 
+ { 1 , 2 , 3 } { 0.5 , 1 , 
+ 10 } . 
+ Interval new_value = * old_value + b 
+ b constants 
+ , Fahrenheit 
+ Celsius temperature scales 
+ differ terms 
+ zero value 
+ size unit ( degree ) . 
+ Ratio new_value = * old_value Length measured 
+ meters feet . 12 . Discrete vs. Continuous Attributes 
+  Discrete Attribute 
+  finite countably infinite set values 
+  E.g. , zip codes , profession , set words collection 
+ documents 
+  , represented integer variables 
+  Note : Binary attributes special case discrete 
+ attributes 
+  Continuous Attribute 
+  real numbers attribute values 
+  E.g. , temperature , height , weight 
+  Practically , real values measured 
+ represented finite number digits 
+  Continuous attributes typically represented floating- 
+ point variables 
+ 12 14 .  following questions fall Interval Scale category : 
+  family income ? 
+  temperature city ? 
+  Ratio Scale Examples : 
+  following questions fall Ratio Scale category : 
+  daughter current height ? 
+  5 feet . 
+  5 feet 1 inch – 5 feet 5 inches 
+  5 feet 6 inches- 6 feet 
+  6 feet 
+  weight kilograms ? 
+  50 kilograms 
+  51- 70 kilograms 
+  71- 90 kilograms 
+  91 - 110 kilograms 
+  110 kilograms 
+  15 . Proximity Measure Nominal Attributes 
+  2 states , e.g. , red , yellow , blue , green 
+ ( generalization binary attribute ) 
+  Method 1 : Simple matching 
+  m : # matches , p : total # variables 
+  Method 2 : Use large number binary attributes 
+  creating new binary attribute M nominal 
+ states 
+ 15 
+ p 
+ mpjid  ) , ( 17 . Proximity Measure Nominal Attributes 18 . Proximity Measure Binary Attributes 
+  contingency table binary data 
+  Distance measure symmetric 
+ binary variables : 
+  Distance measure asymmetric 
+ binary variables : 
+  Jaccard coefficient ( similarity measure 
+ asymmetric binary variables ): 
+ 18 
+  Note : Jaccard coefficient “ coherence ” : 
+ Object 
+ Object j 19 . Dissimilarity Binary Variables 
+  Example 
+  Gender symmetric attribute 
+  remaining attributes asymmetric binary 
+  Let values Y P 1 , value N 0 
+ 19 
+ Gender Fever Cough Test-1 Test-2 Test-3 Test-4 
+ Jack M Y N P N N N 
+ Mary F Y N P N P N 
+ Jim M Y P N N N N 20 . 75.0 
+ 211 
+ 21 
+ ) , ( 
+ 67.0 
+ 111 
+ 11 
+ ) , ( 
+ 33.0 
+ 102 
+ 10 
+ ) , ( 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ m aryjimd 
+ jimjackd 
+ m aryjackd 21 . Standardizing Numeric Data 
+  Z - score : 
+  X : raw score standardized , μ : mean population , σ : 
+ standard deviation 
+  distance raw score population mean units 
+ standard deviation 
+  negative raw score mean , “ + ” 
+  alternative way : Calculate mean absolute deviation 
+ 
+  standardized measure ( z - score ): 
+  mean absolute deviation robust standard 
+ deviation 
+  
+  xz 
+ 21 
+ . ) ... 
+ 21 
+ 1 
+ nffff 
+ xx(xnm  
+ |)| ... |||(|1 
+ 21 fnffffff 
+ mxmxmxns  
+ f 
+ fif 
+ s 
+ mx 
+ z 
+  
+  22 . Example 
+  Given following measurements variable 
+ age : 
+  18 ; 22 ; 25 ; 42 ; 28 ; 43 ; 33 ; 35 ; 56 ; 28 ; 
+  standardize variable following : 
+  ( ) Compute mean absolute deviation age . 
+  ( b ) Compute z - score ¯rst 
+ measurements . 24 . Distance Numeric Data : Minkowski Distance 
+  Minkowski distance : popular distance measure 
+ = ( xi1 , xi2 , … , xip ) j = ( xj1 , xj2 , … , xjp ) p- 
+ dimensional data objects , h order ( 
+ distance defined called L - h norm ) 
+  Properties 
+  d(i , j ) > 0 ≠ j , d(i , ) = 0 ( Positive definiteness ) 
+  d(i , j ) = d(j , ) ( Symmetry ) 
+  d(i , j )  d(i , k ) + d(k , j ) ( Triangle Inequality ) 
+  distance satisfies properties metric 
+ 24 25 . Special Cases Minkowski Distance 
+  h = 1 : Manhattan ( city block , L1 norm ) distance 
+  E.g. , Hamming distance : number bits different 
+ binary vectors 
+  h = 2 : ( L2 norm ) Euclidean distance 
+  h  . “ supremum ” ( Lmax norm , L norm ) distance . 
+  maximum difference component 
+ ( attribute ) vectors 
+ || ... |||| ) , ( 
+ 2211 pp j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ xjid  
+ 25 
+ ) || ... |||(| ) , ( 22 
+ 22 
+ 2 
+ 11 pp j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ x 
+ j 
+ x 
+ 
+ xjid  26 . Example : 
+ Data Matrix Dissimilarity Matrix 
+ 26 
+ point attribute1 attribute2 
+ x1 1 2 
+ x2 3 5 
+ x3 2 0 
+ x4 4 5 
+ Dissimilarity Matrix 
+ ( Euclidean Distance ) 
+ x1 x2 x3 x4 
+ x1 0 
+ x2 3.61 0 
+ x3 5.1 5.1 0 
+ x4 4.24 1 5.39 0 
+ Data Matrix 27 . Weighted Euclidean Distance 28 . Example : Minkowski Distance 
+ 28 
+ Dissimilarity Matrices 
+ point attribute 1 attribute 2 
+ x1 1 2 
+ x2 3 5 
+ x3 2 0 
+ x4 4 5 
+ L x1 x2 x3 x4 
+ x1 0 
+ x2 5 0 
+ x3 3 6 0 
+ x4 6 1 7 0 
+ L2 x1 x2 x3 x4 
+ x1 0 
+ x2 3.61 0 
+ x3 2.24 5.1 0 
+ x4 4.24 1 5.39 0 
+ L x1 x2 x3 x4 
+ x1 0 
+ x2 3 0 
+ x3 2 5 0 
+ x4 3 1 5 0 
+ Manhattan ( L1 ) 
+ Euclidean ( L2 ) 
+ Supremum 29 . Example : 30 . Example : 31 . Example 33 . July 4 , 2020 Data Mining : Concepts Techniques 33 
+ Interval - valued variables 
+  Interval - scaled variables continuous measurements 
+ roughly linear scale . Typical examples include weight height , 
+ latitude longitude coordinates ( e.g. , clustering houses ) , 
+ weather temperature . 
+  Standardize data 
+  Calculate mean absolute deviation : 
+ 
+  Calculate standardized measurement ( z - score ) 
+  mean absolute deviation robust 
+ standard deviation 
+ . ) ... 
+ 21 
+ 1 
+ nffff 
+ xx(xnm  
+ |)| ... |||(|1 
+ 21 fnffffff 
+ mxmxmxns  
+ f 
+ fif 
+ s 
+ mx 
+ z 
+  
+  34 . Ordinal Variables 
+  ordinal variable discrete continuous 
+  Order important , e.g. , rank 
+  treated like interval - scaled 
+  replace xif rank 
+  map range variable [ 0 , 1 ] replacing - th 
+ object f - th variable 
+  compute dissimilarity methods interval- 
+ scaled variables 
+ 34 
+ 1 
+ 1 
+  
+  
+  
+ f 
+ 
+ M 
+ r 
+ z 
+ } , ... , 1 { fif 
+ Mr  36 . Attributes Mixed Type 
+  database contain attribute types 
+  Nominal , symmetric binary , asymmetric binary , numeric , 
+ ordinal 
+  use weighted formula combine effects 
+  f binary nominal : 
+ dij 
+ ( f ) = 0 xif = xjf , dij 
+ ( f ) = 1 
+  f numeric : use normalized distance 
+  f ordinal 
+  Compute ranks rif 
+  Treat zif interval - scaled 
+ ) ( 
+ 1 
+ ) ( ) ( 
+ 1 
+ ) , ( f 
+ ij 
+ p 
+ f 
+ f 
+ ij 
+ f 
+ ij 
+ p 
+ f 
+ d 
+ jid 
+  
+  
+  
+  
+  
+  
+  
+ 1 
+ 1 
+  
+  
+  
+ f 
+ 
+ M 
+ rzif 
+ 36 37 . 37 39 . Dissimilarity matrix 
+ attribute test1 
+ Dissimilarity matrix 
+ attribute test2 
+ Dissimilarity matrix 
+ attribute test3 
+ Dissimilarity matrix mixed type 
+ attributes 41 . Dissimilarity matrix 
+ attribute test1 
+ Dissimilarity matrix 
+ attribute test2 
+ Dissimilarity matrix 
+ attribute test3 
+ Dissimilarity matrix mixed type 
+ attributes 42 . Non - Metric similarity 
+ CS 40003 : Data Analytics 42 
+ • applications ( information retrieval ) objects complex contains 
+ large number symbolic entities ( keywords , phrases , etc . ) . 
+ • measure distance complex objects , desirable introduce non- 
+ metric similarity function . 
+ • , discuss non - metric similarity measurements . 
+ Cosine similarity 
+ Suppose , x y denote vectors representing complex objects . cosine similarity 
+ denoted cos(𝑥 , 𝑦 ) defined 
+ cos(𝑥 , 𝑦 ) = 
+ 𝑥 ⋅ 𝑦 
+ 𝑥 ⋅ 𝑦 
+ • 𝑥 ⋅ 𝑦 denotes vector dot product , 𝑥 ⋅ 𝑦 = 𝑖=1 
+ 𝑛 
+ 𝑥𝑖 ⋅ 𝑦𝑖 𝑥 = 
+ [ 𝑥1 , 𝑥2 , . . , 𝑥 𝑛 ] 𝑦 = [ 𝑦1 , 𝑦2 , . . , 𝑦 𝑛 ] . 
+ • 𝑥 𝑦 denote Euclidean norms vector x y , respectively(essentially 
+ length vectors x y ) , 
+ 𝑥 = 𝑥1 
+ 2 
+ + 𝑥2 
+ 2 
+ + . . + 𝑥 𝑛 
+ 2 
+ 𝑦 = 𝑦1 
+ 2 
+ + 𝑦2 
+ 2 
+ + . . + 𝑦 𝑛 
+ 2 43 . Cosine Similarity 
+  document represented thousands attributes , recording 
+ frequency particular word ( keywords ) phrase 
+ document . 
+  vector objects : gene features micro - arrays , … 
+  Applications : information retrieval , biologic taxonomy , gene feature 
+ mapping , ... 
+  Cosine measure : d1 d2 vectors ( e.g. , term - frequency vectors ) , 
+ 
+ cos(d1 , d2 ) = ( d1  d2 ) /||d1|| ||d2|| , 
+  indicates vector dot product , ||d|| : length vector d 
+ 43 44 . Example : Cosine Similarity 
+  cos(d1 , d2 ) = ( d1  d2 ) /||d1|| ||d2|| , 
+  indicates vector dot product , ||d| : length vector d 
+  Ex : Find similarity documents 1 2 . 
+ d1 = ( 5 , 0 , 3 , 0 , 2 , 0 , 0 , 2 , 0 , 0 ) 
+ d2 = ( 3 , 0 , 2 , 0 , 1 , 1 , 0 , 1 , 0 , 1 ) 
+ d1d2 = 5 * 3 + 0 * 0 + 3 * 2 + 0 * 0 + 2 * 1 + 0 * 1 + 0 * 1 + 2 * 1 + 0 * 0 + 0 * 1 = 25 
+ ||d1||= ( 5 * 5 + 0 * 0 + 3 * 3 + 0 * 0 + 2 * 2 + 0 * 0 + 0 * 0 + 2 * 2 + 0 * 0 + 0 * 0)0.5=(42)0.5 = 6.481 
+ ||d2||= ( 3 * 3 + 0 * 0 + 2 * 2 + 0 * 0 + 1 * 1 + 1 * 1 + 0 * 0 + 1 * 1 + 0 * 0 + 1 * 1)0.5=(17)0.5 = 4.12 
+ cos(d1 , d2 ) = 0.94 
+ 44 45 . Example : Cosine Similarity 
+ d1 = 3 2 0 5 0 0 0 2 0 0 
+ d2 = 1 0 0 0 0 0 0 1 0 2 
+ < d1 , d2 > = 3 * 1 + 2 * 0 + 0 * 0 + 5 * 0 + 0 * 0 + 0 * 0 + 0 * 0 + 2 * 1 + 
+ 0 * 0 + 0 * 2 = 5 
+ || d1 || = ( 3 * 3 + 2 * 2 + 0 * 0 + 5 * 5 + 0 * 0 + 0 * 0 + 0 * 0 + 2 * 2 + 0 * 0 + 0 * 0)1/2 = 
+ ( 42 ) 1/2 = 6.481 
+ || d2 || = 
+ ( 1 * 1 + 0 * 0 + 0 * 0 + 0 * 0 + 0 * 0 + 0 * 0 + 0 * 0 + 1 * 1 + 0 * 0 + 2 * 2 ) 1/2 = ( 6)1/2 = 
+ 2.449 
+ cos(d1 , d2 ) = 0.3150 46 .  Example : 
+  D1 : “ like book ” 
+  D2 : “ wrote book ” Download Support Terms Privacy Copyright sell share personal information Cookie Preferences English Current Language © 2025 SlideShare Scribd

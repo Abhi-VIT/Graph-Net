@@ -1,0 +1,115 @@
+Arrays ( Java ™ Tutorials >        
+             Learning Java Language > Language Basics ) browser JavaScript enabled required page operate properly . Documentation Java ™ Tutorials Hide TOC Language Basics Variables Primitive Data Types Arrays Summary Variables Questions Exercises Operators Assignment , Arithmetic , Unary Operators Equality , Relational , Conditional Operators Bitwise Bit Shift Operators Summary Operators Questions Exercises Expressions , Statements , Blocks Questions Exercises Control Flow Statements - - - Statements switch Statement - Statements Statement Branching Statements Summary Control Flow Statements Questions Exercises Trail : Learning Java Language Lesson : Language Basics Section : Variables Home Page > Learning Java Language > Language Basics «   Previous • Trail •   » Java Tutorials written JDK 8 . Examples practices described page advantage improvements introduced later releases use technology longer available . Dev.java updated tutorials taking advantage latest releases . Java Language Changes summary updated language features Java SE 9 subsequent releases . JDK Release Notes information new features , enhancements , removed deprecated options JDK releases . Arrays array container object holds fixed number values single type . length array established array created . creation , length fixed . seen example arrays , main method " Hello World ! " application . section discusses arrays greater detail . array 10 elements . item array called element , element accessed numerical index . shown preceding illustration , numbering begins 0 . 9th element , example , accessed index 8 . following program , ArrayDemo , creates array integers , puts values array , prints value standard output . class ArrayDemo { 
+     public static void main(String [ ] args ) { 
+         // declares array integers 
+         int [ ] anArray ; 
+
+         // allocates memory 10 integers 
+         anArray = new int[10 ] ; 
+           
+         // initialize element 
+         anArray[0 ] = 100 ; 
+         // initialize second element 
+         anArray[1 ] = 200 ; 
+         // forth 
+         anArray[2 ] = 300 ; 
+         anArray[3 ] = 400 ; 
+         anArray[4 ] = 500 ; 
+         anArray[5 ] = 600 ; 
+         anArray[6 ] = 700 ; 
+         anArray[7 ] = 800 ; 
+         anArray[8 ] = 900 ; 
+         anArray[9 ] = 1000 ; 
+
+         System.out.println("Element index 0 : " 
+                            + anArray[0 ] ) ; 
+         System.out.println("Element index 1 : " 
+                            + anArray[1 ] ) ; 
+         System.out.println("Element index 2 : " 
+                            + anArray[2 ] ) ; 
+         System.out.println("Element index 3 : " 
+                            + anArray[3 ] ) ; 
+         System.out.println("Element index 4 : " 
+                            + anArray[4 ] ) ; 
+         System.out.println("Element index 5 : " 
+                            + anArray[5 ] ) ; 
+         System.out.println("Element index 6 : " 
+                            + anArray[6 ] ) ; 
+         System.out.println("Element index 7 : " 
+                            + anArray[7 ] ) ; 
+         System.out.println("Element index 8 : " 
+                            + anArray[8 ] ) ; 
+         System.out.println("Element index 9 : " 
+                            + anArray[9 ] ) ; 
+     } 
+ } output program : Element index 0 : 100 
+ Element index 1 : 200 
+ Element index 2 : 300 
+ Element index 3 : 400 
+ Element index 4 : 500 
+ Element index 5 : 600 
+ Element index 6 : 700 
+ Element index 7 : 800 
+ Element index 8 : 900 
+ Element index 9 : 1000 real - world programming situation , probably use supported looping constructs iterate element array , write line individually preceding example . , example clearly illustrates array syntax . learn looping constructs ( , , - ) Control Flow section . Declaring Variable Refer Array preceding program declares array ( named anArray ) following line code : // declares array integers 
+ int [ ] anArray ; Like declarations variables types , array declaration components : array type array . array type written type [ ] , type data type contained elements ; brackets special symbols indicating variable holds array . size array type ( brackets ) . array want , provided follows rules conventions previously discussed naming section . variables types , declaration actually create array ; simply tells compiler variable hold array specified type . Similarly , declare arrays types : byte [ ] anArrayOfBytes ; 
+ short [ ] anArrayOfShorts ; 
+ long [ ] anArrayOfLongs ; 
+ float [ ] anArrayOfFloats ; 
+ double [ ] anArrayOfDoubles ; 
+ boolean [ ] anArrayOfBooleans ; 
+ char [ ] anArrayOfChars ; 
+ String [ ] anArrayOfStrings ; place brackets array : // form discouraged 
+ float anArrayOfFloats [ ] ; , convention discourages form ; brackets identify array type appear type designation . Creating , Initializing , Accessing Array way create array new operator . statement ArrayDemo program allocates array memory 10 integer elements assigns array anArray variable . // create array integers 
+ anArray = new int[10 ] ; statement missing , compiler prints error like following , compilation fails : ArrayDemo.java:4 : Variable anArray initialized . lines assign values element array : anArray[0 ] = 100 ; // initialize element 
+ anArray[1 ] = 200 ; // initialize second element 
+ anArray[2 ] = 300 ; // forth array element accessed numerical index : System.out.println("Element 1 index 0 : " + anArray[0 ] ) ; 
+ System.out.println("Element 2 index 1 : " + anArray[1 ] ) ; 
+ System.out.println("Element 3 index 2 : " + anArray[2 ] ) ; Alternatively , use shortcut syntax create initialize array : int [ ] anArray = { 
+     100 , 200 , 300 , 
+     400 , 500 , 600 , 
+     700 , 800 , 900 , 1000 
+ } ; length array determined number values provided braces separated commas . declare array arrays ( known multidimensional array ) sets brackets , String [ ] [ ] names . element , , accessed corresponding number index values . Java programming language , multidimensional array array components arrays . unlike arrays C Fortran . consequence rows allowed vary length , shown following MultiDimArrayDemo program : class MultiDimArrayDemo { 
+     public static void main(String [ ] args ) { 
+         String [ ] [ ] names = { 
+             { " Mr. " , " Mrs. " , " Ms. " } , 
+             { " Smith " , " Jones " } 
+         } ; 
+         // Mr. Smith 
+         System.out.println(names[0][0 ] + names[1][0 ] ) ; 
+         // Ms. Jones 
+         System.out.println(names[0][2 ] + names[1][1 ] ) ; 
+     } 
+ } output program : Mr. Smith 
+ Ms. Jones Finally , use built - length property determine size array . following code prints array size standard output : System.out.println(anArray.length ) ; Copying Arrays System class arraycopy method use efficiently copy data array : public static void arraycopy(Object src , int srcPos , 
+                              Object dest , int destPos , int length ) Object arguments specify array copy array copy . int arguments specify starting position source array , starting position destination array , number array elements copy . following program , ArrayCopyDemo , declares array String elements . uses System.arraycopy method copy subsequence array components second array : class ArrayCopyDemo { 
+     public static void main(String [ ] args ) { 
+         String [ ] copyFrom = { 
+             " Affogato " , " Americano " , " Cappuccino " , " Corretto " , " Cortado " ,   
+             " Doppio " , " Espresso " , " Frappucino " , " Freddo " , " Lungo " , " Macchiato " ,      
+             " Marocchino " , " Ristretto " } ; 
+        
+         String [ ] copyTo = new String[7 ] ; 
+         System.arraycopy(copyFrom , 2 , copyTo , 0 , 7 ) ; 
+         ( String coffee : copyTo ) { 
+             System.out.print(coffee + " " ) ;           
+         } 
+     } 
+ } output program : Cappuccino Corretto Cortado Doppio Espresso Frappucino Freddo Array Manipulations Arrays powerful useful concept programming . Java SE provides methods perform common manipulations related arrays . instance , ArrayCopyDemo example uses arraycopy method System class instead manually iterating elements source array placing destination array . performed scenes , enabling developer use line code method . convenience , Java SE provides methods performing array manipulations ( common tasks , copying , sorting searching arrays ) java.util . Arrays class . instance , previous example modified use copyOfRange method java.util . Arrays class , ArrayCopyOfDemo example . difference copyOfRange method require create destination array calling method , destination array returned method : class ArrayCopyOfDemo { 
+     public static void main(String [ ] args ) { 
+         String [ ] copyFrom = { 
+             " Affogato " , " Americano " , " Cappuccino " , " Corretto " , " Cortado " ,   
+             " Doppio " , " Espresso " , " Frappucino " , " Freddo " , " Lungo " , " Macchiato " ,      
+             " Marocchino " , " Ristretto " } ; 
+        
+         String [ ] copyTo = java.util . Arrays.copyOfRange(copyFrom , 2 , 9 ) ;        
+         ( String coffee : copyTo ) { 
+             System.out.print(coffee + " " ) ;           
+         }            
+     } 
+ } , output program , requires fewer lines code . Note second parameter copyOfRange method initial index range copied , inclusively , parameter final index range copied , exclusively . example , range copied include array element index 9 ( contains string Lungo ) . useful operations provided methods java.util . Arrays class : Searching array specific value index 
+ placed ( binarySearch method ) . Comparing arrays determine equal ( equals method ) . Filling array place specific value index ( fill method ) . Sorting array ascending order . 
+ sequentially , sort method , concurrently , parallelSort method introduced Java SE 8 . Parallel sorting 
+ large arrays multiprocessor systems faster sequential array sorting . Creating stream uses array source ( stream method ) . example , following statement prints contents copyTo array way previous example : java.util . Arrays.stream(copyTo).map(coffee - > coffee + " " ) .forEach(System.out::print ) ; Aggregate Operations information streams . Converting array string . toString method 
+ converts element array string , separates commas , 
+ surrounds brackets . example , following statement converts copyTo array string prints : System.out.println(java.util . Arrays.toString(copyTo ) ) ; statement prints following : [ Cappuccino , Corretto , Cortado , Doppio , Espresso , Frappucino , Freddo ] « Previous • Trail • » Oracle | Contact | Legal Notices | Terms Use | Privacy Rights Copyright © 1995 , 2024 Oracle and/or affiliates . rights reserved . Previous page : Primitive Data Types page : Summary Variables

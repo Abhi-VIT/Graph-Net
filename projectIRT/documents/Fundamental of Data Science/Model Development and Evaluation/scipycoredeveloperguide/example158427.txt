@@ -1,0 +1,282 @@
+SciPy Core Developer Guide — SciPy v1.15.0 Manual Skip main content Ctrl + K SciPy Installing User Guide API reference Building source Development Release notes GitHub Twitter Installing User Guide API reference Building source Development Release notes GitHub Twitter Section Navigation Contributing Information SciPy Code Conduct Ways Contribute Contributor quickstart guide Development workflow SciPy contributor guide Roadmap SciPy Roadmap Detailed SciPy Roadmap Toolchain Roadmap SciPy Organization SciPy Core Developer Guide SciPy API Development Guide SciPy Project Governance Developer Documentation SciPy contributor guide SciPy Core ... SciPy Core Developer Guide # Decision making process # SciPy formal governance model , documented SciPy Project Governance .   
+ section documents informal way happens practice 
+ decision making code commit rights . formal governance model 
+ leading , provided context . Code # significant decisions adding ( adding ) new features , breaking 
+ backwards compatibility making significant changes codebase 
+ scipy - dev forum discussion ( preferably 
+ consensus ) . non - trivial change ( trivial means typo , - liner maintenance 
+ commit ) pull request ( PR ) .   reviewed 
+ developer .   case review doesnât happen quickly 
+ important PR merged quickly , submitter PR send 
+ message forum saying intend merge PR review 
+ time X reason Y reviews . Changes new additions tested . Untested code broken code . Commit rights # gets commit rights decided SciPy Steering Council ; changes 
+ commit rights announced scipy - dev forum . Deciding new features # general decision rule accept proposed new feature far 
+ conditional : method applicable fields âgenerally agreedâ 
+ useful , fits topic submodule , require extensive 
+ support frameworks operate , implementation looks sound unlikely need tweaking 
+ future ( e.g. , limited expected maintenance burden ) , wants contribute , wants review . criterion sticking point proposed features . Code 
+ merged thoroughly reviewed , backlog 
+ maintenance tasks compete reviewersâ time . Ideally , contributors 
+ line reviewer suitable domain expertise beginning 
+ work . itâs difficult hard rules âgenerally useful 
+ generally agreed workâ means , help weigh following 
+ : method / useful different domains practice ? 
+ domain - specific background knowledge needed use 
+ properly ? Consider code module .   adding 
+ omission ?   solve problem youâd expect module 
+ able solve ?   supplement existing feature 
+ significant way ? Consider equivalence class similar methods / features usually 
+ expected . , principle minimal set 
+ thereâs glaring omission offered features remaining ? 
+ stuff ? including representative 
+ cover use cases ? principle sound reasonable 
+ include minimal set module ? adding understood 
+ literature ? , sure turn ? 
+ method perform compared similar ones ? Note twice - - year release cycle backward - compatibility 
+ policy makes correcting things later difficult . scopes submodules vary , itâs probably best consider 
+ itâs separate project - ânumerical evaluation special 
+ functionsâ relatively - defined , âcommonly needed optimization 
+ algorithmsâ . Development GitHub # SciPy development largely takes place GitHub ; section describes 
+ expected way working issues , pull requests managing main scipy repository . Labels Milestones # issue pull request normally gets labels : 
+ topic component ( scipy.stats , Documentation , etc . ) , 
+ nature issue pull request ( enhancement , maintenance , defect , etc . ) .   labels added depending situation : good - - issue : issues suitable tackled new contributors . needs - work : pull requests review comments havenât 
+ addressed . needs - decision : issues pull requests need decision . needs - champion : pull requests finished original 
+ author , worth resurrecting . backport - candidate : bugfixes considered backporting 
+ release manager . milestone created version number release planned . 
+ Issues need addressed pull requests need merged 
+ particular release set corresponding milestone .   pull 
+ request merged , milestone ( issue closes ) 
+ set upcoming release - makes easy overview 
+ changes add complete list release notes . Pull request review workflow # reviewing pull requests , use pull request workflow 
+ features , workflow features . Dealing pull requests # merging contributions , committer responsible ensuring 
+ meet requirements outlined Contributing SciPy . 
+ check new features backwards compatibility breaks discussed 
+ scipy - dev forum . New code goes pull request ( PR ) . Merge new code green button .   case merge conflicts , ask PR 
+ submitter rebase ( require providing git instructions ) . Backports trivial additions finish PR ( trivial , like typo 
+ PEP8 fix ) pushed directly . PRs add new features way complex , wait day 
+ merging .   way , chance comment 
+ code goes . Squashing commits cleaning commit messages PR consider 
+ messy OK . sure retain original author 
+ . Squashing highly recommended commit messages 
+ ( roughly ) follow guidelines Writing commit message . sure labels milestone merged PR set correctly . want reject PR : itâs obvious , close 
+ explain . itâs obvious , itâs good idea explain 
+ think PR suitable inclusion SciPy , let second 
+ committer comment close . Backporting # pull requests ( contain enhancements , bug fixes ) , 
+ main .   bug fixes candidates backporting 
+ maintenance branch .   backport strategy SciPy ( ) backport 
+ fixes important , ( b ) backport itâs reasonably sure 
+ new bugfix release relevant maintenance branch . 
+ Typically , developer merges important bugfix adds backport - candidate label pings release manager , decides 
+ backport .   backport completed , backport - candidate label removed . good strategy backport pull request combine main 
+ branch pull requests , reduce burden continuous integration tests 
+ reduce merge commit cluttering maintenance branch history . 
+ generally best single commit main branch pull 
+ requests represented backport pull request . way , history clear 
+ reverted straightforward manner needed . Release notes # PR gets merged , consider changes need mentioned 
+ release notes .   needs mentioning : new features , backwards incompatible 
+ changes , deprecations , âother changesâ ( noteworthy , 
+ older release notes kinds things worth mentioning ) . Release note entries maintained wiki . 
+ release manager gather content integrate html 
+ docs .   use mechanism avoid merge conflicts happen 
+ PR touched file doc / release/ directly . Changes monitored ( Atom feed ) 
+ pulled ( wiki git repo : https://github.com/scipy/scipy.wiki.git ) . # Cross - referencing : Cross - referencing issues pull requests GitHub 
+ useful .   GitHub allows gh - xxxx # xxxx xxxx issue / PR number .   gh - xxxx format strongly preferred , 
+ itâs clear GitHub link .   Older issues contain # xxxx Trac ( pre - GitHub ) tickets . PR naming convention : Pull requests , issues commit messages usually start 
+ - letter abbreviation like ENH : BUG : .   useful 
+ quickly nature commit / PR / issue .   list 
+ abbreviations , writing commit message . Licensing # SciPy distributed modified ( 3 - clause ) BSD license .   code , 
+ documentation files added SciPy contributors licensed 
+ license , license explicitly specified source 
+ code .   Contributors copyright code wrote submit 
+ inclusion SciPy . licenses compatible modified BSD license SciPy 
+ uses 2 - clause BSD , MIT PSF .   Incompatible licenses GPL , Apache 
+ custom licenses require attribution / citation prohibit use 
+ commercial purposes . PRs submitted content copied derived unlicensed code 
+ code default license compatible SciPyâs license . 
+ instance , code published StackOverflow covered CC - - SA license , 
+ compatible share - alike clause . 
+ contributions accepted inclusion SciPy 
+ original code author willing ( re)license code 
+ modified BSD ( compatible ) license .   original author agrees , 
+ add comment saying source files forward relevant 
+ communication scipy - dev forum . common occurrence code translated derived code 
+ R , Octave ( GPL - licensed ) commercial application .   code 
+ included SciPy .   Simply implementing functionality 
+ API found R / Octave / â ¦ fine , long author doesnât look 
+ original incompatibly - licensed source code . Version numbering # SciPy version numbering complies PEP 440 .   Released final versions , 
+ versions appearing PyPI , numbered MAJOR.MINOR.MICRO : MAJOR integer indicating major version .   changes 
+ rarely ; change MAJOR indicates large ( possibly backwards - incompatible ) 
+ changes . MINOR integer indicating minor version .   Minor versions 
+ typically released twice year contain new features , deprecations 
+ bug - fixes . MICRO integer indicating bug - fix version .   Bug - fix versions 
+ released needed , typically minor version .   
+ contain new features deprecations . Released alpha , beta rc ( release candidate ) versions numbered 
+ like final versions postfixes # , b # rc # respectively , 
+ # integer .   Development versions postfixed .dev0+<git - commit - hash > . Examples valid SciPy version strings : 0.16.0 0.15.1 0.14.0 a1 0.14.0 b2 0.14.0 rc1 0.17.0 . dev0 + ac53f09 installed SciPy version contains version identifiers : scipy . _ _ version _ _ # complete version string , including git commit hash dev versions scipy . version . short_version # string , major.minor.micro scipy . version . version # string , scipy.__version _ _ scipy . version . full_version # string , scipy.__version _ _ scipy . version . release # bool , development ( alpha / beta / rc / final ) released version scipy . version . git_revision # string , git commit hash scipy built Deprecations # reasons wanting remove existing functionality : itâs 
+ buggy , API isnât understandable , itâs superseded functionality 
+ better performance , needs moved SciPy submodule , etc . general , itâs good idea remove warning users 
+ removal .   , removing 
+ public API : Propose deprecate functionality scipy - dev forum 
+ agreement thatâs OK . Add DeprecationWarning , states functionality 
+ deprecated , release . Cython APIs , Deprecating public Cython APIs practical steps . Mention deprecation release notes release . Wait till 6 months release date release 
+ introduced DeprecationWarning removing functionality . Mention removal functionality release notes . 6 months waiting period practice usually means waiting releases . 
+ introducing warning , ensure warnings filtered 
+ running test suite donât pollute output . Itâs possible reason want ignore deprecation policy 
+ particular deprecation ; discussed scipy - dev 
+ forum . Vendored Code # parts SciPy codebase maintained , vendored SciPy . 
+ parts vendored git submodules , example , boost_math . parts vendored git submodules , despite having maintained upstream . 
+ mainly historical reasons , possible parts 
+ patches contributed upstream git submodules future . Maintainers careful accept contributions 
+ ( especially trivial changes ) parts SciPy code actively maintained 
+ upstream . Instead , direct contributors upstream repo . 
+ Currently , includes following parts codebase : DIRECT , scipy / optimize/_direct ARPACK , scipy / sparse / linalg/_eigen / arpack / ARPACK SuperLU , scipy / sparse / linalg/_dsolve / SuperLU QHull , scipy / spatial / qhull_src trlib , scipy / optimize/_trlib UNU.RAN , scipy / stats/_unuran Distributing # Distributing Python packages nontrivial - especially package 
+ complex build requirements like SciPy - subject change .   - - date 
+ overview recommended tools techniques , Python Packaging User 
+ Guide .   document discusses main issues considerations 
+ SciPy . Dependencies # Dependencies things user install order use ( 
+ build / test ) package .   usually cause trouble , especially theyâre 
+ optional .   SciPy tries dependencies minimum ; current required 
+ optional build time dependencies seen SciPyâs configuration file , pyproject.toml . non - optional runtime dependency NumPy . Furthermore , course needs C , C++ Fortran compilers build SciPy , 
+ donât consider dependencies , discussed 
+ .   details , Building source . package provides useful functionality itâs proposed new 
+ dependency , consider makes sense vendor ( i.e. ship copy 
+ SciPy ) package instead .   example , decorator vendored scipy._lib . Issues dependency handling # issues Python packaging tools handle 
+ dependencies reported projects .   SciPy gets regular bug reports 
+ , bit detail . SciPy reports dependency NumPy pyproject.toml build purposes , 
+ SciPy runtime check appropriate version NumPy 
+ available . SciPy longer uses setup_requires ( 
+ past invoked easy_install ) ; build dependencies handled pyproject.toml . pyproject.toml relies PEP 517 ; pip --no - use - pep517 --no - build - isolation flags ignore pyproject.toml treat differently - users use flags , 
+ responsible installing correct build dependencies . Version ranges NumPy dependencies # dependencies itâs important set lower upper bounds 
+ versions . build - time dependencies , specified pyproject.toml versions apply SciPy build 
+ . Itâs fine specify range specific version 
+ dependency like meson - python pybind11 . NumPy worry 
+ ABI compatibility . , NumPy > = 2.0.0rc1 backwards 
+ compatibility guaranteed far NumPy 1.19 series 
+ specification lowest supported version NumPy build time 
+ longer required pyproject.toml . run - time dependencies ( currently numpy ) , specify range 
+ versions pyproject.toml scipy/__init__.py . 
+ Getting upper bound right slightly tricky .   donât set bound , 
+ - new version pulled years line , NumPy 
+ deprecated removed API SciPy depended . 
+ hand set upper bound newest - released version , 
+ soon new NumPy version released matching SciPy version 
+ works . Given NumPy SciPy release 6 - monthly 
+ cadence features deprecated NumPy stay 
+ releases , specify upper bound < 2.xx+3.0 ( xx minor version latest - released NumPy ) . Supported Python NumPy versions # Python versions SciPy supports listed list PyPI 
+ classifiers pyproject.toml , mentioned release notes 
+ release .   newly released Python versions supported soon 
+ possible .   general policy dropping support Python NumPy 
+ version , NEP 29 .   final decision dropping support 
+ taken scipy - dev forum . lowest supported NumPy version SciPy version mentioned 
+ release notes encoded pyproject.toml scipy/__init__.py . 
+ Typically latest SciPy release supports ~5 - 7 minor versions NumPy : 
+ 2.5 yearsâ old NumPy versions , 
+ ( given frequency NumPy releases 2x / year time 
+ writing ) plus versions future . Supported versions optional dependencies compilers documented Toolchain Roadmap . Note versions optional dependencies 
+ supported tested SciPyâs Continuous 
+ Integration setup .   Issues dealt come 
+ issue tracker forum . Building binary installers # Note section building SciPy binary installers distribute . 
+ info building SciPy machine , scipy.org page . number things consideration building binaries 
+ distributing PyPI . General binary specific single ( major ) Python version ( different 
+ major Python versions arenât ABI - compatible , Python 3.12 ) . Build NumPy 2.0.0 , work NumPy versions 
+ major version number ( NumPy 
+ maintain backwards ABI compatibility ) , far NumPy 1.19 series time writing . easiest available toolchain building portable SciPy binaries 
+ cibuildwheel infrastructure common platforms , 
+ details available CI infrastructure code available cibuildwheel command Windows , Linux , MacOS , albeit extra 
+ external dependencies required cases Windows 64 - bit Windows installers built free toolchain , use method 
+ documented numpy / numpy . 
+ method likely SciPy itâs clear 
+ maintenance toolchain sustainable long - term .   MingwPy project thread 
+ details . way produce 64 - bit Windows installers icc , ifort plus MKL ( MSVC instead icc ) .   Intel toolchain 
+ instructions article ( partial ) MSVC instructions wiki page . Older SciPy releases contained .exe âsuperpackâ installer .   contain 
+ 3 complete builds ( SSE , SSE2 , SSE3 ) , built numpy / numpy - vendor .   build setup known work 
+ anymore longer supported .   g77 instead gfortran , 
+ complex DLL distribution issues ( gh-2829 ) .   toolchain 
+ longer supported , g77 support isnât needed anymore SciPy include 
+ Fortran 90/95 code . Linux PyPI - compatible Linux wheels produced manylinux project , 
+ hood cibuildwheel infrastructure . Linux build - setups result PyPI incompatible wheels , 
+ need distributed custom channels , e.g. Wheelhouse , wheel Wheelhouse docs . Making SciPy release # highest level , release manager release new 
+ SciPy version : Propose release schedule SciPy forum https://discuss.scientific-python.org/ . Create maintenance branch release . Tag release . Build release artifacts ( sources , installers , docs ) . Upload release artifacts . Announce release . Port relevant changes release notes build scripts main . guide attempt describe detail perform 
+ steps .   addition steps , performed release 
+ manager , descriptions release - related activities conventions 
+ interest : Backporting Labels Milestones Version numbering Supported Python NumPy versions Deprecations Proposing release schedule # typical release cycle looks like : Create maintenance branch Release beta version Release ârelease candidateâ ( RC ) needed , release new RCs Release final version issues release 
+ candidate Thereâs usually week steps .   Experience 
+ shows cycle takes 4 8 weeks new minor version . 
+ Bug - fix versions donât need beta RC , quicker . Ideally final release identical RC , 
+ minor difference - itâs release manager judge risk . 
+ Typically , compiled code complex pure Python code changes new RC 
+ needed , simple bug - fix thatâs backported main doesnât require 
+ new RC . propose schedule , send list estimated dates branching 
+ beta / rc / final releases SciPy forum https://discuss.scientific-python.org/ . message , ask check 
+ important issues / PRs need included arenât tagged 
+ Milestone release âbackport - candidateâ label . Creating maintenance branch # branching , ensure release notes updated far possible . 
+ Include output tools / gh_lists.py tools / authors.py 
+ release notes . Maintenance branches named maintenance/<major>.<minor>.x ( e.g. 0.19.x ) . 
+ create , simply push branch correct scipy repo . 
+ Immediately , push commit increment version number 
+ main branch add release notes new version .   Send email 
+ SciPy forum https://discuss.scientific-python.org/ let people know 
+ youâve . Updating version switcher # version switcher dropdown needs updated new release 
+ information main branch . doc / source/_static / version_switcher.json : add new release , 
+ new development version , transfer " preferred " : true old release 
+ new release . Updating upper bounds dependencies # main set upper bounds , want test new releases 
+ development versions dependencies . maintenance branch , 
+ goal able create releases stay working years . 
+ correct upper bounds set . following places updated 
+ creating maintenance branch : pyproject.toml : build - time dependencies ,   supported Python NumPy versions scipy/__init__.py : NumPy version check file comments describing set correct upper bounds . Tagging release # ensure set GPG correctly .   scipy / scipy#4919 discussion signing release 
+ tags , https://keyring.debian.org/creating-key.html instructions 
+ creating GPG key . Note platforms 
+ suitable use gpg2 instead gpg 
+ passwords stored gpg - agent discussed scipy / scipy#10189 . 
+ preparing release remotely , necessary set pinentry - mode loopback ~/.gnupg / gpg - agent.conf 
+ use gpg2 proceed inaccessible graphical 
+ password prompt . key readily identifiable , consider sending key 
+ public key servers , command : gpg -- send - keys < yourkeyid > Check relevant commits branch .   particular , check issues 
+ PRs Milestone release 
+ ( scipy / scipy ) , PRs labeled âbackport - candidateâ , 
+ release notes - - date included html docs . update version pyproject.toml commit change 
+ message like REL : set version < version - number > .   Donât push commit 
+ SciPy repo . Finally tag release locally git tag -s < v1.x.y > ( -s ensures 
+ tag signed ) . gpg2 preferred , git config --global gpg.program gpg2 appropriate . Continue 
+ building release artifacts ( section ) . 
+ push release commit scipy repo built 
+ sdists docs successfully .   continue building wheels .   push 
+ release tag repo wheels built successfully 
+ TravisCI Appveyor ( fails , tag - 
+ bad practice ) .   Finally , pushing tag , push second 
+ commit increments version number appends .dev0 version : sets ISRELEASED False . applies new 
+ release candidates , removing rc affix switching 
+ release candidate release proper . Building release artifacts # complete list artifacts created release : sdist ( scipy-x.y.y.tar.gz , PyPI GitHub Releases ) Binary wheels Windows , Linux macOS Documentation ( html ) README.txt file Changelog file sdist generated running python -m build --sdist ( note : 
+ need CI job ! ) , Changelog README built 
+ running python dev.py notes ( tags , python dev.py notes --help ) repo root , end REPO_ROOT / release/ .   
+ youâve created signed tag locally .   completes issues , 
+ push release commit ( tag , section ) scipy repo . build wheels , push commit containing text [ wheel build ] branch 
+ current release . triggers cibuildwheel builds needed 
+ Python versions platforms . appropriate version pins NumPy 
+ dependencies updated pyproject.toml branching . 
+ wheel builds reveal issues need fixed 
+ backports maintenance branch , remove local tags ( example git tag -d v1.2.0rc1 ) restart tagging new candidate commit . cibuildwheel infrastructure runs tests built wheels pass , 
+ uploads wheels https://anaconda.org/multibuild-wheels-staging/scipy . download uploading PyPI . 
+ automated fashion tools / download - wheels.py : $ python tools / download - wheels.py 1.5.0rc1 -w REPO_ROOT / release / installers , want regenerate README file , order MD5 
+ SHA256 checksums downloaded wheels .   Run python dev.py notes . Uploading release artifacts # release currently places web upload things : PyPI ( sdist , wheels ) GitHub Releases ( sdist , release notes , Changelog ) scipy.org ( announcement release ) docs.scipy.org ( html docs ) PyPI : Upload wheels sdist : twine upload REPO_ROOT / release / installers / * . whl twine upload REPO_ROOT / release / installers / scipy - 1 . x . y . tar . gz Github Releases : Use GUI scipy / scipy create release 
+ upload release artifacts . stage , appropriate push 
+ tag associate new release ( candidate ) tag GUI . 
+ example , git push upstream v1.2.0rc1 , upstream represents scipy / scipy . useful check previous 
+ release determine exactly artifacts included GUI 
+ upload process . , note release notes automatically populated 
+ release description GitHub , manual reformatting markdown 
+ helpful match formatting previous releases site . 
+ generally include Issue Pull Request lists GUI 
+ descriptions . scipy.org : Sources site scipy / scipy.org . 
+ Update News section content / en / news.md PR .   
+ proper releases , release candidates . docs.scipy.org : build scipy docs , running dist scipy / doc/ .   Verify 
+ look OK , upload doc server upload USERNAME = rgommers RELEASE=0.19.0 .   Note SSH access 
+ doc server needed ; ask @pv ( server admin ) , @tylerjereddy @rgommers ( 
+ upload ) donât . sources website maintained scipy / docs.scipy.org .   Add new SciPy version 
+ table releases index.rst .   Push commit , upload USERNAME = yourusername . proper releases , 
+ release candidates . Wrapping # Send message announcing release https://discuss.scientific-python.org/c/announcements/ . beta rc versions , ask people test ( run scipy tests 
+ test code ) report issues Github Discourse . final release , port relevant changes release notes , build 
+ scripts , author mapping tools / authors.py changes 
+ maintenance branch main . Enable interactive examples editing runtime configuration file , try_examples.json , root folder uploaded documentation 
+ release server . remove regular expression pattern " . * " 
+ ignore_patterns list . $ ssh your-username@docs.scipy.org $ cd /srv / docs_scipy_org / doc / scipy-1.13.1 $ vim try_examples.json # edit ignore list remove : " . * " previous Adding New Methods , Functions , Classes Code Documentation Style Guide - Missing Bits page Decision making process Code Commit rights Deciding new features Development GitHub Labels Milestones Pull request review workflow Dealing pull requests Backporting Release notes Licensing Version numbering Deprecations Vendored Code Distributing Dependencies Issues dependency handling Version ranges NumPy dependencies Supported Python NumPy versions Building binary installers Making SciPy release Proposing release schedule Creating maintenance branch Updating version switcher Updating upper bounds dependencies Tagging release Building release artifacts Uploading release artifacts Wrapping Â © Copyright 2008 - 2025 , SciPy community . Created Sphinx 7.3.7 . Built PyData Sphinx Theme 0.15.2 .

@@ -1,0 +1,35 @@
+1.1.1 . EDA ? 1 . Exploratory Data Analysis 1.1 . EDA Introduction 1.1.1 . EDA ? Approach Exploratory Data Analysis ( EDA ) approach / philosophy data 
+ analysis employs variety techniques ( graphical ) maximize insight data set ; uncover underlying structure ; extract important variables ; detect outliers anomalies ; test underlying assumptions ; develop parsimonious models ; determine optimal factor settings . Focus EDA approach precisely -- approach -- set 
+ techniques , attitude / philosophy data analysis 
+ carried . Philosophy EDA identical statistical graphics 
+ terms interchangeably .   Statistical graphics 
+ collection techniques -- graphically based focusing 
+ data characterization aspect .   EDA encompasses larger 
+ venue ; EDA approach data analysis postpones 
+ usual assumptions kind model data follow 
+ direct approach allowing data 
+ reveal underlying structure model .   EDA mere 
+ collection techniques ; EDA philosophy dissect 
+ data set ;   look ; look ; interpret . 
+ true EDA heavily uses collection techniques 
+ " statistical graphics " , identical 
+ statistical graphics se . History seminal work EDA Exploratory Data Analysis , 
+ Tukey , ( 1977 ) . 
+ years benefitted noteworthy publications 
+ Data Analysis 
+ Regression , Mosteller Tukey ( 1977 ) , Interactive Data Analysis , 
+ Hoaglin ( 1977 ) , 
+ ABC EDA , Velleman Hoaglin ( 1981 ) gained 
+ large following " " way analyze data set . Techniques EDA techniques graphical nature quantitative 
+ techniques .   reason heavy reliance graphics 
+ nature main role EDA open - mindedly explore , 
+ graphics gives analysts unparalleled power , 
+ enticing data reveal structural secrets , 
+ ready gain new , unsuspected , insight 
+ data .   combination natural pattern - recognition 
+ capabilities possess , graphics provides , course , 
+ unparalleled power carry . particular graphical techniques employed EDA 
+ simple , consisting techniques : Plotting raw data ( data traces , histograms , bihistograms , probability plots , lag plots , block plots , Youden plots . Plotting simple statistics mean plots , standard deviation plots , box plots , 
+        main effects plots raw data . Positioning plots maximize natural 
+        pattern - recognition abilities , multiple 
+        plots page .

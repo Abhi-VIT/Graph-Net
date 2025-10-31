@@ -1,0 +1,217 @@
+Applied Machine Learning Python – Classification & Clustering - 1 | ArubaCloud.com Czech Republic France Hungary Italy Poland Slovak Republic Spain Hosting Cloud Servers Country : International Czech Republic France Hungary Italy Poland Slovak Republic Spain support login SERVICES Bare Metal Public Cloud Cloud VPS Aruba Cloud VPS Wide selection settings , latest generation technology value money . Knowledge base Guide Cloud VPS service Compute Aruba Cloud Server Maximum scalability , unlimited traffic costs kept control . Knowledge base Guide Aruba Cloud Server Container Aruba Managed Kubernetes simplest way manage Kubernetes clusters Managed Hybrid Cloud cloud native flexibility Red Hat OpenShift Application Platform Maximum scalability thanks container technology Kubernetes Solutions Simplicity , scalability security containers Database Service Database Service Manage relational databases complete safety cloud Price List Select resources need configure DBaaS MySQL Choose DBaaS solutions MySQL engine PostgreSQL Choose Aruba DBaaS solutions PostgreSQL Microsoft SQL SERVER Choose DBaaS solutions Microsoft SQL Server engine Knowledge Base Learn use Database Service Virtual Private Cloud Virtual Private Cloud Use VMware Cloud Director create manage VDCs real time , virtual machines , firewalls networks . Knowledge Base Guides manage Virtual Private Cloud management Control Panel Data protection & Backup Cloud Backup data , secure cloud Disaster Recovery Protect data infrastructure Knowledge Base Guides manage Cloud Backup control panel Aruba Backup Microsoft 365 Protect data hosted Microsoft 365 applications . Storage Object Storage Reliable , high performance solution managing data Cloud . Block storage Create scalable , flexible block storage volumes use extra disks . Knowledge Base Guides manage Object Storage Cloud Monitoring Cloud Monitoring cloud resources control Knowledge Base Learn use Cloud Monitoring Domain Center Features features Domain Center Technology Register domains want easily manage related DNS Pricing Prices costs domains DNS management service .cloud domain advantage .CLOUD domain Knowledge Base Guides use tools managing Domains DNS Control Panel VMware Aruba Cloud VMware Aruba Cloud Solutions Virtual Private Cloud VMware Cloud Server Disaster Recovery Infrastructure Data Centers IT3 Italy IT1 Italy IT2 Italy CZ1 Czech Rep. FR1 France DE1 Germany UK1 United Kingdom PL1 Poland Company Certifications Data protection Cloud services Aruba Cloud MotoE Team Choose Aruba 10 GOOD REASONS choose Aruba Cloud # 1 Data Center # 2 Certifications # 3 Guaranteed service ( SLA ) clear costs # 4 best hardware best services # 5 N.1 Cedexis , Cloudscreener JDN # 6 Maintain ownership control data # 7 Support guides # 8 White Label interface resellers # 9 solution requirement # 10 Resources News Partners Data protection EU Whistleblowing × Applied Machine Learning Python – Classification & Clustering - 1 Search : Applied Machine Learning Python – Classification & Clustering - 1 Published : 15 2021 Classification Clustering Machine Learning ML Python Contents Introduction previous chapters discussed programming basics Python role Mathematics indulging Artificial Intelligence software development . concepts interrelated form core building inner AI theories like Machine Learning Data Science . Machine Learning , subbranch broad Artificial Intelligence bracket , computer science field generates ability learn software systems . aim learning improve existing data quality experience learning , having explicitly told generate specific output . emphasis machine learning help computer systems learn provided input human interference . , implement form learning like human brain , computer systems need information . provide data computers phase called Data Observation Data Preparation . time , computer system exposed tremendous amounts data aid learning process . Experience input data gives machine understanding patterns study end goal provided information . - turn helps generating required analysis forecasting output . Machine Learning Varied Forms Algorithms Machine Learning segregated based type input receive computations learn . soon cover mathematics detailed implementation algorithms , let look broad classification algorithms . Machine Learning broadly classified categories Supervised , Unsupervised Reinforcement Learning . image shows differentiation algorithms use cases . Supervised Machine Learning Algorithms work labelled data called supervised learning algorithms . mechanisms training working data . Labelled data means data questions answers present . algorithm looks input expected output learns kinds input map form output . Based learning , new data provided algorithm , predict output . understanding supervised learning functions work , presume input variable x output variable y. function needed map input output . function Y = f(x ) learn mapping input output , central objective estimate plotting function manner , new input data ( x ) presented expression , algorithms predict output ( Y ) input . Primarily supervised leaning problems divided following kinds problems : Classification : categorical variable solution called classification . Categorical variables include outputs like color , gender , etc . specified set values algorithm needs choose set . covering Classification detail chapter . Regression : regression problem definite solution predict . instance , weight car , height tree . outputs definite values . Predicting form regression . algorithms generally supervised learning tasks Decision Trees , Random Forests , Nearest Neighbor Solutions ( KNN ) , Logistic Regression . Unsupervised Machine Learning key difference supervised unsupervised algorithms unsupervised algorithms provided labelled data . means , expected output logic known algorithm training process . , unsupervised learning algorithms people generally associate Artificial Intelligence . understood follows : algorithms necessarily correct incorrect answer . help understanding theories , patterns information help discover interesting forms data . Unsupervised Machine Learning algorithms apportioned following : Clustering : Problems associated clustering help discovering groupings data . groupings data generally inherently present input data . example , grouping soccer players based attributes scoring goals . example algorithm K - Means Clustering . Association : solution called association algorithm tries discover rules connect portions input data . instance , finding common traits players score goals assists . example Apriori algorithm . Reinforcement Machine Learning use reinforcement learning algorithms comparatively ( supervised unsupervised ) . procedures train learning algorithms decisions . basis decision making exposure algorithm gets environment . expected learn surroundings understand behavior objects situation trial - - error mechanism . algorithm based learning experience , decisions tend accurate algorithm built properly drastically wrong . extreme nature output possibility makes use algorithm popular . Markov Decision Process illustration reinforcement learning algorithm . Classification Clustering Data Classification type supervised learning Clustering unsupervised learning algorithms . algorithms work logic grouping similar data points . difference lies fact classification happens data labelled , output known clustering occurs unlabeled data . Classification stipulates class data elements belong predicts class finite input variable . Clustering hand , work infinite set data points . 2 types Classification : Binomial : output aimed grouped classified possible categories . Multi - Class : idea group outcome multiple groups . Use cases Classification : Finding received email spam based history spam messages received . Identify segments shopping customers based purchase patterns . understand customer repay loan based credit history . Predicting kid pass given examination based analysis questions student academic background . Clustering Cluster Analysis Cluster Analysis unsupervised learning mechanism helps determining interesting patterns data . generally correct algorithm use considered good practice explore range algorithms varied combinations conclude . cluster area concentrated density given input space . Use cases Clustering : Identifying fake news sensationalized click - bait articles . Personalized advertisement targeting customers based search patters . Understanding broad area network traffic page . Analysis fantasy football recommendation players week team . Understanding Classifiers Python build classifiers Python , use scikit - learn library Machine Learning . important functions methods need understand moving building classifier . Scikit - Learn : scikit learn library probably comprehensive toolkit machine learning Python . contains methods training learning models , performing statistical analysis , visualizing data . scikit learn course implementing machine learning artificial intelligence algorithms . Importing Datasets Scikit - Learn : scikit learn library inbuilt datasets meant practicing machine learning problems . datasets open - sourced available locally running algorithms . import statements fetch data datasets . Train - Test - Split : : method commonly split arrays matrices arbitrary training testing groups . splitting explicitly mentioned argument function calling . split makes sure present data training , avoid situations overfitting underfitting model . # Train Test Split Method Definition sklearn.model_selection.train_test_split(*arrays , test_size = , train_size = , random_state = , shuffle = True , stratify = ) 
+
+ # test_size : Value 0.0 1.0 signifies percent data putting test data 
+
+ # train_size : Like test size training data divison 
+
+
+
+ # Implementing numpy array 
+
+ import numpy np 
+
+ sklearn.model_selection import train_test_split 
+
+ X , y = np.arange(10).reshape((5 , 2 ) ) , range(5 ) 
+
+ X > > > array([[2,3 ] , [ 0,1 ] , [ 4 , 5 ] , [ 8,9 ] , [ 6,7 ] ] ) list(y ) > > > [ 0 , 1 , 2 , 3 , 4 ] # train test split data test size 43 % input data 
+
+ X_train , X_test , y_train , y_test = train_test_split ( X , y , test_size=0.43 ) 
+
+ # Check 4 individual arrays input split 
+
+ X_train > > > array([[0 , 1 ] , [ 6 , 7 ] , [ 4 , 5 ] ] ) y_train > > > [ 0 , 3 , 2 ] X_test > > > array([[8,9 ] , [ 2,3 ] ] ) y_test > > > [ 1 , 4 ] # process helps avoiding underfitting overfitting problems data concepts revolving sci - kit learn , NumPy , pandas , matplotlib seaborn remainder course hold data preparation , cleaning , visualization , training . libraries combined Python strongest languages solving data science problems . Let started machine learning example following section . Naive - Bayes Algorithm Representation Naïve Bayes algorithms work . Generally , classification clustering models work principles grouping data . inline mathematical operations different . # Importing Sci - kit learn library importing Wisconsin breast cancer dataset 
+
+ import sklearn 
+
+ sklearn.datasets import load_breast_cancer 
+
+ data_set = load_breast_cancer ( ) 
+
+
+
+ # Differentiating features labels imported data set 
+
+ label_names = data_set['target_names ' ] 
+
+ labels = data_set['target ' ] 
+
+ feature_names = data_set['feature_names ' ] 
+
+ features = data_set['data ' ] 
+
+
+
+ # observe categories cancer need labelled ( Output Parameters ) 
+
+ print(label_names ) > > > [ ' malignant ' ' benign ' ] # Printing raw data data - set .DESCR function retrieve descriptions columns present data 
+
+ print(data_set.data ) > > > 
+
+ [ 1.799e+01 1.038e+01 1.228e+02 ... 2.654e-01 4.601e-01 1.189e-01 ] 
+
+  [ 2.057e+01 1.777e+01 1.329e+02 ... 1.860e-01 2.750e-01 8.902e-02 ] 
+
+  [ 1.969e+01 2.125e+01 1.300e+02 ... 2.430e-01 3.613e-01 8.758e-02 ] 
+
+  ... 
+
+  [ 1.660e+01 2.808e+01 1.083e+02 ... 1.418e-01 2.218e-01 7.820e-02 ] 
+
+  [ 2.060e+01 2.933e+01 1.401e+02 ... 2.650e-01 4.087e-01 1.240e-01 ] 
+
+  [ 7.760e+00 2.454e+01 4.792e+01 ... 0.000e+00 2.871e-01 7.039e-02 ] ] 
+
+ … . Output Truncated print(data_set . DESCR ) > > > 
+
+ Breast cancer wisconsin ( diagnostic ) dataset 
+
+ -------------------------------------------- 
+
+ * * Data Set Characteristics :* * 
+
+     : Number Instances : 569 
+
+     : Number Attributes : 30 numeric , predictive attributes class 
+
+     : Attribute Information : 
+
+         - radius ( mean distances center points perimeter ) 
+
+         - texture ( standard deviation gray - scale values ) 
+
+         - perimeter 
+
+         - area 
+
+         - smoothness ( local variation radius lengths ) 
+
+         - compactness ( perimeter^2 / area - 1.0 ) 
+
+         - concavity ( severity concave portions contour ) 
+
+         - concave points ( number concave portions contour ) 
+
+         - symmetry 
+
+         - fractal dimension ( " coastline approximation " - 1 ) 
+
+ … . 
+
+ … .. Output Truncated # Import pandas use data frames exploration 
+
+ # Read DataFrame , feature names data set 
+
+ import pandas pd 
+
+ df = pd . DataFrame(data_set.data , columns = data_set.feature_names ) 
+
+ # Add column generate ouput 
+
+ df['target ' ] = data_set.target 
+
+
+
+ # Use info ( ) method Pandas informations attributes 
+
+ df.info ( ) > > > RangeIndex : 569 entries , 0 568 
+
+ Data columns ( total 31 columns ): 
+
+  #    Column                    Non - Null Count   Dtype  
+
+ ---   ------                    --------------   -----  
+
+  0    mean radius               569 non - null     float64 
+
+  1    mean texture              569 non - null     float64 
+
+  2    mean perimeter            569 non - null     float64 
+
+  3    mean area                 569 non - null     float64 
+
+  4    mean smoothness           569 non - null     float64 
+
+  5    mean compactness          569 non - null     float64 
+
+  6    mean concavity            569 non - null     float64 
+
+  7    mean concave points       569 non - null     float64 
+
+  8    mean symmetry             569 non - null     float64 
+
+  9    mean fractal dimension    569 non - null     float64 
+
+  10   radius error              569 non - null     float64 
+
+  11   texture error             569 non - null     float64 
+
+  12   perimeter error           569 non - null     float64 
+
+  13   area error                569 non - null     float64 # Use head ( ) method Pandas data set 
+
+ df.head ( ) 
+
+
+
+ # Import seaborn library visualize input data 
+
+ # form box plot understand spread data set comparison target column 
+
+ import seaborn sns 
+
+ box_plot = data_set.data 
+
+ box_target = data_set.target 
+
+ sns.boxplot(data = box_plot , width=0.6,fliersize=7 ) 
+
+ sns.set(rc={'figure.figsize':(2,15 ) } ) 
+
+ > > > # applying Machine Learning data 
+
+ # Currently know target variables , labelled input data . 
+
+ # Use train_test_split create training testing data sets 
+
+ sklearn.model_selection import train_test_split 
+
+ train , test , train_labels , test_labels = train_test_split(features , labels , test_size = 0.33 , random_state = 40 ) 
+
+
+
+ # Import Naïve Bayes Classifier Sci - kit learn library 
+
+ sklearn.naive_bayes import GaussianNB 
+
+ g_nb = GaussianNB ( ) 
+
+
+
+ # fit method train model training data 
+
+ model = g_nb.fit(train , train_labels ) 
+
+ # predict method runs learned model test data generate output 
+
+ predicts = g_nb.predict(test ) 
+
+ print(predicts ) > > > [ 1 0 1 1 0 1 1 1 0 1 0 1 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 0 1 1 1 0 0 1 1 1 1 
+
+  0 1 1 0 1 1 1 0 0 1 1 0 1 0 1 1 1 1 1 0 0 0 1 1 0 1 1 1 0 0 0 1 1 1 0 0 1 
+
+  0 0 0 1 1 1 1 1 0 1 0 1 0 0 1 0 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 0 1 1 1 
+
+  1 0 1 0 1 1 1 1 0 0 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 0 1 0 1 1 0 1 1 1 1 
+
+  1 0 1 0 1 0 1 1 0 1 0 1 0 1 1 1 1 1 1 1 0 1 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 
+
+  1 1 0 ] # output predicts type cancer ( ' malignant ' ' benign ' ) caused given inputs 
+
+
+
+ # time algorithm created run , use accuracy_score check working algorithm 
+
+ sklearn.metrics import accuracy_score 
+
+ print(accuracy_score(test_labels , preds ) ) > > > 0.9680851063829787 # algorithm model nearly 97 % accuracy basic example implementing Naïve Bayes classifier Python . looking feature engineering selection elements bettering preprocessing data chapter . chapter continues following . Tutorial successivo : Applied Machine Learning Python – Classification & Clustering - 2 TECHNOLOGICAL PARTNERS : Support Report abuse Login - credit Create account PRODUCTS & SOLUTIONS Cloud VPS Compute Container Database Service Virtual Private Cloud Data protection & Backup Storage Cloud Monitoring Domain Center COMPANY Certifications Data protection Cloud services Aruba Cloud MotoE Team Choose Aruba News Partners Data protection EU Whistleblowing NETWORK Aruba Cloud Italy Aruba Cloud International Aruba Cloud France Aruba Cloud Spain Aruba Cloud Hungary Aruba Cloud Poland Aruba S.p . A. - rights reserved VAT . IT01573850516 Informazioni Privacy Cookies Customise cookies Terms & Conditions Sitemap CLOUD WORLD PRODUCTS & SOLUTIONS Cloud VPS Compute Container Database Service Virtual Private Cloud Data protection & Backup Storage Cloud Monitoring Domain Center COMPANY Certifications Data protection Cloud services Aruba Cloud MotoE Team Choose Aruba News Partners Data protection EU Whistleblowing NETWORK Aruba Cloud Italy Aruba Cloud International Aruba Cloud France Aruba Cloud Spain Aruba Cloud Hungary Aruba Cloud Poland Pursuant EU Directive 2013/11 Regulation EU 524/2013 , consumer residing Europe , use ODR platform , available following link , submit request resolve disputes relating contractual obligations court .
